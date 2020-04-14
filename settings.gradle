@@ -1,0 +1,2 @@
+rootProject.name='TapUISample'
+include ':app'
