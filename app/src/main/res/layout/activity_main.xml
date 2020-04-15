@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tapcustom="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="editTextTheme"
+            type="company.tap.thememanager.atoms.EditTextTheme" />
+    </data>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -16,13 +21,7 @@
         android:id="@+id/tap_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         />
 
 </LinearLayout>
-<data>
-<variable
-    name="editTextTheme"
-    type="company.tap.thememanager.atoms.EditTextTheme" />
-</data>
 </layout>

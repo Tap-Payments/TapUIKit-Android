@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import company.tap.tapuisample.databinding.ActivityMainBinding
+
 import company.tap.thememanager.ThemeManager
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         currentTheme = theme
         themeManager = ThemeManager()
         themeManager!!.loadTapTheme(resources, theme)
-        mainBinding.editTextTheme(themeManager!!.atomsTheme.editTextTheme)
+
     }
 }
+
