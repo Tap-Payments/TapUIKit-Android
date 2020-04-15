@@ -2,7 +2,6 @@ package tapuilibrarykotlin
 
 import android.content.Context
 import android.util.AttributeSet
-import androidx.appcompat.widget.AppCompatToggleButton
 import androidx.appcompat.widget.SwitchCompat
 
 /**
