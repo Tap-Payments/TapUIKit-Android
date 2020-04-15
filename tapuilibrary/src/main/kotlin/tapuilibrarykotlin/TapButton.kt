@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatButton
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class TapButton : AppCompatButton {
+open class TapButton : AppCompatButton {
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 }

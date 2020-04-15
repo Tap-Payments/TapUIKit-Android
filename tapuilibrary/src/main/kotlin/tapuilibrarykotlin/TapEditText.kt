@@ -15,7 +15,7 @@ import company.tap.tapuilibrary.R
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class TapEditText : AppCompatEditText {
+open class TapEditText : AppCompatEditText {
     @ColorInt
     private var inputColorInt = 0
     @Size
