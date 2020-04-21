@@ -25,12 +25,15 @@ open class TapEditText : AppCompatEditText {
 
     override fun setError(error: CharSequence, icon: Drawable) {
        // setCompoundDrawables(null, null, icon, null)
-        if (error == null) {
-            super.setError(null, icon);
-            setCompoundDrawables(null, null, null, null);
+        if (error.isNullOrEmpty()) {
+            super.setError(null, icon)
+            setCompoundDrawables(null, null, null, null)
         }
-        else if (error.toString() == "") setCompoundDrawables(null, null, icon, null);
-        else super.setError(error, icon);
+        else if (error.toString() == "") {
+            setCompoundDrawables(null, null, icon, null)
+        } else {
+            super.setError(error, icon)
+        }
     }
     /**
      * This init will initilaize the attributes that will be customizable through XML.
