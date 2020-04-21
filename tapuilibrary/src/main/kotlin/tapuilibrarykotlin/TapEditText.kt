@@ -26,11 +26,11 @@ open class TapEditText : AppCompatEditText {
     override fun setError(error: CharSequence, icon: Drawable) {
        // setCompoundDrawables(null, null, icon, null)
         if (error.isNullOrEmpty()) {
-            super.setError(null, icon)
-            setCompoundDrawables(null, null, null, null)
-        }
-        else if (error.toString() == "") {
+            super.setError(error, icon)
             setCompoundDrawables(null, null, icon, null)
+        }
+        else if (error.toString() == "null") {
+            setCompoundDrawables(null, null, null, null)
         } else {
             super.setError(error, icon)
         }
