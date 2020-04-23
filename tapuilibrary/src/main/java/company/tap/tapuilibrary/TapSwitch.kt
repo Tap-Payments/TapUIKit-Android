@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.util.AttributeSet
 import androidx.appcompat.widget.SwitchCompat
-import company.tap.tapuilibrary.TapView
 import company.tap.thememanager.atoms.SwitchTheme
 
 /**
@@ -13,7 +12,8 @@ import company.tap.thememanager.atoms.SwitchTheme
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class TapSwitch(context: Context) : SwitchCompat(context), TapView<SwitchTheme> {
+open class TapSwitch(context: Context, attributeSet: AttributeSet) :
+    SwitchCompat(context, attributeSet), TapView<SwitchTheme> {
     override fun setTheme(theme: SwitchTheme) {
         setTextColor(theme.textColor)
         textSize = theme.textSize
