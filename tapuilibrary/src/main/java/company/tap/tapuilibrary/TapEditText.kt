@@ -2,8 +2,8 @@ package company.tap.tapuilibrary
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
-import company.tap.tapuilibrary.TapView
 import company.tap.thememanager.atoms.EditTextTheme
 
 /**
@@ -12,7 +12,8 @@ import company.tap.thememanager.atoms.EditTextTheme
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class TapEditText(context: Context) : AppCompatEditText(context), TapView<EditTextTheme> {
+open class TapEditText(context: Context, attributeSet: AttributeSet) :
+    AppCompatEditText(context, attributeSet), TapView<EditTextTheme> {
 
     override fun setTheme(theme: EditTextTheme) {
         maxLines = theme.maxLines
