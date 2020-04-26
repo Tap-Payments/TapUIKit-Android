@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary
 
-import company.tap.thememanager.atoms.BaseTextTheme
+import company.tap.thememanager.theme.BaseTextTheme
+
 
 /**
  *
