@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatEditText
-import company.tap.thememanager.atoms.EditTextTheme
+import company.tap.thememanager.theme.EditTextTheme
 
 /**
  * Created by AhlaamK on 4/14/20.
@@ -16,12 +16,13 @@ open class TapEditText(context: Context, attributeSet: AttributeSet) :
     AppCompatEditText(context, attributeSet), TapView<EditTextTheme> {
 
     override fun setTheme(theme: EditTextTheme) {
-        maxLines = theme.maxLines
-        textSize = theme.textSize
-        letterSpacing = theme.letterSpacing
-        setTextColor(theme.textColor)
-        setHintTextColor(theme.textColorHint)
-        backgroundTintList = ColorStateList.valueOf(theme.backgroundTint)
+        theme.maxLines?.let { maxLines = it }
+        theme.textColor?.let { setTextColor(it) }
+        theme.textSize?.let { textSize = it }
+        theme.letterSpacing?.let { letterSpacing = it }
+        theme.textColorHint?.let { setHintTextColor(it) }
+        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
+        invalidate()
     }
 
 }
