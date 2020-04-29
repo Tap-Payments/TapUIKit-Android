@@ -1,10 +1,12 @@
 package company.tap.tapuisample
 
+import android.R.string
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
-
 import company.tap.tapuilibrary.TapChip
+import java.io.IOException
 
 
 /**

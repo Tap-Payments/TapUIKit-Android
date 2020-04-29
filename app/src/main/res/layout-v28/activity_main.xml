@@ -13,14 +13,15 @@
         android:layout_width="match_parent"
         android:layout_height="90dp"
         android:orientation="horizontal"
-        >
+        android:background="#f9f9f9"
+       >
 
         <company.tap.tapuisample.TapCardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="@dimen/margin_basic_20dp"
+            android:layout_marginRight="@dimen/margin_basic_20dp"
             app:cardCornerRadius="8dp"
             app:contentPadding="5dp"
             app:cardBackgroundColor="@color/white"
@@ -35,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="6dp"
         android:text="Hide leftAccessory"
+        android:textSize="@dimen/font_size_14sp"
         android:checked="true"
         android:layout_marginLeft="@dimen/margin_basic_20dp"
         android:layout_marginRight="@dimen/margin_basic_20dp"
@@ -43,18 +45,22 @@
         android:layout_width="match_parent"
         android:layout_height="6dp"
         android:text="Hide rightAccessory"
+        android:textSize="@dimen/font_size_14sp"
         android:id="@+id/rightAccessory_Switch"
         android:checked="true"
         android:layout_marginLeft="@dimen/margin_basic_20dp"
-        android:layout_marginRight="@dimen/margin_basic_20dp"/>
+        android:layout_marginRight="@dimen/margin_basic_20dp"
+        />
 
     <company.tap.tapuilibrary.TapTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Change Text"
+        android:textSize="@dimen/font_size_14sp"
         android:onClick="changeText"
         android:layout_marginLeft="@dimen/margin_basic_20dp"
-        android:layout_marginRight="@dimen/margin_basic_20dp"/>
+        android:layout_marginRight="@dimen/margin_basic_20dp"
+        />
 
 
 </LinearLayout>
