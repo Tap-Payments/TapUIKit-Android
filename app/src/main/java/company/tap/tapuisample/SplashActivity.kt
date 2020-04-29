@@ -7,6 +7,12 @@ import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
 
+/**
+ * Created by AhlaamK on 4/29/20.
+
+Copyright (c) 2020    Tap Payments.
+All rights reserved.
+ **/
 class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
