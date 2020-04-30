@@ -1,27 +1,51 @@
 package company.tap.tapuisample
 
+import android.annotation.SuppressLint
+import android.content.Context
+import android.graphics.Color
+import android.graphics.Color.red
+import android.graphics.Typeface
+import android.os.Build
 import android.os.Bundle
 import android.text.InputType
+import android.util.TypedValue
+import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.Toast
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.internal.ViewUtils.dpToPx
+import company.tap.tapuilibrary.TapChip
+import company.tap.tapuilibrary.TapImageView
+import company.tap.tapuilibrary.TapTextView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.view_custom_tapcard.*
+import kotlin.math.roundToInt
 
 
 class MainActivity : AppCompatActivity(){
+    lateinit var  imageView_master :TapImageView
+    lateinit var  imageView_visa :TapImageView
+    lateinit var  imageView_amex :TapImageView
+    lateinit var textView_card:TapTextView
+    lateinit var tap_card_chip:TapChip
 
-
+    @SuppressLint("ResourceAsColor")
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setUpSwitch()
+        setupTapCardChip()
     }
 
     private fun setUpSwitch() {
         leftAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
+              var id=  tap_card_chip.view.id
+                println("id is $id")
                 imageView_visa.visibility = View.VISIBLE
             } else {
                 imageView_visa.visibility = View.GONE
@@ -37,6 +61,8 @@ class MainActivity : AppCompatActivity(){
     }
 
     fun changeText(view: View) {
+        textView_card.visibility = View.VISIBLE
+        imageView_amex.visibility = View.GONE
         changeTextDialog()
     }
 
@@ -56,12 +82,117 @@ class MainActivity : AppCompatActivity(){
         ) { dialog, _ ->
             inputText = input.text.toString()
             textView_card.text = inputText
+
         }
         builder.setNegativeButton(
             "Cancel"
         ) { dialog, _ -> dialog.cancel() }
         builder.show()
     }
+
+    @RequiresApi(Build.VERSION_CODES.P)
+    @SuppressLint("RestrictedApi", "ResourceAsColor")
+    private fun setupTapCardChip() {
+        val mainLayout = findViewById<LinearLayout>(R.id.mainLayout)
+        mainLayout.orientation = LinearLayout.HORIZONTAL
+        for (i in 0 until 4) {
+            println(i) // 0,1,2,3    --> upto 3
+            tap_card_chip = TapChip(this,null)
+            //tap_card_chip.setCardBackgroundColor(R.color.card_background)
+            tap_card_chip.setContentPadding(dpToPx(this,5).toInt(),dpToPx(this,5).toInt(),dpToPx(this,5).toInt(),dpToPx(this,5).toInt())
+            tap_card_chip.outlineSpotShadowColor=R.color.shadowcolor
+
+            tap_card_chip.radius= dpToPx(this,8)
+            tap_card_chip.preventCornerOverlap=true
+            tap_card_chip.elevation= dpToPx(this,5)
+            val cardViewParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT).also {
+                it.setMargins(dpToPx(this,5 ).roundToInt(), dpToPx(this,5).roundToInt(),
+                    dpToPx(this,5).roundToInt(),
+                    dpToPx(this,5).roundToInt()
+                )
+            }
+            tap_card_chip.id=i
+            tap_card_chip.layoutParams=cardViewParams
+            tap_card_chip.setOnClickListener {
+                 it.setBackgroundColor(R.color.design_default_color_error)
+               /* tap_card_chip.apply {
+                    // border color
+                    strokeColor = (R.color.glowingShadow)
+                    // border width in dp
+                    strokeWidth = 6.toDp(context)
+                    // card corner radius
+                    radius = 8.toDp(context).toFloat()
+                }*/
+            }
+
+            val cardLinearLayout = LinearLayout(this)
+            cardLinearLayout.orientation = LinearLayout.HORIZONTAL
+            val params = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            cardLinearLayout.layoutParams = params
+
+            val width = dpToPx(this, 30)
+            val height = dpToPx(this, 30)
+            val parms = LinearLayout.LayoutParams(width.toInt(), height.toInt())
+            parms.leftMargin = dpToPx(this, 5).toInt()
+            parms.rightMargin = dpToPx(this, 5).toInt()
+            parms.gravity = Gravity.CENTER
+
+            imageView_master = TapImageView(this, null)
+            imageView_master.setImageResource(R.drawable.mastercard)
+            imageView_master.scaleType = ImageView.ScaleType.CENTER_CROP
+            imageView_master.layoutParams = parms
+            cardLinearLayout.addView(imageView_master)
+
+            imageView_amex = TapImageView(this, null)
+            imageView_amex.setImageResource(R.drawable.amex)
+            imageView_amex.scaleType = ImageView.ScaleType.CENTER_CROP
+            imageView_amex.layoutParams = parms
+            imageView_amex.visibility = View.GONE
+            cardLinearLayout.addView(imageView_amex)
+
+            textView_card = TapTextView(this, null)
+            textView_card.text = "∙∙∙∙ 123"
+            textView_card.textSize = dpToPx(this, 6.5.toInt())
+            textView_card.setTextColor(Color.parseColor("#474747"))
+            textView_card.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL)
+            textView_card.gravity = Gravity.END
+            val params1 = LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+            )
+            params1.leftMargin = dpToPx(this, 5).toInt()
+            params1.rightMargin = dpToPx(this, 5).toInt()
+            params1.topMargin = dpToPx(this, 5).toInt()
+            textView_card.setLineSpacing(dpToPx(this, 4), 1f)
+            textView_card.layoutParams = params1
+            cardLinearLayout.addView(textView_card)
+
+            imageView_visa = TapImageView(this, null)
+            imageView_visa.setImageResource(R.drawable.visa)
+            imageView_visa.scaleType = ImageView.ScaleType.CENTER_CROP
+            imageView_visa.layoutParams = parms
+            cardLinearLayout.addView(imageView_visa)
+
+            tap_card_chip.addView(cardLinearLayout)
+            mainLayout.addView(tap_card_chip)
+        }
+
+
+    }
+
+
+
+    fun changeToImage(view: View) {
+        imageView_amex.visibility=View.VISIBLE
+        textView_card.visibility = View.GONE
+    }
+    // extension method to convert pixels to dp
+    fun Int.toDp(context: Context):Int = TypedValue.applyDimension(
+        TypedValue.COMPLEX_UNIT_DIP,this.toFloat(),context.resources.displayMetrics
+    ).toInt()
 
 }
 

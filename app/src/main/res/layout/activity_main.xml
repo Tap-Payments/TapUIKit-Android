@@ -11,21 +11,26 @@
     />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="50dp"
         android:orientation="horizontal"
+        android:background="@color/fill_card"
+        android:id="@+id/mainLayout"
         >
 
-        <company.tap.tapuisample.TapCardView
+      <!--  <company.tap.tapuilibrary.TapChip
+            android:id="@+id/tap_card_chip"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             app:cardCornerRadius="8dp"
             app:contentPadding="5dp"
-            app:cardBackgroundColor="@color/white"
+            app:cardPreventCornerOverlap="true"
+            app:cardUseCompatPadding="true"
+            app:cardBackgroundColor="#4DFFFFFF"
             android:outlineSpotShadowColor="@color/shadowcolor"
-            android:outlineAmbientShadowColor="@color/glowingShadow"/>
+            android:outlineAmbientShadowColor="@color/glowingShadow"/>-->
 
 
     </LinearLayout>
@@ -56,6 +61,15 @@
         android:layout_marginLeft="@dimen/margin_basic_20dp"
         android:layout_marginRight="@dimen/margin_basic_20dp"/>
 
+    <company.tap.tapuilibrary.TapButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Image"
+        android:textSize="@dimen/font_size_14sp"
+        android:onClick="changeToImage"
+        android:layout_marginLeft="@dimen/margin_basic_20dp"
+        android:layout_marginRight="@dimen/margin_basic_20dp"
+        />
 
 </LinearLayout>
 

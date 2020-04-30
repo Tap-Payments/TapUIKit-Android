@@ -15,7 +15,7 @@ All rights reserved.
  **/
 open class TapChip (context: Context, attributeSet: AttributeSet?) : MaterialCardView(context, attributeSet),TapView<ChipTheme> {
     lateinit var view:View
-     constructor(context: Context, attributeSet: AttributeSet, view : View) : this(context, attributeSet){
+     constructor(context: Context, attributeSet: AttributeSet?, view : View) : this(context, attributeSet){
       this.view = view
     }
     constructor(context: Context, view : List<View>):this(context,null)

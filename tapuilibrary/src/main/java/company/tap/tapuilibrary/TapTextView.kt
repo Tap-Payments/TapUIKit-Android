@@ -11,7 +11,7 @@ import company.tap.thememanager.theme.TextViewTheme
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
-open class TapTextView(context: Context, attributeSet: AttributeSet) :
+open class TapTextView(context: Context, attributeSet: AttributeSet?) :
     AppCompatTextView(context, attributeSet), TapView<TextViewTheme> {
     override fun setTheme(theme: TextViewTheme) {
         theme.textColor?.let { setTextColor(it) }
