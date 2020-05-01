@@ -4,13 +4,14 @@
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
     android:layout_height= "@dimen/toolbar_height_basic"
+    android:background="@color/header_color"
    >
 
     <RelativeLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="@color/header_color"
         >
 
         <LinearLayout

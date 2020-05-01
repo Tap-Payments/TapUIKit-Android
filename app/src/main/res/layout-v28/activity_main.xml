@@ -4,11 +4,32 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
     <company.tap.tapuilibrary.TapHeader
     android:layout_width="match_parent"
     android:layout_height="50dp"
+        android:background="@color/header_color"
     />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#E9E9E9">
+    <company.tap.tapuilibrary.TapTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal"
+        android:textColor="#474747"
+        android:lineSpacingExtra="4sp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:layout_marginLeft="@dimen/margin_basic_10dp"
+        android:gravity="end"
+        android:text="Recent"
+        />
+    </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -35,6 +56,12 @@
 -->
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#E9E9E9">
 
     <company.tap.tapuilibrary.TapSwitch
         android:id="@+id/leftAccessory_Switch"
@@ -76,6 +103,7 @@
         android:layout_marginLeft="@dimen/margin_basic_20dp"
         android:layout_marginRight="@dimen/margin_basic_20dp"
         />
+</LinearLayout>
 
 
 </LinearLayout>

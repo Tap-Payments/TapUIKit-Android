@@ -18,12 +18,6 @@ open class TapHeader(context: Context?, attrs: AttributeSet?) : LinearLayout(con
             context,
             R.layout.tap_main_header, this
         )
-        businessName.text = "Tap Payments"
-        businessIcon.setImageResource(R.drawable.tap_logo)
-        cancel_icon.setImageResource(R.drawable.cancel)
-        cancel_icon.setOnClickListener {
-            Toast.makeText(context, "You clicked on Closed.", Toast.LENGTH_SHORT).show()
-        }
     }
 
 }

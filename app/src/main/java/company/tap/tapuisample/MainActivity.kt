@@ -17,11 +17,14 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import com.google.android.material.internal.ViewUtils.dpToPx
 import company.tap.tapuilibrary.TapChip
+import company.tap.tapuilibrary.TapHeader
 import company.tap.tapuilibrary.TapImageView
 import company.tap.tapuilibrary.TapTextView
 import kotlinx.android.synthetic.main.activity_main.*
+
 import kotlin.math.roundToInt
 
 
@@ -31,15 +34,30 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageView_amex: TapImageView
     private lateinit var textView_card: TapTextView
     private lateinit var tap_card_chip: TapChip
+    private lateinit var  cardLinearLayout:LinearLayout
     var idVal: Int = 0
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupHeader()
         setUpSwitch()
         setupTapCardChip()
+    }
+
+    private fun setupHeader() {
+        val businessName = findViewById<TapTextView>(R.id.businessName)
+        businessName.text = "Business Name"
+        val businessIcon = findViewById<TapImageView>(R.id.businessIcon)
+        businessIcon.setImageResource(company.tap.tapuilibrary.R.drawable.tap_logo)
+        val cancelIcon = findViewById<TapImageView>(R.id.cancel_icon)
+        cancelIcon.setImageResource(company.tap.tapuilibrary.R.drawable.cancel)
+
+        cancelIcon.setOnClickListener {
+            Toast.makeText(this, "You clicked on Closed.", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun setUpSwitch() {
@@ -47,7 +65,7 @@ class MainActivity : AppCompatActivity() {
             if (isChecked) {
                 imageView_visa.visibility = View.VISIBLE
             } else {
-                imageView_visa.visibility = View.GONE
+               imageView_visa.visibility= View.GONE
             }
         }
         rightAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
@@ -123,7 +141,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "value click ${it.id}", Toast.LENGTH_LONG).show()
             }
 
-            val cardLinearLayout = LinearLayout(this)
+            cardLinearLayout = LinearLayout(this)
             cardLinearLayout.orientation = LinearLayout.HORIZONTAL
             val params = LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
