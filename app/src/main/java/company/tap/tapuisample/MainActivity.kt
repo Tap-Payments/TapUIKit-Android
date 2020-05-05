@@ -113,34 +113,7 @@ class MainActivity : AppCompatActivity() {
         val mainLayout = findViewById<LinearLayout>(R.id.mainLayout)
         mainLayout.orientation = LinearLayout.HORIZONTAL
         for (i in 0 until 2) {
-            tap_card_chip = TapChip(this, null)
-            tap_card_chip.setContentPadding(
-                dpToPx(this, 5).toInt(),
-                dpToPx(this, 5).toInt(),
-                dpToPx(this, 5).toInt(),
-                dpToPx(this, 5).toInt()
-            )
-            tap_card_chip.outlineSpotShadowColor = R.color.shadowcolor
-            tap_card_chip.radius = dpToPx(this, 8)
-            tap_card_chip.preventCornerOverlap = true
-            tap_card_chip.elevation = dpToPx(this, 5)
-            val cardViewParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).also {
-                it.setMargins(
-                    dpToPx(this, 5).roundToInt(), dpToPx(this, 5).roundToInt(),
-                    dpToPx(this, 5).roundToInt(),
-                    dpToPx(this, 5).roundToInt()
-                )
-            }
-            tap_card_chip.id = i
-            tap_card_chip.layoutParams = cardViewParams
-            tap_card_chip.setOnClickListener {
-                idVal = it.id
-                Toast.makeText(this, "value click ${it.id}", Toast.LENGTH_LONG).show()
-            }
-
+            //Creating views to add to layout and pass that to the Chip
             cardLinearLayout = LinearLayout(this)
             cardLinearLayout.orientation = LinearLayout.HORIZONTAL
             val params = LinearLayout.LayoutParams(
@@ -196,8 +169,34 @@ class MainActivity : AppCompatActivity() {
             imageView_visa.layoutParams = parms
             imageView_visa.id = i
             cardLinearLayout.addView(imageView_visa)
-
-            tap_card_chip.addView(cardLinearLayout)
+            //Calling the TapChip and passing views to add in chip
+            tap_card_chip = TapChip(this, null,cardLinearLayout)
+            tap_card_chip.setContentPadding(
+                dpToPx(this, 5).toInt(),
+                dpToPx(this, 5).toInt(),
+                dpToPx(this, 5).toInt(),
+                dpToPx(this, 5).toInt()
+            )
+            tap_card_chip.outlineSpotShadowColor = R.color.shadowcolor
+            tap_card_chip.radius = dpToPx(this, 8)
+            tap_card_chip.preventCornerOverlap = true
+            tap_card_chip.elevation = dpToPx(this, 5)
+            val cardViewParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).also {
+                it.setMargins(
+                    dpToPx(this, 5).roundToInt(), dpToPx(this, 5).roundToInt(),
+                    dpToPx(this, 5).roundToInt(),
+                    dpToPx(this, 5).roundToInt()
+                )
+            }
+            tap_card_chip.id = i
+            tap_card_chip.layoutParams = cardViewParams
+            tap_card_chip.setOnClickListener {
+                idVal = it.id
+                Toast.makeText(this, "value click ${it.id}", Toast.LENGTH_LONG).show()
+            }
             mainLayout.addView(tap_card_chip)
         }
 

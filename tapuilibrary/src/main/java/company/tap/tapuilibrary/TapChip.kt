@@ -15,10 +15,14 @@ All rights reserved.
  **/
 open class TapChip (context: Context, attributeSet: AttributeSet?) : MaterialCardView(context, attributeSet),TapView<ChipTheme> {
     lateinit var view:View
+    lateinit var viewsList:List<View>
+
      constructor(context: Context, attributeSet: AttributeSet?, view : View) : this(context, attributeSet){
       this.view = view
     }
-    constructor(context: Context, view : List<View>):this(context,null)
+    constructor(context: Context, viewList : List<View>):this(context,null){
+        this.viewsList = viewList
+    }
     override fun setTheme(theme: ChipTheme) {
         theme.cardCornerRadius?.let{ radius = it.toFloat() }
         theme.cardElevation?.let { cardElevation= it.toFloat() }
@@ -26,5 +30,10 @@ open class TapChip (context: Context, attributeSet: AttributeSet?) : MaterialCar
             outlineSpotShadowColor=it
         }
         }
+    }
+
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+        addView(view)
     }
 }
