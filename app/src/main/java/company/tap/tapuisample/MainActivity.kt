@@ -24,6 +24,7 @@ import company.tap.tapuilibrary.TapHeader
 import company.tap.tapuilibrary.TapImageView
 import company.tap.tapuilibrary.TapTextView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.view_custom_tapcard.view.*
 
 import kotlin.math.roundToInt
 
@@ -63,9 +64,9 @@ class MainActivity : AppCompatActivity() {
     private fun setUpSwitch() {
         leftAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                imageView_visa.visibility = View.VISIBLE
+                imageView_visa.visibility= View.VISIBLE
             } else {
-               imageView_visa.visibility= View.GONE
+                imageView_visa.visibility = View.GONE
             }
         }
         rightAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
