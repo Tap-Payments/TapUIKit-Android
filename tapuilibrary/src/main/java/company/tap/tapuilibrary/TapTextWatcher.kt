@@ -3,7 +3,7 @@ package company.tap.tapuilibrary
 import android.text.Editable
 import android.text.TextWatcher
 
-internal abstract class TapTextWatcher : TextWatcher {
+abstract class TapTextWatcher : TextWatcher {
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
     }
 
