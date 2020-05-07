@@ -43,7 +43,7 @@ open class TapTextInput  @JvmOverloads constructor(
      */
     var shouldShowError: Boolean = false
         set(shouldShowError) {
-            errorMessage?.let {
+            fieldErrorMessage?.let {
                 errorMessageListener?.displayErrorMessage(it.takeIf { shouldShowError })
             }
 
@@ -60,9 +60,9 @@ open class TapTextInput  @JvmOverloads constructor(
             field = shouldShowError
         }
 
-    internal var errorMessage: String? = null
+    var fieldErrorMessage: String? = null
 
-    internal val fieldText: String
+    val fieldText: String
         get() {
             return text?.toString().orEmpty()
         }
@@ -128,7 +128,7 @@ open class TapTextInput  @JvmOverloads constructor(
     }
 
     fun setErrorMessage(errorMessage: String?) {
-        this.errorMessage = errorMessage
+        this.fieldErrorMessage = errorMessage
     }
 
     /**
@@ -178,7 +178,7 @@ open class TapTextInput  @JvmOverloads constructor(
         info.isContentInvalid = shouldShowError
         accessibilityText?.let { info.text = it }
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            info.error = errorMessage.takeIf { shouldShowError }
+            info.error = fieldErrorMessage.takeIf { shouldShowError }
         }
     }
 
