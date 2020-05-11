@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TapUISample</string>
+    <string name="business_name">Business Name</string>
+    <string name="you_clicked">You clicked on Closed.</string>
 </resources>

@@ -50,20 +50,21 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupHeader() {
         val businessName = findViewById<TapTextView>(R.id.businessName)
-        businessName.text = "Business Name"
+        businessName.text = getString(R.string.business_name)
         val businessIcon = findViewById<TapImageView>(R.id.businessIcon)
         businessIcon.setImageResource(company.tap.tapuilibrary.R.drawable.tap_logo)
         val cancelIcon = findViewById<TapImageView>(R.id.cancel_icon)
         cancelIcon.setImageResource(company.tap.tapuilibrary.R.drawable.cancel)
 
         cancelIcon.setOnClickListener {
-            Toast.makeText(this, "You clicked on Closed.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.you_clicked), Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun setUpSwitch() {
         leftAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
+               println("id val {${cardLinearLayout.id}}")
                 imageView_visa.visibility= View.VISIBLE
             } else {
                 imageView_visa.visibility = View.GONE
