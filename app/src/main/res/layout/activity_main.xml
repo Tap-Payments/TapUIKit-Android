@@ -11,7 +11,7 @@
     android:layout_height="50dp"
         android:background="@color/header_color"
     />
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -29,17 +29,17 @@
         android:gravity="end"
         android:text="Recent"
         />
-    </LinearLayout>
-    <LinearLayout
+    </LinearLayout>-->
+    <company.tap.tapuilibrary.TapChipGroup
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:background="@color/fill_card"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:id="@+id/mainLayout"
         >
 
-      <!--  <company.tap.tapuilibrary.TapChip
+     <!--   <company.tap.tapuilibrary.TapChip
             android:id="@+id/tap_card_chip"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
@@ -52,10 +52,10 @@
             app:cardUseCompatPadding="true"
             app:cardBackgroundColor="#4DFFFFFF"
             android:outlineSpotShadowColor="@color/shadowcolor"
-            android:outlineAmbientShadowColor="@color/glowingShadow"/>-->
+            android:outlineAmbientShadowColor="@color/glowingShadow"/>
+-->
 
-
-    </LinearLayout>
+    </company.tap.tapuilibrary.TapChipGroup>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

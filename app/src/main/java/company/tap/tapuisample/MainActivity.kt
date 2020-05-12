@@ -11,21 +11,19 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
+import androidx.recyclerview.widget.RecyclerView.OnChildAttachStateChangeListener
 import com.google.android.material.internal.ViewUtils.dpToPx
 import company.tap.tapuilibrary.TapChip
-import company.tap.tapuilibrary.TapHeader
+import company.tap.tapuilibrary.TapChipGroup
 import company.tap.tapuilibrary.TapImageView
 import company.tap.tapuilibrary.TapTextView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.view_custom_tapcard.view.*
-
 import kotlin.math.roundToInt
 
 
@@ -36,8 +34,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var textView_card: TapTextView
     private lateinit var tap_card_chip: TapChip
     private lateinit var  cardLinearLayout:LinearLayout
+    private lateinit var  totLinearLayout:LinearLayout
     var idVal: Int = 0
-
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -112,9 +110,26 @@ class MainActivity : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.P)
     @SuppressLint("RestrictedApi", "ResourceAsColor")
     private fun setupTapCardChip() {
-        val mainLayout = findViewById<LinearLayout>(R.id.mainLayout)
+        val mainLayout = findViewById<TapChipGroup>(R.id.mainLayout)
         mainLayout.orientation = LinearLayout.HORIZONTAL
-        for (i in 0 until 2) {
+        val groupName = findViewById<TapTextView>(R.id.group_name)
+        groupName.text = getString(R.string.recent)
+        val chipRecycler = findViewById<HorizontalScrollView>(R.id.chip_recycler)
+        val manager = LinearLayoutManager(this)
+       // chipRecycler.setLayoutManager(manager)
+       /* chipRecycler.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity, HORIZONTAL,false)
+            adapter = RecyclerAdapter()
+            chipRecycler.adapter = adapter
+        }*/
+        totLinearLayout = LinearLayout(this)
+        totLinearLayout.orientation = LinearLayout.HORIZONTAL
+        val params = LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT
+        )
+        totLinearLayout.layoutParams = params
+        for (i in 0 until 3) {
             //Creating views to add to layout and pass that to the Chip
             cardLinearLayout = LinearLayout(this)
             cardLinearLayout.orientation = LinearLayout.HORIZONTAL
@@ -199,10 +214,10 @@ class MainActivity : AppCompatActivity() {
                 idVal = it.id
                 Toast.makeText(this, "value click ${it.id}", Toast.LENGTH_LONG).show()
             }
-            mainLayout.addView(tap_card_chip)
+            totLinearLayout.addView(tap_card_chip)
+          // mainLayout.addView(tap_card_chip)
         }
-
-
+        chipRecycler.addView(totLinearLayout)
     }
 
 

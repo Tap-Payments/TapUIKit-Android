@@ -2,6 +2,7 @@ package company.tap.tapuilibrary
 
 import android.content.Context
 import android.util.AttributeSet
+import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 
@@ -15,7 +16,8 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
 
     var groupName: TapTextView
     var groupAction: TapTextView
-    var chipsRecycler: RecyclerView
+   // var chipsRecycler: RecyclerView
+    var chipsRecycler: HorizontalScrollView
 
     init {
         inflate(context, R.layout.tap_chip_group, this)
