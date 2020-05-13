@@ -115,13 +115,7 @@ class MainActivity : AppCompatActivity() {
         val groupName = findViewById<TapTextView>(R.id.group_name)
         groupName.text = getString(R.string.recent)
         val chipRecycler = findViewById<HorizontalScrollView>(R.id.chip_recycler)
-        val manager = LinearLayoutManager(this)
-       // chipRecycler.setLayoutManager(manager)
-       /* chipRecycler.apply {
-            layoutManager = LinearLayoutManager(this@MainActivity, HORIZONTAL,false)
-            adapter = RecyclerAdapter()
-            chipRecycler.adapter = adapter
-        }*/
+
         totLinearLayout = LinearLayout(this)
         totLinearLayout.orientation = LinearLayout.HORIZONTAL
         val params = LinearLayout.LayoutParams(
@@ -129,7 +123,7 @@ class MainActivity : AppCompatActivity() {
             ViewGroup.LayoutParams.MATCH_PARENT
         )
         totLinearLayout.layoutParams = params
-        for (i in 0 until 3) {
+        for (i in 0 until 2) {
             //Creating views to add to layout and pass that to the Chip
             cardLinearLayout = LinearLayout(this)
             cardLinearLayout.orientation = LinearLayout.HORIZONTAL

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "40890114026",
+    "firebase_url": "https://tapuikit-android.firebaseio.com",
+    "project_id": "tapuikit-android",
+    "storage_bucket": "tapuikit-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40890114026:android:92b96e0a78c198418cdc93",
+        "android_client_info": {
+          "package_name": "company.tap.tapuisample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "40890114026-91ndv5gsqih20cnkueqbh2c2arnfcobh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW8HUGQkoQ6iNwYuvU-K1tukiL3mJs7i4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "40890114026-91ndv5gsqih20cnkueqbh2c2arnfcobh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
