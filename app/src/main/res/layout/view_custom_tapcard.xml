@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<company.tap.tapuilibrary.TapChip xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:weightSum="3">
-
-
-  <company.tap.tapuilibrary.TapImageView
+    app:cardCornerRadius="@dimen/margin_basic_8dp"
+    app:cardElevation="5dp"
+    android:outlineAmbientShadowColor="@color/cardview_shadow_start_color"
+    app:contentPadding="3dp"
+    app:cardUseCompatPadding="true"
+    android:id="@+id/tapcard_Chip"
+    >
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="horizontal"
+      >
+    <company.tap.tapuilibrary.TapImageView
         android:id="@+id/imageView_visa"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/visa"
-            android:scaleType="centerCrop"
-            />
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/visa"
+        android:scaleType="centerCrop"
+        />
 
 
     <company.tap.tapuilibrary.TapTextView
@@ -26,11 +35,18 @@
         android:textSize="10sp"/>
 
     <company.tap.tapuilibrary.TapImageView
+        android:id="@+id/imageView_amex"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/amex"
+        android:scaleType="centerCrop"
+        android:visibility="gone"/>
+
+    <company.tap.tapuilibrary.TapImageView
         android:id="@+id/imageView_master"
         android:layout_width="30dp"
         android:layout_height="30dp"
-         android:background="@drawable/mastercard"
+        android:background="@drawable/mastercard"
         android:scaleType="centerCrop"/>
-
-
-</LinearLayout>
+  </LinearLayout>
+</company.tap.tapuilibrary.TapChip>

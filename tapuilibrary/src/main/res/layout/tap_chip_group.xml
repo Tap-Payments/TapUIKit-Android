@@ -23,13 +23,6 @@
 
     </RelativeLayout>
 
-   <!-- <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/chip_recycler"
-       android:scrollbarAlwaysDrawHorizontalTrack="false"
-        />-->
-
   <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chip_recycler"
         android:layout_width="match_parent"

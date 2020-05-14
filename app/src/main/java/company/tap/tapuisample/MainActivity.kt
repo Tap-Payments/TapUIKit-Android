@@ -1,41 +1,27 @@
 package company.tap.tapuisample
 
 import android.annotation.SuppressLint
-import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Build
 import android.os.Bundle
 import android.text.InputType
-import android.util.TypedValue
-import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
-import android.widget.*
+import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.HORIZONTAL
-import androidx.recyclerview.widget.RecyclerView.OnChildAttachStateChangeListener
-import com.google.android.material.internal.ViewUtils.dpToPx
-import company.tap.tapuilibrary.TapChip
 import company.tap.tapuilibrary.TapChipGroup
 import company.tap.tapuilibrary.TapImageView
 import company.tap.tapuilibrary.TapTextView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.math.roundToInt
+import kotlinx.android.synthetic.main.view_custom_tapcard.view.*
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var imageView_master: TapImageView
-    private lateinit var imageView_visa: TapImageView
-    private lateinit var imageView_amex: TapImageView
-    private lateinit var textView_card: TapTextView
-    private lateinit var tap_card_chip: TapChip
-    private lateinit var  cardLinearLayout:LinearLayout
-    private lateinit var  totLinearLayout:LinearLayout
-    var idVal: Int = 0
+    private lateinit var chipRecycler: RecyclerView
+
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,25 +48,25 @@ class MainActivity : AppCompatActivity() {
     private fun setUpSwitch() {
         leftAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-               println("id val {${cardLinearLayout.id}}")
-                imageView_visa.visibility= View.VISIBLE
+                chipRecycler.imageView_visa.visibility = View.VISIBLE
             } else {
-                imageView_visa.visibility = View.GONE
+                chipRecycler.imageView_visa.visibility = View.GONE
             }
         }
         rightAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                imageView_master.visibility = View.VISIBLE
+                chipRecycler.imageView_master.visibility = View.VISIBLE
             } else {
-                imageView_master.visibility = View.GONE
+                chipRecycler.imageView_master.visibility = View.GONE
             }
         }
     }
 
     fun changeText(view: View) {
-        textView_card.visibility = View.VISIBLE
-        imageView_amex.visibility = View.GONE
+        chipRecycler.textView_card.visibility = View.VISIBLE
+        chipRecycler.imageView_amex.visibility = View.GONE
         changeTextDialog()
+
     }
 
     private fun changeTextDialog() {
@@ -98,7 +84,7 @@ class MainActivity : AppCompatActivity() {
             "Submit"
         ) { dialog, _ ->
             inputText = input.text.toString()
-            textView_card.text = inputText
+            chipRecycler.textView_card.text = inputText
 
         }
         builder.setNegativeButton(
@@ -114,116 +100,17 @@ class MainActivity : AppCompatActivity() {
         mainLayout.orientation = LinearLayout.HORIZONTAL
         val groupName = findViewById<TapTextView>(R.id.group_name)
         groupName.text = getString(R.string.recent)
-        val chipRecycler = findViewById<HorizontalScrollView>(R.id.chip_recycler)
+        chipRecycler = findViewById<RecyclerView>(R.id.chip_recycler)
+        val arrayList = arrayListOf<Int>(1, 2, 3, 4, 5)
+        chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        chipRecycler.adapter = RecyclerAdapter(arrayList)
 
-        totLinearLayout = LinearLayout(this)
-        totLinearLayout.orientation = LinearLayout.HORIZONTAL
-        val params = LinearLayout.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.MATCH_PARENT
-        )
-        totLinearLayout.layoutParams = params
-        for (i in 0 until 2) {
-            //Creating views to add to layout and pass that to the Chip
-            cardLinearLayout = LinearLayout(this)
-            cardLinearLayout.orientation = LinearLayout.HORIZONTAL
-            val params = LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
-            cardLinearLayout.layoutParams = params
-            cardLinearLayout.id = i
-
-            val width = dpToPx(this, 30)
-            val height = dpToPx(this, 30)
-            val parms = LinearLayout.LayoutParams(width.toInt(), height.toInt())
-            parms.leftMargin = dpToPx(this, 5).toInt()
-            parms.rightMargin = dpToPx(this, 5).toInt()
-            parms.gravity = Gravity.CENTER
-
-            imageView_master = TapImageView(this, null)
-            imageView_master.setImageResource(R.drawable.mastercard)
-            imageView_master.scaleType = ImageView.ScaleType.CENTER_CROP
-            imageView_master.layoutParams = parms
-            imageView_master.id = i
-            cardLinearLayout.addView(imageView_master)
-
-            imageView_amex = TapImageView(this, null)
-            imageView_amex.setImageResource(R.drawable.amex)
-            imageView_amex.scaleType = ImageView.ScaleType.CENTER_CROP
-            imageView_amex.layoutParams = parms
-            imageView_amex.visibility = View.GONE
-            imageView_amex.id = i
-            cardLinearLayout.addView(imageView_amex)
-
-            textView_card = TapTextView(this, null)
-            textView_card.text = "∙∙∙∙ 123"
-            textView_card.textSize = dpToPx(this, 6.5.toInt())
-            textView_card.setTextColor(Color.parseColor("#474747"))
-            textView_card.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL)
-            textView_card.id = i
-            textView_card.gravity = Gravity.END
-            val params1 = LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
-            params1.leftMargin = dpToPx(this, 5).toInt()
-            params1.rightMargin = dpToPx(this, 5).toInt()
-            params1.topMargin = dpToPx(this, 5).toInt()
-            textView_card.setLineSpacing(dpToPx(this, 4), 1f)
-            textView_card.layoutParams = params1
-            cardLinearLayout.addView(textView_card)
-
-            imageView_visa = TapImageView(this, null)
-            imageView_visa.setImageResource(R.drawable.visa)
-            imageView_visa.scaleType = ImageView.ScaleType.CENTER_CROP
-            imageView_visa.layoutParams = parms
-            imageView_visa.id = i
-            cardLinearLayout.addView(imageView_visa)
-            //Calling the TapChip and passing views to add in chip
-            tap_card_chip = TapChip(this, null,cardLinearLayout)
-            tap_card_chip.setContentPadding(
-                dpToPx(this, 5).toInt(),
-                dpToPx(this, 5).toInt(),
-                dpToPx(this, 5).toInt(),
-                dpToPx(this, 5).toInt()
-            )
-            tap_card_chip.outlineSpotShadowColor = R.color.shadowcolor
-            tap_card_chip.radius = dpToPx(this, 8)
-            tap_card_chip.preventCornerOverlap = true
-            tap_card_chip.elevation = dpToPx(this, 5)
-            val cardViewParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            ).also {
-                it.setMargins(
-                    dpToPx(this, 5).roundToInt(), dpToPx(this, 5).roundToInt(),
-                    dpToPx(this, 5).roundToInt(),
-                    dpToPx(this, 5).roundToInt()
-                )
-            }
-            tap_card_chip.id = i
-            tap_card_chip.layoutParams = cardViewParams
-            tap_card_chip.setOnClickListener {
-                idVal = it.id
-                Toast.makeText(this, "value click ${it.id}", Toast.LENGTH_LONG).show()
-            }
-            totLinearLayout.addView(tap_card_chip)
-          // mainLayout.addView(tap_card_chip)
-        }
-        chipRecycler.addView(totLinearLayout)
     }
-
 
     fun changeToImage(view: View) {
-        imageView_amex.visibility = View.VISIBLE
-        textView_card.visibility = View.GONE
+        chipRecycler.imageView_amex.visibility = View.VISIBLE
+        chipRecycler.textView_card.visibility = View.GONE
     }
-
-    // extension method to convert pixels to dp
-    fun Int.toDp(context: Context): Int = TypedValue.applyDimension(
-        TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), context.resources.displayMetrics
-    ).toInt()
 
 }
 
