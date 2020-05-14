@@ -34,6 +34,6 @@ open class TapChip (context: Context, attributeSet: AttributeSet?) : MaterialCar
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
-        addView(view)
+       // addView(view)
     }
 }
