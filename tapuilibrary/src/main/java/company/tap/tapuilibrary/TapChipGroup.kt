@@ -16,8 +16,8 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
 
     var groupName: TapTextView
     var groupAction: TapTextView
-   // var chipsRecycler: RecyclerView
-    var chipsRecycler: HorizontalScrollView
+    var chipsRecycler: RecyclerView
+  //  var chipsRecycler: HorizontalScrollView
 
     init {
         inflate(context, R.layout.tap_chip_group, this)
