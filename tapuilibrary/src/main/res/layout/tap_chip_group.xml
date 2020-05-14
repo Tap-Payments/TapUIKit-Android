@@ -23,18 +23,18 @@
 
     </RelativeLayout>
 
-    <HorizontalScrollView
+   <!-- <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/chip_recycler"
        android:scrollbarAlwaysDrawHorizontalTrack="false"
-        />
+        />-->
 
- <!-- <androidx.recyclerview.widget.RecyclerView
+  <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chip_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />-->
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>
