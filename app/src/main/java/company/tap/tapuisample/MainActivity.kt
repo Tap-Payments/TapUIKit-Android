@@ -12,15 +12,12 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import company.tap.tapuilibrary.TapBottomSheetDialog
-import company.tap.tapuilibrary.TapChipGroup
-import company.tap.tapuilibrary.TapImageView
-import company.tap.tapuilibrary.TapTextView
+import company.tap.tapuilibrary.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_custom_tapcard.view.*
 
-
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(),
+    TapBottomDialogInterface {
     private lateinit var chipRecycler: RecyclerView
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
@@ -116,6 +113,18 @@ class MainActivity : AppCompatActivity() {
     fun openBottomSheet(view: View) {
         val modalBottomSheet = TapBottomSheetDialog()
         modalBottomSheet.show(supportFragmentManager, TapBottomSheetDialog.TAG)
+    }
+
+    override fun didShow() {
+        println("Dialog is shown now!!!")
+    }
+
+    override fun didDismiss() {
+        println("Dialog is dismissed !!!")
+    }
+
+    override fun didTapOutside() {
+        println("Dialog is Tapped from outside !!!")
     }
 
 }
