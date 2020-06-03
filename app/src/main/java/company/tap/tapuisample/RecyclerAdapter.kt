@@ -1,5 +1,6 @@
 package company.tap.tapuisample
 
+import android.graphics.Color
 import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
@@ -17,13 +18,22 @@ All rights reserved.
  **/
 // Note that we specify the custom ViewHolder which gives us access to our views
 class RecyclerAdapter (private val arrayList: ArrayList<Int>)  : RecyclerView.Adapter<RecyclerAdapter.ViewHolder>() {
-
+    var selectedPosition = -1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_custom_tapcard, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        if(selectedPosition==position)
+        holder.itemView.setBackgroundResource(R.drawable.custom_bg)
+        else
+        holder.itemView.setBackgroundResource(R.drawable.custom_bg_unclick)
+
         holder.bindItems(arrayList[position])
+        holder.itemView.setOnClickListener {
+            selectedPosition = position
+            notifyDataSetChanged()
+        }
     }
 
     override fun getItemCount(): Int {
