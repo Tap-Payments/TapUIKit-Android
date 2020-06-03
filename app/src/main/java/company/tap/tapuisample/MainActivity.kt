@@ -12,6 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.tapuilibrary.TapBottomSheetDialog
 import company.tap.tapuilibrary.TapChipGroup
 import company.tap.tapuilibrary.TapImageView
 import company.tap.tapuilibrary.TapTextView
@@ -110,6 +111,11 @@ class MainActivity : AppCompatActivity() {
     fun changeToImage(view: View) {
         chipRecycler.imageView_amex.visibility = View.VISIBLE
         chipRecycler.textView_card.visibility = View.GONE
+    }
+
+    fun openBottomSheet(view: View) {
+        val modalBottomSheet = TapBottomSheetDialog()
+        modalBottomSheet.show(supportFragmentManager, TapBottomSheetDialog.TAG)
     }
 
 }
