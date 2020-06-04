@@ -1,5 +1,6 @@
 package company.tap.tapuilibrary
 
+import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
@@ -38,7 +39,6 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         tapBottomDialogInterface.didShow()
-
     }
 
     override fun onDismiss(dialog: DialogInterface) {
@@ -50,4 +50,8 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         const val TAG = "ModalBottomSheet"
     }
 
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+        tapBottomDialogInterface.didTapOutside()
+    }
 }
