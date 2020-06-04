@@ -110,4 +110,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         const val TAG = "ModalBottomSheet"
     }
 
+    override fun onCancel(dialog: DialogInterface) {
+        super.onCancel(dialog)
+    }
 }

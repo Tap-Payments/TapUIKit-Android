@@ -2,9 +2,6 @@ package company.tap.tapuisample
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.graphics.drawable.ShapeDrawable
-import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Build
 import android.os.Bundle
 import android.text.InputType
@@ -121,7 +118,7 @@ class MainActivity : AppCompatActivity(),
         modalBottomSheet.show(supportFragmentManager, TapBottomSheetDialog.TAG)
     }
 
-    private fun getArguments(): Bundle{
+    private fun getArguments(): Bundle {
         val arguments = Bundle()
         arguments.putFloatArray(DialogConfigurations.Corners, floatArrayOf(50f, 50f, 0f, 0f))
         arguments.putInt(DialogConfigurations.Color, Color.WHITE)
@@ -129,6 +126,7 @@ class MainActivity : AppCompatActivity(),
         arguments.putFloat(DialogConfigurations.Dim, 0.75f)
         return arguments
     }
+
     override fun didShow() {
         println("Dialog is shown now!!!")
     }
