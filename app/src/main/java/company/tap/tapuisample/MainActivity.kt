@@ -1,6 +1,10 @@
 package company.tap.tapuisample
 
 import android.annotation.SuppressLint
+import android.graphics.Color
+import android.graphics.drawable.Drawable
+import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Build
 import android.os.Bundle
 import android.text.InputType
@@ -15,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_custom_tapcard.view.*
+
 
 class MainActivity : AppCompatActivity(),
     TapBottomDialogInterface {
@@ -98,8 +103,8 @@ class MainActivity : AppCompatActivity(),
         mainLayout.orientation = LinearLayout.HORIZONTAL
         val groupName = findViewById<TapTextView>(R.id.group_name)
         groupName.text = getString(R.string.recent)
-        chipRecycler = findViewById<RecyclerView>(R.id.chip_recycler)
-        val arrayList = arrayListOf<Int>(1, 2, 3, 4, 5)
+        chipRecycler = findViewById(R.id.chip_recycler)
+        val arrayList = arrayListOf(1, 2, 3, 4, 5)
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter = RecyclerAdapter(arrayList)
 
@@ -112,19 +117,24 @@ class MainActivity : AppCompatActivity(),
 
     fun openBottomSheet(view: View) {
         val modalBottomSheet = TapBottomSheetDialog()
+        modalBottomSheet.arguments = getArguments()
         modalBottomSheet.show(supportFragmentManager, TapBottomSheetDialog.TAG)
     }
 
+    private fun getArguments(): Bundle{
+        val arguments = Bundle()
+        arguments.putFloatArray(DialogConfigurations.Corners, floatArrayOf(50f, 50f, 0f, 0f))
+        arguments.putInt(DialogConfigurations.Color, Color.WHITE)
+        arguments.putBoolean(DialogConfigurations.Cancelable, false)
+        arguments.putFloat(DialogConfigurations.Dim, 0.75f)
+        return arguments
+    }
     override fun didShow() {
         println("Dialog is shown now!!!")
     }
 
     override fun didDismiss() {
         println("Dialog is dismissed !!!")
-    }
-
-    override fun didTapOutside() {
-        println("Dialog is Tapped from outside !!!")
     }
 
 }

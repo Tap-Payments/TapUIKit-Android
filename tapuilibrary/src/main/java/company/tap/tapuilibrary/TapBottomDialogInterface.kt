@@ -7,9 +7,6 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 interface TapBottomDialogInterface {
-
     fun didShow()
     fun didDismiss()
-    fun didTapOutside()
-
 }
