@@ -29,8 +29,8 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private var bottomLeftCorner = 0f
     private var backgroundColor = Color.WHITE
 
-    private lateinit var bottomSheetDialog: BottomSheetDialog
-    private lateinit var tapBottomDialogInterface: TapBottomDialogInterface
+    lateinit var bottomSheetDialog: BottomSheetDialog
+    private var tapBottomDialogInterface: TapBottomDialogInterface? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,8 +45,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         } catch (ex: ClassCastException) {
             try {
                 tapBottomDialogInterface = parentFragment as TapBottomDialogInterface
-            } catch (ignore: Exception) {
-            }
+            } catch (ignore: Exception) {}
         }
     }
 
@@ -57,7 +56,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tapBottomDialogInterface.didShow()
+        tapBottomDialogInterface?.didShow()
         setDialogConfigurations()
         changeBackground()
     }
@@ -103,7 +102,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        tapBottomDialogInterface.didDismiss()
+        tapBottomDialogInterface?.didDismiss()
     }
 
     companion object {
