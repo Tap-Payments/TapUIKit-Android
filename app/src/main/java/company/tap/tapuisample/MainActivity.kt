@@ -35,6 +35,8 @@ class MainActivity : AppCompatActivity(),
     private fun setupHeader() {
         val businessName = findViewById<TapTextView>(R.id.businessName)
         businessName.text = getString(R.string.business_name)
+        val businessFor = findViewById<TapTextView>(R.id.buinessFor)
+        businessFor.text = "PAYMENT FOR"
         val businessIcon = findViewById<TapImageView>(R.id.businessIcon)
         businessIcon.setImageResource(R.drawable.group)
         val cancelIcon = findViewById<TapImageView>(R.id.cancel_icon)

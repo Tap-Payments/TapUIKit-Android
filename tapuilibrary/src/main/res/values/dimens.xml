@@ -21,7 +21,7 @@
     <dimen name="margin_basic_9dp">9dp</dimen>
     <dimen name="margin_basic_10dp">10dp</dimen>
     <dimen name="margin_basic_11dp">11dp</dimen>
-    <dimen name="margin_basic_13dp">16dp</dimen>
+    <dimen name="margin_basic_13dp">13dp</dimen>
     <dimen name="margin_basic_14dp">14dp</dimen>
     <dimen name="margin_basic_15dp">15dp</dimen>
     <dimen name="margin_basic_16dp">16dp</dimen>
@@ -96,4 +96,5 @@
     <dimen name="cancel_payment_width">48dp</dimen>
     <dimen name="font_size_15sp">15sp</dimen>
     <dimen name="margin_basic_65dp">6.5dp</dimen>
+    <dimen name="toolbar_height_basicnew">53dp</dimen>
 </resources>

@@ -7,14 +7,15 @@
 
     <company.tap.tapuilibrary.TapHeader
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/header_color" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="#ffffff"
+      />
 
     <company.tap.tapuilibrary.TapChipGroup
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_basic_10dp"
         android:background="@color/fill_card"
         android:orientation="horizontal">
 
