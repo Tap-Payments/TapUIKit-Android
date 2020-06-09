@@ -15,22 +15,22 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="@dimen/margin_basic_10dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <company.tap.tapuilibrary.TapTextView
             android:id="@+id/buinessFor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_basic_3dp"
+            android:fontFamily="sans-serif"
             android:shadowColor="#b6b6b6"
             android:shadowDy="1"
             android:shadowRadius="3"
+            android:textColor="#00a8a8a8"
             android:textSize="12sp"
-            android:fontFamily="sans-serif"
             android:textStyle="normal"
-            android:textColor="#a8a8a8"
-            tools:text="Payment for "
-            android:layout_marginTop="@dimen/margin_basic_3dp"
-            />
+            tools:text="Payment for " />
         <company.tap.tapuilibrary.TapTextView
             android:id="@+id/businessName"
             android:layout_width="wrap_content"

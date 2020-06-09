@@ -27,7 +27,6 @@ class MainActivity : AppCompatActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupHeader()
         setUpSwitch()
         setupTapCardChip()
     }
@@ -68,8 +67,7 @@ class MainActivity : AppCompatActivity(),
         chipRecycler.textView_card.visibility = View.VISIBLE
         chipRecycler.imageView_amex.visibility = View.GONE
         changeTextDialog()
-
-    }
+  }
 
     private fun changeTextDialog() {
         var inputText = ""
@@ -135,6 +133,10 @@ class MainActivity : AppCompatActivity(),
 
     override fun didDismiss() {
         println("Dialog is dismissed !!!")
+    }
+
+    fun loadHeader(view: View) {
+        setupHeader()
     }
 
 }
