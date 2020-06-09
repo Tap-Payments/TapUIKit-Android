@@ -23,9 +23,9 @@ open class TapImageView(context: Context?, attrs: AttributeSet?) : AppCompatImag
     override fun onDraw(canvas: Canvas) {
       //  val radius =
       //      context.resources.getDimension(R.dimen.round_corner_radius)
-        val radius = 8f
+        val radius = 0f
         val path = Path()
-        val rect = RectF(8f, 8f, this.width.toFloat(), this.height.toFloat())
+        val rect = RectF(0f, 0f, this.width.toFloat(), this.height.toFloat())
         path.addRoundRect(rect, radius, radius, Path.Direction.CW)
         canvas.clipPath(path)
         super.onDraw(canvas)

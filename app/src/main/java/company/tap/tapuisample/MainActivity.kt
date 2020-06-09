@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity(),
         val businessName = findViewById<TapTextView>(R.id.businessName)
         businessName.text = getString(R.string.business_name)
         val businessIcon = findViewById<TapImageView>(R.id.businessIcon)
-        businessIcon.setImageResource(company.tap.tapuilibrary.R.drawable.tap_logo)
+        businessIcon.setImageResource(R.drawable.group)
         val cancelIcon = findViewById<TapImageView>(R.id.cancel_icon)
         cancelIcon.setImageResource(company.tap.tapuilibrary.R.drawable.cancel)
 

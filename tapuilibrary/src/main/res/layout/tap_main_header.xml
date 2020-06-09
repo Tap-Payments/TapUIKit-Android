@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height= "@dimen/toolbar_height_basic"
+    android:layout_height= "?attr/actionBarSize"
    >
 
     <RelativeLayout
@@ -36,6 +36,7 @@
                     android:layout_height="wrap_content"
                     android:text="Payment For"
                     android:layout_marginTop="5dp"
+                    android:shadowColor="#b6b6b6"
                     android:layout_marginStart="@dimen/margin_basic_16dp" />
 
             <company.tap.tapuilibrary.TapTextView
@@ -61,6 +62,7 @@
             android:id="@+id/cancel_payment"
             android:layout_marginEnd="@dimen/margin_basic_16dp"
             android:layout_marginRight="@dimen/margin_basic_16dp"
+            android:visibility="gone"
             >
             <company.tap.tapuilibrary.TapImageView
                 android:id="@+id/cancel_icon"
@@ -71,7 +73,12 @@
                 android:layout_marginTop="@dimen/margin_basic_16dp"
                 />
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height= "9.5dp"
+            android:background="@color/design_default_color_primary_dark"
+            android:layout_below="@+id/businessIconNameContainer"
+            />
 
     </RelativeLayout>
 
