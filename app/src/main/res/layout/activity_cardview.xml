@@ -1,6 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <company.tap.tapuilibrary.TapChipGroup
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fill_card"
+        android:orientation="horizontal">
+
+    </company.tap.tapuilibrary.TapChipGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#E9E9E9"
+        android:orientation="vertical">
+
+        <company.tap.tapuilibrary.TapSwitch
+            android:id="@+id/leftAccessory_Switch"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_marginLeft="@dimen/margin_basic_20dp"
+            android:layout_marginRight="@dimen/margin_basic_20dp"
+            android:checked="true"
+            android:text="Hide leftAccessory" />
+
+        <company.tap.tapuilibrary.TapSwitch
+            android:id="@+id/rightAccessory_Switch"
+            android:layout_width="match_parent"
+            android:layout_height="6dp"
+            android:layout_marginLeft="@dimen/margin_basic_20dp"
+            android:layout_marginRight="@dimen/margin_basic_20dp"
+            android:checked="true"
+            android:text="Hide rightAccessory" />
+
+        <company.tap.tapuilibrary.TapTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_basic_20dp"
+            android:layout_marginRight="@dimen/margin_basic_20dp"
+            android:onClick="changeText"
+            android:text="Change Text" />
+
+        <company.tap.tapuilibrary.TapButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_basic_20dp"
+            android:layout_marginRight="@dimen/margin_basic_20dp"
+            android:onClick="changeToImage"
+            android:text="Change Image"
+            android:textSize="@dimen/font_size_14sp" />
+    </LinearLayout>
 
 </LinearLayout>
