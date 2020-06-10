@@ -36,49 +36,10 @@ class MainActivity : AppCompatActivity(),
         setContentView(R.layout.activity_main)
     }
 
-    private fun setupHeader() {
-        val businessName = findViewById<TapTextView>(R.id.businessName)
-        businessName.text = getString(R.string.business_name)
-        val businessFor = findViewById<TapTextView>(R.id.buinessFor)
-        businessFor.text = "PAYMENT FOR"
-         businessIcon = findViewById<TapImageView>(R.id.businessIcon)
-       // businessIcon.setImageResource(R.drawable.group)
-        DownLoadImageTask(businessIcon).execute("https://www.google.com/images/srpr/logo11w.png")
-        val cancelIcon = findViewById<TapImageView>(R.id.cancel_icon)
-        cancelIcon.setImageResource(company.tap.tapuilibrary.R.drawable.cancel)
-
-        cancelIcon.setOnClickListener {
-            Toast.makeText(this, getString(R.string.you_clicked), Toast.LENGTH_SHORT).show()
-        }
-    }
-
     fun openBottomSheet(view: View) {
-        val modalBottomSheet = TapBottomSheetDialog()
+        val modalBottomSheet = BottomSheetDialog()
         modalBottomSheet.arguments = getArguments()
-        modalBottomSheet.show(supportFragmentManager, TapBottomSheetDialog.TAG)
-    }
-    open class DownLoadImageTask(imageView: ImageView) : AsyncTask<String, Void, Bitmap>() {
-        var imageView: ImageView
-
-        override fun onPostExecute(result: Bitmap) {
-            imageView.setImageBitmap(result)
-        }
-
-        init {
-            this.imageView = imageView
-        }
-
-        override fun doInBackground(vararg urls: String): Bitmap? {
-            val urlOfImage = urls[0]
-            var logo: Bitmap? = null
-            try {
-                val `is`: InputStream = URL(urlOfImage).openStream()
-                logo = BitmapFactory.decodeStream(`is`)
-            } catch (e: Exception) { // Catch the download exception
-                e.printStackTrace()
-            }
-            return logo
-        }
+        modalBottomSheet.show(supportFragmentManager, BottomSheetDialog.TAG)
     }
 
     private fun getArguments(): Bundle {
@@ -96,10 +57,6 @@ class MainActivity : AppCompatActivity(),
 
     override fun didDismiss() {
         println("Dialog is dismissed !!!")
-    }
-
-    fun loadHeader(view: View) {
-        setupHeader()
     }
 
     fun openTapChip(view: View) {

@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:ignore="MissingDefaultResource">
+
+    <company.tap.tapuilibrary.TapDragIndicator
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:layout_marginEnd="150dp"
+        android:background="@color/view_color" />
+
+    <company.tap.tapuilibrary.TapHeader
+        android:layout_marginTop="@dimen/margin_basic_9dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <company.tap.tapuilibrary.TapSeparatorView
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/view_color"/>
+
+    <company.tap.tapuilibrary.TapTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TAPUIKIT"
+        android:layout_gravity="center_horizontal"/>
 
 </LinearLayout>
