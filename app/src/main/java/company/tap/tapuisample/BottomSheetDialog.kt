@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.Nullable
+import com.bumptech.glide.Glide
 import company.tap.tapuilibrary.TapBottomSheetDialog
 import company.tap.tapuilibrary.TapImageView
 import company.tap.tapuilibrary.TapTextView
@@ -70,8 +71,15 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         businessIcon = view.findViewById(R.id.businessIcon)
         businessName.text = getString(R.string.business_name)
         businessFor.text = "PAYMENT FOR"
-        businessIcon.setImageResource(R.drawable.group)
-      //  DownLoadImageTask(businessIcon).execute("https://www.google.com/images/srpr/logo11w.png")
+        val placeholder:String = businessName.text[0].toString()
+        context?.let {
+            Glide.with(it)
+                .load("https://www.google.com/images/srpr/logo11w.png")
+                .placeholder(R.drawable.tap_logo)
+                .disallowHardwareConfig()
+                .into(businessIcon)
+        }
+       // DownLoadImageTask(businessIcon).execute("https://www.google.com/images/srpr/logo11w.png")
     }
     companion object {
         const val TAG = "ModalBottomSheet"
