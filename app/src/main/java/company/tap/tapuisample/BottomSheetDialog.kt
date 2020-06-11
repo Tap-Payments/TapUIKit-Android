@@ -39,8 +39,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     open class DownLoadImageTask(imageView: ImageView, textView: TapTextView) :
         AsyncTask<String, Void, Bitmap>() {
-        var imageView: ImageView
-        var textView: TapTextView
+        private var imageView: ImageView
+        private var textView: TapTextView
 
 
         override fun onPreExecute() {
