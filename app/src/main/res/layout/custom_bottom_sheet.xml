@@ -18,7 +18,10 @@
     <company.tap.tapuilibrary.TapHeader
         android:layout_marginTop="@dimen/margin_basic_9dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        >
+
+    </company.tap.tapuilibrary.TapHeader>
 
     <company.tap.tapuilibrary.TapSeparatorView
         android:layout_width="wrap_content"

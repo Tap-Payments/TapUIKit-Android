@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.interfaces
 
 /**
  * Created by AhlaamK on 6/3/20.
