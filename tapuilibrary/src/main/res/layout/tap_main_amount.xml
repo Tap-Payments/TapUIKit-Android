@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <company.tap.tapuilibrary.TapTextView
+        android:id="@+id/textview_selectedCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal"
+        android:textColor="#4b4847"
+        tools:text="SR1000,000.000"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="209dp"
+        android:layout_marginTop="@dimen/margin_basic_9dp"
+        />
+    <company.tap.tapuilibrary.TapTextView
+        android:id="@+id/textView_currentCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="normal"
+        android:textColor="#a8a8a8"
+        tools:text="KD1000,000.000"
+        android:layout_below="@+id/textview_selectedCurrency"
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="209dp"
+        />
+
+    <company.tap.tapuilibrary.TapTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_horizontal"
+        android:textColor="#4b4847"
+        android:textSize="9sp"
+        android:textStyle="normal"
+        tools:text="10 ITEMS"
+        android:layout_marginStart="288dp"
+        android:layout_marginEnd="@dimen/margin_basic_24dp"/>
+</RelativeLayout>

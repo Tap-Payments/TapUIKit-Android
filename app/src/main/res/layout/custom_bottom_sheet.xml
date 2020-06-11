@@ -36,9 +36,8 @@
         android:layout_marginStart="@dimen/margin_basic_19dp"
         android:layout_marginEnd="17dp"/>
 
-   <company.tap.tapuilibrary.TapTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:layout_gravity="center_horizontal"/>
+    <company.tap.tapuilibrary.views.TapAmountSectionView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

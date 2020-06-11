@@ -27,6 +27,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     lateinit var businessName: TapTextView
     lateinit var businessFor: TapTextView
     lateinit var businessIcon: TapImageView
+    lateinit var selectedCurrency: TapTextView
+    lateinit var currentCurrency: TapTextView
     lateinit var placeHolderText: TapTextView
     lateinit var placeholderString: String
 
@@ -85,6 +87,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         businessName = view.findViewById(R.id.businessName)
         businessFor = view.findViewById(R.id.buinessFor)
         businessIcon = view.findViewById(R.id.businessIcon)
+        currentCurrency = view.findViewById(R.id.textView_currentCurrency)
+        selectedCurrency = view.findViewById(R.id.textview_selectedCurrency)
+        selectedCurrency.text = "SR1000,000.000"
+        currentCurrency.text = "KD1000,000.000"
         businessName.text = "Tap Payments"
         businessFor.text = "PAYMENT FOR"
         placeHolderText = view.findViewById(R.id.placeholderText)
