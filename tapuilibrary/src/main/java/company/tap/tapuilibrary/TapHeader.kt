@@ -14,9 +14,9 @@ All rights reserved.
  **/
 open class TapHeader(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 
-    var businessIcon: TapTextView
+    var businessIcon: TapImageView
     var businessName: TapTextView
-    var paymentFor: TapImageView
+    var paymentFor: TapTextView
 
     init {
         inflate(context, R.layout.tap_main_header, this)
