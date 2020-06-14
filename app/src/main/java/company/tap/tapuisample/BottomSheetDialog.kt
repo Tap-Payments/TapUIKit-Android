@@ -2,6 +2,7 @@ package company.tap.tapuisample
 
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
@@ -11,8 +12,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.Nullable
+import company.tap.tapuilibrary.TapButton
 import company.tap.tapuilibrary.TapImageView
 import company.tap.tapuilibrary.TapTextView
+import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import java.io.InputStream
 import java.net.URL
@@ -32,7 +35,9 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     lateinit var currentCurrency: TapTextView
     lateinit var placeHolderText: TapTextView
     lateinit var placeholderString: String
-    lateinit var itemCount: TapTextView
+    lateinit var itemCount: TapButton
+    private var tapAmountSectionInterface: TapAmountSectionInterface? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +45,16 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        try {
+            tapAmountSectionInterface = context as TapAmountSectionInterface
+        } catch (ex: ClassCastException) {
+            try {
+                tapAmountSectionInterface = parentFragment as TapAmountSectionInterface
+            } catch (ignore: Exception) {}
+        }
+    }
 
     open class DownLoadImageTask(imageView: ImageView, textView: TapTextView) :
         AsyncTask<String, Void, Bitmap>() {
@@ -87,9 +102,9 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         @Nullable savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-        businessName = view.findViewById(R.id.businessName)
-        businessFor = view.findViewById(R.id.buinessFor)
-        businessIcon = view.findViewById(R.id.businessIcon)
+        businessName = view.findViewById(R.id.business_name)
+        businessFor = view.findViewById(R.id.payment_for)
+        businessIcon = view.findViewById(R.id.business_icon)
         currentCurrency = view.findViewById(R.id.textView_currentCurrency)
         selectedCurrency = view.findViewById(R.id.textview_selectedCurrency)
         itemCount = view.findViewById(R.id.textView_itemCount)
@@ -98,7 +113,11 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         businessName.text = "Tap Payments"
         businessFor.text = "PAYMENT FOR"
         itemCount.text = "10 ITEMS"
-        placeHolderText = view.findViewById(R.id.placeholderText)
+        itemCount.setOnClickListener {
+            tapAmountSectionInterface?.didClickItems()
+
+        }
+        placeHolderText = view.findViewById(R.id.placeholder_text)
         placeholderString = businessName.text[0].toString()
         placeHolderText.text = placeholderString
         placeHolderText.visibility = View.VISIBLE

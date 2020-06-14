@@ -12,11 +12,13 @@ import company.tap.tapuilibrary.R
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class TapAmountSectionView (context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+class TapAmountSectionView(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+
     init {
         inflate(
             context,
             R.layout.tap_main_amount, this
         )
     }
+
 }

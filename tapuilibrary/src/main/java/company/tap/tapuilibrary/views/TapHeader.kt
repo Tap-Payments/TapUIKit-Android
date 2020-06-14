@@ -1,10 +1,11 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.views
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import android.widget.Toast
-import kotlinx.android.synthetic.main.tap_main_header.view.*
+import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.TapImageView
+import company.tap.tapuilibrary.TapTextView
 
 /**
  * Created by AhlaamK on 4/29/20.

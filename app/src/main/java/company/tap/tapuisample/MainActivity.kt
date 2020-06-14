@@ -7,14 +7,16 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.tapuilibrary.DialogConfigurations
+import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
 
 
 class MainActivity : AppCompatActivity(),
-    TapBottomDialogInterface {
+    TapBottomDialogInterface,TapAmountSectionInterface {
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
@@ -39,7 +41,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun didShow() {
-        println("Dialog is shown now!!!")
+      println("Dialog is shown now!!!")
     }
 
     override fun didDismiss() {
@@ -48,5 +50,10 @@ class MainActivity : AppCompatActivity(),
 
     fun openTapChip(view: View) {
         startActivity(Intent(this, CardviewActivity::class.java))
+    }
+
+    override fun didClickItems() {
+        println("Items button clicked !!!")
+        Toast.makeText(this,"You have clicked Items",Toast.LENGTH_SHORT).show()
     }
 }

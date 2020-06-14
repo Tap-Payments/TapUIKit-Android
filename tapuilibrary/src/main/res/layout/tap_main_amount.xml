@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="58dp"
+    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
     <company.tap.tapuilibrary.TapTextView
@@ -29,9 +29,10 @@
         android:layout_below="@+id/textview_selectedCurrency"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="209dp"
+        android:layout_marginBottom="@dimen/margin_basic_9dp"
         />
 
-    <company.tap.tapuilibrary.TapTextView
+    <company.tap.tapuilibrary.TapButton
         android:id="@+id/textView_itemCount"
         android:layout_width="70dp"
         android:layout_height="@dimen/margin_basic_20dp"
@@ -45,5 +46,12 @@
         android:layout_marginTop="@dimen/margin_basic_19dp"
         android:layout_marginBottom="@dimen/margin_basic_19dp"
         android:layout_marginEnd="21dp"
-        android:layout_marginStart="283dp"/>
+        android:layout_marginStart="283dp"
+        android:elevation="@dimen/margin_basic_0dp"
+       />
+    <company.tap.tapuilibrary.TapSeparatorView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/textView_currentCurrency"
+        />
 </RelativeLayout>
