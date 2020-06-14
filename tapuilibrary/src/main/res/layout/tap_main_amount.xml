@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="58dp"
     xmlns:tools="http://schemas.android.com/tools">
 
     <company.tap.tapuilibrary.TapTextView
@@ -32,14 +32,18 @@
         />
 
     <company.tap.tapuilibrary.TapTextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/textView_itemCount"
+        android:layout_width="70dp"
+        android:layout_height="@dimen/margin_basic_20dp"
         android:fontFamily="sans-serif-light"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:textColor="#4b4847"
         android:textSize="9sp"
         android:textStyle="normal"
         tools:text="10 ITEMS"
-        android:layout_marginStart="288dp"
-        android:layout_marginEnd="@dimen/margin_basic_24dp"/>
+        android:background="@drawable/rounded_rectangle"
+        android:layout_marginTop="@dimen/margin_basic_19dp"
+        android:layout_marginBottom="@dimen/margin_basic_19dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginStart="283dp"/>
 </RelativeLayout>

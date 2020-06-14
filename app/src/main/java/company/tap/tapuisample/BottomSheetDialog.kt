@@ -1,6 +1,7 @@
 package company.tap.tapuisample
 
 
+import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.AsyncTask
@@ -31,6 +32,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     lateinit var currentCurrency: TapTextView
     lateinit var placeHolderText: TapTextView
     lateinit var placeholderString: String
+    lateinit var itemCount: TapTextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,6 +81,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(
         view: View,
         @Nullable savedInstanceState: Bundle?
@@ -89,10 +92,12 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         businessIcon = view.findViewById(R.id.businessIcon)
         currentCurrency = view.findViewById(R.id.textView_currentCurrency)
         selectedCurrency = view.findViewById(R.id.textview_selectedCurrency)
+        itemCount = view.findViewById(R.id.textView_itemCount)
         selectedCurrency.text = "SR1000,000.000"
         currentCurrency.text = "KD1000,000.000"
         businessName.text = "Tap Payments"
         businessFor.text = "PAYMENT FOR"
+        itemCount.text = "10 ITEMS"
         placeHolderText = view.findViewById(R.id.placeholderText)
         placeholderString = businessName.text[0].toString()
         placeHolderText.text = placeholderString
