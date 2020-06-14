@@ -3,31 +3,18 @@ package company.tap.tapuisample
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.Color
-import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
-import android.text.InputType
 import android.view.View
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import company.tap.tapuilibrary.*
-import kotlinx.android.synthetic.main.view_custom_tapcard.view.*
-import java.io.InputStream
-import java.net.URL
+import company.tap.tapuilibrary.DialogConfigurations
+import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
 
 
 class MainActivity : AppCompatActivity(),
     TapBottomDialogInterface {
-    lateinit var businessIcon:TapImageView
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
@@ -62,6 +49,4 @@ class MainActivity : AppCompatActivity(),
     fun openTapChip(view: View) {
         startActivity(Intent(this, CardviewActivity::class.java))
     }
-
-
 }

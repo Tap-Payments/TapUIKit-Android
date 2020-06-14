@@ -5,15 +5,9 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <company.tap.tapuilibrary.TapHeader
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="#ffffff"
-      />
-
-   <Button
+    <Button
        android:onClick="openTapChip"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_gravity="center_horizontal"

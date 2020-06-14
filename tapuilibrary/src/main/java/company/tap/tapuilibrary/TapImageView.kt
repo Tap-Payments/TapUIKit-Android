@@ -18,14 +18,15 @@ All rights reserved.
 open class TapImageView(context: Context?, attrs: AttributeSet?) : AppCompatImageView(context, attrs),TapView<ImageViewTheme>  {
     override fun setTheme(theme: ImageViewTheme) {
         theme.imageResource?.let {setImageResource(R.drawable.tap_logo)  }
-        theme.contentDescription?.let { contentDescription = "Tap Logo" }
+        theme.contentDescription?.let { contentDescription = "Tap Logo"
+        }
     }
     override fun onDraw(canvas: Canvas) {
       //  val radius =
       //      context.resources.getDimension(R.dimen.round_corner_radius)
-        val radius = 0f
+        val radius = 2f
         val path = Path()
-        val rect = RectF(0f, 0f, this.width.toFloat(), this.height.toFloat())
+        val rect = RectF(2f, 2f, this.width.toFloat(), this.height.toFloat())
         path.addRoundRect(rect, radius, radius, Path.Direction.CW)
         canvas.clipPath(path)
         super.onDraw(canvas)

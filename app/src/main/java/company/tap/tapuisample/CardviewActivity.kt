@@ -2,13 +2,13 @@ package company.tap.tapuisample
 
 import android.annotation.SuppressLint
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.TapChipGroup
@@ -26,6 +26,7 @@ class CardviewActivity : AppCompatActivity() {
         setUpSwitch()
         setupTapCardChip()
     }
+
     private fun setUpSwitch() {
         leftAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -42,6 +43,7 @@ class CardviewActivity : AppCompatActivity() {
             }
         }
     }
+
     fun changeText(view: View) {
         chipRecycler.textView_card.visibility = View.VISIBLE
         chipRecycler.imageView_amex.visibility = View.GONE

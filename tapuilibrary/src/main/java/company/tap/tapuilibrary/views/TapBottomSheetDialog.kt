@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.views
 
 import android.app.Dialog
 import android.content.Context
@@ -14,6 +14,9 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import company.tap.tapuilibrary.DialogConfigurations
+import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
 
 /**
  *
