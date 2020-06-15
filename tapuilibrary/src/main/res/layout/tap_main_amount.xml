@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <company.tap.tapuilibrary.TapTextView
-        android:id="@+id/textview_selectedCurrency"
+        android:id="@+id/textview_selectedcurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
@@ -18,7 +18,7 @@
         android:layout_marginTop="@dimen/margin_basic_9dp"
         />
     <company.tap.tapuilibrary.TapTextView
-        android:id="@+id/textView_currentCurrency"
+        android:id="@+id/textView_currentcurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="14sp"
@@ -26,14 +26,14 @@
         android:textStyle="normal"
         android:textColor="#a8a8a8"
         tools:text="KD1000,000.000"
-        android:layout_below="@+id/textview_selectedCurrency"
+        android:layout_below="@+id/textview_selectedcurrency"
         android:layout_marginStart="18dp"
         android:layout_marginEnd="209dp"
         android:layout_marginBottom="@dimen/margin_basic_9dp"
         />
 
     <company.tap.tapuilibrary.TapButton
-        android:id="@+id/textView_itemCount"
+        android:id="@+id/textView_itemcount"
         android:layout_width="70dp"
         android:layout_height="@dimen/margin_basic_20dp"
         android:fontFamily="sans-serif-light"
@@ -52,6 +52,8 @@
     <company.tap.tapuilibrary.TapSeparatorView
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/textView_currentCurrency"
+        android:layout_below="@+id/textView_itemcount"
+      android:layout_marginTop="@dimen/margin_basic_9dp"
+        android:background="#dfdfdf"
         />
 </RelativeLayout>

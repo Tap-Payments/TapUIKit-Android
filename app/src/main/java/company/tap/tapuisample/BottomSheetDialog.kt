@@ -105,9 +105,9 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         businessName = view.findViewById(R.id.business_name)
         businessFor = view.findViewById(R.id.payment_for)
         businessIcon = view.findViewById(R.id.business_icon)
-        currentCurrency = view.findViewById(R.id.textView_currentCurrency)
-        selectedCurrency = view.findViewById(R.id.textview_selectedCurrency)
-        itemCount = view.findViewById(R.id.textView_itemCount)
+        currentCurrency = view.findViewById(R.id.textView_currentcurrency)
+        selectedCurrency = view.findViewById(R.id.textview_selectedcurrency)
+        itemCount = view.findViewById(R.id.textView_itemcount)
         selectedCurrency.text = "SR1000,000.000"
         currentCurrency.text = "KD1000,000.000"
         businessName.text = "Tap Payments"
