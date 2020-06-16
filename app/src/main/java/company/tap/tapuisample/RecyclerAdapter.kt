@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import androidx.recyclerview.widget.RecyclerView
-import company.tap.tapuilibrary.TapImageView
-import company.tap.tapuilibrary.TapTextView
+import company.tap.tapuilibrary.atoms.TapImageView
+import company.tap.tapuilibrary.atoms.TapTextView
 
 /**
  * Created by AhlaamK on 5/12/20.

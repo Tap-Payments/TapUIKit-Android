@@ -1,8 +1,9 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.atoms
 
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
+import company.tap.tapuilibrary.TapView
 import company.tap.thememanager.theme.TextViewTheme
 
 /**
@@ -12,7 +13,8 @@ import company.tap.thememanager.theme.TextViewTheme
  *
  */
 open class TapTextView(context: Context, attributeSet: AttributeSet?) :
-    AppCompatTextView(context, attributeSet), TapView<TextViewTheme> {
+    AppCompatTextView(context, attributeSet),
+    TapView<TextViewTheme> {
     override fun setTheme(theme: TextViewTheme) {
         theme.textColor?.let { setTextColor(it) }
         theme.textSize?.let { textSize = it }

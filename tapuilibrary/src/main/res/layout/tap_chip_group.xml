@@ -9,13 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <company.tap.tapuilibrary.TapTextView
+        <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/group_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"/>
 
-        <company.tap.tapuilibrary.TapTextView
+        <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/group_action"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

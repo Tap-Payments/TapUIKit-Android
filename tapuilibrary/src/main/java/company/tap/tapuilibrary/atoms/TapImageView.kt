@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.atoms
 
 import android.content.Context
 import android.graphics.Canvas
@@ -6,6 +6,8 @@ import android.graphics.Path
 import android.graphics.RectF
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
+import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.TapView
 import company.tap.thememanager.theme.ImageViewTheme
 
 
@@ -15,7 +17,8 @@ import company.tap.thememanager.theme.ImageViewTheme
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class TapImageView(context: Context?, attrs: AttributeSet?) : AppCompatImageView(context, attrs),TapView<ImageViewTheme>  {
+open class TapImageView(context: Context?, attrs: AttributeSet?) : AppCompatImageView(context, attrs),
+    TapView<ImageViewTheme> {
     override fun setTheme(theme: ImageViewTheme) {
         theme.imageResource?.let {setImageResource(R.drawable.tap_logo)  }
         theme.contentDescription?.let { contentDescription = "Tap Logo"

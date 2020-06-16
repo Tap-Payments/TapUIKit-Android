@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.atoms
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -15,6 +15,10 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
+import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.TapColorUtils
+import company.tap.tapuilibrary.TapTextWatcher
+import company.tap.tapuilibrary.TapView
 import company.tap.thememanager.theme.TextInputTheme
 
 /**
@@ -27,7 +31,8 @@ open class TapTextInput  @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = androidx.appcompat.R.attr.editTextStyle
-) : TextInputEditText(context, attrs, defStyleAttr), TapView<TextInputTheme> {
+) : TextInputEditText(context, attrs, defStyleAttr),
+    TapView<TextInputTheme> {
     protected var isLastKeyDelete: Boolean = false
 
     private var afterTextChangedListener: AfterTextChangedListener? = null
@@ -100,7 +105,11 @@ open class TapTextInput  @JvmOverloads constructor(
     override fun onCreateInputConnection(outAttrs: EditorInfo): InputConnection? {
         val inputConnection = super.onCreateInputConnection(outAttrs)
         return inputConnection?.let {
-            SoftDeleteInputConnection(it, true, deleteEmptyListener)
+            SoftDeleteInputConnection(
+                it,
+                true,
+                deleteEmptyListener
+            )
         }
     }
 
@@ -192,7 +201,10 @@ open class TapTextInput  @JvmOverloads constructor(
         cachedColorStateList = textColors
         defaultErrorColor = ContextCompat.getColor(
             context,
-            if (TapColorUtils.isColorDark(textColors.defaultColor)) {
+            if (TapColorUtils.isColorDark(
+                    textColors.defaultColor
+                )
+            ) {
                 // Note: if the _text_ color is dark, then this is a
                 // light theme, and vice-versa.
                 R.color.error_text_light_theme

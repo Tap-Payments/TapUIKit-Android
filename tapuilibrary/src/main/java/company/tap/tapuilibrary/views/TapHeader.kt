@@ -4,8 +4,8 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.TapImageView
-import company.tap.tapuilibrary.TapTextView
+import company.tap.tapuilibrary.atoms.TapImageView
+import company.tap.tapuilibrary.atoms.TapTextView
 
 /**
  * Created by AhlaamK on 4/29/20.

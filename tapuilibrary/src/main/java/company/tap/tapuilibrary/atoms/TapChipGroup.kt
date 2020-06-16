@@ -1,10 +1,10 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.atoms
 
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.HorizontalScrollView
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.tapuilibrary.R
 
 /**
  *

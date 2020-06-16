@@ -16,7 +16,7 @@
         android:weightSum="1"
         android:orientation="horizontal">
 
-        <company.tap.tapuilibrary.TapTextView
+        <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/item_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             android:textStyle="normal"
             tools:text="Item TItle" />
 
-        <company.tap.tapuilibrary.TapTextView
+        <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/item_amount"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -45,10 +45,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="1"
-        android:layout_marginTop="@dimen/margin_basic_3dp">
+        android:layout_marginTop="@dimen/margin_basic_3dp"
+        android:weightSum="1">
 
-        <company.tap.tapuilibrary.TapTextView
+        <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/show_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -59,18 +59,33 @@
             android:textStyle="normal"
             tools:text="Show Description" />
 
-        <company.tap.tapuilibrary.TapTextView
+        <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/total_amount"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:drawableStart="@drawable/rounded_rectangle"
             android:fontFamily="sans-serif-light"
             android:gravity="end"
             android:textColor="#a8a8a8"
             android:textSize="12sp"
             android:textStyle="normal"
             tools:text="KD000,000.000" />
+
+        <company.tap.tapuilibrary.atoms.TapTextView
+            android:id="@+id/total_quantity"
+            android:layout_width="14dp"
+            android:layout_height="@dimen/margin_basic_14dp"
+            android:fontFamily="sans-serif-light"
+            android:gravity="center_horizontal"
+            android:textColor="#a8a8a8"
+            android:layout_marginStart="@dimen/margin_basic_3dp"
+            android:background="@drawable/rounded_circle"
+            android:textSize="10sp"
+            android:textStyle="normal"
+            tools:text="0"
+            />
+
+
     </LinearLayout>
 
 

@@ -12,9 +12,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.Nullable
-import company.tap.tapuilibrary.TapButton
-import company.tap.tapuilibrary.TapImageView
-import company.tap.tapuilibrary.TapTextView
+import company.tap.tapuilibrary.atoms.TapButton
+import company.tap.tapuilibrary.atoms.TapImageView
+import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import java.io.InputStream
@@ -34,6 +34,11 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     lateinit var selectedCurrency: TapTextView
     lateinit var currentCurrency: TapTextView
     lateinit var placeHolderText: TapTextView
+    lateinit var itemTitleText: TapTextView
+    lateinit var itemAmountText: TapTextView
+    lateinit var showDescrpText: TapTextView
+    lateinit var totalAmountText: TapTextView
+    lateinit var totalQuantityText: TapTextView
     lateinit var placeholderString: String
     lateinit var itemCount: TapButton
     private var tapAmountSectionInterface: TapAmountSectionInterface? = null
@@ -96,23 +101,36 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
     override fun onViewCreated(
         view: View,
         @Nullable savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
+        initializeViews(view)
+    }
+    @SuppressLint("SetTextI18n")
+    private fun initializeViews(view: View){
         businessName = view.findViewById(R.id.business_name)
         businessFor = view.findViewById(R.id.payment_for)
         businessIcon = view.findViewById(R.id.business_icon)
         currentCurrency = view.findViewById(R.id.textView_currentcurrency)
         selectedCurrency = view.findViewById(R.id.textview_selectedcurrency)
         itemCount = view.findViewById(R.id.textView_itemcount)
+        itemTitleText = view.findViewById(R.id.item_title)
+        itemAmountText = view.findViewById(R.id.item_amount)
+        showDescrpText = view.findViewById(R.id.show_description)
+        totalAmountText = view.findViewById(R.id.total_amount)
+        totalQuantityText = view.findViewById(R.id.total_quantity)
         selectedCurrency.text = "SR1000,000.000"
         currentCurrency.text = "KD1000,000.000"
         businessName.text = "Tap Payments"
         businessFor.text = "PAYMENT FOR"
         itemCount.text = "10 ITEMS"
+        itemTitleText.text = "ITEM TITLE"
+        itemAmountText.text = "KD000,000.000"
+        showDescrpText.text = "Show Description"
+        totalAmountText.text = "KD000,000.000"
+        totalQuantityText.text="1"
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
 

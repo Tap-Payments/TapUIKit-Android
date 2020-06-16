@@ -3,7 +3,7 @@ package company.tap.tapuisample
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import company.tap.tapuilibrary.TapChip
+import company.tap.tapuilibrary.atoms.TapChip
 
 
 /**

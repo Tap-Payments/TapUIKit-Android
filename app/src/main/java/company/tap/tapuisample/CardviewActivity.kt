@@ -11,8 +11,8 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import company.tap.tapuilibrary.TapChipGroup
-import company.tap.tapuilibrary.TapTextView
+import company.tap.tapuilibrary.atoms.TapChipGroup
+import company.tap.tapuilibrary.atoms.TapTextView
 import kotlinx.android.synthetic.main.activity_cardview.*
 import kotlinx.android.synthetic.main.view_custom_tapcard.view.*
 

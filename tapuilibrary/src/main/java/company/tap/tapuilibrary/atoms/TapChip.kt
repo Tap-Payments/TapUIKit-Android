@@ -1,10 +1,11 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.atoms
 
 import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import com.google.android.material.card.MaterialCardView
+import company.tap.tapuilibrary.TapView
 import company.tap.thememanager.theme.ChipTheme
 
 /**
@@ -13,7 +14,8 @@ import company.tap.thememanager.theme.ChipTheme
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class TapChip (context: Context, attributeSet: AttributeSet?) : MaterialCardView(context, attributeSet),TapView<ChipTheme> {
+open class TapChip (context: Context, attributeSet: AttributeSet?) : MaterialCardView(context, attributeSet),
+    TapView<ChipTheme> {
     lateinit var view:View
     lateinit var viewsList:List<View>
 

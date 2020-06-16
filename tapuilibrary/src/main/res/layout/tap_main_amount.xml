@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <company.tap.tapuilibrary.TapTextView
+    <company.tap.tapuilibrary.atoms.TapTextView
         android:id="@+id/textview_selectedcurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         android:layout_marginEnd="209dp"
         android:layout_marginTop="@dimen/margin_basic_9dp"
         />
-    <company.tap.tapuilibrary.TapTextView
+    <company.tap.tapuilibrary.atoms.TapTextView
         android:id="@+id/textView_currentcurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:layout_marginBottom="@dimen/margin_basic_9dp"
         />
 
-    <company.tap.tapuilibrary.TapButton
+    <company.tap.tapuilibrary.atoms.TapButton
         android:id="@+id/textView_itemcount"
         android:layout_width="70dp"
         android:layout_height="@dimen/margin_basic_20dp"
@@ -49,7 +49,7 @@
         android:layout_marginStart="283dp"
         android:elevation="@dimen/margin_basic_0dp"
        />
-    <company.tap.tapuilibrary.TapSeparatorView
+    <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/textView_itemcount"
