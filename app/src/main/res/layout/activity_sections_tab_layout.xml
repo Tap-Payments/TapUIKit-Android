@@ -18,4 +18,12 @@
         android:text="Select Tab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:onClick="resetSelection"
+        android:layout_gravity="center"
+        android:text="Reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
