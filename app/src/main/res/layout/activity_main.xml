@@ -20,18 +20,21 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:text="Show Bottom Sheet Dialog" />
+
     <Button
         android:onClick="openAmountDiscountRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
         android:text="Show Amount Discount Items" />
 
-
-
-
-
+    <Button
+        android:onClick="openSectionsTabLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:text="Show Sections TabLayout" />
 
 </LinearLayout>
 

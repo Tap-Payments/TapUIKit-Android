@@ -60,4 +60,8 @@ class MainActivity : AppCompatActivity(),
     fun openAmountDiscountRow(view: View) {
         startActivity(Intent(this, AmountItemActivity::class.java))
     }
+
+    fun openSectionsTabLayout(view: View) {
+        startActivity(Intent(this, SectionsTabLayout::class.java))
+    }
 }
