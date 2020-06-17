@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.views
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.annotation.LayoutRes
@@ -47,6 +48,10 @@ class TapSelectionTabLayout (context: Context?, attrs: AttributeSet?) : LinearLa
             }
 
         })
+    }
+
+    fun selectItem(tabIndex: Int, itemIndex: Int) {
+        tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
     }
 
 }
