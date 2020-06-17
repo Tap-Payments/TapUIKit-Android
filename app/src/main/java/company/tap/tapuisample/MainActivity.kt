@@ -56,4 +56,8 @@ class MainActivity : AppCompatActivity(),
         println("Items button clicked !!!")
         Toast.makeText(this,"You have clicked Items",Toast.LENGTH_SHORT).show()
     }
+
+    fun openAmountDiscountRow(view: View) {
+        startActivity(Intent(this, AmountItemActivity::class.java))
+    }
 }
