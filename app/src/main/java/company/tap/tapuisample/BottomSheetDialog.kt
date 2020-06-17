@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Paint
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -39,6 +40,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     lateinit var showDescrpText: TapTextView
     lateinit var totalAmountText: TapTextView
     lateinit var totalQuantityText: TapTextView
+    lateinit var discountText: TapTextView
     lateinit var placeholderString: String
     lateinit var itemCount: TapButton
     private var tapAmountSectionInterface: TapAmountSectionInterface? = null
@@ -121,6 +123,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         showDescrpText = view.findViewById(R.id.show_description)
         totalAmountText = view.findViewById(R.id.total_amount)
         totalQuantityText = view.findViewById(R.id.total_quantity)
+        discountText = view.findViewById(R.id.discount_text)
         selectedCurrency.text = "SR1000,000.000"
         currentCurrency.text = "KD1000,000.000"
         businessName.text = "Tap Payments"
@@ -131,9 +134,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         showDescrpText.text = "Show Description"
         totalAmountText.text = "KD000,000.000"
         totalQuantityText.text="1"
+        discountText.text = "10% Discount"
+        totalAmountText.paintFlags = totalAmountText.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
-
         }
         placeHolderText = view.findViewById(R.id.placeholder_text)
         placeholderString = businessName.text[0].toString()
