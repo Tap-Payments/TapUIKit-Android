@@ -6,17 +6,15 @@
     <company.tap.tapuilibrary.atoms.TapImageView
         android:id="@+id/zain"
         android:padding="5dp"
-        android:layout_width="0dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_weight="50"
         android:src="@drawable/zain"/>
 
     <company.tap.tapuilibrary.atoms.TapImageView
         android:id="@+id/ooredoo"
         android:padding="5dp"
-        android:layout_width="0dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
-        android:layout_weight="50"
         android:src="@drawable/ooredoo"/>
 
 </LinearLayout>

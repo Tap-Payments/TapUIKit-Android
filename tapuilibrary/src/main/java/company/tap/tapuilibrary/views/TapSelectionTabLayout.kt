@@ -1,11 +1,15 @@
 package company.tap.tapuilibrary.views
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
+import androidx.annotation.IdRes
 import com.google.android.material.tabs.TabLayout
+import company.tap.tapuilibrary.MetricsUtil
 import company.tap.tapuilibrary.PaymentSectionItemType
 import company.tap.tapuilibrary.PaymentSectionItemType.*
 import company.tap.tapuilibrary.R
@@ -17,7 +21,8 @@ import company.tap.tapuilibrary.atoms.TapImageView
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
-class TapSelectionTabLayout (context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
+    LinearLayout(context, attrs) {
 
     private var tabLayout: TabLayout
     private var tabCards: TabLayout.Tab
@@ -38,12 +43,38 @@ class TapSelectionTabLayout (context: Context?, attrs: AttributeSet?) : LinearLa
         masterTab = tabCards.customView!!.findViewById(R.id.master)
         amexTab = tabCards.customView!!.findViewById(R.id.amex)
 
-        tabMobile = tabLayout.newTab().setCustomView(R.layout.mobile_section_layout)
+        tabMobile = tabLayout.newTab().setCustomView(createDynamicSection())
         zainTab = tabMobile.customView!!.findViewById(R.id.zain)
         ooredooTab = tabMobile.customView!!.findViewById(R.id.ooredoo)
 
         addTabs()
         setSelectionBehaviour()
+    }
+
+    private fun createDynamicSection(): LinearLayout {
+        val linearLayout = LinearLayout(context)
+        linearLayout.orientation = HORIZONTAL
+        val params = LayoutParams(
+            MetricsUtil.convertDpToPixel(120f, context).toInt(),
+            LayoutParams.MATCH_PARENT
+        )
+        linearLayout.layoutParams = params
+        linearLayout.addView(createImageView(R.id.zain, R.drawable.zain))
+        linearLayout.addView(createImageView(R.id.ooredoo, R.drawable.ooredoo))
+        return linearLayout
+    }
+
+    private fun createImageView(@IdRes id: Int, @DrawableRes image: Int): TapImageView {
+        val imageView = TapImageView(context, null)
+        imageView.id = id
+        imageView.setImageResource(image)
+        val itemWidth = Resources.getSystem().displayMetrics.widthPixels /5
+        val params = LayoutParams(
+            MetricsUtil.convertDpToPixel(60f, context).toInt(),
+            MetricsUtil.convertDpToPixel(40f, context).toInt()
+        )
+        imageView.layoutParams = params
+        return imageView
     }
 
     private fun addTabs() {
