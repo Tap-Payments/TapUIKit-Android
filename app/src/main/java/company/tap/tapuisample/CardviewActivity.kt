@@ -30,9 +30,9 @@ class CardviewActivity : AppCompatActivity() {
     private fun setUpSwitch() {
         hideKnet_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                arrayList.add(0,1)
-                arrayList.add(2,3)
-                arrayList.add(4,5)
+                arrayList.add(1)
+                arrayList.add(3)
+                arrayList.add(5)
                 chipRecycler.adapter?.notifyDataSetChanged()
             } else {
                 arrayList.remove(1)
@@ -43,8 +43,8 @@ class CardviewActivity : AppCompatActivity() {
         }
         hideSavedCard_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                arrayList.add(3,4)
-                arrayList.add(5,6)
+                arrayList.add(4)
+                arrayList.add(6)
                 chipRecycler.adapter?.notifyDataSetChanged()
             } else {
                 arrayList.remove(4)

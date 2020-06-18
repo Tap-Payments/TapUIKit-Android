@@ -53,11 +53,15 @@
         android:layout_height="wrap_content"
         android:id="@+id/mainChipgroup"
         android:background="#f4f4f4"
-        android:orientation="horizontal"/>
+        android:orientation="horizontal"
+        />
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:background="@color/view_color"
-        />
+        android:layout_marginStart="@dimen/margin_basic_19dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="@dimen/margin_basic_4dp"/>
+  
 </LinearLayout>
 
