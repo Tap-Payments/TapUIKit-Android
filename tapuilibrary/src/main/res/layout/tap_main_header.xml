@@ -19,11 +19,11 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="@dimen/margin_basic_0dp"
             >
+
             <company.tap.tapuilibrary.atoms.TapImageView
                 android:id="@+id/business_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                />
+                android:layout_width="33dp"
+                android:layout_height="match_parent" />
             <company.tap.tapuilibrary.atoms.TapTextView
                 android:id="@+id/placeholder_text"
                 android:layout_width="40dp"
@@ -35,7 +35,7 @@
         </company.tap.tapuilibrary.atoms.TapChip>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="@dimen/margin_basic_10dp"
             android:orientation="vertical"
@@ -65,8 +65,7 @@
                 tools:text="Business Name"
                 android:layout_marginTop="1dp"
                 />
-
-
         </LinearLayout>
+
     </LinearLayout>
 </LinearLayout>

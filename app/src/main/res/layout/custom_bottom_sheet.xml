@@ -42,4 +42,22 @@
     <company.tap.tapuilibrary.views.TapItemsView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <company.tap.tapuilibrary.atoms.TapSeparatorView
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/view_color"
+       />
+
+    <company.tap.tapuilibrary.atoms.TapChipGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mainChipgroup"
+        android:background="#f4f4f4"
+        android:orientation="horizontal"/>
+    <company.tap.tapuilibrary.atoms.TapSeparatorView
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/view_color"
+        />
 </LinearLayout>
+

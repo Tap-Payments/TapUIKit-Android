@@ -3,4 +3,5 @@
     <string name="business_name">Business Name</string>
     <string name="you_clicked">You clicked on Closed.</string>
     <string name="recent">    Recent</string>
+    <string name="edit">EDIT</string>
 </resources>

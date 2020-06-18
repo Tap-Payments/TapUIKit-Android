@@ -19,39 +19,24 @@
         android:orientation="vertical">
 
         <company.tap.tapuilibrary.atoms.TapSwitch
-            android:id="@+id/leftAccessory_Switch"
+            android:id="@+id/hideKnet_Switch"
             android:layout_width="match_parent"
             android:layout_height="6dp"
             android:layout_marginLeft="@dimen/margin_basic_20dp"
             android:layout_marginRight="@dimen/margin_basic_20dp"
             android:checked="true"
-            android:text="Hide leftAccessory" />
+            android:text="Knet" />
 
         <company.tap.tapuilibrary.atoms.TapSwitch
-            android:id="@+id/rightAccessory_Switch"
+            android:id="@+id/hideSavedCard_Switch"
             android:layout_width="match_parent"
             android:layout_height="6dp"
             android:layout_marginLeft="@dimen/margin_basic_20dp"
             android:layout_marginRight="@dimen/margin_basic_20dp"
             android:checked="true"
-            android:text="Hide rightAccessory" />
+            android:text="Saved Card" />
 
-        <company.tap.tapuilibrary.atoms.TapTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_basic_20dp"
-            android:layout_marginRight="@dimen/margin_basic_20dp"
-            android:onClick="changeText"
-            android:text="Change Text" />
 
-        <company.tap.tapuilibrary.atoms.TapButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_basic_20dp"
-            android:layout_marginRight="@dimen/margin_basic_20dp"
-            android:onClick="changeToImage"
-            android:text="Change Image"
-            android:textSize="@dimen/font_size_14sp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -1,55 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <company.tap.tapuilibrary.atoms.TapChip xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp"
-    android:outlineAmbientShadowColor="@color/cardview_shadow_start_color"
     app:contentPadding="3dp"
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
     android:layout_margin="3dp"
     android:id="@+id/tapcard_Chip"
 
-   >
+    >
+
   <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="horizontal"
-      >
+      android:layout_width="wrap_content"
+      android:layout_height="40dp"
+      android:orientation="horizontal">
+
     <company.tap.tapuilibrary.atoms.TapImageView
         android:id="@+id/imageView_visa"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:background="@drawable/visa"
-        android:scaleType="centerCrop"
-        />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/knet"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/margin_basic_8dp"
+        android:layout_marginEnd="@dimen/margin_basic_8dp"
+        android:scaleType="center" />
 
 
     <company.tap.tapuilibrary.atoms.TapTextView
         android:id="@+id/textView_card"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="∙∙∙∙ 1234"
-        android:textAlignment="center"
-        android:textSize="10sp"/>
+        android:textSize="12sp"
+        android:fontFamily="sans-serif"
+        android:textStyle="normal"
+        android:textColor="#4b4847"
+        android:gravity="end"
+        android:text="•••• XXXX"
+        android:layout_marginTop="@dimen/margin_basic_14dp"
+        android:layout_marginEnd="@dimen/margin_basic_8dp"
 
+        />
     <company.tap.tapuilibrary.atoms.TapImageView
         android:id="@+id/imageView_amex"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/amex"
         android:scaleType="centerCrop"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_basic_14dp"
+        android:layout_marginBottom="@dimen/margin_basic_14dp"
+        android:layout_marginEnd="@dimen/margin_basic_8dp"
+
+       />
 
     <company.tap.tapuilibrary.atoms.TapImageView
         android:id="@+id/imageView_master"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@drawable/mastercard"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:layout_marginStart="@dimen/margin_basic_8dp"
+        android:layout_marginEnd="@dimen/margin_basic_8dp"/>
+
   </LinearLayout>
 </company.tap.tapuilibrary.atoms.TapChip>

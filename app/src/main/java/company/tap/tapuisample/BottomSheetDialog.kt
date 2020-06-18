@@ -12,8 +12,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.Nullable
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.atoms.TapButton
+import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
@@ -44,7 +49,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     lateinit var placeholderString: String
     lateinit var itemCount: TapButton
     private var tapAmountSectionInterface: TapAmountSectionInterface? = null
-
+    private lateinit var chipRecycler: RecyclerView
+    val arrayList:ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5,6)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -139,6 +145,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
         }
+
         placeHolderText = view.findViewById(R.id.placeholder_text)
         placeholderString = businessName.text[0].toString()
         placeHolderText.text = placeholderString
@@ -147,6 +154,22 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
             businessIcon,
             placeHolderText
         ).execute("https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
+        setupChip(view)
+    }
+
+    private fun setupChip(view: View) {
+        val mainChipgroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
+        mainChipgroup.orientation = LinearLayout.HORIZONTAL
+        val groupName = view.findViewById<TapTextView>(R.id.group_name)
+        groupName.text = getString(R.string.recent)
+        val groupAction = view.findViewById<TapTextView>(R.id.group_action)
+        groupAction.text = getString(R.string.edit)
+        chipRecycler = view.findViewById(R.id.chip_recycler)
+        chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+        chipRecycler.adapter = MultipleTypeAdapter(arrayList)
+        groupAction.setOnClickListener{
+            Toast.makeText(context,"You clicked Edit",Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {

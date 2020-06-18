@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.view_custom_tapcard.view.*
 
 class CardviewActivity : AppCompatActivity() {
     private lateinit var chipRecycler: RecyclerView
-
+    val arrayList:ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5,6)
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,52 +28,31 @@ class CardviewActivity : AppCompatActivity() {
     }
 
     private fun setUpSwitch() {
-        leftAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
+        hideKnet_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                chipRecycler.imageView_visa.visibility = View.VISIBLE
+                arrayList.add(0,1)
+                arrayList.add(2,3)
+                arrayList.add(4,5)
+                chipRecycler.adapter?.notifyDataSetChanged()
             } else {
-                chipRecycler.imageView_visa.visibility = View.GONE
+                arrayList.remove(1)
+                arrayList.remove(3)
+                arrayList.remove(5)
+                chipRecycler.adapter?.notifyDataSetChanged()
             }
         }
-        rightAccessory_Switch.setOnCheckedChangeListener { _, isChecked ->
+        hideSavedCard_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                chipRecycler.imageView_master.visibility = View.VISIBLE
+                arrayList.add(3,4)
+                arrayList.add(5,6)
+                chipRecycler.adapter?.notifyDataSetChanged()
             } else {
-                chipRecycler.imageView_master.visibility = View.GONE
+                arrayList.remove(4)
+                arrayList.remove(6)
+                chipRecycler.adapter?.notifyDataSetChanged()
             }
         }
     }
-
-    fun changeText(view: View) {
-        chipRecycler.textView_card.visibility = View.VISIBLE
-        chipRecycler.imageView_amex.visibility = View.GONE
-        changeTextDialog()
-    }
-
-    private fun changeTextDialog() {
-        var inputText = ""
-        val builder: android.app.AlertDialog.Builder = android.app.AlertDialog.Builder(this)
-        builder.setTitle("Chip Content")
-        builder.setMessage("Enter a string value")
-        // Set up the input
-        val input = EditText(this)
-        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        input.inputType = InputType.TYPE_CLASS_TEXT
-        builder.setView(input)
-        // Set up the buttons
-        builder.setPositiveButton(
-            "Submit"
-        ) { dialog, _ ->
-            inputText = input.text.toString()
-            chipRecycler.textView_card.text = inputText
-
-        }
-        builder.setNegativeButton(
-            "Cancel"
-        ) { dialog, _ -> dialog.cancel() }
-        builder.show()
-    }
-
     @RequiresApi(Build.VERSION_CODES.P)
     @SuppressLint("RestrictedApi", "ResourceAsColor")
     private fun setupTapCardChip() {
@@ -81,15 +60,13 @@ class CardviewActivity : AppCompatActivity() {
         mainLayout.orientation = LinearLayout.HORIZONTAL
         val groupName = findViewById<TapTextView>(R.id.group_name)
         groupName.text = getString(R.string.recent)
+        val groupAction = findViewById<TapTextView>(R.id.group_action)
+        groupAction.text = getString(R.string.edit)
         chipRecycler = findViewById(R.id.chip_recycler)
-        val arrayList = arrayListOf(1, 2, 3, 4, 5)
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter = RecyclerAdapter(arrayList)
+      //  chipRecycler.adapter = RecyclerAdapter(arrayList)
+        chipRecycler.adapter = MultipleTypeAdapter(arrayList)
 
     }
 
-    fun changeToImage(view: View) {
-        chipRecycler.imageView_amex.visibility = View.VISIBLE
-        chipRecycler.textView_card.visibility = View.GONE
-    }
 }
