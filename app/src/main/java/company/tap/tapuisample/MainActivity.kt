@@ -16,7 +16,7 @@ import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
 
 
 class MainActivity : AppCompatActivity(),
-    TapBottomDialogInterface,TapAmountSectionInterface {
+    TapBottomDialogInterface, TapAmountSectionInterface {
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     override fun didShow() {
-      println("Dialog is shown now!!!")
+        println("Dialog is shown now!!!")
     }
 
     override fun didDismiss() {
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity(),
 
     override fun didClickItems() {
         println("Items button clicked !!!")
-        Toast.makeText(this,"You have clicked Items",Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "You have clicked Items", Toast.LENGTH_SHORT).show()
     }
 
     fun openAmountDiscountRow(view: View) {

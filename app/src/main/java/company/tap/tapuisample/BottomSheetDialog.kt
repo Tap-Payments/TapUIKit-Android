@@ -50,7 +50,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     lateinit var itemCount: TapButton
     private var tapAmountSectionInterface: TapAmountSectionInterface? = null
     private lateinit var chipRecycler: RecyclerView
-    val arrayList:ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5,6)
+    val arrayList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,7 +65,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         } catch (ex: ClassCastException) {
             try {
                 tapAmountSectionInterface = parentFragment as TapAmountSectionInterface
-            } catch (ignore: Exception) {}
+            } catch (ignore: Exception) {
+            }
         }
     }
 
@@ -116,8 +117,9 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
     }
+
     @SuppressLint("SetTextI18n")
-    private fun initializeViews(view: View){
+    private fun initializeViews(view: View) {
         businessName = view.findViewById(R.id.business_name)
         businessFor = view.findViewById(R.id.payment_for)
         businessIcon = view.findViewById(R.id.business_icon)
@@ -139,7 +141,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         itemAmountText.text = "KD000,000.000"
         showDescrpText.text = "Show Description"
         totalAmountText.text = "KD000,000.000"
-        totalQuantityText.text="1"
+        totalQuantityText.text = "1"
         discountText.text = "10% Discount"
         totalAmountText.paintFlags = totalAmountText.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
         itemCount.setOnClickListener {
@@ -167,8 +169,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter = MultipleTypeAdapter(arrayList)
-        groupAction.setOnClickListener{
-            Toast.makeText(context,"You clicked Edit",Toast.LENGTH_SHORT).show()
+        groupAction.setOnClickListener {
+            Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
         }
     }
 

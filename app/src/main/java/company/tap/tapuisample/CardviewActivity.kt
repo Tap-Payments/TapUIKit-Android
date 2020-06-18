@@ -3,9 +3,6 @@ package company.tap.tapuisample
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
-import android.text.InputType
-import android.view.View
-import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -14,11 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapTextView
 import kotlinx.android.synthetic.main.activity_cardview.*
-import kotlinx.android.synthetic.main.view_custom_tapcard.view.*
 
 class CardviewActivity : AppCompatActivity() {
     private lateinit var chipRecycler: RecyclerView
-    val arrayList:ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5,6)
+    val arrayList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
+
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +50,7 @@ class CardviewActivity : AppCompatActivity() {
             }
         }
     }
+
     @RequiresApi(Build.VERSION_CODES.P)
     @SuppressLint("RestrictedApi", "ResourceAsColor")
     private fun setupTapCardChip() {
@@ -64,7 +62,7 @@ class CardviewActivity : AppCompatActivity() {
         groupAction.text = getString(R.string.edit)
         chipRecycler = findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-      //  chipRecycler.adapter = RecyclerAdapter(arrayList)
+        //  chipRecycler.adapter = RecyclerAdapter(arrayList)
         chipRecycler.adapter = MultipleTypeAdapter(arrayList)
 
     }
