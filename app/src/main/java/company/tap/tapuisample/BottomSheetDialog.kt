@@ -163,7 +163,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         val mainChipgroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         val groupName = view.findViewById<TapTextView>(R.id.group_name)
-        groupName.text = getString(R.string.recent)
+        groupName.text = getString(R.string.select)
         val groupAction = view.findViewById<TapTextView>(R.id.group_action)
         groupAction.text = getString(R.string.edit)
         chipRecycler = view.findViewById(R.id.chip_recycler)

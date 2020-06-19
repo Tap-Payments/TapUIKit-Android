@@ -11,21 +11,23 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="1"
-        android:padding="@dimen/margin_basic_4dp">
+       >
 
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/group_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="start"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:layout_marginStart="@dimen/margin_basic_16dp"/>
 
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/group_action"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="end"
-            android:layout_weight="0.5"/>
+            android:layout_weight="0.5"
+            android:layout_marginEnd="@dimen/margin_basic_16dp"/>
 
     </LinearLayout>
 
@@ -34,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+      android:paddingTop="@dimen/margin_basic_9dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>

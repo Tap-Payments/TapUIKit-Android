@@ -1,10 +1,13 @@
 package company.tap.tapuisample
 
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 
 
@@ -32,7 +35,7 @@ class MultipleTypeAdapter(private val arrayList: ArrayList<Int>) :
             SingleViewHolder(view)
         } else {
             view = LayoutInflater.from(parent.context).inflate(R.layout.item_gopay, parent, false)
-            SingleViewHolder(view)
+            GoPayViewHolder(view)
         }
     }
 
@@ -50,24 +53,40 @@ class MultipleTypeAdapter(private val arrayList: ArrayList<Int>) :
         return arrayList.size
     }
 
+    @SuppressLint("ResourceAsColor")
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) === TYPE_SAVEDCARD) {
-            if (selectedPosition == position)
-                holder.itemView.setBackgroundResource(R.drawable.custom_bg)
-            else
-                holder.itemView.setBackgroundResource(R.drawable.custom_bg_unclick)
+            if (selectedPosition == position) {
+                 holder.itemView.setBackgroundResource(R.drawable.border_shadow)
+            }else
+              //  holder.itemView.outlineAmbientShadowColor = R.color.white
+
+            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
             (holder as SavedViewHolder)
             holder.itemView.setOnClickListener {
                 selectedPosition = position
                 notifyDataSetChanged()
             }
-        } else {
+        } else if(getItemViewType(position) === TYPE_SINGLE) {
 
             if (selectedPosition == position)
-                holder.itemView.setBackgroundResource(R.drawable.custom_bg)
+                holder.itemView.setBackgroundResource(R.drawable.border_shadow)
             else
-                holder.itemView.setBackgroundResource(R.drawable.custom_bg_unclick)
+                holder.itemView.setBackgroundResource(R.drawable.border_unclick)
             (holder as SingleViewHolder)
+            holder.itemView.setOnClickListener {
+                selectedPosition = position
+                notifyDataSetChanged()
+            }
+
+        }else{
+            if (selectedPosition == position)
+            holder.itemView.setBackgroundResource(R.drawable.border_gopay)
+
+            else
+              holder.itemView.setBackgroundResource(R.drawable.border_gopay)
+            (holder as GoPayViewHolder)
             holder.itemView.setOnClickListener {
                 selectedPosition = position
                 notifyDataSetChanged()
@@ -84,4 +103,12 @@ class MultipleTypeAdapter(private val arrayList: ArrayList<Int>) :
         RecyclerView.ViewHolder(itemView) {
 
     }
+    internal class GoPayViewHolder(itemView: View) :
+        RecyclerView.ViewHolder(itemView) {
+
+    }
+
+
+
+
 }

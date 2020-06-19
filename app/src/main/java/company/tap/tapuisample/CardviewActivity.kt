@@ -57,7 +57,7 @@ class CardviewActivity : AppCompatActivity() {
         val mainLayout = findViewById<TapChipGroup>(R.id.mainLayout)
         mainLayout.orientation = LinearLayout.HORIZONTAL
         val groupName = findViewById<TapTextView>(R.id.group_name)
-        groupName.text = getString(R.string.recent)
+        groupName.text = getString(R.string.select)
         val groupAction = findViewById<TapTextView>(R.id.group_action)
         groupAction.text = getString(R.string.edit)
         chipRecycler = findViewById(R.id.chip_recycler)
