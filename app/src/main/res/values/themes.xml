@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Uplift.Base" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
+        <!-- ... -->
+    </style>
+
+    <style name="Theme.Uplift" parent="Theme.Uplift.Base" />
+</resources>
