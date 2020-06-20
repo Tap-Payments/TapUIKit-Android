@@ -11,17 +11,17 @@
         android:theme="@style/AppTheme"
         android:hardwareAccelerated="true"
        >
-        <activity android:name=".SectionsTabLayout"></activity>
-        <activity android:name=".AmountItemActivity" />
-        <activity android:name=".CardviewActivity"/>
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activities.SectionsTabLayout"></activity>
+        <activity android:name=".activities.AmountItemActivity" />
+        <activity android:name=".activities.CardviewActivity"/>
+        <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

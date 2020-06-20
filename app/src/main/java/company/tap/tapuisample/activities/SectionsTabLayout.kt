@@ -1,16 +1,18 @@
-package company.tap.tapuisample
+package company.tap.tapuisample.activities
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.tapcardvalidator_android.CardBrand
-import company.tap.tapuilibrary.PaymentSectionItemType
 import company.tap.tapuilibrary.SectionTabItem
 import company.tap.tapuilibrary.views.TapSelectionTabLayout
+import company.tap.tapuisample.R
 
-
+/**
+ * Sample Activity to show how TableLayout functions .
+ *
+ * **/
 class SectionsTabLayout : AppCompatActivity() {
 
     lateinit var tabLayout: TapSelectionTabLayout
@@ -26,8 +28,18 @@ class SectionsTabLayout : AppCompatActivity() {
     private fun addCardsTab() {
         val items = ArrayList<SectionTabItem>()
         items.add(SectionTabItem(resources.getDrawable(R.drawable.visa), CardBrand.visa))
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.mastercard), CardBrand.masterCard))
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.bt_ic_amex), CardBrand.americanExpress))
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(R.drawable.mastercard),
+                CardBrand.masterCard
+            )
+        )
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(R.drawable.bt_ic_amex),
+                CardBrand.americanExpress
+            )
+        )
         tabLayout.addSection(items)
     }
 

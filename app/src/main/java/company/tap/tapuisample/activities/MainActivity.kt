@@ -1,4 +1,4 @@
-package company.tap.tapuisample
+package company.tap.tapuisample.activities
 
 
 import android.annotation.SuppressLint
@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity
 import company.tap.tapuilibrary.DialogConfigurations
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
+import company.tap.tapuisample.R
+import company.tap.tapuisample.fragments.BottomSheetDialog
 
 
 class MainActivity : AppCompatActivity(),
@@ -26,9 +28,13 @@ class MainActivity : AppCompatActivity(),
     }
 
     fun openBottomSheet(view: View) {
-        val modalBottomSheet = BottomSheetDialog()
+        val modalBottomSheet =
+            BottomSheetDialog()
         modalBottomSheet.arguments = getArguments()
-        modalBottomSheet.show(supportFragmentManager, BottomSheetDialog.TAG)
+        modalBottomSheet.show(
+            supportFragmentManager,
+            BottomSheetDialog.TAG
+        )
     }
 
     private fun getArguments(): Bundle {
@@ -64,4 +70,5 @@ class MainActivity : AppCompatActivity(),
     fun openSectionsTabLayout(view: View) {
         startActivity(Intent(this, SectionsTabLayout::class.java))
     }
+
 }

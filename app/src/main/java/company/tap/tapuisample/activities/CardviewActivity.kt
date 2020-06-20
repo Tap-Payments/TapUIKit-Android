@@ -1,8 +1,9 @@
-package company.tap.tapuisample
+package company.tap.tapuisample.activities
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -10,18 +11,41 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapTextView
+import company.tap.tapuisample.CurrencyModel
+import company.tap.tapuisample.R
+import company.tap.tapuisample.adapters.CurrencyAdapter
+import company.tap.tapuisample.adapters.MultipleTypeAdapter
 import kotlinx.android.synthetic.main.activity_cardview.*
+
+/***
+ * Sample Activity to show how CardView will be accept different view .
+ * and how it will glow on selecting the cardview.
+ * */
 
 class CardviewActivity : AppCompatActivity() {
     private lateinit var chipRecycler: RecyclerView
-    val arrayList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
+    private val arrayList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
+    lateinit var currencyList: ArrayList<CurrencyModel>
 
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cardview)
         setUpSwitch()
-        setupTapCardChip()
+        setupCardChip()
+        setupCurrencyChips()
+    }
+
+    //Setup for currency chips
+    private fun setupCurrencyChips() {
+        fillData()
+        val currencyLayout = findViewById<TapChipGroup>(R.id.currencyLayout)
+        val header_view = currencyLayout.findViewById<LinearLayout>(R.id.header_view)
+        header_view.visibility = View.GONE
+        chipRecycler = currencyLayout.findViewById(R.id.chip_recycler)
+        chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
+        chipRecycler.adapter =
+            CurrencyAdapter(currencyList)
     }
 
     private fun setUpSwitch() {
@@ -51,9 +75,10 @@ class CardviewActivity : AppCompatActivity() {
         }
     }
 
+    //Set up for card chips
     @RequiresApi(Build.VERSION_CODES.P)
     @SuppressLint("RestrictedApi", "ResourceAsColor")
-    private fun setupTapCardChip() {
+    private fun setupCardChip() {
         val mainLayout = findViewById<TapChipGroup>(R.id.mainLayout)
         mainLayout.orientation = LinearLayout.HORIZONTAL
         val groupName = findViewById<TapTextView>(R.id.group_name)
@@ -63,8 +88,52 @@ class CardviewActivity : AppCompatActivity() {
         chipRecycler = findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         //  chipRecycler.adapter = RecyclerAdapter(arrayList)
-        chipRecycler.adapter = MultipleTypeAdapter(arrayList)
+        chipRecycler.adapter =
+            MultipleTypeAdapter(arrayList)
 
     }
 
+    //Filling dummy data for currency chips
+    private fun fillData() {
+        currencyList = ArrayList()
+
+        //adding some dummy data to the list
+        currencyList.add(
+            CurrencyModel(
+                "KWD",
+                "https://www.countryflags.io/kw/flat/24.png"
+            )
+        )
+        currencyList.add(
+            CurrencyModel(
+                "SAR",
+                "https://www.countryflags.io/sa/flat/24.png"
+            )
+        )
+        currencyList.add(
+            CurrencyModel(
+                "BHD",
+                "https://www.countryflags.io/bh/flat/24.png"
+            )
+        )
+        currencyList.add(
+            CurrencyModel(
+                "QAR",
+                "https://www.countryflags.io/qa/flat/24.png"
+            )
+        )
+        currencyList.add(
+            CurrencyModel(
+                "KWD",
+                "https://www.countryflags.io/kw/flat/24.png"
+            )
+        )
+        currencyList.add(
+            CurrencyModel(
+                "SAR",
+                "https://www.countryflags.io/sa/flat/24.png"
+            )
+        )
+
+    }
 }

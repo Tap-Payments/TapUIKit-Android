@@ -1,4 +1,4 @@
-package company.tap.tapuisample
+package company.tap.tapuisample.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import android.os.Handler
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import company.tap.tapuisample.R
 
 /**
  * Created by AhlaamK on 4/29/20.

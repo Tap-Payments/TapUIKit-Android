@@ -1,4 +1,4 @@
-package company.tap.tapuisample
+package company.tap.tapuisample.adapters
 
 
 import android.annotation.SuppressLint
@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.tapuisample.R
 
 
 /**
@@ -29,13 +30,19 @@ class MultipleTypeAdapter(private val arrayList: ArrayList<Int>) :
         return if (viewType === TYPE_SAVEDCARD) {
             view =
                 LayoutInflater.from(parent.context).inflate(R.layout.item_saved_card, parent, false)
-            SavedViewHolder(view)
+            SavedViewHolder(
+                view
+            )
         } else if (viewType === TYPE_SINGLE) {
             view = LayoutInflater.from(parent.context).inflate(R.layout.item_knet, parent, false)
-            SingleViewHolder(view)
+            SingleViewHolder(
+                view
+            )
         } else {
             view = LayoutInflater.from(parent.context).inflate(R.layout.item_gopay, parent, false)
-            GoPayViewHolder(view)
+            GoPayViewHolder(
+                view
+            )
         }
     }
 
@@ -58,17 +65,15 @@ class MultipleTypeAdapter(private val arrayList: ArrayList<Int>) :
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (getItemViewType(position) === TYPE_SAVEDCARD) {
             if (selectedPosition == position) {
-                 holder.itemView.setBackgroundResource(R.drawable.border_shadow)
-            }else
-              //  holder.itemView.outlineAmbientShadowColor = R.color.white
-
-            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
+                holder.itemView.setBackgroundResource(R.drawable.border_shadow)
+            } else
+                holder.itemView.setBackgroundResource(R.drawable.border_unclick)
             (holder as SavedViewHolder)
             holder.itemView.setOnClickListener {
                 selectedPosition = position
                 notifyDataSetChanged()
             }
-        } else if(getItemViewType(position) === TYPE_SINGLE) {
+        } else if (getItemViewType(position) === TYPE_SINGLE) {
 
             if (selectedPosition == position)
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow)
@@ -80,12 +85,11 @@ class MultipleTypeAdapter(private val arrayList: ArrayList<Int>) :
                 notifyDataSetChanged()
             }
 
-        }else{
+        } else {
             if (selectedPosition == position)
-            holder.itemView.setBackgroundResource(R.drawable.border_gopay)
-
+                holder.itemView.setBackgroundResource(R.drawable.border_gopay)
             else
-              holder.itemView.setBackgroundResource(R.drawable.border_gopay)
+                holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
             (holder as GoPayViewHolder)
             holder.itemView.setOnClickListener {
                 selectedPosition = position
@@ -103,12 +107,10 @@ class MultipleTypeAdapter(private val arrayList: ArrayList<Int>) :
         RecyclerView.ViewHolder(itemView) {
 
     }
+
     internal class GoPayViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
 
     }
-
-
-
 
 }

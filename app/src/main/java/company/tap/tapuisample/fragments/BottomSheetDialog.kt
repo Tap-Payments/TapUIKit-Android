@@ -1,4 +1,4 @@
-package company.tap.tapuisample
+package company.tap.tapuisample.fragments
 
 
 import android.annotation.SuppressLint
@@ -23,6 +23,8 @@ import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
+import company.tap.tapuisample.R
+import company.tap.tapuisample.adapters.MultipleTypeAdapter
 import java.io.InputStream
 import java.net.URL
 
@@ -168,7 +170,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         groupAction.text = getString(R.string.edit)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter = MultipleTypeAdapter(arrayList)
+        chipRecycler.adapter =
+            MultipleTypeAdapter(arrayList)
         groupAction.setOnClickListener {
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
         }

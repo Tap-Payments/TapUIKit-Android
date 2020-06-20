@@ -4,42 +4,43 @@
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#0200d300" />
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#0500d300" />
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#1000d300" />
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#1500d300" />
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#2000d300" />
+
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#2500d300" />
+            <corners android:radius="8dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
             <corners android:radius="8dp" />
         </shape>
     </item>
