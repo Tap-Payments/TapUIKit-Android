@@ -24,12 +24,14 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 
     private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
+    private val tabsView = ArrayList<LinearLayout>()
     private val tabItems = ArrayList<ImageView>()
 
     init {
         inflate(context, R.layout.tap_selection_tablayout, this)
         tabLayout = findViewById(R.id.tab_layout)
         tabLayout.setSelectedTabIndicatorColor(Color.BLUE)
+        setSelectionBehaviour()
     }
 
     fun addSection(items: ArrayList<SectionTabItem>) {
@@ -40,6 +42,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         for (item in items) {
             sectionLayout.addView(getSectionItem(item))
         }
+        tabsView.add(sectionLayout)
         val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
         tabLayout.addTab(sectionTab)
     }
@@ -84,7 +87,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         for (items in itemsCount) {
             count += items
         }
-        return (Resources.getSystem().displayMetrics.widthPixels - 130) / count
+        return (Resources.getSystem().displayMetrics.widthPixels - 140) / count
     }
 
 //    private fun createDynamicSection(): LinearLayout {
@@ -120,19 +123,25 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 //        tabLayout.addTab(tabMobile)
 //    }
 //
-//    private fun setSelectionBehaviour() {
-//        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-//            override fun onTabReselected(tab: TabLayout.Tab?) {}
-//
-//            override fun onTabUnselected(tab: TabLayout.Tab?) {
-//                tab?.customView?.alpha = 0.7f
-//            }
-//
-//            override fun onTabSelected(tab: TabLayout.Tab?) {
-//                tab?.customView?.alpha = 1f
-//            }
-//        })
-//    }
+    private fun setSelectionBehaviour() {
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                fadeOtherTabs(tab?.position)
+            }
+        })
+    }
+
+    private fun fadeOtherTabs(position: Int?) {
+        tabsView.forEachIndexed { index, view ->
+            if (index == position)
+                view.alpha = 1f
+            else
+                view.alpha = 0.7f
+        }
+    }
+
 //
 //    fun selectItem(item: PaymentSectionItemType) {
 //        changeClickableState(false)
