@@ -13,7 +13,7 @@ import company.tap.tapuilibrary.atoms.TapTextView
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class TapHeader(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+ open class TapHeader(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 
     var businessIcon: TapImageView
     var businessName: TapTextView

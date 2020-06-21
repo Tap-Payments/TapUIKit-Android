@@ -16,7 +16,6 @@ import company.tap.tapuilibrary.DialogConfigurations
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
 import company.tap.tapuisample.R
-import company.tap.tapuisample.adapters.context
 import company.tap.tapuisample.fragments.BottomSheetDialog
 
 
@@ -61,7 +60,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     fun openTapChip(view: View) {
-        startActivity(Intent(this, CardviewActivity::class.java))
+        startActivity(Intent(this, TapChipsActivity::class.java))
     }
 
     override fun didClickItems() {

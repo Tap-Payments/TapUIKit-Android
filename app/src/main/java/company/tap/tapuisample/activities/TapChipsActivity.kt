@@ -21,10 +21,10 @@ import kotlinx.android.synthetic.main.activity_cardview.*
  *
  * */
 
-class CardviewActivity : AppCompatActivity() {
+class TapChipsActivity : AppCompatActivity() {
     private lateinit var chipRecycler: RecyclerView
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
-    lateinit var currencyList: ArrayList<CurrencyModel>
+    private lateinit var currencyList: ArrayList<CurrencyModel>
 
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +48,7 @@ class CardviewActivity : AppCompatActivity() {
     }
 
     private fun setUpSwitch() {
-        hideKnet_Switch.setOnCheckedChangeListener { _, isChecked ->
+        hideKnetSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 paymentsList.add(1)
                 paymentsList.add(3)
