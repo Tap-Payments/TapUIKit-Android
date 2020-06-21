@@ -27,26 +27,16 @@ class SectionsTabLayout : AppCompatActivity() {
 
     private fun addCardsTab() {
         val items = ArrayList<SectionTabItem>()
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.visa), CardBrand.visa))
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(R.drawable.mastercard),
-                CardBrand.masterCard
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(R.drawable.bt_ic_amex),
-                CardBrand.americanExpress
-            )
-        )
+        items.add(SectionTabItem(resources.getDrawable(R.drawable.visa), resources.getDrawable(R.drawable.visa_gray), CardBrand.visa))
+        items.add(SectionTabItem(resources.getDrawable(R.drawable.mastercard), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard))
+        items.add(SectionTabItem(resources.getDrawable(R.drawable.amex), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress))
         tabLayout.addSection(items)
     }
 
     private fun addMobileTab() {
         val items = ArrayList<SectionTabItem>()
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.zain), CardBrand.zain))
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.ooredoo), CardBrand.stcPay))
+        items.add(SectionTabItem(resources.getDrawable(R.drawable.zain), resources.getDrawable(R.drawable.zain_gray), CardBrand.zain))
+        items.add(SectionTabItem(resources.getDrawable(R.drawable.ooredoo), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.stcPay))
         tabLayout.addSection(items)
     }
 

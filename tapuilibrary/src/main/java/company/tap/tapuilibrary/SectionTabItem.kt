@@ -10,6 +10,7 @@ import company.tap.tapcardvalidator_android.CardBrand
  *
  */
 data class SectionTabItem(
-    val image: Drawable,
+    val selectedImage: Drawable,
+    val unSelectedImage: Drawable,
     val type: CardBrand
 )
