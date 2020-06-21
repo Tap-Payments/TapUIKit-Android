@@ -10,21 +10,27 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.tap.tapfontskit.FontChanger
+import com.tap.tapfontskit.enums.TapFont
 import company.tap.tapuilibrary.DialogConfigurations
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
 import company.tap.tapuisample.R
+import company.tap.tapuisample.adapters.context
 import company.tap.tapuisample.fragments.BottomSheetDialog
 
 
 class MainActivity : AppCompatActivity(),
     TapBottomDialogInterface, TapAmountSectionInterface {
-
+    lateinit var fontChanger: FontChanger
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
+        fontChanger.replaceFonts((findViewById(android.R.id.content)))
+
     }
 
     fun openBottomSheet(view: View) {
