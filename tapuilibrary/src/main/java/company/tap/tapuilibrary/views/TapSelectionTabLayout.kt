@@ -42,6 +42,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         for (item in items) {
             sectionLayout.addView(getSectionItem(item))
         }
+        if (tabsView.size != 0)
+            sectionLayout.alpha = 0.7f
         tabsView.add(sectionLayout)
         val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
         tabLayout.addTab(sectionTab)
@@ -90,6 +92,25 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         return (Resources.getSystem().displayMetrics.widthPixels - 140) / count
     }
 
+    private fun setSelectionBehaviour() {
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
+            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                fadeOtherTabs(tab?.position)
+            }
+        })
+    }
+
+    private fun fadeOtherTabs(position: Int?) {
+        tabsView.forEachIndexed { index, view ->
+            if (index == position)
+                view.alpha = 1f
+            else
+                view.alpha = 0.7f
+        }
+    }
+
 //    private fun createDynamicSection(): LinearLayout {
 //        linearLayout.orientation = HORIZONTAL
 //        val params = LayoutParams(
@@ -123,24 +144,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 //        tabLayout.addTab(tabMobile)
 //    }
 //
-    private fun setSelectionBehaviour() {
-        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(tab: TabLayout.Tab?) {}
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-            override fun onTabSelected(tab: TabLayout.Tab?) {
-                fadeOtherTabs(tab?.position)
-            }
-        })
-    }
 
-    private fun fadeOtherTabs(position: Int?) {
-        tabsView.forEachIndexed { index, view ->
-            if (index == position)
-                view.alpha = 1f
-            else
-                view.alpha = 0.7f
-        }
-    }
 
 //
 //    fun selectItem(item: PaymentSectionItemType) {
