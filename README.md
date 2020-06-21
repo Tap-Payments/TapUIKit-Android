@@ -81,3 +81,9 @@ TapDragIndicator   | <company.tap.tapuilibrary.atoms.TapDragIndicator |     |
 
 ### Molecules
 Molecules are relatively simple groups of UI elements functioning together as a unit. For example, a form label, search  input, and button can join together to create a search form molecule.
+
+Molecule Name    |                  Usage                       | view|
+------------- | -------------------------------------------- | ----|
+TapHeader   |  <company.tap.tapuilibrary.views.TapHeader |     |
+TapItemsView     | <company.tap.tapuilibrary.views.TapItemsView    |     |
+TapAmountSectionView     |  <company.tap.tapuilibrary.views.TapAmountSectionView |     |
