@@ -17,6 +17,9 @@ import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Transition
+import androidx.transition.TransitionInflater
+import androidx.transition.TransitionManager
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
@@ -56,6 +59,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private var tapAmountSectionInterface: TapAmountSectionInterface? = null
     private lateinit var chipRecycler: RecyclerView
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
+    private var isFragmentAdded = false
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -130,7 +134,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private fun initializeViews(view: View) {
         headerViewInit(view)
         amountViewInit(view)
-        amountDesrpRowInit(view)
+       // amountDesrpRowInit(view)
         setupChip(view)
 
     }
@@ -172,8 +176,42 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         selectedCurrency = view.findViewById(R.id.textview_selectedcurrency)
         itemCount = view.findViewById(R.id.textView_itemcount)
         itemCount.text = "10 ITEMS"
+        selectedCurrency.text = "SR1000,000.000"
+        currentCurrency.text = "KD1000,000.000"
+        val currencyViewFragment = CurrencyViewFragment()
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
+            if (isFragmentAdded) {
+                bottomSheetLayout?.let { layout ->
+                    val removeTransition: Transition =
+                        TransitionInflater.from(context)
+                            .inflateTransition(R.transition.remove_fragment)
+                    TransitionManager.beginDelayedTransition(layout, removeTransition)
+                }
+
+                childFragmentManager
+                    .beginTransaction()
+                    .remove(currencyViewFragment)
+                    .commit()
+
+                itemCount.text = "10 ITEMS"
+
+            } else {
+                bottomSheetLayout?.let { layout ->
+                    layout.post {
+                        val addTransition: Transition =
+                            TransitionInflater.from(context)
+                                .inflateTransition(R.transition.add_fragment)
+                        TransitionManager.beginDelayedTransition(layout, addTransition)
+                    }
+                }
+                childFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.fragment_container, currencyViewFragment)
+                    .commit()
+                itemCount.text = "CLOSE"
+            }
+            isFragmentAdded = !isFragmentAdded
         }
 
     }
@@ -185,8 +223,6 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         totalAmount = view.findViewById(R.id.total_amount)
         totalQuantity = view.findViewById(R.id.total_quantity)
         discount = view.findViewById(R.id.discount_text)
-        selectedCurrency.text = "SR1000,000.000"
-        currentCurrency.text = "KD1000,000.000"
         itemName.text = "ITEM TITLE"
         itemAmount.text = "KD000,000.000"
         descText.text = "Show Description"

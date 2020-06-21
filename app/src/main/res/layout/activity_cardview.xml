@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_basic_4dp"
-        android:background="@color/fill_card"
+        android:background="@color/card_background"
         android:orientation="horizontal">
 
     </company.tap.tapuilibrary.atoms.TapChipGroup>
@@ -43,7 +43,6 @@
 
     <company.tap.tapuilibrary.atoms.TapTextView
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_basic_8dp"
         android:text="Currency Chips Example" />
@@ -52,7 +51,7 @@
         android:id="@+id/currencyLayout"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:background="@color/fill_card"
+        android:background="@color/card_background"
         android:orientation="horizontal" />
 
 </LinearLayout>

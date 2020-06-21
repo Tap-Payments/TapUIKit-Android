@@ -18,13 +18,12 @@ import company.tap.tapuisample.adapters.MultipleTypeAdapter
 import kotlinx.android.synthetic.main.activity_cardview.*
 
 /***
- * Sample Activity to show how CardView will be accept different view .
- * and how it will glow on selecting the cardview.
+ *
  * */
 
 class CardviewActivity : AppCompatActivity() {
     private lateinit var chipRecycler: RecyclerView
-    private val arrayList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
+    private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     lateinit var currencyList: ArrayList<CurrencyModel>
 
     @RequiresApi(Build.VERSION_CODES.P)
@@ -51,25 +50,25 @@ class CardviewActivity : AppCompatActivity() {
     private fun setUpSwitch() {
         hideKnet_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                arrayList.add(1)
-                arrayList.add(3)
-                arrayList.add(5)
+                paymentsList.add(1)
+                paymentsList.add(3)
+                paymentsList.add(5)
                 chipRecycler.adapter?.notifyDataSetChanged()
             } else {
-                arrayList.remove(1)
-                arrayList.remove(3)
-                arrayList.remove(5)
+                paymentsList.remove(1)
+                paymentsList.remove(3)
+                paymentsList.remove(5)
                 chipRecycler.adapter?.notifyDataSetChanged()
             }
         }
         hideSavedCard_Switch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                arrayList.add(4)
-                arrayList.add(6)
+                paymentsList.add(4)
+                paymentsList.add(6)
                 chipRecycler.adapter?.notifyDataSetChanged()
             } else {
-                arrayList.remove(4)
-                arrayList.remove(6)
+                paymentsList.remove(4)
+                paymentsList.remove(6)
                 chipRecycler.adapter?.notifyDataSetChanged()
             }
         }
@@ -89,7 +88,7 @@ class CardviewActivity : AppCompatActivity() {
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         //  chipRecycler.adapter = RecyclerAdapter(arrayList)
         chipRecycler.adapter =
-            MultipleTypeAdapter(arrayList)
+            MultipleTypeAdapter(paymentsList)
 
     }
 
