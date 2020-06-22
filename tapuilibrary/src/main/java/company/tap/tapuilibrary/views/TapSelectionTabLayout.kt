@@ -128,6 +128,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     fun resetBehaviour() {
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(indicatorColor)
+        tabItems.forEach {
+            it.view?.setImageDrawable(it.selectedImage)
+        }
     }
 
     private fun changeClickableState(isClickable: Boolean) {
