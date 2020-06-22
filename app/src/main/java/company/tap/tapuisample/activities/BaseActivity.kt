@@ -15,7 +15,6 @@ All rights reserved.
 open class BaseActivity: LocaleAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         initAppLocale(R.raw.lang)
         setLocale(Locale("en"))
     }

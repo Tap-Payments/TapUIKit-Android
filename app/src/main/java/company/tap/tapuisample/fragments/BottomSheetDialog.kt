@@ -105,6 +105,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         }
 
         override fun doInBackground(vararg urls: String): Bitmap? {
+            if(urls[0]==null){return null }else{
             val urlOfImage = urls[0]
             var logo: Bitmap? = null
             try {
@@ -115,6 +116,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
             }
             return logo
         }
+            }
     }
 
     override fun onViewCreated(
