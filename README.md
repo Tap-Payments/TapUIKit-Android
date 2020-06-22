@@ -86,4 +86,5 @@ Molecule Name    |                  Usage                       | view|
 ------------- | -------------------------------------------- | ----|
 TapHeader   |  <company.tap.tapuilibrary.views.TapHeader |     |
 TapItemsView     | <company.tap.tapuilibrary.views.TapItemsView    |     |
-TapAmountSectionView     |  <company.tap.tapuilibrary.views.TapAmountSectionView |     |
+TapAmountSectionView |  <company.tap.tapuilibrary.views.TapAmountSectionView |     |
+TapSelectionTabLayout| <company.tap.tapuilibrary.views.TapSelectionTabLayout|      |

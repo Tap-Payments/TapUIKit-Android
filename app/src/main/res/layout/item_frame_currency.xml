@@ -3,24 +3,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<company.tap.tapuilibrary.atoms.TapChipGroup
-    android:id="@+id/currencyLayout1"
-    android:layout_width="match_parent"
-    android:layout_height="75dp"
-    android:background="@color/chip_background"
-    android:orientation="horizontal" >
 
-</company.tap.tapuilibrary.atoms.TapChipGroup>
-   <company.tap.tapuilibrary.atoms.TapSeparatorView
+    <company.tap.tapuilibrary.atoms.TapChipGroup
+        android:id="@+id/currencyLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:background="@color/chip_background"
+        android:orientation="horizontal">
+
+    </company.tap.tapuilibrary.atoms.TapChipGroup>
+
+    <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="wrap_content"
         android:layout_height="1dp"
-        android:background="@color/view_color"
-        />
+        android:background="@color/view_color" />
 
-    <company.tap.tapuilibrary.views.TapItemsView
-        android:id="@+id/amount_item_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/items_recylerview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"/>
+        android:background="@color/white"
+        android:scrollbars="vertical"
+
+        />
+
 </LinearLayout>
 

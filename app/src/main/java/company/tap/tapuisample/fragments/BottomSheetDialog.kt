@@ -123,7 +123,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         currentCurrency = view.findViewById(R.id.textView_currentcurrency)
         selectedCurrency = view.findViewById(R.id.textview_selectedcurrency)
         itemCount = view.findViewById(R.id.textView_itemcount)
-        itemCount.text = "1 ITEM"
+        itemCount.text = "22 ITEMS"
         selectedCurrency.text = "SR1000,000.000"
         currentCurrency.text = "KD1000,000.000"
         val currencyViewFragment = CurrencyViewFragment()
@@ -142,7 +142,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                     .commit()
                 fragment_container.visibility = View.VISIBLE
 
-                itemCount.text = "1 ITEM"
+                itemCount.text = "22 ITEMS"
                 currentCurrency.visibility= View.VISIBLE
 
             } else {

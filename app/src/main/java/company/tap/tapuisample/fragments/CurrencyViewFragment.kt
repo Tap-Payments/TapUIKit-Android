@@ -1,10 +1,11 @@
 package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
-import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
+import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
@@ -12,10 +13,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.views.TapItemsView
 import company.tap.tapuisample.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CurrencyAdapter
+import company.tap.tapuisample.adapters.ItemAdapter
 
 
 /**
@@ -27,12 +28,10 @@ All rights reserved.
 class CurrencyViewFragment : Fragment() {
     private lateinit var chipRecycler: RecyclerView
     lateinit var currencyList: ArrayList<CurrencyModel>
-    private lateinit var itemName: TapTextView
-    private lateinit var itemAmount: TapTextView
-    private lateinit var descText: TapTextView
-    private lateinit var totalAmount: TapTextView
-    private lateinit var totalQuantity: TapTextView
-    private lateinit var discount: TapTextView
+
+    private lateinit var itemsRecycler: RecyclerView
+    private val itemList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22)
+    @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -41,7 +40,7 @@ class CurrencyViewFragment : Fragment() {
         fillData()
         // Add the following lines to create RecyclerView
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
-        val tapItemsGroup = view.findViewById<TapItemsView>(R.id.amount_item_view)
+     //   val tapItemsGroup = view.findViewById<TapItemsView>(R.id.amount_item_view)
         currencyGroup.orientation = LinearLayout.HORIZONTAL
         val groupName = currencyGroup.findViewById<TapTextView>(R.id.group_name)
         groupName.visibility=View.GONE
@@ -52,7 +51,25 @@ class CurrencyViewFragment : Fragment() {
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter =
             CurrencyAdapter(currencyList)
-        amountDescRowInit(tapItemsGroup)
+        itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
+        //chipRecycler1.setHasFixedSize(true)
+        itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        itemsRecycler.adapter =
+            ItemAdapter(itemList)
+        itemsRecycler.setOnTouchListener(OnTouchListener { v, event ->
+            val action = event.action
+            when (action) {
+                MotionEvent.ACTION_DOWN ->                         // Disallow NestedScrollView to intercept touch events.
+                    v.parent.requestDisallowInterceptTouchEvent(true)
+                MotionEvent.ACTION_UP ->                         // Allow NestedScrollView to intercept touch events.
+                    v.parent.requestDisallowInterceptTouchEvent(false)
+            }
+
+            // Handle RecyclerView touch events.
+            v.onTouchEvent(event)
+            true
+        })
+
         return view
     }
 
@@ -97,25 +114,6 @@ class CurrencyViewFragment : Fragment() {
                 "https://www.countryflags.io/sa/flat/24.png"
             )
         )
-
-    }
-
-    @SuppressLint("SetTextI18n")
-    private fun amountDescRowInit(view: View){
-        itemName = view.findViewById(R.id.item_title)
-        itemAmount = view.findViewById(R.id.item_amount)
-        descText = view.findViewById(R.id.show_description)
-        totalAmount = view.findViewById(R.id.total_amount)
-        totalQuantity = view.findViewById(R.id.total_quantity)
-        discount = view.findViewById(R.id.discount_text)
-        itemName.text = "ITEM TITLE"
-        itemAmount.text = "KD000,000.000"
-        descText.text = "Show Description"
-        totalAmount.text = "KD000,000.000"
-        totalQuantity.text = "1"
-        discount.text = "10% Discount"
-        totalAmount.paintFlags = totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-
 
     }
 
