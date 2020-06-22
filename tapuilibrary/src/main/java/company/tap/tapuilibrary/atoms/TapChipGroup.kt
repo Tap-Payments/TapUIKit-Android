@@ -12,6 +12,9 @@ import company.tap.tapuilibrary.R
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
+/**
+ * A ChipGroup is used to hold multiple Chips. ChipGroup also supports a multiple-exclusion scope for a set of chips
+ **/
 open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 
     var groupName: TapTextView

@@ -12,6 +12,10 @@ import company.tap.thememanager.theme.TextViewTheme
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
+
+/**
+ * TapTextView is user interface element that displays text to the user
+ *  */
 open class TapTextView(context: Context, attributeSet: AttributeSet?) :
     AppCompatTextView(context, attributeSet),
     TapView<TextViewTheme> {

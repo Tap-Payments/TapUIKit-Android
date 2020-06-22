@@ -14,6 +14,9 @@ import company.tap.thememanager.theme.ChipTheme
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+/** TapChip which uses default properties of MaterialCardView.
+ *
+ * */
 open class TapChip (context: Context, attributeSet: AttributeSet?) : MaterialCardView(context, attributeSet),
     TapView<ChipTheme> {
     lateinit var view:View
