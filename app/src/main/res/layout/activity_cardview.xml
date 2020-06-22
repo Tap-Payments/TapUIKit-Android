@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_basic_4dp"
-        android:background="@color/card_background"
+        android:background="@color/fill_card"
         android:orientation="horizontal">
 
     </company.tap.tapuilibrary.atoms.TapChipGroup>
@@ -30,7 +30,7 @@
             android:text="Knet" />
 
         <company.tap.tapuilibrary.atoms.TapSwitch
-            android:id="@+id/hideSavedCard_Switch"
+            android:id="@+id/hideSavedcardSwitch"
             android:layout_width="match_parent"
             android:layout_height="6dp"
             android:layout_marginLeft="@dimen/margin_basic_20dp"
@@ -51,7 +51,7 @@
         android:id="@+id/currencyLayout"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:background="@color/card_background"
+        android:background="@color/fill_card"
         android:orientation="horizontal" />
 
 </LinearLayout>

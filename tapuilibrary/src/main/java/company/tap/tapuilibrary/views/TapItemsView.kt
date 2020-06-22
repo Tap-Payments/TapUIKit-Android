@@ -11,7 +11,10 @@ import company.tap.tapuilibrary.R
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class TapItemsView(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+/***
+ * TapItemsView  is a molecule for setting Amount, Description and Quantity.
+ */
+class TapItemsView(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     init {
         inflate(context, R.layout.tap_items_view, this)
     }

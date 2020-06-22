@@ -18,7 +18,7 @@ import company.tap.tapuisample.adapters.MultipleTypeAdapter
 import kotlinx.android.synthetic.main.activity_cardview.*
 
 /***
- *
+ * A sample Activity to show Chips .
  * */
 
 class TapChipsActivity : AppCompatActivity() {
@@ -61,7 +61,7 @@ class TapChipsActivity : AppCompatActivity() {
                 chipRecycler.adapter?.notifyDataSetChanged()
             }
         }
-        hideSavedCard_Switch.setOnCheckedChangeListener { _, isChecked ->
+        hideSavedcardSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 paymentsList.add(4)
                 paymentsList.add(6)

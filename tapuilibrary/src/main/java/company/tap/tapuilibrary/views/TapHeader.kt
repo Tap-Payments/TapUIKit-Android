@@ -13,11 +13,17 @@ import company.tap.tapuilibrary.atoms.TapTextView
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
- open class TapHeader(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 
-    var businessIcon: TapImageView
-    var businessName: TapTextView
-    var paymentFor: TapTextView
+/**
+ * TapHeader is a molecule for setting Business Name and Business Logo for Merchant
+ * **/
+class TapHeader(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+    /**
+     * @param businessIcon is for setting the business Logo
+     * */
+    private var businessIcon: TapImageView
+    private var businessName: TapTextView
+    private var paymentFor: TapTextView
 
     init {
         inflate(context, R.layout.tap_main_header, this)
