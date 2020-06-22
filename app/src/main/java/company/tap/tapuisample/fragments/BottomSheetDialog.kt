@@ -3,15 +3,10 @@ package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Paint
-import android.os.AsyncTask
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
@@ -20,10 +15,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
-import com.tap.tapfontskit.FontChanger
-import com.tap.tapfontskit.enums.TapFont
-import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
-import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapImageView
@@ -31,10 +22,9 @@ import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuisample.R
+import company.tap.tapuisample.TapAsyncUtil
 import company.tap.tapuisample.adapters.MultipleTypeAdapter
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import java.io.InputStream
-import java.net.URL
 
 
 /**
@@ -77,47 +67,6 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     }
 
-    open class DownLoadImageTask(imageView: ImageView, textView: TapTextView) :
-        AsyncTask<String, Void, Bitmap>() {
-        private var imageView: ImageView
-        private var textView: TapTextView
-
-
-        override fun onPreExecute() {
-            super.onPreExecute()
-            textView.visibility = View.VISIBLE
-            imageView.visibility = View.GONE
-        }
-
-        override fun onPostExecute(result: Bitmap) {
-            if (result != null) {
-                imageView.setImageBitmap(result)
-                textView.visibility = View.GONE
-                imageView.visibility = View.VISIBLE
-            }
-
-        }
-
-        init {
-            this.imageView = imageView
-            this.textView = textView
-
-        }
-
-        override fun doInBackground(vararg urls: String): Bitmap? {
-            if(urls[0]==null){return null }else{
-            val urlOfImage = urls[0]
-            var logo: Bitmap? = null
-            try {
-                val `is`: InputStream = URL(urlOfImage).openStream()
-                logo = BitmapFactory.decodeStream(`is`)
-            } catch (e: Exception) { // Catch the download exception
-                e.printStackTrace()
-            }
-            return logo
-        }
-            }
-    }
 
     override fun onViewCreated(
         view: View,
@@ -151,8 +100,9 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
         }
     }
+
     @SuppressLint("SetTextI18n")
-    private fun headerViewInit(view: View){
+    private fun headerViewInit(view: View) {
         businessName = view.findViewById(R.id.business_name)
         businessFor = view.findViewById(R.id.payment_for)
         businessIcon = view.findViewById(R.id.business_icon)
@@ -162,17 +112,18 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         businessInitial = businessName.text[0].toString()
         businessPlaceholder.text = businessInitial
         businessPlaceholder.visibility = View.VISIBLE
-        DownLoadImageTask(
+        TapAsyncUtil.DownLoadImageTask(
             businessIcon,
             businessPlaceholder
         ).execute("https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
     }
+
     @SuppressLint("SetTextI18n")
-    private fun amountViewInit(view: View){
+    private fun amountViewInit(view: View) {
         currentCurrency = view.findViewById(R.id.textView_currentcurrency)
         selectedCurrency = view.findViewById(R.id.textview_selectedcurrency)
         itemCount = view.findViewById(R.id.textView_itemcount)
-        itemCount.text = "10 ITEMS"
+        itemCount.text = "1 ITEM"
         selectedCurrency.text = "SR1000,000.000"
         currentCurrency.text = "KD1000,000.000"
         val currencyViewFragment = CurrencyViewFragment()
@@ -191,7 +142,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                     .commit()
                 fragment_container.visibility = View.VISIBLE
 
-                itemCount.text = "10 ITEMS"
+                itemCount.text = "1 ITEM"
+                currentCurrency.visibility= View.VISIBLE
 
             } else {
                 bottomSheetLayout?.let { layout ->
@@ -205,14 +157,16 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                 fragment_container.visibility = View.GONE
                 childFragmentManager
                     .beginTransaction()
-                    .add(R.id.fragment_container1,currencyViewFragment)
+                    .add(R.id.fragment_container1, currencyViewFragment)
                     .commit()
                 itemCount.text = "CLOSE"
+                currentCurrency.visibility= View.INVISIBLE
             }
             isFragmentAdded = !isFragmentAdded
         }
 
     }
+
     companion object {
         const val TAG = "ModalBottomSheet"
     }
