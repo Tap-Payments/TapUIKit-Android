@@ -36,18 +36,18 @@ class SectionsTabLayout : AppCompatActivity() {
     private fun addMobileTab() {
         val items = ArrayList<SectionTabItem>()
         items.add(SectionTabItem(resources.getDrawable(R.drawable.zain), resources.getDrawable(R.drawable.zain_gray), CardBrand.zain))
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.ooredoo), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.stcPay))
+        items.add(SectionTabItem(resources.getDrawable(R.drawable.ooredoo), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo))
         tabLayout.addSection(items)
     }
 
     fun selectTab(view: View) {
         var alert: AlertDialog? = null
-        val items = arrayOf("VISA", "MASTERCARD", "AMEX", "ZAIN", "OOREDOO")
+        val items = arrayOf("VISA", "MASTERCARD", "AMEX", "Zain PAY", "Ooredoo PAY")
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(true)
         builder.setTitle("Select Item")
         builder.setItems(items) { _, position ->
-//            tabLayout.selectItem(PaymentSectionItemType.valueOf(items[position]))
+            tabLayout.selectTab(CardBrand.fromString(items[position]))
             alert?.hide()
         }
         alert = builder.create()
@@ -55,7 +55,7 @@ class SectionsTabLayout : AppCompatActivity() {
     }
 
     fun resetSelection(view: View) {
-
+        tabLayout.resetBehaviour()
     }
 
 }

@@ -5,10 +5,12 @@ import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
 import android.util.AttributeSet
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.view.doOnLayout
 import com.google.android.material.tabs.TabLayout
+import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.SectionTabItem
 import company.tap.tapuilibrary.atoms.TapImageView
@@ -22,15 +24,17 @@ import company.tap.tapuilibrary.atoms.TapImageView
 class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
 
+    private var indicatorColor = Color.parseColor("#2ace00")
     private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
     private val tabsView = ArrayList<LinearLayout>()
     private val tabItems = ArrayList<SectionTabItem>()
+    private var touchableList = ArrayList<View>()
 
     init {
         inflate(context, R.layout.tap_selection_tablayout, this)
         tabLayout = findViewById(R.id.tab_layout)
-        tabLayout.setSelectedTabIndicatorColor(Color.BLUE)
+        tabLayout.setSelectedTabIndicatorColor(indicatorColor)
         setSelectionBehaviour()
     }
 
@@ -112,6 +116,30 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         }
     }
 
+    fun selectTab(type: CardBrand) {
+        changeClickableState(false)
+        tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
+        tabItems.forEach {
+            if (it.type != type)
+                it.view?.setImageDrawable(it.unSelectedImage)
+        }
+    }
+
+    fun resetBehaviour() {
+        changeClickableState(true)
+        tabLayout.setSelectedTabIndicatorColor(indicatorColor)
+    }
+
+    private fun changeClickableState(isClickable: Boolean) {
+        if (isClickable) {
+            touchableList.forEach { it.isEnabled = isClickable }
+        } else {
+            touchableList = tabLayout.touchables
+            touchableList.forEach { it.isEnabled = isClickable }
+        }
+    }
+
+
 //    private fun createDynamicSection(): LinearLayout {
 //        linearLayout.orientation = HORIZONTAL
 //        val params = LayoutParams(
@@ -159,13 +187,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 //        }
 //    }
 //
-//    private fun changeImagesAlpha(alpha: Float) {
-//        visaTab.alpha = alpha
-//        masterTab.alpha = alpha
-//        amexTab.alpha = alpha
-//        ooredooTab.alpha = alpha
-//        zainTab.alpha = alpha
-//    }
 //
 //    fun resetSelection() {
 //        changeClickableState(true)
@@ -174,10 +195,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 //    }
 //
 //    private fun changeClickableState(enabled: Boolean) {
-//        val tabMobileView = tabMobile.customView!!.parent as View
+//
+//
+//    val tabMobileView = tabMobile.customView!!.parent as View
 //        val tabCardsView = tabCards.customView!!.parent as View
 //        tabMobileView.isEnabled = enabled
 //        tabCardsView.isEnabled = enabled
 //    }
-
 }
