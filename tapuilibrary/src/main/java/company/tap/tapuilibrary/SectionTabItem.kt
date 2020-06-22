@@ -3,6 +3,7 @@ package company.tap.tapuilibrary
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
+import android.widget.LinearLayout
 import company.tap.tapcardvalidator_android.CardBrand
 
 /**
@@ -15,7 +16,6 @@ data class SectionTabItem(
     val selectedImage: Drawable,
     val unSelectedImage: Drawable,
     val type: CardBrand,
-    var view: ImageView? = null,
+    var imageView: ImageView? = null,
     var indicator: View? = null
-
 )

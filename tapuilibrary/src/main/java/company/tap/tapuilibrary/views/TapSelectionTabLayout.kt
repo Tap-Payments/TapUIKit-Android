@@ -5,10 +5,10 @@ import android.content.res.Resources
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
+import company.tap.tapuilibrary.MetricsUtil
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.SectionTabItem
 import company.tap.tapuilibrary.atoms.TapImageView
@@ -24,6 +24,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
 
     private var indicatorColor = Color.parseColor("#2ace00")
+    private val indicatorHeight = MetricsUtil.convertDpToPixel(2f, context).toInt()
     private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
     private val tabsView = ArrayList<LinearLayout>()
@@ -36,6 +37,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         inflate(context, R.layout.tap_selection_tablayout, this)
         tabLayout = findViewById(R.id.tab_layout)
         tabLayout.setSelectedTabIndicatorColor(indicatorColor)
+        tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)
         setSelectionBehaviour()
     }
 
@@ -60,12 +62,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 
     private fun editExistItemsSize() {
         val params = LayoutParams(
-            getItemWidth(),
-            LayoutParams.MATCH_PARENT
+            getItemWidth(), 0
         )
         params.setMargins(0,30,0,30)
+        params.weight = 1f
         for (item in tabItems) {
-            item.view?.layoutParams = params
+            item.imageView?.layoutParams = params
         }
     }
 
@@ -80,19 +82,49 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         return linearLayout
     }
 
-    private fun getSectionItem(item: SectionTabItem): ImageView {
-
+    private fun getSectionItem(item: SectionTabItem): LinearLayout {
+        val layout = getSectionItemLayout()
+        val indicator = getTabSelectionIndicator()
         val params = LayoutParams(
-            getItemWidth(),
-            LayoutParams.MATCH_PARENT
+            getItemWidth(), 0
         )
         params.setMargins(0,30,0,30)
+        params.weight = 1f
         val image = TapImageView(context, null)
         image.setImageDrawable(item.selectedImage)
         image.layoutParams = params
-        item.view = image
+
+        item.imageView = image
+        item.indicator = indicator
         tabItems.add(item)
-        return image
+
+        layout.addView(image)
+        layout.addView(indicator)
+        return layout
+    }
+
+    private fun getSectionItemLayout(): LinearLayout {
+        val linearLayout = LinearLayout(context)
+        val params = LayoutParams(
+            LayoutParams.WRAP_CONTENT,
+            LayoutParams.MATCH_PARENT
+        )
+        linearLayout.layoutParams = params
+        linearLayout.orientation = VERTICAL
+        linearLayout.weightSum = 1f
+        return linearLayout
+    }
+
+    private fun getTabSelectionIndicator(): View {
+        val view = View(context)
+        val params = LayoutParams(
+            LayoutParams.MATCH_PARENT,
+            indicatorHeight
+        )
+        view.setBackgroundColor(indicatorColor)
+        view.layoutParams = params
+        view.visibility = View.INVISIBLE
+        return view
     }
 
     private fun getItemWidth(): Int {
@@ -124,11 +156,17 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     }
 
     fun selectTab(type: CardBrand) {
+        resetBehaviour()
         changeClickableState(false)
         tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
         tabItems.forEach {
-            if (it.type != type)
-                it.view?.setImageDrawable(it.unSelectedImage)
+            if (it.type != type) {
+                it.imageView?.setImageDrawable(it.unSelectedImage)
+                it.indicator?.visibility = View.INVISIBLE
+            } else {
+                it.imageView?.setImageDrawable(it.selectedImage)
+                it.indicator?.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -136,7 +174,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(indicatorColor)
         tabItems.forEach {
-            it.view?.setImageDrawable(it.selectedImage)
+            it.imageView?.setImageDrawable(it.selectedImage)
+            it.indicator?.visibility = View.INVISIBLE
         }
     }
 
