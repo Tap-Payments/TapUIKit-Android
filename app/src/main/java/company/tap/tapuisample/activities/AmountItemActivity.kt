@@ -5,8 +5,6 @@ import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import company.tap.taplocalizationkit.LocaleAppCompatActivity
-import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_amount_item.*
@@ -14,12 +12,12 @@ import kotlinx.android.synthetic.main.activity_amount_item.*
  * Sample Activity to show how Amount and Item Description will be shown.
  * **/
 class AmountItemActivity : AppCompatActivity() {
-    lateinit var itemTitleText: TapTextView
-    lateinit var itemAmountText: TapTextView
-    lateinit var showDescrpText: TapTextView
-    lateinit var totalAmountText: TapTextView
-    lateinit var totalQuantityText: TapTextView
-    lateinit var discountText: TapTextView
+    lateinit var itemName: TapTextView
+    lateinit var itemAmount: TapTextView
+    lateinit var descrTxt: TapTextView
+    lateinit var totalAmount: TapTextView
+    lateinit var totalQuantity: TapTextView
+    lateinit var discount: TapTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,29 +27,29 @@ class AmountItemActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun initializeViews() {
-        itemTitleText = findViewById(R.id.item_title)
-        itemAmountText = findViewById(R.id.item_amount)
-        showDescrpText = findViewById(R.id.show_description)
-        totalAmountText = findViewById(R.id.total_amount)
-        totalQuantityText = findViewById(R.id.total_quantity)
-        discountText = findViewById(R.id.discount_text)
-        itemTitleText.text = "ITEM TITLE"
-        itemAmountText.text = "KD000,000.000"
-        showDescrpText.text = "Show Description"
-        totalAmountText.text = "KD000,000.000"
-        totalQuantityText.text = "1"
-        discountText.text = "10% Discount"
-        discountText.visibility = View.INVISIBLE
+        itemName = findViewById(R.id.item_title)
+        itemAmount = findViewById(R.id.item_amount)
+        descrTxt = findViewById(R.id.show_description)
+        totalAmount = findViewById(R.id.total_amount)
+        totalQuantity = findViewById(R.id.total_quantity)
+        discount = findViewById(R.id.discount_text)
+        itemName.text = "ITEM TITLE"
+        itemAmount.text = "KD000,000.000"
+        descrTxt.text = "Show Description"
+        totalAmount.text = "KD000,000.000"
+        totalQuantity.text = "1"
+        discount.text = "10% Discount"
+        discount.visibility = View.INVISIBLE
 
         switch_discount.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                discountText.visibility = View.VISIBLE
-                totalAmountText.paintFlags =
-                    totalAmountText.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+                discount.visibility = View.VISIBLE
+                totalAmount.paintFlags =
+                    totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             } else {
-                discountText.visibility = View.INVISIBLE
-                totalAmountText.paintFlags =
-                    totalAmountText.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                discount.visibility = View.INVISIBLE
+                totalAmount.paintFlags =
+                    totalAmount.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
 
             }
         }

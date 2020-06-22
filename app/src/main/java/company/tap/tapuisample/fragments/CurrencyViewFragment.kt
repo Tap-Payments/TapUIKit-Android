@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
-import android.view.View.OnTouchListener
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
@@ -38,9 +37,8 @@ class CurrencyViewFragment : Fragment() {
     ): View? {
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
         fillData()
-        // Add the following lines to create RecyclerView
+
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
-     //   val tapItemsGroup = view.findViewById<TapItemsView>(R.id.amount_item_view)
         currencyGroup.orientation = LinearLayout.HORIZONTAL
         val groupName = currencyGroup.findViewById<TapTextView>(R.id.group_name)
         groupName.visibility=View.GONE
@@ -52,11 +50,11 @@ class CurrencyViewFragment : Fragment() {
         chipRecycler.adapter =
             CurrencyAdapter(currencyList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
-        //chipRecycler1.setHasFixedSize(true)
+        itemsRecycler.setHasFixedSize(false)
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         itemsRecycler.adapter =
             ItemAdapter(itemList)
-        itemsRecycler.setOnTouchListener(OnTouchListener { v, event ->
+        itemsRecycler.setOnTouchListener { v, event ->
             val action = event.action
             when (action) {
                 MotionEvent.ACTION_DOWN ->                         // Disallow NestedScrollView to intercept touch events.
@@ -68,7 +66,7 @@ class CurrencyViewFragment : Fragment() {
             // Handle RecyclerView touch events.
             v.onTouchEvent(event)
             true
-        })
+        }
 
         return view
     }

@@ -2,6 +2,7 @@ package company.tap.tapuisample.fragments
 
 
 import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapImageView
@@ -46,6 +48,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private lateinit var chipRecycler: RecyclerView
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     private var isFragmentAdded = false
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -67,14 +70,12 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     }
 
-
     override fun onViewCreated(
         view: View,
         @Nullable savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
-
     }
 
     @SuppressLint("SetTextI18n")
@@ -85,11 +86,13 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun setupChip(view: View) {
         val mainChipgroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         val groupName = view.findViewById<TapTextView>(R.id.group_name)
         groupName.text = getString(R.string.select)
+        groupName.setTextColor(R.color.error_text_dark_theme)
         val groupAction = view.findViewById<TapTextView>(R.id.group_action)
         groupAction.text = getString(R.string.edit)
         chipRecycler = view.findViewById(R.id.chip_recycler)
@@ -126,6 +129,9 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         itemCount.text = "22 ITEMS"
         selectedCurrency.text = "SR1000,000.000"
         currentCurrency.text = "KD1000,000.000"
+        if (isFragmentAdded) {
+            currentCurrency.visibility= View.VISIBLE
+        }
         val currencyViewFragment = CurrencyViewFragment()
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
@@ -135,35 +141,38 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                         TransitionInflater.from(context)
                             .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
+                    fragment_container.visibility = View.VISIBLE
                 }
                 childFragmentManager
                     .beginTransaction()
                     .remove(currencyViewFragment)
                     .commit()
-                fragment_container.visibility = View.VISIBLE
 
                 itemCount.text = "22 ITEMS"
-                currentCurrency.visibility= View.VISIBLE
-
             } else {
                 bottomSheetLayout?.let { layout ->
                     layout.post {
+                        fragment_container.visibility = View.GONE
+                        currentCurrency.visibility= View.INVISIBLE
                         val addTransition: Transition =
                             TransitionInflater.from(context)
                                 .inflateTransition(R.transition.add_fragment)
                         TransitionManager.beginDelayedTransition(layout, addTransition)
+
                     }
                 }
-                fragment_container.visibility = View.GONE
                 childFragmentManager
                     .beginTransaction()
                     .add(R.id.fragment_container1, currencyViewFragment)
                     .commit()
                 itemCount.text = "CLOSE"
-                currentCurrency.visibility= View.INVISIBLE
+                bottomSheetDialog.behavior.state = STATE_EXPANDED
             }
             isFragmentAdded = !isFragmentAdded
+
         }
+
+        println("bottom state ${bottomSheetDialog.behavior.state}")
 
     }
 

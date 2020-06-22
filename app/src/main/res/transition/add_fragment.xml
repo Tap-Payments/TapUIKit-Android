@@ -5,7 +5,7 @@
     <transitionSet
         android:duration="@android:integer/config_longAnimTime"
         android:transitionOrdering="together">
-        <slide />
         <fade />
+        <slide />
     </transitionSet>
 </transitionSet>

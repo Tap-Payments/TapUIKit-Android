@@ -37,14 +37,22 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
             val discount  = itemView.findViewById(R.id.discount_text) as TextView
             val totalAmount  = itemView.findViewById(R.id.total_amount) as TextView
             val totalQuantity  = itemView.findViewById(R.id.total_quantity) as TextView
+
+            if(itemList%2==0){
+                discount.text = "10% Discount"
+                totalAmount.paintFlags =
+                    totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            }else{
+                discount.visibility= View.INVISIBLE
+                totalAmount.paintFlags =
+                    totalAmount.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            }
             itemName.text = "ITEM TITLE $itemList"
             itemAmount.text = "KD000,000.000"
             descText.text = "Show Description"
             totalAmount.text = "KD000,000.000"
             totalQuantity.text = "1"
-            discount.text = "10% Discount"
-            totalAmount.paintFlags =
-                totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+
         }
 
 
