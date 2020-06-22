@@ -17,21 +17,14 @@ import company.tap.thememanager.theme.ImageViewTheme
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+/** Displays image resources, for example Bitmap or Drawable resources. TapImageView is also commonly used to apply
+ * tints to an image and handle image scaling.
+ * **/
 open class TapImageView(context: Context?, attrs: AttributeSet?) : AppCompatImageView(context, attrs),
     TapView<ImageViewTheme> {
     override fun setTheme(theme: ImageViewTheme) {
         theme.imageResource?.let {setImageResource(R.drawable.tap_logo)  }
         theme.contentDescription?.let { contentDescription = "Tap Logo"
         }
-    }
-    override fun onDraw(canvas: Canvas) {
-      //  val radius =
-      //      context.resources.getDimension(R.dimen.round_corner_radius)
-        val radius = 2f
-        val path = Path()
-        val rect = RectF(2f, 2f, this.width.toFloat(), this.height.toFloat())
-        path.addRoundRect(rect, radius, radius, Path.Direction.CW)
-        canvas.clipPath(path)
-        super.onDraw(canvas)
     }
 }

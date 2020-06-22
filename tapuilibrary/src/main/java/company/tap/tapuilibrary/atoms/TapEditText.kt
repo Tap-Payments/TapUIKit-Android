@@ -13,6 +13,10 @@ import company.tap.thememanager.theme.EditTextTheme
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+
+/**
+ * TapEditText is  user interface element for entering and modifying text
+ * */
 open class TapEditText(context: Context, attributeSet: AttributeSet) :
     AppCompatEditText(context, attributeSet),
     TapView<EditTextTheme> {

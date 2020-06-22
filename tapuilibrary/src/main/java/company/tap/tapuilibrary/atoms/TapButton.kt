@@ -12,6 +12,9 @@ import company.tap.thememanager.theme.ButtonTheme
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+/**
+ * TapButton is a user interface element the user can tap or click to perform an action.
+ */
 open class TapButton(context: Context, attributeSet: AttributeSet) :
     AppCompatButton(context, attributeSet),
     TapView<ButtonTheme> {

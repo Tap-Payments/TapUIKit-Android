@@ -9,6 +9,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuisample.CurrencyModel
@@ -18,10 +19,10 @@ import company.tap.tapuisample.adapters.MultipleTypeAdapter
 import kotlinx.android.synthetic.main.activity_cardview.*
 
 /***
- *
+ * A sample Activity to show Chips .
  * */
 
-class TapChipsActivity : AppCompatActivity() {
+class TapChipsActivity : BaseActivity() {
     private lateinit var chipRecycler: RecyclerView
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     private lateinit var currencyList: ArrayList<CurrencyModel>
@@ -61,7 +62,7 @@ class TapChipsActivity : AppCompatActivity() {
                 chipRecycler.adapter?.notifyDataSetChanged()
             }
         }
-        hideSavedCard_Switch.setOnCheckedChangeListener { _, isChecked ->
+        hideSavedcardSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 paymentsList.add(4)
                 paymentsList.add(6)
@@ -81,9 +82,9 @@ class TapChipsActivity : AppCompatActivity() {
         val mainLayout = findViewById<TapChipGroup>(R.id.mainLayout)
         mainLayout.orientation = LinearLayout.HORIZONTAL
         val groupName = findViewById<TapTextView>(R.id.group_name)
-        groupName.text = getString(R.string.select)
+        groupName.text = LocalizationManager.getValue("select","Common")
         val groupAction = findViewById<TapTextView>(R.id.group_action)
-        groupAction.text = getString(R.string.edit)
+        groupAction.text = LocalizationManager.getValue("edit","Common")
         chipRecycler = findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         //  chipRecycler.adapter = RecyclerAdapter(arrayList)

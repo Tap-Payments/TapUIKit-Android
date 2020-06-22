@@ -13,6 +13,9 @@ import company.tap.thememanager.theme.SwitchTheme
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+/** TapSwitch is a two-state toggle switch widget that can select between two options. The user may drag the "thumb"
+ *  back and forth to choose the selected option, or simply tap to toggle as if it were a checkbox
+ * */
 open class TapSwitch(context: Context, attributeSet: AttributeSet) :
     SwitchCompat(context, attributeSet),
     TapView<SwitchTheme> {

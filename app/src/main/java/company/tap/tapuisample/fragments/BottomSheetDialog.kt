@@ -23,6 +23,7 @@ import androidx.transition.TransitionManager
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapImageView
@@ -104,6 +105,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         }
 
         override fun doInBackground(vararg urls: String): Bitmap? {
+            if(urls[0]==null){return null }else{
             val urlOfImage = urls[0]
             var logo: Bitmap? = null
             try {
@@ -114,6 +116,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
             }
             return logo
         }
+            }
     }
 
     override fun onViewCreated(
