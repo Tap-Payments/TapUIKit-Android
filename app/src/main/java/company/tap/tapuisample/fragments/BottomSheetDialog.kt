@@ -31,6 +31,7 @@ import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.MultipleTypeAdapter
+import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import java.io.InputStream
 import java.net.URL
 
@@ -48,12 +49,6 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
     private lateinit var businessPlaceholder: TapTextView
-    private lateinit var itemName: TapTextView
-    private lateinit var itemAmount: TapTextView
-    private lateinit var descText: TapTextView
-    private lateinit var totalAmount: TapTextView
-    private lateinit var totalQuantity: TapTextView
-    private lateinit var discount: TapTextView
     private lateinit var businessInitial: String
     private lateinit var itemCount: TapButton
     private var tapAmountSectionInterface: TapAmountSectionInterface? = null
@@ -134,7 +129,6 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private fun initializeViews(view: View) {
         headerViewInit(view)
         amountViewInit(view)
-       // amountDesrpRowInit(view)
         setupChip(view)
 
     }
@@ -188,11 +182,11 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                             .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
                 }
-
                 childFragmentManager
                     .beginTransaction()
                     .remove(currencyViewFragment)
                     .commit()
+                fragment_container.visibility = View.VISIBLE
 
                 itemCount.text = "10 ITEMS"
 
@@ -205,9 +199,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                         TransitionManager.beginDelayedTransition(layout, addTransition)
                     }
                 }
+                fragment_container.visibility = View.GONE
                 childFragmentManager
                     .beginTransaction()
-                    .replace(R.id.fragment_container, currencyViewFragment)
+                    .add(R.id.fragment_container1,currencyViewFragment)
                     .commit()
                 itemCount.text = "CLOSE"
             }
@@ -215,26 +210,6 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         }
 
     }
-    @SuppressLint("SetTextI18n")
-    private fun amountDesrpRowInit(view: View){
-        itemName = view.findViewById(R.id.item_title)
-        itemAmount = view.findViewById(R.id.item_amount)
-        descText = view.findViewById(R.id.show_description)
-        totalAmount = view.findViewById(R.id.total_amount)
-        totalQuantity = view.findViewById(R.id.total_quantity)
-        discount = view.findViewById(R.id.discount_text)
-        itemName.text = "ITEM TITLE"
-        itemAmount.text = "KD000,000.000"
-        descText.text = "Show Description"
-        totalAmount.text = "KD000,000.000"
-        totalQuantity.text = "1"
-        discount.text = "10% Discount"
-        totalAmount.paintFlags = totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-
-
-    }
-
-
     companion object {
         const val TAG = "ModalBottomSheet"
     }
