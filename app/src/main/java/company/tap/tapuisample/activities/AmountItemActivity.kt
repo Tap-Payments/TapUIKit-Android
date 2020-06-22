@@ -5,6 +5,8 @@ import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import company.tap.taplocalizationkit.LocaleAppCompatActivity
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_amount_item.*
@@ -54,4 +56,5 @@ class AmountItemActivity : AppCompatActivity() {
             }
         }
     }
+
 }
