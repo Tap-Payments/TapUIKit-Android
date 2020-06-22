@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.SectionTabItem
+import company.tap.tapuilibrary.interfaces.TapSectionTabLayoutInterface
 import company.tap.tapuilibrary.views.TapSelectionTabLayout
 import company.tap.tapuisample.R
 
@@ -13,14 +14,18 @@ import company.tap.tapuisample.R
  * Sample Activity to show how TableLayout functions .
  *
  * **/
-class SectionsTabLayout : AppCompatActivity() {
+class SectionsTabLayout : AppCompatActivity(), TapSectionTabLayoutInterface {
 
     lateinit var tabLayout: TapSelectionTabLayout
+    private var selectedTab = 0
+    private val tab1Items = arrayOf("VISA", "MASTERCARD", "AMEX")
+    private val tab2Items = arrayOf("Zain PAY", "Ooredoo PAY")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sections_tab_layout)
         tabLayout = findViewById(R.id.sections_tablayout)
+        tabLayout.setTabLayoutInterface(this)
         addCardsTab()
         addMobileTab()
     }
@@ -42,7 +47,9 @@ class SectionsTabLayout : AppCompatActivity() {
 
     fun selectTab(view: View) {
         var alert: AlertDialog? = null
-        val items = arrayOf("VISA", "MASTERCARD", "AMEX", "Zain PAY", "Ooredoo PAY")
+        var items = tab1Items
+        if (selectedTab == 1)
+            items = tab2Items
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(true)
         builder.setTitle("Select Item")
@@ -56,6 +63,10 @@ class SectionsTabLayout : AppCompatActivity() {
 
     fun resetSelection(view: View) {
         tabLayout.resetBehaviour()
+    }
+
+    override fun onSelectedTabChanged(position: Int?) {
+        position?.let { selectedTab = it }
     }
 
 }

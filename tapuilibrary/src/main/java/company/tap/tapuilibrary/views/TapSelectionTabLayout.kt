@@ -1,19 +1,18 @@
 package company.tap.tapuilibrary.views
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.core.view.doOnLayout
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.SectionTabItem
 import company.tap.tapuilibrary.atoms.TapImageView
+import company.tap.tapuilibrary.interfaces.TapSectionTabLayoutInterface
 
 /**
  *
@@ -31,11 +30,17 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private val tabItems = ArrayList<SectionTabItem>()
     private var touchableList = ArrayList<View>()
 
+    private var tabLayoutInterface : TapSectionTabLayoutInterface? = null
+
     init {
         inflate(context, R.layout.tap_selection_tablayout, this)
         tabLayout = findViewById(R.id.tab_layout)
         tabLayout.setSelectedTabIndicatorColor(indicatorColor)
         setSelectionBehaviour()
+    }
+
+    fun setTabLayoutInterface(tabInterface: TapSectionTabLayoutInterface) {
+        this.tabLayoutInterface = tabInterface
     }
 
     fun addSection(items: ArrayList<SectionTabItem>) {
@@ -76,6 +81,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun getSectionItem(item: SectionTabItem): ImageView {
+
         val params = LayoutParams(
             getItemWidth(),
             LayoutParams.MATCH_PARENT
@@ -103,6 +109,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 fadeOtherTabs(tab?.position)
+                tabLayoutInterface?.onSelectedTabChanged(tab?.position)
             }
         })
     }
@@ -142,67 +149,4 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         }
     }
 
-
-//    private fun createDynamicSection(): LinearLayout {
-//        linearLayout.orientation = HORIZONTAL
-//        val params = LayoutParams(
-//            MetricsUtil.convertDpToPixel(120f, context).toInt(),
-//            LayoutParams.MATCH_PARENT
-//        )
-//        linearLayout.layoutParams = params
-//        linearLayout.addView(createImageView(R.id.zain, R.drawable.zain))
-//        linearLayout.addView(createImageView(R.id.ooredoo, R.drawable.ooredoo))
-//        return linearLayout
-//    }
-//
-//
-//
-//    private fun createImageView(@IdRes id: Int, @DrawableRes image: Int): TapImageView {
-//        val imageView = TapImageView(context, null)
-//        imageView.id = id
-//        imageView.setImageResource(image)
-//        val itemWidth =
-//        val params = LayoutParams(
-//            MetricsUtil.convertDpToPixel(60f, context).toInt(),
-//            MetricsUtil.convertDpToPixel(40f, context).toInt()
-//        )
-//        imageView.layoutParams = params
-//        return imageView
-//    }
-//
-//    private fun addTabs() {
-//        tabMobile.customView?.alpha = 0.7f
-//        tabLayout.addTab(tabCards)
-//        tabLayout.addTab(tabMobile)
-//    }
-//
-//
-//    fun selectItem(item: PaymentSectionItemType) {
-//        changeClickableState(false)
-//        tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
-//        changeImagesAlpha(0.7f)
-//        when (item) {
-//            VISA -> visaTab.alpha = 1f
-//            MASTERCARD -> masterTab.alpha = 1f
-//            AMEX -> amexTab.alpha = 1f
-//            ZAIN -> zainTab.alpha = 1f
-//            OOREDOO -> ooredooTab.alpha = 1f
-//        }
-//    }
-//
-//
-//    fun resetSelection() {
-//        changeClickableState(true)
-//        tabLayout.setSelectedTabIndicatorColor(Color.BLUE)
-//        changeImagesAlpha(1f)
-//    }
-//
-//    private fun changeClickableState(enabled: Boolean) {
-//
-//
-//    val tabMobileView = tabMobile.customView!!.parent as View
-//        val tabCardsView = tabCards.customView!!.parent as View
-//        tabMobileView.isEnabled = enabled
-//        tabCardsView.isEnabled = enabled
-//    }
 }

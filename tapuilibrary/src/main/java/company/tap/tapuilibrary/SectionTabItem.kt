@@ -15,5 +15,7 @@ data class SectionTabItem(
     val selectedImage: Drawable,
     val unSelectedImage: Drawable,
     val type: CardBrand,
-    var view: ImageView? = null
+    var view: ImageView? = null,
+    var indicator: View? = null
+
 )
