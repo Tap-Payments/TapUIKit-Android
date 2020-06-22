@@ -25,7 +25,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
     private val tabsView = ArrayList<LinearLayout>()
-    private val tabItems = ArrayList<ImageView>()
+    private val tabItems = ArrayList<SectionTabItem>()
 
     init {
         inflate(context, R.layout.tap_selection_tablayout, this)
@@ -54,9 +54,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             getItemWidth(),
             LayoutParams.MATCH_PARENT
         )
-        params.setMargins(0,20,0,20)
+        params.setMargins(0,30,0,30)
         for (item in tabItems) {
-            item.layoutParams = params
+            item.view?.layoutParams = params
         }
     }
 
@@ -76,11 +76,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             getItemWidth(),
             LayoutParams.MATCH_PARENT
         )
-        params.setMargins(0,20,0,20)
+        params.setMargins(0,30,0,30)
         val image = TapImageView(context, null)
         image.setImageDrawable(item.selectedImage)
         image.layoutParams = params
-        tabItems.add(image)
+        item.view = image
+        tabItems.add(item)
         return image
     }
 
@@ -144,8 +145,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 //        tabLayout.addTab(tabMobile)
 //    }
 //
-
-
 //
 //    fun selectItem(item: PaymentSectionItemType) {
 //        changeClickableState(false)
