@@ -20,7 +20,7 @@ import company.tap.tapuisample.fragments.BottomSheetDialog
 
 
 class MainActivity : AppCompatActivity(),
-    TapBottomDialogInterface, TapAmountSectionInterface {
+    TapAmountSectionInterface {
     lateinit var fontChanger: FontChanger
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
@@ -49,14 +49,6 @@ class MainActivity : AppCompatActivity(),
         arguments.putBoolean(DialogConfigurations.Cancelable, false)
         arguments.putFloat(DialogConfigurations.Dim, 0.75f)
         return arguments
-    }
-
-    override fun didShow() {
-        println("Dialog is shown now!!!")
-    }
-
-    override fun didDismiss() {
-        println("Dialog is dismissed !!!")
     }
 
     fun openTapChip(view: View) {

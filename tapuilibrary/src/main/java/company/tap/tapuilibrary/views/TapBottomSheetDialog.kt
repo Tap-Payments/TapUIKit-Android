@@ -42,25 +42,18 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? = inflater.inflate(R.layout.modal_bottom_sheet, container, false)
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        try {
-            tapBottomDialogInterface = context as TapBottomDialogInterface
-        } catch (ex: ClassCastException) {
-            try {
-                tapBottomDialogInterface = parentFragment as TapBottomDialogInterface
-            } catch (ignore: Exception) {}
-        }
-    }
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         return bottomSheetDialog
     }
 
+    fun setBottomSheetInterface(tapBottomDialogInterface: TapBottomDialogInterface) {
+        this.tapBottomDialogInterface = tapBottomDialogInterface
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tapBottomDialogInterface?.didShow()
+        tapBottomDialogInterface?.onShow()
         setDialogConfigurations()
         changeBackground()
     }
@@ -105,7 +98,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        tapBottomDialogInterface?.didDismiss()
+        tapBottomDialogInterface?.onDismiss()
     }
 
     companion object {
