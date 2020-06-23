@@ -30,7 +30,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var indicatorHeight = MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
     private var unselectedAlphaLevel = UNSELECTED_ALPHA
 
-
     private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
     private val tabsView = ArrayList<LinearLayout>()
@@ -39,6 +38,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 
     private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null
 
+    /**
+     * Initiating the tablayout with default theme and behaviour
+     */
     init {
         inflate(context, R.layout.tap_selection_tablayout, this)
         tabLayout = findViewById(R.id.tab_layout)
@@ -47,32 +49,67 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         setSelectionBehaviour()
     }
 
+    /**
+     * Setter fot the callback interface
+     *
+     * @param tabInterface refrence for class implementing the interface
+     */
     fun setTabLayoutInterface(tabInterface: TapSelectionTabLayoutInterface) {
         this.tabLayoutInterface = tabInterface
     }
 
+    /**
+     * Setter for the indicator color
+     *
+     * @param color integer color value
+     */
     fun setTabIndicatorColor(@ColorInt color: Int) {
         indicatorColor = color
         tabLayout.setSelectedTabIndicatorColor(color)
     }
 
+    /**
+     * Setter for the indicator height
+     *
+     * @param height integer height value
+     */
     fun setTabIndicatorHeight(height: Int) {
         indicatorHeight = height
         tabLayout.setSelectedTabIndicatorHeight(height)
     }
 
+    /**
+     * setter for the ripple color
+     *
+     * @param color integer color value
+     */
     fun setTabRippleColor(@ColorInt color: Int) {
         tabLayout.tabRippleColor = ColorStateList.valueOf(color)
     }
 
+    /**
+     * Setter for the ripple color
+     *
+     * @param tabRippleColorResourceId integer color resource id
+     */
     fun setTabRippleColorResource(@ColorRes tabRippleColorResourceId: Int) {
         tabLayout.setTabRippleColorResource(tabRippleColorResourceId)
     }
 
+    /**
+     * Setter for the unselected tab alpha level
+     *
+     * @param level float level value
+     */
     fun setUnselectedAlphaLevel(level: Float) {
         unselectedAlphaLevel = level
     }
 
+    /**
+     * Adding new section to the tablayout
+     *
+     * @param items list of the items inside the section
+     */
     fun addSection(items: ArrayList<SectionTabItem>) {
         itemsCount.add(items.size)
         if (itemsCount.size > 1)
@@ -88,6 +125,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout.addTab(sectionTab)
     }
 
+    /**
+     * private function to modify the items size based on the screen width after adding new section
+     */
     private fun editExistItemsSize() {
         val params = LayoutParams(
             getItemWidth(), 0
@@ -99,6 +139,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         }
     }
 
+    /**
+     * private function to generate parent layout for the newly added section
+     *
+     * @return the generated container layout
+     */
     private fun getSectionLayout(): LinearLayout {
         val linearLayout = LinearLayout(context)
         val params = LayoutParams(
@@ -110,6 +155,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         return linearLayout
     }
 
+    /**
+     * private function for generating the required view for the section item
+     *
+     * @param item containing the type, image and indicator for that item
+     * @return the generated item with passed values
+     */
     private fun getSectionItem(item: SectionTabItem): LinearLayout {
         val layout = getSectionItemLayout()
         val indicator = getTabSelectionIndicator()
@@ -131,6 +182,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         return layout
     }
 
+    /**
+     * private function to generate parent layout for the newly added item
+     *
+     * @return generated item container layout
+     */
     private fun getSectionItemLayout(): LinearLayout {
         val linearLayout = LinearLayout(context)
         val params = LayoutParams(
@@ -143,6 +199,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         return linearLayout
     }
 
+    /**
+     * private function to generate single tab indicator
+     *
+     * @return view represent the tab indicator
+     */
     private fun getTabSelectionIndicator(): View {
         val view = View(context)
         val params = LayoutParams(
@@ -155,6 +216,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         return view
     }
 
+    /**
+     * private function to calculate the item size based on the screen width and number of items
+     *
+     * @return integer value represent the item width
+     */
     private fun getItemWidth(): Int {
         var totalItemsCount = 0
         for (items in itemsCount) {
@@ -163,6 +229,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         return (Resources.getSystem().displayMetrics.widthPixels - SCREEN_MARGINS) / totalItemsCount
     }
 
+    /**
+     * Handle the logic of fading unselected tab and notify the callback with tab selection change listener
+     */
     private fun setSelectionBehaviour() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
@@ -174,6 +243,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         })
     }
 
+    /**
+     * private function to fade the unselected view and display the selected tab with full opacity
+     *
+     * @param position the selected index
+     */
     private fun fadeOtherTabs(position: Int?) {
         tabsView.forEachIndexed { index, view ->
             if (index == position)
@@ -183,6 +257,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         }
     }
 
+    /**
+     * public funtion that select the tab based on the required brand
+     *
+     * @param type the required brand type to be selected
+     */
     fun selectTab(type: CardBrand) {
         resetBehaviour()
         changeClickableState(false)
@@ -198,6 +277,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         }
     }
 
+    /**
+     * public function to reset the behaviour of the tabs after selected tab being released
+     */
     fun resetBehaviour() {
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(indicatorColor)
@@ -207,6 +289,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         }
     }
 
+    /**
+     * private function to change clickable state based on single tab selection
+     *
+     * @param isClickable the state of click ability
+     */
     private fun changeClickableState(isClickable: Boolean) {
         if (isClickable) {
             touchableList.forEach { it.isEnabled = isClickable }
@@ -216,6 +303,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         }
     }
 
+    /**
+     * class fot holding the constant values used in the tablayout
+     */
     companion object {
         const val SCREEN_MARGINS = 140
         const val INDICATOR_HEIGHT = 2f
