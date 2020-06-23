@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -152,8 +153,6 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
                 itemCount.text = "22 ITEMS"
             } else {
-                currentCurrency.visibility= View.INVISIBLE
-                fragment_container.visibility = View.GONE
                 childFragmentManager
                     .beginTransaction()
                     .add(R.id.fragment_container1, currencyViewFragment)
@@ -166,8 +165,13 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                         TransitionManager.beginDelayedTransition(layout, addTransition)
                     }
                 }
+                currentCurrency.visibility= View.INVISIBLE
+                fragment_container.visibility = View.GONE
                 itemCount.text = "CLOSE"
-                bottomSheetDialog.behavior.state = STATE_EXPANDED
+               Handler().postDelayed({
+                    bottomSheetDialog.behavior.state = STATE_EXPANDED
+
+                }, 1000)
             }
             isFragmentAdded = !isFragmentAdded
 

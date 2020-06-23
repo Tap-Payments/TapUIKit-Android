@@ -51,7 +51,6 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
         } else
 
             holder.itemView.setBackgroundResource(R.drawable.border_unclick)
-        (holder as PhotoHolder)
         holder.itemView.setOnClickListener {
             selectedPosition = position
             Toast.makeText(

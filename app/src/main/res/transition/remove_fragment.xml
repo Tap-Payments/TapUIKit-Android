@@ -3,9 +3,9 @@
     android:transitionOrdering="sequential">
     <transitionSet
         android:duration="@android:integer/config_longAnimTime"
-        android:transitionOrdering="together">
+        android:transitionOrdering="sequential">
         <fade />
-        <slide />
+       <slide/>
     </transitionSet>
     <changeBounds />
 </transitionSet>

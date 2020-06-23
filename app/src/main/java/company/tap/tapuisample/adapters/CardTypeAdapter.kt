@@ -22,7 +22,7 @@ class MultipleTypeAdapter(private val arrayList: ArrayList<Int>) :
     private val TYPE_SAVEDCARD = 1
     private val TYPE_SINGLE = 2
     private val TYPE_GOPAY = 3
-    var selectedPosition = -1
+    private var selectedPosition = -1
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
         return if (viewType === TYPE_SAVEDCARD) {
