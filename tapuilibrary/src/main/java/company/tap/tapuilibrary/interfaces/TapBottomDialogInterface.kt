@@ -8,7 +8,7 @@ All rights reserved.
  **/
 interface TapBottomDialogInterface {
     fun onShow()
-    fun onDrag()
-    fun onStateChanged()
+    fun onSlide(slideOffset: Float)
+    fun onStateChanged(newState: Int)
     fun onDismiss()
 }
