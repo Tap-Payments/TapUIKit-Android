@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.LinearLayout
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
-import company.tap.tapuilibrary.MetricsUtil
+import company.tap.tapuilibrary.utils.MetricsUtil
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.atoms.TapImageView

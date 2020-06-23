@@ -3,7 +3,7 @@ package company.tap.tapuilibrary.atoms
 import android.content.Context
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
-import company.tap.tapuilibrary.TapView
+import company.tap.tapuilibrary.interfaces.TapView
 import company.tap.thememanager.theme.TextViewTheme
 
 /**

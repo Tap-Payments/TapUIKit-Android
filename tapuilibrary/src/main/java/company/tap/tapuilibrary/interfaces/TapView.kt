@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.interfaces
 
 import company.tap.thememanager.theme.BaseTextTheme
 

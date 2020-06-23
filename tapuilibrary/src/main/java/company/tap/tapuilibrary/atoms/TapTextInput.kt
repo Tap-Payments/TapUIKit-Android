@@ -16,9 +16,9 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.TapColorUtils
-import company.tap.tapuilibrary.TapTextWatcher
-import company.tap.tapuilibrary.TapView
+import company.tap.tapuilibrary.utils.TapColorUtils
+import company.tap.tapuilibrary.utils.TapTextWatcher
+import company.tap.tapuilibrary.interfaces.TapView
 import company.tap.thememanager.theme.TextInputTheme
 
 /**

@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 
 import com.google.android.material.card.MaterialCardView
-import company.tap.tapuilibrary.TapView
+import company.tap.tapuilibrary.interfaces.TapView
 import company.tap.thememanager.theme.ChipTheme
 
 /**

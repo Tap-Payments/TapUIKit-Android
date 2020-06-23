@@ -3,7 +3,7 @@ package company.tap.tapuilibrary.atoms
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
-import company.tap.tapuilibrary.TapView
+import company.tap.tapuilibrary.interfaces.TapView
 import company.tap.thememanager.theme.SeparatorViewTheme
 
 /**

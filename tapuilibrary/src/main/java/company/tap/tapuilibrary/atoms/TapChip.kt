@@ -5,7 +5,7 @@ import android.os.Build
 import android.util.AttributeSet
 import android.view.View
 import com.google.android.material.card.MaterialCardView
-import company.tap.tapuilibrary.TapView
+import company.tap.tapuilibrary.interfaces.TapView
 import company.tap.thememanager.theme.ChipTheme
 
 /**

@@ -1,13 +1,10 @@
 package company.tap.tapuilibrary.atoms
 
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Path
-import android.graphics.RectF
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatImageView
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.TapView
+import company.tap.tapuilibrary.interfaces.TapView
 import company.tap.thememanager.theme.ImageViewTheme
 
 

@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.utils
 
 import android.content.Context
 import android.content.res.Resources
