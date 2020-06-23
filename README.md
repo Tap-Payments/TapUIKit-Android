@@ -69,6 +69,9 @@ integrate with.
 ### Atoms
 If atoms are the basic building blocks of matter, then the atoms of our interfaces serve as the foundational building blocks that comprise all our user interfaces. These atoms include basic elements like textviews, inputlayouts, buttons, and others that can’t be broken down any further without ceasing to be functional.
 
+
+ ![Atoms](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/atom.png)
+
  Atom Name    |                  Usage                       | view|
 ------------- | -------------------------------------------- | ----|
 TapTextView   |  <company.tap.tapuilibrary.atoms.TapTextView |     |
@@ -82,6 +85,8 @@ TapDragIndicator   | <company.tap.tapuilibrary.atoms.TapDragIndicator |     |
 ### Molecules
 Molecules are relatively simple groups of UI elements functioning together as a unit. For example, a form label, search  input, and button can join together to create a search form molecule.
 
+
+ ![Molecules](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/molecules.png)
 Molecule Name    |                  Usage                       | view|
 ------------- | -------------------------------------------- | ----|
 TapHeader   |  <company.tap.tapuilibrary.views.TapHeader |     |
