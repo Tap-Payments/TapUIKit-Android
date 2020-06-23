@@ -18,7 +18,6 @@ import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import company.tap.tapanimationkit.AnimateView
 import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapImageView
@@ -85,7 +84,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         headerViewInit(view)
         amountViewInit(view)
         setupChip(view)
-        context?.let { AnimateView.animateSlideUp(it) }
+        
     }
 
     @SuppressLint("ResourceAsColor")
