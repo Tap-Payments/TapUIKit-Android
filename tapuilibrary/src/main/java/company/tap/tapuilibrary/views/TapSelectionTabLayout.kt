@@ -1,18 +1,21 @@
 package company.tap.tapuilibrary.views
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
-import company.tap.tapuilibrary.utils.MetricsUtil
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.models.SectionTabItem
+import company.tap.tapuilibrary.utils.MetricsUtil
 
 /**
  *
@@ -23,15 +26,18 @@ import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
 
-    private var indicatorColor = Color.parseColor("#2ace00")
-    private val indicatorHeight = MetricsUtil.convertDpToPixel(2f, context).toInt()
+    private var indicatorColor = Color.parseColor(INDICATOR_COLOR)
+    private var indicatorHeight = MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
+    private var unselectedAlphaLevel = UNSELECTED_ALPHA
+
+
     private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
     private val tabsView = ArrayList<LinearLayout>()
     private val tabItems = ArrayList<SectionTabItem>()
     private var touchableList = ArrayList<View>()
 
-    private var tabLayoutInterface : TapSelectionTabLayoutInterface? = null
+    private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null
 
     init {
         inflate(context, R.layout.tap_selection_tablayout, this)
@@ -45,6 +51,28 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         this.tabLayoutInterface = tabInterface
     }
 
+    fun setTabIndicatorColor(@ColorInt color: Int) {
+        indicatorColor = color
+        tabLayout.setSelectedTabIndicatorColor(color)
+    }
+
+    fun setTabIndicatorHeight(height: Int) {
+        indicatorHeight = height
+        tabLayout.setSelectedTabIndicatorHeight(height)
+    }
+
+    fun setTabRippleColor(@ColorInt color: Int) {
+        tabLayout.tabRippleColor = ColorStateList.valueOf(color)
+    }
+
+    fun setTabRippleColorResource(@ColorRes tabRippleColorResourceId: Int) {
+        tabLayout.setTabRippleColorResource(tabRippleColorResourceId)
+    }
+
+    fun setUnselectedAlphaLevel(level: Float) {
+        unselectedAlphaLevel = level
+    }
+
     fun addSection(items: ArrayList<SectionTabItem>) {
         itemsCount.add(items.size)
         if (itemsCount.size > 1)
@@ -54,7 +82,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             sectionLayout.addView(getSectionItem(item))
         }
         if (tabsView.size != 0)
-            sectionLayout.alpha = 0.7f
+            sectionLayout.alpha = unselectedAlphaLevel
         tabsView.add(sectionLayout)
         val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
         tabLayout.addTab(sectionTab)
@@ -64,7 +92,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0,30,0,30)
+        params.setMargins(0, 30, 0, 30)
         params.weight = 1f
         for (item in tabItems) {
             item.imageView?.layoutParams = params
@@ -88,7 +116,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0,30,0,30)
+        params.setMargins(0, 30, 0, 30)
         params.weight = 1f
         val image = TapImageView(context, null)
         image.setImageDrawable(item.selectedImage)
@@ -128,11 +156,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun getItemWidth(): Int {
-        var count = 0
+        var totalItemsCount = 0
         for (items in itemsCount) {
-            count += items
+            totalItemsCount += items
         }
-        return (Resources.getSystem().displayMetrics.widthPixels - 140) / count
+        return (Resources.getSystem().displayMetrics.widthPixels - SCREEN_MARGINS) / totalItemsCount
     }
 
     private fun setSelectionBehaviour() {
@@ -151,7 +179,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             if (index == position)
                 view.alpha = 1f
             else
-                view.alpha = 0.7f
+                view.alpha = unselectedAlphaLevel
         }
     }
 
@@ -188,4 +216,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         }
     }
 
+    companion object {
+        const val SCREEN_MARGINS = 140
+        const val INDICATOR_HEIGHT = 2f
+        const val INDICATOR_COLOR = "#2ace00"
+        const val UNSELECTED_ALPHA = 0.7f
+    }
 }
