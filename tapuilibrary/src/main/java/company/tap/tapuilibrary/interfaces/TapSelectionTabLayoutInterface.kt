@@ -6,6 +6,6 @@ package company.tap.tapuilibrary.interfaces
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
-interface TapSectionTabLayoutInterface {
+interface TapSelectionTabLayoutInterface {
     fun onSelectedTabChanged(position: Int?)
 }

@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary
+package company.tap.tapuilibrary.models
 
 import android.graphics.drawable.Drawable
 import android.view.View

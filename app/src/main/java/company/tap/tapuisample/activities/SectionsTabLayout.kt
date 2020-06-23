@@ -5,8 +5,8 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.tapcardvalidator_android.CardBrand
-import company.tap.tapuilibrary.SectionTabItem
-import company.tap.tapuilibrary.interfaces.TapSectionTabLayoutInterface
+import company.tap.tapuilibrary.models.SectionTabItem
+import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.views.TapSelectionTabLayout
 import company.tap.tapuisample.R
 
@@ -14,7 +14,7 @@ import company.tap.tapuisample.R
  * Sample Activity to show how TableLayout functions .
  *
  * **/
-class SectionsTabLayout : AppCompatActivity(), TapSectionTabLayoutInterface {
+class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
 
     lateinit var tabLayout: TapSelectionTabLayout
     private var selectedTab = 0
@@ -32,16 +32,46 @@ class SectionsTabLayout : AppCompatActivity(), TapSectionTabLayoutInterface {
 
     private fun addCardsTab() {
         val items = ArrayList<SectionTabItem>()
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.visa), resources.getDrawable(R.drawable.visa_gray), CardBrand.visa))
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.mastercard), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard))
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.amex), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress))
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.visa
+                ), resources.getDrawable(R.drawable.visa_gray), CardBrand.visa
+            )
+        )
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.mastercard
+                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
+            )
+        )
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.amex
+                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
+            )
+        )
         tabLayout.addSection(items)
     }
 
     private fun addMobileTab() {
         val items = ArrayList<SectionTabItem>()
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.zain), resources.getDrawable(R.drawable.zain_gray), CardBrand.zain))
-        items.add(SectionTabItem(resources.getDrawable(R.drawable.ooredoo), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo))
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.zain
+                ), resources.getDrawable(R.drawable.zain_gray), CardBrand.zain
+            )
+        )
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.ooredoo
+                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
+            )
+        )
         tabLayout.addSection(items)
     }
 

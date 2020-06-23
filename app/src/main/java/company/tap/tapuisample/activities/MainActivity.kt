@@ -12,7 +12,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
-import company.tap.tapuilibrary.DialogConfigurations
+import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
 import company.tap.tapuisample.R

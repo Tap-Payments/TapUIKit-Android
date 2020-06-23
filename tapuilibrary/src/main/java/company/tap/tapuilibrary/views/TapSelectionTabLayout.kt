@@ -10,9 +10,9 @@ import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.MetricsUtil
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.SectionTabItem
+import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.atoms.TapImageView
-import company.tap.tapuilibrary.interfaces.TapSectionTabLayoutInterface
+import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 
 /**
  *
@@ -31,7 +31,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private val tabItems = ArrayList<SectionTabItem>()
     private var touchableList = ArrayList<View>()
 
-    private var tabLayoutInterface : TapSectionTabLayoutInterface? = null
+    private var tabLayoutInterface : TapSelectionTabLayoutInterface? = null
 
     init {
         inflate(context, R.layout.tap_selection_tablayout, this)
@@ -41,7 +41,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         setSelectionBehaviour()
     }
 
-    fun setTabLayoutInterface(tabInterface: TapSectionTabLayoutInterface) {
+    fun setTabLayoutInterface(tabInterface: TapSelectionTabLayoutInterface) {
         this.tabLayoutInterface = tabInterface
     }
 
