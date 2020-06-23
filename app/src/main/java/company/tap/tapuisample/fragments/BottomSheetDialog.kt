@@ -84,7 +84,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         headerViewInit(view)
         amountViewInit(view)
         setupChip(view)
-        
+
     }
 
     @SuppressLint("ResourceAsColor")

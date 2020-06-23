@@ -37,7 +37,7 @@ To use the SDK the following requirements must be met:
 3. Setup your project to include TapUIKit-Android as a dependency Module.
    1. File -> Project Structure -> Modules -> << your project name >>
    2. Dependencies -> click on **+** icon in the screen bottom -> add Module Dependency
-   3. select qrcode library
+   3. select tapuilibrary library
 
 <a name="installation_with_jitpack"></a>
 ### Installation with JitPack
