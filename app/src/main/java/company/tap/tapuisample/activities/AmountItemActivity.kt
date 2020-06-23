@@ -12,12 +12,12 @@ import kotlinx.android.synthetic.main.activity_amount_item.*
  * Sample Activity to show how Amount and Item Description will be shown.
  * **/
 class AmountItemActivity : AppCompatActivity() {
-    lateinit var itemName: TapTextView
-    lateinit var itemAmount: TapTextView
-    lateinit var descrTxt: TapTextView
-    lateinit var totalAmount: TapTextView
-    lateinit var totalQuantity: TapTextView
-    lateinit var discount: TapTextView
+    private lateinit var itemName: TapTextView
+    private lateinit var itemAmount: TapTextView
+    private lateinit var descrTxt: TapTextView
+    private lateinit var totalAmount: TapTextView
+    private lateinit var totalQuantity: TapTextView
+    private lateinit var discount: TapTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
