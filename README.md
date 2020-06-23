@@ -254,6 +254,7 @@ Enable any View extending TapSelectionTabLayout in XML:
         android:layout_height="wrap_content"/>
 ```
 13.TapBottomSheetDialog Molecule
+
  13.a. Enable any View extending TapBottomSheetDialog in code:
  ```
 open class BottomSheetDialog : TapBottomSheetDialog()
