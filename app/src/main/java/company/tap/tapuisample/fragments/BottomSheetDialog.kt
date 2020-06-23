@@ -92,9 +92,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         val groupName = view.findViewById<TapTextView>(R.id.group_name)
         groupName.text = getString(R.string.select)
-        groupName.setTextColor(R.color.error_text_dark_theme)
+        groupName.setTextColor(R.color.text_color)
         val groupAction = view.findViewById<TapTextView>(R.id.group_action)
         groupAction.text = getString(R.string.edit)
+        groupName.setTextColor(R.color.text_color)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter =
@@ -136,35 +137,35 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
             if (isFragmentAdded) {
+                childFragmentManager
+                    .beginTransaction()
+                    .remove(currencyViewFragment)
+                    .commit()
+                fragment_container.visibility = View.VISIBLE
+
                 bottomSheetLayout?.let { layout ->
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
                             .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
-                    fragment_container.visibility = View.VISIBLE
                 }
-                childFragmentManager
-                    .beginTransaction()
-                    .remove(currencyViewFragment)
-                    .commit()
 
                 itemCount.text = "22 ITEMS"
             } else {
-                bottomSheetLayout?.let { layout ->
-                    layout.post {
-                        fragment_container.visibility = View.GONE
-                        currentCurrency.visibility= View.INVISIBLE
-                        val addTransition: Transition =
-                            TransitionInflater.from(context)
-                                .inflateTransition(R.transition.add_fragment)
-                        TransitionManager.beginDelayedTransition(layout, addTransition)
-
-                    }
-                }
+                currentCurrency.visibility= View.INVISIBLE
+                fragment_container.visibility = View.GONE
                 childFragmentManager
                     .beginTransaction()
                     .add(R.id.fragment_container1, currencyViewFragment)
                     .commit()
+                bottomSheetLayout?.let { layout ->
+                    layout.post {
+                        val addTransition: Transition =
+                            TransitionInflater.from(context)
+                                .inflateTransition(R.transition.add_fragment)
+                        TransitionManager.beginDelayedTransition(layout, addTransition)
+                    }
+                }
                 itemCount.text = "CLOSE"
                 bottomSheetDialog.behavior.state = STATE_EXPANDED
             }

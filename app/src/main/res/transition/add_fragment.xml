@@ -6,6 +6,6 @@
         android:duration="@android:integer/config_longAnimTime"
         android:transitionOrdering="together">
         <fade />
-        <slide />
+       <!-- <slide />-->
     </transitionSet>
 </transitionSet>
