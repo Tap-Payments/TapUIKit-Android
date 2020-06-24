@@ -1,7 +1,6 @@
-package company.tap.tapuilibrary.utils
+package company.tap.tapuilibrary.animation
 
 import android.animation.*
-import android.graphics.Color
 import company.tap.tapuilibrary.views.TabAnimatedActionButton
 
 /**
@@ -9,18 +8,23 @@ import company.tap.tapuilibrary.views.TabAnimatedActionButton
  * Copyright © 2020 Tap Payments. All rights reserved.
  */
 class MorphingAnimation(private val mParams: Params) {
+
+    private var cornerAnimation: ObjectAnimator? = null
+    private var bgColorAnimation: ObjectAnimator? = null
+    private var heightAnimation: ValueAnimator? = null
+    private var widthAnimation: ValueAnimator? = null
+
     class Params private constructor(val button: TabAnimatedActionButton) {
-        var fromCornerRadius = 0f
-        var toCornerRadius = 0f
-        var fromHeight = 0
-        var toHeight = 0
-        var fromWidth = 0
-        var toWidth = 0
-        var fromColor = 0
-        var toColor = 0
-        var duration = 0
-        var animationListener: TabAnimatedActionButton.AnimationListener? =
-            null
+        var fromCornerRadius: Float? = null
+        var toCornerRadius: Float?  = null
+        var fromHeight: Int?  = null
+        var toHeight: Int?  = null
+        var fromWidth: Int?  = null
+        var toWidth: Int?  = null
+        var fromColor: Int?  = null
+        var toColor: Int?  = null
+        var duration: Int?  = null
+        var animationListener: TabAnimatedActionButton.AnimationListener? = null
 
         fun duration(duration: Int): Params {
             this.duration = duration
@@ -70,46 +74,51 @@ class MorphingAnimation(private val mParams: Params) {
 
         companion object {
             fun create(button: TabAnimatedActionButton): Params {
-                return Params(button)
+                return Params(
+                    button
+                )
             }
         }
 
     }
 
     fun start() {
+
+
         val background = mParams.button.mGradientDrawable
-        val cornerAnimation = ObjectAnimator.ofFloat(
-            background,
-            "cornerRadius",
-            mParams.fromCornerRadius,
-            mParams.toCornerRadius
-        )
-        val bgColorAnimation =
-            ObjectAnimator.ofInt(background, "color", mParams.fromColor, mParams.toColor)
-        bgColorAnimation.setEvaluator(ArgbEvaluator())
-        val heightAnimation =
-            ValueAnimator.ofInt(mParams.fromHeight, mParams.toHeight)
-        heightAnimation.addUpdateListener { valueAnimator: ValueAnimator ->
+        cornerAnimation = ObjectAnimator.ofFloat(background, "cornerRadius", mParams.fromCornerRadius!!, mParams.toCornerRadius!!)
+
+
+        bgColorAnimation = ObjectAnimator.ofInt(background, "color", mParams.fromColor!!, mParams.toColor!!)
+        bgColorAnimation?.setEvaluator(ArgbEvaluator())
+
+
+        heightAnimation = ValueAnimator.ofInt(mParams.fromHeight!!, mParams.toHeight!!)
+        heightAnimation?.addUpdateListener { valueAnimator: ValueAnimator ->
             val `val` = valueAnimator.animatedValue as Int
             val layoutParams = mParams.button.layoutParams
             layoutParams.height = `val`
             mParams.button.layoutParams = layoutParams
         }
-        val widthAnimation = ValueAnimator.ofInt(mParams.fromWidth, mParams.toWidth)
-        widthAnimation.addUpdateListener { valueAnimator: ValueAnimator ->
+
+
+        widthAnimation = ValueAnimator.ofInt(mParams.fromWidth!!, mParams.toWidth!!)
+        widthAnimation?.addUpdateListener { valueAnimator: ValueAnimator ->
             val `val` = valueAnimator.animatedValue as Int
             val layoutParams = mParams.button.layoutParams
             layoutParams.width = `val`
             mParams.button.layoutParams = layoutParams
         }
+
+
         val animatorSet = AnimatorSet()
-        animatorSet.duration = mParams.duration.toLong()
+        mParams.duration?.let {
+            animatorSet.duration = it.toLong()
+        }
         animatorSet.playTogether(cornerAnimation, bgColorAnimation, heightAnimation, widthAnimation)
         animatorSet.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
-                if (mParams.animationListener != null) {
-                    mParams.animationListener!!.onAnimationEnd()
-                }
+                    mParams.animationListener?.onAnimationEnd()
             }
         })
         animatorSet.start()

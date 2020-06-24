@@ -5,8 +5,10 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
+import android.view.View
 import androidx.cardview.widget.CardView
-import company.tap.tapuilibrary.utils.MorphingAnimation
+import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.animation.MorphingAnimation
 
 /**
  *
@@ -32,12 +34,16 @@ class TabAnimatedActionButton: CardView {
 
     private fun init(context: Context) {
         mGradientDrawable.cornerRadius = 10f
-        mGradientDrawable.color = ColorStateList.valueOf(Color.BLUE)
+        mGradientDrawable.color = ColorStateList.valueOf(context.resources.getColor(R.color.button_green))
         background = mGradientDrawable
     }
 
     fun startAnimation(params : MorphingAnimation.Params) {
         MorphingAnimation(params).start()
+    }
+
+    fun addChildView(view: View) {
+        addView(view)
     }
 
     interface AnimationListener {
