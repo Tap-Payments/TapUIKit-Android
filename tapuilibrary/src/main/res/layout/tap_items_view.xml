@@ -3,35 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_marginStart="@dimen/margin_basic_16dp"
     android:layout_marginTop="@dimen/margin_basic_14dp"
     android:layout_marginEnd="@dimen/margin_basic_16dp"
     android:layout_marginBottom="@dimen/margin_basic_13dp"
+    android:weightSum="1"
     >
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:weightSum="1"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_weight="0.55"
+       >
 
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/item_title"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:fontFamily="sans-serif"
-            android:textColor="#4b4847"
             android:textSize="14sp"
+            android:fontFamily="sans-serif"
             android:textStyle="normal"
-            tools:text="Item TItle" />
+            android:textColor="#4b4847"
+            android:lineSpacingExtra="2sp"
+            tools:text="Item TItle"
+            android:maxLines="2"/>
+        <company.tap.tapuilibrary.atoms.TapTextView
+            android:id="@+id/show_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-light"
+            android:textColor="#a8a8a8"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            tools:text="Show Description" />
 
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="0dp"
+        android:layout_weight="0.45"
+      >
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/item_amount"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
             android:fontFamily="sans-serif"
             android:gravity="end"
             android:textColor="#4b4847"
@@ -39,25 +60,11 @@
             android:textStyle="normal"
             tools:text="KD000,000.000" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/margin_basic_3dp"
-        android:weightSum="1">
-
-        <company.tap.tapuilibrary.atoms.TapTextView
-            android:id="@+id/show_description"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:fontFamily="sans-serif-light"
-            android:textColor="#a8a8a8"
-            android:textSize="12sp"
-            android:textStyle="normal"
-            tools:text="Show Description" />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="0.5">
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/discount_text"
             android:layout_width="0dp"
@@ -67,21 +74,22 @@
             android:textStyle="normal"
             android:textColor="#a8a8a8"
             android:gravity="end"
-            tools:text="10% Discount"
-            android:layout_weight="0.25"
+            tools:text="Discount"
+            android:layout_weight="0.20"
+
             />
 
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/total_amount"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.25"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif-light"
             android:gravity="end"
             android:textColor="#a8a8a8"
             android:textSize="12sp"
             android:textStyle="normal"
-            tools:text="KD000,000.000" />
+            tools:text="KD000,000.000"
+            android:layout_weight="0.30"/>
 
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/total_quantity"
@@ -99,4 +107,5 @@
 
 
     </LinearLayout>
+</LinearLayout>
 </LinearLayout>

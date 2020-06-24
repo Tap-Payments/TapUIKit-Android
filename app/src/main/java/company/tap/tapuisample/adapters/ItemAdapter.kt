@@ -42,12 +42,16 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
                 discount.text = "Discount"
                 totalAmount.paintFlags =
                     totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-            }else{
+                    itemName.text = "ITEM TITLE $itemList"
+
+            }else
+            {
                 discount.visibility= View.INVISIBLE
                 totalAmount.paintFlags =
                     totalAmount.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                itemName.text = "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE $itemList"
             }
-            itemName.text = "ITEM TITLE $itemList"
+            //itemName.text = "ITEM TITLE VERY VERY LOOONNGGGG DESCRIPTIONNNNNN $itemList"
             itemAmount.text = "KD000,000.000"
             descText.text = "Show Description"
             totalAmount.text = "KD000,000.000"
