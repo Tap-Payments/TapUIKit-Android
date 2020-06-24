@@ -47,11 +47,4 @@
         android:layout_marginStart="283dp"
         android:elevation="@dimen/margin_basic_0dp"
        />
-    <company.tap.tapuilibrary.atoms.TapSeparatorView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/textView_itemcount"
-      android:layout_marginTop="@dimen/margin_basic_9dp"
-        android:background="#dfdfdf"
-        />
 </RelativeLayout>

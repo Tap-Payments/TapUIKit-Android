@@ -149,7 +149,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                             .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
                 }
-
+                selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = "22 ITEMS"
             } else {
                 childFragmentManager
@@ -164,7 +164,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                         TransitionManager.beginDelayedTransition(layout, addTransition)
                     }
                 }
-                currentCurrency.visibility= View.INVISIBLE
+                selectedCurrency.text = "KD1000,000.000"
+                currentCurrency.visibility= View.GONE
                 fragment_container.visibility = View.GONE
                 itemCount.text = "CLOSE"
                Handler().postDelayed({
