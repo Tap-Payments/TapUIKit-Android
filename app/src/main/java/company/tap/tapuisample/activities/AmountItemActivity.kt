@@ -38,7 +38,7 @@ class AmountItemActivity : AppCompatActivity() {
         descrTxt.text = "Show Description"
         totalAmount.text = "KD000,000.000"
         totalQuantity.text = "1"
-        discount.text = "10% Discount"
+        discount.text = "Discount"
         discount.visibility = View.INVISIBLE
 
         switch_discount.setOnCheckedChangeListener { _, isChecked ->
