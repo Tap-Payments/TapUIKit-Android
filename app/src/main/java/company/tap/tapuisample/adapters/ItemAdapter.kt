@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuisample.R
 
 /**
@@ -17,6 +18,9 @@ All rights reserved.
  **/
 class ItemAdapter (private val itemList: ArrayList<Int>) :
     RecyclerView.Adapter<ItemAdapter.ItemHolder>() {
+   var previousExpandedPosition = -1
+   var mExpandedPosition = -1
+    lateinit var descriptioextView:TapTextView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val v =
             LayoutInflater.from(parent.context).inflate(R.layout.item_view_adapter, parent, false)
@@ -63,8 +67,21 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.bindItems(itemList[position])
+        descriptioextView  = holder.itemView.findViewById(R.id.description_textView)
 
+        holder.bindItems(itemList[position])
+        val isExpanded = position === mExpandedPosition
+        descriptioextView.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.")
+        descriptioextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
+        holder.itemView.isActivated = isExpanded
+
+        if (isExpanded) previousExpandedPosition = position
+
+        holder.itemView.setOnClickListener {
+            mExpandedPosition = if (isExpanded) -1 else position
+            notifyItemChanged(previousExpandedPosition)
+            notifyItemChanged(position)
+        }
 
     }
 }
