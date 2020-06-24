@@ -68,4 +68,8 @@ class MainActivity : AppCompatActivity(),
         startActivity(Intent(this, SectionsTabLayout::class.java))
     }
 
+    fun openActionButton(view: View) {
+        startActivity(Intent(this, ActionButtonActivity::class.java))
+    }
+
 }

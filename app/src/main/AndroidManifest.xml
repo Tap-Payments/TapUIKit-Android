@@ -3,18 +3,18 @@
     package="company.tap.tapuisample">
 
     <application
+        android:name=".Application"
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".Application"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="true"
-       >
-        <activity android:name=".activities.SectionsTabLayout"></activity>
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.ActionButtonActivity"></activity>
+        <activity android:name=".activities.SectionsTabLayout" />
         <activity android:name=".activities.AmountItemActivity" />
-        <activity android:name=".activities.TapChipsActivity"/>
+        <activity android:name=".activities.TapChipsActivity" />
         <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
