@@ -4,11 +4,17 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.transition.AutoTransition
+import android.transition.TransitionManager
 import android.util.AttributeSet
+import android.view.Gravity
 import android.view.View
+import android.widget.TextView
 import androidx.cardview.widget.CardView
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.animation.MorphingAnimation
+import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 
 /**
  *
@@ -18,6 +24,7 @@ import company.tap.tapuilibrary.animation.MorphingAnimation
  */
 class TabAnimatedActionButton: CardView {
 
+    private lateinit var payText: TextView
     var mGradientDrawable: GradientDrawable = GradientDrawable()
 
     constructor(context: Context) : super(context) {
@@ -35,7 +42,17 @@ class TabAnimatedActionButton: CardView {
     private fun init(context: Context) {
         mGradientDrawable.cornerRadius = 10f
         mGradientDrawable.color = ColorStateList.valueOf(context.resources.getColor(R.color.button_green))
+        payText = TextView(context)
+        payText.text = "Pay!"
+        payText.textSize = 20f
+        payText.gravity = Gravity.CENTER
+        payText.setTextColor(Color.WHITE)
+        addView(payText)
         background = mGradientDrawable
+    }
+
+    fun setButtonDataSource(dataSource: ActionButtonDataSource) {
+
     }
 
     fun startAnimation(params : MorphingAnimation.Params) {
@@ -43,6 +60,8 @@ class TabAnimatedActionButton: CardView {
     }
 
     fun addChildView(view: View) {
+        AnimationEngine.applyTransition(this)
+        removeAllViews()
         addView(view)
     }
 

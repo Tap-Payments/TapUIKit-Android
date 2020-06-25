@@ -28,7 +28,7 @@ class ActionButtonActivity : AppCompatActivity(), TabAnimatedActionButton.Animat
             .width(actionButton.width, 150)
             .cornerRadius(10, 100)
             .color(resources.getColor(R.color.button_green), resources.getColor(R.color.button_gray))
-            .duration(500)
+            .duration(2000)
             .listener(this)
     }
 
