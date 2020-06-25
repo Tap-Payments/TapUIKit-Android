@@ -28,7 +28,7 @@
             android:textColor="#4b4847"
             android:lineSpacingExtra="2sp"
             tools:text="Item TItle"
-            android:maxLines="2"/>
+            />
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/show_description"
             android:layout_width="wrap_content"
