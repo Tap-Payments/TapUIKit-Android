@@ -2,7 +2,10 @@ package company.tap.tapuisample.activities
 
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
 import company.tap.tapuilibrary.views.TabAnimatedActionButton
@@ -16,10 +19,30 @@ class ActionButtonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_action_button)
         actionButton = findViewById(R.id.action_button)
-        actionButton.setButtonDataSource(getSuccessDataSource())
+        actionButton.setButtonDataSource(getIdleDataSource())
         actionButton.setOnClickListener {
-            actionButton.changeButtonState(ActionButtonState.SUCCESS)
+            pickStatus()
         }
+    }
+
+    private fun pickStatus() {
+        var alert: AlertDialog? = null
+        val items = arrayOf("SUCCESS", "ERROR")
+        val builder = AlertDialog.Builder(this)
+        builder.setCancelable(true)
+        builder.setTitle("Pick Status")
+        builder.setItems(items) { _, position ->
+            if (position == 0) {
+                actionButton.setButtonDataSource(getSuccessDataSource())
+                actionButton.changeButtonState(ActionButtonState.SUCCESS)
+            } else {
+                actionButton.setButtonDataSource(getErrorDataSource())
+                actionButton.changeButtonState(ActionButtonState.ERROR)
+            }
+            alert?.hide()
+        }
+        alert = builder.create()
+        alert.show()
     }
 
     private fun getIdleDataSource(): ActionButtonDataSource {
