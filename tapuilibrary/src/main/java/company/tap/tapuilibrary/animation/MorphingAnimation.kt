@@ -1,127 +1,123 @@
 package company.tap.tapuilibrary.animation
 
 import android.animation.*
-import company.tap.tapuilibrary.views.TabAnimatedActionButton
+import android.graphics.drawable.GradientDrawable
+import android.view.View
+import androidx.annotation.ColorInt
+import company.tap.tapuilibrary.animation.MorphingAnimation.AnimationTarget.*
+import company.tap.tapuilibrary.datasource.AnimationDataSource
 
 /**
  * Created by Mario Gamal on 6/24/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  */
-class MorphingAnimation(private val mParams: Params) {
+class MorphingAnimation(private val animatedView: View) {
 
-    private var cornerAnimation: ObjectAnimator? = null
-    private var bgColorAnimation: ObjectAnimator? = null
-    private var heightAnimation: ValueAnimator? = null
-    private var widthAnimation: ValueAnimator? = null
+    private var animationEndListener: OnAnimationEndListener? = null
 
-    class Params private constructor(val button: TabAnimatedActionButton) {
-        var fromCornerRadius: Float? = null
-        var toCornerRadius: Float?  = null
-        var fromHeight: Int?  = null
-        var toHeight: Int?  = null
-        var fromWidth: Int?  = null
-        var toWidth: Int?  = null
-        var fromColor: Int?  = null
-        var toColor: Int?  = null
-        var duration: Int?  = null
-        var animationListener: TabAnimatedActionButton.AnimationListener? = null
+    fun setAnimationEndListener(animationEndListener: OnAnimationEndListener) {
+        this.animationEndListener = animationEndListener
+    }
 
-        fun duration(duration: Int): Params {
-            this.duration = duration
-            return this
-        }
+    fun start(dataSource: AnimationDataSource, vararg targets: AnimationTarget) {
 
-        fun listener(animationListener: TabAnimatedActionButton.AnimationListener): Params {
-            this.animationListener = animationListener
-            return this
-        }
+        val animators = ArrayList<Animator>()
 
-        fun color(
-            fromColor: Int,
-            toColor: Int
-        ): Params {
-            this.fromColor = fromColor
-            this.toColor = toColor
-            return this
-        }
-
-        fun cornerRadius(
-            fromCornerRadius: Int,
-            toCornerRadius: Int
-        ): Params {
-            this.fromCornerRadius = fromCornerRadius.toFloat()
-            this.toCornerRadius = toCornerRadius.toFloat()
-            return this
-        }
-
-        fun height(
-            fromHeight: Int,
-            toHeight: Int
-        ): Params {
-            this.fromHeight = fromHeight
-            this.toHeight = toHeight
-            return this
-        }
-
-        fun width(
-            fromWidth: Int,
-            toWidth: Int
-        ): Params {
-            this.fromWidth = fromWidth
-            this.toWidth = toWidth
-            return this
-        }
-
-        companion object {
-            fun create(button: TabAnimatedActionButton): Params {
-                return Params(
-                    button
-                )
+        targets.forEach {
+            when (it) {
+                CORNERS -> {
+                    if (dataSource.background != null && dataSource.fromCorners != null && dataSource.toCorners != null)
+                        animators.add(
+                            getCornerAnimation(
+                                dataSource.background,
+                                dataSource.fromCorners,
+                                dataSource.toCorners
+                            )
+                        )
+                }
+                COLOR -> {
+                    if (dataSource.background != null && dataSource.fromColor != null && dataSource.toColor != null)
+                        animators.add(
+                            getColorAnimation(
+                                dataSource.background,
+                                dataSource.fromColor,
+                                dataSource.toColor
+                            )
+                        )
+                }
+                HEIGHT -> {
+                    if (dataSource.fromHeight != null && dataSource.toHeight != null)
+                        animators.add(
+                            getDimensionAnimation(
+                                HEIGHT,
+                                dataSource.fromHeight,
+                                dataSource.toHeight
+                            )
+                        )
+                }
+                WIDTH -> {
+                    if (dataSource.fromWidth != null && dataSource.toWidth != null)
+                        animators.add(
+                            getDimensionAnimation(
+                                WIDTH,
+                                dataSource.fromWidth,
+                                dataSource.toWidth
+                            )
+                        )
+                }
             }
         }
 
-    }
-
-    fun start() {
-
-
-        val background = mParams.button.mGradientDrawable
-        cornerAnimation = ObjectAnimator.ofFloat(background, "cornerRadius", mParams.fromCornerRadius!!, mParams.toCornerRadius!!)
-
-
-        bgColorAnimation = ObjectAnimator.ofInt(background, "color", mParams.fromColor!!, mParams.toColor!!)
-        bgColorAnimation?.setEvaluator(ArgbEvaluator())
-
-
-        heightAnimation = ValueAnimator.ofInt(mParams.fromHeight!!, mParams.toHeight!!)
-        heightAnimation?.addUpdateListener { valueAnimator: ValueAnimator ->
-            val `val` = valueAnimator.animatedValue as Int
-            val layoutParams = mParams.button.layoutParams
-            layoutParams.height = `val`
-            mParams.button.layoutParams = layoutParams
-        }
-
-
-        widthAnimation = ValueAnimator.ofInt(mParams.fromWidth!!, mParams.toWidth!!)
-        widthAnimation?.addUpdateListener { valueAnimator: ValueAnimator ->
-            val `val` = valueAnimator.animatedValue as Int
-            val layoutParams = mParams.button.layoutParams
-            layoutParams.width = `val`
-            mParams.button.layoutParams = layoutParams
-        }
-
-
         val animatorSet = AnimatorSet()
-        mParams.duration?.let {
+        dataSource.duration?.let {
             animatorSet.duration = it.toLong()
         }
-        animatorSet.playTogether(cornerAnimation, bgColorAnimation, heightAnimation, widthAnimation)
+        animatorSet.playTogether(animators)
         animatorSet.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
-                    mParams.animationListener?.onAnimationEnd()
+                animationEndListener?.onAnimationEnd()
             }
         })
         animatorSet.start()
     }
 
+    private fun getCornerAnimation(background: GradientDrawable, from: Float, to: Float): Animator {
+        return ObjectAnimator.ofFloat(background, "cornerRadius", from, to)
+    }
+
+    private fun getColorAnimation(
+        background: GradientDrawable,
+        @ColorInt from: Int,
+        @ColorInt to: Int
+    ): Animator {
+        val bgColorAnimation = ObjectAnimator.ofInt(background, "color", from, to)
+        bgColorAnimation?.setEvaluator(ArgbEvaluator())
+        return bgColorAnimation
+    }
+
+    private fun getDimensionAnimation(dimension: AnimationTarget, from: Int, to: Int): Animator {
+        val dimensionAnimation = ValueAnimator.ofInt(from, to)
+        dimensionAnimation?.addUpdateListener { valueAnimator ->
+            val animatedValue = valueAnimator.animatedValue as Int
+            val layoutParams = animatedView.layoutParams
+            when (dimension) {
+                HEIGHT -> layoutParams.height = animatedValue
+                WIDTH -> layoutParams.width = animatedValue
+                else -> return@addUpdateListener
+            }
+            animatedView.layoutParams = layoutParams
+        }
+        return dimensionAnimation
+    }
+
+    enum class AnimationTarget {
+        HEIGHT,
+        WIDTH,
+        COLOR,
+        CORNERS
+    }
+
+    interface OnAnimationEndListener {
+        fun onAnimationEnd()
+    }
 }

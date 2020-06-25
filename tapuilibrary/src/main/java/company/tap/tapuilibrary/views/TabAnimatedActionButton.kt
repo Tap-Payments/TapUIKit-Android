@@ -9,12 +9,15 @@ import android.transition.TransitionManager
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.animation.MorphingAnimation
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
+import company.tap.tapuilibrary.enums.ActionButtonState
+import company.tap.tapuilibrary.interfaces.TapActionButtonInterface
 
 /**
  *
@@ -25,7 +28,9 @@ import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 class TabAnimatedActionButton: CardView {
 
     private lateinit var payText: TextView
+    private var dataSource: ActionButtonDataSource? = null
     var mGradientDrawable: GradientDrawable = GradientDrawable()
+    var actionButtonInterface: TapActionButtonInterface? = null
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -51,12 +56,16 @@ class TabAnimatedActionButton: CardView {
         background = mGradientDrawable
     }
 
+    fun setButtonInterface(actionButtonInterface: TapActionButtonInterface) {
+        this.actionButtonInterface = actionButtonInterface
+    }
+
     fun setButtonDataSource(dataSource: ActionButtonDataSource) {
 
     }
 
-    fun startAnimation(params : MorphingAnimation.Params) {
-        MorphingAnimation(params).start()
+    fun changeButtonState(state: ActionButtonState) {
+
     }
 
     fun addChildView(view: View) {
@@ -65,7 +74,9 @@ class TabAnimatedActionButton: CardView {
         addView(view)
     }
 
-    interface AnimationListener {
-        fun onAnimationEnd()
+    fun onMorphingAnimationEnd() {
+        val errorIcon = ImageView(context)
+        errorIcon.setImageResource(R.drawable.ic_error)
+        addChildView(errorIcon)
     }
 }
