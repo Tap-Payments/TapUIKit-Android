@@ -19,7 +19,7 @@ import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.BottomSheetDialog
 
 
-class MainActivity : AppCompatActivity(),
+class MainActivity : BaseActivity(),
     TapAmountSectionInterface {
     lateinit var fontChanger: FontChanger
     @SuppressLint("ResourceAsColor", "SetTextI18n")

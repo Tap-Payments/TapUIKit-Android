@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuisample.R
 
@@ -44,7 +45,7 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
             val totalQuantity  = itemView.findViewById(R.id.total_quantity) as TextView
 
             if(itemList%2==0){
-                discount.text = "Discount"
+                discount.text =LocalizationManager.getValue("Discount","ItemList")
                 totalAmount.paintFlags =
                     totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
                     itemName.text = "ITEM TITLE $itemList"
@@ -84,9 +85,9 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
 
         }
         if(isExpanded){
-            descText.text = "Hide Description"
+            descText.text = LocalizationManager.getValue("hideDesc","ItemList")
         }else{
-            descText.text = "Show Description"
+            descText.text =  LocalizationManager.getValue("showDesc","ItemList")
         }
 
     }

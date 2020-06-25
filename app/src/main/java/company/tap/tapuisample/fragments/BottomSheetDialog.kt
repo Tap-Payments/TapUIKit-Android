@@ -17,12 +17,14 @@ import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
+import company.tap.tapuilibrary.views.TapHeader
 import company.tap.tapuisample.R
 import company.tap.tapuisample.TapAsyncUtil
 import company.tap.tapuisample.adapters.MultipleTypeAdapter
@@ -91,10 +93,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         val mainChipgroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         val groupName = view.findViewById<TapTextView>(R.id.group_name)
-        groupName.text = getString(R.string.select)
+        groupName.text = LocalizationManager.getValue("select","Common")
         groupName.setTextColor(R.color.text_color)
         val groupAction = view.findViewById<TapTextView>(R.id.group_action)
-        groupAction.text = getString(R.string.edit)
+        groupAction.text = LocalizationManager.getValue("edit","Common")
         groupName.setTextColor(R.color.text_color)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -111,7 +113,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         businessFor = view.findViewById(R.id.payment_for)
         businessIcon = view.findViewById(R.id.business_icon)
         businessName.text = "Tap Payments"
-        businessFor.text = "PAYMENT FOR"
+        businessFor.text = LocalizationManager.getValue("paymentFor","TapMerchantSection")
         businessPlaceholder = view.findViewById(R.id.placeholder_text)
         businessInitial = businessName.text[0].toString()
         businessPlaceholder.text = businessInitial
@@ -167,7 +169,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                 selectedCurrency.text = "KD1000,000.000"
                 currentCurrency.visibility= View.GONE
                 fragment_container.visibility = View.GONE
-                itemCount.text = "CLOSE"
+                itemCount.text = LocalizationManager.getValue("close","Common")
                Handler().postDelayed({
                     bottomSheetDialog.behavior.state = STATE_EXPANDED
 
@@ -176,7 +178,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
             isFragmentAdded = !isFragmentAdded
 
         }
-
+        
         println("bottom state ${bottomSheetDialog.behavior.state}")
 
     }

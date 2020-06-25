@@ -5,13 +5,14 @@ import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_amount_item.*
 /**
  * Sample Activity to show how Amount and Item Description will be shown.
  * **/
-class AmountItemActivity : AppCompatActivity() {
+class AmountItemActivity : BaseActivity() {
     private lateinit var itemName: TapTextView
     private lateinit var itemAmount: TapTextView
     private lateinit var descrTxt: TapTextView
@@ -35,10 +36,10 @@ class AmountItemActivity : AppCompatActivity() {
         discount = findViewById(R.id.discount_text)
         itemName.text = "ITEM TITLE"
         itemAmount.text = "KD000,000.000"
-        descrTxt.text = "Show Description"
+        descrTxt.text = LocalizationManager.getValue("showDesc","ItemList")
         totalAmount.text = "KD000,000.000"
         totalQuantity.text = "1"
-        discount.text = "Discount"
+        discount.text = LocalizationManager.getValue("Discount","ItemList")
         discount.visibility = View.INVISIBLE
 
         switch_discount.setOnCheckedChangeListener { _, isChecked ->
