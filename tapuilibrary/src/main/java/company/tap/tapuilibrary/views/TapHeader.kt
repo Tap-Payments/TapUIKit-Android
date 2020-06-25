@@ -57,7 +57,7 @@ class TapHeader(context: Context?, attrs: AttributeSet?) : LinearLayout(context,
         var TEXT_COLOR = "#4b4847"
 
     }
-    fun setHeaderDataSource(dataSource: HeaderDataSource) {
+    /*fun setHeaderDataSource(dataSource: HeaderDataSource) {
         this.dataSource = dataSource
         addView(getTextView())
     }
@@ -74,5 +74,5 @@ class TapHeader(context: Context?, attrs: AttributeSet?) : LinearLayout(context,
         }
         textView.gravity = Gravity.CENTER
         return textView
-    }
+    }*/
 }
