@@ -75,7 +75,7 @@ class MorphingAnimation(private val animatedView: View) {
         animatorSet.playTogether(animators)
         animatorSet.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
-                animationEndListener?.onAnimationEnd()
+                animationEndListener?.onMorphAnimationEnd()
             }
         })
         animatorSet.start()
@@ -118,6 +118,6 @@ class MorphingAnimation(private val animatedView: View) {
     }
 
     interface OnAnimationEndListener {
-        fun onAnimationEnd()
+        fun onMorphAnimationEnd()
     }
 }

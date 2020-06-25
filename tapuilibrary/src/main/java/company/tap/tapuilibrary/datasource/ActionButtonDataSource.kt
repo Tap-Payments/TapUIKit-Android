@@ -13,19 +13,35 @@ import androidx.annotation.DrawableRes
  */
 data class ActionButtonDataSource(
     val text: String? = null,
-    val successImage: Drawable? = null,
-    val errorImage: Drawable? = null,
+    val textSize: Float? = null,
     val cornerRadius: Float? = null,
+    val successImage: Drawable? = null,
+
+    @ColorInt
+    val textColor: Int? = null,
+
+    @ColorRes
+    val textColorResources: Int? = null,
+
+    @DrawableRes
+    val successImageResources: Int? = null,
+
+    @ColorInt
+    val errorColor: Int? = null,
+
+    @ColorRes
+    val errorColorResources: Int? = null,
+
+    val errorImage: Drawable? = null,
+
+    @DrawableRes
+    val errorImageResources: Int? = null,
 
     @ColorInt
     val backgroundColor: Int? = null,
 
     @ColorRes
-    val backgroundColorResources: Int? = null,
+    val backgroundColorResources: Int? = null
 
-    @DrawableRes
-    val successImageResources: Int? = null,
 
-    @DrawableRes
-    val errorImageResources: Int? = null
 )
