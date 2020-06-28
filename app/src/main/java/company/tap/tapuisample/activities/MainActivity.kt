@@ -9,12 +9,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
-import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.BottomSheetDialog
 

@@ -22,18 +22,18 @@ var selectedPosition = -1
 var context: Context? = null
 
 class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
-    RecyclerView.Adapter<CurrencyAdapter.PhotoHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoHolder {
+    RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
         val v =
             LayoutInflater.from(parent.context).inflate(R.layout.item_currency_row, parent, false)
         context = parent.context
-        return PhotoHolder(v)
+        return CurrencyHolder(v)
     }
 
     override fun getItemCount() = photos.size
 
 
-    class PhotoHolder(v: View) : RecyclerView.ViewHolder(v) {
+    class CurrencyHolder(v: View) : RecyclerView.ViewHolder(v) {
         private var view: View = v
         private var photo: CurrencyModel? = null
 
@@ -44,7 +44,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
         }
     }
 
-    override fun onBindViewHolder(holder: PhotoHolder, position: Int) {
+    override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.bindPhoto(photos[position])
         if (selectedPosition == position) {
             holder.itemView.setBackgroundResource(R.drawable.border_currency)

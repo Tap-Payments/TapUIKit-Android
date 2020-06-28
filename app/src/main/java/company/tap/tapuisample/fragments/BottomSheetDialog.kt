@@ -20,7 +20,6 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDE
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
-import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
