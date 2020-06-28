@@ -22,8 +22,10 @@ import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
+import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
+import company.tap.tapuilibrary.views.TapAmountSectionView
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapHeader
 import company.tap.tapuisample.R
@@ -39,10 +41,8 @@ All rights reserved.
  **/
 open class BottomSheetDialog : TapBottomSheetDialog() {
 
-    private lateinit var businessIcon: TapImageView
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
-    private lateinit var businessPlaceholder: TapTextView
     private lateinit var itemCount: TapButton
     private var tapAmountSectionInterface: TapAmountSectionInterface? = null
     private lateinit var chipRecycler: RecyclerView
@@ -51,6 +51,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private var businessName: String? = null
 
     private lateinit var tapHeader: TapHeader
+    private lateinit var amountSectionView: TapAmountSectionView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -108,10 +109,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         }
     }
 
-    @SuppressLint("SetTextI18n")
+
     private fun headerViewInit(view: View) {
         tapHeader = view.findViewById(R.id.headerView)
-        businessName = "Tap Payments"
+        businessName = getString(R.string.tap_payments)
         tapHeader.setHeaderDataSource(getHeaderDataSource())
     }
 
@@ -126,12 +127,12 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     @SuppressLint("SetTextI18n")
     private fun amountViewInit(view: View) {
+        amountSectionView=view.findViewById(R.id.amount_section)
+        amountSectionView.setAmountViewDataSource(getAmountViewDataSOurce())
         currentCurrency = view.findViewById(R.id.textView_currentcurrency)
         selectedCurrency = view.findViewById(R.id.textview_selectedcurrency)
         itemCount = view.findViewById(R.id.textView_itemcount)
-        itemCount.text = "22 ITEMS"
-        selectedCurrency.text = "SR1000,000.000"
-        currentCurrency.text = "KD1000,000.000"
+
         if (isFragmentAdded) {
             currentCurrency.visibility = View.VISIBLE
         }
@@ -181,6 +182,14 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
         println("bottom state ${bottomSheetDialog.behavior.state}")
 
+    }
+
+    private fun getAmountViewDataSOurce(): AmountViewDataSource {
+        return AmountViewDataSource(
+            selectedCurr = "SR1000,000.000" ,
+            currentCurr = "KD1000,000.000",
+            itemCount = "22 ITEMS"
+        )
     }
 
     companion object {

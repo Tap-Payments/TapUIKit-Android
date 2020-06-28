@@ -31,21 +31,13 @@ class TapHeader : LinearLayout {
     private var placeholderText: TapTextView
     private var headerDataSource: HeaderDataSource? = null
 
-    constructor(context: Context) : super(context) {
-
-    }
-
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
-
-    }
-
+    constructor(context: Context) : super(context)
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
         context,
         attrs,
         defStyleAttr
-    ) {
-
-    }
+    )
 
     init {
         inflate(context, R.layout.tap_main_header, this)
@@ -62,7 +54,6 @@ class TapHeader : LinearLayout {
             businessName.text = it
         }
         headerDataSource.businessImageResources?.let {
-            // businessIcon.setImageResource(it)
             placeholderText.visibility = View.VISIBLE
             TapAsyncUtil.DownLoadImageTask(businessIcon, placeholderText).execute(it)
         }

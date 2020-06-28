@@ -38,6 +38,7 @@
         android:layout_marginEnd="17dp"/>
 
     <company.tap.tapuilibrary.views.TapAmountSectionView
+        android:id="@+id/amount_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <company.tap.tapuilibrary.atoms.TapSeparatorView
