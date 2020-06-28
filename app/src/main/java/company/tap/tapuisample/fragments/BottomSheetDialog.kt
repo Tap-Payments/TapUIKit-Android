@@ -22,11 +22,11 @@ import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
+import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapHeader
 import company.tap.tapuisample.R
-import company.tap.tapuisample.TapAsyncUtil
 import company.tap.tapuisample.adapters.MultipleTypeAdapter
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
@@ -38,18 +38,19 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 open class BottomSheetDialog : TapBottomSheetDialog() {
-    private lateinit var businessName: TapTextView
-    private lateinit var businessFor: TapTextView
+
     private lateinit var businessIcon: TapImageView
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
     private lateinit var businessPlaceholder: TapTextView
-    private lateinit var businessInitial: String
     private lateinit var itemCount: TapButton
     private var tapAmountSectionInterface: TapAmountSectionInterface? = null
     private lateinit var chipRecycler: RecyclerView
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     private var isFragmentAdded = false
+    private var businessName: String? = null
+
+    private lateinit var tapHeader: TapHeader
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -93,10 +94,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         val mainChipgroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         val groupName = view.findViewById<TapTextView>(R.id.group_name)
-        groupName.text = LocalizationManager.getValue("select","Common")
+        groupName.text = LocalizationManager.getValue("select", "Common")
         groupName.setTextColor(R.color.text_color)
         val groupAction = view.findViewById<TapTextView>(R.id.group_action)
-        groupAction.text = LocalizationManager.getValue("edit","Common")
+        groupAction.text = LocalizationManager.getValue("edit", "Common")
         groupName.setTextColor(R.color.text_color)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -109,19 +110,18 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     @SuppressLint("SetTextI18n")
     private fun headerViewInit(view: View) {
-        businessName = view.findViewById(R.id.business_name)
-        businessFor = view.findViewById(R.id.payment_for)
-        businessIcon = view.findViewById(R.id.business_icon)
-        businessName.text = "Tap Payments"
-        businessFor.text = LocalizationManager.getValue("paymentFor","TapMerchantSection")
-        businessPlaceholder = view.findViewById(R.id.placeholder_text)
-        businessInitial = businessName.text[0].toString()
-        businessPlaceholder.text = businessInitial
-        businessPlaceholder.visibility = View.VISIBLE
-        TapAsyncUtil.DownLoadImageTask(
-            businessIcon,
-            businessPlaceholder
-        ).execute("https://avatars3.githubusercontent.com/u/19837565?s=200&v=4")
+        tapHeader = view.findViewById(R.id.headerView)
+        businessName = "Tap Payments"
+        tapHeader.setHeaderDataSource(getHeaderDataSource())
+    }
+
+    private fun getHeaderDataSource(): HeaderDataSource {
+        return HeaderDataSource(
+            textBusinessName = businessName,
+            textBusinessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+            businessImageResources = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4",
+            businessInitial = businessName?.get(0).toString()
+        )
     }
 
     @SuppressLint("SetTextI18n")
@@ -133,7 +133,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         selectedCurrency.text = "SR1000,000.000"
         currentCurrency.text = "KD1000,000.000"
         if (isFragmentAdded) {
-            currentCurrency.visibility= View.VISIBLE
+            currentCurrency.visibility = View.VISIBLE
         }
         val currencyViewFragment = CurrencyViewFragment()
         itemCount.setOnClickListener {
@@ -167,10 +167,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                     }
                 }
                 selectedCurrency.text = "KD1000,000.000"
-                currentCurrency.visibility= View.GONE
+                currentCurrency.visibility = View.GONE
                 fragment_container.visibility = View.GONE
-                itemCount.text = LocalizationManager.getValue("close","Common")
-               Handler().postDelayed({
+                itemCount.text = LocalizationManager.getValue("close", "Common")
+                Handler().postDelayed({
                     bottomSheetDialog.behavior.state = STATE_EXPANDED
 
                 }, 1000)
@@ -178,7 +178,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
             isFragmentAdded = !isFragmentAdded
 
         }
-        
+
         println("bottom state ${bottomSheetDialog.behavior.state}")
 
     }
