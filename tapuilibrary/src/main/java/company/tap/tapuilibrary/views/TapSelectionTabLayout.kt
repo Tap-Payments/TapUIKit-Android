@@ -29,7 +29,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var indicatorColor = Color.parseColor(INDICATOR_COLOR)
     private var indicatorHeight = MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
     private var unselectedAlphaLevel = UNSELECTED_ALPHA
-
+    private var maxItemWidth = MAX_ITEM_WIDTH
     private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
     private val tabsView = ArrayList<LinearLayout>()
@@ -105,6 +105,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         unselectedAlphaLevel = level
     }
 
+    fun setMaxItemWidth(maxItemWidth: Int) {
+        this.maxItemWidth = maxItemWidth
+    }
     /**
      * Adding new section to the tablayout
      *
@@ -226,7 +229,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         for (items in itemsCount) {
             totalItemsCount += items
         }
-        return (Resources.getSystem().displayMetrics.widthPixels - SCREEN_MARGINS) / totalItemsCount
+        val itemSize = (Resources.getSystem().displayMetrics.widthPixels - SCREEN_MARGINS) / totalItemsCount
+        return if (itemSize> maxItemWidth) maxItemWidth else itemSize
     }
 
     /**
@@ -311,5 +315,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         const val INDICATOR_HEIGHT = 2f
         const val INDICATOR_COLOR = "#2ace00"
         const val UNSELECTED_ALPHA = 0.7f
+        const val MAX_ITEM_WIDTH = 200
     }
 }
