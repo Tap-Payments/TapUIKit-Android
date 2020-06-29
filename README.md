@@ -37,6 +37,12 @@ Pages
    12. [TapSelectionTabLayout](#tap_selection_tablayout)
    13. [TapBottomSheetDialog](#tap_bottom_sheetdialog)
    14. [TabAnimatedActionButton](#tap_animated_action_button)
+5. [DataSources](#datasources)
+   1. [HeaderDataSource](#header_data_source)
+   2. [AmountDataSource](#amount_data_source)
+   3. [ItemViewDataSource](#itemview_data_source)
+   4. [ActionButtonDataSource](#actionbutton_data_source)
+   5. [AnimationDataSource](#animation_data_source)
 
 
 <a name="requirements"></a>
@@ -122,13 +128,13 @@ Molecules are relatively simple groups of UI elements functioning together as a 
 
 
  ![Molecules](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/molecules.png)
-Molecule Name    |                  Usage                       | configurationn                |
-------------- | -------------------------------------------- | ---------------------------------|
+Molecule Name    |                  Usage                       |       configuration                         |
+------------- | -------------------------------------------- | -----------------------------------------------|
 TapHeader   |  <company.tap.tapuilibrary.views.TapHeaderSectionView |  businessName, businessIcon, businessPlaceHolder |
-TapAmountSectionView |  <company.tap.tapuilibrary.views.TapAmountSectionView |     |
-TapListItemView     | <company.tap.tapuilibrary.views.TapListItemView    |     |
+TapAmountSectionView |  <company.tap.tapuilibrary.views.TapAmountSectionView | selectedCurrency,currentCurrency,itemCount   |
+TapListItemView     | <company.tap.tapuilibrary.views.TapListItemView    | itemTitle,itemAmount, totalAmount, totalQuantity  |
 TapSelectionTabLayout| <company.tap.tapuilibrary.views.TapSelectionTabLayout|      |
-TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|      |
+TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|  header, amountsection,listview,selectionTab    |
 TabAnimatedActionButton| <company.tap.tapuilibrary.views.TabAnimatedActionButton|      |
 
 <a name="usage"></a>
@@ -137,7 +143,7 @@ TabAnimatedActionButton| <company.tap.tapuilibrary.views.TabAnimatedActionButton
 1. TapTextView
 
  1.a. Enable any View extending TextView in code:
- ```
+ ```kotlin
  AnyTextView : TapTextView()
  ```
  2.b. Enable any View extending TextView in XML:
@@ -182,7 +188,7 @@ Enable any View extending TapImageView in XML:
 4.TapButton
 
 4.a. Enable any View extending TapButton in code:
-```
+```kotlin
 AnyButton:TapButton()
 ```
  4.b.Enable any View extending TapButton in XML:
@@ -285,7 +291,7 @@ Enable any View extending TapChip in XML:
 11. TapAmountSectionView Molecule
 
 Enable any View extending TapAmountSectionView in XML:
-```
+```xml
   <company.tap.tapuilibrary.views.TapAmountSectionView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -325,4 +331,85 @@ Enable any View extending TextView in XML:
         android:layout_height="100dp"
         android:layout_margin="20dp" />
  ```
+ <a name="datasources"></a>
+## DataSources
+
+<a name="header_data_source"></a>
+### 1. HeaderDataSource
+  Set data for businessName, businessIcon and businessPlaceHolder from the consumer app as below:
+  ```kotlin
+  private fun getHeaderDataSource(): HeaderDataSource {
+          return HeaderDataSource(
+              businessName = businessName,
+              businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+              businessImageResources = imageUrl,
+              businessPlaceHolder = businessName?.get(0).toString()
+          )
+      }
+
+  ```
+<a name="amount_data_source"></a>
+### 2. AmountViewDataSource
+  Set data for selectedCurrency, currentCurrency and itemCount as shown:
+  ```kotlin
+  private fun getAmountViewDataSOurce(): AmountViewDataSource {
+          return AmountViewDataSource(
+              selectedCurr = "SR1000,000.000" ,
+              currentCurr = "KD1000,000.000",
+              itemCount = "22 ITEMS"
+          )
+      }
+ ```
+<a name="temview_data_source"></a>
+### 3. ItemViewDataSource
+   Set data for itemTitle,  itemAmount , totalAmount and totalQuantity as below:
+   ```kotlin
+   private fun getItemViewdataSource(): ItemViewDataSource {
+           return ItemViewDataSource(
+               itemTitle = "ITEM TITLE",
+               itemAmount = "KD000,000.000",
+               totalQuantity = "1",
+               totalAmount = "KD000,000.000"
+           )
+
+       }
+   ```
+<a name="actionbutton_data_source"></a>
+### 4. ActionButtonDataSource
+  Set ActionButton data as shown:
+  ```kotlin
+  private fun getSuccessDataSource(): ActionButtonDataSource {
+          return ActionButtonDataSource(
+              text = "PAY!",
+              textSize = 20f,
+              textColor = Color.WHITE,
+              cornerRadius = 10f,
+              successImageResources = R.drawable.ic_check,
+              backgroundColor = resources.getColor(R.color.button_green)
+          )
+      }
+   ```
+<a name="animation_data_source"></a>
+### 5. AnimationDataSource
+     Set Animation data as shown:
+     ```kotlin
+     val animationDataSource = AnimationDataSource(
+                 fromHeight = height,
+                 toHeight = MAX_RADIUS,
+                 fromWidth = width,
+                 toWidth = MAX_RADIUS,
+                 fromCorners = dataSource?.cornerRadius,
+                 toCorners = MAX_CORNERS,
+                 fromColor = dataSource?.backgroundColor,
+                 toColor = dataSource?.errorColor,
+                 duration = MAX_DURATION,
+                 background = backgroundDrawable
+             )
+      ```
+
+
+
+
+
+
 

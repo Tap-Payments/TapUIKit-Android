@@ -3,7 +3,8 @@ package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.drawable.Drawable
+import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -19,7 +20,6 @@ import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.bumptech.glide.request.target.CustomTarget
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
@@ -36,6 +36,7 @@ import company.tap.tapuilibrary.views.TapAmountSectionView
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapHeaderSectionView
 import company.tap.tapuisample.R
+import company.tap.tapuisample.TextDrawable
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
@@ -102,10 +103,9 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     }
 
     private fun setupFonts() {
-
         fontChanger = FontChanger(
             activity?.assets,
-            tapFontType(TapFont.circeRegular)
+            tapFontType(TapFont.robotoRegular)
         )
         fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
     }
@@ -142,27 +142,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         businessInitial = businessName?.get(0).toString()
         businessPlaceholder.text = businessInitial
 
-    /* Glide.with(this)
+ Glide.with(this)
             .load(imageUrl)
-            .placeholder(R.id.placeholder_text)
-            .into(businessIcon)*/
-
-        Glide.with(this).load(imageUrl).apply(RequestOptions().fitCenter()).into(
-            object : CustomTarget<Drawable>(100,100){
-                override fun onLoadCleared(placeholder: Drawable?) {
-                    businessPlaceholder.visibility=View.VISIBLE
-                    //  this@BottomSheetDialog.businessPlaceholder.setCompoundDrawablesWithIntrinsicBounds(null, placeholder, null, null)
-                }
-                override fun onResourceReady(
-                    resource: Drawable,
-                    transition: com.bumptech.glide.request.transition.Transition<in Drawable>?
-                ) {
-                    businessPlaceholder.visibility=View.INVISIBLE
-                   // this@BottomSheetDialog.businessPlaceholder.setCompoundDrawablesWithIntrinsicBounds(null, resource, null, null)
-
-                }
-            }
-        )
+            .placeholder(TextDrawable(businessInitial.toString()))
+            .into(businessIcon)
     }
 
     private fun getHeaderDataSource(): HeaderDataSource {
@@ -194,7 +177,6 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                     .remove(currencyViewFragment)
                     .commit()
                 fragment_container.visibility = View.VISIBLE
-
                 bottomSheetLayout?.let { layout ->
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
@@ -244,4 +226,19 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     companion object {
         const val TAG = "ModalBottomSheet"
     }
+
+    open fun writeOnDrawable(drawableId: Int, text: String?): BitmapDrawable? {
+        val bm = BitmapFactory.decodeResource(resources, drawableId)
+          //  .copy(Bitmap.Config.ARGB_8888, true)
+        val paint = Paint()
+        paint.setStyle(Paint.Style.FILL)
+        paint.setColor(Color.BLACK)
+        paint.setTextSize(20f)
+        val canvas = Canvas(bm)
+        if (text != null) {
+            canvas.drawText(text, 0f, (bm.height / 2).toFloat(), paint)
+        }
+        return BitmapDrawable(bm)
+    }
 }
+
