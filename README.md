@@ -35,8 +35,8 @@ Pages
    10. [TapListItemView](#tap_item_listview)
    11. [TapAmountSectionView](#tap_amount_section_view)
    12. [TapSelectionTabLayout](#tap_selection_tablayout)
-   13. [TapBottomSheetDialog](#tap_bottom_sheetdialog")
-   14. [TabAnimatedActionButton](#tap_animated_action_button")
+   13. [TapBottomSheetDialog](#tap_bottom_sheetdialog)
+   14. [TabAnimatedActionButton](#tap_animated_action_button)
 
 
 <a name="requirements"></a>
@@ -122,9 +122,9 @@ Molecules are relatively simple groups of UI elements functioning together as a 
 
 
  ![Molecules](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/molecules.png)
-Molecule Name    |                  Usage                       | configuration|
-------------- | -------------------------------------------- | ----|
-TapHeader   |  <company.tap.tapuilibrary.views.TapHeaderSectionView |  businessName, businessIcon, businessPlaceHolder   |
+Molecule Name    |                  Usage                       | configurationn                |
+------------- | -------------------------------------------- | ---------------------------------|
+TapHeader   |  <company.tap.tapuilibrary.views.TapHeaderSectionView |  businessName, businessIcon, businessPlaceHolder |
 TapAmountSectionView |  <company.tap.tapuilibrary.views.TapAmountSectionView |     |
 TapListItemView     | <company.tap.tapuilibrary.views.TapListItemView    |     |
 TapSelectionTabLayout| <company.tap.tapuilibrary.views.TapSelectionTabLayout|      |
