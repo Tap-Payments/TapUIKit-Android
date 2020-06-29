@@ -32,7 +32,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private lateinit var state: ActionButtonState
     private var dataSource: ActionButtonDataSource? = null
     private var backgroundDrawable: GradientDrawable = GradientDrawable()
-    var actionButtonInterface: TapActionButtonInterface? = null
+    private var actionButtonInterface: TapActionButtonInterface? = null
 
     constructor(context: Context) : super(context) {
         init()
@@ -55,6 +55,11 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         morphingAnimation.setAnimationEndListener(this)
     }
 
+    /**
+     * public setter for action button interface
+     *
+     * @param actionButtonInterface
+     */
     fun setButtonInterface(actionButtonInterface: TapActionButtonInterface) {
         this.actionButtonInterface = actionButtonInterface
     }
@@ -75,6 +80,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         }
     }
 
+    /**
+     * setup the background drawable color and corner radius from datasource
+     */
     private fun initBackground() {
         dataSource?.cornerRadius?.let {
             backgroundDrawable.cornerRadius = it
@@ -122,12 +130,20 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         morphingAnimation.start(animationDataSource, WIDTH, HEIGHT, COLOR, CORNERS)
     }
 
-    private fun addChildView(view: View) {
+    /**
+     * accept any view to be added inside the action button
+     *
+     * @param view the child view
+     */
+    fun addChildView(view: View) {
         AnimationEngine.applyTransition(this)
         removeAllViews()
         addView(view)
     }
 
+    /**
+     *
+     */
     override fun onMorphAnimationEnd() {
         when (state) {
             ERROR -> dataSource?.errorImageResources?.let {
@@ -141,6 +157,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     }
 
+    /**
+     * Constants values
+     */
     companion object {
         const val MAX_CORNERS = 100f
         const val MAX_RADIUS = 150

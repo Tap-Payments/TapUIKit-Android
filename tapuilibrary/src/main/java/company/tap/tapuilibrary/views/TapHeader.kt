@@ -10,7 +10,6 @@ import androidx.annotation.ColorInt
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.datasource.HeaderDataSource
 
 /**
  * Created by AhlaamK on 4/29/20.
