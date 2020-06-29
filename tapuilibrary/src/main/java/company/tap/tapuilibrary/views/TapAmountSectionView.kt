@@ -15,11 +15,13 @@ import company.tap.tapuilibrary.datasource.AmountViewDataSource
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+
 class TapAmountSectionView: LinearLayout {
     private var selectedCurrency:TapTextView
     private var currentCurrency:TapTextView
     private var itemCount:TapButton
     private var amountViewDataSource: AmountViewDataSource? = null
+
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(

@@ -7,8 +7,9 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import android.widget.*
 import androidx.annotation.RequiresApi
+import com.google.android.material.chip.ChipGroup
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.tapuilibrary.models.DialogConfigurations
@@ -27,7 +28,7 @@ class MainActivity : BaseActivity(),
         setContentView(R.layout.activity_main)
         fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
         fontChanger.replaceFonts((findViewById(android.R.id.content)))
-
+        TextView
     }
 
     fun openBottomSheet(view: View) {

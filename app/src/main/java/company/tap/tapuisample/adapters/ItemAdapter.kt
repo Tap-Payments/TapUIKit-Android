@@ -2,11 +2,13 @@ package company.tap.tapuisample.adapters
 
 import android.annotation.SuppressLint
 import android.graphics.Paint
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ItemViewDataSource
@@ -46,7 +48,6 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
         val discount  = holder.itemView.findViewById(R.id.discount_text) as TextView
         val totalAmount  = holder.itemView.findViewById(R.id.total_amount) as TextView
         val itemName = holder.itemView.findViewById(R.id.item_title) as TextView
-
         itemViewadapter.setItemViewDataSource(getItemViewDataSource())
         if(itemList[position]%2==0){
             discount.text =LocalizationManager.getValue("Discount","ItemList")

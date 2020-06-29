@@ -12,6 +12,15 @@ Pages
 [![SDK Version](https://img.shields.io/badge/minSdkVersion-21-blue.svg)](https://stuff.mit.edu/afs/sipb/project/android/docs/reference/packages.html)
 [![SDK Version](https://img.shields.io/badge/targetSdkVersion-29-informational.svg)](https://stuff.mit.edu/afs/sipb/project/android/docs/reference/packages.html)
 
+# Table of Contents
+---
+
+1. [Requirements](#requirements)
+2. [Installation](#installation)
+   1. [Include TapUIKit-Android library as a dependency module in your project](#include_library_to_code_locally)
+   2. [Installation with jitpack](#installation_with_jitpack)
+
+<a name="requirements"></a>
 ## Requirements
 
 To use the SDK the following requirements must be met:
@@ -21,6 +30,7 @@ To use the SDK the following requirements must be met:
 3. **Android Platform Version: API 29: Android 10.0 (Q)
 4. **Android targetSdkVersion: 29
 
+<a name="installation"></a>
 # Installation
 ---
 <a name="include_library_to_code_locally"></a>
@@ -45,7 +55,7 @@ To use the SDK the following requirements must be met:
 [JitPack](https://jitpack.io/) is a novel package repository for JVM and Android projects. It builds Git projects on demand and provides you with ready-to-use artifacts (jar, aar).
 
 To integrate TapUIKit-Android into your project add it in your **root** `build.gradle` at the end of repositories:
-```java
+```groovy
 	allprojects {
 		repositories {
 			...
@@ -72,24 +82,24 @@ If atoms are the basic building blocks of matter, then the atoms of our interfac
 
  ![Atoms](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/atom.png)
 
- Atom Name    |                  Usage                       | view|
+ Atom Name    |                  Usage                       | configuration|
 ------------- | -------------------------------------------- | ----|
-TapTextView   |  <company.tap.tapuilibrary.atoms.TapTextView |     |
-TapSwitch     | <company.tap.tapuilibrary.atoms.TapSwitch    |     |
-TapImageView   | <company.tap.tapuilibrary.atoms.TapImageView |     |
-TapButton     | <company.tap.tapuilibrary.atoms.TapButton |     |
-TapEditText   | <company.tap.tapuilibrary.atoms.TapEditText |     |
-TapSeparatorView   | <company.tap.tapuilibrary.atoms.TapSeparatorView |     |
-TapDragIndicator   | <company.tap.tapuilibrary.atoms.TapDragIndicator |     |
-TapChip            |<company.tap.tapuilibrary.atoms.TapChip|              |
-TapChipGroup|<company.tap.tapuilibrary.atoms.TapChipGroup|                |
+TapTextView   |  <company.tap.tapuilibrary.atoms.TapTextView/> |     |
+TapSwitch     | <company.tap.tapuilibrary.atoms.TapSwitch />   |     |
+TapImageView   | <company.tap.tapuilibrary.atoms.TapImageView />|     |
+TapButton     | <company.tap.tapuilibrary.atoms.TapButton/> |     |
+TapEditText   | <company.tap.tapuilibrary.atoms.TapEditText />|     |
+TapSeparatorView   | <company.tap.tapuilibrary.atoms.TapSeparatorView />|     |
+TapDragIndicator   | <company.tap.tapuilibrary.atoms.TapDragIndicator/> |     |
+TapChip            |<company.tap.tapuilibrary.atoms.TapChip/>|              |
+TapChipGroup|<company.tap.tapuilibrary.atoms.TapChipGroup />|                |
 
 ### Molecules
 Molecules are relatively simple groups of UI elements functioning together as a unit. For example, a form label, search  input, and button can join together to create a search form molecule.
 
 
  ![Molecules](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/molecules.png)
-Molecule Name    |                  Usage                       | view|
+Molecule Name    |                  Usage                       | configuration|
 ------------- | -------------------------------------------- | ----|
 TapHeader   |  <company.tap.tapuilibrary.views.TapHeader |     |
 TapItemsView     | <company.tap.tapuilibrary.views.TapItemsView    |     |
@@ -106,7 +116,7 @@ TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|     
  AnyTextView : TapTextView()
  ```
  2.b. Enable any View extending TextView in XML:
- ```
+ ```xml
   <company.tap.tapuilibrary.atoms.TapTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -116,7 +126,7 @@ TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|     
 ```
 2. TapSwitch
  Enable any View extending TapSwitch in XML:
- ```
+ ```xml
   <company.tap.tapuilibrary.atoms.TapSwitch
         android:id="@+id/switch_discount"
         android:layout_width="match_parent"
@@ -129,7 +139,8 @@ TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|     
 3. TapImageView
 
 Enable any View extending TapImageView in XML:
-```<company.tap.tapuilibrary.atoms.TapImageView
+```xml
+<company.tap.tapuilibrary.atoms.TapImageView
         android:id="@+id/imageView_master"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -145,7 +156,7 @@ Enable any View extending TapImageView in XML:
 4.a. Enable any View extending TapButton in code:
 ```
 AnyButton:TapButton()
-```
+```xml
  4.b.Enable any View extending TapButton in XML:
  ```
  <company.tap.tapuilibrary.atoms.TapButton

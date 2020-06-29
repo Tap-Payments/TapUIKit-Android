@@ -12,8 +12,13 @@ import company.tap.tapuilibrary.R
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
+
 /**
- * A ChipGroup is used to hold multiple Chips. ChipGroup also supports a multiple-exclusion scope for a set of chips
+ * A ChipGroup is used to hold multiple Chips. By default, the chips are reflowed across
+ * multiple lines. Set the attribute to constrain the chips to a single horizontal line.
+ *  @param context The Context the view is running in, through which it can
+ *  access the current theme, resources, etc.
+ *  @param attrs The attributes of the XML Button tag being used to inflate the view.
  **/
 open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 

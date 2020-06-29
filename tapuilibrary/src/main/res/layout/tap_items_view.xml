@@ -98,10 +98,10 @@
             android:layout_height="@dimen/margin_basic_14dp"
             android:fontFamily="sans-serif-light"
             android:gravity="center_horizontal"
-            android:textColor="#a8a8a8"
+            android:textColor="#4b4847"
             android:layout_marginStart="@dimen/margin_basic_3dp"
             android:background="@drawable/rounded_circle"
-            android:textSize="10sp"
+            android:textSize="9sp"
             android:textStyle="normal"
             tools:text="0"
             />

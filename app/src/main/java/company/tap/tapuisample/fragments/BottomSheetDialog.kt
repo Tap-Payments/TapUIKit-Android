@@ -17,6 +17,9 @@ import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+import com.tap.tapfontskit.FontChanger
+import com.tap.tapfontskit.enums.TapFont
+import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
@@ -51,7 +54,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     private lateinit var tapHeader: TapHeader
     private lateinit var amountSectionView: TapAmountSectionView
-
+    var fontChanger: FontChanger? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -83,10 +86,20 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     @SuppressLint("SetTextI18n")
     private fun initializeViews(view: View) {
+        setupFonts()
         headerViewInit(view)
         amountViewInit(view)
         setupChip(view)
 
+    }
+
+    private fun setupFonts() {
+
+        fontChanger = FontChanger(
+            activity?.assets,
+            tapFontType(TapFont.circeRegular)
+        )
+        fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
     }
 
     @SuppressLint("ResourceAsColor")
@@ -117,10 +130,10 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
-            textBusinessName = businessName,
-            textBusinessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+            businessName = businessName,
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
             businessImageResources = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4",
-            businessInitial = businessName?.get(0).toString()
+            businessPlaceHolder = businessName?.get(0).toString()
         )
     }
 

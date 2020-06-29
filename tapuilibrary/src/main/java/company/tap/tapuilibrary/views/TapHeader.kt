@@ -28,7 +28,7 @@ class TapHeader : LinearLayout {
     private var businessIcon: TapImageView
     private var businessName: TapTextView
     private var paymentFor: TapTextView
-    private var placeholderText: TapTextView
+    private var businessPlaceholder: TapTextView
     private var headerDataSource: HeaderDataSource? = null
 
     constructor(context: Context) : super(context)
@@ -44,24 +44,24 @@ class TapHeader : LinearLayout {
         businessIcon = findViewById(R.id.business_icon)
         businessName = findViewById(R.id.business_name)
         paymentFor = findViewById(R.id.payment_for)
-        placeholderText = findViewById(R.id.placeholder_text)
+        businessPlaceholder = findViewById(R.id.placeholder_text)
     }
 
 
     fun setHeaderDataSource(headerDataSource: HeaderDataSource) {
         this.headerDataSource = headerDataSource
-        headerDataSource.textBusinessName?.let {
+        headerDataSource.businessName?.let {
             businessName.text = it
         }
         headerDataSource.businessImageResources?.let {
-            placeholderText.visibility = View.VISIBLE
-            TapAsyncUtil.DownLoadImageTask(businessIcon, placeholderText).execute(it)
+            businessPlaceholder.visibility = View.VISIBLE
+            TapAsyncUtil.DownLoadImageTask(businessIcon, businessPlaceholder).execute(it)
         }
-        headerDataSource.textBusinessFor?.let {
+        headerDataSource.businessFor?.let {
             paymentFor.text = it
         }
-        headerDataSource.businessInitial?.let {
-            placeholderText.text = it
+        headerDataSource.businessPlaceHolder?.let {
+            businessPlaceholder.text = it
         }
 
     }

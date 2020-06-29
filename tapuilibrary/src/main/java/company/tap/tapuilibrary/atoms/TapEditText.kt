@@ -15,12 +15,21 @@ All rights reserved.
  **/
 
 /**
- * TapEditText is  user interface element for entering and modifying text
+ * A user interface element for entering and modifying text.
+ * Simple constructor to use when creating a TapEditText from code.
+ *  @param context The Context the view is running in, through which it can
+ *  access the current theme, resources, etc.
+ *  @param attributeSet The attributes of the XML Button tag being used to inflate the view.
  * */
 open class TapEditText(context: Context, attributeSet: AttributeSet) :
     AppCompatEditText(context, attributeSet),
     TapView<EditTextTheme> {
 
+    /**
+     * Set the configure the current theme. If null is provided then the default Theme is returned
+     * on the next call
+     * @param theme Theme to consume in the wrapper, a value of null resets the theme to the default
+     */
     override fun setTheme(theme: EditTextTheme) {
         theme.maxLines?.let { maxLines = it }
         theme.textColor?.let { setTextColor(it) }
