@@ -360,7 +360,7 @@ Enable any View extending TextView in XML:
           )
       }
  ```
-<a name="temview_data_source"></a>
+<a name="itemview_data_source"></a>
 ### 3. ItemViewDataSource
    Set data for itemTitle,  itemAmount , totalAmount and totalQuantity as below:
    ```kotlin
@@ -392,7 +392,7 @@ Enable any View extending TextView in XML:
 <a name="animation_data_source"></a>
 ### 5. AnimationDataSource
   Set Animation data as shown:
-    ```kotlin
+  ```kotlin
      val animationDataSource = AnimationDataSource(
                  fromHeight = height,
                  toHeight = MAX_RADIUS,
@@ -405,7 +405,7 @@ Enable any View extending TextView in XML:
                  duration = MAX_DURATION,
                  background = backgroundDrawable
              )
-      ```
+  ```
 
 
 
