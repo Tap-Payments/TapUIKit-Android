@@ -2,34 +2,30 @@ package company.tap.tapuilibrary.views
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.LinearLayout
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.datasource.HeaderDataSource
-import company.tap.tapuilibrary.utils.TapAsyncUtil
-
+import company.tap.tapuilibrary.datasource.ItemViewDataSource
 
 /**
- * Created by AhlaamK on 4/29/20.
+ * Created by AhlaamK on 6/15/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 
 /**
- * TapHeader is a molecule element for setting businessName ,businessIcon and
- *  businessPlaceHodler for Merchant
- **/
-class TapHeader : LinearLayout {
-    private var businessIcon: TapImageView
-    private var businessName: TapTextView
-    private var paymentFor: TapTextView
-    private var businessPlaceholder: TapTextView
-    private var headerDataSource: HeaderDataSource? = null
+ * TapItemsView  is a molecule for setting Amount, Description and Quantity.
+ */
+class TapListItemView:LinearLayout {
+    private var itemTitle: TapTextView
+    private var totalAmount: TapTextView
+    private var totalQuantity: TapTextView
+    private var itemAmount: TapTextView
+    private var itemViewDataSource: ItemViewDataSource? = null
     /**
-     * Simple constructor to use when creating a TapHeader from code.
+     * Simple constructor to use when creating a TapItemsView from code.
      *  @param context The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
      **/
@@ -55,39 +51,32 @@ class TapHeader : LinearLayout {
         attrs,
         defStyleAttr
     )
-
     init {
-        inflate(context, R.layout.tap_main_header, this)
-        businessIcon = findViewById(R.id.business_icon)
-        businessName = findViewById(R.id.business_name)
-        paymentFor = findViewById(R.id.payment_for)
-        businessPlaceholder = findViewById(R.id.placeholder_text)
+        inflate(context, R.layout.tap_items_view, this)
+        itemTitle = findViewById(R.id.item_title)
+        itemAmount = findViewById(R.id.item_amount)
+        totalAmount = findViewById(R.id.total_amount)
+        totalQuantity = findViewById(R.id.total_quantity)
     }
 
     /**
-     * @param headerDataSource is set via the consumer app for businessName,
-     * businessIcon and businessPlaceHolder.
+     * @param itemViewDataSource is set via the consumer app for itemTitle,
+     * itemAmount , totalAmount and totalQuantity .
      **/
-    fun setHeaderDataSource(headerDataSource: HeaderDataSource) {
-        this.headerDataSource = headerDataSource
-        headerDataSource.businessName?.let {
-            businessName.text = it
+    fun setItemViewDataSource(itemViewDataSource: ItemViewDataSource) {
+        this.itemViewDataSource = itemViewDataSource
+        itemViewDataSource.itemTitle?.let {
+            itemTitle.text = it
         }
-        headerDataSource.businessImageResources?.let {
-            businessPlaceholder.visibility = View.VISIBLE
-            TapAsyncUtil.DownLoadImageTask(businessIcon, businessPlaceholder).execute(it)
+        itemViewDataSource.itemAmount?.let {
+            itemAmount.text = it
         }
-        headerDataSource.businessFor?.let {
-            paymentFor.text = it
+        itemViewDataSource.totalAmount?.let {
+            totalAmount.text = it
         }
-        headerDataSource.businessPlaceHolder?.let {
-            businessPlaceholder.text = it
+        itemViewDataSource.totalQuantity?.let {
+            totalQuantity.text = it
         }
 
     }
-
-
 }
-
-
-

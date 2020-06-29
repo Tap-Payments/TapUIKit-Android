@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <company.tap.tapuilibrary.views.TapItemsView
+    <company.tap.tapuilibrary.views.TapListItemView
         android:id="@+id/amount_item_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -19,6 +19,10 @@ Pages
 2. [Installation](#installation)
    1. [Include TapUIKit-Android library as a dependency module in your project](#include_library_to_code_locally)
    2. [Installation with jitpack](#installation_with_jitpack)
+3. [Features](#features)
+   1. [Atoms](#atoms)
+   2. [Molecules](#molecules)
+4. [Usage]
 
 <a name="requirements"></a>
 ## Requirements
@@ -64,11 +68,13 @@ To integrate TapUIKit-Android into your project add it in your **root** `build.g
 	}
 ```
 Step 2. Add the dependency
-```java
+```groovy
 	dependencies {
       implementation 'com.github.Tap-Payments:TapUIKit-Android:0.0.6.8'
 	}
 ```
+
+<a name="features"></a>
 ## Features
 
 ------
@@ -76,6 +82,7 @@ Step 2. Add the dependency
 `TapUIKit-Android` provides extensive ways for using the Tap UI views as atoms , molecules etc and are easy to
 integrate with.
 
+<a name="atoms"></a>
 ### Atoms
 If atoms are the basic building blocks of matter, then the atoms of our interfaces serve as the foundational building blocks that comprise all our user interfaces. These atoms include basic elements like textviews, inputlayouts, buttons, and others that can’t be broken down any further without ceasing to be functional.
 
@@ -94,6 +101,7 @@ TapDragIndicator   | <company.tap.tapuilibrary.atoms.TapDragIndicator/> |     |
 TapChip            |<company.tap.tapuilibrary.atoms.TapChip/>|              |
 TapChipGroup|<company.tap.tapuilibrary.atoms.TapChipGroup />|                |
 
+<a name="molecules"></a>
 ### Molecules
 Molecules are relatively simple groups of UI elements functioning together as a unit. For example, a form label, search  input, and button can join together to create a search form molecule.
 
@@ -101,12 +109,13 @@ Molecules are relatively simple groups of UI elements functioning together as a 
  ![Molecules](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/molecules.png)
 Molecule Name    |                  Usage                       | configuration|
 ------------- | -------------------------------------------- | ----|
-TapHeader   |  <company.tap.tapuilibrary.views.TapHeader |     |
-TapItemsView     | <company.tap.tapuilibrary.views.TapItemsView    |     |
+TapHeader   |  <company.tap.tapuilibrary.views.TapHeaderSectionView |     |
 TapAmountSectionView |  <company.tap.tapuilibrary.views.TapAmountSectionView |     |
+TapListItemView     | <company.tap.tapuilibrary.views.TapListItemView    |     |
 TapSelectionTabLayout| <company.tap.tapuilibrary.views.TapSelectionTabLayout|      |
 TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|      |
 
+<a name="usage"></a>
 ## Usage
 
 1. TapTextView
@@ -192,7 +201,7 @@ Enable any View extending TapSeparatorView in XML:
 6. TapDragIndicator
 
 Enable any View extending TapDragIndicator in XML:
-```
+```xml
  <company.tap.tapuilibrary.atoms.TapDragIndicator
         android:layout_width="75dp"
         android:layout_height="4dp"
@@ -277,3 +286,4 @@ open class BottomSheetDialog : TapBottomSheetDialog()
         android:layout_height="wrap_content"
        />
 ```
+14.

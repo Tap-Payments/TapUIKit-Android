@@ -3,6 +3,7 @@ package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -16,6 +17,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.bumptech.glide.request.target.CustomTarget
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
@@ -23,13 +27,14 @@ import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapButton
 import company.tap.tapuilibrary.atoms.TapChipGroup
+import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.views.TapAmountSectionView
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
-import company.tap.tapuilibrary.views.TapHeader
+import company.tap.tapuilibrary.views.TapHeaderSectionView
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
@@ -51,9 +56,12 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     private var isFragmentAdded = false
     private var businessName: String? = null
-
-    private lateinit var tapHeader: TapHeader
+    private var businessInitial:String?=null
+    private lateinit var tapHeaderSectionView: TapHeaderSectionView
     private lateinit var amountSectionView: TapAmountSectionView
+    private lateinit var businessIcon :TapImageView
+    private lateinit var businessPlaceholder:TapTextView
+    private var imageUrl:String="https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
     var fontChanger: FontChanger? = null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -122,17 +130,46 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     }
 
 
+    @SuppressLint("ResourceType")
     private fun headerViewInit(view: View) {
-        tapHeader = view.findViewById(R.id.headerView)
+        tapHeaderSectionView = view.findViewById(R.id.headerView)
         businessName = getString(R.string.tap_payments)
-        tapHeader.setHeaderDataSource(getHeaderDataSource())
+        tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
+
+        businessIcon = view.findViewById(R.id.business_icon)
+
+        businessPlaceholder = view.findViewById(R.id.placeholder_text)
+        businessInitial = businessName?.get(0).toString()
+        businessPlaceholder.text = businessInitial
+
+    /* Glide.with(this)
+            .load(imageUrl)
+            .placeholder(R.id.placeholder_text)
+            .into(businessIcon)*/
+
+        Glide.with(this).load(imageUrl).apply(RequestOptions().fitCenter()).into(
+            object : CustomTarget<Drawable>(100,100){
+                override fun onLoadCleared(placeholder: Drawable?) {
+                    businessPlaceholder.visibility=View.VISIBLE
+                    //  this@BottomSheetDialog.businessPlaceholder.setCompoundDrawablesWithIntrinsicBounds(null, placeholder, null, null)
+                }
+                override fun onResourceReady(
+                    resource: Drawable,
+                    transition: com.bumptech.glide.request.transition.Transition<in Drawable>?
+                ) {
+                    businessPlaceholder.visibility=View.INVISIBLE
+                   // this@BottomSheetDialog.businessPlaceholder.setCompoundDrawablesWithIntrinsicBounds(null, resource, null, null)
+
+                }
+            }
+        )
     }
 
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
             businessName = businessName,
             businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
-            businessImageResources = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4",
+            businessImageResources = imageUrl,
             businessPlaceHolder = businessName?.get(0).toString()
         )
     }

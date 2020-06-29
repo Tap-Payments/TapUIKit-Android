@@ -4,11 +4,10 @@ import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ItemViewDataSource
-import company.tap.tapuilibrary.views.TapItemsView
+import company.tap.tapuilibrary.views.TapListItemView
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_amount_item.*
 /**
@@ -20,7 +19,7 @@ class AmountItemActivity : BaseActivity() {
     private lateinit var totalAmount: TapTextView
     private lateinit var totalQuantity: TapTextView
     private lateinit var discount: TapTextView
-    private lateinit var amountItems: TapItemsView
+    private lateinit var amountListItem: TapListItemView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,8 +29,8 @@ class AmountItemActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun initializeViews() {
-        amountItems = findViewById(R.id.amount_items)
-        amountItems.setItemViewDataSource(getItemViewdataSource())
+        amountListItem = findViewById(R.id.amount_items)
+        amountListItem.setItemViewDataSource(getItemViewdataSource())
 
 
         descrTxt = findViewById(R.id.show_description)

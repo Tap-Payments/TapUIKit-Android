@@ -24,7 +24,7 @@
            />
     </company.tap.tapuilibrary.atoms.TapDragIndicator>
 
-    <company.tap.tapuilibrary.views.TapHeader
+    <company.tap.tapuilibrary.views.TapHeaderSectionView
         android:id="@+id/headerView"
         android:layout_marginTop="@dimen/margin_basic_9dp"
         android:layout_width="match_parent"

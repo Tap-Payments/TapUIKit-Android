@@ -2,17 +2,15 @@ package company.tap.tapuisample.adapters
 
 import android.annotation.SuppressLint
 import android.graphics.Paint
-import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ItemViewDataSource
-import company.tap.tapuilibrary.views.TapItemsView
+import company.tap.tapuilibrary.views.TapListItemView
 import company.tap.tapuisample.R
 
 /**
@@ -27,7 +25,7 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
    var mExpandedPosition = -1
     lateinit var descriptioextView:TapTextView
     lateinit var descText:TapTextView
-    lateinit var itemViewadapter:TapItemsView
+    lateinit var itemViewadapter:TapListItemView
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val v =
             LayoutInflater.from(parent.context).inflate(R.layout.item_view_adapter, parent, false)
