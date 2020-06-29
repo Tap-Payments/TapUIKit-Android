@@ -156,9 +156,9 @@ Enable any View extending TapImageView in XML:
 4.a. Enable any View extending TapButton in code:
 ```
 AnyButton:TapButton()
-```xml
+```
  4.b.Enable any View extending TapButton in XML:
- ```
+ ```xml
  <company.tap.tapuilibrary.atoms.TapButton
         android:id="@+id/textView_itemcount"
         android:layout_width="70dp"
@@ -180,7 +180,7 @@ AnyButton:TapButton()
  5. TapSeparatorView
 
 Enable any View extending TapSeparatorView in XML:
-```
+```xml
 <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -206,7 +206,7 @@ Enable any View extending TapDragIndicator in XML:
 7. TapChip
 
 Enable any View extending TapChip in XML:
-```
+```xml
  <company.tap.tapuilibrary.atoms.TapChip
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -219,7 +219,7 @@ Enable any View extending TapChip in XML:
  8.TapChipGroup
 
  Enable any View extending TapChipGroup in XML:
- ```
+ ```xml
  <company.tap.tapuilibrary.atoms.TapChipGroup
         android:id="@+id/currencyLayout1"
         android:layout_width="match_parent"
@@ -232,7 +232,7 @@ Enable any View extending TapChip in XML:
 9. TapHeader Molecule
 
  Enable any View extending TapHeader in XML:
- ```
+ ```xml
    <company.tap.tapuilibrary.views.TapHeader
         android:layout_marginTop="@dimen/margin_basic_9dp"
         android:layout_width="match_parent"
@@ -242,7 +242,7 @@ Enable any View extending TapChip in XML:
 10. TapItemsView Molecule
 
  Enable any View extending TapItemsView in XML:
- ```
+ ```xml
  <company.tap.tapuilibrary.views.TapItemsView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -258,7 +258,7 @@ Enable any View extending TapAmountSectionView in XML:
 12. TapSelectionTabLayout Molecule
 
 Enable any View extending TapSelectionTabLayout in XML:
-```
+```xml
   <company.tap.tapuilibrary.views.TapSelectionTabLayout
         android:id="@+id/sections_tablayout"
         android:layout_width="match_parent"
@@ -271,8 +271,8 @@ Enable any View extending TapSelectionTabLayout in XML:
 open class BottomSheetDialog : TapBottomSheetDialog()
  ```
  13.b. Enable any View extending TextView in XML:
- ```
- company.tap.tapuilibrary.views.TapBottomSheetDialog
+ ```xml
+ <company.tap.tapuilibrary.views.TapBottomSheetDialog
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
        />
