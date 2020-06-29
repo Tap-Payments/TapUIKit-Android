@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="1"
+        android:layout_marginStart="@dimen/margin_basic_16dp"
        >
 
         <company.tap.tapuilibrary.atoms.TapTextView
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:layout_weight="0.5"
-            android:layout_marginStart="@dimen/margin_basic_16dp"/>
+            />
 
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/group_action"
@@ -38,6 +39,6 @@
         android:orientation="horizontal"
         android:paddingTop="@dimen/margin_basic_9dp"
          android:nestedScrollingEnabled="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+      app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>

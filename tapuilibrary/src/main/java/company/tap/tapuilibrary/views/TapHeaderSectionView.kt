@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.views
 
 import android.content.Context
+import android.net.Uri
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
@@ -75,15 +76,7 @@ class TapHeaderSectionView : LinearLayout {
             businessName.text = it
         }
         headerDataSource.businessImageResources?.let {
-
-          //  businessPlaceholder.visibility = View.VISIBLE
-           /* Glide.with(this)  //2
-                .load(it) //3
-                .placeholder(businessPlaceholder)
-                .into(businessIcon)
-            businessIcon.visibility = View.VISIBLE*/
-           // businessPlaceholder.visibility = View.INVISIBLE
-            // TapAsyncUtil.DownLoadImageTask(businessIcon, businessPlaceholder).execute(it)
+            businessIcon.setImageURI(Uri.parse(it))
         }
         headerDataSource.businessFor?.let {
             paymentFor.text = it

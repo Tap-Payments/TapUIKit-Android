@@ -1,13 +1,18 @@
 package company.tap.tapuisample.adapters
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Paint
+import android.graphics.Typeface
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.atoms.TapSeparatorView
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ItemViewDataSource
 import company.tap.tapuilibrary.views.TapListItemView
@@ -26,6 +31,8 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
     lateinit var descriptioextView:TapTextView
     lateinit var descText:TapTextView
     lateinit var itemViewadapter:TapListItemView
+    lateinit var itemSeparator:TapSeparatorView
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val v =
             LayoutInflater.from(parent.context).inflate(R.layout.item_view_adapter, parent, false)
@@ -43,9 +50,25 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         descriptioextView  = holder.itemView.findViewById(R.id.description_textView)
         descText = holder.itemView.findViewById(R.id.show_description)
+        itemSeparator = holder.itemView.findViewById(R.id.itemseparator)
         val discount  = holder.itemView.findViewById(R.id.discount_text) as TextView
         val totalAmount  = holder.itemView.findViewById(R.id.total_amount) as TextView
         val itemName = holder.itemView.findViewById(R.id.item_title) as TextView
+        itemName.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+            TapFont.robotoRegular))
+        totalAmount.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+            TapFont.robotoRegular))
+        discount.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+            TapFont.robotoLight))
+        descText.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.robotoLight))
+        descriptioextView.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.robotoLight))
         itemViewadapter.setItemViewDataSource(getItemViewDataSource())
         if(itemList[position]%2==0){
             discount.text =LocalizationManager.getValue("Discount","ItemList")

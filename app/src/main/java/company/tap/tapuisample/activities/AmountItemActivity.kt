@@ -2,8 +2,10 @@ package company.tap.tapuisample.activities
 
 import android.annotation.SuppressLint
 import android.graphics.Paint
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
+import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ItemViewDataSource
@@ -31,12 +33,16 @@ class AmountItemActivity : BaseActivity() {
     private fun initializeViews() {
         amountListItem = findViewById(R.id.amount_items)
         amountListItem.setItemViewDataSource(getItemViewdataSource())
-
-
         descrTxt = findViewById(R.id.show_description)
         totalAmount = findViewById(R.id.total_amount)
         totalQuantity = findViewById(R.id.total_quantity)
         discount = findViewById(R.id.discount_text)
+        descrTxt.typeface = Typeface.createFromAsset(this.assets, TapFont.tapFontType(
+            TapFont.robotoLight))
+        totalAmount.typeface = Typeface.createFromAsset(this.assets, TapFont.tapFontType(
+            TapFont.robotoRegular))
+        discount.typeface = Typeface.createFromAsset(this.assets, TapFont.tapFontType(
+            TapFont.robotoLight))
         descrTxt.text = LocalizationManager.getValue("showDesc","ItemList")
         discount.text = LocalizationManager.getValue("Discount","ItemList")
         discount.visibility = View.INVISIBLE
