@@ -128,14 +128,14 @@ Molecules are relatively simple groups of UI elements functioning together as a 
 
 
  ![Molecules](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/molecules.png)
-Molecule Name    |                  Usage                       |       configuration                         |
-------------- | -------------------------------------------- | -----------------------------------------------|
+Molecule Name    |                  Usage                       |                configuration                         |
+------------- | ------------------------------------------------|------------------------------------------------------|
 TapHeader   |  <company.tap.tapuilibrary.views.TapHeaderSectionView |  businessName, businessIcon, businessPlaceHolder |
-TapAmountSectionView |  <company.tap.tapuilibrary.views.TapAmountSectionView | selectedCurrency,currentCurrency,itemCount   |
-TapListItemView     | <company.tap.tapuilibrary.views.TapListItemView    | itemTitle,itemAmount, totalAmount, totalQuantity  |
-TapSelectionTabLayout| <company.tap.tapuilibrary.views.TapSelectionTabLayout|      |
-TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|  header, amountsection,listview,selectionTab    |
-TabAnimatedActionButton| <company.tap.tapuilibrary.views.TabAnimatedActionButton|      |
+TapAmountSectionView |  <company.tap.tapuilibrary.views.TapAmountSectionView | selectedCurrency, currentCurrency, itemCount |
+TapListItemView     | <company.tap.tapuilibrary.views.TapListItemView    | itemTitle,itemAmount, totalAmount, totalQuantity |
+TapSelectionTabLayout| <company.tap.tapuilibrary.views.TapSelectionTabLayout|                                               |
+TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|  header, amountsection, listview, selectionTab  |
+TabAnimatedActionButton| <company.tap.tapuilibrary.views.TabAnimatedActionButton|                                           |
 
 <a name="usage"></a>
 ## Usage
@@ -310,7 +310,7 @@ Enable any View extending TapSelectionTabLayout in XML:
 13.TapBottomSheetDialog Molecule
 
  13.a. Enable any View extending TapBottomSheetDialog in code:
- ```
+ ```kotlin
 open class BottomSheetDialog : TapBottomSheetDialog()
  ```
  13.b. Enable any View extending TextView in XML:
@@ -391,8 +391,8 @@ Enable any View extending TextView in XML:
    ```
 <a name="animation_data_source"></a>
 ### 5. AnimationDataSource
-     Set Animation data as shown:
-     ```kotlin
+  Set Animation data as shown:
+    ```kotlin
      val animationDataSource = AnimationDataSource(
                  fromHeight = height,
                  toHeight = MAX_RADIUS,
