@@ -26,9 +26,15 @@ All rights reserved.
 open class TapChip(context: Context, attributeSet: AttributeSet?) :
     MaterialCardView(context, attributeSet),
     TapView<ChipTheme> {
-    lateinit var view: View
-    lateinit var viewsList: List<View>
+    private lateinit var view: View
+    private lateinit var viewsList: List<View>
 
+    /**
+     *  @param context The Context the view is running in, through which it can
+     *  access the current theme, resources, etc.
+     *  @param attributeSet The attributes of the XML Button tag being used to inflate the view.
+     *
+     */
     constructor(context: Context, attributeSet: AttributeSet?, view: View) : this(
         context,
         attributeSet

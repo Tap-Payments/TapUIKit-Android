@@ -31,7 +31,7 @@ import company.tap.tapuilibrary.views.TapAmountSectionView
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapHeader
 import company.tap.tapuisample.R
-import company.tap.tapuisample.adapters.MultipleTypeAdapter
+import company.tap.tapuisample.adapters.CardTypeAdapter
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
@@ -115,7 +115,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter =
-            MultipleTypeAdapter(paymentsList)
+            CardTypeAdapter(paymentsList)
         groupAction.setOnClickListener {
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
         }

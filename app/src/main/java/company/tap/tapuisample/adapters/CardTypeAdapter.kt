@@ -17,7 +17,7 @@ import company.tap.tapuisample.R
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class MultipleTypeAdapter(private val arrayList: ArrayList<Int>) :
+class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_SAVEDCARD = 1
     private val TYPE_SINGLE = 2
