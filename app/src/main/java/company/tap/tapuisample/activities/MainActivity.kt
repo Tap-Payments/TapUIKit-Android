@@ -28,7 +28,7 @@ class MainActivity : BaseActivity(),
         setContentView(R.layout.activity_main)
         fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
         fontChanger.replaceFonts((findViewById(android.R.id.content)))
-        TextView
+
     }
 
     fun openBottomSheet(view: View) {
