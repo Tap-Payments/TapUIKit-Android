@@ -22,7 +22,22 @@ Pages
 3. [Features](#features)
    1. [Atoms](#atoms)
    2. [Molecules](#molecules)
-4. [Usage]
+4. [Usage](#usage)
+   1. [TapTextView](#tap_textview)
+   2. [TapSwitch](#tap_switch)
+   3. [TapImageView](#tap_imageview)
+   4. [TapButton](#tap_button)
+   5. [TapSeparatorView](#tap_separator)
+   6. [TapDragIndicator](#tap_dragindicator)
+   7. [TapChip](#tap_chip)
+   8. [TapChipGroup](#tap_chip_group)
+   9. [TapHeaderSectionView](#tap_header_section)
+   10. [TapListItemView](#tap_item_listview)
+   11. [TapAmountSectionView](#tap_amount_section_view)
+   12. [TapSelectionTabLayout](#tap_selection_tablayout)
+   13. [TapBottomSheetDialog](#tap_bottom_sheetdialog")
+   14. [TabAnimatedActionButton](#tap_animated_action_button")
+
 
 <a name="requirements"></a>
 ## Requirements
@@ -89,17 +104,17 @@ If atoms are the basic building blocks of matter, then the atoms of our interfac
 
  ![Atoms](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/atom.png)
 
- Atom Name    |                  Usage                       | configuration|
-------------- | -------------------------------------------- | ----|
-TapTextView   |  <company.tap.tapuilibrary.atoms.TapTextView/> |     |
-TapSwitch     | <company.tap.tapuilibrary.atoms.TapSwitch />   |     |
-TapImageView   | <company.tap.tapuilibrary.atoms.TapImageView />|     |
-TapButton     | <company.tap.tapuilibrary.atoms.TapButton/> |     |
+ Atom Name    |                  Usage                       |
+------------- | -------------------------------------------- |
+TapTextView   |  <company.tap.tapuilibrary.atoms.TapTextView/> |
+TapSwitch     | <company.tap.tapuilibrary.atoms.TapSwitch />   |
+TapImageView   | <company.tap.tapuilibrary.atoms.TapImageView />|
+TapButton     | <company.tap.tapuilibrary.atoms.TapButton/> |
 TapEditText   | <company.tap.tapuilibrary.atoms.TapEditText />|     |
-TapSeparatorView   | <company.tap.tapuilibrary.atoms.TapSeparatorView />|     |
-TapDragIndicator   | <company.tap.tapuilibrary.atoms.TapDragIndicator/> |     |
-TapChip            |<company.tap.tapuilibrary.atoms.TapChip/>|              |
-TapChipGroup|<company.tap.tapuilibrary.atoms.TapChipGroup />|                |
+TapSeparatorView   | <company.tap.tapuilibrary.atoms.TapSeparatorView />|
+TapDragIndicator   | <company.tap.tapuilibrary.atoms.TapDragIndicator/> |
+TapChip            |<company.tap.tapuilibrary.atoms.TapChip/>|
+TapChipGroup|<company.tap.tapuilibrary.atoms.TapChipGroup />|
 
 <a name="molecules"></a>
 ### Molecules
@@ -109,15 +124,16 @@ Molecules are relatively simple groups of UI elements functioning together as a 
  ![Molecules](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/molecules.png)
 Molecule Name    |                  Usage                       | configuration|
 ------------- | -------------------------------------------- | ----|
-TapHeader   |  <company.tap.tapuilibrary.views.TapHeaderSectionView |     |
+TapHeader   |  <company.tap.tapuilibrary.views.TapHeaderSectionView |  businessName, businessIcon, businessPlaceHolder   |
 TapAmountSectionView |  <company.tap.tapuilibrary.views.TapAmountSectionView |     |
 TapListItemView     | <company.tap.tapuilibrary.views.TapListItemView    |     |
 TapSelectionTabLayout| <company.tap.tapuilibrary.views.TapSelectionTabLayout|      |
 TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|      |
+TabAnimatedActionButton| <company.tap.tapuilibrary.views.TabAnimatedActionButton|      |
 
 <a name="usage"></a>
 ## Usage
-
+<a name="tap_textview"></a>
 1. TapTextView
 
  1.a. Enable any View extending TextView in code:
@@ -133,6 +149,7 @@ TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|     
         android:gravity="center"
         android:textSize="30sp"/>
 ```
+<a name="tap_switch"></a>
 2. TapSwitch
  Enable any View extending TapSwitch in XML:
  ```xml
@@ -145,6 +162,7 @@ TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|     
         android:layout_marginEnd="7dp"
         android:layout_marginStart="7dp"/>
 ```
+<a name="tap_imageview"></a>
 3. TapImageView
 
 Enable any View extending TapImageView in XML:
@@ -160,6 +178,7 @@ Enable any View extending TapImageView in XML:
         android:layout_marginStart="@dimen/margin_basic_8dp"
         android:layout_marginEnd="@dimen/margin_basic_8dp"/>
 ```
+<a name="tap_button"></a>
 4.TapButton
 
 4.a. Enable any View extending TapButton in code:
@@ -186,6 +205,7 @@ AnyButton:TapButton()
         android:elevation="@dimen/margin_basic_0dp"
        />
  ```
+<a name="tap_separator"></a>
  5. TapSeparatorView
 
 Enable any View extending TapSeparatorView in XML:
@@ -198,6 +218,7 @@ Enable any View extending TapSeparatorView in XML:
         android:background="#dfdfdf"
         />
 ```
+<a name="tap_dragindicator"></a>
 6. TapDragIndicator
 
 Enable any View extending TapDragIndicator in XML:
@@ -212,6 +233,7 @@ Enable any View extending TapDragIndicator in XML:
         app:cardElevation="@dimen/margin_basic_0dp"
         />
 ```
+<a name="tap_chip"></a>
 7. TapChip
 
 Enable any View extending TapChip in XML:
@@ -225,6 +247,7 @@ Enable any View extending TapChip in XML:
             app:cardElevation="@dimen/margin_basic_0dp"
           />
  ```
+<a name="tap_chip_group"></a>
  8.TapChipGroup
 
  Enable any View extending TapChipGroup in XML:
@@ -238,7 +261,8 @@ Enable any View extending TapChip in XML:
 
     </company.tap.tapuilibrary.atoms.TapChipGroup>
 ```
-9. TapHeader Molecule
+<a name="tap_header_section"></a>
+9. TapHeaderSectionView Molecule
 
  Enable any View extending TapHeader in XML:
  ```xml
@@ -248,7 +272,8 @@ Enable any View extending TapChip in XML:
         android:layout_height="wrap_content"
         />
 ```
-10. TapItemsView Molecule
+<a name="tap_item_listview"></a>
+10. TapListItemView Molecule
 
  Enable any View extending TapItemsView in XML:
  ```xml
@@ -256,6 +281,7 @@ Enable any View extending TapChip in XML:
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 ```
+<a name="tap_amount_section_view"></a>
 11. TapAmountSectionView Molecule
 
 Enable any View extending TapAmountSectionView in XML:
@@ -264,6 +290,7 @@ Enable any View extending TapAmountSectionView in XML:
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 ```
+<a name="tap_selection_tablayout"></a>
 12. TapSelectionTabLayout Molecule
 
 Enable any View extending TapSelectionTabLayout in XML:
@@ -273,6 +300,7 @@ Enable any View extending TapSelectionTabLayout in XML:
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 ```
+<a name="tap_bottom_sheetdialog"></a>
 13.TapBottomSheetDialog Molecule
 
  13.a. Enable any View extending TapBottomSheetDialog in code:
@@ -286,4 +314,15 @@ open class BottomSheetDialog : TapBottomSheetDialog()
         android:layout_height="wrap_content"
        />
 ```
-14.
+<a name="tap_animated_action_button"></a>
+14.TabAnimatedActionButton
+
+Enable any View extending TextView in XML:
+ ```xml
+<company.tap.tapuilibrary.views.TabAnimatedActionButton
+        android:id="@+id/action_button"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="20dp" />
+ ```
+
