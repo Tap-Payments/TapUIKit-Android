@@ -33,12 +33,12 @@ open class TapTextInput  @JvmOverloads constructor(
     defStyleAttr: Int = androidx.appcompat.R.attr.editTextStyle
 ) : TextInputEditText(context, attrs, defStyleAttr),
     TapView<TextInputTheme> {
-    protected var isLastKeyDelete: Boolean = false
+    private var isLastKeyDelete: Boolean = false
 
     private var afterTextChangedListener: AfterTextChangedListener? = null
     private var deleteEmptyListener: DeleteEmptyListener? = null
-    var cachedColorStateList: ColorStateList? = null
-        private set
+    private var cachedColorStateList: ColorStateList? = null
+    private set
 
     /**
      * Gets whether or not the text should be displayed in error mode.

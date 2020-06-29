@@ -14,8 +14,8 @@ import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuisample.CurrencyModel
 import company.tap.tapuisample.R
+import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.adapters.CurrencyAdapter
-import company.tap.tapuisample.adapters.MultipleTypeAdapter
 import kotlinx.android.synthetic.main.activity_cardview.*
 
 /***
@@ -89,7 +89,7 @@ class TapChipsActivity : BaseActivity() {
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         //  chipRecycler.adapter = RecyclerAdapter(arrayList)
         chipRecycler.adapter =
-            MultipleTypeAdapter(paymentsList)
+            CardTypeAdapter(paymentsList)
 
     }
 

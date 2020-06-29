@@ -1,7 +1,6 @@
 package company.tap.tapuilibrary.views
 
 import android.app.Dialog
-import android.content.Context
 import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.Drawable
@@ -25,6 +24,8 @@ import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
+
+
 open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     private var topLeftCorner = 16f

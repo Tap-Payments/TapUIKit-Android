@@ -4,21 +4,22 @@ import android.annotation.SuppressLint
 import android.graphics.Paint
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
+import company.tap.tapuilibrary.datasource.ItemViewDataSource
+import company.tap.tapuilibrary.views.TapListItemView
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_amount_item.*
 /**
  * Sample Activity to show how Amount and Item Description will be shown.
  * **/
 class AmountItemActivity : BaseActivity() {
-    private lateinit var itemName: TapTextView
-    private lateinit var itemAmount: TapTextView
+
     private lateinit var descrTxt: TapTextView
     private lateinit var totalAmount: TapTextView
     private lateinit var totalQuantity: TapTextView
     private lateinit var discount: TapTextView
+    private lateinit var amountListItem: TapListItemView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +29,15 @@ class AmountItemActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun initializeViews() {
-        itemName = findViewById(R.id.item_title)
-        itemAmount = findViewById(R.id.item_amount)
+        amountListItem = findViewById(R.id.amount_items)
+        amountListItem.setItemViewDataSource(getItemViewdataSource())
+
+
         descrTxt = findViewById(R.id.show_description)
         totalAmount = findViewById(R.id.total_amount)
         totalQuantity = findViewById(R.id.total_quantity)
         discount = findViewById(R.id.discount_text)
-        itemName.text = "ITEM TITLE"
-        itemAmount.text = "KD000,000.000"
         descrTxt.text = LocalizationManager.getValue("showDesc","ItemList")
-        totalAmount.text = "KD000,000.000"
-        totalQuantity.text = "1"
         discount.text = LocalizationManager.getValue("Discount","ItemList")
         discount.visibility = View.INVISIBLE
 
@@ -54,6 +53,16 @@ class AmountItemActivity : BaseActivity() {
 
             }
         }
+    }
+
+    private fun getItemViewdataSource(): ItemViewDataSource {
+        return ItemViewDataSource(
+            itemTitle = "ITEM TITLE",
+            itemAmount = "KD000,000.000",
+            totalQuantity = "1",
+            totalAmount = "KD000,000.000"
+        )
+
     }
 
 }

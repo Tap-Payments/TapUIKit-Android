@@ -4,30 +4,32 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.atoms.TapButton
+import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.datasource.AmountViewDataSource
-
+import company.tap.tapuilibrary.datasource.ItemViewDataSource
 
 /**
- * Created by AhlaamK on 6/11/20.
+ * Created by AhlaamK on 6/15/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 
-class TapAmountSectionView: LinearLayout {
-    private var selectedCurrency:TapTextView
-    private var currentCurrency:TapTextView
-    private var itemCount:TapButton
-    private var amountViewDataSource: AmountViewDataSource? = null
+/**
+ * TapItemsView  is a molecule for setting Amount, Description and Quantity.
+ */
+class TapListItemView:LinearLayout {
+    private var itemTitle: TapTextView
+    private var totalAmount: TapTextView
+    private var totalQuantity: TapTextView
+    private var itemAmount: TapTextView
+    private var itemViewDataSource: ItemViewDataSource? = null
     /**
-     * Simple constructor to use when creating a TapAmountSectionView from code.
+     * Simple constructor to use when creating a TapItemsView from code.
      *  @param context The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
      **/
     constructor(context: Context) : super(context)
-
     /**
      *  @param context The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
@@ -35,7 +37,6 @@ class TapAmountSectionView: LinearLayout {
      *
      */
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-
     /**
      *  @param context The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
@@ -51,32 +52,31 @@ class TapAmountSectionView: LinearLayout {
         defStyleAttr
     )
     init {
-        inflate(
-            context,
-            R.layout.tap_main_amount, this
-        )
-        selectedCurrency = findViewById(R.id.textview_selectedcurrency)
-        currentCurrency  = findViewById(R.id.textView_currentcurrency)
-        itemCount = findViewById(R.id.textView_itemcount)
+        inflate(context, R.layout.tap_items_view, this)
+        itemTitle = findViewById(R.id.item_title)
+        itemAmount = findViewById(R.id.item_amount)
+        totalAmount = findViewById(R.id.total_amount)
+        totalQuantity = findViewById(R.id.total_quantity)
     }
 
     /**
-     * @param amountViewDataSource is set via the consumer app for selectedCurrency,
-     * currentCurrency and itemCount.
+     * @param itemViewDataSource is set via the consumer app for itemTitle,
+     * itemAmount , totalAmount and totalQuantity .
      **/
-    fun setAmountViewDataSource(amountViewDataSource: AmountViewDataSource) {
-        this.amountViewDataSource = amountViewDataSource
-        amountViewDataSource.selectedCurr?.let {
-            selectedCurrency.text = it
+    fun setItemViewDataSource(itemViewDataSource: ItemViewDataSource) {
+        this.itemViewDataSource = itemViewDataSource
+        itemViewDataSource.itemTitle?.let {
+            itemTitle.text = it
         }
-        amountViewDataSource.currentCurr?.let {
-            currentCurrency.text = it
+        itemViewDataSource.itemAmount?.let {
+            itemAmount.text = it
         }
-        amountViewDataSource.itemCount?.let {
-            itemCount.text = it
+        itemViewDataSource.totalAmount?.let {
+            totalAmount.text = it
+        }
+        itemViewDataSource.totalQuantity?.let {
+            totalQuantity.text = it
         }
 
     }
-
-
 }
