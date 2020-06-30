@@ -14,11 +14,18 @@ import company.tap.tapuilibrary.interfaces.TapProgressIndicatorInterface
 class TapProgressIndicator(context: Context?, attrs: AttributeSet?) :
     ProgressIndicator(context, attrs) {
 
-    var progressIndicatorInterface: TapProgressIndicatorInterface? = null
+    private var progressIndicatorInterface: TapProgressIndicatorInterface? = null
 
-    override fun setProgress(progress: Int) {
-        super.setProgress(progress)
-        if (progress == max)
-            progressIndicatorInterface?.onProgressEnd()
+    fun setTapProgressIndicatorInterface(progressIndicatorInterface: TapProgressIndicatorInterface) {
+        this.progressIndicatorInterface = progressIndicatorInterface
+    }
+
+    override fun setProgressCompat(progress: Int, animated: Boolean) {
+        super.setProgressCompat(progress, animated)
+        if (progress == max) {
+            if (!isIndeterminate){
+                progressIndicatorInterface?.onProgressEnd()
+            }
+        }
     }
 }

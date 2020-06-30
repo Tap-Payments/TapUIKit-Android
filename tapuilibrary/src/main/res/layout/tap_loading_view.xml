@@ -11,7 +11,9 @@
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:circularRadius="30dp"/>
+        app:indicatorColor="@android:color/white"
+        app:indicatorWidth="2dp"
+        app:circularRadius="12dp"/>
 
     <company.tap.tapuilibrary.atoms.TapProgressIndicator
         android:id="@+id/inner_circle"
@@ -20,6 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:inverse="true"
-        app:circularRadius="20dp"/>
+        app:indicatorWidth="2dp"
+        app:indicatorColor="@android:color/white"
+        app:circularRadius="7dp"/>
 
 </RelativeLayout>

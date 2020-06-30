@@ -72,8 +72,4 @@ class MainActivity : BaseActivity(),
         startActivity(Intent(this, ActionButtonActivity::class.java))
     }
 
-    fun openLoadingView(view: View) {
-        startActivity(Intent(this, LoadingViewActivity::class.java))
-    }
-
 }

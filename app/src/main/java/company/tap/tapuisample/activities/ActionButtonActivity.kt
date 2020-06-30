@@ -61,7 +61,7 @@ class ActionButtonActivity : AppCompatActivity() {
             textSize = 20f,
             textColor = Color.WHITE,
             cornerRadius = 10f,
-            errorImageResources = R.drawable.ic_error,
+            errorImageResources = R.drawable.error_mark,
             backgroundColor = resources.getColor(R.color.button_green),
             errorColor = resources.getColor(R.color.button_gray)
         )
@@ -73,7 +73,7 @@ class ActionButtonActivity : AppCompatActivity() {
             textSize = 20f,
             textColor = Color.WHITE,
             cornerRadius = 10f,
-            successImageResources = R.drawable.ic_check,
+            successImageResources = R.drawable.checkmark,
             backgroundColor = resources.getColor(R.color.button_green)
         )
     }
