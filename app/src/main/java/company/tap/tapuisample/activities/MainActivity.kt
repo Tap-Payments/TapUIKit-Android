@@ -21,8 +21,9 @@ import company.tap.tapuisample.fragments.BottomSheetSwitch
 
 
 class MainActivity : BaseActivity(),
-    TapAmountSectionInterface ,TapSwitchInterface{
+    TapAmountSectionInterface ,TapSwitchInterface {
     lateinit var fontChanger: FontChanger
+
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -76,6 +77,20 @@ class MainActivity : BaseActivity(),
 
     fun openLoadingView(view: View) {
         startActivity(Intent(this, LoadingViewActivity::class.java))
+    }
+
+    override fun enableSaveCheckout(boolean: Boolean) {
+        println("saveCheckoutstatus $boolean")
+    }
+
+    override fun enableSaveMerchant(boolean: Boolean) {
+        println("saveMerchantstatus $boolean")
+    }
+
+    override fun enablegoPay(boolean: Boolean) {
+        println("enablegoPay $boolean")
+    }
+
     fun openSwitchView(view: View) {
         val modalBottomSheet =
             BottomSheetSwitch()
@@ -85,19 +100,4 @@ class MainActivity : BaseActivity(),
             BottomSheetDialog.TAG
         )
     }
-
-    override fun enableSaveCheckout(boolean: Boolean) {
-     println("saveCheckoutstatus $boolean")
-    }
-
-    override fun enableSaveMerchant(boolean: Boolean) {
-        println("saveMerchantstatus $boolean")
-
-    }
-
-    override fun enablegoPay(boolean: Boolean) {
-        println("enablegoPay $boolean")
-
-    }
-
 }
