@@ -9,7 +9,9 @@ import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ItemViewDataSource
+import company.tap.tapuilibrary.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.views.TapListItemView
+import company.tap.tapuilibrary.views.TapCardSwitch
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_amount_item.*
 /**
@@ -22,6 +24,7 @@ class AmountItemActivity : BaseActivity() {
     private lateinit var totalQuantity: TapTextView
     private lateinit var discount: TapTextView
     private lateinit var amountListItem: TapListItemView
+    private lateinit var cardswitch: TapCardSwitch
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +40,8 @@ class AmountItemActivity : BaseActivity() {
         totalAmount = findViewById(R.id.total_amount)
         totalQuantity = findViewById(R.id.total_quantity)
         discount = findViewById(R.id.discount_text)
+        cardswitch = findViewById(R.id.pay_card_switch)
+        cardswitch.setSwitchDataSource(getSwitchDataSource())
         descrTxt.typeface = Typeface.createFromAsset(this.assets, TapFont.tapFontType(
             TapFont.robotoLight))
         totalAmount.typeface = Typeface.createFromAsset(this.assets, TapFont.tapFontType(
@@ -59,6 +64,17 @@ class AmountItemActivity : BaseActivity() {
 
             }
         }
+    }
+
+    private fun getSwitchDataSource(): TapSwitchDataSource {
+        return TapSwitchDataSource (
+            switchSave ="For faster and easier checkout,save your mobile number.",
+            switchMerchantCheckout = "Save for [merchant_name] Checkouts",
+            switchgoPayMobile =  "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
+            savegoPayText = "Save for goPay Checkouts",
+            alertgoPaySignup = "Please check your email or SMS’s in order to complete the goPay Checkout signup process."
+                )
+
     }
 
     private fun getItemViewdataSource(): ItemViewDataSource {

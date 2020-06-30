@@ -17,8 +17,11 @@
         android:layout_weight="1"
         android:text="Apply Discount"
         android:layout_marginEnd="7dp"
-        android:layout_marginStart="7dp"/>
-
-
-
+        android:layout_marginStart="7dp"
+       />
+    <company.tap.tapuilibrary.views.TapCardSwitch
+        android:id="@+id/pay_card_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"/>
 </LinearLayout>
