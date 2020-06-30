@@ -29,7 +29,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var indicatorColor = Color.parseColor(INDICATOR_COLOR)
     private var indicatorHeight = MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
     private var unselectedAlphaLevel = UNSELECTED_ALPHA
-    private var maxItemWidth = MAX_ITEM_WIDTH
+    private var maxItemWidth = MetricsUtil.convertDpToPixel(MAX_ITEM_WIDTH, context).toInt()
     private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
     private val tabsView = ArrayList<LinearLayout>()
@@ -126,6 +126,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabsView.add(sectionLayout)
         val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
         tabLayout.addTab(sectionTab)
+    }
+
+    fun selectSection(index: Int) {
+        val tab = tabLayout.getTabAt(index)
+        tab?.select()
     }
 
     /**
@@ -315,6 +320,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         const val INDICATOR_HEIGHT = 2f
         const val INDICATOR_COLOR = "#2ace00"
         const val UNSELECTED_ALPHA = 0.7f
-        const val MAX_ITEM_WIDTH = 200
+        const val MAX_ITEM_WIDTH = 100f
     }
 }

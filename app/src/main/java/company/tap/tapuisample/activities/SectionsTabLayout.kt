@@ -18,6 +18,7 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
 
     lateinit var tabLayout: TapSelectionTabLayout
     private var selectedTab = 0
+    private var isMobileTabAdded = false
     private val tab1Items = arrayOf("VISA", "MASTERCARD", "AMEX")
     private val tab2Items = arrayOf("Zain PAY", "Ooredoo PAY")
 
@@ -97,6 +98,20 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
 
     override fun onSelectedTabChanged(position: Int?) {
         position?.let { selectedTab = it }
+    }
+
+    fun selectSegment(view: View) {
+        var alert: AlertDialog? = null
+        val items = arrayOf("1", "2", "3")
+        val builder = AlertDialog.Builder(this)
+        builder.setCancelable(true)
+        builder.setTitle("Select Section")
+        builder.setItems(items) { _, position ->
+            tabLayout.selectSection(position)
+            alert?.hide()
+        }
+        alert = builder.create()
+        alert.show()
     }
 
 }
