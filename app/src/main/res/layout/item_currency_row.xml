@@ -12,6 +12,8 @@
     android:id="@+id/tapcard_Chip"
     app:elevation="8dp"
     app:contentPadding="2dp"
+    android:outlineSpotShadowColor="#d9d9da"
+
     >
     <LinearLayout
         android:orientation="horizontal"

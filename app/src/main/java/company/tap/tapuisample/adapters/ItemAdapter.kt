@@ -1,10 +1,8 @@
 package company.tap.tapuisample.adapters
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.graphics.Paint
 import android.graphics.Typeface
-import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,6 +46,13 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
+        initView(holder,position)
+    }
+
+    private fun initView(
+        holder: ItemHolder,
+        position: Int
+    ) {
         descriptioextView  = holder.itemView.findViewById(R.id.description_textView)
         descText = holder.itemView.findViewById(R.id.show_description)
         itemSeparator = holder.itemView.findViewById(R.id.itemseparator)
@@ -56,13 +61,13 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
         val itemName = holder.itemView.findViewById(R.id.item_title) as TextView
         itemName.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-            TapFont.robotoRegular))
+                TapFont.robotoRegular))
         totalAmount.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-            TapFont.robotoRegular))
+                TapFont.robotoRegular))
         discount.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-            TapFont.robotoLight))
+                TapFont.robotoLight))
         descText.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.robotoLight))
@@ -74,7 +79,7 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
             discount.text =LocalizationManager.getValue("Discount","ItemList")
             totalAmount.paintFlags =
                 totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-              itemName.text = "ITEM TITLE "+itemList[position]
+            itemName.text = "ITEM TITLE "+itemList[position]
 
         }else
         {
@@ -100,7 +105,6 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
         }else{
             descText.text =  LocalizationManager.getValue("showDesc","ItemList")
         }
-
     }
 
     private fun getItemViewDataSource(): ItemViewDataSource {

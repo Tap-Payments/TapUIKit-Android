@@ -46,13 +46,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_basic_3dp"
-                android:fontFamily="sans-serif"
                 android:shadowColor="#b6b6b6"
                 android:shadowDy="1"
                 android:shadowRadius="3"
-                android:textColor="#a8a8a8"
-                android:textSize="12sp"
-                android:textStyle="normal"
+                style="@style/TextStyle"
                 tools:text="Payment for " />
             <company.tap.tapuilibrary.atoms.TapTextView
                 android:id="@+id/business_name"

@@ -3,7 +3,10 @@ package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.*
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -19,7 +22,6 @@ import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
@@ -57,12 +59,12 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     private var isFragmentAdded = false
     private var businessName: String? = null
-    private var businessInitial:String?=null
+    private var businessInitial: String? = null
     private lateinit var tapHeaderSectionView: TapHeaderSectionView
     private lateinit var amountSectionView: TapAmountSectionView
-    private lateinit var businessIcon :TapImageView
-    private lateinit var businessPlaceholder:TapTextView
-    private var imageUrl:String="https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
+    private lateinit var businessIcon: TapImageView
+    private lateinit var businessPlaceholder: TapTextView
+    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
     var fontChanger: FontChanger? = null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -95,7 +97,6 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     @SuppressLint("SetTextI18n")
     private fun initializeViews(view: View) {
-        setupFonts()
         headerViewInit(view)
         amountViewInit(view)
         setupChip(view)
@@ -132,6 +133,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     @SuppressLint("ResourceType")
     private fun headerViewInit(view: View) {
+        setupFonts()
         tapHeaderSectionView = view.findViewById(R.id.headerView)
         businessName = getString(R.string.tap_payments)
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
@@ -142,7 +144,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         businessInitial = businessName?.get(0).toString()
         businessPlaceholder.text = businessInitial
 
- Glide.with(this)
+        Glide.with(this)
             .load(imageUrl)
             .placeholder(TextDrawable(businessInitial.toString()))
             .into(businessIcon)
@@ -159,7 +161,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     @SuppressLint("SetTextI18n")
     private fun amountViewInit(view: View) {
-        amountSectionView=view.findViewById(R.id.amount_section)
+        amountSectionView = view.findViewById(R.id.amount_section)
         amountSectionView.setAmountViewDataSource(getAmountViewDataSOurce())
         currentCurrency = view.findViewById(R.id.textView_currentcurrency)
         selectedCurrency = view.findViewById(R.id.textview_selectedcurrency)
@@ -217,7 +219,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
 
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
-            selectedCurr = "SR1000,000.000" ,
+            selectedCurr = "SR1000,000.000",
             currentCurr = "KD1000,000.000",
             itemCount = "22 ITEMS"
         )
@@ -227,18 +229,5 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         const val TAG = "ModalBottomSheet"
     }
 
-    open fun writeOnDrawable(drawableId: Int, text: String?): BitmapDrawable? {
-        val bm = BitmapFactory.decodeResource(resources, drawableId)
-          //  .copy(Bitmap.Config.ARGB_8888, true)
-        val paint = Paint()
-        paint.setStyle(Paint.Style.FILL)
-        paint.setColor(Color.BLACK)
-        paint.setTextSize(20f)
-        val canvas = Canvas(bm)
-        if (text != null) {
-            canvas.drawText(text, 0f, (bm.height / 2).toFloat(), paint)
-        }
-        return BitmapDrawable(bm)
-    }
 }
 
