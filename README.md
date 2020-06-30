@@ -278,17 +278,11 @@ Enable any View extending TapChip in XML:
         android:layout_height="wrap_content"
         />
 ```
-<a name="tap_item_listview"></a>
-10. TapListItemView Molecule
 
- Enable any View extending TapItemsView in XML:
- ```xml
- <company.tap.tapuilibrary.views.TapItemsView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-```
+![HeaderMolecule](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/headermolecule.png)
+
 <a name="tap_amount_section_view"></a>
-11. TapAmountSectionView Molecule
+10. TapAmountSectionView Molecule
 
 Enable any View extending TapAmountSectionView in XML:
 ```xml
@@ -296,6 +290,21 @@ Enable any View extending TapAmountSectionView in XML:
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 ```
+
+![AmountSectionMolecule](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/amountsection.png)
+
+<a name="tap_item_listview"></a>
+11. TapListItemView Molecule
+
+ Enable any View extending TapItemsView in XML:
+ ```xml
+ <company.tap.tapuilibrary.views.TapItemsView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+```
+
+![TapListItemViewMolecule](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/tapitemlistview.png)
+
 <a name="tap_selection_tablayout"></a>
 12. TapSelectionTabLayout Molecule
 
