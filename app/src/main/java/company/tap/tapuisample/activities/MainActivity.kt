@@ -14,13 +14,16 @@ import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
+import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.BottomSheetDialog
+import company.tap.tapuisample.fragments.BottomSheetSwitch
 
 
 class MainActivity : BaseActivity(),
-    TapAmountSectionInterface {
+    TapAmountSectionInterface ,TapSwitchInterface {
     lateinit var fontChanger: FontChanger
+
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -72,4 +75,25 @@ class MainActivity : BaseActivity(),
         startActivity(Intent(this, ActionButtonActivity::class.java))
     }
 
+    override fun enableSaveCheckout(boolean: Boolean) {
+        println("saveCheckoutstatus $boolean")
+    }
+
+    override fun enableSaveMerchant(boolean: Boolean) {
+        println("saveMerchantstatus $boolean")
+    }
+
+    override fun enablegoPay(boolean: Boolean) {
+        println("enablegoPay $boolean")
+    }
+
+    fun openSwitchView(view: View) {
+        val modalBottomSheet =
+            BottomSheetSwitch()
+        modalBottomSheet.arguments = getArguments()
+        modalBottomSheet.show(
+            supportFragmentManager,
+            BottomSheetDialog.TAG
+        )
+    }
 }
