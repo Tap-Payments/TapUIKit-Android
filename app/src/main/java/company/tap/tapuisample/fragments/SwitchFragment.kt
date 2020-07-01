@@ -27,9 +27,9 @@ import company.tap.tapuisample.R
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class BottomSheetSwitch : TapBottomSheetDialog() {
+open class SwitchFragment : TapBottomSheetDialog() {
     private lateinit var switchDemo: TapCardSwitch
-    private lateinit var demoButton: TapTextView
+    private lateinit var demoText: TapTextView
     private lateinit var editText: TapEditText
     private var tapSwitchInterface: TapSwitchInterface? = null
     private var switchSaveDemo: TapSwitch? = null
@@ -67,7 +67,7 @@ open class BottomSheetSwitch : TapBottomSheetDialog() {
     // Initializing the views
     private fun initViews(view: View) {
         switchDemo = view.findViewById(R.id.switch_pay_demo)
-        demoButton = view.findViewById(R.id.demo_button)
+        demoText = view.findViewById(R.id.demo_text)
         editText = view.findViewById(R.id.demo_edit)
         switchDemo.setSwitchDataSource(getSwitchDataSource())
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
@@ -79,9 +79,7 @@ open class BottomSheetSwitch : TapBottomSheetDialog() {
 
         editText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-
             }
-
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 switchSaveDemo?.visibility = View.VISIBLE
             }
@@ -143,7 +141,7 @@ open class BottomSheetSwitch : TapBottomSheetDialog() {
                 switchgoPayCheckout?.visibility = View.GONE
                 savegoPay?.visibility = View.GONE
                 alertgoPay?.visibility = View.GONE
-                switchgoPayCheckout?.startAnimation(Fadein)
+                switchgoPayCheckout?.startAnimation(FadeOut)
             }
         }
     }

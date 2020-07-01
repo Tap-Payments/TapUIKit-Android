@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuisample.CurrencyModel
+import company.tap.tapuisample.model.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CurrencyAdapter
 import company.tap.tapuisample.adapters.ItemAdapter

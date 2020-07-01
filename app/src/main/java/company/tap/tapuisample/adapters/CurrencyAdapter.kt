@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import company.tap.tapuisample.CurrencyModel
+import company.tap.tapuisample.model.CurrencyModel
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.item_currency_row.view.*
 

@@ -12,6 +12,10 @@ import java.util.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+
+/**
+ * BaseActivity to set default locale to entire application using LoxalizationKit.
+ * ***/
 open class BaseActivity: LocaleAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

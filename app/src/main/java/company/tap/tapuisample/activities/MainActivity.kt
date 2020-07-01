@@ -7,21 +7,20 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Toast
 import androidx.annotation.RequiresApi
-import com.google.android.material.chip.ChipGroup
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
-import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSwitchInterface
+import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.BottomSheetDialog
-import company.tap.tapuisample.fragments.BottomSheetSwitch
+import company.tap.tapuisample.fragments.SwitchFragment
 
 
 class MainActivity : BaseActivity(),
-    TapAmountSectionInterface ,TapSwitchInterface {
+    TapAmountSectionInterface, TapSwitchInterface {
     lateinit var fontChanger: FontChanger
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
@@ -74,6 +73,9 @@ class MainActivity : BaseActivity(),
     fun openActionButton(view: View) {
         startActivity(Intent(this, ActionButtonActivity::class.java))
     }
+
+    override fun enableSaveMobile(boolean: Boolean) {
+        println("enableSaveMobile $boolean")
     }
 
     override fun enableSaveMerchantCheckout(boolean: Boolean) {
@@ -87,12 +89,13 @@ class MainActivity : BaseActivity(),
     fun openSwitchView(view: View) {
         fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoLight))
         fontChanger.replaceFonts((findViewById(android.R.id.content)))
-        val modalBottomSheet =
-            BottomSheetSwitch()
-        modalBottomSheet.arguments = getArguments()
-        modalBottomSheet.show(
+        val modalswitchBottomSheet =
+            SwitchFragment()
+        modalswitchBottomSheet.arguments = getArguments()
+        modalswitchBottomSheet.show(
             supportFragmentManager,
             BottomSheetDialog.TAG
         )
     }
 }
+

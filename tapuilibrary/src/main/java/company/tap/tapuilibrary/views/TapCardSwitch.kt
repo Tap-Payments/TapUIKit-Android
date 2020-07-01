@@ -15,7 +15,10 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 
-
+/**
+ * TapCardSwitch is a molecule element for setting saveMobile ,saveMerchantCheckout and
+ *  savegoPayCheckout for Merchant
+ **/
 class TapCardSwitch: LinearLayout {
     private var switchSaveMobile: TapSwitch
     private var saveTextView:TapTextView
@@ -66,8 +69,8 @@ class TapCardSwitch: LinearLayout {
     }
 
     /**
-     * @param tapSwitchDataSource is set via the consumer app for businessName,
-     * businessIcon and businessPlaceHolder.
+     * @param tapSwitchDataSource is set via the consumer app for saveMobile,
+     * saveMerchantCheckout and savegoPayCheckout.
      **/
     fun setSwitchDataSource(tapSwitchDataSource: TapSwitchDataSource) {
         this.tapSwitchDataSource = tapSwitchDataSource

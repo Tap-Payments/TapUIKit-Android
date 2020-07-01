@@ -36,7 +36,8 @@ Pages
    11. [TapAmountSectionView](#tap_amount_section_view)
    12. [TapSelectionTabLayout](#tap_selection_tablayout)
    13. [TapBottomSheetDialog](#tap_bottom_sheetdialog)
-   14. [TabAnimatedActionButton](#tap_animated_action_button)
+   14. [TapCardSwitch](#tap_card_switch)
+   15. [TabAnimatedActionButton](#tap_animated_action_button)
 5. [DataSources](#datasources)
    1. [HeaderDataSource](#header_data_source)
    2. [AmountDataSource](#amount_data_source)
@@ -135,6 +136,7 @@ TapAmountSectionView |  <company.tap.tapuilibrary.views.TapAmountSectionView | s
 TapListItemView     | <company.tap.tapuilibrary.views.TapListItemView    | itemTitle,itemAmount, totalAmount, totalQuantity |
 TapSelectionTabLayout| <company.tap.tapuilibrary.views.TapSelectionTabLayout|                                               |
 TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|  header, amountsection, listview, selectionTab  |
+TapCardSwitch| <company.tap.tapuilibrary.views.TapCardSwitch|  mobileSave, merchantCheckoutSave, goPayCheckoutSave  |
 TabAnimatedActionButton| <company.tap.tapuilibrary.views.TabAnimatedActionButton|                                           |
 
 <a name="usage"></a>
@@ -329,8 +331,21 @@ open class BottomSheetDialog : TapBottomSheetDialog()
         android:layout_height="wrap_content"
        />
 ```
+<a name="tap_card_switch"></a>
+14.TapCardSwitch
+
+Enable any View extending TextView in XML:
+ ```xml
+<company.tap.tapuilibrary.views.TapCardSwitch
+        android:id="@+id/switch_pay_demo"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_margin="20dp" />
+ ```
+![TapCardSwitchMolecule](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/switchmolecule.png)
+
 <a name="tap_animated_action_button"></a>
-14.TabAnimatedActionButton
+15.TabAnimatedActionButton
 
 Enable any View extending TextView in XML:
  ```xml
@@ -415,10 +430,3 @@ Enable any View extending TextView in XML:
                  background = backgroundDrawable
              )
   ```
-
-
-
-
-
-
-

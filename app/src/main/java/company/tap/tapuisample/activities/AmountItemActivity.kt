@@ -32,6 +32,7 @@ class AmountItemActivity : BaseActivity() {
         initializeViews()
     }
 
+    //Initailized Views
     @SuppressLint("SetTextI18n")
     private fun initializeViews() {
         amountListItem = findViewById(R.id.amount_items)
@@ -66,6 +67,7 @@ class AmountItemActivity : BaseActivity() {
         }
     }
 
+    //Set data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
         return TapSwitchDataSource (
             switchSaveMobile ="For faster and easier checkout,save your mobile number.",
@@ -77,6 +79,7 @@ class AmountItemActivity : BaseActivity() {
 
     }
 
+    //Set data to ItemViewDataSource
     private fun getItemViewdataSource(): ItemViewDataSource {
         return ItemViewDataSource(
             itemTitle = "ITEM TITLE",

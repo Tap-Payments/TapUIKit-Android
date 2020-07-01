@@ -5,7 +5,7 @@
     android:layout_height="wrap_content">
 
     <company.tap.tapuilibrary.atoms.TapTextView
-        android:id="@+id/demo_button"
+        android:id="@+id/demo_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Tap Switch Demo"
