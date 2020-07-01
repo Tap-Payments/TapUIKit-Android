@@ -11,6 +11,12 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
+import android.widget.RadioButton
+import android.widget.RadioGroup
+import android.widget.Toast
+import androidx.transition.Transition
+import androidx.transition.TransitionInflater
+import androidx.transition.TransitionManager
 import company.tap.tapuilibrary.atoms.TapEditText
 import company.tap.tapuilibrary.atoms.TapSwitch
 import company.tap.tapuilibrary.atoms.TapTextView
@@ -30,7 +36,7 @@ All rights reserved.
 open class SwitchFragment : TapBottomSheetDialog() {
     private lateinit var switchDemo: TapCardSwitch
     private lateinit var demoText: TapTextView
-    private lateinit var editText: TapEditText
+    private lateinit var mobileEditText: TapEditText
     private var tapSwitchInterface: TapSwitchInterface? = null
     private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
@@ -38,7 +44,9 @@ open class SwitchFragment : TapBottomSheetDialog() {
     private var switchgoPayCheckout: TapSwitch? = null
     private var savegoPay: TapTextView? = null
     private var alertgoPay: TapTextView? = null
-
+    private var saveCardorMobile: TapTextView? = null
+    private var radioGroup:RadioGroup? = null
+    private lateinit var radio: RadioButton
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -68,16 +76,69 @@ open class SwitchFragment : TapBottomSheetDialog() {
     private fun initViews(view: View) {
         switchDemo = view.findViewById(R.id.switch_pay_demo)
         demoText = view.findViewById(R.id.demo_text)
-        editText = view.findViewById(R.id.demo_edit)
+        mobileEditText = view.findViewById(R.id.demo_edit_number)
         switchDemo.setSwitchDataSource(getSwitchDataSource())
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         switchMerchantCheckout = switchDemo.findViewById(R.id.switch_merchant_checkout)
         switchgoPayCheckout = switchDemo.findViewById(R.id.switch_gopay_checkout)
+        saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
+        radioGroup = view.findViewById(R.id.radio_group)
+        radioGroup?.setOnCheckedChangeListener { group, checkedId ->
+           radio  = view.findViewById(checkedId)
+            println("raio id ${radio.id}")
+            Toast.makeText(
+                context, " On checked change : ${radio.text}",
+                Toast.LENGTH_SHORT
+            ).show()
 
-        editText.addTextChangedListener(object : TextWatcher {
+
+            if (radio.id == 1) {
+                bottomSheetLayout?.let { layout ->
+                    val removeTransition: Transition =
+                        TransitionInflater.from(context)
+                            .inflateTransition(R.transition.add_fragment)
+                    TransitionManager.beginDelayedTransition(layout, removeTransition)
+                }
+                switchgoPayCheckout?.visibility = View.GONE
+                savegoPay?.visibility = View.GONE
+                alertgoPay?.visibility = View.GONE
+                switchMerchantCheckout?.visibility = View.VISIBLE
+                switchMerchantCheckout?.isChecked = true
+
+            } else if (radio.id == 2) {
+                bottomSheetLayout?.let { layout ->
+                    val removeTransition: Transition =
+                        TransitionInflater.from(context)
+                            .inflateTransition(R.transition.add_fragment)
+                    TransitionManager.beginDelayedTransition(layout, removeTransition)
+                }
+                switchMerchantCheckout?.visibility = View.GONE
+                switchMerchantCheckout?.isChecked = true
+                switchgoPayCheckout?.visibility = View.VISIBLE
+                savegoPay?.visibility = View.VISIBLE
+                alertgoPay?.visibility = View.VISIBLE
+
+            } else {
+                bottomSheetLayout?.let { layout ->
+                    val removeTransition: Transition =
+                        TransitionInflater.from(context)
+                            .inflateTransition(R.transition.add_fragment)
+                    TransitionManager.beginDelayedTransition(layout, removeTransition)
+                }
+                switchLayout?.visibility = View.VISIBLE
+                switchMerchantCheckout?.visibility = View.VISIBLE
+                switchMerchantCheckout?.isChecked = true
+                switchgoPayCheckout?.visibility = View.VISIBLE
+                savegoPay?.visibility = View.VISIBLE
+                alertgoPay?.visibility = View.VISIBLE
+            }
+
+
+        }
+        mobileEditText.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
@@ -86,9 +147,17 @@ open class SwitchFragment : TapBottomSheetDialog() {
 
             override fun afterTextChanged(s: Editable) {
                 if (s.length == 8) {
-                    editText.hideKeyboard()
+                    mobileEditText.hideKeyboard()
                     switchSaveDemo?.isChecked = true
                     switchLayout?.visibility = View.VISIBLE
+                    saveCardorMobile?.text="For faster and easier checkout,save your mobile number."
+
+                } else if( s.length > 8){
+                    mobileEditText.hideKeyboard()
+                    switchSaveDemo?.isChecked = true
+                    switchLayout?.visibility = View.VISIBLE
+                    saveCardorMobile?.text="For faster and easier checkout,use card scanner or NFC."
+
 
                 }
             }
@@ -106,50 +175,20 @@ open class SwitchFragment : TapBottomSheetDialog() {
         switchSaveDemo?.setOnCheckedChangeListener { buttonView, isChecked ->
             println("isChecked Save value $isChecked")
             tapSwitchInterface?.enableSaveMobile(isChecked)
-
-            if (isChecked) {
-                switchLayout?.visibility = View.VISIBLE
-                switchMerchantCheckout?.isChecked = true
-                switchgoPayCheckout?.isChecked = true
-                switchLayout?.startAnimation(slideUp)
-
-            } else {
-                switchLayout?.visibility = View.GONE
-                switchLayout?.startAnimation(FadeOut)
-            }
         }
         switchMerchantCheckout?.setOnCheckedChangeListener { buttonView, isChecked ->
             tapSwitchInterface?.enableSaveMerchantCheckout(isChecked)
-            if (isChecked) {
-                switchMerchantCheckout?.visibility = View.VISIBLE
-                switchMerchantCheckout?.isChecked = true
-                switchMerchantCheckout?.startAnimation(slideUp)
-            } else {
-                switchMerchantCheckout?.visibility = View.GONE
-                switchMerchantCheckout?.startAnimation(FadeOut)
-            }
         }
         switchgoPayCheckout?.setOnCheckedChangeListener { buttonView, isChecked ->
             tapSwitchInterface?.enableSavegoPayCheckout(isChecked)
-            if (isChecked) {
-                switchgoPayCheckout?.visibility = View.VISIBLE
-                savegoPay?.visibility = View.VISIBLE
-                alertgoPay?.visibility = View.VISIBLE
-                switchgoPayCheckout?.isChecked = true
-                switchgoPayCheckout?.startAnimation(slideUp)
-            } else {
-                switchgoPayCheckout?.visibility = View.GONE
-                savegoPay?.visibility = View.GONE
-                alertgoPay?.visibility = View.GONE
-                switchgoPayCheckout?.startAnimation(FadeOut)
-            }
+
         }
     }
 
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSaveMobile = "For faster and easier checkout,save your mobile number.",
+            switchSave = "For faster and easier checkout,use card scanner or NFC.",
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",

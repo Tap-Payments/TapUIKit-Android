@@ -65,7 +65,7 @@ class TapCardSwitch: LinearLayout {
         switchgoPayCheckout = findViewById(R.id.switch_gopay_checkout)
         savegoPay = findViewById(R.id.save_goPay)
         alertgoPaySignup = findViewById(R.id.alert_gopay_signup)
-        saveTextView = findViewById(R.id.text_save_mobile)
+        saveTextView = findViewById(R.id.text_save)
     }
 
     /**
@@ -74,7 +74,7 @@ class TapCardSwitch: LinearLayout {
      **/
     fun setSwitchDataSource(tapSwitchDataSource: TapSwitchDataSource) {
         this.tapSwitchDataSource = tapSwitchDataSource
-        tapSwitchDataSource.switchSaveMobile?.let {
+        tapSwitchDataSource.switchSave?.let {
             saveTextView.text = it
         }
         tapSwitchDataSource.switchSaveMerchantCheckout?.let {
