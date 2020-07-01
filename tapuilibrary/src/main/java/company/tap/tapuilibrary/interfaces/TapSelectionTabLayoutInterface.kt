@@ -7,5 +7,5 @@ package company.tap.tapuilibrary.interfaces
  *
  */
 interface TapSelectionTabLayoutInterface {
-    fun onSelectedTabChanged(position: Int?)
+    fun onTabSelected(position: Int?)
 }

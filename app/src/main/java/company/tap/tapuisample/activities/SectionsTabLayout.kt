@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.views.TapMobilePaymentView
 import company.tap.tapuilibrary.views.TapSelectionTabLayout
 import company.tap.tapuisample.R
+import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 
 /**
  * Sample Activity to show how TableLayout functions .
@@ -96,9 +99,18 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         tabLayout.resetBehaviour()
     }
 
-    override fun onSelectedTabChanged(position: Int?) {
-        position?.let { selectedTab = it }
+    override fun onTabSelected(position: Int?) {
+        position?.let {
+            selectedTab = it
+            payment_input_layout.removeAllViews()
+            if (position == 0)
+                payment_input_layout.addView(InlineCardInput(this))
+            else
+                payment_input_layout.addView(TapMobilePaymentView(this, null))
+        }
     }
+
+
 
     fun selectSegment(view: View) {
         var alert: AlertDialog? = null
