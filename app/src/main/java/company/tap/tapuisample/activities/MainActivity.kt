@@ -74,20 +74,19 @@ class MainActivity : BaseActivity(),
     fun openActionButton(view: View) {
         startActivity(Intent(this, ActionButtonActivity::class.java))
     }
-
-    override fun enableSaveCheckout(boolean: Boolean) {
-        println("saveCheckoutstatus $boolean")
     }
 
-    override fun enableSaveMerchant(boolean: Boolean) {
-        println("saveMerchantstatus $boolean")
+    override fun enableSaveMerchantCheckout(boolean: Boolean) {
+        println("enableSaveMerchantCheckout $boolean")
     }
 
-    override fun enablegoPay(boolean: Boolean) {
-        println("enablegoPay $boolean")
+    override fun enableSavegoPayCheckout(boolean: Boolean) {
+        println("enableSavegoPayCheckout $boolean")
     }
 
     fun openSwitchView(view: View) {
+        fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoLight))
+        fontChanger.replaceFonts((findViewById(android.R.id.content)))
         val modalBottomSheet =
             BottomSheetSwitch()
         modalBottomSheet.arguments = getArguments()

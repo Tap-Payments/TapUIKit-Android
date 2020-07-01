@@ -7,7 +7,7 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 interface TapSwitchInterface {
-    fun enableSaveCheckout(boolean: Boolean)
-    fun enableSaveMerchant(boolean: Boolean)
-    fun enablegoPay(boolean: Boolean)
+    fun enableSaveMobile(boolean: Boolean)
+    fun enableSaveMerchantCheckout(boolean: Boolean)
+    fun enableSavegoPayCheckout(boolean: Boolean)
 }

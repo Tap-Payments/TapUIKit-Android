@@ -5,7 +5,7 @@
     style="@style/CustomCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#45000000"
+    android:background="@color/black_27"
     android:orientation="vertical">
 
     <company.tap.tapuilibrary.atoms.TapChip
@@ -20,11 +20,10 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:weightSum="1"
-
             >
 
             <company.tap.tapuilibrary.atoms.TapTextView
-                android:id="@+id/text_save"
+                android:id="@+id/text_save_mobile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_basic_16dp"
@@ -40,7 +39,7 @@ save your mobile number."
                 />
 
             <company.tap.tapuilibrary.atoms.TapSwitch
-                android:id="@+id/switch_save"
+                android:id="@+id/switch_save_mobile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_basic_16dp"
@@ -59,17 +58,15 @@ save your mobile number."
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone"
-        android:id="@+id/switches_layout">
+        android:visibility="visible"
+        android:id="@+id/switches_layout"
+       >
 
         <company.tap.tapuilibrary.atoms.TapSwitch
             android:id="@+id/switch_merchant_checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_basic_16dp"
-            android:layout_marginTop="@dimen/margin_basic_16dp"
-            android:layout_marginEnd="@dimen/margin_basic_16dp"
-            android:layout_marginBottom="@dimen/margin_basic_16dp"
+           android:layout_margin="@dimen/margin_basic_16dp"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.02"
             android:textColor="#4b4847"
@@ -82,10 +79,10 @@ save your mobile number."
             android:checked="true"/>
 
         <company.tap.tapuilibrary.atoms.TapSeparatorView
+            android:id="@+id/switch_separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="@dimen/margin_basic_13dp"
-            android:layout_marginTop="17dp"
             android:layout_marginEnd="21dp"
             android:background="@color/white" />
 
@@ -103,13 +100,11 @@ save your mobile number."
             tools:text="Save for goPay Checkouts" />
 
         <company.tap.tapuilibrary.atoms.TapSwitch
-            android:id="@+id/switch_gopay_mobile"
+            android:id="@+id/switch_gopay_checkout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_basic_16dp"
-            android:layout_marginTop="@dimen/margin_basic_16dp"
             android:layout_marginEnd="@dimen/margin_basic_16dp"
-            android:layout_marginBottom="@dimen/margin_basic_16dp"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.01"
             android:lineSpacingExtra="1sp"
@@ -127,6 +122,7 @@ save your mobile number."
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_basic_16dp"
+            android:layout_marginTop="@dimen/margin_basic_8dp"
             android:fontFamily="sans-serif-light"
             android:textColor="#4b4847"
             android:textSize="12sp"

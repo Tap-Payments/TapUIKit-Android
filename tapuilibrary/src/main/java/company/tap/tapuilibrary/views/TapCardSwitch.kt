@@ -17,10 +17,10 @@ All rights reserved.
 
 
 class TapCardSwitch: LinearLayout {
-    private var switchSave: TapSwitch
+    private var switchSaveMobile: TapSwitch
     private var saveTextView:TapTextView
     private var switchSaveMerchant: TapSwitch
-    private var switchgoPay: TapSwitch
+    private var switchgoPayCheckout: TapSwitch
     private var savegoPay: TapTextView
     private var alertgoPaySignup: TapTextView
     private var tapSwitchDataSource: TapSwitchDataSource? = null
@@ -57,12 +57,12 @@ class TapCardSwitch: LinearLayout {
 
     init {
         inflate(context, R.layout.tap_card_switch, this)
-        switchSave = findViewById(R.id.switch_save)
+        switchSaveMobile = findViewById(R.id.switch_save_mobile)
         switchSaveMerchant = findViewById(R.id.switch_merchant_checkout)
-        switchgoPay = findViewById(R.id.switch_gopay_mobile)
+        switchgoPayCheckout = findViewById(R.id.switch_gopay_checkout)
         savegoPay = findViewById(R.id.save_goPay)
         alertgoPaySignup = findViewById(R.id.alert_gopay_signup)
-        saveTextView = findViewById(R.id.text_save)
+        saveTextView = findViewById(R.id.text_save_mobile)
     }
 
     /**
@@ -71,14 +71,14 @@ class TapCardSwitch: LinearLayout {
      **/
     fun setSwitchDataSource(tapSwitchDataSource: TapSwitchDataSource) {
         this.tapSwitchDataSource = tapSwitchDataSource
-        tapSwitchDataSource.switchSave?.let {
+        tapSwitchDataSource.switchSaveMobile?.let {
             saveTextView.text = it
         }
-        tapSwitchDataSource.switchMerchantCheckout?.let {
+        tapSwitchDataSource.switchSaveMerchantCheckout?.let {
             switchSaveMerchant.text=it
         }
-        tapSwitchDataSource.switchgoPayMobile?.let {
-            switchgoPay.text = it
+        tapSwitchDataSource.switchSavegoPayCheckout?.let {
+            switchgoPayCheckout.text = it
         }
         tapSwitchDataSource.alertgoPaySignup?.let {
             alertgoPaySignup.text = it

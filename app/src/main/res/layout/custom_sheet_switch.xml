@@ -8,18 +8,18 @@
         android:id="@+id/demo_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="show switch"
+        android:text="Tap Switch Demo"
+        android:textSize="18sp"
         android:layout_gravity="center_horizontal"
-        android:onClick="showSwitch"
         />
 
     <company.tap.tapuilibrary.atoms.TapEditText
         android:id="@+id/demo_edit"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        android:imeOptions="actionNext"
+        android:layout_height="wrap_content"
+        android:inputType="text"
         android:maxLines="1"
-        android:hint="Enter Text here "
+        android:hint="Enter Text / Number Here "
          />
 
     <company.tap.tapuilibrary.views.TapCardSwitch
