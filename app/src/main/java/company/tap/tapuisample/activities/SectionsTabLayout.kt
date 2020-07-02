@@ -45,8 +45,8 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         items.add(
             SectionTabItem(
                 resources.getDrawable(
-                    R.drawable.visa
-                ), resources.getDrawable(R.drawable.visa_gray), CardBrand.visa
+                    R.drawable.ic_visa
+                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
             )
         )
         items.add(

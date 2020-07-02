@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
+import androidx.core.view.setMargins
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
@@ -27,6 +28,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
 
     private var indicatorColor = Color.parseColor(INDICATOR_COLOR)
+    private var invalidIndicatorColor = Color.parseColor(INVALID_INDICATOR_COLOR)
     private var indicatorHeight = MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
     private var unselectedAlphaLevel = UNSELECTED_ALPHA
     private var maxItemWidth = MetricsUtil.convertDpToPixel(MAX_ITEM_WIDTH, context).toInt()
@@ -44,7 +46,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     init {
         inflate(context, R.layout.tap_selection_tablayout, this)
         tabLayout = findViewById(R.id.tab_layout)
-        tabLayout.setSelectedTabIndicatorColor(indicatorColor)
+        tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)
         setSelectionBehaviour()
     }
@@ -105,6 +107,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         unselectedAlphaLevel = level
     }
 
+    /**
+     * Setter for tab item max width
+     *
+     * @param maxItemWidth integer width value
+     */
     fun setMaxItemWidth(maxItemWidth: Int) {
         this.maxItemWidth = maxItemWidth
     }
@@ -141,6 +148,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             getItemWidth(), 0
         )
         params.setMargins(0, 30, 0, 30)
+
         params.weight = 1f
         for (item in tabItems) {
             item.imageView?.layoutParams = params
@@ -291,7 +299,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      */
     fun resetBehaviour() {
         changeClickableState(true)
-        tabLayout.setSelectedTabIndicatorColor(indicatorColor)
+        tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         tabItems.forEach {
             it.imageView?.setImageDrawable(it.selectedImage)
             it.indicator?.visibility = View.INVISIBLE
@@ -319,6 +327,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         const val SCREEN_MARGINS = 140
         const val INDICATOR_HEIGHT = 2f
         const val INDICATOR_COLOR = "#2ace00"
+        const val INVALID_INDICATOR_COLOR = "#a8a8a8"
         const val UNSELECTED_ALPHA = 0.5f
         const val MAX_ITEM_WIDTH = 100f
     }

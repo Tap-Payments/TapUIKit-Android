@@ -2,7 +2,6 @@ package company.tap.tapuilibrary.views
 
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.Gravity
@@ -19,9 +18,9 @@ import company.tap.tapuilibrary.animation.MorphingAnimation.AnimationTarget.*
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.datasource.AnimationDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
-import company.tap.tapuilibrary.enums.ActionButtonState.*
+import company.tap.tapuilibrary.enums.ActionButtonState.ERROR
+import company.tap.tapuilibrary.enums.ActionButtonState.SUCCESS
 import company.tap.tapuilibrary.interfaces.TapActionButtonInterface
-import company.tap.tapuilibrary.utils.MetricsUtil
 
 /**
  *
@@ -29,7 +28,8 @@ import company.tap.tapuilibrary.utils.MetricsUtil
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
-class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListener, TapLoadingView.OnProgressCompletedListener {
+class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListener,
+    TapLoadingView.OnProgressCompletedListener {
 
     private lateinit var morphingAnimation: MorphingAnimation
     private lateinit var state: ActionButtonState
@@ -71,19 +71,20 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun setButtonDataSource(dataSource: ActionButtonDataSource) {
         this.dataSource = dataSource
         initBackground()
-        addTapLoadingView()
+        addView(getTextView())
     }
 
-    fun addTapLoadingView(){
+    fun addTapLoadingView() {
         tapLoadingView = TapLoadingView(context, null)
         tapLoadingView?.setOnProgressCompleteListener(this)
-        addView(tapLoadingView)
+        addChildView(tapLoadingView!!)
     }
 
     fun changeButtonState(state: ActionButtonState) {
         this.state = state
         when (state) {
             ERROR, SUCCESS -> {
+                addTapLoadingView()
                 startStateAnimation()
             }
 
@@ -143,8 +144,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             duration = MAX_DURATION,
             background = backgroundDrawable
         )
-        morphingAnimation.start(animationDataSource, WIDTH, HEIGHT, COLOR, CORNERS)
+        morphingAnimation.start(animationDataSource, WIDTH, HEIGHT, CORNERS)
     }
+
 
     /**
      * accept any view to be added inside the action button
@@ -166,8 +168,14 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     override fun onProgressCompleted() {
         when (state) {
-            ERROR -> dataSource?.errorImageResources?.let {
-                addChildView(getImageView(it))
+            ERROR -> {
+                dataSource?.errorImageResources?.let {
+                    addChildView(getImageView(it))
+                }
+                dataSource?.errorColor?.let {
+                    AnimationEngine.applyTransition(this)
+                    backgroundDrawable.color = ColorStateList.valueOf(it)
+                }
             }
 
             SUCCESS -> dataSource?.successImageResources?.let {
@@ -182,8 +190,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     companion object {
         const val MAX_CORNERS = 100f
         const val MAX_RADIUS = 100
-        const val MAX_DURATION = 2000
+        const val MAX_DURATION = 5000
     }
-
-
 }

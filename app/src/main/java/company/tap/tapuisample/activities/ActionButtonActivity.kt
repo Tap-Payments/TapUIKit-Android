@@ -47,8 +47,8 @@ class ActionButtonActivity : AppCompatActivity() {
 
     private fun getIdleDataSource(): ActionButtonDataSource {
         return ActionButtonDataSource(
-            text = "PAY!",
-            textSize = 20f,
+            text = "Pay",
+            textSize = 16f,
             textColor = Color.WHITE,
             cornerRadius = 100f,
             backgroundColor = resources.getColor(R.color.button_green)
