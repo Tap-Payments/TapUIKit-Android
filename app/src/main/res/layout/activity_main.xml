@@ -49,6 +49,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_20dp"
         android:text="Show Switch view" />
+    <Button
+        android:onClick="openNFCView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_basic_20dp"
+        android:text="Show NFC view" />
 
 </LinearLayout>
 

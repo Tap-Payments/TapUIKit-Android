@@ -1,6 +1,9 @@
 package company.tap.tapuisample.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -80,6 +83,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
         switchDemo.setSwitchDataSource(getSwitchDataSource())
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
+
         switchMerchantCheckout = switchDemo.findViewById(R.id.switch_merchant_checkout)
         switchgoPayCheckout = switchDemo.findViewById(R.id.switch_gopay_checkout)
         saveCardorMobile = switchDemo.findViewById(R.id.text_save)
@@ -145,11 +149,13 @@ open class SwitchFragment : TapBottomSheetDialog() {
                 switchSaveDemo?.visibility = View.VISIBLE
             }
 
+            @SuppressLint("ResourceType")
             override fun afterTextChanged(s: Editable) {
                 if (s.length == 8) {
                     mobileEditText.hideKeyboard()
                     switchSaveDemo?.isChecked = true
                     switchLayout?.visibility = View.VISIBLE
+                    radioGroup?.check(3)
                     saveCardorMobile?.text="For faster and easier checkout,save your mobile number."
 
                 } else if( s.length > 8){
@@ -169,9 +175,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
 
     // Configuring switch states and listening to switch states.
     private fun configureSwitch() {
-        val slideUp: Animation = AnimationUtils.loadAnimation(context, R.anim.slide_up)
-        val slideDown: Animation = AnimationUtils.loadAnimation(context, R.anim.slide_down)
-        val FadeOut: Animation = AnimationUtils.loadAnimation(context, R.anim.fade_out)
+
         switchSaveDemo?.setOnCheckedChangeListener { buttonView, isChecked ->
             println("isChecked Save value $isChecked")
             tapSwitchInterface?.enableSaveMobile(isChecked)
