@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"><item>
+        <shape android:shape="oval">
+            <solid android:color="#0c000000" />
+            <padding android:top="0dp" android:right="0dp" android:bottom="0dp" android:left="1dp" />
+        </shape>
+    </item>
+    <item>
+        <shape  android:shape="oval">
+            <padding android:top="0dp" android:right="0dp" android:bottom="1dp" android:left="0dp" />
+            <solid android:color="#19000000" />
+
+        </shape>
+    </item>
+    <item>
+        <shape  android:shape="oval">
+            <padding android:top="0dp" android:right="0dp" android:bottom="1dp" android:left="1dp" />
+            <solid android:color="#0d000000" />
+
+        </shape>
+    </item>
+
     <item android:state_checked="false">
         <shape android:shape="oval">
             <solid android:color="@android:color/white" />
@@ -7,4 +27,4 @@
             <stroke android:width="2dp" android:color="#0000ffff" />
         </shape> <!-- shape circle -->
     </item>
-</selector>
+</layer-list>
