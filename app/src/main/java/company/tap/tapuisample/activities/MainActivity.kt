@@ -142,7 +142,9 @@ class MainActivity : BaseActivity(),
                              my?.showCardInfo(
                                  it
                              )
-                             println("Card Details are ${it.cardNumber}")
+                             Toast.makeText(context,"$it",Toast.LENGTH_LONG).show()
+                             println("Card Details are ${it}")
+                             my?.bottomSheetDialog?.dismiss()
                          }
                      }
                  ) { throwable: Throwable ->
@@ -153,7 +155,7 @@ class MainActivity : BaseActivity(),
                      }
                  }
          }
-        // Check if the fragment is an instance of the right fragment
+
 
     }
 

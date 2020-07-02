@@ -101,9 +101,9 @@ class NFCFragment : TapBottomSheetDialog()  {
 
      fun enableNFC() {
         //noNfcText.setVisibility(View.VISIBLE)
-        val alertDialog = AlertDialog.Builder(context)
-        alertDialog.setTitle("getString(R.string.msg_info")
-       // alertDialog.setMessage(getString("R.string.enable_nfc"))
+         val alertDialog = AlertDialog.Builder(context)
+         alertDialog.setTitle("Please enable NFC")
+         alertDialog.setMessage("NFC not enabled")
         alertDialog.setPositiveButton(
             getString(R.string.msg_ok)
         ) { dialog: DialogInterface, which: Int ->
