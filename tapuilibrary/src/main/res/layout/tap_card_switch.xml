@@ -5,7 +5,7 @@
     style="@style/CustomCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/black_27"
+    android:background="#45000000"
     android:orientation="vertical">
 
     <company.tap.tapuilibrary.atoms.TapChip
@@ -48,7 +48,8 @@ save your mobile number."
                 android:layout_weight="0.2"
                 android:thumb="@drawable/thumb_selector"
                 app:track="@drawable/track_selector"
-                android:visibility="invisible"
+                android:visibility="visible"
+                android:checked="true"
 
                 />
         </LinearLayout>
@@ -60,6 +61,8 @@ save your mobile number."
         android:orientation="vertical"
         android:visibility="gone"
         android:id="@+id/switches_layout"
+        android:alpha="0.8"
+
        >
 
         <company.tap.tapuilibrary.atoms.TapSwitch
@@ -127,6 +130,7 @@ save your mobile number."
             android:textColor="#4b4847"
             android:textSize="12sp"
             android:textStyle="normal"
-            tools:text="Please check your email or SMS’s in order to complete the goPay Checkout signup process." />
+            tools:text="Please check your email or SMS’s in order to complete the goPay Checkout signup process."
+            android:layout_marginBottom="@dimen/margin_basic_16dp"/>
     </LinearLayout>
 </LinearLayout>

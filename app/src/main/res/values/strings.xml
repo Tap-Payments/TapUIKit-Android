@@ -6,4 +6,6 @@
     <string name="edit">EDIT</string>
     <string name="select">SELECT</string>
     <string name="tap_payments">Tap Payments</string>
+    <string name="msg_ok">ok</string>
+    <string name="msg_dismiss">dismiss</string>
 </resources>

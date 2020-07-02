@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.views
 
 import android.app.Dialog
 import android.content.DialogInterface
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
@@ -120,4 +121,6 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     companion object {
         const val TAG = "ModalBottomSheet"
     }
+
+    open fun onNewIntent(intent: Intent?) {}
 }
