@@ -1,26 +1,17 @@
 package company.tap.tapuisample.fragments
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.Toast
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
-import company.tap.tapuilibrary.atoms.TapEditText
+import company.tap.tapuilibrary.atoms.TapSeparatorView
 import company.tap.tapuilibrary.atoms.TapSwitch
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.TapSwitchDataSource
@@ -39,7 +30,6 @@ All rights reserved.
 open class SwitchFragment : TapBottomSheetDialog() {
     private lateinit var switchDemo: TapCardSwitch
     private lateinit var demoText: TapTextView
-    private lateinit var mobileEditText: TapEditText
     private var tapSwitchInterface: TapSwitchInterface? = null
     private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
@@ -48,7 +38,8 @@ open class SwitchFragment : TapBottomSheetDialog() {
     private var savegoPay: TapTextView? = null
     private var alertgoPay: TapTextView? = null
     private var saveCardorMobile: TapTextView? = null
-    private var radioGroup:RadioGroup? = null
+    private var separatorView: TapSeparatorView? = null
+    private var radioGroup: RadioGroup? = null
     private lateinit var radio: RadioButton
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,11 +70,10 @@ open class SwitchFragment : TapBottomSheetDialog() {
     private fun initViews(view: View) {
         switchDemo = view.findViewById(R.id.switch_pay_demo)
         demoText = view.findViewById(R.id.demo_text)
-        mobileEditText = view.findViewById(R.id.demo_edit_number)
         switchDemo.setSwitchDataSource(getSwitchDataSource())
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
-
+        separatorView = switchDemo.findViewById(R.id.switch_separator)
         switchMerchantCheckout = switchDemo.findViewById(R.id.switch_merchant_checkout)
         switchgoPayCheckout = switchDemo.findViewById(R.id.switch_gopay_checkout)
         saveCardorMobile = switchDemo.findViewById(R.id.text_save)
@@ -91,13 +81,8 @@ open class SwitchFragment : TapBottomSheetDialog() {
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
         radioGroup = view.findViewById(R.id.radio_group)
         radioGroup?.setOnCheckedChangeListener { group, checkedId ->
-           radio  = view.findViewById(checkedId)
+            radio = view.findViewById(checkedId)
             println("raio id ${radio.id}")
-            Toast.makeText(
-                context, " On checked change : ${radio.text}",
-                Toast.LENGTH_SHORT
-            ).show()
-
 
             if (radio.id == 1) {
                 bottomSheetLayout?.let { layout ->
@@ -111,6 +96,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
                 alertgoPay?.visibility = View.GONE
                 switchMerchantCheckout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.isChecked = true
+                separatorView?.visibility = View.GONE
 
             } else if (radio.id == 2) {
                 bottomSheetLayout?.let { layout ->
@@ -124,6 +110,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
                 switchgoPayCheckout?.visibility = View.VISIBLE
                 savegoPay?.visibility = View.VISIBLE
                 alertgoPay?.visibility = View.VISIBLE
+                separatorView?.visibility = View.GONE
 
             } else {
                 bottomSheetLayout?.let { layout ->
@@ -135,39 +122,15 @@ open class SwitchFragment : TapBottomSheetDialog() {
                 switchLayout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.isChecked = true
+                switchgoPayCheckout?.isChecked = true
                 switchgoPayCheckout?.visibility = View.VISIBLE
                 savegoPay?.visibility = View.VISIBLE
                 alertgoPay?.visibility = View.VISIBLE
+                separatorView?.visibility = View.VISIBLE
             }
 
 
         }
-        mobileEditText.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                switchSaveDemo?.visibility = View.VISIBLE
-            }
-
-            @SuppressLint("ResourceType")
-            override fun afterTextChanged(s: Editable) {
-                if (s.length == 8) {
-                    mobileEditText.hideKeyboard()
-                    switchSaveDemo?.isChecked = true
-                    switchLayout?.visibility = View.VISIBLE
-                    radioGroup?.check(3)
-                    saveCardorMobile?.text="For faster and easier checkout,save your mobile number."
-
-                } else if( s.length > 8){
-                    mobileEditText.hideKeyboard()
-                    switchSaveDemo?.isChecked = true
-                    switchLayout?.visibility = View.VISIBLE
-                    saveCardorMobile?.text="For faster and easier checkout,use card scanner or NFC."
-
-
-                }
-            }
-        })
 
         configureSwitch()
 
@@ -202,10 +165,5 @@ open class SwitchFragment : TapBottomSheetDialog() {
 
     }
 
-    //AutoHide keyboard
-    fun View.hideKeyboard() {
-        val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(windowToken, 0)
-    }
 
 }

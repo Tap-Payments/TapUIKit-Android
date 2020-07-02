@@ -13,24 +13,12 @@
         android:gravity="center_horizontal"
         />
 
-    <company.tap.tapuilibrary.atoms.TapEditText
-        android:id="@+id/demo_edit_number"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:maxLines="1"
-        android:includeFontPadding="true"
-        android:padding="5dp"
-        android:layout_margin="@dimen/margin_basic_8dp"
-        android:background="@drawable/editext_border"
-        android:hint="Enter Mobile / Card Here "
-
-         />
 
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         >
 
         <RadioButton
