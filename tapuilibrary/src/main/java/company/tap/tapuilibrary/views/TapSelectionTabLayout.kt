@@ -319,7 +319,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         const val SCREEN_MARGINS = 140
         const val INDICATOR_HEIGHT = 2f
         const val INDICATOR_COLOR = "#2ace00"
-        const val UNSELECTED_ALPHA = 0.7f
+        const val UNSELECTED_ALPHA = 0.5f
         const val MAX_ITEM_WIDTH = 100f
     }
 }

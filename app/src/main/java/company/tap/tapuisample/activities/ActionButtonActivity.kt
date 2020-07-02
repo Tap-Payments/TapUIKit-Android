@@ -50,7 +50,7 @@ class ActionButtonActivity : AppCompatActivity() {
             text = "PAY!",
             textSize = 20f,
             textColor = Color.WHITE,
-            cornerRadius = 10f,
+            cornerRadius = 100f,
             backgroundColor = resources.getColor(R.color.button_green)
         )
     }
@@ -60,7 +60,7 @@ class ActionButtonActivity : AppCompatActivity() {
             text = "PAY!",
             textSize = 20f,
             textColor = Color.WHITE,
-            cornerRadius = 10f,
+            cornerRadius = 100f,
             errorImageResources = R.drawable.error_mark,
             backgroundColor = resources.getColor(R.color.button_green),
             errorColor = resources.getColor(R.color.button_gray)
@@ -72,7 +72,7 @@ class ActionButtonActivity : AppCompatActivity() {
             text = "PAY!",
             textSize = 20f,
             textColor = Color.WHITE,
-            cornerRadius = 10f,
+            cornerRadius = 100f,
             successImageResources = R.drawable.checkmark,
             backgroundColor = resources.getColor(R.color.button_green)
         )

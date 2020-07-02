@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import company.tap.tapuilibrary.R
+import kotlinx.android.synthetic.main.tap_mobile_payment_view.view.*
 
 /**
  *
@@ -16,5 +17,6 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
 
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
+        mobile_number.requestFocus()
     }
 }

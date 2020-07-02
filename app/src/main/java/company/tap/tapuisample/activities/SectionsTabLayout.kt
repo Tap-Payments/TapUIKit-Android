@@ -6,6 +6,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
+import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.views.TapMobilePaymentView
@@ -22,6 +23,8 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
     lateinit var tabLayout: TapSelectionTabLayout
     private var selectedTab = 0
     private var isMobileTabAdded = false
+    private lateinit var tapCardInputView: InlineCardInput
+    private lateinit var tapMobileInputView: TapMobilePaymentView
     private val tab1Items = arrayOf("VISA", "MASTERCARD", "AMEX")
     private val tab2Items = arrayOf("Zain PAY", "Ooredoo PAY")
 
@@ -30,6 +33,9 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         setContentView(R.layout.activity_sections_tab_layout)
         tabLayout = findViewById(R.id.sections_tablayout)
         tabLayout.setTabLayoutInterface(this)
+        tapMobileInputView = TapMobilePaymentView(this, null)
+        tapCardInputView = InlineCardInput(this)
+        tapCardInputView.holderNameEnabled = false
         addCardsTab()
         addMobileTab()
     }
@@ -65,8 +71,8 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         items.add(
             SectionTabItem(
                 resources.getDrawable(
-                    R.drawable.zain
-                ), resources.getDrawable(R.drawable.zain_gray), CardBrand.zain
+                    R.drawable.zain_gray
+                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
             )
         )
         items.add(
@@ -102,11 +108,13 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
     override fun onTabSelected(position: Int?) {
         position?.let {
             selectedTab = it
+            AnimationEngine.applyTransition(payment_input_layout)
             payment_input_layout.removeAllViews()
             if (position == 0)
-                payment_input_layout.addView(InlineCardInput(this))
+                payment_input_layout.addView(tapCardInputView)
+
             else
-                payment_input_layout.addView(TapMobilePaymentView(this, null))
+                payment_input_layout.addView(tapMobileInputView)
         }
     }
 
@@ -114,7 +122,7 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
 
     fun selectSegment(view: View) {
         var alert: AlertDialog? = null
-        val items = arrayOf("1", "2", "3")
+        val items = arrayOf("1", "2")
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(true)
         builder.setTitle("Select Section")
