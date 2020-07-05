@@ -142,6 +142,25 @@ open class SwitchFragment : TapBottomSheetDialog() {
         switchSaveDemo?.setOnCheckedChangeListener { buttonView, isChecked ->
             println("isChecked Save value $isChecked")
             tapSwitchInterface?.enableSaveMobile(isChecked)
+            if(isChecked){
+                switchLayout?.visibility = View.VISIBLE
+                switchMerchantCheckout?.visibility = View.VISIBLE
+                switchMerchantCheckout?.isChecked = true
+                switchgoPayCheckout?.isChecked = true
+                switchgoPayCheckout?.visibility = View.VISIBLE
+                savegoPay?.visibility = View.VISIBLE
+                alertgoPay?.visibility = View.VISIBLE
+                separatorView?.visibility = View.VISIBLE
+            }else{
+                switchLayout?.visibility = View.GONE
+                switchMerchantCheckout?.visibility = View.GONE
+                switchMerchantCheckout?.isChecked = false
+                switchgoPayCheckout?.isChecked = false
+                switchgoPayCheckout?.visibility = View.GONE
+                savegoPay?.visibility = View.GONE
+                alertgoPay?.visibility = View.GONE
+                separatorView?.visibility = View.GONE
+            }
         }
         switchMerchantCheckout?.setOnCheckedChangeListener { buttonView, isChecked ->
             tapSwitchInterface?.enableSaveMerchantCheckout(isChecked)
@@ -155,7 +174,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSave = "For faster and easier checkout,use card scanner or NFC.",
+            switchSave = "For faster and easier checkout,\n use card scanner or NFC.",
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
