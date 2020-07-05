@@ -13,7 +13,7 @@ import company.tap.tapuilibrary.atoms.TapImageView
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-@Suppress("DEPRECATION")
+
 class TapNFCView : LinearLayout {
     private var gifNFC: TapImageView
 
