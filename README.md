@@ -356,7 +356,7 @@ Enable any View extending TapNFCView in XML:
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-        ```
+ ```
 ![TapNFCView](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/nfcmolecule.png)
 
 <a name="tap_animated_action_button"></a>
