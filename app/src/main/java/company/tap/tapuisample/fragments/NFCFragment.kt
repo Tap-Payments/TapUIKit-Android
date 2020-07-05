@@ -14,18 +14,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.tap.tapfontskit.FontChanger
+import com.tap.tapfontskit.enums.TapFont
 import company.tap.nfcreader.open.reader.TapEmvCard
 import company.tap.nfcreader.open.reader.TapNfcCardReader
 import company.tap.nfcreader.open.utils.TapCardUtils
 import company.tap.nfcreader.open.utils.TapNfcUtils
-import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
+import company.tap.tapuilibrary.interfaces.TapNFCInterface
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapNFCView
 import company.tap.tapuisample.R
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-
 import io.reactivex.disposables.Disposables
 
 
@@ -35,12 +36,12 @@ import io.reactivex.disposables.Disposables
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class NFCFragment : TapBottomSheetDialog()  {
+class NFCFragment : TapBottomSheetDialog() {
     private lateinit var customNFC: TapNFCView
     private lateinit var scanNFC: TapTextView
     private lateinit var aboutNFC: TapTextView
-    private lateinit var gifNFC: TapImageView
     private var tapNfcCardReader: TapNfcCardReader? = null
+    private var tapNFCInterface: TapNFCInterface? = null
     private var cardReadDisposable: Disposable = Disposables.empty()
     private var mProgressDialog: ProgressDialog? = null
     override fun onCreateView(
@@ -49,8 +50,6 @@ class NFCFragment : TapBottomSheetDialog()  {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_sheet_nfc, container, false)
-
-
         initView(view)
         return view
 
@@ -61,15 +60,23 @@ class NFCFragment : TapBottomSheetDialog()  {
         customNFC = view.findViewById(R.id.custom_nfc)
         scanNFC = customNFC.findViewById(R.id.scan_nfc)
         aboutNFC = customNFC.findViewById(R.id.about_nfc)
-        scanNFC.text="Ready to scan, add the card under the device to scan it."
-        aboutNFC.text="Near-field communication is a set of communication protocols for communication between two electronic devices over a distance of 4 cm or less."
-
+        scanNFC.text = "Ready to scan, add the card under the device to scan it."
+        aboutNFC.text =
+            "Near-field communication is a set of communication protocols for communication between two electronic devices over a distance of 4 cm or less."
     }
 
-   /* override fun onAttach(context: Context) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         tapNfcCardReader = TapNfcCardReader(this.activity)
-        *//*if (TapNfcUtils.isNfcAvailable(context)) {
+        try {
+            tapNFCInterface = context as TapNFCInterface
+        } catch (ex: ClassCastException) {
+            try {
+                tapNFCInterface = parentFragment as TapNFCInterface
+            } catch (ignore: Exception) {
+            }
+        }
+        if (TapNfcUtils.isNfcAvailable(context)) {
             if (TapNfcUtils.isNfcEnabled(context)) {
                 tapNfcCardReader?.enableDispatch() //Activates NFC  to read NFC Card details .
 
@@ -78,36 +85,35 @@ class NFCFragment : TapBottomSheetDialog()  {
             //scancardContent.setVisibility(View.GONE)
             // cardreadContent.setVisibility(View.GONE)
             // noNfcText.setVisibility(View.VISIBLE)
-        }*//*
-      //  super.onResume()
-    }*/
-/*     override fun onNewIntent(intent: Intent?) {
-        super.onNewIntent(intent)
-        mProgressDialog?.show()
-        if (tapNfcCardReader?.isSuitableIntent(intent)) {
-            mProgressDialog?.show()
-            cardReadDisposable = tapNfcCardReader!!
-                .readCardRx2(intent)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({ emvCard: TapEmvCard? ->
-                    if (emvCard != null) {
-                        this.showCardInfo(emvCard)
-                    }
-                },
-                    { throwable -> throwable.message?.let { displayError(it) } })
         }
-    }*/
+        //  super.onResume()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (TapNfcUtils.isNfcAvailable(context)) {
+            if (TapNfcUtils.isNfcEnabled(context)) {
+                tapNfcCardReader?.enableDispatch() //Activates NFC  to read NFC Card details .
+
+            } else{
+                enableNFC()
+            }
+        } else {
+            println("nfc unavaialble")
+        }
 
 
-     fun enableNFC() {
+    }
+
+    fun enableNFC() {
         //noNfcText.setVisibility(View.VISIBLE)
-         val alertDialog = AlertDialog.Builder(context)
-         alertDialog.setTitle("Please enable NFC")
-         alertDialog.setMessage("NFC not enabled")
+        val alertDialog = AlertDialog.Builder(context)
+        alertDialog.setTitle("Please enable NFC")
+        alertDialog.setMessage("NFC not enabled")
         alertDialog.setPositiveButton(
             getString(R.string.msg_ok)
         ) { dialog: DialogInterface, which: Int ->
-           // noNfcText.setVisibility(View.GONE)
+            // noNfcText.setVisibility(View.GONE)
             dialog.dismiss()
             startActivity(Intent(Settings.ACTION_NFC_SETTINGS))
         }
@@ -115,16 +121,18 @@ class NFCFragment : TapBottomSheetDialog()  {
             getString(R.string.msg_dismiss)
         ) { dialog: DialogInterface, which: Int ->
             dialog.dismiss()
-           // onBackPressed()
+            // onBackPressed()
         }
         alertDialog.setCancelable(false)
         alertDialog.show()
     }
-   //
-     fun displayError(message: String) {
+
+    //
+    fun displayError(message: String) {
         //noNfcText.setText(message)
-       println("errred mesaagr $message")
+        println("errored message $message")
     }
+
     private fun createProgressDialog() {
         val title = "resources.getString(R.string.ad_progressBar_title)"
         val mess = "pppp"
@@ -134,6 +142,7 @@ class NFCFragment : TapBottomSheetDialog()  {
         mProgressDialog?.setIndeterminate(true)
         mProgressDialog?.setCancelable(false)
     }
+
     fun showCardInfo(emvCard: TapEmvCard) {
         val text = TextUtils.join(
             "\n", arrayOf(
@@ -146,9 +155,10 @@ class NFCFragment : TapBottomSheetDialog()  {
                 emvCard.toString().replace(", ", ",\n")
             )
         )
+        tapNFCInterface?.scannedCard(text)
         Log.e("showCardInfo:", text)
 
-        mProgressDialog!!.dismiss()
+        //  mProgressDialog!!.dismiss()
     }
 
     fun processNFC(intent: Intent?) {
@@ -165,5 +175,11 @@ class NFCFragment : TapBottomSheetDialog()  {
                     { throwable -> throwable.message?.let { displayError(it) } })
         }
 
+    }
+
+    override fun onPause() {
+        cardReadDisposable.dispose()
+        tapNfcCardReader?.disableDispatch()
+        super.onPause()
     }
 }
