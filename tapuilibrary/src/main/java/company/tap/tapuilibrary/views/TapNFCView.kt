@@ -14,11 +14,15 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 
+/**
+ * TapNFCView is a molecule UI element for showing user till NFC scanning
+ * is running .
+ **/
 class TapNFCView : LinearLayout {
     private var gifNFC: TapImageView
 
     /**
-     * Simple constructor to use when creating a TapPayCardSwitch from code.
+     * Simple constructor to use when creating a TapNFCView from code.
      *  @param context The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
      **/

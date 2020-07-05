@@ -11,12 +11,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.FragmentTransaction
-import androidx.transition.Transition
-import androidx.transition.TransitionInflater
+
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
-import company.tap.tapuilibrary.interfaces.TapNFCInterface
 import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuisample.R
@@ -26,7 +24,7 @@ import company.tap.tapuisample.fragments.SwitchFragment
 
 
 class MainActivity : BaseActivity(),
-    TapAmountSectionInterface, TapSwitchInterface, TapNFCInterface {
+    TapAmountSectionInterface, TapSwitchInterface {
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
     private val modalNFCBottomSheet = NFCFragment()
@@ -120,22 +118,7 @@ class MainActivity : BaseActivity(),
         modalNFCBottomSheet.processNFC(intent)
     }
 
-    override fun scannedCard(scannedCard: String) {
-        Toast.makeText(context, scannedCard, Toast.LENGTH_LONG).show()
-        val fragmentTransaction: FragmentTransaction =
-            supportFragmentManager.beginTransaction()
 
-        modalNFCBottomSheet?.let { layout ->
-            val removeTransition: Transition =
-                TransitionInflater.from(context)
-                    .inflateTransition(R.transition.remove_fragment)
-            //  TransitionManager.beginDelayedTransition(layout, removeTransition)
-        }
-
-
-        fragmentTransaction.remove(modalNFCBottomSheet).commit()
-
-    }
 }
 
 
