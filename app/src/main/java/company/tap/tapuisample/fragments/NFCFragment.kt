@@ -100,6 +100,8 @@ class NFCFragment : TapBottomSheetDialog() {
             getString(R.string.msg_dismiss)
         ) { dialog: DialogInterface, which: Int ->
             dialog.dismiss()
+            val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
+            fragmentTransaction?.remove(this)?.commit()
             // onBackPressed()
         }
         alertDialog.setCancelable(false)
