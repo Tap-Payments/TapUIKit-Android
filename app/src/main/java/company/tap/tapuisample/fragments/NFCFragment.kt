@@ -65,19 +65,11 @@ class NFCFragment : TapBottomSheetDialog() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         tapNfcCardReader = TapNfcCardReader(this.activity)
-        if (TapNfcUtils.isNfcAvailable(context)) {
-            if (TapNfcUtils.isNfcEnabled(context)) {
-                tapNfcCardReader?.enableDispatch() //Activates NFC  to read NFC Card details .
-
-            } else enableNFC()
-        } else {
-            Toast.makeText(context, "NFC is not supported!!!", Toast.LENGTH_SHORT).show()
-        }
-
     }
 
     override fun onResume() {
         super.onResume()
+
         if (TapNfcUtils.isNfcAvailable(context)) {
             if (TapNfcUtils.isNfcEnabled(context)) {
                 tapNfcCardReader?.enableDispatch() //Activates NFC  to read NFC Card details .
@@ -114,9 +106,8 @@ class NFCFragment : TapBottomSheetDialog() {
         alertDialog.show()
     }
 
-    //
     fun displayError(message: String) {
-        Toast.makeText(context, "Scanned Successfull!!!\n $message", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
     fun showCardInfo(emvCard: TapEmvCard) {
@@ -131,8 +122,8 @@ class NFCFragment : TapBottomSheetDialog() {
                 emvCard.toString().replace(", ", ",\n")
             )
         )
-        Toast.makeText(context, text, Toast.LENGTH_LONG).show()
-
+      //  Toast.makeText(context, text, Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Scanned Successful!!!\n $text", Toast.LENGTH_LONG).show()
 
         val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
         fragmentTransaction?.remove(this)?.commit()
