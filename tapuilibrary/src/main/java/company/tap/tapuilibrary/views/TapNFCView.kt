@@ -1,8 +1,6 @@
 package company.tap.tapuilibrary.views
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.PorterDuff
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
@@ -15,11 +13,16 @@ import company.tap.tapuilibrary.atoms.TapImageView
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-@Suppress("DEPRECATION")
+
+/**
+ * TapNFCView is a molecule UI element for showing user till NFC scanning
+ * is running .
+ **/
 class TapNFCView : LinearLayout {
-    private var gifNFC:TapImageView
+    private var gifNFC: TapImageView
+
     /**
-     * Simple constructor to use when creating a TapPayCardSwitch from code.
+     * Simple constructor to use when creating a TapNFCView from code.
      *  @param context The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
      **/
@@ -50,7 +53,7 @@ class TapNFCView : LinearLayout {
 
     init {
         inflate(context, R.layout.tap_nfc_view, this)
-        gifNFC= findViewById(R.id.gif_nfc)
+        gifNFC = findViewById(R.id.gif_nfc)
         Glide.with(context).load(R.drawable.nfc).into(gifNFC)
 
     }

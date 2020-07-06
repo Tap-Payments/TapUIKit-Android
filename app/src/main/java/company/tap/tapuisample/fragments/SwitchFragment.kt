@@ -8,8 +8,6 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import androidx.transition.Transition
-import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import company.tap.tapuilibrary.atoms.TapSeparatorView
 import company.tap.tapuilibrary.atoms.TapSwitch
@@ -85,30 +83,20 @@ open class SwitchFragment : TapBottomSheetDialog() {
             println("raio id ${radio.id}")
 
             if (radio.id == 1) {
-
-                bottomSheetLayout?.let {
-
-                    layout ->
-                    val removeTransition: Transition =
-                        TransitionInflater.from(context)
-                            .inflateTransition(R.transition.remove_fragment)
+                bottomSheetLayout?.let { layout ->
                     TransitionManager.beginDelayedTransition(layout)
-                switchMerchantCheckout?.visibility = View.VISIBLE
-                switchMerchantCheckout?.isChecked = true
+                    switchMerchantCheckout?.visibility = View.VISIBLE
+                    switchMerchantCheckout?.isChecked = true
                     switchgoPayCheckout?.visibility = View.GONE
                     savegoPay?.visibility = View.GONE
                     alertgoPay?.visibility = View.GONE
                     separatorView?.visibility = View.GONE
 
-            }
-
+                }
 
 
             } else if (radio.id == 2) {
                 bottomSheetLayout?.let { layout ->
-                    val removeTransition: Transition =
-                        TransitionInflater.from(context)
-                            .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout)
                     switchMerchantCheckout?.visibility = View.GONE
                     switchMerchantCheckout?.isChecked = true
@@ -120,21 +108,16 @@ open class SwitchFragment : TapBottomSheetDialog() {
                 }
 
             } else {
-
-         
-             bottomSheetLayout?.let { layout ->
-                    val removeTransition: Transition =
-                        TransitionInflater.from(context)
-                            .inflateTransition(R.transition.add_fragment)
+                bottomSheetLayout?.let { layout ->
                     TransitionManager.beginDelayedTransition(layout)
-                 switchLayout?.visibility = View.VISIBLE
-                 switchMerchantCheckout?.visibility = View.VISIBLE
-                 switchMerchantCheckout?.isChecked = true
-                 switchgoPayCheckout?.isChecked = true
-                 switchgoPayCheckout?.visibility = View.VISIBLE
-                 savegoPay?.visibility = View.VISIBLE
-                 alertgoPay?.visibility = View.VISIBLE
-                 separatorView?.visibility = View.VISIBLE
+                    switchLayout?.visibility = View.VISIBLE
+                    switchMerchantCheckout?.visibility = View.VISIBLE
+                    switchMerchantCheckout?.isChecked = true
+                    switchgoPayCheckout?.isChecked = true
+                    switchgoPayCheckout?.visibility = View.VISIBLE
+                    savegoPay?.visibility = View.VISIBLE
+                    alertgoPay?.visibility = View.VISIBLE
+                    separatorView?.visibility = View.VISIBLE
                 }
 
             }
@@ -152,7 +135,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
         switchSaveDemo?.setOnCheckedChangeListener { buttonView, isChecked ->
             println("isChecked Save value $isChecked")
             tapSwitchInterface?.enableSaveMobile(isChecked)
-            if(isChecked){
+            if (isChecked) {
                 switchLayout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.isChecked = true
@@ -161,7 +144,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
                 savegoPay?.visibility = View.VISIBLE
                 alertgoPay?.visibility = View.VISIBLE
                 separatorView?.visibility = View.VISIBLE
-            }else{
+            } else {
                 switchLayout?.visibility = View.GONE
                 switchMerchantCheckout?.visibility = View.GONE
                 switchMerchantCheckout?.isChecked = false

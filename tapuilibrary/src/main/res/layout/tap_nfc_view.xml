@@ -4,8 +4,12 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
-
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#f4f4f4"
+       >
     <company.tap.tapuilibrary.atoms.TapTextView
         android:id="@+id/scan_nfc"
         android:layout_width="match_parent"
@@ -14,15 +18,16 @@
         android:fontFamily="sans-serif-light"
         android:textStyle="normal"
         android:textColor="#4b4847"
-        android:background="#00007aff"
         tools:text="Ready to scan, add the card under the device to scan it."
         android:layout_margin="@dimen/margin_basic_16dp"
         />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#c7f9f9f9"
+        android:background="#80000000"
+        android:alpha="0.45"
         android:orientation="vertical">
 
         <company.tap.tapuilibrary.atoms.TapImageView
@@ -34,8 +39,8 @@
 
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/about_nfc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="bottom"
             android:fontFamily="sans-serif-light"
             android:gravity="center_horizontal"

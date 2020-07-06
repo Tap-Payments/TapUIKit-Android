@@ -37,7 +37,8 @@ Pages
    12. [TapSelectionTabLayout](#tap_selection_tablayout)
    13. [TapBottomSheetDialog](#tap_bottom_sheetdialog)
    14. [TapCardSwitch](#tap_card_switch)
-   15. [TabAnimatedActionButton](#tap_animated_action_button)
+   15. [TapNFCView](#tap_nfc_view)
+   16. [TabAnimatedActionButton](#tap_animated_action_button)
 5. [DataSources](#datasources)
    1. [HeaderDataSource](#header_data_source)
    2. [AmountDataSource](#amount_data_source)
@@ -137,6 +138,7 @@ TapListItemView     | <company.tap.tapuilibrary.views.TapListItemView    | itemT
 TapSelectionTabLayout| <company.tap.tapuilibrary.views.TapSelectionTabLayout|                                               |
 TapBottomSheetDialog| <company.tap.tapuilibrary.views.TapBottomSheetDialog|  header, amountsection, listview, selectionTab  |
 TapCardSwitch| <company.tap.tapuilibrary.views.TapCardSwitch|  mobileSave, merchantCheckoutSave, goPayCheckoutSave  |
+TapNFCView|<company.tap.tapuilibrary.views.TapNFCView| not required   |
 TabAnimatedActionButton| <company.tap.tapuilibrary.views.TabAnimatedActionButton|                                           |
 
 <a name="usage"></a>
@@ -344,8 +346,21 @@ Enable any View extending TextView in XML:
  ```
 ![TapCardSwitchMolecule](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/switchmolecule.png)
 
+<a name="tap_nfc_view"></a>
+15.TapNFCView
+
+Enable any View extending TapNFCView in XML:
+ ```xml
+ <company.tap.tapuilibrary.views.TapNFCView
+        android:id="@+id/custom_nfc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+ ```
+![TapNFCView](https://github.com/Tap-Payments/TapUIKit-Android/blob/master/images/nfcmolecule.png)
+
 <a name="tap_animated_action_button"></a>
-15.TabAnimatedActionButton
+16.TabAnimatedActionButton
 
 Enable any View extending TextView in XML:
  ```xml
