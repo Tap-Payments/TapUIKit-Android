@@ -1,11 +1,14 @@
 package company.tap.tapuisample.activities
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
+import company.tap.tapcardvalidator_android.CardValidator
 import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
@@ -38,6 +41,19 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         tapCardInputView.holderNameEnabled = false
         addCardsTab()
         addMobileTab()
+        setupBrandDetection()
+    }
+
+    private fun setupBrandDetection() {
+        tapCardInputView.setCardNumberTextWatcher(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                val brand = CardValidator.validate(s.toString()).cardBrand
+                if (brand != null)
+                    tabLayout.selectTab(brand)
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
     }
 
     private fun addCardsTab() {

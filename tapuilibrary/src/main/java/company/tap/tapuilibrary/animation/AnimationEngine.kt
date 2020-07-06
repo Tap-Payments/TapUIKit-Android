@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.animation
 
 import android.view.ViewGroup
+import androidx.transition.Transition
 import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 
@@ -12,9 +13,9 @@ import androidx.transition.TransitionSet
  */
 object AnimationEngine {
 
-    fun applyTransition(sceneRoot: ViewGroup, transitionSet: TransitionSet? = null) {
-        if (transitionSet != null)
-            TransitionManager.beginDelayedTransition(sceneRoot, transitionSet)
+    fun applyTransition(sceneRoot: ViewGroup, transition: Transition? = null) {
+        if (transition != null)
+            TransitionManager.beginDelayedTransition(sceneRoot, transition)
         else
             TransitionManager.beginDelayedTransition(sceneRoot)
     }

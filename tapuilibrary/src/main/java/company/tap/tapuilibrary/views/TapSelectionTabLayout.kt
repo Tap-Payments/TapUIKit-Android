@@ -10,9 +10,11 @@ import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.view.setMargins
+import androidx.transition.Slide
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
@@ -281,6 +283,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      */
     fun selectTab(type: CardBrand) {
         resetBehaviour()
+        AnimationEngine.applyTransition(this, Slide())
         changeClickableState(false)
         tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
         tabItems.forEach {

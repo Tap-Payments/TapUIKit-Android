@@ -11,9 +11,6 @@ import android.widget.RadioGroup
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
-import company.tap.tapanimationkit.AnimateView
-import company.tap.tapanimationkit.RenderAnimate
-import company.tap.tapanimationkit.viewsanim.Fade
 import company.tap.tapuilibrary.atoms.TapSeparatorView
 import company.tap.tapuilibrary.atoms.TapSwitch
 import company.tap.tapuilibrary.atoms.TapTextView
@@ -95,7 +92,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
                             .inflateTransition(R.transition.remove_fragment)
-                    TransitionManager.beginDelayedTransition(layout, removeTransition)
+                    TransitionManager.beginDelayedTransition(layout)
                 switchMerchantCheckout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.isChecked = true
                     switchgoPayCheckout?.visibility = View.GONE
@@ -112,7 +109,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
                             .inflateTransition(R.transition.remove_fragment)
-                    TransitionManager.beginDelayedTransition(layout, removeTransition)
+                    TransitionManager.beginDelayedTransition(layout)
                     switchMerchantCheckout?.visibility = View.GONE
                     switchMerchantCheckout?.isChecked = true
                     switchgoPayCheckout?.visibility = View.VISIBLE
@@ -129,7 +126,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
                             .inflateTransition(R.transition.add_fragment)
-                    TransitionManager.beginDelayedTransition(layout, removeTransition)
+                    TransitionManager.beginDelayedTransition(layout)
                  switchLayout?.visibility = View.VISIBLE
                  switchMerchantCheckout?.visibility = View.VISIBLE
                  switchMerchantCheckout?.isChecked = true
