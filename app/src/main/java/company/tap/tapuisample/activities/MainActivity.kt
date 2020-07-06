@@ -10,8 +10,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.fragment.app.FragmentTransaction
-
+import cards.pay.paycardsrecognizer.sdk.Card
+import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
@@ -19,15 +19,17 @@ import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.BottomSheetDialog
+import company.tap.tapuisample.fragments.CardScannerFragment
 import company.tap.tapuisample.fragments.NFCFragment
 import company.tap.tapuisample.fragments.SwitchFragment
 
 
 class MainActivity : BaseActivity(),
-    TapAmountSectionInterface, TapSwitchInterface {
+    TapAmountSectionInterface, TapSwitchInterface, InlineViewCallback {
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
     private val modalNFCBottomSheet = NFCFragment()
+    private val modalCardScannerBottomSheet = CardScannerFragment()
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
@@ -116,6 +118,23 @@ class MainActivity : BaseActivity(),
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
         modalNFCBottomSheet.processNFC(intent)
+    }
+
+    fun openCardScannerView(view: View) {
+        modalCardScannerBottomSheet.arguments = getArguments()
+        modalCardScannerBottomSheet.show(
+            supportFragmentManager,
+            BottomSheetDialog.TAG
+        )
+
+    }
+
+    override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
+
+    }
+
+    override fun onScanCardFailed(e: Exception?) {
+
     }
 
 
