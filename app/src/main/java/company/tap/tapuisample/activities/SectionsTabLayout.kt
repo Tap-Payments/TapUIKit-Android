@@ -8,6 +8,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
+import company.tap.tapcardvalidator_android.CardValidationState
 import company.tap.tapcardvalidator_android.CardValidator
 import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.models.SectionTabItem
@@ -25,7 +26,6 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
 
     lateinit var tabLayout: TapSelectionTabLayout
     private var selectedTab = 0
-    private var isMobileTabAdded = false
     private lateinit var tapCardInputView: InlineCardInput
     private lateinit var tapMobileInputView: TapMobilePaymentView
     private val tab1Items = arrayOf("VISA", "MASTERCARD", "AMEX")
@@ -47,9 +47,11 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
     private fun setupBrandDetection() {
         tapCardInputView.setCardNumberTextWatcher(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                val brand = CardValidator.validate(s.toString()).cardBrand
-                if (brand != null)
-                    tabLayout.selectTab(brand)
+                if (s.isNullOrEmpty())
+                    tabLayout.resetBehaviour()
+                val card = CardValidator.validate(s.toString())
+                if (card.cardBrand != null)
+                    tabLayout.selectTab(card.cardBrand, card.validationState == CardValidationState.valid)
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
@@ -110,7 +112,7 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         builder.setCancelable(true)
         builder.setTitle("Select Item")
         builder.setItems(items) { _, position ->
-            tabLayout.selectTab(CardBrand.fromString(items[position]))
+            tabLayout.selectTab(CardBrand.fromString(items[position]), true)
             alert?.hide()
         }
         alert = builder.create()

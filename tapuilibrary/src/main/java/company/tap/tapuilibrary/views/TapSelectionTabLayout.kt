@@ -281,7 +281,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      *
      * @param type the required brand type to be selected
      */
-    fun selectTab(type: CardBrand) {
+    fun selectTab(type: CardBrand, valid: Boolean) {
         resetBehaviour()
         AnimationEngine.applyTransition(this, Slide())
         changeClickableState(false)
@@ -293,6 +293,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             } else {
                 it.imageView?.setImageDrawable(it.selectedImage)
                 it.indicator?.visibility = View.VISIBLE
+                if (valid)
+                    it.indicator?.setBackgroundColor(indicatorColor)
+                else
+                    it.indicator?.setBackgroundColor(invalidIndicatorColor)
             }
         }
     }
