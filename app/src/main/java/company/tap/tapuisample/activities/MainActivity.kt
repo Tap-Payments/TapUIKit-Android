@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
@@ -130,10 +131,16 @@ class MainActivity : BaseActivity(),
     }
 
     override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
-
+        Toast.makeText(context,card.toString(), Toast.LENGTH_SHORT).show()
+        if (supportFragmentManager.findFragmentById(R.id.inline_container) != null)
+            supportFragmentManager.beginTransaction()
+                .remove(supportFragmentManager.findFragmentById(R.id.inline_container)!!)
+                .commit()
     }
 
+
     override fun onScanCardFailed(e: Exception?) {
+
 
     }
 

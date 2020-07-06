@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#f4f4f4">
+        >
 
     <company.tap.tapuilibrary.atoms.TapTextView
         android:id="@+id/cardscan_ready"
@@ -28,7 +28,7 @@
     <FrameLayout
         android:id="@+id/inline_container"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="match_parent"
         />
 
 </LinearLayout>

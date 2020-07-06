@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.FragmentTransaction
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
@@ -56,9 +55,24 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
     }
 
     override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
+       // Toast.makeText(context,card.toString(), Toast.LENGTH_SHORT).show()
+
+        /*fragmentManager?.findFragmentById(R.id.inline_container)?.let {
+            fragmentManager?.beginTransaction()
+                ?.remove(it)
+                ?.commit()}*/
+        val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
+        fragmentManager?.findFragmentById(R.id.inline_container)?.let {
+            fragmentTransaction
+                ?.  remove(it)
+        }
+       // fragmentTransaction?.remove(this)?.commit()
 
     }
 
     override fun onScanCardFailed(e: Exception?) {
+        childFragmentManager.beginTransaction()
+            .remove(this)
+            .commit()
     }
 }
