@@ -48,6 +48,8 @@ class NFCFragment : TapBottomSheetDialog() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_sheet_nfc, container, false)
+        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+
         initView(view)
         return view
 
@@ -82,6 +84,8 @@ class NFCFragment : TapBottomSheetDialog() {
             Toast.makeText(context, "NFC is not supported!!!", Toast.LENGTH_SHORT).show()
         }
 
+        // or since com.google.android.material:material:1.1.0-beta01
+       // (dialog as? BottomSheetDialog)?.behavior?.state = BottomSheetBehavior.STATE_EXPANDED
 
     }
 

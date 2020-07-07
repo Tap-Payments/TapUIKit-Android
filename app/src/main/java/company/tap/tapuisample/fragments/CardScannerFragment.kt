@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.cardscanner.TapCard
 import company.tap.cardscanner.TapTextRecognitionCallBack
 import company.tap.cardscanner.TapTextRecognitionML
@@ -36,6 +37,7 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
             .beginTransaction()
             .add(R.id.inline_container, InlineViewFragment())
             .commit()
+        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = "Ready to scan."
         return view
@@ -61,14 +63,18 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
             fragmentManager?.beginTransaction()
                 ?.remove(it)
                 ?.commit()}*/
-        val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
+        childFragmentManager
+            .beginTransaction()
+            .remove(this)
+            .commit()
+       /* val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
         fragmentManager?.findFragmentById(R.id.inline_container)?.let {
             fragmentTransaction
-                ?.  remove(it)
+                ?.  remove(it)*/
         }
        // fragmentTransaction?.remove(this)?.commit()
 
-    }
+   // }
 
     override fun onScanCardFailed(e: Exception?) {
         childFragmentManager.beginTransaction()

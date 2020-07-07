@@ -114,6 +114,8 @@ class MainActivity : BaseActivity(),
             supportFragmentManager,
             BottomSheetDialog.TAG
         )
+
+
     }
 
     override fun onNewIntent(intent: Intent) {
