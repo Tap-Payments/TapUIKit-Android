@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -19,10 +20,7 @@ import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuisample.R
-import company.tap.tapuisample.fragments.BottomSheetDialog
-import company.tap.tapuisample.fragments.CardScannerFragment
-import company.tap.tapuisample.fragments.NFCFragment
-import company.tap.tapuisample.fragments.SwitchFragment
+import company.tap.tapuisample.fragments.*
 
 
 class MainActivity : BaseActivity(),
@@ -143,9 +141,11 @@ class MainActivity : BaseActivity(),
 
     override fun onScanCardFailed(e: Exception?) {
 
-
     }
 
+    fun openFragment(view: View) {
+        ExampleFragment().show(supportFragmentManager, null)
+    }
 
 }
 
