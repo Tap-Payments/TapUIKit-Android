@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentTransaction
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
@@ -63,10 +62,18 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
             fragmentManager?.beginTransaction()
                 ?.remove(it)
                 ?.commit()}*/
+        if (childFragmentManager.findFragmentById(R.id.inline_container) != null)
+            childFragmentManager
+                .beginTransaction()
+                .replace(R.id.inline_container,this)
+                .commit()
+           /* getSupportFragmentManager().beginTransaction()
+            .remove(getSupportFragmentManager().findFragmentById(R.id.inline_container))
+            .commit()
         childFragmentManager
             .beginTransaction()
             .remove(this)
-            .commit()
+            .commit()*/
        /* val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
         fragmentManager?.findFragmentById(R.id.inline_container)?.let {
             fragmentTransaction

@@ -131,10 +131,10 @@ class MainActivity : BaseActivity(),
     }
 
     override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
-        Toast.makeText(context,card.toString(), Toast.LENGTH_SHORT).show()
-        if (supportFragmentManager.findFragmentById(R.id.inline_container) != null)
-            supportFragmentManager.beginTransaction()
-                .remove(supportFragmentManager.findFragmentById(R.id.inline_container)!!)
+        Toast.makeText(context,card.toString(), Toast.LENGTH_LONG).show()
+        supportFragmentManager
+                .beginTransaction()
+                .remove(modalCardScannerBottomSheet)
                 .commit()
     }
 
