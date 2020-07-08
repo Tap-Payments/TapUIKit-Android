@@ -2,6 +2,7 @@ package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import cards.pay.paycardsrecognizer.sdk.Card
+import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
 import com.bumptech.glide.Glide
@@ -65,7 +67,7 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
         cardScanText?.text = "Ready to scan."
         headerViewInit(view)
         amountViewInit(view)
-
+        FrameManager.getInstance().setFrameColor(Color.WHITE)
         return view
 
     }
@@ -122,6 +124,8 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
     }
 
     override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
+        FrameManager.getInstance().setFrameColor(Color.GREEN)
+
         if (childFragmentManager.findFragmentById(R.id.inline_container) != null)
             childFragmentManager
                 .beginTransaction()

@@ -2,6 +2,7 @@ package company.tap.tapuisample.activities
 
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
@@ -10,10 +11,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.FragmentManager
 import cards.pay.paycardsrecognizer.sdk.Card
+import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
@@ -131,11 +132,30 @@ class MainActivity : BaseActivity(),
     }
 
     override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
-        Toast.makeText(context,card.toString(), Toast.LENGTH_LONG).show()
+      //  Toast.makeText(context,card.toString(), Toast.LENGTH_LONG).show()
+        if (card != null) {
+            showCardDialog(card)
+
+        }
         supportFragmentManager
                 .beginTransaction()
                 .remove(modalCardScannerBottomSheet)
                 .commit()
+
+    }
+    private fun showCardDialog(card: Card) {
+        FrameManager.getInstance().setFrameColor(Color.GREEN)
+        val cardData = """
+                Card number: ${card.cardNumberRedacted}
+                Card holder: ${card.cardHolderName}
+                Card expiration date: ${card.expirationDate}
+                """.trimIndent()
+        AlertDialog.Builder(this)
+            .setTitle("Card Info")
+            .setMessage(cardData)
+            .setPositiveButton(android.R.string.yes, null)
+            .setIcon(android.R.drawable.ic_dialog_info)
+            .show()
     }
 
 
