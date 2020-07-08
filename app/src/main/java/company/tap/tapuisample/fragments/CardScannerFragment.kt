@@ -1,5 +1,6 @@
 package company.tap.tapuisample.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,13 +9,19 @@ import android.view.ViewGroup
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.cardscanner.TapCard
 import company.tap.cardscanner.TapTextRecognitionCallBack
 import company.tap.cardscanner.TapTextRecognitionML
+import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.atoms.TapTextView
+import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
+import company.tap.tapuilibrary.views.TapHeaderSectionView
 import company.tap.tapuisample.R
+import company.tap.tapuisample.TextDrawable
 
 /**
  * Created by AhlaamK on 7/6/20.
@@ -25,7 +32,12 @@ All rights reserved.
 class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , InlineViewCallback{
     private var textRecognitionML: TapTextRecognitionML? = null
     private var cardScanText: TapTextView? = null
-
+    private lateinit var tapHeaderSectionView: TapHeaderSectionView
+    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
+    private var businessName: String? = null
+    private var businessInitial: String? = null
+    private lateinit var businessIcon: TapImageView
+    private lateinit var businessPlaceholder: TapTextView
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -39,9 +51,39 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = "Ready to scan."
+        headerViewInit(view)
         return view
 
     }
+
+    @SuppressLint("ResourceType")
+    private fun headerViewInit(view: View) {
+
+        tapHeaderSectionView = view.findViewById(R.id.headerView_card)
+        businessName = getString(R.string.tap_payments)
+        tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
+
+        businessIcon = tapHeaderSectionView.findViewById(R.id.business_icon)
+
+        businessPlaceholder = tapHeaderSectionView.findViewById(R.id.placeholder_text)
+        businessInitial = businessName?.get(0).toString()
+        businessPlaceholder.text = businessInitial
+
+        Glide.with(this)
+            .load(imageUrl)
+            .placeholder(TextDrawable(businessInitial.toString()))
+            .into(businessIcon)
+    }
+
+    private fun getHeaderDataSource(): HeaderDataSource {
+        return HeaderDataSource(
+            businessName = businessName,
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+            businessImageResources = imageUrl,
+            businessPlaceHolder = businessName?.get(0).toString()
+        )
+    }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         textRecognitionML = TapTextRecognitionML(this)

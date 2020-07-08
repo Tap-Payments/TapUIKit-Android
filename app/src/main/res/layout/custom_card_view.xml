@@ -1,15 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:ignore="MissingDefaultResource">
-    <LinearLayout
+    tools:ignore="MissingDefaultResource"
+
+    >
+    <company.tap.tapuilibrary.atoms.TapDragIndicator
+        android:layout_width="75dp"
+        android:layout_height="4dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginStart="150dp"
+        app:cardCornerRadius="@dimen/margin_basic_8dp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        app:cardElevation="@dimen/margin_basic_0dp"
+        >
+    <company.tap.tapuilibrary.atoms.TapSeparatorView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/view_color"
+        />
+    </company.tap.tapuilibrary.atoms.TapDragIndicator>
+
+    <company.tap.tapuilibrary.views.TapHeaderSectionView
+        android:id="@+id/headerView_card"
+        android:layout_marginTop="@dimen/margin_basic_9dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <company.tap.tapuilibrary.atoms.TapChip
+        style="@style/CustomCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        >
+        app:cardBackgroundColor="#f4f4f4"
+       >
+
 
     <company.tap.tapuilibrary.atoms.TapTextView
         android:id="@+id/cardscan_ready"
@@ -24,7 +53,8 @@
         android:layout_marginTop="@dimen/margin_basic_16dp"
         android:layout_marginBottom="@dimen/margin_basic_16dp"
         />
-    </LinearLayout>
+
+    </company.tap.tapuilibrary.atoms.TapChip>
     <FrameLayout
         android:id="@+id/inline_container"
         android:layout_width="match_parent"
