@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-  >
+
+    tools:ignore="MissingDefaultResource">
 
    <company.tap.tapuilibrary.atoms.TapTextView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:gravity="center_horizontal"
        android:text="NFC DEMO"
-       android:visibility="gone"/>
+       />
 
 
     <company.tap.tapuilibrary.views.TapNFCView

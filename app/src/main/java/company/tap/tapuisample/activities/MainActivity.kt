@@ -8,6 +8,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -28,7 +29,7 @@ class MainActivity : BaseActivity(),
     TapAmountSectionInterface, TapSwitchInterface, InlineViewCallback {
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
-    private val modalNFCBottomSheet = NFCFragment()
+    private val modalNFCBottomSheet = NFCSampleFragment()
     private val modalCardScannerBottomSheet = CardScannerFragment()
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
@@ -137,14 +138,17 @@ class MainActivity : BaseActivity(),
             showCardDialog(card)
 
         }
-        supportFragmentManager
+        Handler().postDelayed({
+            supportFragmentManager
                 .beginTransaction()
                 .remove(modalCardScannerBottomSheet)
                 .commit()
+        }, 8000)
+
 
     }
     private fun showCardDialog(card: Card) {
-        FrameManager.getInstance().setFrameColor(Color.GREEN)
+        FrameManager.getInstance().frameColor = Color.GREEN
         val cardData = """
                 Card number: ${card.cardNumberRedacted}
                 Card holder: ${card.cardHolderName}
@@ -160,7 +164,7 @@ class MainActivity : BaseActivity(),
 
 
     override fun onScanCardFailed(e: Exception?) {
-
+        println("card scan failed $e")
     }
 
     fun openFragment(view: View) {
