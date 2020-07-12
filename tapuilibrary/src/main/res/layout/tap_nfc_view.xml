@@ -33,8 +33,9 @@
         <company.tap.tapuilibrary.atoms.TapImageView
             android:id="@+id/gif_nfc"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
+            android:layout_height="360dp"
             android:layout_gravity="center_horizontal"
+
             />
 
         <company.tap.tapuilibrary.atoms.TapTextView

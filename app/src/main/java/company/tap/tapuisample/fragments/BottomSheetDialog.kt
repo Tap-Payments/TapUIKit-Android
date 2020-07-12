@@ -6,6 +6,8 @@ import android.content.Context
 
 import android.os.Bundle
 import android.os.Handler
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,20 +24,24 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDE
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
+import company.tap.cardinputwidget.widget.inline.InlineCardInput
+import company.tap.tapcardvalidator_android.CardBrand
+import company.tap.tapcardvalidator_android.CardValidationState
+import company.tap.tapcardvalidator_android.CardValidator
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.atoms.TapButton
-import company.tap.tapuilibrary.atoms.TapChipGroup
-import company.tap.tapuilibrary.atoms.TapImageView
-import company.tap.tapuilibrary.atoms.TapTextView
+import company.tap.tapuilibrary.animation.AnimationEngine
+import company.tap.tapuilibrary.atoms.*
 import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
+import company.tap.tapuilibrary.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
-import company.tap.tapuilibrary.views.TapAmountSectionView
-import company.tap.tapuilibrary.views.TapBottomSheetDialog
-import company.tap.tapuilibrary.views.TapHeaderSectionView
+import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.models.SectionTabItem
+import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
 import company.tap.tapuisample.TextDrawable
 import company.tap.tapuisample.adapters.CardTypeAdapter
+import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
@@ -45,7 +51,7 @@ import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class BottomSheetDialog : TapBottomSheetDialog() {
+open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInterface {
 
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
@@ -60,8 +66,24 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private lateinit var amountSectionView: TapAmountSectionView
     private lateinit var businessIcon: TapImageView
     private lateinit var businessPlaceholder: TapTextView
+    lateinit var tabLayout: TapSelectionTabLayout
     private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
     var fontChanger: FontChanger? = null
+    private var selectedTab = 0
+    private lateinit var tapCardInputView: InlineCardInput
+    private lateinit var tapMobileInputView: TapMobilePaymentView
+    private lateinit var paymentLayout: LinearLayout
+    private lateinit var nfcScanBtn: TapButton
+    private lateinit var switchDemo: TapCardSwitch
+    private var switchSaveDemo: TapSwitch? = null
+    private var switchLayout: LinearLayout? = null
+    private var switchMerchantCheckout: TapSwitch? = null
+    private var switchgoPayCheckout: TapSwitch? = null
+    private var savegoPay: TapTextView? = null
+    private var alertgoPay: TapTextView? = null
+    private var saveCardorMobile: TapTextView? = null
+    private var separatorView: TapSeparatorView? = null
+    private var checkboxString:String="For faster and easier checkout,\n use card scanner or NFC."
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -95,8 +117,67 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
     private fun initializeViews(view: View) {
         headerViewInit(view)
         amountViewInit(view)
+        tabLayoutInit(view)
         setupChip(view)
+        switchViewInit(view)
+        addCardsTab()
+        addMobileTab()
+        setupBrandDetection()
+        configureSwitch()
 
+    }
+
+    private fun switchViewInit(view: View) {
+        switchDemo = view.findViewById(R.id.switch_pay_demo)
+        switchDemo.setSwitchDataSource(getSwitchDataSource())
+        switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
+        switchLayout = switchDemo.findViewById(R.id.switches_layout)
+        separatorView = switchDemo.findViewById(R.id.switch_separator)
+        switchMerchantCheckout = switchDemo.findViewById(R.id.switch_merchant_checkout)
+        switchgoPayCheckout = switchDemo.findViewById(R.id.switch_gopay_checkout)
+        saveCardorMobile = switchDemo.findViewById(R.id.text_save)
+        savegoPay = switchDemo.findViewById(R.id.save_goPay)
+        alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
+        switchSaveDemo?.visibility= View.GONE
+
+    }
+
+    //Setting data to TapSwitchDataSource
+    private fun getSwitchDataSource(): TapSwitchDataSource {
+        return TapSwitchDataSource(
+            switchSave = checkboxString,
+            switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
+            switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
+            savegoPayText = "Save for goPay Checkouts",
+            alertgoPaySignup = "Please check your email or SMS’s in order to complete the goPay Checkout signup process."
+
+        )
+
+    }
+
+    private fun tabLayoutInit(view: View) {
+        tabLayout = view.findViewById(R.id.sections_tablayout)
+        nfcScanBtn = view.findViewById(R.id.nfc_scan)
+        val nfcFragment = NFCFragment()
+        nfcScanBtn.setOnClickListener {
+            tabLayout.visibility=View.GONE
+            paymentLayout.visibility=View.GONE
+            currentCurrency.visibility = View.GONE
+            fragment_container.visibility = View.GONE
+            nfcScanBtn.visibility= View.GONE
+            itemCount.text = "CLOSE"
+            childFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_nfc,nfcFragment)
+                .commit()
+        }
+        tabLayout.setTabLayoutInterface(this)
+        tapMobileInputView = TapMobilePaymentView(context, null)
+        if (context != null) {
+            tapCardInputView = InlineCardInput(context!!)
+
+        }
+        bottomSheetDialog.behavior.state = STATE_EXPANDED
     }
 
     private fun setupFonts() {
@@ -175,6 +256,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                     .remove(currencyViewFragment)
                     .commit()
                 fragment_container.visibility = View.VISIBLE
+                tabLayout.visibility=View.VISIBLE
+                paymentLayout.visibility=View.VISIBLE
                 bottomSheetLayout?.let { layout ->
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
@@ -199,6 +282,8 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
                 selectedCurrency.text = "KD1000,000.000"
                 currentCurrency.visibility = View.GONE
                 fragment_container.visibility = View.GONE
+                tabLayout.visibility=View.GONE
+                paymentLayout.visibility=View.GONE
                 itemCount.text = LocalizationManager.getValue("close", "Common")
                 Handler().postDelayed({
                     bottomSheetDialog.behavior.state = STATE_EXPANDED
@@ -208,7 +293,7 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
             isFragmentAdded = !isFragmentAdded
 
         }
-
+        paymentLayout= view.findViewById(R.id.payment_input_layout)
         println("bottom state ${bottomSheetDialog.behavior.state}")
 
     }
@@ -225,5 +310,142 @@ open class BottomSheetDialog : TapBottomSheetDialog() {
         const val TAG = "ModalBottomSheet"
     }
 
+    override fun onTabSelected(position: Int?) {
+        position?.let {
+            selectedTab = it
+            AnimationEngine.applyTransition(paymentLayout)
+            paymentLayout.removeAllViews()
+            if (position == 0)
+                paymentLayout.addView(tapCardInputView)
+            else
+                paymentLayout.addView(tapMobileInputView)
+        }
+    }
+
+    private fun addCardsTab() {
+        val items = ArrayList<SectionTabItem>()
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.ic_visa
+                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+            )
+        )
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.mastercard
+                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
+            )
+        )
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.amex
+                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
+            )
+        )
+        tabLayout.addSection(items)
+    }
+
+    private fun addMobileTab() {
+        val items = ArrayList<SectionTabItem>()
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.zain_gray
+                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+            )
+        )
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.ooredoo
+                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
+            )
+        )
+        tabLayout.addSection(items)
+    }
+    private fun setupBrandDetection() {
+        tapCardInputView.setCardNumberTextWatcher(object : TextWatcher {
+            override fun afterTextChanged(s: Editable?) {
+                if (s.isNullOrEmpty())
+                    tabLayout.resetBehaviour()
+                val card = CardValidator.validate(s.toString())
+                if (card.cardBrand != null){
+                    tabLayout.selectTab(card.cardBrand, card.validationState == CardValidationState.valid)
+                    checkboxString = "For faster and easier checkout,\n use card scanner or NFC."
+                    switchSaveDemo?.visibility= View.VISIBLE
+                    switchLayout?.visibility = View.VISIBLE
+                    switchMerchantCheckout?.visibility = View.VISIBLE
+                    switchMerchantCheckout?.isChecked = true
+                    switchgoPayCheckout?.isChecked = true
+                    switchgoPayCheckout?.visibility = View.VISIBLE
+                    savegoPay?.visibility = View.VISIBLE
+                    alertgoPay?.visibility = View.VISIBLE
+                    separatorView?.visibility = View.VISIBLE
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+    }
+    // Configuring switch states and listening to switch states.
+    private fun configureSwitch() {
+
+        switchSaveDemo?.setOnCheckedChangeListener { buttonView, isChecked ->
+            println("isChecked Save value $isChecked")
+           // tapSwitchInterface?.enableSaveMobile(isChecked)
+            if (isChecked) {
+                switchLayout?.visibility = View.VISIBLE
+                switchMerchantCheckout?.visibility = View.VISIBLE
+                switchMerchantCheckout?.isChecked = true
+                switchgoPayCheckout?.isChecked = true
+                switchgoPayCheckout?.visibility = View.VISIBLE
+                savegoPay?.visibility = View.VISIBLE
+                alertgoPay?.visibility = View.VISIBLE
+                separatorView?.visibility = View.VISIBLE
+            } else {
+                switchLayout?.visibility = View.GONE
+                switchMerchantCheckout?.visibility = View.GONE
+                switchMerchantCheckout?.isChecked = false
+                switchgoPayCheckout?.isChecked = false
+                switchgoPayCheckout?.visibility = View.GONE
+                savegoPay?.visibility = View.GONE
+                alertgoPay?.visibility = View.GONE
+                separatorView?.visibility = View.GONE
+            }
+        }
+        switchMerchantCheckout?.setOnCheckedChangeListener { buttonView, isChecked ->
+            //tapSwitchInterface?.enableSaveMerchantCheckout(isChecked)
+            if(!switchMerchantCheckout?.isChecked!! && !switchgoPayCheckout?.isChecked!!){
+                switchSaveDemo?.isChecked= false
+                switchLayout?.visibility = View.GONE
+                switchMerchantCheckout?.visibility = View.GONE
+                switchMerchantCheckout?.isChecked = false
+                switchgoPayCheckout?.isChecked = false
+                switchgoPayCheckout?.visibility = View.GONE
+                savegoPay?.visibility = View.GONE
+                alertgoPay?.visibility = View.GONE
+                separatorView?.visibility = View.GONE
+            }
+        }
+        switchgoPayCheckout?.setOnCheckedChangeListener { buttonView, isChecked ->
+           // tapSwitchInterface?.enableSavegoPayCheckout(isChecked)
+            if(!switchMerchantCheckout?.isChecked!! && !switchgoPayCheckout?.isChecked!!){
+                switchSaveDemo?.isChecked= false
+                switchLayout?.visibility = View.GONE
+                switchMerchantCheckout?.visibility = View.GONE
+                switchMerchantCheckout?.isChecked = false
+                switchgoPayCheckout?.isChecked = false
+                switchgoPayCheckout?.visibility = View.GONE
+                savegoPay?.visibility = View.GONE
+                alertgoPay?.visibility = View.GONE
+                separatorView?.visibility = View.GONE
+            }
+        }
+
+
+    }
 }
 

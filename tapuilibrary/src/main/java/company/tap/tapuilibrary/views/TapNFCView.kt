@@ -54,7 +54,7 @@ class TapNFCView : LinearLayout {
     init {
         inflate(context, R.layout.tap_nfc_view, this)
         gifNFC = findViewById(R.id.gif_nfc)
-        Glide.with(context).load(R.drawable.nfc).into(gifNFC)
+        Glide.with(context).load(R.drawable.nfcgif).into(gifNFC)
 
     }
 

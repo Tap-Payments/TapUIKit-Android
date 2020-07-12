@@ -36,7 +36,7 @@ import io.reactivex.disposables.Disposables
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class NFCFragment : Fragment() {
+class NFCSampleFragment : TapBottomSheetDialog() {
     private lateinit var customNFC: TapNFCView
     private lateinit var scanNFC: TapTextView
     private lateinit var aboutNFC: TapTextView
@@ -48,8 +48,8 @@ class NFCFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.custom_sheet_nfc, container, false)
-       // bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        val view: View = inflater.inflate(R.layout.custom_nfc_example, container, false)
+        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         initView(view)
         return view
@@ -85,7 +85,8 @@ class NFCFragment : Fragment() {
             Toast.makeText(context, "NFC is not supported!!!", Toast.LENGTH_SHORT).show()
         }
 
-
+        // or since com.google.android.material:material:1.1.0-beta01
+       // (dialog as? BottomSheetDialog)?.behavior?.state = BottomSheetBehavior.STATE_EXPANDED
 
     }
 
@@ -135,6 +136,7 @@ class NFCFragment : Fragment() {
         val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
         fragmentTransaction?.remove(this)?.commit()
         Log.e("showCardInfo:", text)
+
 
     }
 

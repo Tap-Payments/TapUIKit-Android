@@ -59,12 +59,47 @@
             android:orientation="horizontal"
             />
     </FrameLayout>
+    <company.tap.tapuilibrary.views.TapSelectionTabLayout
+        android:id="@+id/sections_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:background="@color/white"
+        android:id="@+id/payment_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:orientation="horizontal"
+       >
+        <company.tap.tapuilibrary.atoms.TapButton
+            android:id="@+id/nfc_scan"
+            android:layout_width="@dimen/margin_basic_19dp"
+            android:layout_height="@dimen/margin_basic_19dp"
+            android:layout_gravity="end"
+            android:background="@drawable/nfc"
+            android:layout_marginTop="-35dp"/>
+    </LinearLayout>
+
+
     <FrameLayout
         android:id="@+id/fragment_container1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
     </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_container_nfc"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+    </FrameLayout>
+
+    <company.tap.tapuilibrary.views.TapCardSwitch
+        android:layout_height="wrap_content"
+        android:id="@+id/switch_pay_demo"
+        android:layout_width="match_parent"/>
 
 
   

@@ -1,7 +1,10 @@
 package company.tap.tapuisample.fragments
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +19,9 @@ import company.tap.tapuilibrary.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapCardSwitch
+import company.tap.tapuisample.BlurBuilder
 import company.tap.tapuisample.R
+import jp.wasabeef.blurry.Blurry
 
 
 /**
@@ -39,6 +44,8 @@ open class SwitchFragment : TapBottomSheetDialog() {
     private var separatorView: TapSeparatorView? = null
     private var radioGroup: RadioGroup? = null
     private lateinit var radio: RadioButton
+    private lateinit var  content :View
+    private lateinit var image:Bitmap
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,6 +53,8 @@ open class SwitchFragment : TapBottomSheetDialog() {
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_sheet_switch, container, false)
         initViews(view)
+
+
         return view
 
     }
@@ -78,6 +87,8 @@ open class SwitchFragment : TapBottomSheetDialog() {
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
         radioGroup = view.findViewById(R.id.radio_group)
+
+
         radioGroup?.setOnCheckedChangeListener { group, checkedId ->
             radio = view.findViewById(checkedId)
             println("raio id ${radio.id}")
@@ -125,6 +136,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
 
         }
 
+
         configureSwitch()
 
     }
@@ -162,6 +174,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
             tapSwitchInterface?.enableSavegoPayCheckout(isChecked)
 
         }
+
     }
 
     //Setting data to TapSwitchDataSource
