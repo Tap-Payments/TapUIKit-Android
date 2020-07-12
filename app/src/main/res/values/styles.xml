@@ -11,4 +11,6 @@
     <style name="TranslucentGreen" parent="android:Theme.Translucent">
         <item name="android:windowBackground">#45000000</item>
     </style>
+
+
 </resources>

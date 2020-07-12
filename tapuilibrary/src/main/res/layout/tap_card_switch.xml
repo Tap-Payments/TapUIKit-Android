@@ -46,8 +46,7 @@ save your mobile number."
                 android:layout_marginEnd="@dimen/margin_basic_16dp"
                 android:layout_marginBottom="22dp"
                 android:layout_weight="0.2"
-                android:thumb="@drawable/thumb_selector"
-                app:track="@drawable/track_selector"
+                android:theme="@style/SwitchPrimary"
                 android:visibility="visible"
                 android:checked="true"
 
@@ -75,9 +74,8 @@ save your mobile number."
             android:textColor="#4b4847"
             android:textSize="14sp"
             android:textStyle="normal"
-            android:thumb="@drawable/thumb_selector"
-            app:switchPadding="85dp"
-            app:track="@drawable/track_selector_merchant"
+            android:theme="@style/SwitchSecondary"
+            app:switchPadding="90dp"
             tools:text="Save for [merchant_name] Checkouts"
             android:checked="true"/>
 
@@ -115,9 +113,8 @@ save your mobile number."
             android:checked="true"
             android:textSize="10sp"
             android:textStyle="normal"
-            android:thumb="@drawable/thumb_selector"
+            android:theme="@style/SwitchSecondary"
             app:switchPadding="40dp"
-            app:track="@drawable/track_selector_merchant"
             tools:text="By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites." />
 
         <company.tap.tapuilibrary.atoms.TapTextView

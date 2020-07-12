@@ -97,4 +97,10 @@
     <dimen name="font_size_15sp">15sp</dimen>
     <dimen name="margin_basic_65dp">6.5dp</dimen>
     <dimen name="toolbar_height_basicnew">53dp</dimen>
+
+    <dimen name="otp_view_item_size">48dp</dimen>
+    <dimen name="otp_view_item_radius">5dp</dimen>
+    <dimen name="otp_view_item_spacing">5dp</dimen>
+    <dimen name="otp_view_item_line_width">2dp</dimen>
+    <dimen name="otp_view_cursor_width">2dp</dimen>
 </resources>
