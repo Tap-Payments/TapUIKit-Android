@@ -4,9 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
     tools:context=".fragments.ExampleFragment">
 
     <LinearLayout
+        android:id="@+id/buttons_layout"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -31,8 +33,15 @@
 
     </LinearLayout>
 
+    <company.tap.tapuilibrary.views.TabAnimatedActionButton
+        android:id="@+id/action_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp" />
+
     <FrameLayout
         android:id="@+id/fragment_container"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -18,8 +18,7 @@ import company.tap.tapuilibrary.animation.MorphingAnimation.AnimationTarget.*
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.datasource.AnimationDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
-import company.tap.tapuilibrary.enums.ActionButtonState.ERROR
-import company.tap.tapuilibrary.enums.ActionButtonState.SUCCESS
+import company.tap.tapuilibrary.enums.ActionButtonState.*
 import company.tap.tapuilibrary.interfaces.TapActionButtonInterface
 
 /**
@@ -84,6 +83,10 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         this.state = state
         when (state) {
             ERROR, SUCCESS -> {
+                addTapLoadingView()
+                startStateAnimation()
+            }
+            LOADING -> {
                 addTapLoadingView()
                 startStateAnimation()
             }
@@ -190,6 +193,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     companion object {
         const val MAX_CORNERS = 100f
         const val MAX_RADIUS = 100
-        const val MAX_DURATION = 5000
+        const val MAX_DURATION = 2000
     }
 }

@@ -283,7 +283,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      */
     fun selectTab(type: CardBrand, valid: Boolean) {
         resetBehaviour()
-        AnimationEngine.applyTransition(this, Slide())
+//        AnimationEngine.applyTransition(this, Slide())
         changeClickableState(false)
         tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
         tabItems.forEach {

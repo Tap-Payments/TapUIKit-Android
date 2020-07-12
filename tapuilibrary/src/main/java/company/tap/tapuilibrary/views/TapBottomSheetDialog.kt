@@ -25,8 +25,6 @@ import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
-
-
 open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     private var topLeftCorner = 16f
