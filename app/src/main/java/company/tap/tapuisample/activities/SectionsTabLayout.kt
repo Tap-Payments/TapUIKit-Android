@@ -47,8 +47,9 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
     private fun setupBrandDetection() {
         tapCardInputView.setCardNumberTextWatcher(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-                if (s.isNullOrEmpty())
+                if (s.isNullOrEmpty()) {
                     tabLayout.resetBehaviour()
+                }
                 val card = CardValidator.validate(s.toString())
                 if (card.cardBrand != null)
                     tabLayout.selectTab(card.cardBrand, card.validationState == CardValidationState.valid)

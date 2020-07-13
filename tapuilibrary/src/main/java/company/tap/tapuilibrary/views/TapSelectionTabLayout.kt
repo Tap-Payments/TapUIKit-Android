@@ -9,12 +9,9 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
-import androidx.core.view.setMargins
-import androidx.transition.Slide
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.atoms.TapImageView
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
@@ -117,6 +114,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     fun setMaxItemWidth(maxItemWidth: Int) {
         this.maxItemWidth = maxItemWidth
     }
+
     /**
      * Adding new section to the tablayout
      *
@@ -244,8 +242,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         for (items in itemsCount) {
             totalItemsCount += items
         }
-        val itemSize = (Resources.getSystem().displayMetrics.widthPixels - SCREEN_MARGINS) / totalItemsCount
-        return if (itemSize> maxItemWidth) maxItemWidth else itemSize
+        val itemSize =
+            (Resources.getSystem().displayMetrics.widthPixels - SCREEN_MARGINS) / totalItemsCount
+        return if (itemSize > maxItemWidth) maxItemWidth else itemSize
     }
 
     /**
@@ -256,6 +255,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             override fun onTabReselected(tab: TabLayout.Tab?) {}
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabSelected(tab: TabLayout.Tab?) {
+                resetBehaviour()
                 fadeOtherTabs(tab?.position)
                 tabLayoutInterface?.onTabSelected(tab?.position)
             }
@@ -283,9 +283,39 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      */
     fun selectTab(type: CardBrand, valid: Boolean) {
         resetBehaviour()
-//        AnimationEngine.applyTransition(this, Slide())
-        changeClickableState(false)
+        changeClickableState(!valid)
         tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
+        if (valid)
+            selectValidType(type)
+        else
+            selectUnValidType(type)
+    }
+
+    private fun selectUnValidType(type: CardBrand) {
+        resetTabsAlpha()
+        tabsView.forEach { view ->
+                if (view.alpha != 1f)
+                    view.alpha = 1f
+        }
+        tabItems.forEach {
+            if (it.type != type) {
+                it.imageView?.alpha = unselectedAlphaLevel
+                it.indicator?.visibility = View.INVISIBLE
+            } else {
+                it.imageView?.alpha = 1f
+                it.indicator?.visibility = View.VISIBLE
+                it.indicator?.setBackgroundColor(invalidIndicatorColor)
+            }
+        }
+    }
+
+    private fun resetTabsAlpha() {
+        tabItems.forEach {
+            it.imageView?.alpha = 1f
+        }
+    }
+
+    private fun selectValidType(type: CardBrand) {
         tabItems.forEach {
             if (it.type != type) {
                 it.imageView?.setImageDrawable(it.unSelectedImage)
@@ -293,10 +323,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             } else {
                 it.imageView?.setImageDrawable(it.selectedImage)
                 it.indicator?.visibility = View.VISIBLE
-                if (valid)
-                    it.indicator?.setBackgroundColor(indicatorColor)
-                else
-                    it.indicator?.setBackgroundColor(invalidIndicatorColor)
+                it.indicator?.setBackgroundColor(indicatorColor)
             }
         }
     }
@@ -305,6 +332,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      * public function to reset the behaviour of the tabs after selected tab being released
      */
     fun resetBehaviour() {
+        resetTabsAlpha()
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         tabItems.forEach {

@@ -30,11 +30,9 @@ class TapAsyncUtil {
         }
 
         override fun onPostExecute(result: Bitmap) {
-            if (result != null) {
-                imageView.setImageBitmap(result)
-                textView.visibility = View.GONE
-                imageView.visibility = View.VISIBLE
-            }
+            imageView.setImageBitmap(result)
+            textView.visibility = View.GONE
+            imageView.visibility = View.VISIBLE
 
         }
 
@@ -45,19 +43,15 @@ class TapAsyncUtil {
         }
 
         override fun doInBackground(vararg urls: String): Bitmap? {
-            if (urls[0] == null) {
-                return null
-            } else {
-                val urlOfImage = urls[0]
-                var logo: Bitmap? = null
-                try {
-                    val `is`: InputStream = URL(urlOfImage).openStream()
-                    logo = BitmapFactory.decodeStream(`is`)
-                } catch (e: Exception) { // Catch the download exception
-                    e.printStackTrace()
-                }
-                return logo
+            val urlOfImage = urls[0]
+            var logo: Bitmap? = null
+            try {
+                val `is`: InputStream = URL(urlOfImage).openStream()
+                logo = BitmapFactory.decodeStream(`is`)
+            } catch (e: Exception) { // Catch the download exception
+                e.printStackTrace()
             }
+            return logo
         }
     }
 }
