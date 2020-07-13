@@ -29,7 +29,7 @@ class MainActivity : BaseActivity(),
     TapAmountSectionInterface, TapSwitchInterface, InlineViewCallback {
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
-    private val modalNFCBottomSheet = NFCSampleFragment()
+    private val modalNFCBottomSheet = OTPFragment()
     private val modalCardScannerBottomSheet = CardScannerFragment()
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
@@ -120,7 +120,7 @@ class MainActivity : BaseActivity(),
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-        modalNFCBottomSheet.processNFC(intent)
+       // modalNFCBottomSheet.processNFC(intent)
     }
 
     fun openCardScannerView(view: View) {
