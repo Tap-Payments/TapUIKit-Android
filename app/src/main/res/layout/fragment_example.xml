@@ -7,6 +7,10 @@
     android:gravity="center"
     tools:context=".fragments.ExampleFragment">
 
+    <company.tap.tapuilibrary.organisms.GoPayLoginInput
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <LinearLayout
         android:id="@+id/buttons_layout"
         android:gravity="center"
