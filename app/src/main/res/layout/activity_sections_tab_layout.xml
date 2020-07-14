@@ -51,4 +51,17 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="Payment Input Organism"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <company.tap.tapuilibrary.organisms.TapPaymentInput
+        android:id="@+id/tap_payment_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>
