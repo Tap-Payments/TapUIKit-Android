@@ -3,9 +3,7 @@ package company.tap.tapuilibrary.organisms
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.models.TabSection
 import company.tap.tapuilibrary.views.TapSelectionTabLayout
 
@@ -28,8 +26,8 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     }
 
     fun addTabLayoutSection(vararg sections: TabSection) {
-         sections.forEach {
-             tabLayout.addSection(it.items)
-         }
+        sections.forEach {
+            tabLayout.addSection(it.items)
+        }
     }
 }
