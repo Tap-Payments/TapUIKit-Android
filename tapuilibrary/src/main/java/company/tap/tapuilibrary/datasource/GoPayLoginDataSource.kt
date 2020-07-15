@@ -1,6 +1,5 @@
 package company.tap.tapuilibrary.datasource
 
-import android.graphics.drawable.AnimatedImageDrawable
 import android.graphics.drawable.Drawable
 import androidx.annotation.DrawableRes
 

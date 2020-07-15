@@ -33,10 +33,7 @@ import company.tap.tapcardvalidator_android.CardValidator
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.atoms.*
-import company.tap.tapuilibrary.datasource.ActionButtonDataSource
-import company.tap.tapuilibrary.datasource.AmountViewDataSource
-import company.tap.tapuilibrary.datasource.HeaderDataSource
-import company.tap.tapuilibrary.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.datasource.*
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
@@ -472,7 +469,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         section_tablayout.visibility = View.GONE
         payment_input.visibility = View.GONE
         switch_pay_demo.visibility = View.GONE
+
+        initGoPayLogin()
         gopay_login_input.visibility = View.VISIBLE
+    }
+
+    private fun initGoPayLogin() {
+        gopay_login_input.changeDataSource(GoPayLoginDataSource())
     }
 }
 
