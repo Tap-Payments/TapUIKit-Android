@@ -1,8 +1,12 @@
 package company.tap.tapuilibrary.views
 
+import android.R.attr.resource
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
+//import android.graphics.drawable.Drawable
+//import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
@@ -12,6 +16,12 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.DataSource
+import com.bumptech.glide.load.engine.GlideException
+import com.bumptech.glide.load.resource.gif.GifDrawable
+import com.bumptech.glide.request.RequestListener
+import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.animation.MorphingAnimation
 import company.tap.tapuilibrary.animation.MorphingAnimation.AnimationTarget.*
@@ -20,6 +30,7 @@ import company.tap.tapuilibrary.datasource.AnimationDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
 import company.tap.tapuilibrary.enums.ActionButtonState.*
 import company.tap.tapuilibrary.interfaces.TapActionButtonInterface
+
 
 /**
  *
@@ -87,8 +98,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 startStateAnimation()
             }
             LOADING -> {
-                addTapLoadingView()
-                startStateAnimation()
+                addView(getImageView(R.drawable.loader,2))
+//                addTapLoadingView()
+//                startStateAnimation()
             }
 
         }
@@ -122,7 +134,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return textView
     }
 
-    private fun getImageView(@DrawableRes imageRes: Int): ImageView {
+    private fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int): ImageView {
         val image = ImageView(context)
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
@@ -130,7 +142,23 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         )
         params.setMargins(20)
         image.layoutParams = params
-        image.setImageResource(imageRes)
+//        image.setImageResource(imageRes)
+      return image.setImage(image,imageRes,gifLoopCount)
+    }
+
+    //Extension function for ImageView
+    private fun ImageView.setImage(image:ImageView, imageRes:Int, gifLoopCount: Int):ImageView{
+        Glide.with(this).asGif().load(imageRes).useAnimationPool(true) .listener(object : RequestListener<GifDrawable> {
+            override fun onResourceReady(resource: GifDrawable?, model: Any?, target: com.bumptech.glide.request.target.Target<GifDrawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
+                if (resource is GifDrawable) {
+                    resource.setLoopCount(gifLoopCount)
+                }
+                return false
+            }
+            override fun onLoadFailed(e: GlideException?, model: Any?, target:com.bumptech.glide.request.target.Target<GifDrawable>?, isFirstResource: Boolean): Boolean {
+                return false
+            }
+        }) .into(image)
         return image
     }
 
@@ -173,7 +201,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         when (state) {
             ERROR -> {
                 dataSource?.errorImageResources?.let {
-                    addChildView(getImageView(it))
+                    addChildView(getImageView(it,1))
                 }
                 dataSource?.errorColor?.let {
                     AnimationEngine.applyTransition(this)
@@ -182,7 +210,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             }
 
             SUCCESS -> dataSource?.successImageResources?.let {
-                addChildView(getImageView(it))
+                addChildView(getImageView(it,1))
             }
         }
     }

@@ -41,7 +41,7 @@
         app:hideLineWhenFilled="true"
         app:itemCount="6"
         app:itemSpacing="6dp"
-        app:lineColor="@color/otp_item_state"
+        app:lineColor="@drawable/otp_item_state"
         app:state_filled="true"
         app:viewType="line" />
 
