@@ -6,20 +6,43 @@
     android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
+        android:id="@+id/login_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="scrollable">
+        android:background="@color/bg_gray"
+        app:tabIndicatorColor="@color/darker_gray"
+        app:tabMode="scrollable"/>
 
-        <com.google.android.material.tabs.TabItem
+    <LinearLayout
+        android:id="@+id/login_input_layout"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+
+        <ImageView
+            android:layout_marginStart="25dp"
+            android:src="@drawable/gopay_mail"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="EMAIL" />
+            android:layout_height="match_parent"/>
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="PHONE" />
+        <company.tap.tapuilibrary.atoms.TapEditText
+            android:layout_marginStart="15dp"
+            android:hint="email@email.com"
+            android:background="@android:color/transparent"
+            android:fontFamily="sans-serif-light"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    </com.google.android.material.tabs.TabLayout>
+    </LinearLayout>
+    
+    <company.tap.tapuilibrary.atoms.TapTextView
+        android:id="@+id/gopay_hint"
+        android:text="@string/you_can_access_your_saved_cards_from_anywhere_with_gopay"
+        android:background="@color/bg_gray"
+        android:padding="15dp"
+        android:textSize="10sp"
+        android:textColor="@color/dark_gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

@@ -3,6 +3,7 @@ package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 
 import android.os.Bundle
 import android.os.Handler
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.AutoTransition
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
@@ -31,6 +33,7 @@ import company.tap.tapcardvalidator_android.CardValidator
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.atoms.*
+import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.datasource.TapSwitchDataSource
@@ -124,7 +127,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         addMobileTab()
         setupBrandDetection()
         configureSwitch()
+        actionButtonInit()
+    }
 
+    private fun actionButtonInit() {
+        action_button.setButtonDataSource(getIdleDataSource())
+        action_button.setOnClickListener {
+            showGoPayLayout()
+        }
     }
 
     private fun switchViewInit(view: View) {
@@ -150,13 +160,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
             alertgoPaySignup = "Please check your email or SMS’s in order to complete the goPay Checkout signup process."
-
         )
-
     }
 
     private fun tabLayoutInit(view: View) {
-        tabLayout = view.findViewById(R.id.sections_tablayout)
+        tabLayout = view.findViewById(R.id.section_tablayout)
         nfcScanBtn = view.findViewById(R.id.nfc_scan)
         val nfcFragment = NFCFragment()
         nfcScanBtn.setOnClickListener {
@@ -293,7 +301,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             isFragmentAdded = !isFragmentAdded
 
         }
-        paymentLayout= view.findViewById(R.id.payment_input_layout)
+        paymentLayout= view.findViewById(R.id.payment_input)
         println("bottom state ${bottomSheetDialog.behavior.state}")
 
     }
@@ -444,8 +452,27 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 separatorView?.visibility = View.GONE
             }
         }
+    }
 
+    //----------- goPay ------------
 
+    private fun getIdleDataSource(): ActionButtonDataSource {
+        return ActionButtonDataSource(
+            text = "Pay",
+            textSize = 16f,
+            textColor = Color.WHITE,
+            cornerRadius = 100f,
+            backgroundColor = Color.parseColor("#d7d7d7")
+        )
+    }
+
+    private fun showGoPayLayout() {
+        bottomSheetLayout?.let { AnimationEngine.applyTransition(it, AutoTransition().setDuration(500)) }
+        mainChipgroup.visibility = View.GONE
+        section_tablayout.visibility = View.GONE
+        payment_input.visibility = View.GONE
+        switch_pay_demo.visibility = View.GONE
+        gopay_login_input.visibility = View.VISIBLE
     }
 }
 
