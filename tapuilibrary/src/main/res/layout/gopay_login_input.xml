@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <com.google.android.material.tabs.TabLayout
@@ -11,38 +11,50 @@
         android:layout_height="wrap_content"
         android:background="@color/bg_gray"
         app:tabIndicatorColor="@color/darker_gray"
-        app:tabMode="scrollable"/>
+        app:tabMode="scrollable" />
 
     <LinearLayout
         android:id="@+id/login_input_layout"
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="44dp">
+        android:layout_height="44dp"
+        android:background="@color/white">
 
         <ImageView
-            android:layout_marginStart="25dp"
-            android:src="@drawable/gopay_mail"
+            android:id="@+id/login_method_icon"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_marginStart="25dp"
+            android:src="@drawable/gopay_mail" />
 
-        <company.tap.tapuilibrary.atoms.TapEditText
-            android:layout_marginStart="15dp"
-            android:hint="email@email.com"
-            android:background="@android:color/transparent"
-            android:fontFamily="sans-serif-light"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            app:hintEnabled="false"
+            app:endIconMode="clear_text"
+            app:endIconTint="@color/light_gray"
+            app:endIconDrawable="@drawable/error_mark">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:background="@android:color/transparent"
+                android:fontFamily="sans-serif-light"
+                android:hint="email@email.com" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
-    
+
     <company.tap.tapuilibrary.atoms.TapTextView
         android:id="@+id/gopay_hint"
-        android:text="@string/you_can_access_your_saved_cards_from_anywhere_with_gopay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/bg_gray"
         android:padding="15dp"
-        android:textSize="10sp"
+        android:text="@string/you_can_access_your_saved_cards_from_anywhere_with_gopay"
         android:textColor="@color/dark_gray"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textSize="10sp" />
 
 </LinearLayout>

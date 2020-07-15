@@ -12,4 +12,5 @@
     <color name="bg_gray">#f4f4f4</color>
     <color name="dark_gray">#ababab</color>
     <color name="darker_gray">#a8a8a8</color>
+    <color name="light_gray">#cacacb</color>
 </resources>

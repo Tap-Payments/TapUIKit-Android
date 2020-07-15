@@ -31,6 +31,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun initTabLayout(emailTabText: String?, phoneTabText: String?) {
+        loginTabLayout.removeAllTabs()
         loginTabLayout.addTab(
             loginTabLayout.newTab().setCustomView(
                 getThemedTabText(emailTabText ?: "EMAIL", true)
@@ -55,6 +56,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 tabText.setTextColor(FakeThemeManager.getGoPaySelectedTabColor())
             }
         })
+    }
+
+    private fun changeInputType() {
+
     }
 
     private fun getThemedTabText(text: String, isSelected: Boolean): TapTextView {
