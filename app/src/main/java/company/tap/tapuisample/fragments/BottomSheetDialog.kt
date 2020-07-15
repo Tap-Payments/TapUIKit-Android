@@ -469,7 +469,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         section_tablayout.visibility = View.GONE
         payment_input.visibility = View.GONE
         switch_pay_demo.visibility = View.GONE
-
+        action_button.visibility = View.GONE
         initGoPayLogin()
         gopay_login_input.visibility = View.VISIBLE
     }
