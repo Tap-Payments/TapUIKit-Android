@@ -7,5 +7,7 @@ package company.tap.tapuilibrary.interfaces
  *
  */
 interface GoPayLoginInterface {
-
+    fun onEmailValidated()
+    fun onPhoneValidated()
+    fun onChangeClicked()
 }

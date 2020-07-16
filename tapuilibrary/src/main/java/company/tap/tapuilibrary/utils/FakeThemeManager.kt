@@ -22,4 +22,7 @@ object FakeThemeManager {
 
     fun getGoPaySelectedTabColor() = Color.parseColor("#4b4847")
     fun getGoPayUnSelectedTabColor() = Color.parseColor("#aeaeae")
+    fun getGoPayValidatedColor() = Color.parseColor("#007aff")
+    fun getGoPayUnValidatedColor() = Color.parseColor("#d7d7d7")
+    fun getGoPaySignInButtonColor() = Color.parseColor("#b9b9b9")
 }

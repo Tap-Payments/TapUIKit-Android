@@ -34,6 +34,7 @@ import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.atoms.*
 import company.tap.tapuilibrary.datasource.*
+import company.tap.tapuilibrary.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
@@ -51,7 +52,7 @@ import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInterface {
+open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInterface, GoPayLoginInterface {
 
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
@@ -476,6 +477,24 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     private fun initGoPayLogin() {
         gopay_login_input.changeDataSource(GoPayLoginDataSource())
+        gopay_login_input.setLoginInterface(this)
+        goPay_password.setLoginInterface(this)
+    }
+
+    override fun onEmailValidated() {
+        bottomSheetLayout?.let { AnimationEngine.applyTransition(it, AutoTransition().setDuration(500)) }
+        gopay_login_input.visibility = View.GONE
+        goPay_password.visibility = View.VISIBLE
+    }
+
+    override fun onPhoneValidated() {
+
+    }
+
+    override fun onChangeClicked() {
+        bottomSheetLayout?.let { AnimationEngine.applyTransition(it, AutoTransition().setDuration(500)) }
+        gopay_login_input.visibility = View.VISIBLE
+        goPay_password.visibility = View.GONE
     }
 }
 

@@ -12,12 +12,12 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.enums.GoPayLoginMethod.EMAIL
 import company.tap.tapuilibrary.enums.GoPayLoginMethod.PHONE
+import company.tap.tapuilibrary.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.utils.FakeThemeManager
 import company.tap.tapuilibrary.views.TabAnimatedActionButton
 
@@ -36,6 +36,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private val loginMethodImage: ImageView
     private val actionButton: TabAnimatedActionButton
     private var dataSource: GoPayLoginDataSource? = null
+    private var loginInterface: GoPayLoginInterface? = null
     private var inputType = EMAIL
 
     init {
@@ -54,8 +55,23 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         initButton()
     }
 
+    fun setLoginInterface(loginInterface: GoPayLoginInterface) {
+        this.loginInterface = loginInterface
+    }
+
     private fun initButton() {
-        actionButton.setButtonDataSource(getButtonDataSource(Color.parseColor("#d7d7d7")))
+        actionButton.isEnabled = false
+        actionButton.setButtonDataSource(
+            getButtonDataSource(
+                Color.parseColor("#d7d7d7")
+            )
+        )
+        actionButton.setOnClickListener {
+            when (inputType) {
+                EMAIL -> loginInterface?.onEmailValidated()
+                PHONE -> loginInterface?.onPhoneValidated()
+            }
+        }
     }
 
     private fun getButtonDataSource(color: Int): ActionButtonDataSource {
@@ -85,9 +101,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun disableNext() {
-        AnimationEngine.applyTransition(this)
-        loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#d7d7d7"))
-        actionButton.setButtonDataSource(getButtonDataSource(Color.parseColor("#d7d7d7")))
+        loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
+        actionButton.setButtonDataSource(getButtonDataSource(FakeThemeManager.getGoPayUnValidatedColor()))
     }
 
     private fun isValidEmail(email: String): Boolean {
@@ -101,9 +116,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun enableNext() {
-        AnimationEngine.applyTransition(this)
-        loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#007aff"))
-        actionButton.setButtonDataSource(getButtonDataSource(Color.parseColor("#007aff")))
+        loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
+        actionButton.setButtonDataSource(getButtonDataSource(FakeThemeManager.getGoPayValidatedColor()))
+        actionButton.isEnabled = true
     }
 
     private fun initTabLayout() {
