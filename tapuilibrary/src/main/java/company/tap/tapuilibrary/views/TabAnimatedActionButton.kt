@@ -30,6 +30,7 @@ import company.tap.tapuilibrary.datasource.AnimationDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
 import company.tap.tapuilibrary.enums.ActionButtonState.*
 import company.tap.tapuilibrary.interfaces.TapActionButtonInterface
+import company.tap.tapuilibrary.ktx.setImage
 
 
 /**
@@ -93,14 +94,13 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun changeButtonState(state: ActionButtonState) {
         this.state = state
         when (state) {
-            ERROR, SUCCESS -> {
-                addTapLoadingView()
+            ERROR,  SUCCESS -> {
+                 addTapLoadingView()
                 startStateAnimation()
             }
             LOADING -> {
-                addView(getImageView(R.drawable.loader,2))
-//                addTapLoadingView()
-//                startStateAnimation()
+                addTapLoadingView()
+                startStateAnimation()
             }
 
         }
@@ -142,24 +142,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         )
         params.setMargins(20)
         image.layoutParams = params
-//        image.setImageResource(imageRes)
       return image.setImage(image,imageRes,gifLoopCount)
-    }
-
-    //Extension function for ImageView
-    private fun ImageView.setImage(image:ImageView, imageRes:Int, gifLoopCount: Int):ImageView{
-        Glide.with(this).asGif().load(imageRes).useAnimationPool(true) .listener(object : RequestListener<GifDrawable> {
-            override fun onResourceReady(resource: GifDrawable?, model: Any?, target: com.bumptech.glide.request.target.Target<GifDrawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
-                if (resource is GifDrawable) {
-                    resource.setLoopCount(gifLoopCount)
-                }
-                return false
-            }
-            override fun onLoadFailed(e: GlideException?, model: Any?, target:com.bumptech.glide.request.target.Target<GifDrawable>?, isFirstResource: Boolean): Boolean {
-                return false
-            }
-        }) .into(image)
-        return image
     }
 
     private fun startStateAnimation() {
@@ -185,7 +168,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
      * @param view the child view
      */
     fun addChildView(view: View) {
-        AnimationEngine.applyTransition(this)
+//        AnimationEngine.applyTransition(this)
         removeAllViews()
         addView(view)
     }
@@ -204,11 +187,10 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     addChildView(getImageView(it,1))
                 }
                 dataSource?.errorColor?.let {
-                    AnimationEngine.applyTransition(this)
+//                    AnimationEngine.applyTransition(this)
                     backgroundDrawable.color = ColorStateList.valueOf(it)
                 }
             }
-
             SUCCESS -> dataSource?.successImageResources?.let {
                 addChildView(getImageView(it,1))
             }
