@@ -95,10 +95,13 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         this.state = state
         when (state) {
             ERROR,  SUCCESS -> {
-                 addTapLoadingView()
+//                tapProgressIndicatorInterface?.onProgressEnd()
+                tapLoadingView?.setOnProgressCompleteListener(this)
+                addTapLoadingView()
                 startStateAnimation()
             }
             LOADING -> {
+//                addView(getImageView(R.drawable.loader,2))
                 addTapLoadingView()
                 startStateAnimation()
             }
@@ -134,7 +137,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return textView
     }
 
-    private fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int): ImageView {
+    private fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int,  actionAfterAnimationDone: ()-> Unit): ImageView {
         val image = ImageView(context)
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
@@ -142,7 +145,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         )
         params.setMargins(20)
         image.layoutParams = params
-      return image.setImage(image,imageRes,gifLoopCount)
+      return image.setImage(image,imageRes,gifLoopCount, actionAfterAnimationDone)
     }
 
     private fun startStateAnimation() {
@@ -177,14 +180,14 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
      *
      */
     override fun onMorphAnimationEnd() {
-        tapLoadingView?.completeProgress()
+//        tapLoadingView?.completeProgress()
     }
 
     override fun onProgressCompleted() {
         when (state) {
             ERROR -> {
                 dataSource?.errorImageResources?.let {
-                    addChildView(getImageView(it,1))
+                    addChildView(getImageView(it,1) {})
                 }
                 dataSource?.errorColor?.let {
 //                    AnimationEngine.applyTransition(this)
@@ -192,7 +195,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 }
             }
             SUCCESS -> dataSource?.successImageResources?.let {
-                addChildView(getImageView(it,1))
+                addChildView(getImageView(it,1) {})
             }
         }
     }
