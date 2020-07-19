@@ -14,11 +14,11 @@
        android:text="Show Tap Chips"/>
 
     <Button
-        android:onClick="openBottomSheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="20dp"
+        android:onClick="openBottomSheet"
         android:text="Show Bottom Sheet Dialog" />
 
     <Button
@@ -74,6 +74,13 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_20dp"
         android:text="Show Fragment" />
+    <Button
+        android:onClick="otpFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_basic_20dp"
+        android:text="OTP Fragment" />
 
 </LinearLayout>
 

@@ -29,7 +29,7 @@ class MainActivity : BaseActivity(),
     TapAmountSectionInterface, TapSwitchInterface, InlineViewCallback {
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
-    private val modalNFCBottomSheet = OTPFragment()
+    private val modalNFCBottomSheet = NFCSampleFragment()
     private val modalCardScannerBottomSheet = CardScannerFragment()
 
     @SuppressLint("ResourceAsColor", "SetTextI18n")
@@ -170,6 +170,8 @@ class MainActivity : BaseActivity(),
     fun openFragment(view: View) {
         ExampleFragment().show(supportFragmentManager, null)
     }
+
+    fun otpFragment(view: View) {}
 
 }
 
