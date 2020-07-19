@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.views.TapOTPView
 import company.tap.tapuisample.R
 import java.util.*
@@ -33,6 +34,9 @@ class OTPFragment: DialogFragment() {
 
     private val otpCode = ""
     private val textViewsArray = ArrayList<TextView>()
+    private lateinit var otpSent:TapTextView
+    private lateinit var otpMobile:TapTextView
+    private lateinit var timerText:TapTextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(
@@ -50,15 +54,21 @@ class OTPFragment: DialogFragment() {
         val view: View =
             inflater.inflate(R.layout.fragment_otpscreen, container, true)
         resendConfirmationCodeTimeout = 30
-      //  prepareTextViews(view)
+        prepareTextViews(view)
         //handleConfirmationCodeInputEditText(view)
        // startCountdown(view)
         otpView = view.findViewById(R.id.otp_view)
         return view
     }
     private fun prepareTextViews(view: View) {
-        val inflater = LayoutInflater.from(view.context)
-        val textViewsLayout = view.findViewById<LinearLayout>(R.id.textViewsLayout)
+      //  val inflater = LayoutInflater.from(view.context)
+        otpSent = view.findViewById(R.id.otp_sent)
+        otpSent.text = "OTP has been sent to"
+        otpMobile = view.findViewById(R.id.mobile_textview)
+        otpMobile.text= "+965 6••••111"
+        timerText = view.findViewById(R.id.timer_textview)
+        timerText.text="00:09"
+      /*  val textViewsLayout = view.findViewById<LinearLayout>(R.id.textViewsLayout)
         val otpParentLayout =
             view.findViewById<RelativeLayout>(R.id.otpParentLayout)
         var index = 0
@@ -75,7 +85,7 @@ class OTPFragment: DialogFragment() {
 
             textViewsArray.add(textView)
             index++
-        }
+        }*/
        // timerTextView = view.findViewById(R.id.timerTextView)
 
 
