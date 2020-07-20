@@ -14,7 +14,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.nfcreader.open.reader.TapEmvCard
@@ -25,6 +24,7 @@ import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapNFCView
 import company.tap.tapuisample.R
+import io.alterac.blurkit.BlurLayout
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.Disposables
@@ -52,7 +52,7 @@ class NFCSampleFragment : TapBottomSheetDialog() {
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         initView(view)
-        return view
+        return view.rootView
 
     }
 
@@ -64,6 +64,7 @@ class NFCSampleFragment : TapBottomSheetDialog() {
         scanNFC.text = "Ready to scan, add the card under the device to scan it."
         aboutNFC.text =
             "Near-field communication is a set of communication protocols for communication between two electronic devices over a distance of 4 cm or less."
+
     }
 
     override fun onAttach(context: Context) {
@@ -85,8 +86,8 @@ class NFCSampleFragment : TapBottomSheetDialog() {
             Toast.makeText(context, "NFC is not supported!!!", Toast.LENGTH_SHORT).show()
         }
 
-        // or since com.google.android.material:material:1.1.0-beta01
-       // (dialog as? BottomSheetDialog)?.behavior?.state = BottomSheetBehavior.STATE_EXPANDED
+        //  or since com.google.android.material:material:1.1.0-beta01
+        /// (dialog as? BottomSheetDialog)?.behavior?.state = BottomSheetBehavior.STATE_EXPANDED
 
     }
 
@@ -161,4 +162,6 @@ class NFCSampleFragment : TapBottomSheetDialog() {
         tapNfcCardReader?.disableDispatch()
         super.onPause()
     }
+
+
 }

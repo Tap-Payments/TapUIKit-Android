@@ -75,12 +75,13 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/validate_button"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+    <company.tap.tapuilibrary.atoms.TapButton
+        android:id="@+id/action_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
         android:text="click"
-        android:textColor="@android:color/white" />
+
+        />
+
 </LinearLayout>

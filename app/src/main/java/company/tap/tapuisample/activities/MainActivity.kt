@@ -23,6 +23,7 @@ import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.*
+import jp.wasabeef.blurry.Blurry
 
 
 class MainActivity : BaseActivity(),
@@ -40,7 +41,7 @@ class MainActivity : BaseActivity(),
         context = this
         fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
         fontChanger.replaceFonts((findViewById(android.R.id.content)))
-
+       // Blurry.with(context).radius(25).sampling(2).onto()
 
     }
 
@@ -120,7 +121,7 @@ class MainActivity : BaseActivity(),
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-       // modalNFCBottomSheet.processNFC(intent)
+        modalNFCBottomSheet.processNFC(intent)
     }
 
     fun openCardScannerView(view: View) {

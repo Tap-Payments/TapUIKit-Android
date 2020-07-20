@@ -1,5 +1,6 @@
 package company.tap.tapuisample.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import company.tap.cardscanner.TapCountDownTimer
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.views.TapOTPView
 import company.tap.tapuisample.R
+import jp.wasabeef.blurry.Blurry
 import java.util.*
 
 /**
@@ -45,6 +47,16 @@ class OTPFragment: DialogFragment() {
         prepareTextViews(view)
         startCountdown(view)
         otpView = view.findViewById(R.id.otp_view)
+        val rootView = (activity?.window?.decorView as ViewGroup?)
+
+        //  Blurry.with(context).radius(25).sampling(2).onto(rootView)
+        Blurry.with(context)
+            .radius(10)
+            .sampling(8)
+            .color(Color.argb(66, 255, 255, 0))
+            .async()
+            .animate(500)
+            .onto(rootView)
         return view
     }
 
