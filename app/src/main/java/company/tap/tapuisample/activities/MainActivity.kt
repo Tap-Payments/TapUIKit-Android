@@ -171,7 +171,9 @@ class MainActivity : BaseActivity(),
         ExampleFragment().show(supportFragmentManager, null)
     }
 
-    fun otpFragment(view: View) {}
+    fun otpFragment(view: View) {
+        OTPFragment().show(supportFragmentManager,null)
+    }
 
 }
 
