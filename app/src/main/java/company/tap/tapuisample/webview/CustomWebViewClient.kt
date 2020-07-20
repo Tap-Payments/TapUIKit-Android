@@ -111,14 +111,13 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
     override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
         super.onPageStarted(view, url, favicon)
         Log.d("url", url.toString())
-        webViewFragment.showLoading()
+//        webViewFragment.showLoading()
     }
 
     override fun onPageFinished(@NonNull view: WebView?, url: String?) {
         super.onPageFinished(view, url)
         Log.d("url1", url.toString())
         url?.let { webViewFragment.setOnPageFinishedAction(it) }
-
         webViewFragment.hideLoading()
     }
 

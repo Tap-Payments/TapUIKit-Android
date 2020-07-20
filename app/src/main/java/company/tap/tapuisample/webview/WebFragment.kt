@@ -8,6 +8,7 @@ import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import androidx.fragment.app.Fragment
 import company.tap.tapuisample.R
@@ -46,7 +47,7 @@ class WebFragment : Fragment() , WebViewContract {
     @SuppressLint("SetJavaScriptEnabled")
     private fun setUpWebView() {
         web_view.settings.javaScriptEnabled = true
-        web_view.webViewClient = CustomWebViewClient(this);
+        web_view.webChromeClient = WebChromeClient();
 //        web_view.webViewClient = (object : WebViewClient() {
 //            override fun onPageFinished(view: WebView, url: String) {
 //                exampleFragment?.redirectLoadingFinished(url.contains("https://www.google.com/search?"))
@@ -70,19 +71,15 @@ class WebFragment : Fragment() , WebViewContract {
     }
 
     override fun showSuccessMessage(message: String) {
-        TODO("Not yet implemented")
     }
 
     override fun showErrorMessage(message: String) {
-        TODO("Not yet implemented")
     }
 
     override fun showLoading() {
-        TODO("Not yet implemented")
     }
 
     override fun hideLoading() {
-        TODO("Not yet implemented")
     }
 
 
