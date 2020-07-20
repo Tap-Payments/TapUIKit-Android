@@ -2,21 +2,18 @@ package company.tap.tapuisample.fragments
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.transition.AutoTransition
 import androidx.transition.ChangeBounds
-import androidx.transition.Fade
 import androidx.transition.TransitionManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 
 import company.tap.tapuisample.R
+import company.tap.tapuisample.webview.WebFragment
 import kotlinx.android.synthetic.main.fragment_example.*
 
 class ExampleFragment : TapBottomSheetDialog() {
@@ -46,7 +43,7 @@ class ExampleFragment : TapBottomSheetDialog() {
             Toast.makeText(context, "goPay", Toast.LENGTH_SHORT).show()
         }
         action_button.setOnClickListener {
-//            action_button.changeButtonState(ActionButtonState.LOADING)
+            action_button.changeButtonState(ActionButtonState.LOADING)
             when (clickAction) {
                 1 -> {
                     bottomSheetLayout?.let { layout ->
@@ -55,7 +52,9 @@ class ExampleFragment : TapBottomSheetDialog() {
                         }
                     }
                     buttons_layout.visibility = View.GONE
-                    childFragmentManager.beginTransaction().add(R.id.fragment_container, WebFragment()).commit()
+                    childFragmentManager.beginTransaction().add(R.id.fragment_container,
+                        WebFragment()
+                    ).commit()
                 }
             }
         }
@@ -71,6 +70,7 @@ class ExampleFragment : TapBottomSheetDialog() {
         if (done) {
             action_button.visibility = View.VISIBLE
             fragment_container.visibility = View.GONE
+            action_button.setButtonDataSource(getSuccessDataSource())
             action_button.changeButtonState(ActionButtonState.SUCCESS)
 
         } else {

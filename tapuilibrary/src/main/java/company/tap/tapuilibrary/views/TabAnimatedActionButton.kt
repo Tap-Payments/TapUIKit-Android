@@ -93,17 +93,14 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     fun changeButtonState(state: ActionButtonState) {
         this.state = state
+        addTapLoadingView()
+        startStateAnimation()
         when (state) {
-            ERROR,  SUCCESS -> {
-//                tapProgressIndicatorInterface?.onProgressEnd()
-                tapLoadingView?.setOnProgressCompleteListener(this)
-                addTapLoadingView()
-                startStateAnimation()
+             SUCCESS -> {
+                addChildView(getImageView(R.drawable.success,1) {})
             }
-            LOADING -> {
-//                addView(getImageView(R.drawable.loader,2))
-                addTapLoadingView()
-                startStateAnimation()
+            ERROR -> {
+                addChildView(getImageView(R.drawable.error_gif,1) {})
             }
 
         }
@@ -180,7 +177,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
      *
      */
     override fun onMorphAnimationEnd() {
-//        tapLoadingView?.completeProgress()
+        tapLoadingView?.completeProgress()
     }
 
     override fun onProgressCompleted() {
