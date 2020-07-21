@@ -7,8 +7,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.Window
-import androidx.fragment.app.Fragment
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
@@ -30,6 +28,7 @@ import company.tap.tapuilibrary.views.TapHeaderSectionView
 import company.tap.tapuisample.R
 import company.tap.tapuisample.TextDrawable
 import jp.wasabeef.blurry.Blurry
+import kotlinx.android.synthetic.main.custom_card_view.*
 
 /**
  * Created by AhlaamK on 7/6/20.
@@ -60,13 +59,7 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
        val rootView = (activity?.window?.decorView as ViewGroup?)
 
        //  Blurry.with(context).radius(25).sampling(2).onto(rootView)
-       Blurry.with(context)
-           .radius(10)
-           .sampling(8)
-           .color(Color.argb(66, 255, 255, 0))
-           .async()
-           .animate(500)
-           .onto(rootView)
+
         childFragmentManager
             .beginTransaction()
             .add(R.id.inline_container, InlineViewFragment())
@@ -78,9 +71,33 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
         amountViewInit(view)
         FrameManager.getInstance().setFrameColor(Color.WHITE)
        // blurLayout = view.findViewById(R.id.blurLayout)
-
+       view.post(Runnable {
+           Blurry.with(context)
+               .radius(10)
+               .sampling(8)
+               .color(Color.argb(66, 255, 255, 0))
+               .async()
+               .animate(500)
+               .onto(cardscan_view)
+       })
        return view
 
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+       // view.post(Runnable {
+           // Blurry.with(context).radius(20).sampling(8).onto(cardscan_view)
+            view.post(Runnable {
+                Blurry.with(context)
+                    .radius(10)
+                    .sampling(8)
+                    .color(Color.argb(66, 255, 255, 0))
+                    .async()
+                    .animate(500)
+                    .onto(cardscan_view)
+            })
+       // })
     }
 
    /* override fun onAttachFragment(childFragment: Fragment) {

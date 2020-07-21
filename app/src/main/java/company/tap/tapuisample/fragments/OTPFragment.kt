@@ -13,7 +13,10 @@ import company.tap.cardscanner.TapCountDownTimer
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.views.TapOTPView
 import company.tap.tapuisample.R
+import io.alterac.blurkit.BlurKit
 import jp.wasabeef.blurry.Blurry
+import kotlinx.android.synthetic.main.custom_card_view.*
+import kotlinx.android.synthetic.main.fragment_otpscreen.*
 import java.util.*
 
 /**
@@ -43,23 +46,42 @@ class OTPFragment: DialogFragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val view: View =
             inflater.inflate(R.layout.fragment_otpscreen, container, true)
-
+        BlurKit.init(context)
         prepareTextViews(view)
         startCountdown(view)
         otpView = view.findViewById(R.id.otp_view)
-        val rootView = (activity?.window?.decorView as ViewGroup?)
+       /// val rootView = (activity?.window?.decorView as ViewGroup?)
+
+
 
         //  Blurry.with(context).radius(25).sampling(2).onto(rootView)
-        Blurry.with(context)
-            .radius(10)
-            .sampling(8)
-            .color(Color.argb(66, 255, 255, 0))
-            .async()
-            .animate(500)
-            .onto(rootView)
+        view.post(Runnable {
+            Blurry.with(context)
+                .radius(10)
+                .sampling(8)
+                .color(Color.argb(66, 255, 255, 0))
+                .async()
+                .animate(500)
+                .onto(otprootview)
+           // Blurry.with(context).radius(25).sampling(90).onto(otprootview)
+        })
+
         return view
     }
 
+   /* override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.post(Runnable {
+        ///    Blurry.with(context).radius(5).sampling(2).onto(otprootview)
+            Blurry.with(context)
+                .radius(25)
+                .sampling(2)
+                .color(Color.argb(60, 255, 255, 0))
+                .async()
+                .animate(500)
+                .onto(otprootview)
+        })
+    }*/
     private fun startCountdown(view: View) {
         object : CountDownTimer(60 * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
