@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
+import android.transition.ChangeBounds
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +17,7 @@ import company.tap.tapuisample.fragments.ExampleFragment
 import kotlinx.android.synthetic.main.fragment_web.*
 
 
-class WebFragment : Fragment() , WebViewContract {
+class WebFragment : Fragment()  {
 
     var exampleFragment: ExampleFragment? = null
 
@@ -48,11 +49,6 @@ class WebFragment : Fragment() , WebViewContract {
     private fun setUpWebView() {
         web_view.settings.javaScriptEnabled = true
         web_view.webChromeClient = WebChromeClient();
-//        web_view.webViewClient = (object : WebViewClient() {
-//            override fun onPageFinished(view: WebView, url: String) {
-//                exampleFragment?.redirectLoadingFinished(url.contains("https://www.google.com/search?"))
-//            }
-//        })
         if (Build.VERSION.SDK_INT >= 21) {
             web_view.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         }
@@ -70,17 +66,18 @@ class WebFragment : Fragment() , WebViewContract {
         }
     }
 
-    override fun showSuccessMessage(message: String) {
+
+     fun showLoading() {
+         // show tap loading until we receive success or failed
     }
 
-    override fun showErrorMessage(message: String) {
+    fun submitResponseStatus( success : Boolean){
+        // change action button status with success or failed
+        // if success == true show success gif of action button
+        // if success == false show error gif of action button
     }
 
-    override fun showLoading() {
-    }
 
-    override fun hideLoading() {
-    }
 
 
 }

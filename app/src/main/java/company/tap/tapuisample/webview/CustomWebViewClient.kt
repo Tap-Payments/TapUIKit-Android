@@ -48,18 +48,18 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
     private fun checkKnetPaymentStatus(url: String) {
         if (url.contains("response/receiptKnet".toLowerCase())) {
             if (checkPaymentSuccess(url)) {
-                webViewFragment.showSuccessMessage("")
+                webViewFragment.submitResponseStatus(true)
             } else {
                 val urlQuerySanitizer: Uri = Uri.parse(url)
                 val msg: String = urlQuerySanitizer.getQueryParameter("message").toString()
-                webViewFragment.showErrorMessage( msg)
+                webViewFragment.submitResponseStatus( false)
             }
         }
     }
 
     private fun checkCreditCardPaymentStatus(url: String) {
         if (url.contains("response/receiptCC".toLowerCase())) {
-            if (checkPaymentSuccess(url)) webViewFragment.showSuccessMessage("") else webViewFragment.showErrorMessage("")
+            if (checkPaymentSuccess(url)) webViewFragment.submitResponseStatus(true) else webViewFragment.submitResponseStatus(false)
 
         }
     }
@@ -67,7 +67,7 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
 
     private fun checkCreditCardToken(url: String) {
         if (url.contains("response/receipt_checkout".toLowerCase())) {
-            if (checkPaymentSuccess(url)) webViewFragment.showSuccessMessage("") else webViewFragment.showErrorMessage("")
+            if (checkPaymentSuccess(url)) webViewFragment.submitResponseStatus(true) else webViewFragment.submitResponseStatus(false)
         }
     }
 
@@ -75,7 +75,7 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
         if (url.contains("errorPage".toLowerCase())) {
             val urlQuerySanitizer: Uri = Uri.parse(url)
             val msg: String = urlQuerySanitizer.getQueryParameter("message").toString()
-            if (msg.isNotEmpty()) webViewFragment.showErrorMessage(msg) else webViewFragment.showErrorMessage("Error")
+            if (msg.isNotEmpty()) webViewFragment.submitResponseStatus(true) else webViewFragment.submitResponseStatus(false)
         }
     }
 
@@ -111,14 +111,12 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
     override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
         super.onPageStarted(view, url, favicon)
         Log.d("url", url.toString())
-//        webViewFragment.showLoading()
     }
 
     override fun onPageFinished(@NonNull view: WebView?, url: String?) {
         super.onPageFinished(view, url)
         Log.d("url1", url.toString())
         url?.let { webViewFragment.setOnPageFinishedAction(it) }
-        webViewFragment.hideLoading()
     }
 
 
@@ -132,10 +130,7 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
 
     private fun getCustomHeaders(): Map<String, String>? {
         val headers: MutableMap<String, String> = HashMap()
-
-      //  headers["cid"] = LocalCacheManager.getSelectedCountry().getId().toString() + ""
-      //  headers["auth_token"] = Preferences.getAuthToken(webviewActivity).toString() + ""
-       // headers[APIConstants.ACCESS_TOKEN] = APIConstants.API_ACCESS_TOKEN
+      //  headers["cid"] =  ""
         return headers
     }
 
