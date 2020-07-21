@@ -111,7 +111,7 @@ class TapCustomWebViewClient constructor(private val customWebViewClientContract
     override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
         super.onPageStarted(view, url, favicon)
         Log.d("url", url.toString())
-
+//        url?.let { customWebViewClientContract.getRedirectedURL(it) }
     }
 
     override fun onPageFinished(@NonNull view: WebView?, url: String?) {

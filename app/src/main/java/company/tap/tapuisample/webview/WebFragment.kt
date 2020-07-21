@@ -1,7 +1,6 @@
 package company.tap.tapuisample.webview
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import android.view.KeyEvent
@@ -26,14 +25,10 @@ class WebFragment constructor(private val webViewContract: WebViewContract)  : F
         return inflater.inflate(R.layout.fragment_web, container, false)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpWebView()
-
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -68,10 +63,10 @@ class WebFragment constructor(private val webViewContract: WebViewContract)  : F
             if success == false show error gif of action button
      */
     override fun submitResponseStatus( success : Boolean){
-        webViewContract.submitResponseStatus(success)
+        webViewContract.redirectLoadingFinished(success)
     }
     override fun getRedirectedURL(url : String){
-        webViewContract.submitResponseStatus(url.contains("https://www.google.com/search?"))
+        webViewContract.redirectLoadingFinished(url.contains("https://www.google.com/search?"))
     }
 
 

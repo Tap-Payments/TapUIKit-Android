@@ -8,5 +8,5 @@ All rights reserved.
  **/
 
 interface WebViewContract {
-    fun submitResponseStatus(success: Boolean)
+    fun redirectLoadingFinished(done: Boolean)
 }

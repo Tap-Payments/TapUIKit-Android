@@ -22,8 +22,6 @@ import kotlinx.android.synthetic.main.fragment_example.*
 class ExampleFragment : TapBottomSheetDialog() , WebViewContract {
 
     var clickAction = 0
-    private var callback: WebViewContract? = null
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,14 +71,13 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract {
     }
 
 
-    fun redirectLoadingFinished(done: Boolean) {
+    override fun redirectLoadingFinished(done: Boolean) {
         changeBottomSheetTransition()
         if (done) {
             action_button.visibility = View.VISIBLE
             fragment_container.visibility = View.GONE
             action_button.setButtonDataSource(getSuccessDataSource())
             action_button.changeButtonState(ActionButtonState.SUCCESS)
-
         } else {
             action_button.visibility = View.GONE
             fragment_container.visibility = View.VISIBLE
@@ -106,7 +103,5 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract {
         )
     }
 
-    override fun submitResponseStatus(success: Boolean) {
-        redirectLoadingFinished(success)
-    }
+
 }
