@@ -19,7 +19,7 @@ import kotlinx.android.synthetic.main.fragment_web.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class CustomWebViewClient constructor(private val webViewFragment: WebFragment) : WebViewClient() {
+class TapCustomWebViewClient constructor(private val customWebViewClientContract: CustomWebViewClientContract) : WebViewClient() {
 
     override fun shouldOverrideUrlLoading(view: WebView, request: WebResourceRequest): Boolean {
         checkPaymentError(request.url.toString().toLowerCase())
@@ -27,7 +27,7 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
         checkCreditCardPaymentStatus(request.url.toString().toLowerCase())
         checkCreditCardToken(request.url.toString().toLowerCase())
         showLoadingToCheckCreditCardToken(request.url.toString().toLowerCase())
-        Log.d("url2", request.url.toString())
+        Log.d("url", request.url.toString())
         view.loadUrl(request.url.toString(), getCustomHeaders())
         return true
     }
@@ -39,7 +39,7 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
         checkCreditCardPaymentStatus(url.toLowerCase())
         checkCreditCardToken(url.toLowerCase())
         showLoadingToCheckCreditCardToken(url.toLowerCase())
-        Log.d("url2", url)
+        Log.d("url", url)
         view.loadUrl(url, getCustomHeaders())
         return true
     }
@@ -48,18 +48,18 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
     private fun checkKnetPaymentStatus(url: String) {
         if (url.contains("response/receiptKnet".toLowerCase())) {
             if (checkPaymentSuccess(url)) {
-                webViewFragment.submitResponseStatus(true)
+                customWebViewClientContract.submitResponseStatus(true)
             } else {
                 val urlQuerySanitizer: Uri = Uri.parse(url)
                 val msg: String = urlQuerySanitizer.getQueryParameter("message").toString()
-                webViewFragment.submitResponseStatus( false)
+                customWebViewClientContract.submitResponseStatus( false)
             }
         }
     }
 
     private fun checkCreditCardPaymentStatus(url: String) {
         if (url.contains("response/receiptCC".toLowerCase())) {
-            if (checkPaymentSuccess(url)) webViewFragment.submitResponseStatus(true) else webViewFragment.submitResponseStatus(false)
+            if (checkPaymentSuccess(url)) customWebViewClientContract.submitResponseStatus(true) else customWebViewClientContract.submitResponseStatus(false)
 
         }
     }
@@ -67,7 +67,7 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
 
     private fun checkCreditCardToken(url: String) {
         if (url.contains("response/receipt_checkout".toLowerCase())) {
-            if (checkPaymentSuccess(url)) webViewFragment.submitResponseStatus(true) else webViewFragment.submitResponseStatus(false)
+            if (checkPaymentSuccess(url)) customWebViewClientContract.submitResponseStatus(true) else customWebViewClientContract.submitResponseStatus(false)
         }
     }
 
@@ -75,7 +75,7 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
         if (url.contains("errorPage".toLowerCase())) {
             val urlQuerySanitizer: Uri = Uri.parse(url)
             val msg: String = urlQuerySanitizer.getQueryParameter("message").toString()
-            if (msg.isNotEmpty()) webViewFragment.submitResponseStatus(true) else webViewFragment.submitResponseStatus(false)
+            if (msg.isNotEmpty()) customWebViewClientContract.submitResponseStatus(true) else customWebViewClientContract.submitResponseStatus(false)
         }
     }
 
@@ -85,10 +85,10 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
             val urlQuerySanitizer: Uri = Uri.parse(url)
             // here we will put the word of return in response url
             val token: String = urlQuerySanitizer.getQueryParameter("cko-payment-token").toString()
-            if (token.isNotEmpty()) {
-                webViewFragment.showLoading()
-                webViewFragment.web_view.visibility = View.INVISIBLE
-            }
+//            if (token.isNotEmpty()) {
+//                customWebViewClientContract.showLoading()
+//                customWebViewClientContract.web_view.visibility = View.INVISIBLE
+//            }
         } catch (ex: UnsupportedOperationException) {
             ex.printStackTrace()
         }
@@ -111,12 +111,13 @@ class CustomWebViewClient constructor(private val webViewFragment: WebFragment) 
     override fun onPageStarted(view: WebView?, url: String?, favicon: Bitmap?) {
         super.onPageStarted(view, url, favicon)
         Log.d("url", url.toString())
+
     }
 
     override fun onPageFinished(@NonNull view: WebView?, url: String?) {
         super.onPageFinished(view, url)
         Log.d("url1", url.toString())
-        url?.let { webViewFragment.setOnPageFinishedAction(it) }
+        url?.let { customWebViewClientContract.getRedirectedURL(it) }
     }
 
 

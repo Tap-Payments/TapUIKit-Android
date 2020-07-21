@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.transition.ChangeBounds
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -13,13 +12,11 @@ import android.webkit.WebChromeClient
 import android.webkit.WebSettings
 import androidx.fragment.app.Fragment
 import company.tap.tapuisample.R
-import company.tap.tapuisample.fragments.ExampleFragment
 import kotlinx.android.synthetic.main.fragment_web.*
 
 
-class WebFragment : Fragment()  {
+class WebFragment constructor(private val webViewContract: WebViewContract)  : Fragment() , CustomWebViewClientContract  {
 
-    var exampleFragment: ExampleFragment? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,23 +24,17 @@ class WebFragment : Fragment()  {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_web, container, false)
-
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        exampleFragment = parentFragment as ExampleFragment?
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpWebView()
-    }
-    fun setOnPageFinishedAction(url: String){
-        exampleFragment?.redirectLoadingFinished(url.contains("https://www.google.com/search?"))
 
     }
-
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun setUpWebView() {
@@ -52,7 +43,7 @@ class WebFragment : Fragment()  {
         if (Build.VERSION.SDK_INT >= 21) {
             web_view.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         }
-        web_view.webViewClient = CustomWebViewClient(this)
+        web_view.webViewClient = TapCustomWebViewClient(this)
         web_view.loadUrl("https://www.google.com")
         web_view.setOnKeyListener { _, keyCode, event ->
             if (event.action == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
@@ -71,10 +62,16 @@ class WebFragment : Fragment()  {
          // show tap loading until we receive success or failed
     }
 
-    fun submitResponseStatus( success : Boolean){
-        // change action button status with success or failed
-        // if success == true show success gif of action button
-        // if success == false show error gif of action button
+    /**
+     * change action button status with success or failed
+            if success == true show success gif of action button
+            if success == false show error gif of action button
+     */
+    override fun submitResponseStatus( success : Boolean){
+        webViewContract.submitResponseStatus(success)
+    }
+    override fun getRedirectedURL(url : String){
+        webViewContract.submitResponseStatus(url.contains("https://www.google.com/search?"))
     }
 
 
