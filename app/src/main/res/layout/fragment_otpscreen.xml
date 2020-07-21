@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:blurkit="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-
-
-
-
+    android:background="@drawable/animecity"
+    android:id="@+id/otp_blur"
     >
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:elevation="1dp"
-
+        android:id="@+id/otp_linearlayout"
 
        >
     <company.tap.tapuilibrary.views.TapOTPView
@@ -91,11 +89,12 @@
 
         />
     </LinearLayout>
-    <RelativeLayout
+   <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/otprootview"
         />
+
     </RelativeLayout>
 
 

@@ -72,13 +72,11 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
         FrameManager.getInstance().setFrameColor(Color.WHITE)
        // blurLayout = view.findViewById(R.id.blurLayout)
        view.post(Runnable {
-           Blurry.with(context)
-               .radius(10)
-               .sampling(8)
-               .color(Color.argb(66, 255, 255, 0))
-               .async()
-               .animate(500)
-               .onto(cardscan_view)
+
+           Blurry.with(context).radius(25).sampling(2).onto(cardscan_view)
+           cardscan_view.bringChildToFront(inline_container)
+           // BlurKit.getInstance().blur(view, 25)
+           // Blurry.with(context).radius(25).sampling(90).onto(otprootview)
        })
        return view
 
