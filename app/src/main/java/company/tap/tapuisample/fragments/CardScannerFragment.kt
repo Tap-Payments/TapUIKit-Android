@@ -148,7 +148,7 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
             businessName = businessName,
-            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection",""),
             businessImageResources = imageUrl,
             businessPlaceHolder = businessName?.get(0).toString()
         )
@@ -189,13 +189,5 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
             itemCount = "CLOSE"
         )
     }
-   /* override fun onStart() {
-        super.onStart()
-        blurLayout?.startBlur()
-    }
 
-    override fun onStop() {
-        blurLayout?.pauseBlur()
-        super.onStop()
-    }*/
 }

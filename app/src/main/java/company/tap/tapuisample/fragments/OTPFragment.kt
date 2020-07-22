@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.views.TapOTPView
 import company.tap.tapuisample.R
@@ -91,7 +92,7 @@ class OTPFragment: DialogFragment() {
 
     private fun prepareTextViews(view: View) {
         otpSent = view.findViewById(R.id.otp_sent)
-        otpSent.text = "OTP has been sent to"
+        otpSent.text = LocalizationManager.getValue("Message","TapOtpView","Ready")
         otpMobile = view.findViewById(R.id.mobile_textview)
         otpMobile.text= "+965 6••••111"
         timerText = view.findViewById(R.id.timer_textview)
