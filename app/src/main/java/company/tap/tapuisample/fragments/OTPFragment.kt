@@ -1,5 +1,7 @@
 package company.tap.tapuisample.fragments
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -10,11 +12,8 @@ import androidx.fragment.app.DialogFragment
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.views.TapOTPView
 import company.tap.tapuisample.R
-import io.alterac.blurkit.BlurKit
-import io.alterac.blurkit.BlurLayout
 import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.fragment_otpscreen.*
-import kotlinx.android.synthetic.main.fragment_otpscreen.view.*
 
 
 /**
@@ -45,7 +44,7 @@ class OTPFragment: DialogFragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val view: View =
             inflater.inflate(R.layout.fragment_otpscreen, container, true)
-        BlurKit.init(context)
+        val insertPoint: ViewGroup = activity?.findViewById(android.R.id.content) as ViewGroup
         prepareTextViews(view)
         startCountdown(view)
         otpView = view.findViewById(R.id.otp_view)
@@ -54,9 +53,22 @@ class OTPFragment: DialogFragment() {
 
         view.post(Runnable {
 
-            Blurry.with(context).radius(15).onto(otp_blur)
-            otp_blur.bringChildToFront(otp_linearlayout)
-            ///otpView.focusable=true
+            // Configure background
+            Blurry.with(context)
+                .radius(15)
+                .color(Color.argb(20, 255, 255, 255))
+                .onto(otp_linearlayout)
+           // insertPoint.removeView(otp_linearlayout)
+           /* insertPoint.addView(
+                otp_linearlayout,
+                0,
+                ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            )
+            otp_linearlayout.bringToFront()*/
+
         })
         return view
     }
@@ -85,14 +97,16 @@ class OTPFragment: DialogFragment() {
         timerText = view.findViewById(R.id.timer_textview)
 
     }
-    /* override fun onStart() {
-        super.onStart()
-        blurLayout?.startBlur()
+
+
+      fun createScreenshot(view: ViewGroup): Bitmap? {
+        var w = view.width
+        var h = view.height
+        if (w <= 0) w = 800
+        if (h <= 0) h = 300
+        val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        view.draw(canvas)
+        return bitmap
     }
-*/
-    /* override fun onStop() {
-        blurLayout?.pauseBlur()
-        super.onStop()
-    }
-*/
 }
