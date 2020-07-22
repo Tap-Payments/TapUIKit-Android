@@ -81,7 +81,8 @@ class TapChipsActivity : BaseActivity() {
         val mainLayout = findViewById<TapChipGroup>(R.id.mainLayout)
         mainLayout.orientation = LinearLayout.HORIZONTAL
         val groupName = findViewById<TapTextView>(R.id.group_name)
-        groupName.text = LocalizationManager.getValue("select","Common")
+        groupName.text = LocalizationManager.getValue("GatewayHeader","HorizontalHeaders")
+
         val groupAction = findViewById<TapTextView>(R.id.group_action)
         groupAction.text = LocalizationManager.getValue("edit","Common")
         chipRecycler = findViewById(R.id.chip_recycler)
