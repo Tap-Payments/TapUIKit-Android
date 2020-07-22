@@ -1,4 +1,4 @@
-package company.tap.tapuisample
+package company.tap.tapuilibrary.views
 
 import android.graphics.*
 import android.graphics.Paint.Align
@@ -11,7 +11,7 @@ import android.graphics.drawable.Drawable
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class TextDrawable(text:String): Drawable() {
+open class TextDrawable(text:String): Drawable() {
     private var text: String
     private var paint: Paint
     init {

@@ -39,9 +39,8 @@ import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
-import company.tap.tapuisample.TextDrawable
+import company.tap.tapuilibrary.views.TextDrawable
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
@@ -223,7 +222,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
         Glide.with(this)
             .load(imageUrl)
-            .placeholder(TextDrawable(businessInitial.toString()))
+            .placeholder(
+                TextDrawable(
+                    businessInitial.toString()
+                )
+            )
             .into(businessIcon)
     }
 

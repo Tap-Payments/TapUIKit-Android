@@ -26,7 +26,7 @@ import company.tap.tapuilibrary.views.TapAmountSectionView
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapHeaderSectionView
 import company.tap.tapuisample.R
-import company.tap.tapuisample.TextDrawable
+import company.tap.tapuilibrary.views.TextDrawable
 import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.custom_card_view.*
 
@@ -137,7 +137,11 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
 
         Glide.with(this)
             .load(imageUrl)
-            .placeholder(TextDrawable(businessInitial.toString()))
+            .placeholder(
+                TextDrawable(
+                    businessInitial.toString()
+                )
+            )
             .into(businessIcon)
     }
 
