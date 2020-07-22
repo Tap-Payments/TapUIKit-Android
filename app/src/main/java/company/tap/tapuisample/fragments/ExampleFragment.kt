@@ -32,7 +32,7 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
         action_button.setButtonDataSource(getSuccessDataSource())
 
@@ -48,8 +48,6 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract {
         action_button.setOnClickListener {
             implementActionBtnOnClick()
         }
-
-
     }
 
 

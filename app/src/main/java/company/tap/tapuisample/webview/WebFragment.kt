@@ -16,7 +16,6 @@ import kotlinx.android.synthetic.main.fragment_web.*
 
 class WebFragment constructor(private val webViewContract: WebViewContract)  : Fragment() , CustomWebViewClientContract  {
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,7 +23,6 @@ class WebFragment constructor(private val webViewContract: WebViewContract)  : F
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_web, container, false)
     }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
