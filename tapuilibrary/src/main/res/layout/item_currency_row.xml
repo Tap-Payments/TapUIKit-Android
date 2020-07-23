@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<company.tap.tapuilibrary.atoms.TapChip
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardPreventCornerOverlap="false"
+    app:cardCornerRadius="8dp"
+    android:id="@+id/tapcard_Chip"
+    app:elevation="8dp"
+    app:contentPadding="2dp"
+    android:outlineSpotShadowColor="#d9d9da"
+
+    >
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        >
+
+        <company.tap.tapuilibrary.atoms.TapImageView
+            android:id="@+id/imageView_currency"
+            android:layout_width="28dp"
+            android:layout_height="@dimen/margin_basic_23dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"
+            />
+
+        <company.tap.tapuilibrary.atoms.TapTextView
+            android:id="@+id/textView_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="12sp"
+            android:fontFamily="sans-serif"
+            android:textStyle="normal"
+            android:textColor="#4b4847"
+            android:gravity="center_horizontal"
+            tools:text="KWD"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="10dp"
+            />
+    </LinearLayout>
+</company.tap.tapuilibrary.atoms.TapChip>

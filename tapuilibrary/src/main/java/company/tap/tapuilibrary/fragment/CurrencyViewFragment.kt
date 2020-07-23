@@ -1,4 +1,4 @@
-package company.tap.tapuisample.fragments
+package company.tap.tapuilibrary.fragment
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -10,12 +10,12 @@ import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.adapters.CurrencyAdapter
+import company.tap.tapuilibrary.adapters.ItemAdapter
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuisample.model.CurrencyModel
-import company.tap.tapuisample.R
-import company.tap.tapuisample.adapters.CurrencyAdapter
-import company.tap.tapuisample.adapters.ItemAdapter
+import company.tap.tapuilibrary.model.CurrencyModel
 
 
 /**
@@ -24,7 +24,7 @@ import company.tap.tapuisample.adapters.ItemAdapter
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class CurrencyViewFragment : Fragment() {
+open class CurrencyViewFragment : Fragment() {
     private lateinit var chipRecycler: RecyclerView
     lateinit var currencyList: ArrayList<CurrencyModel>
 

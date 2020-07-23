@@ -18,18 +18,17 @@ import androidx.annotation.RequiresApi
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.FragmentManager
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
+import company.tap.tapuisample.fragments.ExampleFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.*
-import jp.wasabeef.blurry.Blurry
 import java.security.KeyStore
 import java.util.concurrent.Executor
 import javax.crypto.Cipher
@@ -183,7 +182,8 @@ class MainActivity : BaseActivity(),
     }
 
     fun openFragment(view: View) {
-        ExampleFragment().show(supportFragmentManager, null)
+        ExampleFragment()
+            .show(supportFragmentManager, null)
     }
 
     fun otpFragment(view: View) {

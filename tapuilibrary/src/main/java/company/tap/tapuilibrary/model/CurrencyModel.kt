@@ -1,4 +1,4 @@
-package company.tap.tapuisample.model
+package company.tap.tapuilibrary.model
 
 /**
  * Created by AhlaamK on 6/20/20.

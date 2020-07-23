@@ -3,14 +3,10 @@ package company.tap.tapuisample.activities
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.tap.tapfontskit.FontChanger
-import com.tap.tapfontskit.enums.TapFont
 import company.tap.tapuisample.R
-import company.tap.tapuisample.adapters.context
 
 /**
  * Created by AhlaamK on 4/29/20.
