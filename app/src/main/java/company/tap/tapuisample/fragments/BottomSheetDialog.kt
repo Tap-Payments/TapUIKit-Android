@@ -41,7 +41,6 @@ import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
-import company.tap.tapuisample.TextDrawable
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
