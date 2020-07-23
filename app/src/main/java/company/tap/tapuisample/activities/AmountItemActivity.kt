@@ -70,7 +70,7 @@ class AmountItemActivity : BaseActivity() {
     //Set data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
         return TapSwitchDataSource (
-            switchSave ="For faster and easier checkout,save your mobile number.",
+            switchSave =LocalizationManager.getValue("cardSaveLabel","TapCardInputKit"),
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout =  "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",

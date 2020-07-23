@@ -12,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.transition.TransitionManager
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapSeparatorView
 import company.tap.tapuilibrary.atoms.TapSwitch
 import company.tap.tapuilibrary.atoms.TapTextView
@@ -180,7 +181,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSave = "For faster and easier checkout,\n use card scanner or NFC.",
+            switchSave = LocalizationManager.getValue("cardSaveLabel","TapCardInputKit"),
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",

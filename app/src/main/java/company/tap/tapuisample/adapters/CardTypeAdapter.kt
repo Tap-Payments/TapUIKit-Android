@@ -21,7 +21,7 @@ All rights reserved.
 class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardSelectedActionListener: OnCardSelectedActionListener? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_SAVEDCARD = 1
-    private val TYPE_SINGLE = 2
+    private val TYPE_REDIRECT = 2
     private val TYPE_GOPAY = 3
     private var selectedPosition = -1
 
@@ -33,7 +33,7 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardS
             SavedViewHolder(
                 view
             )
-        } else if (viewType === TYPE_SINGLE) {
+        } else if (viewType === TYPE_REDIRECT) {
             view = LayoutInflater.from(parent.context).inflate(R.layout.item_knet, parent, false)
             SingleViewHolder(
                 view
@@ -48,7 +48,7 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardS
 
     override fun getItemViewType(position: Int): Int {
         return if (arrayList[position] == 1 || arrayList[position] == 3 || arrayList[position] == 5) {
-            TYPE_SINGLE
+            TYPE_REDIRECT
         } else if (arrayList[position] == 2) {
             TYPE_GOPAY
         } else {
@@ -73,7 +73,7 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardS
                 selectedPosition = position
                 notifyDataSetChanged()
             }
-        } else if (getItemViewType(position) === TYPE_SINGLE) {
+        } else if (getItemViewType(position) === TYPE_REDIRECT) {
             if (selectedPosition == position)
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow)
             else

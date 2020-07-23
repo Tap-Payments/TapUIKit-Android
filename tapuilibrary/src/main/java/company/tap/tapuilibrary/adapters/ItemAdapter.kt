@@ -1,4 +1,4 @@
-package company.tap.tapuisample.adapters
+package company.tap.tapuilibrary.adapters
 
 import android.annotation.SuppressLint
 import android.graphics.Paint
@@ -10,11 +10,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.R
+
 import company.tap.tapuilibrary.atoms.TapSeparatorView
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ItemViewDataSource
 import company.tap.tapuilibrary.views.TapListItemView
-import company.tap.tapuisample.R
+
 
 /**
  * Created by AhlaamK on 6/22/20.
@@ -76,7 +78,7 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
                 TapFont.robotoLight))
         itemViewadapter.setItemViewDataSource(getItemViewDataSource())
         if(itemList[position]%2==0){
-            discount.text =LocalizationManager.getValue("Discount","ItemList","")
+            discount.text = LocalizationManager.getValue("Discount","ItemList")
             totalAmount.paintFlags =
                 totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             itemName.text = "ITEM TITLE "+itemList[position]

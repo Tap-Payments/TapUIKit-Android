@@ -39,19 +39,18 @@ import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
+import company.tap.tapuilibrary.fragment.CurrencyViewFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.action_button
 import kotlinx.android.synthetic.main.custom_bottom_sheet.fragment_container
-import kotlinx.android.synthetic.main.fragment_example.*
 
 
 /**
@@ -93,7 +92,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var alertgoPay: TapTextView? = null
     private var saveCardorMobile: TapTextView? = null
     private var separatorView: TapSeparatorView? = null
-    private var checkboxString:String="For faster and easier checkout,\n use card scanner or NFC."
+    private var checkboxString:String=LocalizationManager.getValue("cardSaveLabel","TapCardInputKit")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -186,7 +185,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             currentCurrency.visibility = View.GONE
             fragment_container.visibility = View.GONE
             nfcScanBtn.visibility= View.GONE
-            itemCount.text = "CLOSE"
+            itemCount.text = LocalizationManager.getValue("close","Common")
 
             childFragmentManager
                 .beginTransaction()
@@ -276,7 +275,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         if (isFragmentAdded) {
             currentCurrency.visibility = View.VISIBLE
         }
-        val currencyViewFragment = CurrencyViewFragment()
+        val currencyViewFragment =
+            CurrencyViewFragment()
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
             if (isFragmentAdded) {

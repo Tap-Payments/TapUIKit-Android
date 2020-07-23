@@ -66,7 +66,7 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
             .commit()
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
-        cardScanText?.text = "Ready to scan."
+        cardScanText?.text = LocalizationManager.getValue("Default","Hints","scan")
         headerViewInit(view)
         amountViewInit(view)
         FrameManager.getInstance().setFrameColor(Color.WHITE)

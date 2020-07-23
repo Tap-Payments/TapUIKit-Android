@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuisample.model.CurrencyModel
+import company.tap.tapuilibrary.model.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import company.tap.tapuisample.adapters.CurrencyAdapter
+import company.tap.tapuilibrary.adapters.CurrencyAdapter
 import kotlinx.android.synthetic.main.activity_cardview.*
 
 /***
