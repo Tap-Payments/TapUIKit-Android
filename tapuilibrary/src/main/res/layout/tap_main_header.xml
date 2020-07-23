@@ -63,6 +63,12 @@
                 android:layout_marginTop="1dp"
                 />
         </LinearLayout>
-
     </LinearLayout>
+    <company.tap.tapuilibrary.atoms.TapSeparatorView
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/view_color"
+        android:layout_marginStart="@dimen/margin_basic_19dp"
+        android:layout_marginEnd="17dp"/>
+
 </LinearLayout>
