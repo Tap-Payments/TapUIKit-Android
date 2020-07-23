@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">TapUISample</string>
     <string name="business_name">Business Name</string>
     <string name="you_clicked">You clicked on Closed.</string>
@@ -8,6 +8,7 @@
     <string name="tap_payments">Tap Payments</string>
     <string name="msg_ok">ok</string>
     <string name="msg_dismiss">dismiss</string>
+    <string name="both_set_from_backend" tools:ignore="ExtraTranslation">Both set from backend</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

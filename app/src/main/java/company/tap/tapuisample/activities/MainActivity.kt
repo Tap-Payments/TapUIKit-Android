@@ -231,9 +231,9 @@ class MainActivity : BaseActivity(),
             })
 
         promptInfo = BiometricPrompt.PromptInfo.Builder()
-            .setTitle("Biometric login for my app")
-            .setSubtitle("Log in using your biometric credential")
-            .setNegativeButtonText("Use account password")
+            .setTitle("Touch ID for goPay")
+            .setSubtitle("Authentication is needed to pay")
+            .setNegativeButtonText(".")
             .build()
         biometricPrompt.authenticate(promptInfo)
 

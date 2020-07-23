@@ -75,8 +75,6 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
 
            Blurry.with(context).radius(25).sampling(2).onto(cardscan_view)
            cardscan_view.bringChildToFront(inline_container)
-           // BlurKit.getInstance().blur(view, 25)
-           // Blurry.with(context).radius(25).sampling(90).onto(otprootview)
        })
        return view
 
@@ -97,20 +95,6 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
             })
        // })
     }
-
-   /* override fun onAttachFragment(childFragment: Fragment) {
-        super.onAttachFragment(childFragment)
-        val rootView = (activity?.window?.decorView as ViewGroup?)
-
-      //  Blurry.with(context).radius(25).sampling(2).onto(rootView)
-        Blurry.with(context)
-            .radius(10)
-            .sampling(8)
-            .color(Color.argb(66, 255, 255, 0))
-            .async()
-            .animate(500)
-            .onto(rootView)
-    }*/
 
     private fun amountViewInit(view: View) {
         amountSectionView = view.findViewById(R.id.amount_section_card)
@@ -168,7 +152,7 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
     }
 
     override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
-        FrameManager.getInstance().setFrameColor(Color.GREEN)
+        FrameManager.getInstance().frameColor = Color.GREEN
 
         if (childFragmentManager.findFragmentById(R.id.inline_container) != null)
             childFragmentManager
@@ -186,7 +170,7 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
             selectedCurr = "KD1000,000.000",
-            itemCount = "CLOSE"
+            itemCount = LocalizationManager.getValue("close","Common")
         )
     }
 

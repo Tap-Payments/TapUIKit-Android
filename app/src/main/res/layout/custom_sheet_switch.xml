@@ -25,16 +25,19 @@
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Merchant Checkout set from backend"/>
+            android:text="Merchant Checkout set from backend"
+            android:textColor="@color/black_27"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="goPay Checkout set from backend"/>
+            android:text="goPay Checkout set from backend"
+            android:textColor="@color/black_27"/>
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Both set from backend"/>
+            android:text="Both set from backend"
+            android:textColor="@color/black_27"/>
 
     </RadioGroup>
 
