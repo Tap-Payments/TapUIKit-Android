@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuisample.R
+import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 
 
 /**
@@ -17,12 +18,13 @@ import company.tap.tapuisample.R
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
+class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardSelectedActionListener: OnCardSelectedActionListener? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_SAVEDCARD = 1
     private val TYPE_SINGLE = 2
     private val TYPE_GOPAY = 3
     private var selectedPosition = -1
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
         return if (viewType === TYPE_SAVEDCARD) {
@@ -72,13 +74,13 @@ class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
                 notifyDataSetChanged()
             }
         } else if (getItemViewType(position) === TYPE_SINGLE) {
-
             if (selectedPosition == position)
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow)
             else
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick)
             (holder as SingleViewHolder)
             holder.itemView.setOnClickListener {
+                onCardSelectedActionListener?.onCardSelectedAction(true)
                 selectedPosition = position
                 notifyDataSetChanged()
             }
@@ -91,6 +93,7 @@ class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
             (holder as GoPayViewHolder)
             holder.itemView.setOnClickListener {
                 selectedPosition = position
+                onCardSelectedActionListener?.onCardSelectedAction(false)
                 notifyDataSetChanged()
             }
 
@@ -110,5 +113,6 @@ class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
         RecyclerView.ViewHolder(itemView) {
 
     }
+
 
 }

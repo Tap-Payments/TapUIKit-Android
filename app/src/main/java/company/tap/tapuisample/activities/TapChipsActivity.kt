@@ -88,8 +88,7 @@ class TapChipsActivity : BaseActivity() {
         chipRecycler = findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
         //  chipRecycler.adapter = RecyclerAdapter(arrayList)
-        chipRecycler.adapter =
-            CardTypeAdapter(paymentsList)
+        chipRecycler.adapter = CardTypeAdapter(paymentsList)
 
     }
 

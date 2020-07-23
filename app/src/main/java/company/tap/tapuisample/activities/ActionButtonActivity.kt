@@ -2,14 +2,14 @@ package company.tap.tapuisample.activities
 
 import android.graphics.Color
 import android.os.Bundle
-import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
 import company.tap.tapuilibrary.views.TabAnimatedActionButton
 import company.tap.tapuisample.R
+
 
 class ActionButtonActivity : AppCompatActivity() {
 
@@ -61,7 +61,7 @@ class ActionButtonActivity : AppCompatActivity() {
             textSize = 20f,
             textColor = Color.WHITE,
             cornerRadius = 100f,
-            errorImageResources = R.drawable.error_mark,
+            errorImageResources = R.drawable.error_gif,
             backgroundColor = resources.getColor(R.color.button_green),
             errorColor = resources.getColor(R.color.button_gray)
         )
@@ -73,7 +73,7 @@ class ActionButtonActivity : AppCompatActivity() {
             textSize = 20f,
             textColor = Color.WHITE,
             cornerRadius = 100f,
-            successImageResources = R.drawable.checkmark,
+            successImageResources = R.drawable.success,
             backgroundColor = resources.getColor(R.color.button_green)
         )
     }

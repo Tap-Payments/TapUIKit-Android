@@ -5,25 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <company.tap.tapuilibrary.atoms.TapProgressIndicator
-        android:id="@+id/outer_circle"
-        style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:indicatorColor="@android:color/white"
-        app:indicatorWidth="2dp"
-        app:circularRadius="12dp"/>
+    <ImageView
+        android:id="@+id/tapLoadingImage"
+            android:layout_centerInParent="true"
+    android:layout_width="30dp"
+        android:layout_height="25dp"/>
 
-    <company.tap.tapuilibrary.atoms.TapProgressIndicator
-        android:id="@+id/inner_circle"
-        style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:inverse="true"
-        app:indicatorWidth="2dp"
-        app:indicatorColor="@android:color/white"
-        app:circularRadius="7dp"/>
+<!--    <company.tap.tapuilibrary.atoms.TapProgressIndicator-->
+<!--        android:id="@+id/outer_circle"-->
+<!--        style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:indicatorColor="@android:color/white"-->
+<!--        app:indicatorWidth="2dp"-->
+<!--        app:circularRadius="12dp"/>-->
+
+<!--    <company.tap.tapuilibrary.atoms.TapProgressIndicator-->
+<!--        android:id="@+id/inner_circle"-->
+<!--        style="@style/Widget.MaterialComponents.ProgressIndicator.Circular.Indeterminate"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:inverse="true"-->
+<!--        app:indicatorWidth="2dp"-->
+<!--        app:indicatorColor="@android:color/white"-->
+<!--        app:circularRadius="7dp"/>-->
 
 </RelativeLayout>

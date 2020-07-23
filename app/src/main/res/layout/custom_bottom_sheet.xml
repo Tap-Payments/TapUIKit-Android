@@ -73,6 +73,7 @@
             android:layout_gravity="end"
             android:background="@drawable/nfc"
             android:layout_marginTop="-35dp"/>
+
     </LinearLayout>
 
 
@@ -90,12 +91,17 @@
         >
     </FrameLayout>
 
+
     <company.tap.tapuilibrary.views.TapCardSwitch
         android:layout_height="wrap_content"
         android:id="@+id/switch_pay_demo"
         android:layout_width="match_parent"/>
 
+    <company.tap.tapuilibrary.views.TabAnimatedActionButton
+        android:id="@+id/action_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp" />
 
-  
 </LinearLayout>
 
