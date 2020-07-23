@@ -91,7 +91,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var alertgoPay: TapTextView? = null
     private var saveCardorMobile: TapTextView? = null
     private var separatorView: TapSeparatorView? = null
-    private var checkboxString:String="For faster and easier checkout,\n use card scanner or NFC."
+    private var checkboxString:String=LocalizationManager.getValue("cardSaveLabel","TapCardInputKit")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -184,7 +184,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             currentCurrency.visibility = View.GONE
             fragment_container.visibility = View.GONE
             nfcScanBtn.visibility= View.GONE
-            itemCount.text = "CLOSE"
+            itemCount.text = LocalizationManager.getValue("close","Common")
 
             childFragmentManager
                 .beginTransaction()
