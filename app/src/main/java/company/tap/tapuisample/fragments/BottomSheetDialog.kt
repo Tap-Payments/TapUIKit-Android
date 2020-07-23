@@ -17,6 +17,7 @@ import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.ChangeBounds
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
@@ -36,6 +37,7 @@ import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.enums.ActionButtonState
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
@@ -44,8 +46,11 @@ import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
+import company.tap.tapuisample.webview.WebFragment
+import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.action_button
 import kotlinx.android.synthetic.main.custom_bottom_sheet.fragment_container
+import kotlinx.android.synthetic.main.fragment_example.*
 
 
 /**
@@ -55,7 +60,7 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInterface ,
-    OnCardSelectedActionListener {
+    OnCardSelectedActionListener, WebViewContract {
 
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
@@ -209,10 +214,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         val mainChipgroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         val groupName = view.findViewById<TapTextView>(R.id.group_name)
-        groupName.text = LocalizationManager.getValue("select", "Common")
+//        groupName.text = LocalizationManager.getValue("select", "Common")
         groupName.setTextColor(R.color.text_color)
         val groupAction = view.findViewById<TapTextView>(R.id.group_action)
-        groupAction.text = LocalizationManager.getValue("edit", "Common")
+//        groupAction.text = LocalizationManager.getValue("edit", "Common")
         groupName.setTextColor(R.color.text_color)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -250,7 +255,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
             businessName = businessName,
-            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+//            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
             businessImageResources = imageUrl,
             businessPlaceHolder = businessName?.get(0).toString()
         )
@@ -304,7 +309,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 fragment_container.visibility = View.GONE
                 tabLayout.visibility=View.GONE
                 paymentLayout.visibility=View.GONE
-                itemCount.text = LocalizationManager.getValue("close", "Common")
+//                itemCount.text = LocalizationManager.getValue("close", "Common")
                 Handler().postDelayed({
                     bottomSheetDialog.behavior.state = STATE_EXPANDED
 
@@ -395,7 +400,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 val card = CardValidator.validate(s.toString())
                 if (card.cardBrand != null){
                     tabLayout.selectTab(card.cardBrand, card.validationState == CardValidationState.valid)
-                    checkboxString = LocalizationManager.getValue("cardSaveLabel","TapCardInputKit")
+//                    checkboxString = LocalizationManager.getValue("cardSaveLabel","TapCardInputKit")
                     switchSaveDemo?.visibility= View.VISIBLE
                     switchLayout?.visibility = View.VISIBLE
                     switchMerchantCheckout?.visibility = View.VISIBLE
@@ -470,10 +475,51 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     }
 
     override fun onCardSelectedAction(isSelected:Boolean) {
-        if (isSelected)
+        if (isSelected) {
             action_button.setButtonDataSource(getSuccessDataSource(R.color.button_green))
+            action_button.setOnClickListener { replaceBetweenFragments() }
+        }
         else
             action_button.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
     }
+
+
+    private fun replaceBetweenFragments(){
+        childFragmentManager.beginTransaction().add(R.id.fragment_container,
+            WebFragment(this)
+        ).commit()
+    }
+
+
+    override fun redirectLoadingFinished(done: Boolean) {
+        changeBottomSheetTransition()
+        if (done) {
+            action_button.visibility = View.VISIBLE
+            fragment_container.visibility = View.GONE
+            action_button.setButtonDataSource(getSuccessDataSource())
+            action_button.changeButtonState(ActionButtonState.SUCCESS)
+        } else {
+            action_button.visibility = View.GONE
+            fragment_container.visibility = View.VISIBLE
+        }
+    }
+    private fun changeBottomSheetTransition(){
+        bottomSheetLayout?.let { layout ->
+            layout.post {
+                TransitionManager.beginDelayedTransition(layout, ChangeBounds().setDuration(1000))
+            }
+        }
+    }
+    private fun getSuccessDataSource(): ActionButtonDataSource {
+        return ActionButtonDataSource(
+            text = "PAY!",
+            textSize = 20f,
+            textColor = Color.WHITE,
+            cornerRadius = 100f,
+            successImageResources = R.drawable.checkmark,
+            backgroundColor = resources.getColor(R.color.button_green)
+        )
+    }
+
 }
 
