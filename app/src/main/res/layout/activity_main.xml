@@ -14,11 +14,11 @@
        android:text="Show Tap Chips"/>
 
     <Button
-        android:onClick="openBottomSheet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:onClick="openBottomSheet"
         android:text="Show Bottom Sheet Dialog" />
 
     <Button
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="20dp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
         android:text="Show Sections TabLayout" />
 
     <Button
@@ -48,7 +48,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_basic_20dp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+
         android:text="Show Switch view" />
 
     <Button
@@ -56,7 +57,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_basic_20dp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+
         android:text="Show NFC view" />
 
     <Button
@@ -64,7 +66,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_basic_20dp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
         android:text="Show Scanner view" />
 
     <Button
@@ -72,8 +74,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_basic_20dp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
         android:text="Show Fragment" />
+    <Button
+        android:onClick="otpFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:text="OTP Fragment" />
 
+    <Button
+        android:onClick="openBiometrics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:text="Biometrics" />
 </LinearLayout>
 

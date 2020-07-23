@@ -11,8 +11,11 @@ import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
 import company.tap.tapcardvalidator_android.CardValidator
 import company.tap.tapuilibrary.animation.AnimationEngine
+import company.tap.tapuilibrary.enums.TabSectionType
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.models.TabSection
+import company.tap.tapuilibrary.organisms.TapPaymentInput
 import company.tap.tapuilibrary.views.TapMobilePaymentView
 import company.tap.tapuilibrary.views.TapSelectionTabLayout
 import company.tap.tapuisample.R
@@ -25,6 +28,8 @@ import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
 
     lateinit var tabLayout: TapSelectionTabLayout
+    lateinit var paymentInput: TapPaymentInput
+
     private var selectedTab = 0
     private lateinit var tapCardInputView: InlineCardInput
     private lateinit var tapMobileInputView: TapMobilePaymentView
@@ -34,14 +39,17 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sections_tab_layout)
+        paymentInput = findViewById(R.id.tap_payment_input)
         tabLayout = findViewById(R.id.sections_tablayout)
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(this, null)
         tapCardInputView = InlineCardInput(this)
         tapCardInputView.holderNameEnabled = false
-        addCardsTab()
-        addMobileTab()
+        tabLayout.addSection(getCardList())
+        tabLayout.addSection(getMobileList())
         setupBrandDetection()
+
+        paymentInput.addTabLayoutSection(TabSection(TabSectionType.CARD, getCardList()), TabSection(TabSectionType.MOBILE, getMobileList()))
     }
 
     private fun setupBrandDetection() {
@@ -59,7 +67,7 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         })
     }
 
-    private fun addCardsTab() {
+    private fun getCardList(): ArrayList<SectionTabItem>{
         val items = ArrayList<SectionTabItem>()
         items.add(
             SectionTabItem(
@@ -82,10 +90,10 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
                 ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
             )
         )
-        tabLayout.addSection(items)
+        return items
     }
 
-    private fun addMobileTab() {
+    private fun getMobileList(): ArrayList<SectionTabItem>{
         val items = ArrayList<SectionTabItem>()
         items.add(
             SectionTabItem(
@@ -101,7 +109,7 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
                 ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
             )
         )
-        tabLayout.addSection(items)
+        return items
     }
 
     fun selectTab(view: View) {
@@ -136,8 +144,6 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
                 payment_input_layout.addView(tapMobileInputView)
         }
     }
-
-
 
     fun selectSegment(view: View) {
         var alert: AlertDialog? = null

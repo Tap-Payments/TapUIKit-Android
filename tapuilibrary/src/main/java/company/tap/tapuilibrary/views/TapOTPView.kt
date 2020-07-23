@@ -11,6 +11,7 @@ import android.text.InputFilter
 import android.text.InputFilter.LengthFilter
 import android.text.TextPaint
 import android.text.TextUtils
+import android.text.method.MovementMethod
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
@@ -30,811 +31,708 @@ import company.tap.tapuilibrary.interfaces.TapOTPInterface
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class TapOTPView: AppCompatEditText {
-    private val DBG = false
-    private val BLINK = 500
-    private val DEFAULT_COUNT = 4
-    private val NO_FILTERS = arrayOfNulls<InputFilter>(0)
-    private val SELECTED_STATE = intArrayOf(
-        android.R.attr.state_selected
-    )
-    private val FILLED_STATE = intArrayOf(
-        R.attr.state_filled
-    )
-    private val VIEW_TYPE_RECTANGLE = 0
-    private val VIEW_TYPE_LINE = 1
-    private val VIEW_TYPE_NONE = 2
-    private var viewType = 0
-    private var otpViewItemCount = 0
-    private var otpViewItemWidth = 0
-    private var otpViewItemHeight = 0
-    private var otpViewItemRadius = 0
-    private var otpViewItemSpacing = 0
-    private var paint: Paint? = null
-    private val animatorTextPaint = TextPaint()
-    private var lineColor: ColorStateList? = null
-    private var cursorLineColor = Color.BLACK
-    private var lineWidth = 0
-    private val textRect = Rect()
-    private val itemBorderRect = RectF()
-    private val itemLineRect = RectF()
-    private val path = Path()
-    private val itemCenterPoint = PointF()
-    private var defaultAddAnimator: ValueAnimator? = null
-    private var isAnimationEnable = false
-    private var blink: Blink? = null
+class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.otpViewStyle) : AppCompatEditText(context, attrs, defStyleAttr) {
 
-     private var isCursorVisible = false
-    private var drawCursor = false
-    private var cursorHeight = 0f
-    private var cursorWidth = 0
-    private var cursorColor = 0
-    private var itemBackgroundResource = 0
-    private var itemBackground: Drawable? = null
-    private var hideLineWhenFilled = false
-    private var rtlTextDirection = false
-    private var maskingChar: String? = null
-    private var onOtpCompletionListener: TapOTPInterface? = null
+    private val mViewType: Int
 
-    constructor(context: Context) : super(context)
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
-    constructor(
-        context: Context,
-        attrs: AttributeSet? = null,
-        defStyleAttr: Int = R.attr.otpViewStyle
-    ) :
-            super(context, attrs, defStyleAttr) {
-        val res = resources
-        paint = Paint(Paint.ANTI_ALIAS_FLAG)
-        paint?.setStyle(Paint.Style.STROKE)
-        animatorTextPaint.set(getPaint())
-        val theme = context.theme
-        val typedArray =
-            theme.obtainStyledAttributes(attrs, R.styleable.OtpView, defStyleAttr, 0)
-        viewType =
-            typedArray.getInt(R.styleable.OtpView_viewType,VIEW_TYPE_NONE)
-        otpViewItemCount =
-            typedArray.getInt(R.styleable.OtpView_itemCount, DEFAULT_COUNT)
-        otpViewItemHeight = typedArray.getDimension(
-            R.styleable.OtpView_itemHeight,
-            res.getDimensionPixelSize(R.dimen.otp_view_item_size).toFloat()
-        ).toInt()
-        otpViewItemWidth = typedArray.getDimension(
-            R.styleable.OtpView_itemWidth,
-            res.getDimensionPixelSize(R.dimen.otp_view_item_size).toFloat()
-        ).toInt()
-        otpViewItemSpacing = typedArray.getDimensionPixelSize(
-            R.styleable.OtpView_itemSpacing,
-            res.getDimensionPixelSize(R.dimen.otp_view_item_spacing)
-        )
-        otpViewItemRadius = typedArray.getDimension(R.styleable.OtpView_itemRadius, 0f).toInt()
-        lineWidth = typedArray.getDimension(
-            R.styleable.OtpView_lineWidth,
-            res.getDimensionPixelSize(R.dimen.otp_view_item_line_width).toFloat()
-        ).toInt()
-        lineColor = typedArray.getColorStateList(R.styleable.OtpView_lineColor)
-        isCursorVisible = typedArray.getBoolean(R.styleable.OtpView_android_cursorVisible, true)
-        cursorColor = typedArray.getColor(R.styleable.OtpView_cursorColor, currentTextColor)
-        cursorWidth = typedArray.getDimensionPixelSize(
-            R.styleable.OtpView_cursorWidth,
-            res.getDimensionPixelSize(R.dimen.otp_view_cursor_width)
-        )
-        itemBackground = typedArray.getDrawable(R.styleable.OtpView_android_itemBackground)
-        hideLineWhenFilled = typedArray.getBoolean(R.styleable.OtpView_hideLineWhenFilled, false)
-        rtlTextDirection = typedArray.getBoolean(R.styleable.OtpView_rtlTextDirection, false)
-        maskingChar = typedArray.getString(R.styleable.OtpView_maskingChar)
-        typedArray.recycle()
-        if (lineColor != null) {
-            cursorLineColor = lineColor?.getDefaultColor()!!
-        }
-        updateCursorHeight()
-        checkItemRadius()
-        setMaxLength(otpViewItemCount)
-        paint?.setStrokeWidth(lineWidth.toFloat())
-        setupAnimator()
-        super.setCursorVisible(false)
-        setTextIsSelectable(false)
-    }
+    private var mOtpItemCount: Int = 0
 
-    override fun setTypeface(tf: Typeface?, style: Int) {
-        super.setTypeface(tf, style)
-    }
+    private var mOtpItemWidth: Int = 0
+    private var mOtpItemHeight: Int = 0
+    private var mOtpItemRadius: Int = 0
+    private var mOtpItemSpacing: Int = 0
 
-    override fun setTypeface(tf: Typeface?) {
-        super.setTypeface(tf)
-        animatorTextPaint?.set(getPaint())
-    }
-    private fun setMaxLength(maxLength: Int) {
-        filters =
-            if (maxLength >= 0) arrayOf<InputFilter>(LengthFilter(maxLength)) else NO_FILTERS
-    }
-    private fun setupAnimator() {
-        defaultAddAnimator = ValueAnimator.ofFloat(0.5f, 1f)
-        defaultAddAnimator?.setDuration(150)
-        defaultAddAnimator?.setInterpolator(DecelerateInterpolator())
-        defaultAddAnimator?.addUpdateListener(AnimatorUpdateListener { animation ->
-            val scale = animation.animatedValue as Float
-            val alpha = (255 * scale).toInt()
-            animatorTextPaint.textSize = textSize * scale
-            animatorTextPaint.alpha = alpha
-            postInvalidate()
-        })
-    }
-    private fun checkItemRadius() {
-        if (viewType == VIEW_TYPE_LINE) {
-            val halfOfLineWidth = lineWidth.toFloat() / 2
-            require(otpViewItemRadius <= halfOfLineWidth) { "The itemRadius can not be greater than lineWidth when viewType is line" }
-        } else if (viewType == VIEW_TYPE_RECTANGLE) {
-            val halfOfItemWidth = otpViewItemWidth.toFloat() / 2
-            require(otpViewItemRadius <= halfOfItemWidth) { "The itemRadius can not be greater than itemWidth" }
-        }
-    }
-    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val widthMode = MeasureSpec.getMode(widthMeasureSpec)
-        val heightMode = MeasureSpec.getMode(heightMeasureSpec)
-        val widthSize = MeasureSpec.getSize(widthMeasureSpec)
-        val heightSize = MeasureSpec.getSize(heightMeasureSpec)
-        var width: Int
-        val height: Int
-        val boxHeight = otpViewItemHeight
-        if (widthMode == MeasureSpec.EXACTLY) {
-            width = widthSize
-        } else {
-            val boxesWidth =
-                (otpViewItemCount - 1) * otpViewItemSpacing + otpViewItemCount * otpViewItemWidth
-            width = boxesWidth + ViewCompat.getPaddingEnd(this) + ViewCompat.getPaddingStart(this)
-            if (otpViewItemSpacing == 0) {
-                width -= (otpViewItemCount - 1) * lineWidth
-            }
-        }
-        height =
-            if (heightMode == MeasureSpec.EXACTLY) heightSize else boxHeight + paddingTop + paddingBottom
-        setMeasuredDimension(width, height)
-    }
-    override fun onTextChanged(
-        text: CharSequence,
-        start: Int,
-        lengthBefore: Int,
-        lengthAfter: Int
-    ) {
-        if (start != text.length) {
-            moveSelectionToEnd()
-        }
-        if (text.length == otpViewItemCount && onOtpCompletionListener != null) {
-            onOtpCompletionListener?.otpTimerEnd(text.toString())
-        }
-        makeBlink()
-        if (isAnimationEnable) {
-            val isAdd = lengthAfter - lengthBefore > 0
-            if (isAdd && defaultAddAnimator != null) {
-                defaultAddAnimator!!.end()
-                defaultAddAnimator!!.start()
-            }
-        }
-    }
-    override fun onFocusChanged(
-        focused: Boolean,
-        direction: Int,
-        previouslyFocusedRect: Rect?
-    ) {
-        super.onFocusChanged(focused, direction, previouslyFocusedRect)
-        if (focused) {
-            moveSelectionToEnd()
-            makeBlink()
-        }
-    }
-    override fun onSelectionChanged(selStart: Int, selEnd: Int) {
-        super.onSelectionChanged(selStart, selEnd)
-        if (text != null && selEnd != text!!.length) {
-            moveSelectionToEnd()
-        }
-    }
-    private fun moveSelectionToEnd() {
-        if (text != null) {
-            setSelection(text!!.length)
-        }
-    }
-    override fun drawableStateChanged() {
-        super.drawableStateChanged()
-        if (lineColor == null || lineColor!!.isStateful) {
-            updateColors()
-        }
-    }
-
-    override fun onDraw(canvas: Canvas) {
-        canvas.save()
-        updatePaints()
-        drawOtpView(canvas)
-        canvas.restore()
-    }
-    private fun updatePaints() {
-        paint?.color = cursorLineColor
-        paint?.style = Paint.Style.STROKE
-        paint?.strokeWidth = lineWidth.toFloat()
-        getPaint().color = currentTextColor
-    }
-
-    private fun drawOtpView(canvas: Canvas) {
-        val nextItemToFill: Int
-        nextItemToFill = if (rtlTextDirection) {
-            otpViewItemCount - 1
-        } else {
-            if (text != null) {
-                text!!.length
-            } else {
-                0
-            }
-        }
-        for (i in 0 until otpViewItemCount) {
-            val itemSelected = isFocused && nextItemToFill == i
-            val itemFilled = i < nextItemToFill
-            var itemState: IntArray? = null
-            if (itemFilled) {
-                itemState = FILLED_STATE
-            } else if (itemSelected) {
-                itemState = SELECTED_STATE
-            }
-           // paint?.color = itemState?.let { getLineColorForState(it) } ?: cursorLineColor
-            paint?.color = cursorLineColor
-            updateItemRectF(i)
-            updateCenterPoint()
-            canvas.save()
-            if (viewType == VIEW_TYPE_RECTANGLE) {
-                updateOtpViewBoxPath(i)
-                canvas.clipPath(path)
-            }
-            drawItemBackground(canvas, itemState)
-            canvas.restore()
-            if (itemSelected) {
-                drawCursor(canvas)
-            }
-            if (viewType == VIEW_TYPE_RECTANGLE) {
-                drawOtpBox(canvas, i)
-            } else if (viewType ==
-                VIEW_TYPE_LINE) {
-                drawOtpLine(canvas, i)
-            }
-            if (DBG) {
-                drawAnchorLine(canvas)
-            }
-            if (rtlTextDirection) {
-                val reversedPosition = otpViewItemCount - i
-                if (text!!.length >= reversedPosition) {
-                    drawInput(canvas, i)
-                } else if (!TextUtils.isEmpty(hint) && hint.length == otpViewItemCount) {
-                    drawHint(canvas, i)
-                }
-            } else {
-                if (text!!.length > i) {
-                    drawInput(canvas, i)
-                } else if (!TextUtils.isEmpty(hint) && hint.length == otpViewItemCount) {
-                    drawHint(canvas, i)
-                }
-            }
-        }
-        if (isFocused
-            && text != null && text!!.length != otpViewItemCount && viewType == VIEW_TYPE_RECTANGLE
-        ) {
-            val index = text!!.length
-            updateItemRectF(index)
-            updateCenterPoint()
-            updateOtpViewBoxPath(index)
-            paint?.color = getLineColorForState(*SELECTED_STATE)
-            drawOtpBox(canvas, index)
-        }
-    }
-
-    private fun drawInput(canvas: Canvas, i: Int) {
-        //allows masking for all number keyboard
-        if (maskingChar != null &&
-            (isNumberInputType(inputType) ||
-                   isPasswordInputType(inputType))
-        ) {
-            drawMaskingText(canvas, i, Character.toString(maskingChar!![0]))
-        } else if (isPasswordInputType(inputType)) {
-            drawCircle(canvas, i)
-        } else {
-            drawText(canvas, i)
-        }
-    }
-
-    private fun getLineColorForState(vararg states: Int): Int {
-        return lineColor?.getColorForState(
-            states,
-            cursorLineColor
-        ) ?: cursorLineColor
-    }
-
-    private fun drawItemBackground(
-        canvas: Canvas,
-        backgroundState: IntArray?
-    ) {
-        if (itemBackground == null) {
-            return
-        }
-        val delta = lineWidth.toFloat() / 2
-        val left = Math.round(itemBorderRect.left - delta)
-        val top = Math.round(itemBorderRect.top - delta)
-        val right = Math.round(itemBorderRect.right + delta)
-        val bottom = Math.round(itemBorderRect.bottom + delta)
-        itemBackground!!.setBounds(left, top, right, bottom)
-        if (viewType != VIEW_TYPE_NONE) {
-            itemBackground!!.state = backgroundState ?: drawableState
-        }
-        itemBackground!!.draw(canvas)
-    }
-
-    private fun updateOtpViewBoxPath(i: Int) {
-        var drawRightCorner = false
-        var drawLeftCorner = false
-        if (otpViewItemSpacing != 0) {
-            drawRightCorner = true
-            drawLeftCorner = drawRightCorner
-        } else {
-            if (i == 0 && i != otpViewItemCount - 1) {
-                drawLeftCorner = true
-            }
-            if (i == otpViewItemCount - 1 && i != 0) {
-                drawRightCorner = true
-            }
-        }
-        updateRoundRectPath(
-            itemBorderRect,
-            otpViewItemRadius.toFloat(),
-            otpViewItemRadius.toFloat(),
-            drawLeftCorner,
-            drawRightCorner
-        )
-    }
-
-    private fun drawOtpBox(canvas: Canvas, i: Int) {
-        if (text != null && hideLineWhenFilled && i < text!!.length) {
-            return
-        }
-
-        paint?.let { canvas.drawPath(path, it) }
-
-
-    }
-
-    private fun drawOtpLine(canvas: Canvas, i: Int) {
-        if (text != null && hideLineWhenFilled && i < text!!.length) {
-            return
-        }
-        var drawLeft: Boolean
-        var drawRight: Boolean
-        drawRight = true
-        drawLeft = drawRight
-        if (otpViewItemSpacing == 0 && otpViewItemCount > 1) {
-            if (i == 0) {
-                drawRight = false
-            } else if (i == otpViewItemCount - 1) {
-                drawLeft = false
-            } else {
-                drawRight = false
-                drawLeft = drawRight
-            }
-        }
-        paint!!.style = Paint.Style.FILL
-        paint!!.strokeWidth = lineWidth.toFloat() / 10
-        val halfLineWidth = lineWidth.toFloat() / 2
-        itemLineRect[itemBorderRect.left - halfLineWidth, itemBorderRect.bottom - halfLineWidth, itemBorderRect.right + halfLineWidth] =
-            itemBorderRect.bottom + halfLineWidth
-        updateRoundRectPath(
-            itemLineRect,
-            otpViewItemRadius.toFloat(),
-            otpViewItemRadius.toFloat(),
-            drawLeft,
-            drawRight
-        )
-        canvas.drawPath(path, paint!!)
-    }
-
-    private fun drawCursor(canvas: Canvas) {
-        if (drawCursor) {
-            val cx = itemCenterPoint.x
-            val cy = itemCenterPoint.y
-            val y = cy - cursorHeight / 2
-            val color = paint!!.color
-            val width = paint!!.strokeWidth
-            paint!!.color = cursorColor
-            paint!!.strokeWidth = cursorWidth.toFloat()
-            canvas.drawLine(cx, y, cx, y + cursorHeight, paint!!)
-            paint!!.color = color
-            paint!!.strokeWidth = width
-        }
-    }
-
-    private fun updateRoundRectPath(
-        rectF: RectF,
-        rx: Float,
-        ry: Float,
-        l: Boolean,
-        r: Boolean
-    ) {
-        updateRoundRectPath(rectF, rx, ry, l, r, r, l)
-    }
-
-    private fun updateRoundRectPath(
-        rectF: RectF, rx: Float, ry: Float,
-        tl: Boolean, tr: Boolean, br: Boolean, bl: Boolean
-    ) {
-        path.reset()
-        val l = rectF.left
-        val t = rectF.top
-        val r = rectF.right
-        val b = rectF.bottom
-        val w = r - l
-        val h = b - t
-        val lw = w - 2 * rx
-        val lh = h - 2 * ry
-        path.moveTo(l, t + ry)
-        if (tl) {
-            path.rQuadTo(0f, -ry, rx, -ry)
-        } else {
-            path.rLineTo(0f, -ry)
-            path.rLineTo(rx, 0f)
-        }
-        path.rLineTo(lw, 0f)
-        if (tr) {
-            path.rQuadTo(rx, 0f, rx, ry)
-        } else {
-            path.rLineTo(rx, 0f)
-            path.rLineTo(0f, ry)
-        }
-        path.rLineTo(0f, lh)
-        if (br) {
-            path.rQuadTo(0f, ry, -rx, ry)
-        } else {
-            path.rLineTo(0f, ry)
-            path.rLineTo(-rx, 0f)
-        }
-        path.rLineTo(-lw, 0f)
-        if (bl) {
-            path.rQuadTo(-rx, 0f, -rx, -ry)
-        } else {
-            path.rLineTo(-rx, 0f)
-            path.rLineTo(0f, -ry)
-        }
-        path.rLineTo(0f, -lh)
-        path.close()
-    }
-
-    private fun updateItemRectF(i: Int) {
-        val halfLineWidth = lineWidth.toFloat() / 2
-        var left = (scrollX
-                + ViewCompat.getPaddingStart(this)
-                + i * (otpViewItemSpacing + otpViewItemWidth) + halfLineWidth)
-        if (otpViewItemSpacing == 0 && i > 0) {
-            left = left - lineWidth * i
-        }
-        val right = left + otpViewItemWidth - lineWidth
-        val top = scrollY + paddingTop + halfLineWidth
-        val bottom = top + otpViewItemHeight - lineWidth
-        itemBorderRect[left, top, right] = bottom
-    }
-
-    private fun drawText(canvas: Canvas, i: Int) {
-        val paint: Paint = getPaintByIndex(i)
-        paint.color = currentTextColor
-        if (rtlTextDirection) {
-            val reversedPosition = otpViewItemCount - i
-            val reversedCharPosition: Int
-            reversedCharPosition = if (text == null) {
-                reversedPosition
-            } else {
-                reversedPosition - text!!.length
-            }
-            if (reversedCharPosition <= 0 && text != null) {
-                drawTextAtBox(canvas, paint, text!!, Math.abs(reversedCharPosition))
-            }
-        } else text?.let { drawTextAtBox(canvas, paint, it, i) }
-    }
-
-    private fun drawMaskingText(
-        canvas: Canvas,
-        i: Int,
-        maskingChar: String
-    ) {
-        val paint: Paint = getPaintByIndex(i)
-        paint.color = currentTextColor
-        if (rtlTextDirection) {
-            val reversedPosition = otpViewItemCount - i
-            val reversedCharPosition: Int
-            reversedCharPosition = if (text == null) {
-                reversedPosition
-            } else {
-                reversedPosition - text!!.length
-            }
-            if (reversedCharPosition <= 0 && text != null) {
-                drawTextAtBox(
-                    canvas, paint, text.toString().replace(".".toRegex(), maskingChar),
-                    Math.abs(reversedCharPosition)
-                )
-            }
-        } else if (text != null) {
-            drawTextAtBox(
-                canvas,
-                paint,
-                text.toString().replace(".".toRegex(), maskingChar),
-                i
-            )
-        }
-    }
-    private fun drawHint(canvas: Canvas, i: Int) {
-        val paint = getPaintByIndex(i)
-        paint.color = currentHintTextColor
-        if (rtlTextDirection) {
-            val reversedPosition = otpViewItemCount - i
-            val reversedCharPosition = reversedPosition - hint.length
-            if (reversedCharPosition <= 0) {
-                drawTextAtBox(canvas, paint, hint, Math.abs(reversedCharPosition))
-            }
-        } else {
-            drawTextAtBox(canvas, paint, hint, i)
-        }
-    }
-
-    private fun drawTextAtBox(
-        canvas: Canvas,
-        paint: Paint,
-        text: CharSequence,
-        charAt: Int
-    ) {
-        paint.getTextBounds(text.toString(), charAt, charAt + 1, textRect)
-        val cx = itemCenterPoint.x
-        val cy = itemCenterPoint.y
-        val x =
-            cx - Math.abs(textRect.width().toFloat()) / 2 - textRect.left
-        val y =
-            cy + Math.abs(textRect.height().toFloat()) / 2 - textRect.bottom
-        canvas.drawText(text, charAt, charAt + 1, x, y, paint)
-    }
-
-    private fun drawCircle(canvas: Canvas, i: Int) {
-        val paint = getPaintByIndex(i)
-        val cx = itemCenterPoint.x
-        val cy = itemCenterPoint.y
-        if (rtlTextDirection) {
-            val reversedItemPosition = otpViewItemCount - i
-            val reversedCharPosition = reversedItemPosition - hint.length
-            if (reversedCharPosition <= 0) {
-                canvas.drawCircle(cx, cy, paint.textSize / 2, paint)
-            }
-        } else {
-            canvas.drawCircle(cx, cy, paint.textSize / 2, paint)
-        }
-    }
-
-    private fun getPaintByIndex(i: Int): Paint {
-        return if (text != null && isAnimationEnable && i == text!!.length - 1) {
-            animatorTextPaint.color = getPaint().color
-            animatorTextPaint
-        } else {
-            getPaint()
-        }
-    }
-
-    private fun drawAnchorLine(canvas: Canvas) {
-        var cx = itemCenterPoint.x
-        var cy = itemCenterPoint.y
-        paint!!.strokeWidth = 1f
-        cx -= paint!!.strokeWidth / 2
-        cy -= paint!!.strokeWidth / 2
-        path.reset()
-        path.moveTo(cx, itemBorderRect.top)
-        path.lineTo(cx, itemBorderRect.top + Math.abs(itemBorderRect.height()))
-        canvas.drawPath(path, paint!!)
-        path.reset()
-        path.moveTo(itemBorderRect.left, cy)
-        path.lineTo(itemBorderRect.left + Math.abs(itemBorderRect.width()), cy)
-        canvas.drawPath(path, paint!!)
-        path.reset()
-        paint!!.strokeWidth = lineWidth.toFloat()
-    }
-
-    private fun updateColors() {
-        var shouldInvalidate = false
-        val color = if (lineColor != null) lineColor!!.getColorForState(
-            drawableState,
-            0
-        ) else currentTextColor
-        if (color != cursorLineColor) {
-            cursorLineColor = color
-            shouldInvalidate = true
-        }
-        if (shouldInvalidate) {
-            invalidate()
-        }
-    }
-    private fun updateCenterPoint() {
-        val cx = itemBorderRect.left + Math.abs(itemBorderRect.width()) / 2
-        val cy = itemBorderRect.top + Math.abs(itemBorderRect.height()) / 2
-        itemCenterPoint[cx] = cy
-    }
-    private fun isPasswordInputType(inputType: Int): Boolean {
-        val variation =
-            inputType and (EditorInfo.TYPE_MASK_CLASS or EditorInfo.TYPE_MASK_VARIATION)
-        return (variation
-                == EditorInfo.TYPE_CLASS_TEXT or EditorInfo.TYPE_TEXT_VARIATION_PASSWORD) || (variation
-                == EditorInfo.TYPE_CLASS_TEXT or EditorInfo.TYPE_TEXT_VARIATION_WEB_PASSWORD) || (variation
-                == EditorInfo.TYPE_CLASS_NUMBER or EditorInfo.TYPE_NUMBER_VARIATION_PASSWORD)
-    }
-    private fun isNumberInputType(inputType: Int): Boolean {
-        return inputType == EditorInfo.TYPE_CLASS_NUMBER
-    }
-   /* override fun getDefaultMovementMethod(): MovementMethod? {
-        return DefaultMovementMethod.getInstance()
-    }*/
-    /**
-     * Sets the line color for all the states (normal, selected,
-     * focused) to be this color.
-     *
-     * @param color A color value in the form 0xAARRGGBB.
-     * Do not pass a resource ID. To get a color value from a resource ID, call
-     * [getColor][androidx.core.content.ContextCompat.getColor].
-     * @attr ref R.styleable#OtpView_lineColor
-     * @see .setLineColor
-     * @see .getLineColors
-     */
-    fun setLineColor(@ColorInt color: Int) {
-        lineColor = ColorStateList.valueOf(color)
-        updateColors()
-    }
+    private val mPaint: Paint
+    private val mTextPaint: TextPaint
+    private val mAnimatorTextPaint: Paint
 
     /**
-     * Sets the line color.
+     * Gets the line colors for the different states (normal, selected, focused) of the CustomOtpView.
      *
-     * @attr ref R.styleable#OtpView_lineColor
-     * @see .setLineColor
-     * @see .getLineColors
-     */
-    fun setLineColor(colors: ColorStateList?) {
-        requireNotNull(colors) { "Color cannot be null" }
-        lineColor = colors
-        updateColors()
-    }
-
-    /**
-     * Gets the line colors for the different states (normal, selected, focused) of the OtpView.
-     *
-     * @attr ref R.styleable#OtpView_lineColor
+     * @attr ref R.styleable#PinView_lineColor
      * @see .setLineColor
      * @see .setLineColor
      */
-    fun getLineColors(): ColorStateList? {
-        return lineColor
-    }
-
+    var lineColors: ColorStateList? = null
+        private set
     /**
      *
      * Return the current color selected for normal line.
      *
      * @return Returns the current item's line color.
      */
-    @ColorInt
-    fun getCurrentLineColor(): Int {
-        return cursorLineColor
-    }
+    @get:ColorInt
+    var currentLineColor = Color.BLACK
+        private set
+    private var mLineWidth: Int = 0
 
-    /**
-     * Sets the line width.
-     *
-     * @attr ref R.styleable#OtpView_lineWidth
-     * @see .getLineWidth
-     */
-    fun setLineWidth(@Px borderWidth: Int) {
-        lineWidth = borderWidth
-        checkItemRadius()
-        requestLayout()
-    }
+    private val mTextRect = Rect()
+    private val mItemBorderRect = RectF()
+    private val mItemLineRect = RectF()
+    private val mPath = Path()
+    private val mItemCenterPoint = PointF()
+
+    private var mDefaultAddAnimator: ValueAnimator? = null
+    private var isAnimationEnable = false
+
+    private var mBlink: Blink? = null
+    private var isCursorVisible: Boolean = false
+    private var drawCursor: Boolean = false
+    private var mCursorHeight: Float = 0.toFloat()
+    private var mCursorWidth: Int = 0
+    private var mCursorColor: Int = 0
 
     /**
      * @return Returns the width of the item's line.
      * @see .setLineWidth
      */
-    fun getLineWidth(): Int {
-        return lineWidth
-    }
-
     /**
-     * Sets the count of items.
+     * Sets the line width.
      *
-     * @attr ref R.styleable#OtpView_itemCount
-     * @see .getItemCount
+     * @attr ref R.styleable#PinView_lineWidth
+     * @see .getLineWidth
      */
-    fun setItemCount(count: Int) {
-        otpViewItemCount = count
-        setMaxLength(count)
-        requestLayout()
-    }
+    var lineWidth: Int
+        get() = mLineWidth
+        set(@Px borderWidth) {
+            mLineWidth = borderWidth
+            checkItemRadius()
+            requestLayout()
+        }
 
     /**
      * @return Returns the count of items.
      * @see .setItemCount
      */
-    fun getItemCount(): Int {
-        return otpViewItemCount
-    }
-
     /**
-     * Sets the radius of square.
+     * Sets the count of items.
      *
-     * @attr ref R.styleable#OtpView_itemRadius
-     * @see .getItemRadius
+     * @attr ref R.styleable#PinView_itemCount
+     * @see .getItemCount
      */
-    fun setItemRadius(@Px itemRadius: Int) {
-        otpViewItemRadius = itemRadius
-        checkItemRadius()
-        requestLayout()
-    }
+    var itemCount: Int
+        get() = mOtpItemCount
+        set(count) {
+            mOtpItemCount = count
+            setMaxLength(count)
+            requestLayout()
+        }
 
     /**
      * @return Returns the radius of square.
      * @see .setItemRadius
      */
-    fun getItemRadius(): Int {
-        return otpViewItemRadius
-    }
-
     /**
-     * Specifies extra space between two items.
+     * Sets the radius of square.
      *
-     * @attr ref R.styleable#OtpView_itemSpacing
-     * @see .getItemSpacing
+     * @attr ref R.styleable#PinView_itemRadius
+     * @see .getItemRadius
      */
-    fun setItemSpacing(@Px itemSpacing: Int) {
-        otpViewItemSpacing = itemSpacing
-        requestLayout()
-    }
+    var itemRadius: Int
+        get() = mOtpItemRadius
+        set(@Px itemRadius) {
+            mOtpItemRadius = itemRadius
+            checkItemRadius()
+            requestLayout()
+        }
 
     /**
      * @return Returns the spacing between two items.
      * @see .setItemSpacing
      */
-    @Px
-    fun getItemSpacing(): Int {
-        return otpViewItemSpacing
-    }
-
     /**
-     * Sets the height of item.
+     * Specifies extra space between two items.
      *
-     * @attr ref R.styleable#OtpView_itemHeight
-     * @see .getItemHeight
+     * @attr ref R.styleable#PinView_itemSpacing
+     * @see .getItemSpacing
      */
-    fun setItemHeight(@Px itemHeight: Int) {
-        otpViewItemHeight = itemHeight
-        updateCursorHeight()
-        requestLayout()
-    }
+    var itemSpacing: Int
+        @Px
+        get() = mOtpItemSpacing
+        set(@Px itemSpacing) {
+            mOtpItemSpacing = itemSpacing
+            requestLayout()
+        }
 
     /**
      * @return Returns the height of item.
      * @see .setItemHeight
      */
-    fun getItemHeight(): Int {
-        return otpViewItemHeight
-    }
-
     /**
-     * Sets the width of item.
+     * Sets the height of item.
      *
-     * @attr ref R.styleable#OtpView_itemWidth
-     * @see .getItemWidth
+     * @attr ref R.styleable#PinView_itemHeight
+     * @see .getItemHeight
      */
-    fun setItemWidth(@Px itemWidth: Int) {
-        otpViewItemWidth = itemWidth
-        checkItemRadius()
-        requestLayout()
-    }
+    var itemHeight: Int
+        get() = mOtpItemHeight
+        set(@Px itemHeight) {
+            mOtpItemHeight = itemHeight
+            updateCursorHeight()
+            requestLayout()
+        }
 
     /**
      * @return Returns the width of item.
      * @see .setItemWidth
      */
-    fun getItemWidth(): Int {
-        return otpViewItemWidth
+    /**
+     * Sets the width of item.
+     *
+     * @attr ref R.styleable#PinView_itemWidth
+     * @see .getItemWidth
+     */
+    var itemWidth: Int
+        get() = mOtpItemWidth
+        set(@Px itemWidth) {
+            mOtpItemWidth = itemWidth
+            checkItemRadius()
+            requestLayout()
+        }
+
+    /**
+     * @return Returns the width (in pixels) of cursor.
+     * @see .setCursorWidth
+     */
+    //region Cursor
+
+    /**
+     * Sets the width (in pixels) of cursor.
+     *
+     * @attr ref R.styleable#PinView_cursorWidth
+     * @see .getCursorWidth
+     */
+    var cursorWidth: Int
+        get() = mCursorWidth
+        set(@Px width) {
+            mCursorWidth = width
+            if (isCursorVisible()) {
+                invalidateCursor(true)
+            }
+        }
+
+    /**
+     * Gets the cursor color.
+     *
+     * @return Return current cursor color.
+     * @see .setCursorColor
+     */
+    /**
+     * Sets the cursor color.
+     *
+     * @param color A color value in the form 0xAARRGGBB.
+     * Do not pass a resource ID. To get a color value from a resource ID, call
+     * [getColor][android.support.v4.content.ContextCompat.getColor].
+     * @attr ref R.styleable#PinView_cursorColor
+     * @see .getCursorColor
+     */
+    var cursorColor: Int
+        get() = mCursorColor
+        set(@ColorInt color) {
+            mCursorColor = color
+            if (isCursorVisible()) {
+                invalidateCursor(true)
+            }
+        }
+
+    init {
+
+        val res = resources
+
+        mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+        mPaint.style = Paint.Style.STROKE
+
+        mTextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
+        mTextPaint.density = res.displayMetrics.density
+        mTextPaint.style = Paint.Style.FILL
+        mTextPaint.textSize = textSize
+
+        mAnimatorTextPaint = TextPaint(mTextPaint)
+
+        val theme = context.theme
+
+        val a = theme.obtainStyledAttributes(attrs, R.styleable.CustomOtpView, defStyleAttr, 0)
+
+        mViewType = a.getInt(R.styleable.CustomOtpView_viewType, VIEW_TYPE_RECTANGLE)
+        mOtpItemCount = a.getInt(R.styleable.CustomOtpView_itemCount, DEFAULT_COUNT)
+        mOtpItemHeight = a.getDimension(R.styleable.CustomOtpView_itemHeight,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_size).toFloat()).toInt()
+        mOtpItemWidth = a.getDimension(R.styleable.CustomOtpView_itemWidth,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_size).toFloat()).toInt()
+        mOtpItemSpacing = a.getDimensionPixelSize(R.styleable.CustomOtpView_itemSpacing,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing))
+        mOtpItemRadius = a.getDimension(R.styleable.CustomOtpView_itemRadius, 0f).toInt()
+        mLineWidth = a.getDimension(R.styleable.CustomOtpView_lineWidth,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_line_width).toFloat()).toInt()
+        lineColors = a.getColorStateList(R.styleable.CustomOtpView_lineColor)
+        isCursorVisible = a.getBoolean(R.styleable.CustomOtpView_android_cursorVisible, true)
+        mCursorColor = a.getColor(R.styleable.CustomOtpView_cursorColor, currentTextColor)
+        mCursorWidth = a.getDimensionPixelSize(R.styleable.CustomOtpView_cursorWidth,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_cursor_width))
+
+        a.recycle()
+
+        if (lineColors != null) {
+            currentLineColor = lineColors!!.defaultColor
+        }
+        updateCursorHeight()
+
+        checkItemRadius()
+
+        setMaxLength(mOtpItemCount)
+        mPaint.strokeWidth = mLineWidth.toFloat()
+        setupAnimator()
+
+        super.setCursorVisible(false)
+        setTextIsSelectable(false)
+    }
+
+    private fun setMaxLength(maxLength: Int) {
+        if (maxLength >= 0) {
+            filters = arrayOf<InputFilter>(InputFilter.LengthFilter(maxLength))
+        } else {
+            filters = NO_FILTERS
+        }
+    }
+
+    private fun setupAnimator() {
+        mDefaultAddAnimator = ValueAnimator.ofFloat(0.5f, 1f)
+        mDefaultAddAnimator!!.duration = 150
+        mDefaultAddAnimator!!.interpolator = DecelerateInterpolator()
+        mDefaultAddAnimator!!.addUpdateListener { animation ->
+            val scale = animation.animatedValue as Float
+            val alpha = (255 * scale).toInt()
+            mAnimatorTextPaint.textSize = textSize * scale
+            mAnimatorTextPaint.alpha = alpha
+            postInvalidate()
+        }
+    }
+
+    private fun checkItemRadius() {
+        if (mViewType == VIEW_TYPE_LINE) {
+            val halfOfLineWidth = mLineWidth.toFloat() / 2
+            if (mOtpItemRadius > halfOfLineWidth) {
+                throw IllegalArgumentException("The itemRadius can not be greater than lineWidth when viewType is line")
+            }
+        }
+        val halfOfItemWidth = mOtpItemWidth.toFloat() / 2
+        if (mOtpItemRadius > halfOfItemWidth) {
+            throw IllegalArgumentException("The itemRadius can not be greater than itemWidth")
+        }
+    }
+
+    override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+        val widthMode = View.MeasureSpec.getMode(widthMeasureSpec)
+        val heightMode = View.MeasureSpec.getMode(heightMeasureSpec)
+        val widthSize = View.MeasureSpec.getSize(widthMeasureSpec)
+        val heightSize = View.MeasureSpec.getSize(heightMeasureSpec)
+
+        var width: Int
+        val height: Int
+
+        val boxHeight = mOtpItemHeight
+
+        if (widthMode == View.MeasureSpec.EXACTLY) {
+            // Parent has told us how big to be. So be it.
+            width = widthSize
+        } else {
+            val boxesWidth = (mOtpItemCount - 1) * mOtpItemSpacing + mOtpItemCount * mOtpItemWidth
+            width = boxesWidth + ViewCompat.getPaddingEnd(this) + ViewCompat.getPaddingStart(this)
+            if (mOtpItemSpacing == 0) {
+                width -= (mOtpItemCount - 1) * mLineWidth
+            }
+        }
+
+        if (heightMode == View.MeasureSpec.EXACTLY) {
+            // Parent has told us how big to be. So be it.
+            height = heightSize
+        } else {
+            height = boxHeight + paddingTop + paddingBottom
+        }
+
+        setMeasuredDimension(width, height)
+    }
+
+    override fun onTextChanged(text: CharSequence, start: Int, lengthBefore: Int, lengthAfter: Int) {
+        if (start != text.length) {
+            moveSelectionToEnd()
+        }
+
+        makeBlink()
+
+        if (isAnimationEnable) {
+            val isAdd = lengthAfter - lengthBefore > 0
+            if (isAdd) {
+                if (mDefaultAddAnimator != null) {
+                    mDefaultAddAnimator!!.end()
+                    mDefaultAddAnimator!!.start()
+                }
+            }
+        }
+    }
+
+    override fun onFocusChanged(focused: Boolean, direction: Int, previouslyFocusedRect: Rect?) {
+        super.onFocusChanged(focused, direction, previouslyFocusedRect)
+
+        if (focused) {
+            moveSelectionToEnd()
+            makeBlink()
+        }
+    }
+
+    override fun onSelectionChanged(selStart: Int, selEnd: Int) {
+        super.onSelectionChanged(selStart, selEnd)
+
+        if (selEnd != text?.length) {
+            moveSelectionToEnd()
+        }
+    }
+
+    private fun moveSelectionToEnd() {
+        text?.length?.let { setSelection(it) }
+    }
+
+    override fun drawableStateChanged() {
+        super.drawableStateChanged()
+
+        if (lineColors == null || lineColors!!.isStateful) {
+            updateColors()
+        }
+    }
+
+    override fun onDraw(canvas: Canvas) {
+        canvas.save()
+
+        updatePaints()
+        drawPinView(canvas)
+
+        canvas.restore()
+    }
+
+    private fun updatePaints() {
+        mPaint.color = currentLineColor
+        mPaint.style = Paint.Style.STROKE
+        mPaint.strokeWidth = mLineWidth.toFloat()
+        mTextPaint.color = currentTextColor
+    }
+
+    private fun drawPinView(canvas: Canvas) {
+        for (i in 0 until mOtpItemCount) {
+            updateItemRectF(i)
+            updateCenterPoint()
+
+            if (mViewType == VIEW_TYPE_RECTANGLE) {
+                drawPinBox(canvas, i)
+            } else {
+                drawPinLine(canvas, i)
+            }
+
+            if (DBG) {
+                drawAnchorLine(canvas)
+            }
+
+            if (text?.length!! > i) {
+                if (isPasswordInputType(inputType)) {
+                    drawCircle(canvas, i)
+                } else {
+                    drawText(canvas, i)
+                }
+            } else if (!TextUtils.isEmpty(hint) && hint.length == mOtpItemCount) {
+                drawHint(canvas, i)
+            }
+        }
+
+        // highlight the next item
+        if (isFocused && text?.length != mOtpItemCount) {
+            val index = text?.length
+            if (index != null) {
+                updateItemRectF(index)
+            }
+            updateCenterPoint()
+
+            mPaint.color = getLineColorForState(android.R.attr.state_selected)
+
+            drawCursor(canvas)
+
+            if (mViewType == VIEW_TYPE_RECTANGLE) {
+                if (index != null) {
+                    drawPinBox(canvas, index)
+                }
+            } else {
+                if (index != null) {
+                    drawPinLine(canvas, index)
+                }
+            }
+        }
+    }
+
+    private fun getLineColorForState(vararg states: Int): Int {
+        return if (lineColors != null) lineColors!!.getColorForState(states, currentLineColor) else currentLineColor
+    }
+
+    private fun drawPinBox(canvas: Canvas, i: Int) {
+        var drawRightCorner = false
+        var drawLeftCorner = false
+        if (mOtpItemSpacing != 0) {
+            drawRightCorner = true
+            drawLeftCorner = drawRightCorner
+        } else {
+            if (i == 0 && i != mOtpItemCount - 1) {
+                drawLeftCorner = true
+            }
+            if (i == mOtpItemCount - 1 && i != 0) {
+                drawRightCorner = true
+            }
+        }
+        updateRoundRectPath(mItemBorderRect, mOtpItemRadius.toFloat(), mOtpItemRadius.toFloat(), drawLeftCorner, drawRightCorner)
+        canvas.drawPath(mPath, mPaint)
+    }
+
+    private fun drawPinLine(canvas: Canvas, i: Int) {
+        var l: Boolean
+        var r: Boolean
+        r = true
+        l = r
+        if (mOtpItemSpacing == 0 && mOtpItemCount > 1) {
+            if (i == 0) {
+                // draw only left round
+                r = false
+            } else if (i == mOtpItemCount - 1) {
+                // draw only right round
+                l = false
+            } else {
+                // draw rect
+                r = false
+                l = r
+            }
+        }
+        mPaint.style = Paint.Style.FILL
+        mPaint.strokeWidth = mLineWidth.toFloat() / 10
+        val halfLineWidth = mLineWidth.toFloat() / 2
+        mItemLineRect.set(mItemBorderRect.left, mItemBorderRect.bottom - halfLineWidth, mItemBorderRect.right, mItemBorderRect.bottom + halfLineWidth)
+
+        updateRoundRectPath(mItemLineRect, mOtpItemRadius.toFloat(), mOtpItemRadius.toFloat(), l, r)
+        canvas.drawPath(mPath, mPaint)
+    }
+
+    private fun drawCursor(canvas: Canvas) {
+        if (drawCursor) {
+            val cx = mItemCenterPoint.x
+            val cy = mItemCenterPoint.y
+            val y = cy - mCursorHeight / 2
+
+            val color = mPaint.color
+            val width = mPaint.strokeWidth
+            mPaint.color = mCursorColor
+            mPaint.strokeWidth = mCursorWidth.toFloat()
+
+            canvas.drawLine(cx, y, cx, y + mCursorHeight, mPaint)
+
+            mPaint.color = color
+            mPaint.strokeWidth = width
+        }
+    }
+
+    private fun updateRoundRectPath(rectF: RectF, rx: Float, ry: Float, l: Boolean, r: Boolean) {
+        updateRoundRectPath(rectF, rx, ry, l, r, r, l)
+    }
+
+    private fun updateRoundRectPath(rectF: RectF, rx: Float, ry: Float,
+                                    tl: Boolean, tr: Boolean, br: Boolean, bl: Boolean) {
+        mPath.reset()
+
+        val l = rectF.left
+        val t = rectF.top
+        val r = rectF.right
+        val b = rectF.bottom
+
+        val w = r - l
+        val h = b - t
+
+        val lw = w - 2 * rx// line width
+        val lh = h - 2 * ry// line height
+
+        mPath.moveTo(l, t + ry)
+
+        if (tl) {
+            mPath.rQuadTo(0f, -ry, rx, -ry)// top-left corner
+        } else {
+            mPath.rLineTo(0f, -ry)
+            mPath.rLineTo(rx, 0f)
+        }
+
+        mPath.rLineTo(lw, 0f)
+
+        if (tr) {
+            mPath.rQuadTo(rx, 0f, rx, ry)// top-right corner
+        } else {
+            mPath.rLineTo(rx, 0f)
+            mPath.rLineTo(0f, ry)
+        }
+
+        mPath.rLineTo(0f, lh)
+
+        if (br) {
+            mPath.rQuadTo(0f, ry, -rx, ry)// bottom-right corner
+        } else {
+            mPath.rLineTo(0f, ry)
+            mPath.rLineTo(-rx, 0f)
+        }
+
+        mPath.rLineTo(-lw, 0f)
+
+        if (bl) {
+            mPath.rQuadTo(-rx, 0f, -rx, -ry)// bottom-left corner
+        } else {
+            mPath.rLineTo(-rx, 0f)
+            mPath.rLineTo(0f, -ry)
+        }
+
+        mPath.rLineTo(0f, -lh)
+
+        mPath.close()
+    }
+
+    private fun updateItemRectF(i: Int) {
+        val halfLineWidth = mLineWidth.toFloat() / 2
+        var left = scrollX.toFloat() + ViewCompat.getPaddingStart(this).toFloat() + (i * (mOtpItemSpacing + mOtpItemWidth)).toFloat() + halfLineWidth
+        if (mOtpItemSpacing == 0 && i > 0) {
+            left = left - mLineWidth * i
+        }
+        val right = left + mOtpItemWidth - mLineWidth
+        val top = scrollY.toFloat() + paddingTop.toFloat() + halfLineWidth
+        val bottom = top + mOtpItemHeight - mLineWidth
+
+        mItemBorderRect.set(left, top, right, bottom)
+    }
+
+    private fun drawText(canvas: Canvas, i: Int) {
+        val paint = getPaintByIndex(i)
+        // 1, Rect(4, -39, 20, 0)
+        // 您, Rect(2, -47, 51, 3)
+        // *, Rect(0, -39, 23, -16)
+        // =, Rect(4, -26, 26, -10)
+        // -, Rect(1, -19, 14, -14)
+        // +, Rect(2, -32, 29, -3)
+        text?.let { drawTextAtBox(canvas, paint, it, i) }
+    }
+
+    private fun drawHint(canvas: Canvas, i: Int) {
+        val paint = getPaintByIndex(i)
+        paint.color = currentHintTextColor
+        drawTextAtBox(canvas, paint, hint, i)
+    }
+
+    private fun drawTextAtBox(canvas: Canvas, paint: Paint, text: CharSequence, charAt: Int) {
+        paint.getTextBounds(text.toString(), charAt, charAt + 1, mTextRect)
+        val cx = mItemCenterPoint.x
+        val cy = mItemCenterPoint.y
+        val x = cx - Math.abs(mTextRect.width().toFloat()) / 2 - mTextRect.left.toFloat()
+        val y = cy + Math.abs(mTextRect.height().toFloat()) / 2 - mTextRect.bottom// always center vertical
+        canvas.drawText(text, charAt, charAt + 1, x, y, paint)
+    }
+
+    private fun drawCircle(canvas: Canvas, i: Int) {
+        val paint = getPaintByIndex(i)
+        val cx = mItemCenterPoint.x
+        val cy = mItemCenterPoint.y
+        canvas.drawCircle(cx, cy, paint.textSize / 2, paint)
+    }
+
+    private fun getPaintByIndex(i: Int): Paint {
+        if (isAnimationEnable && i == text?.length?.minus(1) ?: 1) {
+            mAnimatorTextPaint.color = mTextPaint.color
+            return mAnimatorTextPaint
+        } else {
+            return mTextPaint
+        }
+    }
+
+    /**
+     * For seeing the font position
+     */
+    private fun drawAnchorLine(canvas: Canvas) {
+        var cx = mItemCenterPoint.x
+        var cy = mItemCenterPoint.y
+        mPaint.strokeWidth = 1f
+        cx -= mPaint.strokeWidth / 2
+        cy -= mPaint.strokeWidth / 2
+
+        mPath.reset()
+        mPath.moveTo(cx, mItemBorderRect.top)
+        mPath.lineTo(cx, mItemBorderRect.top + Math.abs(mItemBorderRect.height()))
+        canvas.drawPath(mPath, mPaint)
+
+        mPath.reset()
+        mPath.moveTo(mItemBorderRect.left, cy)
+        mPath.lineTo(mItemBorderRect.left + Math.abs(mItemBorderRect.width()), cy)
+        canvas.drawPath(mPath, mPaint)
+
+        mPath.reset()
+
+        mPaint.strokeWidth = mLineWidth.toFloat()
+    }
+
+    private fun updateColors() {
+        var inval = false
+
+        val color: Int
+        if (lineColors != null) {
+            color = lineColors!!.getColorForState(drawableState, 0)
+        } else {
+            color = currentTextColor
+        }
+
+        if (color != currentLineColor) {
+            currentLineColor = color
+            inval = true
+        }
+
+        if (inval) {
+            invalidate()
+        }
+    }
+
+    private fun updateCenterPoint() {
+        val cx = mItemBorderRect.left + Math.abs(mItemBorderRect.width()) / 2
+        val cy = mItemBorderRect.top + Math.abs(mItemBorderRect.height()) / 2
+        mItemCenterPoint.set(cx, cy)
+    }
+
+    override fun getDefaultMovementMethod(): MovementMethod {
+        return InitialMovementMethod.getInstance()
+    }
+
+    /**
+     * Sets the line color for all the states (normal, selected,
+     * focused) to be this color.
+     *
+     * @param color A color value in the form 0xAARRGGBB.
+     * Do not pass a resource ID. To get a color value from a resource ID, call
+     * [getColor][android.support.v4.content.ContextCompat.getColor].
+     * @attr ref R.styleable#PinView_lineColor
+     * @see .setLineColor
+     * @see .getLineColors
+     */
+    fun setLineColor(@ColorInt color: Int) {
+        lineColors = ColorStateList.valueOf(color)
+        updateColors()
+    }
+
+    /**
+     * Sets the line color.
+     *
+     * @attr ref R.styleable#PinView_lineColor
+     * @see .setLineColor
+     * @see .getLineColors
+     */
+    fun setLineColor(colors: ColorStateList?) {
+        if (colors == null) {
+            throw NullPointerException()
+        }
+
+        lineColors = colors
+        updateColors()
     }
 
     /**
@@ -847,18 +745,6 @@ class TapOTPView: AppCompatEditText {
         isAnimationEnable = enable
     }
 
-    /**
-     * Specifies whether the line (border) should be hidden or visible when text entered.
-     * By the default, this flag is false and the line is always drawn.
-     *
-     * @param hideLineWhenFilled true to hide line on a position where text entered,
-     * false to always show line
-     * @attr ref R.styleable#OtpView_hideLineWhenFilled
-     */
-    fun setHideLineWhenFilled(hideLineWhenFilled: Boolean) {
-        this.hideLineWhenFilled = hideLineWhenFilled
-    }
-
     override fun setTextSize(size: Float) {
         super.setTextSize(size)
         updateCursorHeight()
@@ -867,116 +753,6 @@ class TapOTPView: AppCompatEditText {
     override fun setTextSize(unit: Int, size: Float) {
         super.setTextSize(unit, size)
         updateCursorHeight()
-    }
-
-    fun setOtpCompletionListener(otpCompletionListener: TapOTPInterface) {
-        this.onOtpCompletionListener = otpCompletionListener
-    }
-
-    //region ItemBackground
-
-    //region ItemBackground
-    /**
-     * Set the item background to a given resource. The resource should refer to
-     * a Drawable object or 0 to remove the item background.
-     *
-     * @param resId The identifier of the resource.
-     * @attr ref R.styleable#OtpView_android_itemBackground
-     */
-    fun setItemBackgroundResources(@DrawableRes resId: Int) {
-        if (resId != 0 && itemBackgroundResource != resId) {
-            return
-        }
-        itemBackground = ResourcesCompat.getDrawable(resources, resId, context.theme)
-        setItemBackground(itemBackground!!)
-        itemBackgroundResource = resId
-    }
-
-    /**
-     * Sets the item background color for this view.
-     *
-     * @param color the color of the item background
-     */
-    fun setItemBackgroundColor(@ColorInt color: Int) {
-        if (itemBackground is ColorDrawable) {
-            (itemBackground?.mutate() as ColorDrawable).color = color
-            itemBackgroundResource = 0
-        } else {
-            setItemBackground(ColorDrawable(color))
-        }
-    }
-
-    /**
-     * Set the item background to a given Drawable, or remove the background.
-     *
-     * @param background The Drawable to use as the item background, or null to remove the
-     * item background
-     */
-    fun setItemBackground(background: Drawable) {
-        itemBackgroundResource = 0
-        itemBackground = background
-        invalidate()
-    }
-    //endregion
-
-    //region Cursor
-
-    //endregion
-    //region Cursor
-    /**
-     * Sets the width (in pixels) of cursor.
-     *
-     * @attr ref R.styleable#OtpView_cursorWidth
-     * @see .getCursorWidth
-     */
-    fun setCursorWidth(@Px width: Int) {
-        cursorWidth = width
-        if (isCursorVisible) {
-            invalidateCursor(true)
-        }
-    }
-
-    /**
-     * @return Returns the width (in pixels) of cursor.
-     * @see .setCursorWidth
-     */
-    fun getCursorWidth(): Int {
-        return cursorWidth
-    }
-
-    /**
-     * Sets the cursor color.
-     *
-     * @param color A color value in the form 0xAARRGGBB.
-     * Do not pass a resource ID. To get a color value from a resource ID, call
-     * [getColor][androidx.core.content.ContextCompat.getColor].
-     * @attr ref R.styleable#OtpView_cursorColor
-     * @see .getCursorColor
-     */
-    fun setCursorColor(@ColorInt color: Int) {
-        cursorColor = color
-        if (isCursorVisible) {
-            invalidateCursor(true)
-        }
-    }
-
-    /**
-     * Gets the cursor color.
-     *
-     * @return Return current cursor color.
-     * @see .setCursorColor
-     */
-    fun getCursorColor(): Int {
-        return cursorColor
-    }
-
-    fun setMaskingChar(maskingChar: String?) {
-        this.maskingChar = maskingChar
-        requestLayout()
-    }
-
-    fun getMaskingChar(): String? {
-        return maskingChar
     }
 
     override fun setCursorVisible(visible: Boolean) {
@@ -993,10 +769,9 @@ class TapOTPView: AppCompatEditText {
 
     override fun onScreenStateChanged(screenState: Int) {
         super.onScreenStateChanged(screenState)
-        if (screenState == View.SCREEN_STATE_ON) {
-            resumeBlink()
-        } else if (screenState == View.SCREEN_STATE_OFF) {
-            suspendBlink()
+        when (screenState) {
+            View.SCREEN_STATE_ON -> resumeBlink()
+            View.SCREEN_STATE_OFF -> suspendBlink()
         }
     }
 
@@ -1011,7 +786,36 @@ class TapOTPView: AppCompatEditText {
     }
 
     private fun shouldBlink(): Boolean {
-        return isCursorVisible && isFocused
+        return isCursorVisible() && isFocused
+    }
+
+    private fun makeBlink() {
+        if (shouldBlink()) {
+            if (mBlink == null) {
+                mBlink = Blink()
+            }
+            removeCallbacks(mBlink)
+            drawCursor = false
+            postDelayed(mBlink, BLINK.toLong())
+        } else {
+            if (mBlink != null) {
+                removeCallbacks(mBlink)
+            }
+        }
+    }
+
+    private fun suspendBlink() {
+        if (mBlink != null) {
+            mBlink!!.cancel()
+            invalidateCursor(false)
+        }
+    }
+
+    private fun resumeBlink() {
+        if (mBlink != null) {
+            mBlink!!.uncancel()
+            makeBlink()
+        }
     }
 
     private fun invalidateCursor(showCursor: Boolean) {
@@ -1022,76 +826,63 @@ class TapOTPView: AppCompatEditText {
     }
 
     private fun updateCursorHeight() {
-        val delta = 2 * dpToPx()
-        cursorHeight =
-            if (otpViewItemHeight - textSize > delta) textSize + delta else textSize
+        val delta = 2 * dpToPx(2f)
+        mCursorHeight = if (mOtpItemHeight - textSize > delta) textSize + delta else textSize
     }
 
+    private inner class Blink : Runnable {
+        private var mCancelled: Boolean = false
 
-    private class Blink : Runnable {
-        private var cancelled = false
         override fun run() {
-            if (cancelled) {
+            if (mCancelled) {
                 return
             }
-           // removeCallbacks(this)
-            /*if (shouldBlink()) {
+
+            removeCallbacks(this)
+
+            if (shouldBlink()) {
                 invalidateCursor(!drawCursor)
                 postDelayed(this, BLINK.toLong())
-            }*/
+            }
         }
 
         fun cancel() {
-            if (!cancelled) {
-                //removeCallbacks(this)
-                cancelled = true
+            if (!mCancelled) {
+                removeCallbacks(this)
+                mCancelled = true
             }
         }
 
-        fun unCancel() {
-            cancelled = false
+        internal fun uncancel() {
+            mCancelled = false
         }
     }
-
-
-
     //endregion
-    private fun dpToPx(): Int {
-        return (2.toFloat() * resources.displayMetrics.density + 0.5f).toInt()
+
+    private fun dpToPx(dp: Float): Int {
+        return (dp * resources.displayMetrics.density + 0.5f).toInt()
     }
-    private fun makeBlink() {
-        if (shouldBlink()) {
-            if (blink == null) {
-                blink = Blink()
-            }
-            removeCallbacks(blink)
-            drawCursor = false
-            postDelayed(blink, BLINK.toLong())
-        } else {
-            if (blink != null) {
-                removeCallbacks(blink)
-            }
+
+    companion object {
+
+        private val TAG = "CustomOtpView"
+
+        private val DBG = false
+
+        private val BLINK = 500
+
+        private val DEFAULT_COUNT = 4
+
+        private val NO_FILTERS = arrayOfNulls<InputFilter>(0)
+
+        private val VIEW_TYPE_RECTANGLE = 0
+        private val VIEW_TYPE_LINE = 1
+
+        private fun isPasswordInputType(inputType: Int): Boolean {
+            val variation = inputType and (EditorInfo.TYPE_MASK_CLASS or EditorInfo.TYPE_MASK_VARIATION)
+            return (variation == EditorInfo.TYPE_CLASS_TEXT or EditorInfo.TYPE_TEXT_VARIATION_PASSWORD
+                    || variation == EditorInfo.TYPE_CLASS_TEXT or EditorInfo.TYPE_TEXT_VARIATION_WEB_PASSWORD
+                    || variation == EditorInfo.TYPE_CLASS_NUMBER or EditorInfo.TYPE_NUMBER_VARIATION_PASSWORD)
         }
     }
-
-    private fun suspendBlink() {
-        if (blink != null) {
-            blink?.cancel()
-            invalidateCursor(false)
-        }
-    }
-
-    private fun resumeBlink() {
-        if (blink != null) {
-            blink?.unCancel()
-            makeBlink()
-        }
-    }
-
-
-}
-
-private fun Any.getColorForState(states: Array<out IntArray>, cursorLineColor: Int): Array<out IntArray> {
-    return states
-
 }

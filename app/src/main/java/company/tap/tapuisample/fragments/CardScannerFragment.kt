@@ -4,13 +4,9 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.transition.Transition
-import androidx.transition.TransitionInflater
-import androidx.transition.TransitionManager
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
@@ -30,8 +26,9 @@ import company.tap.tapuilibrary.views.TapAmountSectionView
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapHeaderSectionView
 import company.tap.tapuisample.R
-import company.tap.tapuisample.TextDrawable
-import kotlinx.android.synthetic.main.custom_bottom_sheet.*
+import company.tap.tapuilibrary.views.TextDrawable
+import jp.wasabeef.blurry.Blurry
+import kotlinx.android.synthetic.main.custom_card_view.*
 
 /**
  * Created by AhlaamK on 7/6/20.
@@ -52,12 +49,17 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
     private lateinit var itemCount: TapButton
+   // var blurLayout: BlurLayout? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_card_view, container, false)
+       val rootView = (activity?.window?.decorView as ViewGroup?)
+
+       //  Blurry.with(context).radius(25).sampling(2).onto(rootView)
+
         childFragmentManager
             .beginTransaction()
             .add(R.id.inline_container, InlineViewFragment())
@@ -68,9 +70,47 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
         headerViewInit(view)
         amountViewInit(view)
         FrameManager.getInstance().setFrameColor(Color.WHITE)
-        return view
+       // blurLayout = view.findViewById(R.id.blurLayout)
+       view.post(Runnable {
+
+           Blurry.with(context).radius(25).sampling(2).onto(cardscan_view)
+           cardscan_view.bringChildToFront(inline_container)
+           // BlurKit.getInstance().blur(view, 25)
+           // Blurry.with(context).radius(25).sampling(90).onto(otprootview)
+       })
+       return view
 
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+       // view.post(Runnable {
+           // Blurry.with(context).radius(20).sampling(8).onto(cardscan_view)
+            view.post(Runnable {
+                Blurry.with(context)
+                    .radius(10)
+                    .sampling(8)
+                    .color(Color.argb(66, 255, 255, 0))
+                    .async()
+                    .animate(500)
+                    .onto(cardscan_view)
+            })
+       // })
+    }
+
+   /* override fun onAttachFragment(childFragment: Fragment) {
+        super.onAttachFragment(childFragment)
+        val rootView = (activity?.window?.decorView as ViewGroup?)
+
+      //  Blurry.with(context).radius(25).sampling(2).onto(rootView)
+        Blurry.with(context)
+            .radius(10)
+            .sampling(8)
+            .color(Color.argb(66, 255, 255, 0))
+            .async()
+            .animate(500)
+            .onto(rootView)
+    }*/
 
     private fun amountViewInit(view: View) {
         amountSectionView = view.findViewById(R.id.amount_section_card)
@@ -97,14 +137,18 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
 
         Glide.with(this)
             .load(imageUrl)
-            .placeholder(TextDrawable(businessInitial.toString()))
+            .placeholder(
+                TextDrawable(
+                    businessInitial.toString()
+                )
+            )
             .into(businessIcon)
     }
 
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
             businessName = businessName,
-            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection",""),
             businessImageResources = imageUrl,
             businessPlaceHolder = businessName?.get(0).toString()
         )
@@ -132,7 +176,6 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
                 .replace(R.id.inline_container,this)
                 .commit()
 
-
         }
 
     override fun onScanCardFailed(e: Exception?) {
@@ -146,4 +189,5 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
             itemCount = "CLOSE"
         )
     }
+
 }

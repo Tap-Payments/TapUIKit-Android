@@ -43,6 +43,7 @@ import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
 import company.tap.tapuisample.TextDrawable
 import company.tap.tapuisample.adapters.CardTypeAdapter
+import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.custom_bottom_sheet.action_button
 import kotlinx.android.synthetic.main.custom_bottom_sheet.fragment_container
@@ -239,7 +240,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
         Glide.with(this)
             .load(imageUrl)
-            .placeholder(TextDrawable(businessInitial.toString()))
+            .placeholder(
+                TextDrawable(
+                    businessInitial.toString()
+                )
+            )
             .into(businessIcon)
     }
 
@@ -391,7 +396,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 val card = CardValidator.validate(s.toString())
                 if (card.cardBrand != null){
                     tabLayout.selectTab(card.cardBrand, card.validationState == CardValidationState.valid)
-                    checkboxString = "For faster and easier checkout,\n use card scanner or NFC."
+                    checkboxString = LocalizationManager.getValue("cardSaveLabel","TapCardInputKit")
                     switchSaveDemo?.visibility= View.VISIBLE
                     switchLayout?.visibility = View.VISIBLE
                     switchMerchantCheckout?.visibility = View.VISIBLE

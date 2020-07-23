@@ -76,7 +76,7 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
                 TapFont.robotoLight))
         itemViewadapter.setItemViewDataSource(getItemViewDataSource())
         if(itemList[position]%2==0){
-            discount.text =LocalizationManager.getValue("Discount","ItemList")
+            discount.text =LocalizationManager.getValue("Discount","ItemList","")
             totalAmount.paintFlags =
                 totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
             itemName.text = "ITEM TITLE "+itemList[position]
@@ -101,9 +101,9 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
 
         }
         if(isExpanded){
-            descText.text = LocalizationManager.getValue("hideDesc","ItemList")
+            descText.text = LocalizationManager.getValue("hideDesc","ItemList","")
         }else{
-            descText.text =  LocalizationManager.getValue("showDesc","ItemList")
+            descText.text =  LocalizationManager.getValue("showDesc","ItemList","")
         }
     }
 

@@ -9,9 +9,15 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
+import android.security.keystore.KeyGenParameterSpec
+import android.security.keystore.KeyProperties
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.biometric.BiometricManager
+import androidx.biometric.BiometricPrompt
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
@@ -23,15 +29,24 @@ import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.*
+import jp.wasabeef.blurry.Blurry
+import java.security.KeyStore
+import java.util.concurrent.Executor
+import javax.crypto.Cipher
+import javax.crypto.KeyGenerator
+import javax.crypto.SecretKey
 
 
 class MainActivity : BaseActivity(),
     TapAmountSectionInterface, TapSwitchInterface, InlineViewCallback {
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
-    private val modalNFCBottomSheet = OTPFragment()
+    private val modalNFCBottomSheet = NFCSampleFragment()
     private val modalCardScannerBottomSheet = CardScannerFragment()
-
+    private lateinit var executor: Executor
+    private lateinit var biometricPrompt: BiometricPrompt
+    private lateinit var promptInfo: BiometricPrompt.PromptInfo
+    private val KEY_NAME = "android"
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +55,7 @@ class MainActivity : BaseActivity(),
         context = this
         fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
         fontChanger.replaceFonts((findViewById(android.R.id.content)))
-
+       // Blurry.with(context).radius(25).sampling(2).onto()
 
     }
 
@@ -120,7 +135,7 @@ class MainActivity : BaseActivity(),
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
-       // modalNFCBottomSheet.processNFC(intent)
+        modalNFCBottomSheet.processNFC(intent)
     }
 
     fun openCardScannerView(view: View) {
@@ -170,6 +185,87 @@ class MainActivity : BaseActivity(),
     fun openFragment(view: View) {
         ExampleFragment().show(supportFragmentManager, null)
     }
+
+    fun otpFragment(view: View) {
+        OTPFragment().show(supportFragmentManager,null)
+    }
+
+    fun openBiometrics(view: View) {
+        val biometricManager = BiometricManager.from(this)
+        when (biometricManager.canAuthenticate()) {
+            BiometricManager.BIOMETRIC_SUCCESS ->
+                Log.d("MY_APP_TAG", "App can authenticate using biometrics.")
+            BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE ->
+                Log.e("MY_APP_TAG", "No biometric features available on this device.")
+            BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->
+                Log.e("MY_APP_TAG", "Biometric features are currently unavailable.")
+            BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED ->
+                Log.e("MY_APP_TAG", "The user hasn't associated " +
+                        "any biometric credentials with their account.")
+        }
+        executor = ContextCompat.getMainExecutor(this)
+        biometricPrompt = BiometricPrompt(this, executor,
+            object : BiometricPrompt.AuthenticationCallback() {
+                override fun onAuthenticationError(errorCode: Int,
+                                                   errString: CharSequence) {
+                    super.onAuthenticationError(errorCode, errString)
+                    Toast.makeText(applicationContext,
+                        "Authentication error: $errString", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                override fun onAuthenticationSucceeded(
+                    result: BiometricPrompt.AuthenticationResult) {
+                    super.onAuthenticationSucceeded(result)
+                    Toast.makeText(applicationContext,
+                        "Authentication succeeded!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+                override fun onAuthenticationFailed() {
+                    super.onAuthenticationFailed()
+                    Toast.makeText(applicationContext, "Authentication failed",
+                        Toast.LENGTH_SHORT)
+                        .show()
+                }
+            })
+
+        promptInfo = BiometricPrompt.PromptInfo.Builder()
+            .setTitle("Biometric login for my app")
+            .setSubtitle("Log in using your biometric credential")
+            .setNegativeButtonText("Use account password")
+            .build()
+        biometricPrompt.authenticate(promptInfo)
+
+      /*  val cipher = getCipher()
+        val secretKey = getSecretKey()
+        cipher.init(Cipher.ENCRYPT_MODE, secretKey)
+        biometricPrompt.authenticate(promptInfo,
+            BiometricPrompt.CryptoObject(cipher))*/
+    }
+
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun generateSecretKey(keyGenParameterSpec: KeyGenParameterSpec) {
+        val keyGenerator = KeyGenerator.getInstance(
+            KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
+        keyGenerator.init(keyGenParameterSpec)
+        keyGenerator.generateKey()
+    }
+
+    private fun getSecretKey(): SecretKey {
+        val keyStore = KeyStore.getInstance("AndroidKeyStore")
+
+        // Before the keystore can be accessed, it must be loaded.
+        keyStore.load(null)
+        return keyStore.getKey(KEY_NAME, null) as SecretKey
+    }
+
+    private fun getCipher(): Cipher {
+        return Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/"
+                + KeyProperties.BLOCK_MODE_CBC + "/"
+                + KeyProperties.ENCRYPTION_PADDING_PKCS7)
+    }
+
 
 }
 

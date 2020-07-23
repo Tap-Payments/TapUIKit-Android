@@ -1,17 +1,21 @@
 package company.tap.tapuisample.fragments
 
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.fragment.app.DialogFragment
+import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.views.TapOTPView
 import company.tap.tapuisample.R
-import java.util.*
+import jp.wasabeef.blurry.Blurry
+import kotlinx.android.synthetic.main.fragment_otpscreen.*
+
 
 /**
  * Created by AhlaamK on 7/12/20.
@@ -20,19 +24,11 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 class OTPFragment: DialogFragment() {
-    var TAG = "OTPFullScreenDialog"
-    private val TICK_LENGTH = 1000
-    private val TIMER_STRING_FORMAT = "%02d:%02d"
-    private val CONFIRMATION_CODE_LENGTH = 6
-    private val timer: CountDownTimer? = null
-    private var resendConfirmationCodeTimeout = 0
-
-    private var timerTextView: TextView? = null
-    private var phoneNumberTextView: TextView? = null
     private lateinit var otpView:TapOTPView
+    private lateinit var otpSent:TapTextView
+    private lateinit var otpMobile:TapTextView
+    private lateinit var timerText:TapTextView
 
-    private val otpCode = ""
-    private val textViewsArray = ArrayList<TextView>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStyle(
@@ -49,37 +45,69 @@ class OTPFragment: DialogFragment() {
         super.onCreateView(inflater, container, savedInstanceState)
         val view: View =
             inflater.inflate(R.layout.fragment_otpscreen, container, true)
-        resendConfirmationCodeTimeout = 30
-      //  prepareTextViews(view)
-        //handleConfirmationCodeInputEditText(view)
-       // startCountdown(view)
+        val insertPoint: ViewGroup = activity?.findViewById(android.R.id.content) as ViewGroup
+        prepareTextViews(view)
+        startCountdown(view)
         otpView = view.findViewById(R.id.otp_view)
+
+        val rootView = (activity?.window?.decorView as ViewGroup?)
+
+        view.post(Runnable {
+
+            // Configure background
+            Blurry.with(context)
+                .radius(15)
+                .color(Color.argb(20, 255, 255, 255))
+                .onto(otp_linearlayout)
+           // insertPoint.removeView(otp_linearlayout)
+           /* insertPoint.addView(
+                otp_linearlayout,
+                0,
+                ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            )
+            otp_linearlayout.bringToFront()*/
+
+        })
         return view
     }
-    private fun prepareTextViews(view: View) {
-        val inflater = LayoutInflater.from(view.context)
-        val textViewsLayout = view.findViewById<LinearLayout>(R.id.textViewsLayout)
-        val otpParentLayout =
-            view.findViewById<RelativeLayout>(R.id.otpParentLayout)
-        var index = 0
-        while (index < CONFIRMATION_CODE_LENGTH) {
-            val textViewParams = LinearLayout.LayoutParams(
-                0,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
-            textViewParams.weight = 1f
-            textViewParams.setMargins(10, 10, 10, 10)
-            val textView =
-                inflater.inflate(R.layout.textview_cell, null) as TextView
-            textViewsLayout.addView(textView, textViewParams)
-
-            textViewsArray.add(textView)
-            index++
-        }
-       // timerTextView = view.findViewById(R.id.timerTextView)
 
 
+    private fun startCountdown(view: View) {
+        object : CountDownTimer(60 * 1000, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                val second = millisUntilFinished / 1000 % 60
+                val minutes = millisUntilFinished / (1000 * 60) % 60
+                timerText.text=("$minutes:$second")
+            }
+
+            override fun onFinish() {
+                timerText.text=("00:00")
+            }
+        }.start()
 
     }
 
+    private fun prepareTextViews(view: View) {
+        otpSent = view.findViewById(R.id.otp_sent)
+        otpSent.text = LocalizationManager.getValue("Message","TapOtpView","Ready")
+        otpMobile = view.findViewById(R.id.mobile_textview)
+        otpMobile.text= "+965 6••••111"
+        timerText = view.findViewById(R.id.timer_textview)
+
+    }
+
+
+      fun createScreenshot(view: ViewGroup): Bitmap? {
+        var w = view.width
+        var h = view.height
+        if (w <= 0) w = 800
+        if (h <= 0) h = 300
+        val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        view.draw(canvas)
+        return bitmap
+    }
 }
