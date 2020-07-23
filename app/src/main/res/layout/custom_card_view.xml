@@ -33,7 +33,6 @@
         android:layout_height="wrap_content"
         />
 
-
     <company.tap.tapuilibrary.views.TapAmountSectionView
         android:id="@+id/amount_section_card"
         android:layout_width="match_parent"
