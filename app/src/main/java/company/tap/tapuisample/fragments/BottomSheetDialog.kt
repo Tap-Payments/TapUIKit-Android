@@ -209,10 +209,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         val mainChipgroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         val groupName = view.findViewById<TapTextView>(R.id.group_name)
-        groupName.text = LocalizationManager.getValue("select", "Common")
+        groupName.text = LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders","leftTitle")
         groupName.setTextColor(R.color.text_color)
         val groupAction = view.findViewById<TapTextView>(R.id.group_action)
-        groupAction.text = LocalizationManager.getValue("edit", "Common")
+        groupAction.text = LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders","rightTitle")
         groupName.setTextColor(R.color.text_color)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
