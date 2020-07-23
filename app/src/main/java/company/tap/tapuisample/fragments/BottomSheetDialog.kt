@@ -496,7 +496,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         if (done) {
             action_button.visibility = View.VISIBLE
             fragment_container.visibility = View.GONE
-            action_button.setButtonDataSource(getSuccessDataSource())
+            action_button.setButtonDataSource(getSuccessDataSource(R.color.button_green))
             action_button.changeButtonState(ActionButtonState.SUCCESS)
         } else {
             action_button.visibility = View.GONE
@@ -510,16 +510,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             }
         }
     }
-    private fun getSuccessDataSource(): ActionButtonDataSource {
-        return ActionButtonDataSource(
-            text = "PAY!",
-            textSize = 20f,
-            textColor = Color.WHITE,
-            cornerRadius = 100f,
-            successImageResources = R.drawable.checkmark,
-            backgroundColor = resources.getColor(R.color.button_green)
-        )
-    }
+
 
 }
 
