@@ -49,8 +49,7 @@ import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
-import kotlinx.android.synthetic.main.custom_bottom_sheet.action_button
-import kotlinx.android.synthetic.main.custom_bottom_sheet.fragment_container
+import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
 /**
