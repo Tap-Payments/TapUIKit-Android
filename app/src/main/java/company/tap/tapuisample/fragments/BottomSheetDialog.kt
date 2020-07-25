@@ -22,6 +22,7 @@ import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
@@ -48,8 +49,7 @@ import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
-import kotlinx.android.synthetic.main.custom_bottom_sheet.action_button
-import kotlinx.android.synthetic.main.custom_bottom_sheet.fragment_container
+import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
 /**
@@ -225,6 +225,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
 
         }
+        groupAction?.visibility= View.GONE
+        groupName?.visibility= View.GONE
+
     }
 
 
@@ -477,7 +480,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     override fun onCardSelectedAction(isSelected:Boolean) {
         if (isSelected) {
             action_button.setButtonDataSource(getSuccessDataSource(R.color.button_green))
-            action_button.setOnClickListener { replaceBetweenFragments() }
+            action_button.setOnClickListener {
+                action_button.changeButtonState(ActionButtonState.LOADING)
+                changeBottomSheetTransition()
+                replaceBetweenFragments() }
         }
         else
             action_button.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
@@ -485,7 +491,35 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
 
     private fun replaceBetweenFragments(){
-        childFragmentManager.beginTransaction().add(R.id.fragment_container,
+        switchLayout?.visibility = View.GONE
+        switchMerchantCheckout?.visibility = View.GONE
+        switchMerchantCheckout?.isChecked = false
+        switchgoPayCheckout?.isChecked = false
+        switchgoPayCheckout?.visibility = View.GONE
+        currentCurrency.visibility = View.GONE
+        tabLayout.visibility=View.GONE
+        paymentLayout.visibility=View.GONE
+        tapHeaderSectionView.visibility=View.GONE
+        businessIcon.visibility=View.GONE
+        businessPlaceholder.visibility=View.GONE
+        businessPlaceholder.visibility=View.GONE
+        amountSectionView.visibility=View.GONE
+        switchDemo.visibility=View.GONE
+        separatorView?.visibility = View.GONE
+        chipRecycler.visibility= View.GONE
+        selectedCurrency.visibility= View.GONE
+        nfcScanBtn.visibility= View.GONE
+        switchSaveDemo?.visibility= View.GONE
+        savegoPay?.visibility= View.GONE
+        alertgoPay?.visibility= View.GONE
+        saveCardorMobile?.visibility= View.GONE
+        headerView?.visibility= View.GONE
+
+
+
+        bottomSheetDialog.behavior.state = STATE_EXPANDED
+        bottomSheetDialog.behavior.skipCollapsed
+        childFragmentManager.beginTransaction().replace(R.id.webViewContainer,
             WebFragment(this)
         ).commit()
     }
@@ -495,12 +529,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         changeBottomSheetTransition()
         if (done) {
             action_button.visibility = View.VISIBLE
-            fragment_container.visibility = View.GONE
+            webViewContainer.visibility = View.GONE
             action_button.setButtonDataSource(getSuccessDataSource(R.color.button_green))
             action_button.changeButtonState(ActionButtonState.SUCCESS)
         } else {
             action_button.visibility = View.GONE
-            fragment_container.visibility = View.VISIBLE
+            webViewContainer.visibility = View.VISIBLE
         }
     }
     private fun changeBottomSheetTransition(){
