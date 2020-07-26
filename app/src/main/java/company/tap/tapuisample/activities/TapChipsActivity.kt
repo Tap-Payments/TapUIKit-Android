@@ -15,6 +15,7 @@ import company.tap.tapuilibrary.model.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuilibrary.adapters.CurrencyAdapter
+import company.tap.tapuilibrary.utils.BaseActivity
 import kotlinx.android.synthetic.main.activity_cardview.*
 
 /***

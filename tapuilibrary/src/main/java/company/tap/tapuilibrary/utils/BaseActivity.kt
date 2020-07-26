@@ -1,9 +1,9 @@
-package company.tap.tapuisample.activities
+package company.tap.tapuilibrary.utils
 
 import android.os.Bundle
 import company.tap.taplocalizationkit.LocaleAppCompatActivity
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuisample.R
+import company.tap.tapuilibrary.R
 import java.util.*
 
 /**

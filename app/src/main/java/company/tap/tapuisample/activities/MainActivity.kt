@@ -27,6 +27,7 @@ import company.tap.tapuisample.fragments.ExampleFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
+import company.tap.tapuilibrary.utils.BaseActivity
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.*
 import java.security.KeyStore

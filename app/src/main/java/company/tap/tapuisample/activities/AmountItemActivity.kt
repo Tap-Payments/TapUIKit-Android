@@ -10,6 +10,7 @@ import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ItemViewDataSource
 import company.tap.tapuilibrary.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.utils.BaseActivity
 import company.tap.tapuilibrary.views.TapListItemView
 import company.tap.tapuilibrary.views.TapCardSwitch
 import company.tap.tapuisample.R

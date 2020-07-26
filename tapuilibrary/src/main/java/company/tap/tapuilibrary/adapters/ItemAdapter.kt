@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.tap.tapfontskit.enums.TapFont
@@ -16,6 +17,8 @@ import company.tap.tapuilibrary.atoms.TapSeparatorView
 import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.ItemViewDataSource
 import company.tap.tapuilibrary.views.TapListItemView
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -117,4 +120,5 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
 
         )
     }
+
 }
