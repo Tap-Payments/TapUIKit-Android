@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
-        android:name="company.tap.tapuilibrary.utils.TapLocaleApplication"
+        android:name=".Application"
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
