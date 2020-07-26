@@ -49,8 +49,8 @@ class AmountItemActivity : BaseActivity() {
             TapFont.robotoRegular))
         discount.typeface = Typeface.createFromAsset(this.assets, TapFont.tapFontType(
             TapFont.robotoLight))
-        descrTxt.text = LocalizationManager.getValue("showDesc","ItemList","")
-        discount.text = LocalizationManager.getValue("Discount","ItemList","")
+        descrTxt.text = LocalizationManager.getValue("showDesc","ItemList")
+        discount.text = LocalizationManager.getValue("Discount","ItemList")
         discount.visibility = View.INVISIBLE
 
         switch_discount.setOnCheckedChangeListener { _, isChecked ->

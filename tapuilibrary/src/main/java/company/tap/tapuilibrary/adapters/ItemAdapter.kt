@@ -103,9 +103,9 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
 
         }
         if(isExpanded){
-            descText.text = LocalizationManager.getValue("hideDesc","ItemList","")
+            descText.text = LocalizationManager.getValue("hideDesc","ItemList")
         }else{
-            descText.text =  LocalizationManager.getValue("showDesc","ItemList","")
+            descText.text =  LocalizationManager.getValue("showDesc","ItemList")
         }
     }
 
