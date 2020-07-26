@@ -20,12 +20,12 @@ All rights reserved.
  *  savegoPayCheckout for Merchant
  **/
 class TapCardSwitch: LinearLayout {
-    private var switchSaveMobile: TapSwitch
-    private var saveTextView:TapTextView
-    private var switchSaveMerchant: TapSwitch
-    private var switchgoPayCheckout: TapSwitch
-    private var savegoPay: TapTextView
-    private var alertgoPaySignup: TapTextView
+     var switchSaveMobile: TapSwitch
+     var saveTextView:TapTextView
+     var switchSaveMerchant: TapSwitch
+     var switchgoPayCheckout: TapSwitch
+     var savegoPay: TapTextView
+     var alertgoPaySignup: TapTextView
     private var tapSwitchDataSource: TapSwitchDataSource? = null
 
     /**

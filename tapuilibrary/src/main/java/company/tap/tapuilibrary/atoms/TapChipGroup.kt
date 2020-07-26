@@ -22,9 +22,9 @@ import company.tap.tapuilibrary.R
  **/
 open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 
-   private var groupName: TapTextView
-   private var groupAction: TapTextView
-   private var chipsRecycler: RecyclerView
+    var groupName: TapTextView
+    var groupAction: TapTextView
+    var chipsRecycler: RecyclerView
 
     //Initialize views
     init {

@@ -19,10 +19,10 @@ All rights reserved.
  * TapItemsView  is a molecule for setting Amount, Description and Quantity.
  */
 class TapListItemView:LinearLayout {
-    private var itemTitle: TapTextView
-    private var totalAmount: TapTextView
-    private var totalQuantity: TapTextView
-    private var itemAmount: TapTextView
+     var itemTitle: TapTextView
+     var totalAmount: TapTextView
+     var totalQuantity: TapTextView
+     var itemAmount: TapTextView
     private var itemViewDataSource: ItemViewDataSource? = null
     /**
      * Simple constructor to use when creating a TapItemsView from code.

@@ -26,8 +26,8 @@ All rights reserved.
 open class TapChip(context: Context, attributeSet: AttributeSet?) :
     MaterialCardView(context, attributeSet),
     TapView<ChipTheme> {
-    private lateinit var view: View
-    private lateinit var viewsList: List<View>
+     lateinit var view: View
+     lateinit var viewsList: List<View>
 
     /**
      *  @param context The Context the view is running in, through which it can

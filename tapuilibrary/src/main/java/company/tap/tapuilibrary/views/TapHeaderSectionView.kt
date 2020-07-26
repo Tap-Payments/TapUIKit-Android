@@ -25,10 +25,10 @@ All rights reserved.
  *  businessPlaceHodler for Merchant
  **/
 class TapHeaderSectionView : LinearLayout {
-    private var businessIcon: TapImageView
-    private var businessName: TapTextView
-    private var paymentFor: TapTextView
-    private var businessPlaceholder: TapTextView
+     var businessIcon: TapImageView
+     var businessName: TapTextView
+     var paymentFor: TapTextView
+     var businessPlaceholder: TapTextView
     private var headerDataSource: HeaderDataSource? = null
     /**
      * Simple constructor to use when creating a TapHeader from code.

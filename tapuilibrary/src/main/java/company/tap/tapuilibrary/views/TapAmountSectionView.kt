@@ -17,10 +17,10 @@ All rights reserved.
  **/
 
 class TapAmountSectionView: LinearLayout {
-    private var selectedCurrency:TapTextView
-    private var currentCurrency:TapTextView
-    private var itemCount:TapButton
-    private var amountViewDataSource: AmountViewDataSource? = null
+     var selectedCurrency:TapTextView
+     var currentCurrency:TapTextView
+     var itemCount:TapButton
+  private var amountViewDataSource: AmountViewDataSource? = null
     /**
      * Simple constructor to use when creating a TapAmountSectionView from code.
      *  @param context The Context the view is running in, through which it can
