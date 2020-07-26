@@ -46,7 +46,7 @@ class ExampleFragment : TapBottomSheetDialog() {
             Toast.makeText(context, "goPay", Toast.LENGTH_SHORT).show()
         }
         action_button.setOnClickListener {
-//            action_button.changeButtonState(ActionButtonState.LOADING)
+            action_button.changeButtonState(ActionButtonState.LOADING)
             when (clickAction) {
                 1 -> {
                     bottomSheetLayout?.let { layout ->
