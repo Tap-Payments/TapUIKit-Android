@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
@@ -23,6 +24,7 @@ import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuisample.fragments.ExampleFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSwitchInterface
@@ -31,6 +33,7 @@ import company.tap.tapuilibrary.utils.BaseActivity
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.*
 import java.security.KeyStore
+import java.util.*
 import java.util.concurrent.Executor
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
@@ -56,7 +59,7 @@ class MainActivity : BaseActivity(),
         fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
         fontChanger.replaceFonts((findViewById(android.R.id.content)))
        // Blurry.with(context).radius(25).sampling(2).onto()
-
+        LocalizationManager.setLocale(context, Locale("en"))
     }
 
     fun openBottomSheet(view: View) {

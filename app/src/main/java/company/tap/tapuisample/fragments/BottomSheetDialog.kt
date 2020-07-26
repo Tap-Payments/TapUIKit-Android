@@ -50,6 +50,8 @@ import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -91,7 +93,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var alertgoPay: TapTextView? = null
     private var saveCardorMobile: TapTextView? = null
     private var separatorView: TapSeparatorView? = null
-    private var checkboxString:String=LocalizationManager.getValue("cardSaveLabel","TapCardInputKit")
+    private var checkboxString:String?=null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -164,7 +166,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSave = checkboxString,
+            switchSave = LocalizationManager.getValue("cardSaveLabel","TapCardInputKit"),
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
