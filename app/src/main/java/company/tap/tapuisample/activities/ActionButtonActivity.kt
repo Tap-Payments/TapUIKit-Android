@@ -2,7 +2,6 @@ package company.tap.tapuisample.activities
 
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
@@ -34,10 +33,10 @@ class ActionButtonActivity : AppCompatActivity() {
         builder.setItems(items) { _, position ->
             if (position == 0) {
                 actionButton.setButtonDataSource(getSuccessDataSource())
-                actionButton.changeButtonState(ActionButtonState.SUCCESS)
+                actionButton.changeButton(ActionButtonState.SUCCESS){}
             } else {
                 actionButton.setButtonDataSource(getErrorDataSource())
-                actionButton.changeButtonState(ActionButtonState.ERROR)
+                actionButton.changeButton(ActionButtonState.ERROR){}
             }
             alert?.hide()
         }

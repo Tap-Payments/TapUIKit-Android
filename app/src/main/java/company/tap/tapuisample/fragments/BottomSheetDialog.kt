@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -481,9 +482,39 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         if (isSelected) {
             action_button.setButtonDataSource(getSuccessDataSource(R.color.button_green))
             action_button.setOnClickListener {
-                action_button.changeButtonState(ActionButtonState.LOADING)
                 changeBottomSheetTransition()
-                replaceBetweenFragments() }
+
+
+                switchLayout?.visibility = View.GONE
+                switchMerchantCheckout?.visibility = View.GONE
+                switchMerchantCheckout?.isChecked = false
+                switchgoPayCheckout?.isChecked = false
+                switchgoPayCheckout?.visibility = View.GONE
+                currentCurrency.visibility = View.GONE
+                tabLayout.visibility=View.GONE
+                paymentLayout.visibility=View.GONE
+                tapHeaderSectionView.visibility=View.GONE
+                businessIcon.visibility=View.GONE
+                businessPlaceholder.visibility=View.GONE
+                businessPlaceholder.visibility=View.GONE
+                amountSectionView.visibility=View.GONE
+                switchDemo.visibility=View.GONE
+                separatorView?.visibility = View.GONE
+                chipRecycler.visibility= View.GONE
+                selectedCurrency.visibility= View.GONE
+                nfcScanBtn.visibility= View.GONE
+                switchSaveDemo?.visibility= View.GONE
+                savegoPay?.visibility= View.GONE
+                alertgoPay?.visibility= View.GONE
+                saveCardorMobile?.visibility= View.GONE
+                headerView?.visibility= View.GONE
+                separator.visibility = View.GONE
+                bottomSheetDialog.behavior.state = STATE_EXPANDED
+                bottomSheetDialog.behavior.skipCollapsed
+
+                action_button.changeButtonState(ActionButtonState.LOADING)
+
+            }
         }
         else
             action_button.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
@@ -491,34 +522,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
 
     private fun replaceBetweenFragments(){
-        switchLayout?.visibility = View.GONE
-        switchMerchantCheckout?.visibility = View.GONE
-        switchMerchantCheckout?.isChecked = false
-        switchgoPayCheckout?.isChecked = false
-        switchgoPayCheckout?.visibility = View.GONE
-        currentCurrency.visibility = View.GONE
-        tabLayout.visibility=View.GONE
-        paymentLayout.visibility=View.GONE
-        tapHeaderSectionView.visibility=View.GONE
-        businessIcon.visibility=View.GONE
-        businessPlaceholder.visibility=View.GONE
-        businessPlaceholder.visibility=View.GONE
-        amountSectionView.visibility=View.GONE
-        switchDemo.visibility=View.GONE
-        separatorView?.visibility = View.GONE
-        chipRecycler.visibility= View.GONE
-        selectedCurrency.visibility= View.GONE
-        nfcScanBtn.visibility= View.GONE
-        switchSaveDemo?.visibility= View.GONE
-        savegoPay?.visibility= View.GONE
-        alertgoPay?.visibility= View.GONE
-        saveCardorMobile?.visibility= View.GONE
-        headerView?.visibility= View.GONE
-
-
-
-        bottomSheetDialog.behavior.state = STATE_EXPANDED
-        bottomSheetDialog.behavior.skipCollapsed
         childFragmentManager.beginTransaction().replace(R.id.webViewContainer,
             WebFragment(this)
         ).commit()
@@ -526,7 +529,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
 
     override fun redirectLoadingFinished(done: Boolean) {
-        changeBottomSheetTransition()
         if (done) {
             action_button.visibility = View.VISIBLE
             webViewContainer.visibility = View.GONE
@@ -540,9 +542,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private fun changeBottomSheetTransition(){
         bottomSheetLayout?.let { layout ->
             layout.post {
-                TransitionManager.beginDelayedTransition(layout, ChangeBounds().setDuration(1000))
+                TransitionManager.beginDelayedTransition(layout  )
             }
         }
+
     }
 
 

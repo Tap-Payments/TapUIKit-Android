@@ -8,6 +8,7 @@ import android.graphics.drawable.GradientDrawable
 //import android.graphics.drawable.Drawable
 //import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -100,11 +101,34 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 addChildView(getImageView(R.drawable.success,1) {})
             }
             ERROR -> {
-                addChildView(getImageView(R.drawable.error_gif,1) {})
+                addChildView(getImageView(R.drawable.error_gif,1){})
             }
-
+            LOADING -> {
+                addChildView(getImageView(R.drawable.loader,1){})
+            }
         }
     }
+    fun changeButton(state: ActionButtonState, actionAfterAnimationDone: ()-> Unit) {
+        Log.d("Check print","Check print")
+
+        this.state = state
+        addTapLoadingView()
+        startStateAnimation()
+        when (state) {
+            SUCCESS -> {
+                addChildView(getImageView(R.drawable.success,1) {actionAfterAnimationDone})
+            }
+            ERROR -> {
+                addChildView(getImageView(R.drawable.error_gif,1){actionAfterAnimationDone})
+            }
+            LOADING -> {
+                addChildView(getImageView(R.drawable.loader,1){actionAfterAnimationDone})
+            }
+        }
+    }
+
+
+
 
     /**
      * setup the background drawable color and corner radius from datasource
@@ -134,7 +158,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return textView
     }
 
-    private fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int,  actionAfterAnimationDone: ()-> Unit): ImageView {
+     fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int,  actionAfterAnimationDone: ()-> Unit): ImageView {
         val image = ImageView(context)
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,

@@ -4,11 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.gif.GifDrawable
-import com.bumptech.glide.request.RequestListener
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.interfaces.TapProgressIndicatorInterface
 import company.tap.tapuilibrary.ktx.setImage
@@ -27,7 +22,7 @@ class TapLoadingView(context: Context?, attrs: AttributeSet?) :
     var onProgressCompletedListener: OnProgressCompletedListener? = null
 
     init {
-        inflate(context, R.layout.tap_loading_view, this)
+        inflate(context, R.layout.tap_loading_view_gif, this)
         tapLoadingImage = findViewById(R.id.tapLoadingImage)
         tapLoadingImage.setImage(tapLoadingImage,R.drawable.loader,1) {onProgressEnd()}
     }
