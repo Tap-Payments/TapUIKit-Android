@@ -68,7 +68,6 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        tapBottomDialogInterface?.onShow()
         setDialogConfigurations()
         changeBackground()
     }
@@ -77,6 +76,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         bottomSheetDialog.setOnShowListener {
             bottomSheetLayout = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
             bottomSheetLayout?.background = getBackgroundDrawable()
+            tapBottomDialogInterface?.onShow()
         }
     }
 
