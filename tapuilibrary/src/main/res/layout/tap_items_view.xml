@@ -94,10 +94,12 @@
 
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/total_quantity"
-            android:layout_width="14dp"
-            android:layout_height="wrap_content"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:paddingBottom="2dp"
             android:fontFamily="sans-serif-light"
-            android:gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:textColor="#4b4847"
             android:layout_marginStart="@dimen/margin_basic_3dp"
             android:background="@drawable/rounded_circle"
