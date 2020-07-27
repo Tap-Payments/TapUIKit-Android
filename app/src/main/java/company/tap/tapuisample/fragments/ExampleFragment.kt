@@ -17,9 +17,11 @@ import company.tap.tapuilibrary.enums.ActionButtonState
 import company.tap.tapuilibrary.views.TapBottomSheetDialog
 
 import company.tap.tapuisample.R
+import company.tap.tapuisample.webview.WebFragment
+import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.fragment_example.*
 
-class ExampleFragment : TapBottomSheetDialog() {
+class ExampleFragment : TapBottomSheetDialog() , WebViewContract {
 
     var clickAction = 0
 
@@ -32,7 +34,7 @@ class ExampleFragment : TapBottomSheetDialog() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
         action_button.setButtonDataSource(getSuccessDataSource())
 
@@ -46,36 +48,48 @@ class ExampleFragment : TapBottomSheetDialog() {
             Toast.makeText(context, "goPay", Toast.LENGTH_SHORT).show()
         }
         action_button.setOnClickListener {
-            action_button.changeButtonState(ActionButtonState.LOADING)
-            when (clickAction) {
-                1 -> {
-                    bottomSheetLayout?.let { layout ->
-                        layout.post {
-                            TransitionManager.beginDelayedTransition(layout, ChangeBounds().setDuration(1000))
-                        }
-                    }
-                    buttons_layout.visibility = View.GONE
-                    childFragmentManager.beginTransaction().add(R.id.fragment_container, WebFragment()).commit()
-                }
-            }
+            implementActionBtnOnClick()
         }
-
     }
 
-    fun redirectLoadingFinished(done: Boolean) {
-        bottomSheetLayout?.let { layout ->
-            layout.post {
-                TransitionManager.beginDelayedTransition(layout, ChangeBounds().setDuration(1000))
+
+    private fun implementActionBtnOnClick(){
+        action_button.changeButtonState(ActionButtonState.LOADING)
+        when (clickAction) {
+            1 -> {
+                changeBottomSheetTransition()
+                buttons_layout.visibility = View.GONE
+                replaceBetweenFragments()
             }
         }
+    }
+
+    private fun replaceBetweenFragments(){
+        childFragmentManager.beginTransaction().add(R.id.fragment_container,
+            WebFragment(this)
+        ).commit()
+    }
+
+
+    override fun redirectLoadingFinished(done: Boolean) {
+        changeBottomSheetTransition()
         if (done) {
             action_button.visibility = View.VISIBLE
             fragment_container.visibility = View.GONE
+            action_button.setButtonDataSource(getSuccessDataSource())
             action_button.changeButtonState(ActionButtonState.SUCCESS)
 
         } else {
             action_button.visibility = View.GONE
             fragment_container.visibility = View.VISIBLE
+        }
+    }
+
+    private fun changeBottomSheetTransition(){
+        bottomSheetLayout?.let { layout ->
+            layout.post {
+                TransitionManager.beginDelayedTransition(layout, ChangeBounds().setDuration(1000))
+            }
         }
     }
 

@@ -11,6 +11,7 @@
         android:layout_width="75dp"
         android:layout_height="4dp"
         android:layout_marginEnd="150dp"
+        android:layout_gravity="center"
         android:layout_marginStart="150dp"
         app:cardCornerRadius="@dimen/margin_basic_8dp"
         android:layout_marginTop="@dimen/margin_basic_10dp"
@@ -30,12 +31,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         />
-    <company.tap.tapuilibrary.atoms.TapSeparatorView
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
-        android:background="@color/view_color"
-        android:layout_marginStart="@dimen/margin_basic_19dp"
-        android:layout_marginEnd="17dp"/>
 
     <company.tap.tapuilibrary.views.TapAmountSectionView
         android:id="@+id/amount_section"
@@ -43,6 +38,7 @@
         android:layout_height="wrap_content"/>
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
+        android:id="@+id/separator"
         android:layout_height="1dp"
         android:background="@color/view_color"
        />
@@ -101,7 +97,18 @@
         android:id="@+id/switch_pay_demo"
         android:layout_width="match_parent"/>
 
+    <company.tap.tapuilibrary.views.TabAnimatedActionButton
+        android:id="@+id/action_button"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp" />
 
-  
+
+    <FrameLayout
+        android:id="@+id/webViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>
 

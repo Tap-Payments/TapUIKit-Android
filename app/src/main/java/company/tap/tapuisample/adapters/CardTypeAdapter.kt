@@ -17,12 +17,15 @@ import company.tap.tapuisample.R
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
+
+
+class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardSelectedActionListener: OnCardSelectedActionListener? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_SAVEDCARD = 1
-    private val TYPE_SINGLE = 2
+    private val TYPE_REDIRECT = 2
     private val TYPE_GOPAY = 3
     private var selectedPosition = -1
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
         return if (viewType === TYPE_SAVEDCARD) {
@@ -31,7 +34,7 @@ class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
             SavedViewHolder(
                 view
             )
-        } else if (viewType === TYPE_SINGLE) {
+        } else if (viewType === TYPE_REDIRECT) {
             view = LayoutInflater.from(parent.context).inflate(R.layout.item_knet, parent, false)
             SingleViewHolder(
                 view
@@ -46,7 +49,7 @@ class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
 
     override fun getItemViewType(position: Int): Int {
         return if (arrayList[position] == 1 || arrayList[position] == 3 || arrayList[position] == 5) {
-            TYPE_SINGLE
+            TYPE_REDIRECT
         } else if (arrayList[position] == 2) {
             TYPE_GOPAY
         } else {
@@ -71,14 +74,14 @@ class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
                 selectedPosition = position
                 notifyDataSetChanged()
             }
-        } else if (getItemViewType(position) === TYPE_SINGLE) {
-
+        } else if (getItemViewType(position) === TYPE_REDIRECT) {
             if (selectedPosition == position)
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow)
             else
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick)
             (holder as SingleViewHolder)
             holder.itemView.setOnClickListener {
+                onCardSelectedActionListener?.onCardSelectedAction(true)
                 selectedPosition = position
                 notifyDataSetChanged()
             }
@@ -91,6 +94,7 @@ class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
             (holder as GoPayViewHolder)
             holder.itemView.setOnClickListener {
                 selectedPosition = position
+                onCardSelectedActionListener?.onCardSelectedAction(false)
                 notifyDataSetChanged()
             }
 
@@ -110,5 +114,6 @@ class CardTypeAdapter(private val arrayList: ArrayList<Int>) :
         RecyclerView.ViewHolder(itemView) {
 
     }
+
 
 }

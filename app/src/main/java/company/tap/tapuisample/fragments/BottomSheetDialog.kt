@@ -3,6 +3,7 @@ package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 
 import android.os.Bundle
 import android.os.Handler
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.ChangeBounds
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
@@ -31,9 +33,11 @@ import company.tap.tapcardvalidator_android.CardValidator
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.atoms.*
+import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.enums.ActionButtonState
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
@@ -41,6 +45,9 @@ import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
 import company.tap.tapuisample.TextDrawable
 import company.tap.tapuisample.adapters.CardTypeAdapter
+import company.tap.tapuisample.adapters.OnCardSelectedActionListener
+import company.tap.tapuisample.webview.WebFragment
+import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
@@ -51,7 +58,9 @@ import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInterface {
+open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInterface,
+    OnCardSelectedActionListener,
+    WebViewContract {
 
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
@@ -111,6 +120,17 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     ) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
+        action_button.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
+    }
+    private fun getSuccessDataSource(backgroundColor : Int): ActionButtonDataSource {
+        return ActionButtonDataSource(
+            text = "PAY!",
+            textSize = 20f,
+            textColor = Color.WHITE,
+            cornerRadius = 100f,
+            successImageResources = R.drawable.checkmark,
+            backgroundColor = resources.getColor(backgroundColor)
+        )
     }
 
     @SuppressLint("SetTextI18n")
@@ -200,11 +220,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         groupName.setTextColor(R.color.text_color)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter =
-            CardTypeAdapter(paymentsList)
+        chipRecycler.adapter = CardTypeAdapter(paymentsList, this)
         groupAction.setOnClickListener {
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
         }
+        groupAction?.visibility= View.GONE
+        groupName?.visibility= View.GONE
+
     }
 
 
@@ -223,7 +245,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
         Glide.with(this)
             .load(imageUrl)
-            .placeholder(TextDrawable(businessInitial.toString()))
+            .placeholder(
+                TextDrawable(
+                    businessInitial.toString()
+                )
+            )
             .into(businessIcon)
     }
 
@@ -447,5 +473,81 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
 
     }
+
+    override fun onCardSelectedAction(isSelected:Boolean) {
+        if (isSelected) {
+            action_button.setButtonDataSource(getSuccessDataSource(R.color.button_green))
+            action_button.setOnClickListener {
+                switchLayout?.visibility = View.GONE
+                switchMerchantCheckout?.visibility = View.GONE
+                switchMerchantCheckout?.isChecked = false
+                switchgoPayCheckout?.isChecked = false
+                switchgoPayCheckout?.visibility = View.GONE
+                currentCurrency.visibility = View.GONE
+                tabLayout.visibility=View.GONE
+                paymentLayout.visibility=View.GONE
+                tapHeaderSectionView.visibility=View.GONE
+                businessIcon.visibility=View.GONE
+                businessPlaceholder.visibility=View.GONE
+                businessPlaceholder.visibility=View.GONE
+                amountSectionView.visibility=View.GONE
+                switchDemo.visibility=View.GONE
+                separatorView?.visibility = View.GONE
+                chipRecycler.visibility= View.GONE
+                selectedCurrency.visibility= View.GONE
+                nfcScanBtn.visibility= View.GONE
+                switchSaveDemo?.visibility= View.GONE
+                savegoPay?.visibility= View.GONE
+                alertgoPay?.visibility= View.GONE
+                saveCardorMobile?.visibility= View.GONE
+                headerView?.visibility= View.GONE
+                separator.visibility = View.GONE
+
+
+//                bottomSheetDialog.behavior.state = STATE_EXPANDED
+//                bottomSheetDialog.behavior.skipCollapsed
+//
+
+
+                action_button.addChildView(action_button.getImageView(R.drawable.loader,1){replaceBetweenFragments()})
+//                action_button.changeButtonState(ActionButtonState.LOADING)
+                changeBottomSheetTransition()
+
+            }
+        }
+        else
+            action_button.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
+    }
+
+
+    private fun replaceBetweenFragments(){
+
+        childFragmentManager.beginTransaction().replace(R.id.webViewContainer,
+            WebFragment(this)
+        ).commit()
+    }
+
+
+    override fun redirectLoadingFinished(done: Boolean) {
+        changeBottomSheetTransition()
+        if (done) {
+            action_button.visibility = View.VISIBLE
+            webViewContainer.visibility = View.GONE
+            action_button.setButtonDataSource(getSuccessDataSource(R.color.button_green))
+            action_button.changeButtonState(ActionButtonState.SUCCESS)
+        } else {
+            action_button.visibility = View.GONE
+            webViewContainer.visibility = View.VISIBLE
+        }
+    }
+    private fun changeBottomSheetTransition(){
+        bottomSheetLayout?.let { layout ->
+            layout.post {
+                TransitionManager.beginDelayedTransition(layout)
+            }
+        }
+    }
+
+
 }
 
