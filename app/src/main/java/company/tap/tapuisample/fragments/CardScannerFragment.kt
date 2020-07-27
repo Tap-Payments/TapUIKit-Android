@@ -89,9 +89,9 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
         businessName = getString(R.string.tap_payments)
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
 
-        businessIcon = tapHeaderSectionView.findViewById(R.id.business_icon)
+        businessIcon = tapHeaderSectionView.findViewById(R.id.businessIcon)
 
-        businessPlaceholder = tapHeaderSectionView.findViewById(R.id.placeholder_text)
+        businessPlaceholder = tapHeaderSectionView.findViewById(R.id.placeholderText)
         businessInitial = businessName?.get(0).toString()
         businessPlaceholder.text = businessInitial
 

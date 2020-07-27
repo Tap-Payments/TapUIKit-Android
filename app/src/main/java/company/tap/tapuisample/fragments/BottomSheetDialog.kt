@@ -237,9 +237,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         businessName = getString(R.string.tap_payments)
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
 
-        businessIcon = view.findViewById(R.id.business_icon)
+        businessIcon = view.findViewById(R.id.businessIcon)
 
-        businessPlaceholder = view.findViewById(R.id.placeholder_text)
+        businessPlaceholder = view.findViewById(R.id.placeholderText)
         businessInitial = businessName?.get(0).toString()
         businessPlaceholder.text = businessInitial
 
