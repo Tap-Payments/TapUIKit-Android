@@ -18,6 +18,8 @@ import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+
+
 class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardSelectedActionListener: OnCardSelectedActionListener? = null) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_SAVEDCARD = 1

@@ -60,10 +60,10 @@ class TapHeaderSectionView : LinearLayout {
 
     init {
         inflate(context, R.layout.tap_main_header, this)
-        businessIcon = findViewById(R.id.business_icon)
-        businessName = findViewById(R.id.business_name)
-        paymentFor = findViewById(R.id.payment_for)
-        businessPlaceholder = findViewById(R.id.placeholder_text)
+        businessIcon = findViewById(R.id.businessIcon)
+        businessName = findViewById(R.id.businessName)
+        paymentFor = findViewById(R.id.paymentFor)
+        businessPlaceholder = findViewById(R.id.placeholderText)
     }
 
     /**

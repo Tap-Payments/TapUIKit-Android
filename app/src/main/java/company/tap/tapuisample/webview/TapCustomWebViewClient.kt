@@ -10,9 +10,8 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.annotation.NonNull
 
-
 /**
- * Created by OlaMonir on 7/19/20.
+ * Created by OlaMonir on 7/27/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
@@ -129,7 +128,7 @@ class TapCustomWebViewClient constructor(private val customWebViewClientContract
 
     private fun getCustomHeaders(): Map<String, String>? {
         val headers: MutableMap<String, String> = HashMap()
-      //  headers["cid"] =  ""
+        //  headers["cid"] =  ""
         return headers
     }
 

@@ -1,5 +1,11 @@
 package company.tap.tapuisample.webview
 
+/**
+ * Created by OlaMonir on 7/27/20.
+
+Copyright (c) 2020    Tap Payments.
+All rights reserved.
+ **/
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
@@ -51,14 +57,14 @@ class WebFragment constructor(private val webViewContract: WebViewContract)  : F
     }
 
 
-     fun showLoading() {
-         // show tap loading until we receive success or failed
+    fun showLoading() {
+        // show tap loading until we receive success or failed
     }
 
     /**
      * change action button status with success or failed
-            if success == true show success gif of action button
-            if success == false show error gif of action button
+    if success == true show success gif of action button
+    if success == false show error gif of action button
      */
     override fun submitResponseStatus( success : Boolean){
         webViewContract.redirectLoadingFinished(success)
