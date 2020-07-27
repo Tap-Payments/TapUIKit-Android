@@ -38,17 +38,16 @@ import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
+import company.tap.tapuilibrary.fragment.CurrencyViewFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
-import company.tap.tapuisample.TextDrawable
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import company.tap.tapuisample.adapters.OnCardSelectedActionListener
+import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
-import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
@@ -59,8 +58,7 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInterface,
-    OnCardSelectedActionListener,
-    WebViewContract {
+    OnCardSelectedActionListener, WebViewContract {
 
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
