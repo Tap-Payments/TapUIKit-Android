@@ -11,7 +11,7 @@
     app:cardCornerRadius="8dp"
     android:id="@+id/tapcard_Chip"
     app:elevation="8dp"
-    app:contentPadding="@dimen/margin_basic_10dp"
+    app:contentPadding="5dp"
     >
   <LinearLayout
     android:orientation="horizontal"

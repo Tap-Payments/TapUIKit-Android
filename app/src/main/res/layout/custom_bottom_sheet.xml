@@ -34,7 +34,8 @@
     <company.tap.tapuilibrary.views.TapAmountSectionView
         android:id="@+id/amount_section"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+       />
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -51,6 +52,7 @@
             android:id="@+id/mainChipgroup"
             android:background="@color/chip_background"
             android:orientation="horizontal"
+
             />
     </FrameLayout>
     <company.tap.tapuilibrary.views.TapSelectionTabLayout

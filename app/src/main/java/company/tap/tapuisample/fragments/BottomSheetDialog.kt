@@ -15,6 +15,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
+import androidx.core.view.marginLeft
+import androidx.core.view.setPadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.ChangeBounds
@@ -227,6 +229,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
 
         }
+
         groupAction?.visibility= View.GONE
         groupName?.visibility= View.GONE
 
