@@ -124,7 +124,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     }
     private fun getSuccessDataSource(backgroundColor : Int): ActionButtonDataSource {
         return ActionButtonDataSource(
-            text = "PAY!",
+            text = "Pay",
             textSize = 20f,
             textColor = Color.WHITE,
             cornerRadius = 100f,

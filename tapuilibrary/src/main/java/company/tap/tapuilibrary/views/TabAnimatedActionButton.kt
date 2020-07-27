@@ -1,12 +1,8 @@
 package company.tap.tapuilibrary.views
 
-import android.R.attr.resource
 import android.content.Context
 import android.content.res.ColorStateList
-import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
-//import android.graphics.drawable.Drawable
-//import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
@@ -16,13 +12,7 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
-import com.bumptech.glide.load.engine.GlideException
-import com.bumptech.glide.load.resource.gif.GifDrawable
-import com.bumptech.glide.request.RequestListener
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.animation.AnimationEngine
 import company.tap.tapuilibrary.animation.MorphingAnimation
 import company.tap.tapuilibrary.animation.MorphingAnimation.AnimationTarget.*
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource

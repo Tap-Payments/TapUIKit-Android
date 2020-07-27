@@ -57,19 +57,19 @@ class ActionButtonActivity : AppCompatActivity() {
 
     private fun getErrorDataSource(): ActionButtonDataSource {
         return ActionButtonDataSource(
-            text = "PAY!",
+            text = "Pay",
             textSize = 20f,
             textColor = Color.WHITE,
             cornerRadius = 100f,
             errorImageResources = R.drawable.error_gif,
-            backgroundColor = resources.getColor(R.color.button_green),
+            backgroundColor = resources.getColor(R.color.button_gray),
             errorColor = resources.getColor(R.color.button_gray)
         )
     }
 
     private fun getSuccessDataSource(): ActionButtonDataSource {
         return ActionButtonDataSource(
-            text = "PAY!",
+            text = "Pay!",
             textSize = 20f,
             textColor = Color.WHITE,
             cornerRadius = 100f,
