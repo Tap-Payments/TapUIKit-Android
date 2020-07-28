@@ -1,4 +1,4 @@
-package company.tap.tapuisample.adapters
+package company.tap.tapuisample.interfaces
 
 /**
  * Created by OlaMonir on 7/27/20.

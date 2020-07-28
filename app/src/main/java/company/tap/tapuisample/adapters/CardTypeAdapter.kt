@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuisample.R
+import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 
 
 /**
