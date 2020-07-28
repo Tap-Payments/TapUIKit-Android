@@ -28,7 +28,7 @@ class TapHeaderSectionView : LinearLayout {
      var businessIcon: TapImageView
      var businessName: TapTextView
      var paymentFor: TapTextView
-     var businessPlaceholder: TapTextView
+     //var businessPlaceholder: TapTextView
     private var headerDataSource: HeaderDataSource? = null
     /**
      * Simple constructor to use when creating a TapHeader from code.
@@ -63,7 +63,7 @@ class TapHeaderSectionView : LinearLayout {
         businessIcon = findViewById(R.id.businessIcon)
         businessName = findViewById(R.id.businessName)
         paymentFor = findViewById(R.id.paymentFor)
-        businessPlaceholder = findViewById(R.id.placeholderText)
+      //  businessPlaceholder = findViewById(R.id.placeholderText)
     }
 
     /**
@@ -86,7 +86,7 @@ class TapHeaderSectionView : LinearLayout {
             paymentFor.text = it
         }
         headerDataSource.businessPlaceHolder?.let {
-            businessPlaceholder.text = it
+           // businessPlaceholder.text = it
         }
 
     }

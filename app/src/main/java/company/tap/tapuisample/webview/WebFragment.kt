@@ -1,14 +1,13 @@
 package company.tap.tapuisample.webview
 
-<<<<<<< HEAD
-=======
+
 /**
  * Created by OlaMonir on 7/27/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
->>>>>>> ui-review
+
 import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
@@ -60,37 +59,33 @@ class WebFragment constructor(private val webViewContract: WebViewContract)  : F
     }
 
 
-<<<<<<< HEAD
+
      fun showLoading() {
          // show tap loading until we receive success or failed
-=======
+
     fun showLoading() {
         // show tap loading until we receive success or failed
->>>>>>> ui-review
+
     }
 
     /**
      * change action button status with success or failed
-<<<<<<< HEAD
+
             if success == true show success gif of action button
             if success == false show error gif of action button
-=======
-    if success == true show success gif of action button
-    if success == false show error gif of action button
->>>>>>> ui-review
      */
-    override fun submitResponseStatus( success : Boolean){
+
+
+}
+
+    override fun submitResponseStatus(success: Boolean) {
         webViewContract.redirectLoadingFinished(success)
     }
-    override fun getRedirectedURL(url : String){
+
+    override fun getRedirectedURL(url: String) {
         webViewContract.redirectLoadingFinished(url.contains("https://www.google.com/search?"))
     }
 
 
-
-
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ui-review
+

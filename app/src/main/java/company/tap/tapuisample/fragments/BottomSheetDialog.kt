@@ -15,16 +15,12 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
-import androidx.core.view.marginLeft
-import androidx.core.view.setPadding
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.ChangeBounds
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
@@ -41,16 +37,16 @@ import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
+import company.tap.tapuilibrary.fragment.CurrencyViewFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import company.tap.tapuisample.adapters.OnCardSelectedActionListener
+import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
-import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -77,7 +73,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private lateinit var tapHeaderSectionView: TapHeaderSectionView
     private lateinit var amountSectionView: TapAmountSectionView
     private lateinit var businessIcon: TapImageView
-    private lateinit var businessPlaceholder: TapTextView
+  //  private lateinit var businessPlaceholder: TapTextView
     lateinit var tabLayout: TapSelectionTabLayout
     private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
     var fontChanger: FontChanger? = null
@@ -244,9 +240,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
         businessIcon = view.findViewById(R.id.businessIcon)
 
-        businessPlaceholder = view.findViewById(R.id.placeholderText)
+       // businessPlaceholder = view.findViewById(R.id.placeholderText)
         businessInitial = businessName?.get(0).toString()
-        businessPlaceholder.text = businessInitial
+      //  businessPlaceholder.text = businessInitial
 
         Glide.with(this)
             .load(imageUrl)
@@ -262,8 +258,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         return HeaderDataSource(
             businessName = businessName,
             businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
-            businessImageResources = imageUrl,
-            businessPlaceHolder = businessName?.get(0).toString()
+            businessImageResources = imageUrl
+         //   businessPlaceHolder = businessName?.get(0).toString()
         )
     }
 
@@ -495,8 +491,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 paymentLayout.visibility=View.GONE
                 tapHeaderSectionView.visibility=View.GONE
                 businessIcon.visibility=View.GONE
-                businessPlaceholder.visibility=View.GONE
-                businessPlaceholder.visibility=View.GONE
+              //  businessPlaceholder.visibility=View.GONE
+              //  businessPlaceholder.visibility=View.GONE
                 amountSectionView.visibility=View.GONE
                 switchDemo.visibility=View.GONE
                 separatorView?.visibility = View.GONE
