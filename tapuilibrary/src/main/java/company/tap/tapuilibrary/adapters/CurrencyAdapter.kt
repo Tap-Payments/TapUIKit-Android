@@ -49,10 +49,10 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.bindPhoto(photos[position])
         println("pos in curr :$position")
-        if (position == 0){
-                val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-                params.leftMargin = 18
-                holder.itemView.layoutParams = params
+        if (position==-1){
+            val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
+            params.leftMargin = 28
+            holder.itemView.layoutParams = params
         }
 
         if (selectedPosition == position) {

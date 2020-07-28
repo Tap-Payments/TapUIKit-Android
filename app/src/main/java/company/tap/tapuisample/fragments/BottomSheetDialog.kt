@@ -284,19 +284,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
             if (isFragmentAdded) {
+                fragment_container.visibility = View.VISIBLE
+                tabLayout.visibility=View.VISIBLE
+                paymentLayout.visibility=View.VISIBLE
                 childFragmentManager
                     .beginTransaction()
                     .remove(currencyViewFragment)
                     .commit()
-                fragment_container.visibility = View.VISIBLE
-                tabLayout.visibility=View.VISIBLE
-                paymentLayout.visibility=View.VISIBLE
-                bottomSheetLayout?.let { layout ->
+              /*  bottomSheetLayout?.let { layout ->
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
                             .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
-                }
+                }*/
                 selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = "22 ITEMS"
             } else {
