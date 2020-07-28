@@ -69,6 +69,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     private var isFragmentAdded = false
     private var businessName: String? = null
+    private var paymentFor: String? = null
     private var businessInitial: String? = null
     private lateinit var tapHeaderSectionView: TapHeaderSectionView
     private lateinit var amountSectionView: TapAmountSectionView
@@ -91,7 +92,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var alertgoPay: TapTextView? = null
     private var saveCardorMobile: TapTextView? = null
     private var separatorView: TapSeparatorView? = null
-    private var checkboxString:String?=null
+  //  private var checkboxString:String?=null
+    private var checkboxString:String = ""
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -119,11 +121,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     ) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
-        action_button.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
+        actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
+        actionButton.stateListAnimator = null
+        checkboxString = getString(R.string.nfc_text)
+
     }
     private fun getSuccessDataSource(backgroundColor : Int): ActionButtonDataSource {
+        actionButton.stateListAnimator = null
         return ActionButtonDataSource(
-            text = "PAY!",
+            text = getString(R.string.pay),
             textSize = 20f,
             textColor = Color.WHITE,
             cornerRadius = 100f,
@@ -216,7 +222,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         groupName.text = LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders","leftTitle")
         groupName.setTextColor(R.color.text_color)
         val groupAction = view.findViewById<TapTextView>(R.id.group_action)
-        groupAction.text = LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders","rightTitle")
+       // groupAction.text = LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders","rightTitle")
+//        groupName.text = LocalizationManager.getValue("select", "Common")
+        groupName.text = getString(R.string.select)
+        groupName.setTextColor(R.color.text_color)
+//        val groupAction = view.findViewById<TapTextView>(R.id.group_action)
+//        groupAction.text = LocalizationManager.getValue("edit", "Common")
+        groupAction.text = getString(R.string.edit)
         groupName.setTextColor(R.color.text_color)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -225,8 +237,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
 
         }
-        groupAction?.visibility= View.GONE
-        groupName?.visibility= View.GONE
+//        groupAction?.visibility= View.GONE
+//        groupName?.visibility= View.GONE
 
     }
 
@@ -236,6 +248,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         setupFonts()
         tapHeaderSectionView = view.findViewById(R.id.headerView)
         businessName = getString(R.string.tap_payments)
+        paymentFor = getString(R.string.payment_for)
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
 
         businessIcon = view.findViewById(R.id.businessIcon)
@@ -259,7 +272,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             businessName = businessName,
             businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
             businessImageResources = imageUrl
-         //   businessPlaceHolder = businessName?.get(0).toString()
+            businessPlaceHolder = businessName?.get(0).toString()
         )
     }
 
@@ -291,9 +304,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         TransitionInflater.from(context)
                             .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
-                }*/
-                selectedCurrency.text = "SR1000,000.000"
-                itemCount.text = "22 ITEMS"
+                }
+                selectedCurrency.text = getString(R.string.amount)
+                itemCount.text = getString(R.string.items)
             } else {
                 childFragmentManager
                     .beginTransaction()
@@ -307,7 +320,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         TransitionManager.beginDelayedTransition(layout, addTransition)
                     }
                 }
-                selectedCurrency.text = "KD1000,000.000"
+                selectedCurrency.text = getString(R.string.amount_kd)
                 currentCurrency.visibility = View.GONE
                 fragment_container.visibility = View.GONE
                 tabLayout.visibility=View.GONE
@@ -328,9 +341,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
-            selectedCurr = "SR1000,000.000",
-            currentCurr = "KD1000,000.000",
-            itemCount = "22 ITEMS"
+            selectedCurr = getString(R.string.amount),
+            currentCurr = getString(R.string.amount_kd),
+            itemCount = getString(R.string.items)
         )
     }
 
@@ -403,7 +416,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 val card = CardValidator.validate(s.toString())
                 if (card.cardBrand != null){
                     tabLayout.selectTab(card.cardBrand, card.validationState == CardValidationState.valid)
-                    checkboxString = LocalizationManager.getValue("cardSaveLabel","TapCardInputKit")
+                   // checkboxString = LocalizationManager.getValue("cardSaveLabel","TapCardInputKit")
+                    checkboxString = getString(R.string.nfc_text)
                     switchSaveDemo?.visibility= View.VISIBLE
                     switchLayout?.visibility = View.VISIBLE
                     switchMerchantCheckout?.visibility = View.VISIBLE
@@ -479,8 +493,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     override fun onCardSelectedAction(isSelected:Boolean) {
         if (isSelected) {
-            action_button.setButtonDataSource(getSuccessDataSource(R.color.button_green))
-            action_button.setOnClickListener {
+            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_green))
+            actionButton.setOnClickListener {
                 switchLayout?.visibility = View.GONE
                 switchMerchantCheckout?.visibility = View.GONE
                 switchMerchantCheckout?.isChecked = false
@@ -505,21 +519,16 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 saveCardorMobile?.visibility= View.GONE
                 headerView?.visibility= View.GONE
                 separator.visibility = View.GONE
-
-
-//                bottomSheetDialog.behavior.state = STATE_EXPANDED
-//                bottomSheetDialog.behavior.skipCollapsed
-//
-
-
-                action_button.addChildView(action_button.getImageView(R.drawable.loader,1){replaceBetweenFragments()})
+//                group_action.visibility = View.GONE
+//                group_name.visibility = View.GONE
+                actionButton.addChildView(actionButton.getImageView(R.drawable.loader,1){replaceBetweenFragments()})
 //                action_button.changeButtonState(ActionButtonState.LOADING)
                 changeBottomSheetTransition()
 
             }
         }
         else
-            action_button.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
+            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
     }
 
 
@@ -533,12 +542,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     override fun redirectLoadingFinished(done: Boolean) {
         changeBottomSheetTransition()
         if (done) {
-            action_button.visibility = View.VISIBLE
+            actionButton.visibility = View.VISIBLE
             webViewContainer.visibility = View.GONE
-            action_button.setButtonDataSource(getSuccessDataSource(R.color.button_green))
-            action_button.changeButtonState(ActionButtonState.SUCCESS)
+            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_green))
+            actionButton.changeButtonState(ActionButtonState.SUCCESS)
         } else {
-            action_button.visibility = View.GONE
+            actionButton.visibility = View.GONE
             webViewContainer.visibility = View.VISIBLE
         }
     }

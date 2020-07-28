@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
+            android:elevation="0dp"
             android:onClick="selectSegment"
             android:text="Select Section" />
 
@@ -39,6 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="selectTab"
+            android:elevation="0dp"
             android:text="Select Tab" />
 
         <Button
@@ -46,6 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
+            android:elevation="0dp"
             android:onClick="resetSelection"
             android:text="Reset" />
 

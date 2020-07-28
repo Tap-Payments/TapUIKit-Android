@@ -20,9 +20,7 @@ class MorphingAnimation(private val animatedView: View) {
     }
 
     fun start(dataSource: AnimationDataSource, vararg targets: AnimationTarget) {
-
         val animators = ArrayList<Animator>()
-
         targets.forEach {
             when (it) {
                 CORNERS -> {
