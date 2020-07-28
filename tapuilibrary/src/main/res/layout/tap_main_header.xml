@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
-    android:layout_height="53dp"
-    android:orientation="vertical">
+    android:layout_height="53dp">
 
         <company.tap.tapuilibrary.atoms.TapChip
             app:layout_constraintTop_toTopOf="parent"
@@ -24,6 +23,7 @@
                 android:id="@+id/businessIcon"
                 android:layout_width="33dp"
                 android:layout_height="match_parent" />
+
             <company.tap.tapuilibrary.atoms.TapTextView
                 android:id="@+id/placeholderText"
                 android:layout_width="40dp"
@@ -39,8 +39,10 @@
                 app:layout_constraintBottom_toTopOf="@+id/businessName"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="start"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:layout_marginTop="@dimen/margin_basic_3dp"
                 android:shadowColor="#b6b6b6"
                 android:shadowDy="1"
@@ -52,8 +54,10 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/paymentFor"
                 app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:gravity="start"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
                 android:textSize="16sp"
                 android:fontFamily="sans-serif"
                 android:textStyle="normal"

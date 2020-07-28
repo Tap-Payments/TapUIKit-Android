@@ -58,6 +58,7 @@ class TapAmountSectionView: LinearLayout {
         selectedCurrency = findViewById(R.id.textview_selectedcurrency)
         currentCurrency  = findViewById(R.id.textView_currentcurrency)
         itemCount = findViewById(R.id.textView_itemcount)
+        itemCount.elevation = 0F
     }
 
     /**
@@ -75,6 +76,8 @@ class TapAmountSectionView: LinearLayout {
         amountViewDataSource.itemCount?.let {
             itemCount.text = it
         }
+
+        itemCount.elevation = 0F
 
     }
 

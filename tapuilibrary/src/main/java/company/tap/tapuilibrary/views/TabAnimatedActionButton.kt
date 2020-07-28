@@ -109,6 +109,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             backgroundDrawable.color = ColorStateList.valueOf(it)
         }
         background = backgroundDrawable
+        elevation = 0F
     }
 
     private fun getTextView(): TextView {
@@ -131,6 +132,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT
+
         )
         params.setMargins(20)
         image.layoutParams = params
