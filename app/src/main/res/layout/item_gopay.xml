@@ -10,7 +10,7 @@
     app:cardElevation="8dp"
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
-    app:contentPadding="@dimen/margin_basic_10dp"
+    app:contentPadding="5dp"
     android:id="@+id/tapcard_Chip"
     app:cardBackgroundColor="@color/glowingShadow"
 

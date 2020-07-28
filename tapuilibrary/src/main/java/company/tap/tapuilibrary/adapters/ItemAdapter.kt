@@ -52,6 +52,12 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         initView(holder,position)
+
+        if (position == 0){
+            val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
+            params.leftMargin = 28
+            holder.itemView.layoutParams = params
+        }
     }
 
     private fun initView(

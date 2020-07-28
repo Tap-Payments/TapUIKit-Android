@@ -6,6 +6,7 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuisample.R
@@ -65,6 +66,12 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardS
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        println("position printed: $position")
+        if (position == 0){
+            val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
+            params.leftMargin = 28
+            holder.itemView.layoutParams = params
+        }
         if (getItemViewType(position) === TYPE_SAVEDCARD) {
             if (selectedPosition == position) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow)
@@ -100,6 +107,7 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardS
             }
 
         }
+
     }
 
     internal class SavedViewHolder(itemView: View) :

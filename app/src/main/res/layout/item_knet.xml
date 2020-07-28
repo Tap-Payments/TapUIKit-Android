@@ -11,7 +11,7 @@
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
     android:id="@+id/tapcard_Chip"
-    app:contentPadding="@dimen/margin_basic_10dp"
+    app:contentPadding="5dp"
     >
 <LinearLayout
     android:layout_width="match_parent"

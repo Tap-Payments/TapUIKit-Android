@@ -35,13 +35,19 @@
     <company.tap.tapuilibrary.views.TapAmountSectionView
         android:id="@+id/amount_section"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+       />
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:id="@+id/separator"
         android:layout_height="1dp"
         android:background="@color/view_color"
        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#f4f4f4">
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
@@ -53,8 +59,18 @@
             android:id="@+id/mainChipgroup"
             android:background="@color/chip_background"
             android:orientation="horizontal"
+
             />
     </FrameLayout>
+    <company.tap.tapuilibrary.atoms.TapSeparatorView
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/view_color"
+        android:layout_marginStart="@dimen/margin_basic_19dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginTop="@dimen/margin_basic_16dp"
+        android:visibility="gone"/>
+    </LinearLayout>
     <company.tap.tapuilibrary.views.TapSelectionTabLayout
         android:id="@+id/sections_tablayout"
         android:layout_width="match_parent"
