@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.taplocalizationkit.LocalizationManager
@@ -40,7 +41,7 @@ class TapChipsActivity : BaseActivity() {
     private fun setupCurrencyChips() {
         fillData()
         val currencyLayout = findViewById<TapChipGroup>(R.id.currencyLayout)
-        val header_view = currencyLayout.findViewById<LinearLayout>(R.id.header_view)
+        val header_view = currencyLayout.findViewById<ConstraintLayout>(R.id.header_view)
         header_view.visibility = View.GONE
         chipRecycler = currencyLayout.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)

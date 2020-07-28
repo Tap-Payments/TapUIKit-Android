@@ -17,7 +17,6 @@ import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.ChangeBounds
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
@@ -45,10 +44,9 @@ import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
 import company.tap.tapuisample.TextDrawable
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import company.tap.tapuisample.adapters.OnCardSelectedActionListener
+import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
-import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
