@@ -106,6 +106,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         }
     }
 
+
+
     /**
      * setup the background drawable color and corner radius from datasource
      */
@@ -134,7 +136,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return textView
     }
 
-    private fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int,  actionAfterAnimationDone: ()-> Unit): ImageView {
+     fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int,  actionAfterAnimationDone: ()-> Unit): ImageView {
         val image = ImageView(context)
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
