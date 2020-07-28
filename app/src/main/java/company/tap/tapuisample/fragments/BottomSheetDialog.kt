@@ -37,12 +37,12 @@ import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
+import company.tap.tapuilibrary.fragment.CurrencyViewFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
-import company.tap.tapuisample.TextDrawable
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
