@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تاب</string>
+    <string name="business_name">إسم العمل</string>
+    <string name="you_clicked">لقد قمت بالضغط علي اغلاق</string>
+    <string name="recent">    الأحدث</string>
+    <string name="edit">تعديل</string>
+    <string name="select">اختيار</string>
+    <string name="tap_payments">تاب</string>
+    <string name="msg_ok">تم</string>
+    <string name="msg_dismiss">اغلاق</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="payment_for">الدفع لصالح</string>
+    <string name="items">22 منتح </string>
+    <string name="amount"> 1000,000.000ر.س </string>
+    <string name="amount_kd"> 1000,000.000د.ك </string>
+    <string name="pay">دفع</string>
+    <string name="nfc_text">للدفع بشكل أسرع وأسهل ، \ n استخدم الماسح الضوئي للبطاقة أو NFC.</string>
+</resources>

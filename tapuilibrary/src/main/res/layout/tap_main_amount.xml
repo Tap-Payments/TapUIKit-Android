@@ -47,5 +47,6 @@
         android:layout_marginBottom="@dimen/margin_basic_19dp"
         android:layout_alignParentEnd="true"
         android:elevation="@dimen/margin_basic_0dp"
-       />
+        android:stateListAnimator="@null"
+        />
 </RelativeLayout>

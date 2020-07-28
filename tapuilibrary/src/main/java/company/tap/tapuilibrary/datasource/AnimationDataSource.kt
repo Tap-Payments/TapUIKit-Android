@@ -19,6 +19,7 @@ data class AnimationDataSource(
 
     val fromCorners: Float? = null,
     val toCorners: Float? = null,
+    val elevation: Float? = null,
 
     @ColorInt
     val fromColor: Int?= null,

@@ -91,7 +91,7 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract {
 
     private fun getSuccessDataSource(): ActionButtonDataSource {
         return ActionButtonDataSource(
-            text = "PAY!",
+            text = "Pay",
             textSize = 20f,
             textColor = Color.WHITE,
             cornerRadius = 100f,
