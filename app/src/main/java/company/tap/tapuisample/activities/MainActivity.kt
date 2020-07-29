@@ -12,10 +12,13 @@ import android.os.Handler
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyProperties
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
@@ -31,6 +34,7 @@ import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.utils.BaseActivity
 import company.tap.tapuisample.R
+
 import company.tap.tapuisample.fragments.*
 import java.security.KeyStore
 import java.util.*
@@ -75,7 +79,7 @@ class MainActivity : BaseActivity(),
     private fun getArguments(): Bundle {
         val arguments = Bundle()
         arguments.putFloatArray(DialogConfigurations.Corners, floatArrayOf(25f, 25f, 0f, 0f))
-        arguments.putInt(DialogConfigurations.Color, Color.WHITE)
+        arguments.putInt(DialogConfigurations.Color,R.color.header_color)
         arguments.putBoolean(DialogConfigurations.Cancelable, false)
         arguments.putFloat(DialogConfigurations.Dim, 0.75f)
         return arguments
@@ -268,6 +272,31 @@ class MainActivity : BaseActivity(),
         return Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/"
                 + KeyProperties.BLOCK_MODE_CBC + "/"
                 + KeyProperties.ENCRYPTION_PADDING_PKCS7)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menumain, menu)
+        return true
+    }
+    // actions on click menu items
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_dark -> {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
+            true
+        }
+        R.id.action_light -> {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+            true
+        }
+
+        else -> {
+            // If we got here, the user's action was not recognized.
+            // Invoke the superclass to handle it.
+            super.onOptionsItemSelected(item)
+        }
     }
 
 

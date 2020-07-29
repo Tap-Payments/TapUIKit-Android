@@ -119,7 +119,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
         action_button.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
     }
 
     private fun getSuccessDataSource(backgroundColor: Int): ActionButtonDataSource {
@@ -229,8 +229,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
         }
 
-        groupAction?.visibility = View.GONE
-        groupName?.visibility = View.GONE
+        groupAction?.visibility = View.VISIBLE
+        groupName?.visibility = View.VISIBLE
 
     }
 
@@ -354,8 +354,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             } else
                 paymentLayout.addView(tapMobileInputView)
 
-            switchSaveDemo?.text="For faster and easier checkout,\n" +
-                    "save your mobile number."
+          /*  switchSaveDemo?.text="For faster and easier checkout,\n" +
+                    "save your mobile number."*/
         }
     }
 

@@ -20,7 +20,7 @@
     <color name="button_pay">#d7d7d7</color>
     <color name="card_input">#ffffff</color>
     <color name="chip_back">#ccffffff</color>
-
+    <color name="item_list">#FFFFFF</color>
 
     <color name="colorBackground">#FFFFFF</color>
         <color name="colorText">#000000</color>

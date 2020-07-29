@@ -20,6 +20,7 @@
             android:layout_height="wrap_content"
             android:gravity="start"
             android:layout_weight="0.5"
+            android:textColor="@color/text_color"
             />
 
         <company.tap.tapuilibrary.atoms.TapTextView
@@ -28,7 +29,8 @@
             android:layout_height="wrap_content"
             android:gravity="end"
             android:layout_weight="0.5"
-            android:layout_marginEnd="@dimen/margin_basic_16dp"/>
+            android:layout_marginEnd="@dimen/margin_basic_16dp"
+            android:textColor="@color/text_color"/>
 
     </LinearLayout>
 

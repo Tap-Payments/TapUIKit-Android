@@ -22,7 +22,7 @@
 
             <company.tap.tapuilibrary.atoms.TapImageView
                 android:id="@+id/business_icon"
-                android:layout_width="33dp"
+                android:layout_width="40dp"
                 android:layout_height="match_parent" />
             <company.tap.tapuilibrary.atoms.TapTextView
                 android:id="@+id/placeholder_text"
