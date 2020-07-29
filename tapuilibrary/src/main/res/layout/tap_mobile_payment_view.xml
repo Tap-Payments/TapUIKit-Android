@@ -21,6 +21,7 @@
         app:hintEnabled="false"
         app:endIconMode="clear_text"
         app:endIconTint="@null"
+        android:background="@android:color/transparent"
         app:endIconDrawable="@drawable/delete_text">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -28,9 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="20dp"
-            android:maxLength="12"
             android:textSize="@dimen/font_size_17sp"
             android:inputType="phone"
+            android:textColor="#4b4847"
             android:background="@android:color/transparent"
             android:fontFamily="sans-serif-light"
             android:hint="965 00000000" />
