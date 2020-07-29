@@ -22,7 +22,7 @@
     <color name="card_input">#1c1c1e</color>
     <color name="chip_back">#1c1c1e</color>
 
-    <color name="button_gray">#cccccc</color>
+    <color name="button_gray">#1c1c1e</color>
     <color name="button_green">#2ace00</color>
 
 </resources>
