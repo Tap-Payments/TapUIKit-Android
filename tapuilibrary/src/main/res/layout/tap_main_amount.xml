@@ -38,7 +38,7 @@
         android:layout_height="@dimen/margin_basic_20dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
-        android:textColor="#4b4847"
+        android:textColor="@color/text_color"
         android:textSize="9sp"
         android:textStyle="normal"
         tools:text="10 ITEMS"

@@ -5,7 +5,7 @@
     style="@style/CustomCardViewStyle"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#45000000"
+    android:background="@color/chip_background"
     android:orientation="vertical">
 
     <company.tap.tapuilibrary.atoms.TapChip
