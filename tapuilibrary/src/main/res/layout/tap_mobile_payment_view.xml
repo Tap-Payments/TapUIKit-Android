@@ -14,28 +14,16 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/mobile_number_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:hintEnabled="false"
-        app:endIconMode="clear_text"
-        app:endIconTint="@null"
+    <EditText
+        android:id="@+id/mobile_number"
+        android:hint="965 00000000"
+        android:inputType="phone"
+        android:maxLength="12"
+        android:layout_marginStart="20dp"
+        android:textSize="@dimen/font_size_17sp"
+        android:fontFamily="sans-serif-light"
         android:background="@android:color/transparent"
-        app:endIconDrawable="@drawable/delete_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/mobile_number"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
-            android:textSize="@dimen/font_size_17sp"
-            android:inputType="phone"
-            android:textColor="#4b4847"
-            android:background="@android:color/transparent"
-            android:fontFamily="sans-serif-light"
-            android:hint="965 00000000" />
-
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
