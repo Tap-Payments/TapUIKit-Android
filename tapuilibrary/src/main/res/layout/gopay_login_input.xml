@@ -32,8 +32,8 @@
             android:layout_height="match_parent"
             app:hintEnabled="false"
             app:endIconMode="clear_text"
-            app:endIconTint="@color/light_gray"
-            app:endIconDrawable="@drawable/error_mark">
+            app:endIconTint="@null"
+            app:endIconDrawable="@drawable/delete_text">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/gopay_text_input"
