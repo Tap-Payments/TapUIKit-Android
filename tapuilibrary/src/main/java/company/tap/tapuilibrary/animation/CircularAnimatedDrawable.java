@@ -137,7 +137,7 @@ public class CircularAnimatedDrawable extends Drawable implements Animatable {
         mValueAnimatorAngle.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                mCurrentGlobalAngle = Float.parseFloat(animation.getAnimatedValue().toString());;
+                mCurrentGlobalAngle = Float.parseFloat(animation.getAnimatedValue().toString());
                 mAnimatedView.invalidate();
             }
         });

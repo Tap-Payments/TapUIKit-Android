@@ -61,8 +61,4 @@ open class TapChip(context: Context, attributeSet: AttributeSet?) :
         }
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-
-    }
 }
