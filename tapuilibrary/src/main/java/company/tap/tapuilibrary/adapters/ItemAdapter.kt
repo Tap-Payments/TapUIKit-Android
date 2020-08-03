@@ -35,6 +35,7 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
     lateinit var descText:TapTextView
     lateinit var itemViewadapter:TapListItemView
     lateinit var itemSeparator:TapSeparatorView
+    lateinit var totalQuantity:TapTextView
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val v =
@@ -52,12 +53,6 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
         initView(holder,position)
-
-        if (position == 0){
-            val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-            params.leftMargin = 28
-            holder.itemView.layoutParams = params
-        }
     }
 
     private fun initView(
@@ -67,6 +62,7 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
         descriptioextView  = holder.itemView.findViewById(R.id.description_textView)
         descText = holder.itemView.findViewById(R.id.show_description)
         itemSeparator = holder.itemView.findViewById(R.id.itemseparator)
+        totalQuantity = holder.itemView.findViewById(R.id.total_quantity)
         val discount  = holder.itemView.findViewById(R.id.discount_text) as TextView
         val totalAmount  = holder.itemView.findViewById(R.id.total_amount) as TextView
         val itemName = holder.itemView.findViewById(R.id.item_title) as TextView
@@ -86,6 +82,9 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
             context?.assets, TapFont.tapFontType(
                 TapFont.robotoLight))
         itemViewadapter.setItemViewDataSource(getItemViewDataSource())
+        totalQuantity.typeface=Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.robotoRegular))
         if(itemList[position]%2==0){
             discount.text = LocalizationManager.getValue("Discount","ItemList")
             totalAmount.paintFlags =

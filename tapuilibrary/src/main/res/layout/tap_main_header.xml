@@ -20,20 +20,19 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="@dimen/margin_basic_0dp">
 
-        <company.tap.tapuilibrary.atoms.TapImageView
-            android:id="@+id/businessIcon"
-            android:layout_width="43dp"
-            android:layout_height="match_parent" />
-
-        <company.tap.tapuilibrary.atoms.TapTextView
-            android:id="@+id/placeholderText"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:background="#000000"
-            android:textColor="#ffffff"
-            android:gravity="center"
-            android:visibility="gone"/>
-    </company.tap.tapuilibrary.atoms.TapChip>
+            <company.tap.tapuilibrary.atoms.TapImageView
+                android:id="@+id/businessIcon"
+                android:layout_width="40dp"
+                android:layout_height="match_parent" />
+            <company.tap.tapuilibrary.atoms.TapTextView
+                android:id="@+id/placeholderText"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="#000000"
+                android:textColor="#ffffff"
+                android:gravity="center"
+                android:visibility="gone"/>
+        </company.tap.tapuilibrary.atoms.TapChip>
 
     <company.tap.tapuilibrary.atoms.TapTextView
         android:id="@+id/paymentFor"

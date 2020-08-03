@@ -5,7 +5,11 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:ignore="MissingDefaultResource">
+    tools:ignore="MissingDefaultResource"
+    android:background="@color/header_color"
+
+    >
+
 
     <company.tap.tapuilibrary.atoms.TapDragIndicator
         android:layout_width="75dp"
@@ -23,6 +27,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@color/view_color"
            />
+
     </company.tap.tapuilibrary.atoms.TapDragIndicator>
 
     <company.tap.tapuilibrary.views.TapHeaderSectionView
@@ -30,12 +35,14 @@
         android:layout_marginTop="@dimen/margin_basic_9dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/header_color"
         />
 
     <company.tap.tapuilibrary.views.TapAmountSectionView
         android:id="@+id/amount_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/header_color"
        />
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
@@ -47,11 +54,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#f4f4f4">
+        android:background="@color/chip_background">
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:padding="5dp"
+        android:background="@color/header_color"
         >
         <company.tap.tapuilibrary.atoms.TapChipGroup
             android:layout_width="match_parent"
@@ -66,19 +75,18 @@
         android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:background="@color/view_color"
-        android:layout_marginStart="@dimen/margin_basic_19dp"
-        android:layout_marginEnd="17dp"
-        android:layout_marginTop="@dimen/margin_basic_16dp"
-        android:visibility="gone"/>
+        android:visibility="visible"/>
     </LinearLayout>
+
     <company.tap.tapuilibrary.views.TapSelectionTabLayout
         android:id="@+id/sections_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/selection_tab_color"/>
     <LinearLayout
         android:paddingStart="30dp"
         android:paddingEnd="30dp"
-        android:background="@color/white"
+        android:background="@color/card_input"
         android:id="@+id/payment_input_layout"
         android:layout_width="match_parent"
         android:layout_height="44dp"
@@ -111,8 +119,10 @@
     <company.tap.tapuilibrary.views.TapCardSwitch
         android:layout_height="wrap_content"
         android:id="@+id/switch_pay_demo"
+        android:layout_width="match_parent"
         android:layout_gravity="start"
-        android:layout_width="match_parent"/>
+        android:background="@color/chip_background"/>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -140,6 +150,6 @@
         android:id="@+id/webViewContainer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
-
 </LinearLayout>
+
 

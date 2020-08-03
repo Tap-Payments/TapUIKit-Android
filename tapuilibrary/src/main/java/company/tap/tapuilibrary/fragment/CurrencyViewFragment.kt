@@ -45,7 +45,7 @@ open class CurrencyViewFragment : Fragment() {
         val groupAction = currencyGroup.findViewById<TapTextView>(R.id.group_action)
         groupAction.visibility=View.GONE
         chipRecycler = currencyGroup.findViewById<View>(R.id.chip_recycler) as RecyclerView
-        chipRecycler.setHasFixedSize(true)
+       // chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter =
             CurrencyAdapter(currencyList)

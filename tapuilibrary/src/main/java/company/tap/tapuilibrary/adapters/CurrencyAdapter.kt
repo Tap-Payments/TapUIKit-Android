@@ -39,6 +39,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
         private var view: View = v
         private var photo: CurrencyModel? = null
 
+
         fun bindPhoto(photo: CurrencyModel) {
             this.photo = photo
             Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
@@ -48,13 +49,6 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
 
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.bindPhoto(photos[position])
-        println("pos in curr :$position")
-        if (position==-1){
-            val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-            params.leftMargin = 28
-            holder.itemView.layoutParams = params
-        }
-
         if (selectedPosition == position) {
             holder.itemView.setBackgroundResource(R.drawable.border_currency)
         } else
