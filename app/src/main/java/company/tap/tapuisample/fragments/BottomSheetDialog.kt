@@ -93,6 +93,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var saveCardorMobile: TapTextView? = null
     private var separatorView: TapSeparatorView? = null
     private var checkboxString:String = ""
+    private var  mainChipGroup:TapChipGroup? = null
+    private var  groupName:TapTextView? = null
+    private var  groupAction:TapTextView? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -214,24 +218,23 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     @SuppressLint("ResourceAsColor")
     private fun setupChip(view: View) {
-        val mainChipgroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
+        mainChipGroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
-        val groupName = view.findViewById<TapTextView>(R.id.group_name)
+         groupName = view.findViewById<TapTextView>(R.id.group_name)
 //        groupName.text = LocalizationManager.getValue("select", "Common")
-        groupName.text = getString(R.string.select)
-        groupName.setTextColor(R.color.text_color)
-        val groupAction = view.findViewById<TapTextView>(R.id.group_action)
+        groupName?.text = getString(R.string.select)
+        groupName?.setTextColor(R.color.text_color)
+         groupAction = view.findViewById<TapTextView>(R.id.group_action)
 //        groupAction.text = LocalizationManager.getValue("edit", "Common")
-        groupAction.text = getString(R.string.edit)
-        groupName.setTextColor(R.color.text_color)
+        groupAction?.text = getString(R.string.edit)
+        groupName?.setTextColor(R.color.text_color)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter = CardTypeAdapter(paymentsList, this)
-        groupAction.setOnClickListener {
+        groupAction?.setOnClickListener {
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
         }
-//        groupAction?.visibility= View.GONE
-//        groupName?.visibility= View.GONE
+
 
     }
 
@@ -524,8 +527,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 saveCardorMobile?.visibility= View.GONE
                 headerView?.visibility= View.GONE
                 separator.visibility = View.GONE
-//                group_action.visibility = View.GONE
-//                group_name.visibility = View.GONE
+                groupAction?.visibility= View.GONE
+                groupName?.visibility= View.GONE
+                separator_.visibility = View.GONE
+                topSeparator.visibility = View.GONE
+
                 actionButton.addChildView(actionButton.getImageView(R.drawable.loader,1){replaceBetweenFragments()})
 //                action_button.changeButtonState(ActionButtonState.LOADING)
                 changeBottomSheetTransition()
@@ -538,6 +544,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
 
     private fun replaceBetweenFragments(){
+        actionButton.visibility= View.GONE
         childFragmentManager.beginTransaction().replace(R.id.webViewContainer,
             WebFragment(this)
         ).commit()

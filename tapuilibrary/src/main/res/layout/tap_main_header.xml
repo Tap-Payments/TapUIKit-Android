@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_gravity="start"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="53dp">
 
@@ -23,7 +24,8 @@
             <company.tap.tapuilibrary.atoms.TapImageView
                 android:id="@+id/businessIcon"
                 android:layout_width="40dp"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_gravity="center"/>
             <company.tap.tapuilibrary.atoms.TapTextView
                 android:id="@+id/placeholderText"
                 android:layout_width="40dp"
@@ -40,6 +42,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/action_bar_back_button_width"
         android:gravity="start"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -55,6 +58,7 @@
         app:layout_constraintTop_toBottomOf="@+id/paymentFor"
         app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/action_bar_back_button_width"
         android:gravity="start"
         android:layout_width="0dp"
         android:layout_height="0dp"

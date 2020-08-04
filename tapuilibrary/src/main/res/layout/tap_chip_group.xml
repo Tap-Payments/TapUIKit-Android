@@ -37,8 +37,6 @@
             android:layout_weight="0.5"
             android:layout_marginEnd="@dimen/margin_basic_16dp"
             android:textColor="@color/text_color"/>
-            android:layout_gravity="end"
-            android:layout_marginEnd="@dimen/margin_basic_16dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
