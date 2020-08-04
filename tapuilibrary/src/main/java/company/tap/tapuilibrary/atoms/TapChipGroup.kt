@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.R
+import kotlinx.android.synthetic.main.tap_chip_group.view.*
 
 /**
  *

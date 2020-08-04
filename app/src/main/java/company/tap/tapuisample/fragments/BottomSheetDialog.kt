@@ -165,8 +165,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
-//        switchSaveDemo?.visibility = View.GONE
-
+        switchSaveDemo?.visibility = View.GONE
     }
 
     //Setting data to TapSwitchDataSource
@@ -177,9 +176,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
             alertgoPaySignup = "Please check your email or SMS’s in order to complete the goPay Checkout signup process."
-
         )
-
     }
 
     private fun tabLayoutInit(view: View) {

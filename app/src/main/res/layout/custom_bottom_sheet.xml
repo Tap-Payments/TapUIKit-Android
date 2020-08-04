@@ -52,6 +52,7 @@
         android:id="@+id/amount_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/activity_total_margin"
         android:background="@color/white"
        />
     <company.tap.tapuilibrary.atoms.TapSeparatorView
@@ -70,16 +71,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="5dp"
-        android:background="@color/header_color"
-        >
+        android:background="@color/header_color">
         <company.tap.tapuilibrary.atoms.TapChipGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/mainChipgroup"
             android:background="@color/chip_background"
-            android:orientation="horizontal"
-
-            />
+            android:orientation="horizontal" />
     </FrameLayout>
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="wrap_content"
@@ -132,6 +130,7 @@
         android:id="@+id/switch_pay_demo"
         android:layout_width="match_parent"
         android:layout_gravity="start"
+        android:paddingStart="@dimen/default_padding"
         android:background="@color/chip_background"/>
 
 
