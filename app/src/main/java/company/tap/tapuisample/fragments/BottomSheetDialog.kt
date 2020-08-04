@@ -92,7 +92,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var alertgoPay: TapTextView? = null
     private var saveCardorMobile: TapTextView? = null
     private var separatorView: TapSeparatorView? = null
-    private var checkboxString:String = ""
+    private var checkboxString:String? = null
     private var  mainChipGroup:TapChipGroup? = null
     private var  groupName:TapTextView? = null
     private var  groupAction:TapTextView? = null
@@ -152,7 +152,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         addMobileTab()
         setupBrandDetection()
         configureSwitch()
-
     }
 
     private fun switchViewInit(view: View) {
@@ -166,14 +165,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
-        switchSaveDemo?.visibility = View.GONE
+//        switchSaveDemo?.visibility = View.GONE
 
     }
 
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSave = checkboxString,
+            switchSave = getString(R.string.nfc_text),
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
@@ -340,8 +339,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
-            selectedCurr = getString(R.string.amount),
-            currentCurr = getString(R.string.amount_kd),
+            selectedCurr = getString(R.string.amount_kd),
+            currentCurr = getString(R.string.amount),
             itemCount = getString(R.string.items)
         )
     }
@@ -520,7 +519,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 separatorView?.visibility = View.GONE
                 chipRecycler.visibility= View.GONE
                 selectedCurrency.visibility= View.GONE
-                nfcScanBtn.visibility= View.GONE
+//                nfcScanBtn.visibility= View.GONE
                 switchSaveDemo?.visibility= View.GONE
                 savegoPay?.visibility= View.GONE
                 alertgoPay?.visibility= View.GONE

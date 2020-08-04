@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:ignore="MissingDefaultResource"
-    android:background="@color/white"
+    android:background="@drawable/corner_radius"
+    app:cardCornerRadius="@dimen/margin_basic_8dp"
 
     >
 
@@ -37,7 +38,7 @@
         android:layout_marginBottom="@dimen/margin_basic_9dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/header_color"
+        android:background="@color/gray"
         />
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"

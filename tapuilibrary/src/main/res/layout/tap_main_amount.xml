@@ -52,7 +52,6 @@
         android:textStyle="normal"
         tools:text="10 ITEMS"
         android:background="@drawable/rounded_rectangle"
-        android:layout_marginTop="9dp"
         android:layout_alignParentEnd="true"
         android:elevation="@dimen/margin_basic_0dp"
         android:stateListAnimator="@null"
