@@ -11,13 +11,11 @@
     app:cardCornerRadius="8dp"
     android:id="@+id/tapcard_Chip"
     app:elevation="8dp"
-    app:contentPadding="5dp"
-    >
+    app:contentPadding="5dp">
   <LinearLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-   >
+    android:layout_height="match_parent">
 
     <company.tap.tapuilibrary.atoms.TapImageView
         android:id="@+id/imageView_amex"
@@ -41,7 +39,6 @@
         android:layout_marginTop="14dp"
         android:layout_marginStart="12dp"
         android:layout_marginBottom="@dimen/margin_basic_14dp"
-        android:layout_marginEnd="10dp"
-        />
+        android:layout_marginEnd="10dp" />
   </LinearLayout>
 </company.tap.tapuilibrary.atoms.TapChip>

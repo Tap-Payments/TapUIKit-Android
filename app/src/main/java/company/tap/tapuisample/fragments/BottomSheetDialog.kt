@@ -337,8 +337,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
-            selectedCurr = getString(R.string.amount_kd),
-            currentCurr = getString(R.string.amount),
+            selectedCurr = getString(R.string.amount),
+            currentCurr = getString(R.string.amount_kd),
             itemCount = getString(R.string.items)
         )
     }

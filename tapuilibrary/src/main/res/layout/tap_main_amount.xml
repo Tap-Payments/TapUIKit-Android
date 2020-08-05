@@ -12,31 +12,26 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView_currentcurrency"
         android:textSize="20sp"
-        android:gravity="center"
         android:fontFamily="sans-serif"
         android:textStyle="normal"
         android:textColor="#4b4847"
-        tools:text="SR1000,000.000"
-        />
+        tools:text="SR1000,000.000" />
     <company.tap.tapuilibrary.atoms.TapTextView
         android:id="@+id/textView_currentcurrency"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview_selectedcurrency"
         android:textSize="14sp"
         android:gravity="center"
         android:fontFamily="sans-serif-light"
         android:textStyle="normal"
         android:textColor="#a8a8a8"
         tools:text="KD1000,000.000"
-        android:layout_below="@+id/textview_selectedcurrency"
-        android:visibility="gone"
-
-        />
+        android:visibility="visible" />
 
     <company.tap.tapuilibrary.atoms.TapButton
         android:id="@+id/textView_itemcount"

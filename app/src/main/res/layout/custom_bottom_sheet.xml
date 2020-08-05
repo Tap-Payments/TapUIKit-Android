@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:id="@+id/indicatorSeparator"
             android:layout_gravity="center_horizontal"
-            android:background="@color/view_color" />
+            android:background="@color/separator_color" />
 
     </company.tap.tapuilibrary.atoms.TapDragIndicator>
 
@@ -41,11 +41,11 @@
         />
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.7dp"
         android:id="@+id/topSeparator"
         android:layout_marginStart="@dimen/default_padding"
         android:layout_marginEnd="@dimen/default_padding"
-        android:background="@color/view_color"/>
+        android:background="@color/separator_color"/>
 
     <company.tap.tapuilibrary.views.TapAmountSectionView
         android:id="@+id/amount_section"
@@ -58,8 +58,8 @@
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:id="@+id/separator"
-        android:layout_height="1dp"
-        android:background="@color/view_color"
+        android:layout_height="0.7dp"
+        android:background="@color/separator_color"
        />
     <LinearLayout
         android:layout_width="match_parent"
@@ -82,12 +82,12 @@
     </FrameLayout>
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="wrap_content"
-        android:layout_height="1dp"
+        android:layout_height="0.7dp"
         android:layoutDirection="locale"
         android:id="@+id/separator_"
         android:layout_marginEnd="@dimen/activity_horizontal_margin"
         android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:background="@color/view_color"
+        android:background="@color/separator_color"
         android:visibility="visible"/>
     </LinearLayout>
 
@@ -114,9 +114,9 @@
     </LinearLayout>
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.7dp"
         android:id="@+id/separatorــ"
-        android:background="@color/view_color" />
+        android:background="@color/separator_color" />
 
 
     <FrameLayout
