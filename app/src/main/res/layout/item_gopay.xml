@@ -12,21 +12,22 @@
     app:cardPreventCornerOverlap="false"
     app:contentPadding="5dp"
     android:id="@+id/tapcard_Chip"
-    app:cardBackgroundColor="@color/glowingShadow"
-
-
-    >
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+    app:cardBackgroundColor="@color/glowingShadow">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_height="40dp">
 
         <company.tap.tapuilibrary.atoms.TapImageView
             android:id="@+id/imageView_goPay"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/goPayText"
             android:layout_width="@dimen/margin_basic_20dp"
             android:layout_height="@dimen/margin_basic_20dp"
-            android:layout_marginStart="@dimen/margin_basic_25dp"
+            android:layout_marginStart="@dimen/margin_basic_20dp"
+            android:layout_marginEnd="@dimen/activity_total_margin"
             android:layout_marginTop="@dimen/margin_basic_10dp"
             android:layout_marginBottom="@dimen/margin_basic_10dp"
             android:src="@drawable/tap" />
@@ -34,17 +35,21 @@
         <company.tap.tapuilibrary.atoms.TapTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView_goPay"
+            android:id="@+id/goPayText"
             android:textSize="12sp"
             android:fontFamily="sans-serif"
             android:textStyle="normal"
             android:textColor="#ffffff"
-            android:gravity="center_horizontal"
+            android:gravity="center_vertical"
             tools:text="goPay"
             android:text="goPay"
-            android:layout_marginTop="13dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginEnd="22dp"
-            android:layout_marginStart="@dimen/margin_basic_4dp"
-            />
-    </LinearLayout>
+            android:layout_marginTop="@dimen/margin_basic_10dp"
+            android:layout_marginBottom="@dimen/margin_basic_10dp"
+            android:layout_marginEnd="@dimen/margin_basic_20dp"
+            android:layout_marginStart="@dimen/activity_total_margin" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </company.tap.tapuilibrary.atoms.TapChip>

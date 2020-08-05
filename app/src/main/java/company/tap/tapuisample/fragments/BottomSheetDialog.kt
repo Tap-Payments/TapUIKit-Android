@@ -76,7 +76,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private lateinit var businessIcon: TapImageView
     private lateinit var businessPlaceholder: TapTextView
     lateinit var tabLayout: TapSelectionTabLayout
-    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
+    private var imageUrl: String? = null
+//    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
     var fontChanger: FontChanger? = null
     private var selectedTab = 0
     private lateinit var tapCardInputView: InlineCardInput
@@ -219,11 +220,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
          groupName = view.findViewById<TapTextView>(R.id.group_name)
 //        groupName.text = LocalizationManager.getValue("select", "Common")
         groupName?.text = getString(R.string.select)
-        groupName?.setTextColor(R.color.text_color)
+//        groupName?.setTextColor(R.color.darker_gray)
          groupAction = view.findViewById<TapTextView>(R.id.group_action)
 //        groupAction.text = LocalizationManager.getValue("edit", "Common")
         groupAction?.text = getString(R.string.edit)
-        groupName?.setTextColor(R.color.text_color)
+//        groupName?.setTextColor(R.color.darker_gray)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter = CardTypeAdapter(paymentsList, this)
@@ -527,6 +528,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 groupName?.visibility= View.GONE
                 separator_.visibility = View.GONE
                 topSeparator.visibility = View.GONE
+                separatorــ.visibility = View.GONE
 
                 actionButton.addChildView(actionButton.getImageView(R.drawable.loader,1){replaceBetweenFragments()})
 //                action_button.changeButtonState(ActionButtonState.LOADING)
