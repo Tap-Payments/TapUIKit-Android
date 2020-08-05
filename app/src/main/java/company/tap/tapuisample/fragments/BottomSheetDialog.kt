@@ -298,7 +298,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                             .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
                 }
-                selectedCurrency.text = getString(R.string.amount)
+                selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = getString(R.string.items)
             } else {
 
@@ -316,8 +316,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 }
 
                 }*/
-                selectedCurrency.text = getString(R.string.amount_kd)
-                currentCurrency.visibility = View.GONE
+                currentCurrency.visibility =View.VISIBLE
+                selectedCurrency.text =  "KD1000,000.000"
+//                currentCurrency.visibility = View.GONE
                 fragment_container.visibility = View.GONE
                 tabLayout.visibility=View.GONE
                 paymentLayout.visibility=View.GONE
@@ -337,8 +338,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
-            selectedCurr = getString(R.string.amount),
-            currentCurr = getString(R.string.amount_kd),
+            selectedCurr = "SR1000,000.000",
+            currentCurr = "KD1000,000.000",
             itemCount = getString(R.string.items)
         )
     }
@@ -505,7 +506,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 switchMerchantCheckout?.isChecked = false
                 switchgoPayCheckout?.isChecked = false
                 switchgoPayCheckout?.visibility = View.GONE
-                currentCurrency.visibility = View.GONE
+//                currentCurrency.visibility = View.GONE
                 tabLayout.visibility=View.GONE
                 paymentLayout.visibility=View.GONE
                 tapHeaderSectionView.visibility=View.GONE
@@ -516,7 +517,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 switchDemo.visibility=View.GONE
                 separatorView?.visibility = View.GONE
                 chipRecycler.visibility= View.GONE
-                selectedCurrency.visibility= View.GONE
+//                selectedCurrency.visibility= View.GONE
 //                nfcScanBtn.visibility= View.GONE
                 switchSaveDemo?.visibility= View.GONE
                 savegoPay?.visibility= View.GONE

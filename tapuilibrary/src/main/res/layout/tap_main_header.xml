@@ -6,7 +6,7 @@
     android:layoutDirection="locale"
     android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="53dp">
+    android:layout_height="50dp">
 
     <company.tap.tapuilibrary.atoms.TapChip
         app:layout_constraintTop_toTopOf="parent"
@@ -16,8 +16,8 @@
         android:id="@+id/tapChipIcon"
         android:background="@color/black_27"
         android:visibility="visible"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
         android:layout_marginStart="@dimen/margin_basic_16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="@dimen/margin_basic_0dp">
@@ -25,13 +25,13 @@
             <company.tap.tapuilibrary.atoms.TapImageView
                 android:id="@+id/businessIcon"
                 android:background="@color/black_27"
-                android:layout_width="40dp"
+                android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"/>
             <company.tap.tapuilibrary.atoms.TapTextView
                 android:id="@+id/placeholderText"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
                 android:background="#000000"
                 android:textColor="#ffffff"
                 tools:text="@android:string/autofill"
@@ -46,14 +46,13 @@
         app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="@dimen/action_bar_back_button_width"
-        android:gravity="top"
+        android:gravity="bottom"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/margin_basic_3dp"
-        android:shadowColor="#b6b6b6"
-        android:shadowDy="1"
+        android:shadowColor="#00a8a8a8"
         android:textSize="12sp"
-        android:shadowRadius="3"
+        android:textAllCaps="true"
         style="@style/TextStyle"
         tools:text="Payment for " />
     <company.tap.tapuilibrary.atoms.TapTextView
@@ -64,6 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="@dimen/action_bar_back_button_width"
         android:gravity="top"
+        android:layout_marginBottom="6dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:textSize="16sp"
