@@ -301,7 +301,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = getString(R.string.items)
             } else {
-
+                separator_.visibility = View.GONE
+                topSeparator.visibility = View.GONE
+                separatorــ.visibility = View.GONE
                 childFragmentManager
                     .beginTransaction()
                     .add(R.id.fragment_container1, currencyViewFragment)
