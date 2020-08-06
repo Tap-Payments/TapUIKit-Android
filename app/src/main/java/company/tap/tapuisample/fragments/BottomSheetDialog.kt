@@ -289,6 +289,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     .beginTransaction()
                     .remove(currencyViewFragment)
                     .commit()
+                separator_.visibility = View.GONE
                 fragment_container.visibility = View.VISIBLE
                 tabLayout.visibility=View.VISIBLE
                 paymentLayout.visibility=View.VISIBLE
