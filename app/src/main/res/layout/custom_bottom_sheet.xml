@@ -19,8 +19,7 @@
         android:layout_marginStart="150dp"
         android:background="@drawable/corner_radius"
         android:layout_marginTop="@dimen/margin_basic_10dp"
-        app:cardElevation="@dimen/margin_basic_0dp"
-        >
+        app:cardElevation="@dimen/margin_basic_0dp">
         <company.tap.tapuilibrary.atoms.TapSeparatorView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
