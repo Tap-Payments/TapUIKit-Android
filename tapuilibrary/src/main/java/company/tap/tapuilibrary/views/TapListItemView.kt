@@ -52,7 +52,7 @@ class TapListItemView:LinearLayout {
         defStyleAttr
     )
     init {
-        inflate(context, R.layout.tap_items_view, this)
+        inflate(context, R.layout.tap_items_view_, this)
         itemTitle = findViewById(R.id.item_title)
         itemAmount = findViewById(R.id.item_amount)
         totalAmount = findViewById(R.id.total_amount)

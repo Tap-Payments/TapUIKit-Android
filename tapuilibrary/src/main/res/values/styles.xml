@@ -30,4 +30,8 @@
         <item name="android:minHeight">0dp</item>
         <item name="android:maxLines">1</item>
     </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:fontFamily">@font/your_font</item>
+        <item name="fontFamily">@font/your_font</item>
+    </style>
 </resources>

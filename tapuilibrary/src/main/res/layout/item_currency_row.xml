@@ -5,21 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="40dp"
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
     app:cardCornerRadius="8dp"
     android:id="@+id/tapcard_Chip"
     app:elevation="8dp"
     app:contentPadding="2dp"
-    android:outlineSpotShadowColor="#d9d9da"
-
-    >
+    android:outlineSpotShadowColor="#4cffffff" >
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        >
+        android:layout_height="40dp">
 
         <company.tap.tapuilibrary.atoms.TapImageView
             android:id="@+id/imageView_currency"
@@ -27,8 +24,7 @@
             android:layout_height="@dimen/margin_basic_23dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
-            android:layout_marginBottom="7dp"
-            />
+            android:layout_marginBottom="7dp" />
 
         <company.tap.tapuilibrary.atoms.TapTextView
             android:id="@+id/textView_currency"
@@ -43,7 +39,6 @@
             android:layout_marginTop="12dp"
             android:layout_marginStart="12dp"
             android:layout_marginBottom="12dp"
-            android:layout_marginEnd="10dp"
-            />
+            android:layout_marginEnd="10dp" />
     </LinearLayout>
 </company.tap.tapuilibrary.atoms.TapChip>

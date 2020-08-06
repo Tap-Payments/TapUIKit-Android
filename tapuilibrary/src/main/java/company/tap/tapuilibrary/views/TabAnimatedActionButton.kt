@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.views
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.view.Gravity
@@ -11,6 +12,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.setMargins
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.animation.MorphingAnimation
@@ -18,7 +20,8 @@ import company.tap.tapuilibrary.animation.MorphingAnimation.AnimationTarget.*
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.datasource.AnimationDataSource
 import company.tap.tapuilibrary.enums.ActionButtonState
-import company.tap.tapuilibrary.enums.ActionButtonState.*
+import company.tap.tapuilibrary.enums.ActionButtonState.ERROR
+import company.tap.tapuilibrary.enums.ActionButtonState.SUCCESS
 import company.tap.tapuilibrary.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.ktx.setImage
 
@@ -114,6 +117,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     private fun getTextView(): TextView {
         val textView = TextView(context)
+        textView.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
         dataSource?.text?.let {
             textView.text = it
         }

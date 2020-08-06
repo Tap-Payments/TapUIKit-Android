@@ -128,7 +128,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     ) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
-        actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
+        actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
         checkboxString = getString(R.string.nfc_text)
 
@@ -137,7 +137,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         actionButton.stateListAnimator = null
         return ActionButtonDataSource(
             text = getString(R.string.pay),
-            textSize = 20f,
+            textSize = 18f,
             textColor = Color.WHITE,
             cornerRadius = 100f,
             successImageResources = R.drawable.checkmark,
@@ -302,6 +302,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     .beginTransaction()
                     .remove(currencyViewFragment)
                     .commit()
+                separator_.visibility = View.GONE
                 fragment_container.visibility = View.VISIBLE
                 tabLayout.visibility=View.VISIBLE
                 paymentLayout.visibility=View.VISIBLE
@@ -311,10 +312,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                             .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
                 }
-                selectedCurrency.text = getString(R.string.amount)
+                selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = getString(R.string.items)
             } else {
-
+//                separator.visibility = View.GONE
+                separator_.visibility = View.GONE
+                separatorــ.visibility = View.GONE
+                indicatorSeparator.visibility = View.GONE
                 childFragmentManager
                     .beginTransaction()
                     .add(R.id.fragment_container1, currencyViewFragment)
@@ -329,8 +333,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 }
 
                 }*/
-                selectedCurrency.text = getString(R.string.amount_kd)
-                currentCurrency.visibility = View.GONE
+                currentCurrency.visibility =View.VISIBLE
+                selectedCurrency.text =  "KD1000,000.000"
+//                currentCurrency.visibility = View.GONE
                 fragment_container.visibility = View.GONE
                 tabLayout.visibility=View.GONE
                 paymentLayout.visibility=View.GONE
@@ -350,8 +355,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
-            selectedCurr = getString(R.string.amount),
-            currentCurr = getString(R.string.amount_kd),
+            selectedCurr = "SR1000,000.000",
+            currentCurr = "KD1000,000.000",
             itemCount = getString(R.string.items)
         )
     }
@@ -518,7 +523,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 switchMerchantCheckout?.isChecked = false
                 switchgoPayCheckout?.isChecked = false
                 switchgoPayCheckout?.visibility = View.GONE
-                currentCurrency.visibility = View.GONE
+//                currentCurrency.visibility = View.GONE
                 tabLayout.visibility=View.GONE
                 paymentLayout.visibility=View.GONE
                 tapHeaderSectionView.visibility=View.GONE
@@ -529,7 +534,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 switchDemo.visibility=View.GONE
                 separatorView?.visibility = View.GONE
                 chipRecycler.visibility= View.GONE
-                selectedCurrency.visibility= View.GONE
+//                selectedCurrency.visibility= View.GONE
 //                nfcScanBtn.visibility= View.GONE
                 switchSaveDemo?.visibility= View.GONE
                 savegoPay?.visibility= View.GONE
