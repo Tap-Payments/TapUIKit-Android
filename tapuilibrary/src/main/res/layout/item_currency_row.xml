@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="40dp"
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
     app:cardCornerRadius="8dp"
     android:id="@+id/tapcard_Chip"
     app:elevation="8dp"
     app:contentPadding="2dp"
-    android:outlineSpotShadowColor="#d9d9da" >
+    android:outlineSpotShadowColor="#4cffffff" >
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"

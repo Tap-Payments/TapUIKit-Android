@@ -19,17 +19,22 @@
 
             <company.tap.tapuilibrary.atoms.TapTextView
                 android:id="@+id/item_title"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:textAlignment="textStart"
+                app:layout_constraintEnd_toStartOf="@+id/item_amount"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/show_description"
                 android:textSize="14sp"
+                android:layout_marginEnd="@dimen/margin_basic_10dp"
                 android:fontFamily="sans-serif"
                 android:textStyle="normal"
                 android:textColor="#4b4847"
                 android:lineSpacingExtra="2sp"
-                tools:text="Item TItle" />
+                android:lines="3"
+                tools:text="Item TItle Item TItle Item TItle Item TItle Item TItle Item TItle Item TItle" />
             <company.tap.tapuilibrary.atoms.TapTextView
                 android:id="@+id/show_description"
                 android:layout_width="wrap_content"
@@ -100,12 +105,10 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/item_amount"
                     android:textColor="#4b4847"
                     android:gravity="center"
                     android:paddingBottom="2dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginEnd="5dp"
                     android:layout_marginStart="@dimen/margin_basic_3dp"
                     android:background="@drawable/rounded_circle"
                     android:textSize="9sp"
