@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
+    android:orientation="vertical">
 
     <company.tap.tapuilibrary.atoms.TapChipGroup
         android:id="@+id/currencyLayout1"
@@ -17,8 +16,8 @@
     </company.tap.tapuilibrary.atoms.TapChipGroup>
 
     <company.tap.tapuilibrary.atoms.TapSeparatorView
-        android:layout_width="wrap_content"
-        android:layout_height="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="0.7dp"
         android:background="@color/view_color" />
 
     <androidx.recyclerview.widget.RecyclerView
