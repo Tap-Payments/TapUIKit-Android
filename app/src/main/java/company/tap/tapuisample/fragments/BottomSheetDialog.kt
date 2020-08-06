@@ -51,6 +51,7 @@ import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
+
 /**
  * Created by AhlaamK on 6/10/20.
 
@@ -182,9 +183,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     private fun tabLayoutInit(view: View) {
         tabLayout = view.findViewById(R.id.sections_tablayout)
-        nfcScanBtn = view.findViewById(R.id.nfc_scan)
+    //    nfcScanBtn = view.findViewById(R.id.nfc_scan)
         val nfcFragment = NFCFragment()
-        nfcScanBtn.setOnClickListener {
+      /*  nfcScanBtn.setOnClickListener {
             tabLayout.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
@@ -195,7 +196,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 .beginTransaction()
                 .add(R.id.fragment_container_nfc, nfcFragment)
                 .commit()
-        }
+        }*/
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(context, null)
         if (context != null) {
@@ -203,6 +204,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
         }
         bottomSheetDialog.behavior.state = STATE_EXPANDED
+
+      //  card_scanner_button?.setOnClickListener {
+      //      val cardScannerFragment = CardScannerFragment()
+      //      childFragmentManager
+      //          .beginTransaction()
+       //         .add(R.id.fragment_container_nfc, cardScannerFragment)
+      //          .commit()
+     //   }
     }
 
     private fun setupFonts() {
