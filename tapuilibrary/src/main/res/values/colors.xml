@@ -34,6 +34,8 @@
         <color name="black_color">#000000</color>
 
         <color name="text_color">#4b4847</color>
+        <color name="text_color_light">#adacac</color>
+        <color name="text_color_light_">#b1b0b0</color>
         <color name="selection_tab_color">#f4f4f4</color>
         <color name="button_gray">#cccccc</color>
 

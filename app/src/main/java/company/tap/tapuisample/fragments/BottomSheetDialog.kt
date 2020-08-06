@@ -125,7 +125,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     ) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
-        actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
+        actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
         checkboxString = getString(R.string.nfc_text)
 
@@ -134,7 +134,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         actionButton.stateListAnimator = null
         return ActionButtonDataSource(
             text = getString(R.string.pay),
-            textSize = 20f,
+            textSize = 18f,
             textColor = Color.WHITE,
             cornerRadius = 100f,
             successImageResources = R.drawable.checkmark,

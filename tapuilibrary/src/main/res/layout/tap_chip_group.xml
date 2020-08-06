@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
@@ -22,8 +21,10 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/font_size_11sp"
-            android:textColor="@color/darker_gray"
+            android:textSize="@dimen/font_size_10sp"
+            android:textColor="@color/brown_grey_0"
+            android:fontFamily="sans-serif"
+            android:textAllCaps="true"
             tools:text= "kjnbbvcxvbnm"
             android:layout_gravity="start" />
 
@@ -32,11 +33,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text = "kjnbbvcxvbnm"
-            android:textSize="@dimen/font_size_11sp"
+            android:fontFamily="sans-serif-condensed"
+            android:textAllCaps="true"
+            android:textSize="@dimen/font_size_10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:textColor="@color/text_color"/>
+            android:textColor="@color/text_color_light_"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -45,7 +48,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/margin_basic_9dp"
+      android:layout_gravity="center_vertical"
+        android:paddingTop="@dimen/margin_basic_6dp"
          android:nestedScrollingEnabled="false"
       app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
