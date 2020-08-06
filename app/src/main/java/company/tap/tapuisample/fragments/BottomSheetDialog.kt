@@ -11,6 +11,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
@@ -97,6 +98,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var  mainChipGroup:TapChipGroup? = null
     private var  groupName:TapTextView? = null
     private var  groupAction:TapTextView? = null
+    private var cardScannerBtn: ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -203,6 +205,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
         }
         bottomSheetDialog.behavior.state = STATE_EXPANDED
+        cardScannerBtn?.setOnClickListener {
+            val cardScannerFragment = CardScannerFragment()
+            childFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_nfc, cardScannerFragment)
+                .commit()
+        }
+
     }
 
     private fun setupFonts() {
@@ -258,6 +268,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 )
             )
             .into(businessIcon)
+        cardScannerBtn = view.findViewById(R.id.card_scanner_button)
     }
 
     private fun getHeaderDataSource(): HeaderDataSource {
