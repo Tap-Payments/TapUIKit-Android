@@ -92,7 +92,7 @@
     </LinearLayout>
 
     <company.tap.tapuilibrary.organisms.TapPaymentInput
-        android:id="@+id/tap_payment_input"
+        android:id="@+id/tap_payment_input0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/selection_tab_color"

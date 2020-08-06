@@ -9,8 +9,10 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+        kotlinOptions.jvmTarget = 1.8
 
     }
+
     defaultConfig {
         applicationId "company.tap.tapuisample"
         minSdkVersion 21
@@ -63,7 +65,7 @@ dependencies {
     implementation 'jp.wasabeef:blurry:3.0.0'
     implementation 'io.alterac.blurkit:blurkit:1.1.0'
     implementation 'androidx.biometric:biometric:1.0.1'
-    implementation 'com.github.Tap-Payments:TapUIKit-Android:0.0.9.3'
+    implementation 'com.github.Tap-Payments:TapUIKit-Android:0.0.9.4'
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta8"
 
 }

@@ -31,6 +31,6 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         }
     }
     companion object{
-        
+
     }
 }
