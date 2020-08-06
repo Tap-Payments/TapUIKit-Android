@@ -42,6 +42,8 @@ import company.tap.tapuilibrary.fragment.CurrencyViewFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
+import company.tap.tapuilibrary.organisms.TapPaymentInput
+
 import company.tap.tapuilibrary.views.*
 
 import company.tap.tapuisample.R
@@ -99,8 +101,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var  groupName:TapTextView? = null
     private var  groupAction:TapTextView? = null
     private var cardScannerBtn: ImageView? = null
+    private var cardScannerFragment = CardScannerFragment()
+    private var tapInputPayment = TapPaymentInput?=null
 
-    override fun onCreateView(
+        override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -269,6 +273,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             )
             .into(businessIcon)
         cardScannerBtn = view.findViewById(R.id.card_scanner_button)
+      //  tapInputPayment = view.findViewById(R.id.tap_payment_input)
     }
 
     private fun getHeaderDataSource(): HeaderDataSource {
@@ -303,18 +308,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 fragment_container.visibility = View.VISIBLE
                 tabLayout.visibility=View.VISIBLE
                 paymentLayout.visibility=View.VISIBLE
-                bottomSheetLayout?.let { layout ->
+               /* bottomSheetLayout?.let { layout ->
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
                             .inflateTransition(R.transition.remove_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
-                }
+                }*/
                 selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = getString(R.string.items)
             } else {
 
                 childFragmentManager
                     .beginTransaction()
+                    .remove(cardScannerFragment)
                     .add(R.id.fragment_container1, currencyViewFragment)
                     .commit()
               /*  bottomSheetLayout?.let { layout ->
@@ -336,8 +342,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 itemCount.text = LocalizationManager.getValue("close", "Common")
                 Handler().postDelayed({
                     bottomSheetDialog.behavior.state = STATE_EXPANDED
+                  //  tapInputPayment.visibility =View.GONE
 
-                }, 500)
+                }, 250)
             }
             isFragmentAdded = !isFragmentAdded
 

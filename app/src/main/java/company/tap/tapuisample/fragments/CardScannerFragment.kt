@@ -64,7 +64,7 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
             .beginTransaction()
             .add(R.id.inline_container, InlineViewFragment())
             .commit()
-        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+      //  bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default","Hints","scan")
         headerViewInit(view)

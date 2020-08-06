@@ -30,4 +30,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
             tabLayout.addSection(it.items)
         }
     }
+    companion object{
+        
+    }
 }
