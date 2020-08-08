@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -17,7 +18,6 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
@@ -28,13 +28,11 @@ import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuisample.fragments.ExampleFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.utils.BaseActivity
 import company.tap.tapuisample.R
-
 import company.tap.tapuisample.fragments.*
 import java.security.KeyStore
 import java.util.*
@@ -288,6 +286,19 @@ class MainActivity : BaseActivity(),
         }
         R.id.action_light -> {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
+            true
+        }
+        R.id.change_language -> {
+            val locale = Locale("us") //US English Locale
+
+            Locale.setDefault(locale)
+            val config = Configuration()
+            config.locale = locale
+            baseContext.resources.updateConfiguration(
+                config,
+                baseContext.resources.displayMetrics
+            )
 
             true
         }

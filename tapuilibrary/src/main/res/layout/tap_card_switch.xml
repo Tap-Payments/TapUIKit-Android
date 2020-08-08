@@ -63,7 +63,7 @@ save your mobile number." />
             android:id="@+id/switch_merchant_checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-           android:layout_margin="@dimen/margin_basic_16dp"
+            android:layout_margin="@dimen/margin_basic_16dp"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.02"
             android:textColor="#4b4847"

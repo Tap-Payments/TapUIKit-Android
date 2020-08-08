@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:ignore="MissingDefaultResource"
-    android:layoutDirection="locale"
     android:background="@drawable/corner_radius"
+    android:autoMirrored="true"
     app:cardCornerRadius="@dimen/margin_basic_8dp">
 
 
