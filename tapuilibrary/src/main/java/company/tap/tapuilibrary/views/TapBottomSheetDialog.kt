@@ -1,5 +1,7 @@
 package company.tap.tapuilibrary.views
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
@@ -15,9 +17,10 @@ import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.interfaces.TapBottomDialogInterface
+import company.tap.tapuilibrary.models.DialogConfigurations
+
 
 /**
  *
@@ -49,6 +52,12 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
             val dialog = it as BottomSheetDialog
             val bottomSheetLayout = dialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
+            bottomSheetBehavior.isDraggable
+            bottomSheetDialog.behavior.isFitToContents
+            view?.alpha = 0.0f;
+            view?.animate()
+                ?.alpha(1.0f)
+                ?.setListener(null);
             bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
                     tapBottomDialogInterface?.onSlide(slideOffset)
@@ -113,6 +122,15 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
+        view?.animate()
+            ?.translationY(0F)
+            ?.alpha(0.0f)
+            ?.setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator?) {
+                    super.onAnimationEnd(animation)
+                    view!!.visibility = View.GONE
+                }
+            })
         tapBottomDialogInterface?.onDismiss()
     }
 

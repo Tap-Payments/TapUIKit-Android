@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import androidx.transition.ChangeBounds
+import androidx.transition.TransitionManager
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
@@ -34,6 +36,7 @@ import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.utils.BaseActivity
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.*
+import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import java.security.KeyStore
 import java.util.*
 import java.util.concurrent.Executor
@@ -66,13 +69,9 @@ class MainActivity : BaseActivity(),
     }
 
     fun openBottomSheet(view: View) {
-        val modalBottomSheet =
-            BottomSheetDialog()
+        val modalBottomSheet = BottomSheetDialog()
         modalBottomSheet.arguments = getArguments()
-        modalBottomSheet.show(
-            supportFragmentManager,
-            BottomSheetDialog.TAG
-        )
+        modalBottomSheet.show(supportFragmentManager, BottomSheetDialog.TAG)
     }
 
     private fun getArguments(): Bundle {

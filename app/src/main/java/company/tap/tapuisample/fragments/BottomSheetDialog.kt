@@ -17,6 +17,7 @@ import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.ChangeBounds
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
@@ -116,6 +117,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             } catch (ignore: Exception) {
             }
         }
+
+//        dialog?.window?.attributes?.windowAnimations  = R.style.Animation_Design_BottomSheetDialog
+        dialog?.window?.attributes?.windowAnimations  = R.anim.slide_up
 
     }
 
