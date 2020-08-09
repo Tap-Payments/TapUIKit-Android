@@ -131,8 +131,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
         //checkboxString = getString(R.string.nfc_text)
-
-
     }
 
     private fun getSuccessDataSource(backgroundColor: Int): ActionButtonDataSource {
@@ -163,7 +161,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private fun switchViewInit(view: View) {
         checkboxString = getString(R.string.nfc_text)
         switchDemo = view.findViewById(R.id.switch_pay_demo)
-        switchDemo.setSwitchDataSource(getSwitchDataSource())
+        switchDemo.setSwitchDataSource(getSwitchDataSource("ola"))
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         separatorView = switchDemo.findViewById(R.id.switch_separator)
@@ -176,9 +174,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     }
 
     //Setting data to TapSwitchDataSource
-    private fun getSwitchDataSource(): TapSwitchDataSource {
+    private fun getSwitchDataSource( switchText: String): TapSwitchDataSource {
         return TapSwitchDataSource(
-             switchSave = checkboxString,
+             switchSave = switchText,
+//             switchSave = checkboxString,
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
@@ -381,17 +380,20 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             paymentLayout.removeAllViews()
             if (position == 0) {
                 paymentLayout.addView(tapCardInputView)
-                checkboxString = getString(R.string.nfc_text)
-                switchDemo.setSwitchDataSource(getSwitchDataSource())
+//                checkboxString = getString(R.string.nfc_text)
+                switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.nfc_text)))
 
-            } else
-                paymentLayout.addView(tapMobileInputView)
-            checkboxString = getString(R.string.mobile_text)
-            switchDemo.setSwitchDataSource(getSwitchDataSource())
-            if(tapMobileInputView.size==1){
-                checkboxString = getString(R.string.mobile_save_text)
-                switchDemo.setSwitchDataSource(getSwitchDataSource())
+            } else if(position == 1){
+                switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_save_text)))
+
             }
+//                paymentLayout.addView(tapMobileInputView)
+////            checkboxString = getString(R.string.mobile_text)
+//            switchDemo.setSwitchDataSource(getSwitchDataSource("ahlaam"))
+//            if(tapMobileInputView.size==1){
+////                checkboxString = getString(R.string.mobile_save_text)
+//                switchDemo.setSwitchDataSource(getSwitchDataSource("mmmmmm"))
+//            }
 
             /*  switchSaveDemo?.text="For faster and easier checkout,\n" +
                       "save your mobile number."*/
@@ -465,7 +467,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         alertgoPay?.visibility = View.GONE
                         separatorView?.visibility = View.GONE
                         checkboxString = getString(R.string.savecard_text)
-                        switchDemo.setSwitchDataSource(getSwitchDataSource())
+                        switchDemo.setSwitchDataSource(getSwitchDataSource(""))
                     }
 
 
