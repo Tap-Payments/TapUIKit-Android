@@ -130,7 +130,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         initializeViews(view)
         actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
-        checkboxString = getString(R.string.nfc_text)
+        //checkboxString = getString(R.string.nfc_text)
 
 
     }
