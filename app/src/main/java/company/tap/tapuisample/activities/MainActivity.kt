@@ -44,6 +44,7 @@ import javax.crypto.SecretKey
 
 class MainActivity : BaseActivity(),
     TapAmountSectionInterface, TapSwitchInterface, InlineViewCallback {
+    var local = "en"
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
     private val modalNFCBottomSheet = NFCSampleFragment()
@@ -290,8 +291,9 @@ class MainActivity : BaseActivity(),
             true
         }
         R.id.change_language -> {
-            val locale = Locale("us") //US English Locale
 
+            if (local == "en"){
+            val locale = Locale("ar") //Arabic Locale
             Locale.setDefault(locale)
             val config = Configuration()
             config.locale = locale
@@ -299,7 +301,16 @@ class MainActivity : BaseActivity(),
                 config,
                 baseContext.resources.displayMetrics
             )
-
+            }else{
+                val locale = Locale("en") //US English Locale
+                Locale.setDefault(locale)
+                val config = Configuration()
+                config.locale = locale
+                baseContext.resources.updateConfiguration(
+                    config,
+                    baseContext.resources.displayMetrics
+                )
+            }
             true
         }
 
