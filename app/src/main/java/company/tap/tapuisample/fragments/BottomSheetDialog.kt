@@ -313,19 +313,21 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
             if (isFragmentAdded) {
-                /*val cardScannerFragment = CardScannerFragment()
+              /*  val cardScannerFragment = CardScannerFragment()
                 childFragmentManager
                     .beginTransaction()
                     .add(R.id.fragment_container_nfc, cardScannerFragment)
                     .commit()*/
-                childFragmentManager
+               childFragmentManager
                     .beginTransaction()
                     .remove(currencyViewFragment)
                     .commit()
                 fragment_container.visibility = View.VISIBLE
-                tabLayout.visibility = View.GONE
-                paymentLayout.visibility = View.GONE
+              //  tabLayout.visibility = View.GONE
+              //  paymentLayout.visibility = View.GONE
                 tap_payment_input0.visibility = View.VISIBLE
+                paymentLayout.removeAllViews()
+                paymentLayout.addView(tapCardInputView)
 
                 /* bottomSheetLayout?.let { layout ->
                      val removeTransition: Transition =
