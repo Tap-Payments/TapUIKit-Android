@@ -52,7 +52,7 @@ import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import kotlinx.android.synthetic.main.custom_bottom_sheet.view.*
+
 
 
 /**
@@ -105,6 +105,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var cardScannerBtn: ImageView? = null
     private var nfcButton : ImageView? = null
     private var mobileNumberEditText : EditText? = null
+    private var alertMessage : TapTextView? = null
+    private var clearView : ImageView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -158,11 +160,60 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         tabLayoutInit(view)
         setupChip(view)
         switchViewInit(view)
+        initializeCardForm(view)
         addCardsTab()
         addMobileTab()
         setupBrandDetection()
         configureSwitch()
 
+    }
+
+    private fun initializeCardForm(view: View) {
+        cardScannerBtn = view.findViewById(R.id.card_scanner_button)
+        nfcButton = view.findViewById(R.id.nfc_button)
+        mobileNumberEditText = view.findViewById(R.id.mobile_number)
+        alertMessage = view.findViewById(R.id.textview_alert_message)
+        clearView = view.findViewById(R.id.clear_text)
+        clearView?.setOnClickListener {
+            tabLayout.resetBehaviour()
+        }
+       // alertMessage?.visibility = View.GONE
+        nfcButton?.setOnClickListener {
+            val nfcFragment = NFCFragment()
+            tabLayout.visibility = View.GONE
+            paymentLayout.visibility = View.GONE
+            currentCurrency.visibility = View.GONE
+            fragment_container.visibility = View.GONE
+            // nfcScanBtn.visibility= View.GONE
+            fragment_container.visibility = View.GONE
+            tap_payment_input0.visibility = View.GONE
+            switchDemo.visibility = View.GONE
+            actionButton.visibility = View.GONE
+            outer_layout.visibility = View.GONE
+            itemCount.text = "CLOSE"
+            childFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_nfc, nfcFragment)
+                .commit()
+        }
+        cardScannerBtn?.setOnClickListener {
+            val cardFragment = CardScannerFragment()
+            tabLayout.visibility = View.GONE
+            paymentLayout.visibility = View.GONE
+            currentCurrency.visibility = View.GONE
+            fragment_container.visibility = View.GONE
+            // nfcScanBtn.visibility= View.GONE
+            fragment_container.visibility = View.GONE
+            tap_payment_input0.visibility = View.GONE
+            switchDemo.visibility = View.GONE
+            actionButton.visibility = View.GONE
+            outer_layout.visibility = View.GONE
+            itemCount.text = "CLOSE"
+            childFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_nfc, cardFragment)
+                .commit()
+        }
     }
 
     private fun switchViewInit(view: View) {
@@ -267,45 +318,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 )
             )
             .into(businessIcon)
-        cardScannerBtn = view.findViewById(R.id.card_scanner_button)
-        nfcButton = view.findViewById(R.id.nfc_button)
-        mobileNumberEditText = view.findViewById(R.id.mobile_number)
-        nfcButton?.setOnClickListener {
-            val nfcFragment = NFCFragment()
-            tabLayout.visibility = View.GONE
-            paymentLayout.visibility = View.GONE
-            currentCurrency.visibility = View.GONE
-            fragment_container.visibility = View.GONE
-           // nfcScanBtn.visibility= View.GONE
-            fragment_container.visibility = View.GONE
-            tap_payment_input0.visibility = View.GONE
-            switchDemo.visibility = View.GONE
-            actionButton.visibility = View.GONE
-            outer_layout.visibility = View.GONE
-            itemCount.text = "CLOSE"
-            childFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container_nfc, nfcFragment)
-                .commit()
-        }
-        cardScannerBtn?.setOnClickListener {
-            val cardFragment = CardScannerFragment()
-            tabLayout.visibility = View.GONE
-            paymentLayout.visibility = View.GONE
-            currentCurrency.visibility = View.GONE
-            fragment_container.visibility = View.GONE
-            // nfcScanBtn.visibility= View.GONE
-            fragment_container.visibility = View.GONE
-            tap_payment_input0.visibility = View.GONE
-            switchDemo.visibility = View.GONE
-            actionButton.visibility = View.GONE
-            outer_layout.visibility = View.GONE
-            itemCount.text = "CLOSE"
-            childFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container_nfc, cardFragment)
-                .commit()
-        }
+
 
     }
 
@@ -444,6 +457,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             if (position == 0) {
                 paymentLayout.addView(tapCardInputView)
                 switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.nfc_text)))
+                cardScannerBtn?.visibility = View.VISIBLE
+                nfcButton?.visibility = View.VISIBLE
+                clearView?.visibility = View.GONE
 
             } else if(position == 1){
                 paymentLayout.removeAllViews()
@@ -452,6 +468,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 paymentLayout.addView(tapMobileInputView)
                 cardScannerBtn?.visibility = View.GONE
                 nfcButton?.visibility = View.GONE
+                clearView?.visibility = View.VISIBLE
 
                 // tapMobileInputView.mobileInputEditText.text
                 mobileNumberEditText?.addTextChangedListener(object : TextWatcher {
@@ -527,10 +544,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     tabLayout.resetBehaviour()
                 val card = CardValidator.validate(s.toString())
                 if (card.cardBrand != null) {
+                    clearView?.visibility = View.VISIBLE
                     tabLayout.selectTab(
                         card.cardBrand,
                         card.validationState == CardValidationState.valid
                     )
+                    nfcButton?.visibility = View.GONE
+                    cardScannerBtn?.visibility = View.GONE
                     if (card.validationState == CardValidationState.incomplete) {
                         switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.GONE
@@ -544,6 +564,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         checkboxString = getString(R.string.savecard_text)
 
                         switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_save_text)))
+                        alertMessage?.visibility = View.VISIBLE
+                        alertMessage?.setText("Card number is invalid")
+                        alert_text.visibility = View.VISIBLE
+                       // alert_text.setBackgroundColor(R.color.errorAlertText)
                     }
 
 
@@ -574,7 +598,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
         switchSaveDemo?.setOnCheckedChangeListener { buttonView, isChecked ->
             println("isChecked Save value $isChecked")
-            // tapSwitchInterface?.enableSaveMobile(isChecked)
+
             if (isChecked) {
                 switchLayout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.visibility = View.VISIBLE

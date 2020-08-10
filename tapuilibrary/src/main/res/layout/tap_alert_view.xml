@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/margin_basic_25dp"
+    android:paddingTop="@dimen/margin_basic_15dp"
+    android:paddingBottom="@dimen/margin_basic_15dp">
+    <company.tap.tapuilibrary.atoms.TapTextView
+        android:id="@+id/textview_alert_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        android:fontFamily="sans-serif-light"
+        android:textStyle="normal"
+        android:textColor="@color/warningAlertText"
+        tools:text="Expiry date &amp; CVV number are missing."
+        android:visibility="gone"/>
+
+
+
+</LinearLayout>

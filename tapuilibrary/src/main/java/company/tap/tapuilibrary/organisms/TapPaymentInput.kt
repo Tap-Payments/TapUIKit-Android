@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.organisms
 
 import android.content.Context
 import android.util.AttributeSet
+import android.widget.ImageView
 import android.widget.LinearLayout
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.models.TabSection
@@ -18,11 +19,16 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     private val tabLayout: TapSelectionTabLayout
     private val paymentInputContainer: LinearLayout
+    private val clearView: ImageView
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
         tabLayout = findViewById(R.id.sections_tablayout)
         paymentInputContainer = findViewById(R.id.payment_input_layout)
+        clearView = findViewById(R.id.clear_text)
+        clearView.setOnClickListener {
+            rootView.invalidate()
+        }
     }
 
     fun addTabLayoutSection(vararg sections: TabSection) {
@@ -30,7 +36,5 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
             tabLayout.addSection(it.items)
         }
     }
-    companion object{
 
-    }
 }

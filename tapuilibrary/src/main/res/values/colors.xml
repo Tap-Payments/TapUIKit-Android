@@ -47,6 +47,10 @@
 
         <color name="colorBackground">#FFFFFF</color>
         <color name="colorText">#000000</color>
+    <color name="warningAlertText">#ea611c</color>
+    <color name="warningBackground">#4cffbe60</color>
+    <color name="errorAlertText">#e12131</color>
+    <color name="errorBackground">#19e12131</color>
 
 
 
