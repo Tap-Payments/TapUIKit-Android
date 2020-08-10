@@ -195,7 +195,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         tabLayout = view.findViewById(R.id.sections_tablayout)
         //    nfcScanBtn = view.findViewById(R.id.nfc_scan)
         val nfcFragment = NFCFragment()
-      
+
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(context, null)
         if (context != null) {
