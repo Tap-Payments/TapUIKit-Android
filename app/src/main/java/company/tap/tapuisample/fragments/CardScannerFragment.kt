@@ -80,11 +80,11 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
 
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
        // view.post(Runnable {
            // Blurry.with(context).radius(20).sampling(8).onto(cardscan_view)
-            view.post(Runnable {
+           *//* view.post(Runnable {
                 Blurry.with(context)
                     .radius(10)
                     .sampling(8)
@@ -92,10 +92,10 @@ class CardScannerFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , 
                     .async()
                     .animate(500)
                     .onto(cardscan_view)
-            })
+            })*//*
        // })
     }
-
+*/
     private fun amountViewInit(view: View) {
         amountSectionView = view.findViewById(R.id.amount_section_card)
         amountSectionView.setAmountViewDataSource(getAmountViewDataSOurce())

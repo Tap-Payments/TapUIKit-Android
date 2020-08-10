@@ -37,7 +37,7 @@
         android:layoutDirection="locale"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/gray"
+        android:background="@color/header_gray"
         />
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layoutDirection="locale"
         android:paddingStart="@dimen/activity_total_margin"
-        android:background="@color/white"
+        android:background="@color/item_list"
        />
     <company.tap.tapuilibrary.atoms.TapSeparatorView
         android:layout_width="match_parent"
@@ -130,10 +130,11 @@
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/outer_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="80dp"
-        android:background="#f4f4f4">
+        android:background="@color/chip_background">
         <company.tap.tapuilibrary.views.TabAnimatedActionButton
             android:id="@+id/actionButton"
             app:layout_constraintTop_toTopOf="parent"

@@ -19,9 +19,12 @@ import androidx.annotation.Nullable
 import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.Transition
+import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HALF_EXPANDED
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
@@ -100,8 +103,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var groupName: TapTextView? = null
     private var groupAction: TapTextView? = null
     private var cardScannerBtn: ImageView? = null
-    private var cardScannerFragment = CardScannerFragment()
-    private var tapInputPayment = TapPaymentInput
     private var nfcButton : ImageView? = null
     private var mobileNumberEditText : EditText? = null
 
@@ -134,8 +135,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         initializeViews(view)
         actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
-        //checkboxString = getString(R.string.nfc_text)
-      //  switchSaveDemo
+
 
     }
 
@@ -162,10 +162,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         addMobileTab()
         setupBrandDetection()
         configureSwitch()
-       // setUpMobileNumberDetection(view)
-    }
-
-    private fun setUpMobileNumberDetection(view:View) {
 
     }
 
@@ -199,18 +195,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         tabLayout = view.findViewById(R.id.sections_tablayout)
         //    nfcScanBtn = view.findViewById(R.id.nfc_scan)
         val nfcFragment = NFCFragment()
-        /*  nfcScanBtn.setOnClickListener {
-              tabLayout.visibility = View.GONE
-              paymentLayout.visibility = View.GONE
-              currentCurrency.visibility = View.GONE
-              fragment_container.visibility = View.GONE
-              nfcScanBtn.visibility= View.GONE
-              itemCount.text = "CLOSE"
-              childFragmentManager
-                  .beginTransaction()
-                  .add(R.id.fragment_container_nfc, nfcFragment)
-                  .commit()
-          }*/
+      
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(context, null)
         if (context != null) {
@@ -285,6 +270,42 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         cardScannerBtn = view.findViewById(R.id.card_scanner_button)
         nfcButton = view.findViewById(R.id.nfc_button)
         mobileNumberEditText = view.findViewById(R.id.mobile_number)
+        nfcButton?.setOnClickListener {
+            val nfcFragment = NFCFragment()
+            tabLayout.visibility = View.GONE
+            paymentLayout.visibility = View.GONE
+            currentCurrency.visibility = View.GONE
+            fragment_container.visibility = View.GONE
+           // nfcScanBtn.visibility= View.GONE
+            fragment_container.visibility = View.GONE
+            tap_payment_input0.visibility = View.GONE
+            switchDemo.visibility = View.GONE
+            actionButton.visibility = View.GONE
+            outer_layout.visibility = View.GONE
+            itemCount.text = "CLOSE"
+            childFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_nfc, nfcFragment)
+                .commit()
+        }
+        cardScannerBtn?.setOnClickListener {
+            val cardFragment = CardScannerFragment()
+            tabLayout.visibility = View.GONE
+            paymentLayout.visibility = View.GONE
+            currentCurrency.visibility = View.GONE
+            fragment_container.visibility = View.GONE
+            // nfcScanBtn.visibility= View.GONE
+            fragment_container.visibility = View.GONE
+            tap_payment_input0.visibility = View.GONE
+            switchDemo.visibility = View.GONE
+            actionButton.visibility = View.GONE
+            outer_layout.visibility = View.GONE
+            itemCount.text = "CLOSE"
+            childFragmentManager
+                .beginTransaction()
+                .add(R.id.fragment_container_nfc, cardFragment)
+                .commit()
+        }
 
     }
 
@@ -322,13 +343,31 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     .beginTransaction()
                     .remove(currencyViewFragment)
                     .commit()
-                fragment_container.visibility = View.VISIBLE
+             /*   fragment_container.visibility = View.VISIBLE
               //  tabLayout.visibility = View.GONE
               //  paymentLayout.visibility = View.GONE
                 tap_payment_input0.visibility = View.VISIBLE
                 paymentLayout.removeAllViews()
-                paymentLayout.addView(tapCardInputView)
+                paymentLayout.addView(tapCardInputView)*/
+                bottomSheetLayout?.let { layout ->
+                    val removeTransition: Transition =
+                        TransitionInflater.from(context)
+                            .inflateTransition(R.transition.remove_fragment)
+                    TransitionManager.beginDelayedTransition(layout, removeTransition)
+                }
 
+                Handler().postDelayed({
+                    bottomSheetDialog.behavior.state = STATE_HALF_EXPANDED
+
+                    fragment_container.visibility = View.VISIBLE
+                    //  tabLayout.visibility = View.GONE
+                    //  paymentLayout.visibility = View.GONE
+                    tap_payment_input0.visibility = View.VISIBLE
+                    paymentLayout.removeAllViews()
+                    paymentLayout.addView(tapCardInputView)
+
+
+                }, 50)
                 /* bottomSheetLayout?.let { layout ->
                      val removeTransition: Transition =
                          TransitionInflater.from(context)
@@ -343,27 +382,37 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     .beginTransaction()
                     .replace(R.id.fragment_container_nfc, currencyViewFragment)
                     .commit()
-                /*  bottomSheetLayout?.let { layout ->
-                      layout.post {
-                          val addTransition: Transition =
-                              TransitionInflater.from(context)
-                                  .inflateTransition(R.transition.add_fragment)
-                          TransitionManager.beginDelayedTransition(layout, addTransition)
-                      }
-                  }
+                bottomSheetLayout?.let { layout ->
+                    layout.post {
+                        val addTransition: Transition =
+                            TransitionInflater.from(context)
+                                .inflateTransition(R.transition.add_fragment)
+                        TransitionManager.beginDelayedTransition(layout, addTransition)
+                    }
+                }
 
-                  }*/
                 currentCurrency.visibility = View.VISIBLE
                 selectedCurrency.text = "KD1000,000.000"
 //                currentCurrency.visibility = View.GONE
-                fragment_container.visibility = View.GONE
-                tabLayout.visibility = View.VISIBLE
-                paymentLayout.visibility = View.VISIBLE
+
                 itemCount.text = LocalizationManager.getValue("close", "Common")
+               /* bottomSheetDialog.behavior.state = STATE_EXPANDED
+
+                fragment_container.visibility = View.GONE
                 tap_payment_input0.visibility = View.GONE
+
+                tabLayout.visibility = View.VISIBLE
+                paymentLayout.visibility = View.VISIBLE*/
+
                 Handler().postDelayed({
                     bottomSheetDialog.behavior.state = STATE_EXPANDED
-                    //  tapInputPayment.visibility =View.GONE
+
+                    fragment_container.visibility = View.GONE
+                    tap_payment_input0.visibility = View.GONE
+
+                    tabLayout.visibility = View.VISIBLE
+                    paymentLayout.visibility = View.VISIBLE
+
 
                 }, 50)
             }
@@ -419,12 +468,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     }
                     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                 })
-                //setUpMobileNumberDetection(view)
-                //println("value in mobile view ${tapMobileInputView.mobileInputEditText.getText()}")
+
             }
-           /*if(tapMobileInputView.size==1){
-               switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_save_text)))
-         }*/
+
 
         }
     }
@@ -625,7 +671,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
             }
         } else
-            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_gray))
+            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
     }
 
 
