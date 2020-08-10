@@ -11,13 +11,12 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.TranslateAnimation
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.ChangeBounds
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
@@ -43,7 +42,6 @@ import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
-
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
@@ -118,7 +116,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             }
         }
 
-//        dialog?.window?.attributes?.windowAnimations  = R.style.Animation_Design_BottomSheetDialog
         dialog?.window?.attributes?.windowAnimations  = R.anim.slide_up
 
     }
@@ -500,8 +497,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 separatorView?.visibility = View.GONE
             }
         }
-
-
     }
 
     override fun onCardSelectedAction(isSelected:Boolean) {
@@ -513,7 +508,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 switchMerchantCheckout?.isChecked = false
                 switchgoPayCheckout?.isChecked = false
                 switchgoPayCheckout?.visibility = View.GONE
-//                currentCurrency.visibility = View.GONE
                 tabLayout.visibility=View.GONE
                 paymentLayout.visibility=View.GONE
                 tapHeaderSectionView.visibility=View.GONE
@@ -524,8 +518,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 switchDemo.visibility=View.GONE
                 separatorView?.visibility = View.GONE
                 chipRecycler.visibility= View.GONE
-//                selectedCurrency.visibility= View.GONE
-//                nfcScanBtn.visibility= View.GONE
                 switchSaveDemo?.visibility= View.GONE
                 savegoPay?.visibility= View.GONE
                 alertgoPay?.visibility= View.GONE
@@ -540,7 +532,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
                 actionButton.addChildView(actionButton.getImageView(R.drawable.loader,1){replaceBetweenFragments()})
 //                action_button.changeButtonState(ActionButtonState.LOADING)
-                changeBottomSheetTransition()
+//                changeBottomSheetTransition()
 
             }
         }
@@ -551,6 +543,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     private fun replaceBetweenFragments(){
         actionButton.visibility= View.GONE
+        dialog?.window?.attributes?.windowAnimations  = R.anim.slide_up
+
+//        slidingUpAnimate()
         childFragmentManager.beginTransaction().replace(R.id.webViewContainer,
             WebFragment(this)
         ).commit()
@@ -558,7 +553,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
 
     override fun redirectLoadingFinished(done: Boolean) {
-        changeBottomSheetTransition()
+//        changeBottomSheetTransition()
         if (done) {
             actionButton.visibility = View.VISIBLE
             webViewContainer.visibility = View.GONE
@@ -568,6 +563,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             actionButton.visibility = View.GONE
             webViewContainer.visibility = View.VISIBLE
         }
+        slidingDownAnimate()
+
     }
 
     private fun changeBottomSheetTransition() {
@@ -576,6 +573,36 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 TransitionManager.beginDelayedTransition(layout)
             }
         }
+    }
+
+
+    fun slidingUpAnimate(){
+        val animate = view?.height?.toFloat()?.let {
+            TranslateAnimation(
+                0F,  // fromXDelta
+                0F,  // toXDelta
+                it,  // fromYDelta
+                0F
+            )
+        } // toYDelta
+        animate?.duration = 500
+        animate?.fillAfter = true
+        view!!.startAnimation(animate)
+    }
+//
+    fun slidingDownAnimate(){
+        val animate = view?.height?.toFloat()?.let {
+            TranslateAnimation(
+                0F,  // fromXDelta
+                0F,  // toXDelta
+                0F,  // fromYDelta
+                it
+            )
+        } // toYDelta
+
+        animate?.duration = 500
+        animate?.fillAfter = true
+        view!!.startAnimation(animate)
     }
 
 
