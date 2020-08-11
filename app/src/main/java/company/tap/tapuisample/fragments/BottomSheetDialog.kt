@@ -11,12 +11,13 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
-import androidx.core.view.size
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Transition
@@ -44,7 +45,6 @@ import company.tap.tapuilibrary.fragment.CurrencyViewFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
-import company.tap.tapuilibrary.organisms.TapPaymentInput
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
@@ -52,7 +52,6 @@ import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-
 
 
 /**
@@ -107,12 +106,21 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var mobileNumberEditText : EditText? = null
     private var alertMessage : TapTextView? = null
     private var clearView : ImageView? = null
+    private var linearLayoutPay : LinearLayout? = null
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
+
+
+
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view: View = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
+        return view
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -126,7 +134,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             } catch (ignore: Exception) {
             }
         }
-
     }
 
     override fun onViewCreated(
@@ -137,7 +144,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         initializeViews(view)
         actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
-
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
 
     }
 
@@ -174,8 +181,16 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         mobileNumberEditText = view.findViewById(R.id.mobile_number)
         alertMessage = view.findViewById(R.id.textview_alert_message)
         clearView = view.findViewById(R.id.clear_text)
+        linearLayoutPay = view.findViewById(R.id.linear_paylayout)
         clearView?.setOnClickListener {
             tabLayout.resetBehaviour()
+
+            tapMobileInputView.clearNumber()
+           /* tapCardInputView.setCardNumber("")
+            tapCardInputView.setCvcCode("")*/
+            tapCardInputView.clear()
+            alert_text.visibility= View.GONE
+
         }
        // alertMessage?.visibility = View.GONE
         nfcButton?.setOnClickListener {
@@ -539,11 +554,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
     private fun setupBrandDetection() {
         tapCardInputView.setCardNumberTextWatcher(object : TextWatcher {
+            @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s.isNullOrEmpty())
                     tabLayout.resetBehaviour()
                 val card = CardValidator.validate(s.toString())
                 if (card.cardBrand != null) {
+                    //linearLayoutPay?.visibility = View.GONE
+                    activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
                     clearView?.visibility = View.VISIBLE
                     tabLayout.selectTab(
                         card.cardBrand,
@@ -567,7 +585,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         alertMessage?.visibility = View.VISIBLE
                         alertMessage?.setText("Card number is invalid")
                         alert_text.visibility = View.VISIBLE
-                       // alert_text.setBackgroundColor(R.color.errorAlertText)
+                        alert_text.setBackgroundColor(Color.parseColor("#19e12131"))
+                        alertMessage?.setTextColor(Color.parseColor("#e12131"))
+
+
                     }
 
 
@@ -583,6 +604,22 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         separatorView?.visibility = View.VISIBLE
                        // checkboxString = getString(R.string.savecard_text)
                         switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.savecard_text)))
+                        alertMessage?.visibility = View.VISIBLE
+
+                                if(card.validationState == CardValidationState.invalid){
+                                    alertMessage?.setText("Card number is invalid")
+                                    alert_text.visibility = View.VISIBLE
+                                    alert_text.setBackgroundColor(Color.parseColor("#19e12131"))
+                                    alertMessage?.setTextColor(Color.parseColor("#e12131"))
+                                }else {
+                                    alertMessage?.setText("Expiry date & CVV number are missing.")
+                                    alert_text.visibility = View.VISIBLE
+                                    alert_text.setBackgroundColor(Color.parseColor("#4cffbe60"))
+                                    alertMessage?.setTextColor(Color.parseColor("#ea611c"))
+
+
+                                }
+
 
                     }
                 }
@@ -591,6 +628,43 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
+
+        tapCardInputView.setCvcNumberTextWatcher(object : TextWatcher {
+            @SuppressLint("ResourceAsColor")
+            override fun afterTextChanged(s: Editable?) {
+                if (s.isNullOrEmpty()){
+                    tabLayout.resetBehaviour()
+                }else
+                alert_text.visibility = View.GONE
+
+
+            }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
+        tapCardInputView.setExpiryDateTextWatcher(object : TextWatcher {
+            @SuppressLint("ResourceAsColor")
+            override fun afterTextChanged(s: Editable?) {
+                if (s.isNullOrEmpty()){
+                    tabLayout.resetBehaviour()
+                }
+                else {
+                    alertMessage?.setText("CVV number are missing.")
+                    alert_text.visibility = View.VISIBLE
+                    alert_text.setBackgroundColor(Color.parseColor("#4cffbe60"))
+                    alertMessage?.setTextColor(Color.parseColor("#ea611c"))
+                }
+
+
+
+                    }
+
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+        })
+
     }
 
     // Configuring switch states and listening to switch states.
