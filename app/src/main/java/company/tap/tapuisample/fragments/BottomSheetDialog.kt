@@ -43,11 +43,14 @@ import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
+import company.tap.tapuisample.activities.MainActivity
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -125,12 +128,26 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         @Nullable savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
+//        replaceFont()
         initializeViews(view)
         actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
-        checkboxString = getString(R.string.nfc_text)
+//        checkboxString = getString(R.string.nfc_text)
+//        checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 
     }
+//    fun replaceFont(){
+//        if (LocalizationManager.getLocale(context!!) == Locale("en")) {
+////            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoRegular))
+////            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoThin))
+////            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoLight))
+//            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoMedium))
+//            fontChanger?.replaceFonts(headerView)
+//        }else{
+//            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.tajawalMedium))
+//            fontChanger?.replaceFonts(headerView)
+//        }
+//    }
     private fun getSuccessDataSource(backgroundColor : Int): ActionButtonDataSource {
         actionButton.stateListAnimator = null
         return ActionButtonDataSource(
@@ -173,7 +190,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSave = getString(R.string.nfc_text),
+            switchSave =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" ),
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
@@ -207,11 +224,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     }
 
     private fun setupFonts() {
-        fontChanger = FontChanger(
-            activity?.assets,
-            tapFontType(TapFont.robotoRegular)
-        )
-        fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
+        if(context?.let { LocalizationManager.getLocale(it).language } == "en") {
+            fontChanger = FontChanger(
+                activity?.assets,
+                tapFontType(TapFont.robotoRegular)
+            )
+            fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
+        }else{
+            fontChanger = FontChanger(
+                activity?.assets,
+                tapFontType(TapFont.tajawalMedium)
+            )
+            fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
+        }
     }
 
     @SuppressLint("ResourceAsColor")
@@ -219,12 +244,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         mainChipGroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
          groupName = view.findViewById<TapTextView>(R.id.group_name)
-//        groupName.text = LocalizationManager.getValue("select", "Common")
-        groupName?.text = getString(R.string.select)
+        groupName?.text = LocalizationManager.getValue("GatewayHeader","HorizontalHeaders", "leftTitle")
+//        groupName?.text = getString(R.string.select)
 //        groupName?.setTextColor(R.color.darker_gray)
          groupAction = view.findViewById<TapTextView>(R.id.group_action)
-//        groupAction.text = LocalizationManager.getValue("edit", "Common")
-        groupAction?.text = getString(R.string.edit)
+        groupName?.text = LocalizationManager.getValue("GatewayHeader","HorizontalHeaders", "rightTitle")
+//        groupAction?.text = getString(R.string.edit)
 //        groupName?.setTextColor(R.color.darker_gray)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -264,8 +289,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
             businessName = businessName,
-//            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
-            businessFor = paymentFor ,
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+//            businessFor = paymentFor ,
             businessImageResources = imageUrl,
             businessPlaceHolder = businessName?.get(0).toString()
         )
@@ -423,7 +448,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         card.cardBrand,
                         card.validationState == CardValidationState.valid
                     )
-                    checkboxString = getString(R.string.nfc_text)
+//                    checkboxString = getString(R.string.nfc_text)
+                    checkboxString = LocalizationManager.getValue("TapCardInputKit", "cardSaveLabel")
                     if(s?.trim()?.length== 19) {
                         switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.VISIBLE

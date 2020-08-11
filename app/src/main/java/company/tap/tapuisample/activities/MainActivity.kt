@@ -22,8 +22,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import androidx.transition.ChangeBounds
-import androidx.transition.TransitionManager
+import androidx.core.graphics.drawable.DrawableCompat.setLayoutDirection
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
@@ -36,7 +35,6 @@ import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.utils.BaseActivity
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.*
-import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import java.security.KeyStore
 import java.util.*
 import java.util.concurrent.Executor
@@ -47,7 +45,6 @@ import javax.crypto.SecretKey
 
 class MainActivity : BaseActivity(),
     TapAmountSectionInterface, TapSwitchInterface, InlineViewCallback {
-    var local = "en"
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
     private val modalNFCBottomSheet = NFCSampleFragment()
@@ -56,16 +53,25 @@ class MainActivity : BaseActivity(),
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
     private val KEY_NAME = "android"
+
+
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         context = this
-        fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
-        fontChanger.replaceFonts((findViewById(android.R.id.content)))
+        LocalizationManager.loadTapLocale(resources, R.raw.lang)
+
+        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
+        if (LocalizationManager.getLocale(context) == Locale("en")) {
+            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
+            fontChanger.replaceFonts((findViewById(android.R.id.content)))
+        }else{
+            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.tajawalMedium))
+            fontChanger.replaceFonts((findViewById(android.R.id.content)))
+        }
        // Blurry.with(context).radius(25).sampling(2).onto()
-        LocalizationManager.setLocale(context, Locale("en"))
     }
 
     fun openBottomSheet(view: View) {
@@ -290,25 +296,10 @@ class MainActivity : BaseActivity(),
             true
         }
         R.id.change_language -> {
-
-            if (local == "en"){
-            val locale = Locale("ar") //Arabic Locale
-            Locale.setDefault(locale)
-            val config = Configuration()
-            config.locale = locale
-            baseContext.resources.updateConfiguration(
-                config,
-                baseContext.resources.displayMetrics
-            )
-            }else{
-                val locale = Locale("en") //US English Locale
-                Locale.setDefault(locale)
-                val config = Configuration()
-                config.locale = locale
-                baseContext.resources.updateConfiguration(
-                    config,
-                    baseContext.resources.displayMetrics
-                )
+            if (LocalizationManager.getLocale(context) == Locale("en")){
+                LocalizationManager.setLocale(this,Locale("ar"))
+            }else if(LocalizationManager.getLocale(context) == Locale("ar") ){
+                LocalizationManager.setLocale(this,Locale("en"))
             }
             true
         }
@@ -321,6 +312,9 @@ class MainActivity : BaseActivity(),
     }
 
 
+
+
 }
+
 
 
