@@ -301,6 +301,7 @@ class MainActivity : BaseActivity(),
             }else if(LocalizationManager.getLocale(context) == Locale("ar") ){
                 LocalizationManager.setLocale(this,Locale("en"))
             }
+            recreate()
             true
         }
 

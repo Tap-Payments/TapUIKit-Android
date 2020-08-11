@@ -132,7 +132,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
 //        checkboxString = getString(R.string.nfc_text)
-//        checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
+        checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 
     }
 //    fun replaceFont(){
@@ -247,7 +247,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 //        groupName?.text = getString(R.string.select)
 //        groupName?.setTextColor(R.color.darker_gray)
          groupAction = view.findViewById<TapTextView>(R.id.group_action)
-        groupName?.text = LocalizationManager.getValue("GatewayHeader","HorizontalHeaders", "rightTitle")
+        groupAction?.text = LocalizationManager.getValue("GatewayHeader","HorizontalHeaders", "rightTitle")
 //        groupAction?.text = getString(R.string.edit)
 //        groupName?.setTextColor(R.color.darker_gray)
         chipRecycler = view.findViewById(R.id.chip_recycler)
@@ -265,8 +265,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private fun headerViewInit(view: View) {
         setupFonts()
         tapHeaderSectionView = view.findViewById(R.id.headerView)
-        businessName = getString(R.string.tap_payments)
-        paymentFor = getString(R.string.payment_for)
+        businessName =
+            if (context?.let { LocalizationManager.getLocale(it).language } == "en") getString(R.string.tap_payments)
+            else "تاب"
+
+        paymentFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection")
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
 
         businessIcon = view.findViewById(R.id.businessIcon)
@@ -368,7 +371,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         return AmountViewDataSource(
             selectedCurr = "SR1000,000.000",
             currentCurr = "KD1000,000.000",
-            itemCount = getString(R.string.items)
+            itemCount = if(context?.let { LocalizationManager.getLocale(it).language } == "en") getString(R.string.items) else "22 عنصر"
         )
     }
 
@@ -448,7 +451,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         card.validationState == CardValidationState.valid
                     )
 //                    checkboxString = getString(R.string.nfc_text)
-                    checkboxString = LocalizationManager.getValue("TapCardInputKit", "cardSaveLabel")
+                    checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
                     if(s?.trim()?.length== 19) {
                         switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.VISIBLE
