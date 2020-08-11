@@ -11,11 +11,10 @@
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
     android:id="@+id/tapcard_Chip"
-    app:contentPadding="5dp"
-    >
+    app:contentPadding="5dp">
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="40dp"
     android:orientation="horizontal">
     <company.tap.tapuilibrary.atoms.TapImageView
         android:id="@+id/imageView_knet"
@@ -24,8 +23,6 @@
         android:layout_gravity="center"
         android:layout_marginStart="42dp"
         android:layout_marginEnd="42dp"
-        android:layout_marginTop="@dimen/margin_basic_8dp"
-        android:layout_marginBottom="@dimen/margin_basic_8dp"
         android:src="@drawable/knet"
      />
     <company.tap.tapuilibrary.atoms.TapImageView
@@ -35,8 +32,6 @@
         android:layout_gravity="center"
         android:layout_marginStart="42dp"
         android:layout_marginEnd="42dp"
-        android:layout_marginTop="@dimen/margin_basic_8dp"
-        android:layout_marginBottom="@dimen/margin_basic_8dp"
         android:src="@drawable/benefit"
         android:visibility="gone"/>
 

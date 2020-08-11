@@ -12,33 +12,39 @@
     android:id="@+id/tapcard_Chip"
     app:elevation="8dp"
     app:contentPadding="5dp">
-  <LinearLayout
+  <androidx.constraintlayout.widget.ConstraintLayout
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="40dp"
+      android:paddingBottom="10dp"
+      android:paddingTop="10dp"
+      android:paddingStart="12dp"
+      android:paddingEnd="12dp">
 
     <company.tap.tapuilibrary.atoms.TapImageView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/textView_carddetails"
         android:id="@+id/imageView_amex"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="@dimen/margin_basic_15dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginBottom="@dimen/margin_basic_14dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:src="@drawable/amex" />
     
     <company.tap.tapuilibrary.atoms.TapTextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/imageView_amex"
        android:id="@+id/textView_carddetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="12sp"
+        android:layout_marginLeft="3dp"
         android:fontFamily="sans-serif"
         android:textStyle="normal"
         android:textColor="#4b4847"
-        android:gravity="end"
-        android:text="•••• XXXX"
-        android:layout_marginTop="14dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="@dimen/margin_basic_14dp"
-        android:layout_marginEnd="10dp" />
-  </LinearLayout>
+        tools:text="•••• XXXX"
+        android:text="•••• XXXX" />
+  </androidx.constraintlayout.widget.ConstraintLayout>
 </company.tap.tapuilibrary.atoms.TapChip>

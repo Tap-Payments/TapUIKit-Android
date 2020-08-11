@@ -24,6 +24,7 @@
             android:paddingEnd="18dp"
             android:layout_width="0dp"
             android:layout_height="44dp"
+            android:layout_gravity="start"
             android:orientation="horizontal"
             android:layout_weight="4"/>
         <LinearLayout
