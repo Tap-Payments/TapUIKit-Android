@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -17,24 +18,22 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.DrawableCompat.setLayoutDirection
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuisample.fragments.ExampleFragment
 import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.models.DialogConfigurations
 import company.tap.tapuilibrary.utils.BaseActivity
 import company.tap.tapuisample.R
-
 import company.tap.tapuisample.fragments.*
 import java.security.KeyStore
 import java.util.*
@@ -54,26 +53,31 @@ class MainActivity : BaseActivity(),
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo
     private val KEY_NAME = "android"
+
+
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         context = this
-        fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
-        fontChanger.replaceFonts((findViewById(android.R.id.content)))
+        LocalizationManager.loadTapLocale(resources, R.raw.lang)
+
+        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
+        if (LocalizationManager.getLocale(context) == Locale("en")) {
+            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
+            fontChanger.replaceFonts((findViewById(android.R.id.content)))
+        }else{
+            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.tajawalMedium))
+            fontChanger.replaceFonts((findViewById(android.R.id.content)))
+        }
        // Blurry.with(context).radius(25).sampling(2).onto()
-        LocalizationManager.setLocale(context, Locale("en"))
     }
 
     fun openBottomSheet(view: View) {
-        val modalBottomSheet =
-            BottomSheetDialog()
+        val modalBottomSheet = BottomSheetDialog()
         modalBottomSheet.arguments = getArguments()
-        modalBottomSheet.show(
-            supportFragmentManager,
-            BottomSheetDialog.TAG
-        )
+        modalBottomSheet.show(supportFragmentManager, BottomSheetDialog.TAG)
     }
 
     private fun getArguments(): Bundle {
@@ -291,6 +295,15 @@ class MainActivity : BaseActivity(),
 
             true
         }
+        R.id.change_language -> {
+            if (LocalizationManager.getLocale(context) == Locale("en")){
+                LocalizationManager.setLocale(this,Locale("ar"))
+            }else if(LocalizationManager.getLocale(context) == Locale("ar") ){
+                LocalizationManager.setLocale(this,Locale("en"))
+            }
+            recreate()
+            true
+        }
 
         else -> {
             // If we got here, the user's action was not recognized.
@@ -300,6 +313,9 @@ class MainActivity : BaseActivity(),
     }
 
 
+
+
 }
+
 
 

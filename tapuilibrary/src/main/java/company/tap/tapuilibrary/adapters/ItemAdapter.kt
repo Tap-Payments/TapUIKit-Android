@@ -96,10 +96,10 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
             discount.visibility= View.INVISIBLE
             totalAmount.paintFlags =
                 totalAmount.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
-            itemName.text = "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE "+itemList[position]
+            itemName.text = "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE TITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLE "+itemList[position]
         }
         val isExpanded = position === mExpandedPosition
-        descriptioextView.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+        descriptioextView.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex exercitation ullamco laboris nisi ut aliquip ex exercitation ullamco laboris nisi ut aliquip ex exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
         descriptioextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
         holder.itemView.isActivated = isExpanded
 

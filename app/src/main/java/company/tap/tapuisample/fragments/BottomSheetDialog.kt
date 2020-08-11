@@ -11,6 +11,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.TranslateAnimation
 import android.view.WindowManager
 import android.widget.EditText
 import android.widget.ImageView
@@ -47,11 +48,14 @@ import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
+import company.tap.tapuisample.activities.MainActivity
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
@@ -134,6 +138,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             } catch (ignore: Exception) {
             }
         }
+
+        dialog?.window?.attributes?.windowAnimations  = R.anim.slide_up
+
     }
 
     override fun onViewCreated(
@@ -145,8 +152,24 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+//        checkboxString = getString(R.string.nfc_text)
+        checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 
     }
+
+
+    //    fun replaceFont(){
+//        if (LocalizationManager.getLocale(context!!) == Locale("en")) {
+////            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoRegular))
+////            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoThin))
+////            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoLight))
+//            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoMedium))
+//            fontChanger?.replaceFonts(headerView)
+//        }else{
+//            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.tajawalMedium))
+//            fontChanger?.replaceFonts(headerView)
+//        }
+//    }
 
     private fun getSuccessDataSource(backgroundColor: Int): ActionButtonDataSource {
         actionButton.stateListAnimator = null
@@ -249,7 +272,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource( switchText: String): TapSwitchDataSource {
         return TapSwitchDataSource(
-             switchSave = switchText,
+            switchSave =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" ),
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
@@ -281,24 +304,32 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     }
 
     private fun setupFonts() {
-        fontChanger = FontChanger(
-            activity?.assets,
-            tapFontType(TapFont.robotoRegular)
-        )
-        fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
+        if(context?.let { LocalizationManager.getLocale(it).language } == "en") {
+            fontChanger = FontChanger(
+                activity?.assets,
+                tapFontType(TapFont.robotoRegular)
+            )
+            fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
+        }else{
+            fontChanger = FontChanger(
+                activity?.assets,
+                tapFontType(TapFont.tajawalMedium)
+            )
+            fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
+        }
     }
 
     @SuppressLint("ResourceAsColor")
     private fun setupChip(view: View) {
         mainChipGroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
-        groupName = view.findViewById<TapTextView>(R.id.group_name)
-//        groupName.text = LocalizationManager.getValue("select", "Common")
-        groupName?.text = getString(R.string.select)
+         groupName = view.findViewById<TapTextView>(R.id.group_name)
+        groupName?.text = LocalizationManager.getValue("GatewayHeader","HorizontalHeaders", "leftTitle")
+//        groupName?.text = getString(R.string.select)
 //        groupName?.setTextColor(R.color.darker_gray)
-        groupAction = view.findViewById<TapTextView>(R.id.group_action)
-//        groupAction.text = LocalizationManager.getValue("edit", "Common")
-        groupAction?.text = getString(R.string.edit)
+         groupAction = view.findViewById<TapTextView>(R.id.group_action)
+        groupAction?.text = LocalizationManager.getValue("GatewayHeader","HorizontalHeaders", "rightTitle")
+//        groupAction?.text = getString(R.string.edit)
 //        groupName?.setTextColor(R.color.darker_gray)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
@@ -315,8 +346,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private fun headerViewInit(view: View) {
         setupFonts()
         tapHeaderSectionView = view.findViewById(R.id.headerView)
-        businessName = getString(R.string.tap_payments)
-        paymentFor = getString(R.string.payment_for)
+        businessName =
+            if (context?.let { LocalizationManager.getLocale(it).language } == "en") getString(R.string.tap_payments)
+            else "تاب"
+
+        paymentFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection")
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
 
         businessIcon = view.findViewById(R.id.businessIcon)
@@ -340,8 +374,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
             businessName = businessName,
-//            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
-            businessFor = paymentFor,
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+//            businessFor = paymentFor ,
             businessImageResources = imageUrl,
             businessPlaceHolder = businessName?.get(0).toString()
         )
@@ -405,7 +439,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = getString(R.string.items)
             } else {
-
+                separator_.visibility = View.GONE
+                separatorــ.visibility = View.GONE
+//                indicatorSeparator.visibility = View.GONE
                 childFragmentManager
                     .beginTransaction()
                     .replace(R.id.fragment_container_nfc, currencyViewFragment)
@@ -456,7 +492,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         return AmountViewDataSource(
             selectedCurr = "SR1000,000.000",
             currentCurr = "KD1000,000.000",
-            itemCount = getString(R.string.items)
+            itemCount = if(context?.let { LocalizationManager.getLocale(it).language } == "en") getString(R.string.items) else "22 عنصر"
         )
     }
 
@@ -567,6 +603,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         card.cardBrand,
                         card.validationState == CardValidationState.valid
                     )
+
+
                     nfcButton?.visibility = View.GONE
                     cardScannerBtn?.visibility = View.GONE
                     if (card.validationState == CardValidationState.incomplete) {
@@ -590,9 +628,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
 
                     }
-
-
-                    if (s?.trim()?.length == 19) {
+//                    checkboxString = getString(R.string.nfc_text)
+                    checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
+                    if(s?.trim()?.length== 19) {
                         switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.VISIBLE
                         switchMerchantCheckout?.visibility = View.VISIBLE
@@ -721,8 +759,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 separatorView?.visibility = View.GONE
             }
         }
-
-
     }
 
     override fun onCardSelectedAction(isSelected: Boolean) {
@@ -743,6 +779,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 businessPlaceholder.visibility = View.GONE
                 amountSectionView.visibility = View.GONE
                 switchDemo.visibility = View.GONE
+                tabLayout.visibility=View.GONE
+                paymentLayout.visibility=View.GONE
+                tapHeaderSectionView.visibility=View.GONE
+                businessIcon.visibility=View.GONE
+                businessPlaceholder.visibility=View.GONE
+                businessPlaceholder.visibility=View.GONE
+                amountSectionView.visibility=View.GONE
+                switchDemo.visibility=View.GONE
                 separatorView?.visibility = View.GONE
                 chipRecycler.visibility = View.GONE
 //                selectedCurrency.visibility= View.GONE
@@ -752,9 +796,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 alertgoPay?.visibility = View.GONE
                 saveCardorMobile?.visibility = View.GONE
                 headerView?.visibility = View.GONE
+                chipRecycler.visibility= View.GONE
+                switchSaveDemo?.visibility= View.GONE
+                savegoPay?.visibility= View.GONE
+                alertgoPay?.visibility= View.GONE
+                saveCardorMobile?.visibility= View.GONE
+                headerView?.visibility= View.GONE
                 separator.visibility = View.GONE
-                groupAction?.visibility = View.GONE
-                groupName?.visibility = View.GONE
+                groupAction?.visibility= View.GONE
+                groupName?.visibility= View.GONE
                 separator_.visibility = View.GONE
                 topSeparator.visibility = View.GONE
                 separatorــ.visibility = View.GONE
@@ -765,7 +815,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         1
                     ) { replaceBetweenFragments() })
 //                action_button.changeButtonState(ActionButtonState.LOADING)
-                changeBottomSheetTransition()
+//                changeBottomSheetTransition()
 
             }
         } else
@@ -773,10 +823,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     }
 
 
-    private fun replaceBetweenFragments() {
-        actionButton.visibility = View.GONE
-        childFragmentManager.beginTransaction().replace(
-            R.id.webViewContainer,
+    private fun replaceBetweenFragments(){
+        actionButton.visibility= View.GONE
+        dialog?.window?.attributes?.windowAnimations  = R.anim.slide_up
+
+//        slidingUpAnimate()
+        childFragmentManager.beginTransaction().replace(R.id.webViewContainer,
             WebFragment(this)
         ).commit()
     }
@@ -801,6 +853,36 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 TransitionManager.beginDelayedTransition(layout)
             }
         }
+    }
+
+
+    fun slidingUpAnimate(){
+        val animate = view?.height?.toFloat()?.let {
+            TranslateAnimation(
+                0F,  // fromXDelta
+                0F,  // toXDelta
+                it,  // fromYDelta
+                0F
+            )
+        } // toYDelta
+        animate?.duration = 500
+        animate?.fillAfter = true
+        view!!.startAnimation(animate)
+    }
+//
+    fun slidingDownAnimate(){
+        val animate = view?.height?.toFloat()?.let {
+            TranslateAnimation(
+                0F,  // fromXDelta
+                0F,  // toXDelta
+                0F,  // fromYDelta
+                it
+            )
+        } // toYDelta
+
+        animate?.duration = 500
+        animate?.fillAfter = true
+        view!!.startAnimation(animate)
     }
 
 

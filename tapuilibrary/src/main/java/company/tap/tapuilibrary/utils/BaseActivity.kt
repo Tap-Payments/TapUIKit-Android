@@ -1,6 +1,9 @@
 package company.tap.tapuilibrary.utils
 
 import android.os.Bundle
+import android.util.Log
+import com.tap.tapfontskit.FontChanger
+import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocaleAppCompatActivity
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -20,7 +23,6 @@ open class BaseActivity: LocaleAppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initAppLocale(R.raw.lang)
-        setLocale(Locale("en"))
     }
     private fun initAppLocale(lang: Int) {
         LocalizationManager.loadTapLocale(resources, lang)
