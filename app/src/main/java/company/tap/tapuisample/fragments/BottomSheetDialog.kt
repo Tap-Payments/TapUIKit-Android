@@ -607,6 +607,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
                     nfcButton?.visibility = View.GONE
                     cardScannerBtn?.visibility = View.GONE
+                    tapCardInputView.holderNameEnabled= false
                     if (card.validationState == CardValidationState.incomplete) {
                         switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.GONE
