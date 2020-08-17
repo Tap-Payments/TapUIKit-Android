@@ -205,6 +205,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         alertMessage = view.findViewById(R.id.textview_alert_message)
         clearView = view.findViewById(R.id.clear_text)
         linearLayoutPay = view.findViewById(R.id.linear_paylayout)
+        tapCardInputView.clearFocus()
         clearView?.setOnClickListener {
             tabLayout.resetBehaviour()
 
