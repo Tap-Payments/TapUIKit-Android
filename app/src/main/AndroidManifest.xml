@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="company.tap.tapuisample"
-    xmlns:dist="http://schemas.android.com/apk/distribution">
+    xmlns:dist="http://schemas.android.com/apk/distribution"
+    package="company.tap.tapuisample">
 
     <dist:module dist:instant="true" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".Application"
         android:allowBackup="true"
+        android:configChanges="layoutDirection|locale"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:configChanges="layoutDirection|locale"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-       >
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.ThemeTestActivity"></activity>
         <activity android:name=".activities.ActionButtonActivity" />
         <activity android:name=".activities.SectionsTabLayout" />
         <activity android:name=".activities.AmountItemActivity" />
         <activity android:name=".activities.TapChipsActivity" />
-        <activity android:name=".activities.SplashActivity"
+        <activity
+            android:name=".activities.SplashActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,12 +31,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.MainActivity"
+        <activity
+            android:name=".activities.MainActivity"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
     </application>

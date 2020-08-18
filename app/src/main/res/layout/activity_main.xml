@@ -7,6 +7,14 @@
     tools:context=".activities.MainActivity">
 
     <Button
+        android:onClick="swapTheme"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Swap Theme"/>
+
+    <Button
        android:onClick="openTapChip"
         android:layout_marginTop="@dimen/margin_basic_10dp"
        android:layout_width="wrap_content"

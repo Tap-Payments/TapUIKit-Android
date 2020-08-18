@@ -22,7 +22,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import androidx.core.graphics.drawable.DrawableCompat.setLayoutDirection
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
@@ -196,6 +195,9 @@ class MainActivity : BaseActivity(),
     fun openFragment(view: View) {
         ExampleFragment()
             .show(supportFragmentManager, null)
+    }
+    fun swapTheme(view: View) {
+        startActivity(Intent(this, ThemeTestActivity::class.java))
     }
 
     fun otpFragment(view: View) {
