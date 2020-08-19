@@ -153,7 +153,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         actionButton.stateListAnimator = null
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
 //        checkboxString = getString(R.string.nfc_text)
-        checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
+        //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 
     }
 
@@ -214,6 +214,21 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             tapCardInputView.setCvcCode("")*/
             tapCardInputView.clear()
             alert_text.visibility= View.GONE
+            nfcButton?.visibility =View.VISIBLE
+            cardScannerBtn?.visibility =View.VISIBLE
+            clearView?.visibility= View.GONE
+
+            switchSaveDemo?.visibility = View.GONE
+            switchLayout?.visibility = View.GONE
+            switchMerchantCheckout?.visibility = View.GONE
+          //  switchMerchantCheckout?.isChecked = false
+          //  switchgoPayCheckout?.isChecked = false
+            switchgoPayCheckout?.visibility = View.GONE
+            savegoPay?.visibility = View.GONE
+            alertgoPay?.visibility = View.GONE
+            separatorView?.visibility = View.GONE
+
+
 
         }
        // alertMessage?.visibility = View.GONE
@@ -256,7 +271,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     }
 
     private fun switchViewInit(view: View) {
-        checkboxString = getString(R.string.nfc_text)
+
+       /* if(selectedTab==0){
+            checkboxString = getString(R.string.nfc_text)
+        }else{
+            checkboxString = getString(R.string.mobile_text)
+        }*/
         switchDemo = view.findViewById(R.id.switch_pay_demo)
         switchDemo.setSwitchDataSource(getSwitchDataSource("ola"))
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
@@ -273,7 +293,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource( switchText: String): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSave =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" ),
+            switchSave =  switchText,
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
@@ -514,10 +534,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 clearView?.visibility = View.GONE
 
             } else if(position == 1){
-                paymentLayout.removeAllViews()
+                //paymentLayout.removeAllViews()
+                paymentLayout.addView(tapMobileInputView)
                 switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
                // paymentLayout.removeView(tapCardInputView)
-                paymentLayout.addView(tapMobileInputView)
                 cardScannerBtn?.visibility = View.GONE
                 nfcButton?.visibility = View.GONE
                 clearView?.visibility = View.VISIBLE
@@ -610,7 +630,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     cardScannerBtn?.visibility = View.GONE
                     tapCardInputView.holderNameEnabled= false
                     if (card.validationState == CardValidationState.incomplete) {
-                        switchSaveDemo?.visibility = View.VISIBLE
+                       // switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.GONE
                         switchMerchantCheckout?.visibility = View.GONE
                         switchMerchantCheckout?.isChecked = true
@@ -619,7 +639,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         savegoPay?.visibility = View.GONE
                         alertgoPay?.visibility = View.GONE
                         separatorView?.visibility = View.GONE
-                        checkboxString = getString(R.string.savecard_text)
+                       // checkboxString = getString(R.string.savecard_text)
 
                         switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_save_text)))
                         alertMessage?.visibility = View.VISIBLE
@@ -631,8 +651,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
                     }
 //                    checkboxString = getString(R.string.nfc_text)
-                    checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
-                    if(s?.trim()?.length== 19) {
+                  //  checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
+                    if(s?.trim()?.length== 19 && card.validationState == CardValidationState.valid) {
                         switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.VISIBLE
                         switchMerchantCheckout?.visibility = View.VISIBLE
