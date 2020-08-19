@@ -111,7 +111,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var alertMessage : TapTextView? = null
     private var clearView : ImageView? = null
     private var linearLayoutPay : LinearLayout? = null
-
+    private val cardFragment = CardScannerFragment()
+    private var cardFragmentadded :Boolean = false
 
 
 
@@ -251,7 +252,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 .commit()
         }
         cardScannerBtn?.setOnClickListener {
-            val cardFragment = CardScannerFragment()
+           // val cardFragment = CardScannerFragment()
             tabLayout.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
@@ -267,6 +268,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 .beginTransaction()
                 .add(R.id.fragment_container_nfc, cardFragment)
                 .commit()
+            cardFragmentadded = true
         }
     }
 
@@ -320,6 +322,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 .beginTransaction()
                 .add(R.id.fragment_container_nfc, cardScannerFragment)
                 .commit()
+            cardFragmentadded = true
         }
 
     }
@@ -463,10 +466,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 separator_.visibility = View.GONE
                 separatorــ.visibility = View.GONE
 //                indicatorSeparator.visibility = View.GONE
-                childFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fragment_container_nfc, currencyViewFragment)
-                    .commit()
+                if(cardFragmentadded){
+
+                    childFragmentManager
+                        .beginTransaction()
+                        .remove(cardFragment)
+                        .commit()
+                }else {
+                    childFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_container_nfc, currencyViewFragment)
+                        .commit()
+                }
+
                 bottomSheetLayout?.let { layout ->
                     layout.post {
                         val addTransition: Transition =
@@ -488,6 +500,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
                 tabLayout.visibility = View.VISIBLE
                 paymentLayout.visibility = View.VISIBLE*/
+
 
                 Handler().postDelayed({
                     bottomSheetDialog.behavior.state = STATE_EXPANDED

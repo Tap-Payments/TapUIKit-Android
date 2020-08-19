@@ -47,7 +47,7 @@ class MainActivity : BaseActivity(),
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
     private val modalNFCBottomSheet = NFCSampleFragment()
-    private val modalCardScannerBottomSheet = CardScannerFragment()
+    private val modalCardScannerBottomSheet = CardScannerSampleFragment()
     private lateinit var executor: Executor
     private lateinit var biometricPrompt: BiometricPrompt
     private lateinit var promptInfo: BiometricPrompt.PromptInfo

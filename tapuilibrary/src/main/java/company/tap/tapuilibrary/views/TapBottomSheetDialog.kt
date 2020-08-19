@@ -78,7 +78,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setDialogConfigurations()
-        changeBackground()
+             changeBackground()
     }
 
     private fun changeBackground() {
