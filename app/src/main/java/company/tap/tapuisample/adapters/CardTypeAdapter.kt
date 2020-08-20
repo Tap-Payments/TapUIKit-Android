@@ -102,7 +102,7 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardS
             (holder as GoPayViewHolder)
             holder.itemView.setOnClickListener {
                 selectedPosition = position
-                onCardSelectedActionListener?.onCardSelectedAction(false)
+                onCardSelectedActionListener?.onCardSelectedAction(true)
                 notifyDataSetChanged()
             }
 

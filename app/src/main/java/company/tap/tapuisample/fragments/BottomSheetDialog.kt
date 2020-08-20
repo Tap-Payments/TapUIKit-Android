@@ -419,31 +419,40 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         val currencyViewFragment = CurrencyViewFragment()
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
-            if (isFragmentAdded) {
-              /*  val cardScannerFragment = CardScannerFragment()
-                childFragmentManager
-                    .beginTransaction()
-                    .add(R.id.fragment_container_nfc, cardScannerFragment)
-                    .commit()*/
-               childFragmentManager
+                if (isFragmentAdded) {
+
+               /* childFragmentManager
                     .beginTransaction()
                     .remove(currencyViewFragment)
-                    .commit()
-             /*   fragment_container.visibility = View.VISIBLE
-              //  tabLayout.visibility = View.GONE
-              //  paymentLayout.visibility = View.GONE
-                tap_payment_input0.visibility = View.VISIBLE
-                paymentLayout.removeAllViews()
-                paymentLayout.addView(tapCardInputView)*/
-                bottomSheetLayout?.let { layout ->
+                    .commit()*/
+               // dialog?.window?.attributes?.windowAnimations= R.anim.slide_down
+
+             Handler().postDelayed({
+
+                     childFragmentManager
+                         .beginTransaction()
+                         .remove(currencyViewFragment)
+                         .commit()
+
+
+                 }, 20)
+
+               // bottomSheetDialog.behavior.state = STATE_HALF_EXPANDED
+               /* bottomSheetLayout?.let { layout ->
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
-                            .inflateTransition(R.transition.remove_fragment)
+                            .inflateTransition(R.transition.add_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
                 }
+*/
+                fragment_container.visibility = View.VISIBLE
+                //  tabLayout.visibility = View.GONE
+                //  paymentLayout.visibility = View.GONE
+                tap_payment_input0.visibility = View.VISIBLE
+                paymentLayout.removeAllViews()
+                paymentLayout.addView(tapCardInputView)
+              /*  Handler().postDelayed({
 
-                Handler().postDelayed({
-                    bottomSheetDialog.behavior.state = STATE_HALF_EXPANDED
 
                     fragment_container.visibility = View.VISIBLE
                     //  tabLayout.visibility = View.GONE
@@ -453,19 +462,31 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     paymentLayout.addView(tapCardInputView)
 
 
-                }, 50)
+                }, 50)*/
                 /* bottomSheetLayout?.let { layout ->
                      val removeTransition: Transition =
                          TransitionInflater.from(context)
                              .inflateTransition(R.transition.remove_fragment)
                      TransitionManager.beginDelayedTransition(layout, removeTransition)
                  }*/
+                dialog?.window?.attributes?.windowAnimations= R.anim.fade_in
+
                 selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = getString(R.string.items)
             } else {
                 separator_.visibility = View.GONE
                 separatorــ.visibility = View.GONE
 //                indicatorSeparator.visibility = View.GONE
+                Handler().postDelayed({
+
+                    fragment_container.visibility = View.GONE
+                    tap_payment_input0.visibility = View.GONE
+
+
+                }, 20)
+
+                bottomSheetDialog.behavior.state = STATE_EXPANDED
+
                 if(cardFragmentadded){
 
                     childFragmentManager
@@ -503,10 +524,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
 
                 Handler().postDelayed({
-                    bottomSheetDialog.behavior.state = STATE_EXPANDED
 
-                    fragment_container.visibility = View.GONE
-                    tap_payment_input0.visibility = View.GONE
+
+
 
                     tabLayout.visibility = View.VISIBLE
                     paymentLayout.visibility = View.VISIBLE
@@ -825,7 +845,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 separatorView?.visibility = View.GONE
                 chipRecycler.visibility = View.GONE
 //                selectedCurrency.visibility= View.GONE
-//                nfcScanBtn.visibility= View.GONE
+                nfcButton?.visibility =View.GONE
+                cardScannerBtn?.visibility =View.GONE
+                tap_payment_input0?.visibility = View.GONE
                 switchSaveDemo?.visibility = View.GONE
                 savegoPay?.visibility = View.GONE
                 alertgoPay?.visibility = View.GONE
@@ -843,7 +865,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 separator_.visibility = View.GONE
                 topSeparator.visibility = View.GONE
                 separatorــ.visibility = View.GONE
+                if(paymentsList.get(2)==3){
+                    Toast.makeText(context,"goPay is clicked",Toast.LENGTH_SHORT).show()
+                    childFragmentManager
+                        .beginTransaction()
+                        .remove( WebFragment(this))
+                        .commit()
+                    dialog?.hide()
 
+                }else
                 actionButton.addChildView(
                     actionButton.getImageView(
                         R.drawable.loader,
@@ -863,6 +893,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         dialog?.window?.attributes?.windowAnimations  = R.anim.slide_up
 
 //        slidingUpAnimate()
+
+
         childFragmentManager.beginTransaction().replace(R.id.webViewContainer,
             WebFragment(this)
         ).commit()
