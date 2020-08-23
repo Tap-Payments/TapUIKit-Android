@@ -13,6 +13,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
 import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -26,7 +28,6 @@ import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HALF_EXPANDED
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
@@ -48,13 +49,12 @@ import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
-import company.tap.tapuisample.activities.MainActivity
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import java.util.*
+import kotlinx.android.synthetic.main.item_gopay.*
 import kotlin.collections.ArrayList
 
 
@@ -113,6 +113,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var linearLayoutPay : LinearLayout? = null
     private val cardFragment = CardScannerFragment()
     private var cardFragmentadded :Boolean = false
+    private var delImageView1 :ImageView?=null
+    private var delImageView2 :ImageView?=null
+    private var delImageView3 :ImageView?=null
+    private var tapChipgrp :TapChip?=null
 
 
 
@@ -153,6 +157,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+        tapChipgrp = view.findViewById(R.id.tapcard_Chip)
 //        checkboxString = getString(R.string.nfc_text)
         //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 
@@ -358,11 +363,38 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter = CardTypeAdapter(paymentsList, this)
+        delImageView1 = tapChipgrp?.findViewById(R.id.deleteImageView1)
+        delImageView2 = tapChipgrp?.findViewById(R.id.deleteImageView2)
+        delImageView3 = tapChipgrp?.findViewById(R.id.deleteImageView3)
         groupAction?.setOnClickListener {
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
+            shakingCards(chipRecycler)
+            delImageView1?.visibility = View.VISIBLE
+            delImageView2?.visibility = View.VISIBLE
+            delImageView3?.visibility = View.VISIBLE
+
+        }
+        delImageView1?.setOnClickListener {
+            stopShakingCards(chipRecycler)
+        }
+        delImageView2?.setOnClickListener {
+            stopShakingCards(chipRecycler)
+        }
+        delImageView3?.setOnClickListener {
+            stopShakingCards(chipRecycler)
         }
 
+    }
 
+    private fun shakingCards(chipsView: RecyclerView) {
+        val animShake:Animation=  AnimationUtils.loadAnimation(context, R.anim.shake)
+            chipsView.startAnimation(animShake)
+
+    }
+
+    private fun stopShakingCards(chipsView: RecyclerView){
+        val animShake:Animation=  AnimationUtils.loadAnimation(context, R.anim.shake)
+        chipsView.startAnimation(null)
     }
 
 

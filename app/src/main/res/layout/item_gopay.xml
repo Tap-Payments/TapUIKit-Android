@@ -13,6 +13,15 @@
     app:contentPadding="5dp"
     android:id="@+id/tapcard_Chip"
     app:cardBackgroundColor="@color/glowingShadow">
+    <ImageView
+        android:id="@+id/deleteImageView1"
+        android:layout_width="20dp"
+        android:layout_height="12dp"
+        android:elevation="15dp"
+        android:src="@drawable/btn_close_normal"
+        android:visibility="visible"
+        android:layout_gravity="right|top"
+        />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_gravity="center_vertical"
