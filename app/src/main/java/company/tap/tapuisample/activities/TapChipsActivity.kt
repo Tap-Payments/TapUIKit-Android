@@ -9,6 +9,8 @@ import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.cardinputwidget.widget.inline.InlineCardInput
+import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.atoms.TapChipGroup
 import company.tap.tapuilibrary.atoms.TapTextView
@@ -16,18 +18,32 @@ import company.tap.tapuilibrary.model.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuilibrary.adapters.CurrencyAdapter
+import company.tap.tapuilibrary.adapters.context
+import company.tap.tapuilibrary.animation.AnimationEngine
+import company.tap.tapuilibrary.datasource.GoPayLoginDataSource
+import company.tap.tapuilibrary.interfaces.GoPayLoginInterface
+import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.models.SectionTabItem
+import company.tap.tapuilibrary.organisms.GoPayLoginInput
+import company.tap.tapuilibrary.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.utils.BaseActivity
+import company.tap.tapuilibrary.views.TapMobilePaymentView
+import company.tap.tapuilibrary.views.TapSelectionTabLayout
 import kotlinx.android.synthetic.main.activity_cardview.*
 
 /***
  * A sample Activity to show Chips .
  * */
 
-class TapChipsActivity : BaseActivity() {
+class TapChipsActivity : BaseActivity(), TapSelectionTabLayoutInterface, GoPayLoginInterface {
     private lateinit var chipRecycler: RecyclerView
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     private lateinit var currencyList: ArrayList<CurrencyModel>
-
+    private lateinit var gopaySelectTab: TapSelectionTabLayout
+    private lateinit var tapMobileInputView: TapMobilePaymentView
+    private lateinit var ll: LinearLayout
+    private lateinit var  goPayLoginInput: GoPayLoginInput
+    private lateinit var goPayPasswordInput: GoPayPasswordInput
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +51,21 @@ class TapChipsActivity : BaseActivity() {
         setUpSwitch()
         setupCardChip()
         setupCurrencyChips()
+        setupTabLayout()
+    }
+
+    private fun setupTabLayout() {
+        gopaySelectTab = findViewById(R.id.tab_select_gopay)
+        gopaySelectTab.setTabLayoutInterface(this)
+        goPayLoginInput = findViewById(R.id.gopay_login_input)
+        goPayPasswordInput = findViewById(R.id.goPay_password)
+       // tapMobileInputView = TapMobilePaymentView(context, null)
+      //  ll.addView(tapMobileInputView)
+        //addCard()
+        //addMobile()
+        goPayLoginInput.changeDataSource(GoPayLoginDataSource())
+        goPayLoginInput.setLoginInterface(this)
+
     }
 
     //Setup for currency chips
@@ -135,6 +166,51 @@ class TapChipsActivity : BaseActivity() {
                 "https://www.countryflags.io/sa/flat/24.png"
             )
         )
+
+    }
+
+    override fun onTabSelected(position: Int?) {
+
+    }
+
+    private fun addMobile() {
+        val items = ArrayList<SectionTabItem>()
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.zain_gray
+                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+            )
+        )
+        gopaySelectTab.addSection(items)
+    }
+
+
+    private  fun addCard(){
+        val items = ArrayList<SectionTabItem>()
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.zain_gray
+                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+            )
+        )
+        gopaySelectTab.addSection(items)
+    }
+
+    override fun onChangeClicked() {
+      //  AnimationEngine.applyTransition(bottomSheet, SLIDE)
+        goPayLoginInput.visibility = View.VISIBLE
+        goPayPasswordInput.visibility = View.GONE
+    }
+
+    override fun onEmailValidated() {
+        //AnimationEngine.applyTransition(bottomSheet, SLIDE)
+        goPayLoginInput.visibility = View.GONE
+        goPayPasswordInput.visibility = View.VISIBLE
+    }
+
+    override fun onPhoneValidated() {
 
     }
 }

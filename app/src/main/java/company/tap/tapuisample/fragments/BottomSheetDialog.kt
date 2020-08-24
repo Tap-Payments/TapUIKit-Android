@@ -158,7 +158,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         actionButton.stateListAnimator = null
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
-//        checkboxString = getString(R.string.nfc_text)
+       // checkboxString = getString(R.string.nfc_text)
         //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 
     }
