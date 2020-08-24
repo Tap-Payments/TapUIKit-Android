@@ -17,9 +17,9 @@ import company.tap.tapuilibrary.views.TapSelectionTabLayout
 class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
 
-    private val tabLayout: TapSelectionTabLayout
-    private val paymentInputContainer: LinearLayout
-    private val clearView: ImageView
+     var tabLayout: TapSelectionTabLayout
+     var paymentInputContainer: LinearLayout
+     var clearView: ImageView
 
     init {
         inflate(context, R.layout.tap_payment_input, this)

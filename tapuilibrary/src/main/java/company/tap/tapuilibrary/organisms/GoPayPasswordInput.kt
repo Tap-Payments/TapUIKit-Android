@@ -23,10 +23,10 @@ import company.tap.tapuilibrary.views.TabAnimatedActionButton
 class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
 
-    private var textInputLayout: TextInputLayout
-    private var passwordTextInput: TextInputEditText
-    private val signInButton: TabAnimatedActionButton
-    private val changeEmail: TapTextView
+     var textInputLayout: TextInputLayout
+     var passwordTextInput: TextInputEditText
+     var signInButton: TabAnimatedActionButton
+     var changeEmail: TapTextView
     private var loginInterface: GoPayLoginInterface? = null
 
     init {
