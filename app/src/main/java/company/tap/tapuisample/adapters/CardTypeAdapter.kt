@@ -6,11 +6,13 @@ import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
+import kotlinx.android.synthetic.main.item_gopay.view.*
+import kotlinx.android.synthetic.main.item_knet.view.*
+import kotlinx.android.synthetic.main.item_saved_card.view.*
 
 
 /**
@@ -102,11 +104,25 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardS
             (holder as GoPayViewHolder)
             holder.itemView.setOnClickListener {
                 selectedPosition = position
-                onCardSelectedActionListener?.onCardSelectedAction(false)
+                onCardSelectedActionListener?.onCardSelectedAction(true)
                 notifyDataSetChanged()
             }
 
         }
+        holder.itemView.deleteImageView1?.setOnClickListener {
+           // it.startAnimation(null)
+            it.animation=null
+            it.startAnimation(null)
+        }
+        holder.itemView.deleteImageView2?.setOnClickListener {
+           // it.startAnimation(null)
+            it.animation=null
+        }
+        holder.itemView.deleteImageView3?.setOnClickListener {
+           // it.startAnimation(null)
+            it.animation=null
+        }
+
 
     }
 

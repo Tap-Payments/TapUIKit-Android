@@ -13,6 +13,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.TranslateAnimation
 import android.view.WindowManager
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -26,7 +28,6 @@ import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_HALF_EXPANDED
 import com.tap.tapfontskit.FontChanger
 import com.tap.tapfontskit.enums.TapFont
 import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
@@ -48,13 +49,12 @@ import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.models.SectionTabItem
 import company.tap.tapuilibrary.views.*
 import company.tap.tapuisample.R
-import company.tap.tapuisample.activities.MainActivity
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import java.util.*
+import kotlinx.android.synthetic.main.item_gopay.*
 import kotlin.collections.ArrayList
 
 
@@ -111,7 +111,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private var alertMessage : TapTextView? = null
     private var clearView : ImageView? = null
     private var linearLayoutPay : LinearLayout? = null
-
+    private val cardFragment = CardScannerFragment()
+    private var cardFragmentadded :Boolean = false
+    private var delImageView1 :ImageView?=null
+    private var delImageView2 :ImageView?=null
+    private var delImageView3 :ImageView?=null
+    private var tapChipgrp :TapChip?=null
 
 
 
@@ -152,8 +157,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
         actionButton.stateListAnimator = null
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+        tapChipgrp = view.findViewById(R.id.tapcard_Chip)
 //        checkboxString = getString(R.string.nfc_text)
-        checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
+        //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 
     }
 
@@ -214,6 +220,21 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
             tapCardInputView.setCvcCode("")*/
             tapCardInputView.clear()
             alert_text.visibility= View.GONE
+            nfcButton?.visibility =View.VISIBLE
+            cardScannerBtn?.visibility =View.VISIBLE
+            clearView?.visibility= View.GONE
+
+            switchSaveDemo?.visibility = View.GONE
+            switchLayout?.visibility = View.GONE
+            switchMerchantCheckout?.visibility = View.GONE
+          //  switchMerchantCheckout?.isChecked = false
+          //  switchgoPayCheckout?.isChecked = false
+            switchgoPayCheckout?.visibility = View.GONE
+            savegoPay?.visibility = View.GONE
+            alertgoPay?.visibility = View.GONE
+            separatorView?.visibility = View.GONE
+
+
 
         }
        // alertMessage?.visibility = View.GONE
@@ -236,7 +257,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 .commit()
         }
         cardScannerBtn?.setOnClickListener {
-            val cardFragment = CardScannerFragment()
+           // val cardFragment = CardScannerFragment()
             tabLayout.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
@@ -252,11 +273,17 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 .beginTransaction()
                 .add(R.id.fragment_container_nfc, cardFragment)
                 .commit()
+            cardFragmentadded = true
         }
     }
 
     private fun switchViewInit(view: View) {
-        checkboxString = getString(R.string.nfc_text)
+
+       /* if(selectedTab==0){
+            checkboxString = getString(R.string.nfc_text)
+        }else{
+            checkboxString = getString(R.string.mobile_text)
+        }*/
         switchDemo = view.findViewById(R.id.switch_pay_demo)
         switchDemo.setSwitchDataSource(getSwitchDataSource("ola"))
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
@@ -273,7 +300,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource( switchText: String): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSave =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" ),
+            switchSave =  switchText,
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
@@ -300,6 +327,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 .beginTransaction()
                 .add(R.id.fragment_container_nfc, cardScannerFragment)
                 .commit()
+            cardFragmentadded = true
         }
 
     }
@@ -335,11 +363,38 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter = CardTypeAdapter(paymentsList, this)
+        delImageView1 = tapChipgrp?.findViewById(R.id.deleteImageView1)
+        delImageView2 = tapChipgrp?.findViewById(R.id.deleteImageView2)
+        delImageView3 = tapChipgrp?.findViewById(R.id.deleteImageView3)
         groupAction?.setOnClickListener {
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
+            shakingCards(chipRecycler)
+            delImageView1?.visibility = View.VISIBLE
+            delImageView2?.visibility = View.VISIBLE
+            delImageView3?.visibility = View.VISIBLE
+
+        }
+        delImageView1?.setOnClickListener {
+            stopShakingCards(chipRecycler)
+        }
+        delImageView2?.setOnClickListener {
+            stopShakingCards(chipRecycler)
+        }
+        delImageView3?.setOnClickListener {
+            stopShakingCards(chipRecycler)
         }
 
+    }
 
+    private fun shakingCards(chipsView: RecyclerView) {
+        val animShake:Animation=  AnimationUtils.loadAnimation(context, R.anim.shake)
+            chipsView.startAnimation(animShake)
+
+    }
+
+    private fun stopShakingCards(chipsView: RecyclerView){
+        val animShake:Animation=  AnimationUtils.loadAnimation(context, R.anim.shake)
+        chipsView.startAnimation(null)
     }
 
 
@@ -396,31 +451,40 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         val currencyViewFragment = CurrencyViewFragment()
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
-            if (isFragmentAdded) {
-              /*  val cardScannerFragment = CardScannerFragment()
-                childFragmentManager
-                    .beginTransaction()
-                    .add(R.id.fragment_container_nfc, cardScannerFragment)
-                    .commit()*/
-               childFragmentManager
+                if (isFragmentAdded) {
+
+               /* childFragmentManager
                     .beginTransaction()
                     .remove(currencyViewFragment)
-                    .commit()
-             /*   fragment_container.visibility = View.VISIBLE
-              //  tabLayout.visibility = View.GONE
-              //  paymentLayout.visibility = View.GONE
-                tap_payment_input0.visibility = View.VISIBLE
-                paymentLayout.removeAllViews()
-                paymentLayout.addView(tapCardInputView)*/
-                bottomSheetLayout?.let { layout ->
+                    .commit()*/
+               // dialog?.window?.attributes?.windowAnimations= R.anim.slide_down
+
+             Handler().postDelayed({
+
+                     childFragmentManager
+                         .beginTransaction()
+                         .remove(currencyViewFragment)
+                         .commit()
+
+
+                 }, 20)
+
+               // bottomSheetDialog.behavior.state = STATE_HALF_EXPANDED
+               /* bottomSheetLayout?.let { layout ->
                     val removeTransition: Transition =
                         TransitionInflater.from(context)
-                            .inflateTransition(R.transition.remove_fragment)
+                            .inflateTransition(R.transition.add_fragment)
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
                 }
+*/
+                fragment_container.visibility = View.VISIBLE
+                //  tabLayout.visibility = View.GONE
+                //  paymentLayout.visibility = View.GONE
+                tap_payment_input0.visibility = View.VISIBLE
+                paymentLayout.removeAllViews()
+                paymentLayout.addView(tapCardInputView)
+              /*  Handler().postDelayed({
 
-                Handler().postDelayed({
-                    bottomSheetDialog.behavior.state = STATE_HALF_EXPANDED
 
                     fragment_container.visibility = View.VISIBLE
                     //  tabLayout.visibility = View.GONE
@@ -430,23 +494,44 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     paymentLayout.addView(tapCardInputView)
 
 
-                }, 50)
+                }, 50)*/
                 /* bottomSheetLayout?.let { layout ->
                      val removeTransition: Transition =
                          TransitionInflater.from(context)
                              .inflateTransition(R.transition.remove_fragment)
                      TransitionManager.beginDelayedTransition(layout, removeTransition)
                  }*/
+                dialog?.window?.attributes?.windowAnimations= R.anim.fade_in
+
                 selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = getString(R.string.items)
             } else {
                 separator_.visibility = View.GONE
                 separatorــ.visibility = View.GONE
 //                indicatorSeparator.visibility = View.GONE
-                childFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.fragment_container_nfc, currencyViewFragment)
-                    .commit()
+                Handler().postDelayed({
+
+                    fragment_container.visibility = View.GONE
+                    tap_payment_input0.visibility = View.GONE
+
+
+                }, 20)
+
+                bottomSheetDialog.behavior.state = STATE_EXPANDED
+
+                if(cardFragmentadded){
+
+                    childFragmentManager
+                        .beginTransaction()
+                        .remove(cardFragment)
+                        .commit()
+                }else {
+                    childFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_container_nfc, currencyViewFragment)
+                        .commit()
+                }
+
                 bottomSheetLayout?.let { layout ->
                     layout.post {
                         val addTransition: Transition =
@@ -469,11 +554,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 tabLayout.visibility = View.VISIBLE
                 paymentLayout.visibility = View.VISIBLE*/
 
-                Handler().postDelayed({
-                    bottomSheetDialog.behavior.state = STATE_EXPANDED
 
-                    fragment_container.visibility = View.GONE
-                    tap_payment_input0.visibility = View.GONE
+                Handler().postDelayed({
+
+
+
 
                     tabLayout.visibility = View.VISIBLE
                     paymentLayout.visibility = View.VISIBLE
@@ -514,10 +599,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 clearView?.visibility = View.GONE
 
             } else if(position == 1){
-                paymentLayout.removeAllViews()
+                //paymentLayout.removeAllViews()
+                paymentLayout.addView(tapMobileInputView)
                 switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
                // paymentLayout.removeView(tapCardInputView)
-                paymentLayout.addView(tapMobileInputView)
                 cardScannerBtn?.visibility = View.GONE
                 nfcButton?.visibility = View.GONE
                 clearView?.visibility = View.VISIBLE
@@ -610,7 +695,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                     cardScannerBtn?.visibility = View.GONE
                     tapCardInputView.holderNameEnabled= false
                     if (card.validationState == CardValidationState.incomplete) {
-                        switchSaveDemo?.visibility = View.VISIBLE
+                       // switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.GONE
                         switchMerchantCheckout?.visibility = View.GONE
                         switchMerchantCheckout?.isChecked = true
@@ -619,7 +704,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         savegoPay?.visibility = View.GONE
                         alertgoPay?.visibility = View.GONE
                         separatorView?.visibility = View.GONE
-                        checkboxString = getString(R.string.savecard_text)
+                       // checkboxString = getString(R.string.savecard_text)
 
                         switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_save_text)))
                         alertMessage?.visibility = View.VISIBLE
@@ -631,8 +716,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
                     }
 //                    checkboxString = getString(R.string.nfc_text)
-                    checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
-                    if(s?.trim()?.length== 19) {
+                  //  checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
+                    if(s?.trim()?.length== 19 && card.validationState == CardValidationState.valid) {
                         switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.VISIBLE
                         switchMerchantCheckout?.visibility = View.VISIBLE
@@ -792,7 +877,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 separatorView?.visibility = View.GONE
                 chipRecycler.visibility = View.GONE
 //                selectedCurrency.visibility= View.GONE
-//                nfcScanBtn.visibility= View.GONE
+                nfcButton?.visibility =View.GONE
+                cardScannerBtn?.visibility =View.GONE
+                tap_payment_input0?.visibility = View.GONE
                 switchSaveDemo?.visibility = View.GONE
                 savegoPay?.visibility = View.GONE
                 alertgoPay?.visibility = View.GONE
@@ -810,7 +897,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                 separator_.visibility = View.GONE
                 topSeparator.visibility = View.GONE
                 separatorــ.visibility = View.GONE
+                if(paymentsList.get(2)==3){
+                    Toast.makeText(context,"goPay is clicked",Toast.LENGTH_SHORT).show()
+                    childFragmentManager
+                        .beginTransaction()
+                        .remove( WebFragment(this))
+                        .commit()
+                    dialog?.hide()
 
+                }else
                 actionButton.addChildView(
                     actionButton.getImageView(
                         R.drawable.loader,
@@ -830,6 +925,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         dialog?.window?.attributes?.windowAnimations  = R.anim.slide_up
 
 //        slidingUpAnimate()
+
+
         childFragmentManager.beginTransaction().replace(R.id.webViewContainer,
             WebFragment(this)
         ).commit()

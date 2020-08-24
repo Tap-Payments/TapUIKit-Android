@@ -7,12 +7,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
 import com.bumptech.glide.Glide
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.cardscanner.TapCard
 import company.tap.cardscanner.TapTextRecognitionCallBack
 import company.tap.cardscanner.TapTextRecognitionML
@@ -23,6 +23,7 @@ import company.tap.tapuilibrary.atoms.TapTextView
 import company.tap.tapuilibrary.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.datasource.HeaderDataSource
 import company.tap.tapuilibrary.views.TapAmountSectionView
+import company.tap.tapuilibrary.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.views.TapHeaderSectionView
 import company.tap.tapuisample.R
 import company.tap.tapuilibrary.views.TextDrawable
@@ -35,7 +36,7 @@ import kotlinx.android.synthetic.main.custom_card_view.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCallback{
+class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , InlineViewCallback{
     private var textRecognitionML: TapTextRecognitionML? = null
     private var cardScanText: TapTextView? = null
     private lateinit var tapHeaderSectionView: TapHeaderSectionView
@@ -54,7 +55,7 @@ class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCa
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view: View = inflater.inflate(R.layout.custom_card_view, container, false)
+        val view: View = inflater.inflate(R.layout.custom_card_view_example, container, false)
        val rootView = (activity?.window?.decorView as ViewGroup?)
 
        //  Blurry.with(context).radius(25).sampling(2).onto(rootView)
@@ -66,8 +67,8 @@ class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCa
       //  bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default","Hints","scan")
-        //headerViewInit(view)
-       // amountViewInit(view)
+        headerViewInit(view)
+        amountViewInit(view)
         FrameManager.getInstance().setFrameColor(Color.WHITE)
        // blurLayout = view.findViewById(R.id.blurLayout)
        view.post(Runnable {

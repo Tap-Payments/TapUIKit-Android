@@ -9,6 +9,34 @@
     android:id="@+id/cardscan_view"
 
     >
+    <company.tap.tapuilibrary.atoms.TapDragIndicator
+        android:layout_width="75dp"
+        android:layout_height="4dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginStart="150dp"
+        app:cardCornerRadius="@dimen/margin_basic_8dp"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        app:cardElevation="@dimen/margin_basic_0dp"
+        >
+    <company.tap.tapuilibrary.atoms.TapSeparatorView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:background="@color/view_color"
+        />
+    </company.tap.tapuilibrary.atoms.TapDragIndicator>
+
+    <company.tap.tapuilibrary.views.TapHeaderSectionView
+        android:id="@+id/headerView_card"
+        android:layout_marginTop="@dimen/margin_basic_9dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <company.tap.tapuilibrary.views.TapAmountSectionView
+        android:id="@+id/amount_section_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <LinearLayout
         android:layout_width="match_parent"
