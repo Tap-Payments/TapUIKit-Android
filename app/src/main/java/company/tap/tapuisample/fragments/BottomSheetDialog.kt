@@ -715,7 +715,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
 
 
                     }
-//                    checkboxString = getString(R.string.nfc_text)
                   //  checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
                     if(s?.trim()?.length== 19 && card.validationState == CardValidationState.valid) {
                         switchSaveDemo?.visibility = View.VISIBLE
