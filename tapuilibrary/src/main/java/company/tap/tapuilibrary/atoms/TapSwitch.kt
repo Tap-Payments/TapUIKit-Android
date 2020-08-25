@@ -32,8 +32,8 @@ open class TapSwitch(context: Context, attributeSet: AttributeSet) :
      */
     override fun setTheme(theme: SwitchTheme) {
         theme.textColor?.let { setTextColor(it) }
-        theme.textSize?.let { textSize = it }
-        theme.letterSpacing?.let { letterSpacing = it }
+        theme.textSize?.let { textSize = it.toFloat() }
+        theme.letterSpacing?.let { letterSpacing = it.toFloat() }
         theme.thumbTint?.let { thumbTintList = ColorStateList.valueOf(it) }
         theme.trackTint?.let { trackTintList = ColorStateList.valueOf(it) }
         invalidate()

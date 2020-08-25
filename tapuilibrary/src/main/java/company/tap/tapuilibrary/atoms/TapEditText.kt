@@ -33,8 +33,8 @@ open class TapEditText(context: Context, attributeSet: AttributeSet) :
     override fun setTheme(theme: EditTextTheme) {
         theme.maxLines?.let { maxLines = it }
         theme.textColor?.let { setTextColor(it) }
-        theme.textSize?.let { textSize = it }
-        theme.letterSpacing?.let { letterSpacing = it }
+        theme.textSize?.let { textSize = it.toFloat() }
+        theme.letterSpacing?.let { letterSpacing = it.toFloat() }
         theme.textColorHint?.let { setHintTextColor(it) }
         theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
         invalidate()
