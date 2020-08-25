@@ -904,7 +904,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
                         .remove( WebFragment(this))
                         .commit()
                     dialog?.hide()
-
+                 changeBottomSheetTransition()
                 }else
                 actionButton.addChildView(
                     actionButton.getImageView(
@@ -923,10 +923,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     private fun replaceBetweenFragments(){
         actionButton.visibility= View.GONE
         dialog?.window?.attributes?.windowAnimations  = R.anim.slide_up
-
 //        slidingUpAnimate()
-
-
         childFragmentManager.beginTransaction().replace(R.id.webViewContainer,
             WebFragment(this)
         ).commit()
