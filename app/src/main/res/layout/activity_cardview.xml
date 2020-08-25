@@ -53,5 +53,10 @@
         android:layout_height="65dp"
         android:background="@color/fill_card"
         android:orientation="horizontal" />
+    <company.tap.tapuilibrary.organisms.GoPayLayout
+        android:id="@+id/goPay_ll"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        />
 
 </LinearLayout>
