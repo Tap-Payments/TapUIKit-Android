@@ -54,6 +54,7 @@ open class TapChip(context: Context, attributeSet: AttributeSet?) :
     override fun setTheme(theme: ChipTheme) {
         theme.cardCornerRadius?.let { radius = it.toFloat() }
         theme.cardElevation?.let { cardElevation = it.toFloat() }
+        theme.chipHeight?.let { minimumHeight }
         theme.outlineSpotShadowColor?.let {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                 outlineSpotShadowColor = it

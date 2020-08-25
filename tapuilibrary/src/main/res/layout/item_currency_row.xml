@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:layout_width="wrap_content"
-    android:layout_height="60dp"
+    android:layout_height="55dp"
     app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
     app:cardCornerRadius="8dp"
@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_height="60dp">
+        android:layout_height="55dp">
 
         <company.tap.tapuilibrary.atoms.TapImageView
             android:id="@+id/imageView_currency"
