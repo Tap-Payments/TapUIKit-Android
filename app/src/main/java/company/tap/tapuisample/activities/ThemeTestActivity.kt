@@ -6,8 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import company.tap.tapuisample.R
-import company.tap.thememanager.ThemeManager
+import company.tap.thememanager.manager.ThemeManager
 import company.tap.thememanager.theme.TextViewTheme
+
 import kotlinx.android.synthetic.main.activity_theme_test.*
 
 class ThemeTestActivity : AppCompatActivity() {
