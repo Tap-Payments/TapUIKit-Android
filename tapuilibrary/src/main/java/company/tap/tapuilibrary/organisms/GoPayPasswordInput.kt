@@ -7,10 +7,10 @@ import android.os.Build
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.core.widget.doAfterTextChanged
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.atoms.TapTextView
+import company.tap.tapuilibrary.atoms.TextInputEditText
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.interfaces.TapView
