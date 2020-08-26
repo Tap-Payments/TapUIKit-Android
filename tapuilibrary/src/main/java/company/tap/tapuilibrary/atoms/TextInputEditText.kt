@@ -270,7 +270,7 @@ open class TextInputEditText  @JvmOverloads constructor(
         theme.letterSpacing?.let { letterSpacing = it.toFloat() }
         theme.placeHolderColor?.let { setHintTextColor(it) }
         theme.backgroundColor?.let { setBackgroundColor(it) }
-      
+
         invalidate()
     }
 }
