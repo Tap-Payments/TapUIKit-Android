@@ -1,10 +1,13 @@
 package company.tap.tapuilibrary.views
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.AttributeSet
 import android.widget.EditText
 import android.widget.LinearLayout
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.interfaces.TapView
+import company.tap.thememanager.theme.EditTextTheme
 import kotlinx.android.synthetic.main.tap_mobile_payment_view.view.*
 
 /**
@@ -14,7 +17,7 @@ import kotlinx.android.synthetic.main.tap_mobile_payment_view.view.*
  *
  */
 class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs) {
+    LinearLayout(context, attrs),TapView<EditTextTheme> {
 
     val mobileInputEditText: EditText
 
@@ -26,5 +29,13 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
 
     fun clearNumber() {
         mobileInputEditText.text = null
+    }
+
+    override fun setTheme(theme: EditTextTheme) {
+            theme.backgroundTint?.let { backgroundTintList= ColorStateList.valueOf(it) }
+            theme.textColorHint?.let { }
+            theme.textSize?.let{}
+        
+
     }
 }

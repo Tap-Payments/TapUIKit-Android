@@ -5,8 +5,10 @@ import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.interfaces.TapView
 import company.tap.tapuilibrary.models.TabSection
 import company.tap.tapuilibrary.views.TapSelectionTabLayout
+import company.tap.thememanager.theme.TabSelectTheme
 
 /**
  *
@@ -15,11 +17,11 @@ import company.tap.tapuilibrary.views.TapSelectionTabLayout
  *
  */
 class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs) {
+    LinearLayout(context, attrs),TapView<TabSelectTheme> {
 
-     var tabLayout: TapSelectionTabLayout
-     var paymentInputContainer: LinearLayout
-     var clearView: ImageView
+    var tabLayout: TapSelectionTabLayout
+    var paymentInputContainer: LinearLayout
+    var clearView: ImageView
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
@@ -40,4 +42,10 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         paymentInputContainer.clearFocus()
     }
 
+    override fun setTheme(theme: TabSelectTheme) {
+        theme.backgroundColor?.let { setBackgroundColor(it) }
+        theme.selectedBackgroundColor?.let { setBackgroundColor(it) }
+        theme.unselectedBackgroundColor?.let { setBackgroundColor(it) }
     }
+
+}
