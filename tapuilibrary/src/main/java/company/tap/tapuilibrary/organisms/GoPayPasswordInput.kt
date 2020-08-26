@@ -1,18 +1,24 @@
 package company.tap.tapuilibrary.organisms
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Build
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.core.widget.doAfterTextChanged
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.atoms.TapTextView
+import company.tap.tapuilibrary.atoms.TextInputEditText
 import company.tap.tapuilibrary.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.interfaces.GoPayLoginInterface
+import company.tap.tapuilibrary.interfaces.TapView
 import company.tap.tapuilibrary.utils.FakeThemeManager
 import company.tap.tapuilibrary.views.TabAnimatedActionButton
+import company.tap.thememanager.theme.ChipTheme
+import company.tap.thememanager.theme.EditTextTheme
+import company.tap.thememanager.theme.SwitchTheme
 
 /**
  *
@@ -21,7 +27,7 @@ import company.tap.tapuilibrary.views.TabAnimatedActionButton
  *
  */
 class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs) {
+    LinearLayout(context, attrs),TapView<EditTextTheme>{
 
      var textInputLayout: TextInputLayout
      var passwordTextInput: TextInputEditText
@@ -88,5 +94,19 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
             cornerRadius = 100f,
             backgroundColor = color
         )
+    }
+
+    /**
+     * Set the configure the current theme. If null is provided then the default Theme is returned
+     * on the next call
+     * @param theme Theme to consume in the wrapper, a value of null resets the theme to the default
+     **/
+    override fun setTheme(theme: EditTextTheme) {
+        theme.maxLines?.let { it }
+        theme.textColor?.let {it }
+        theme.textSize?.let { it}
+        theme.letterSpacing?.let { it }
+        theme.textColorHint?.let {  }
+        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
     }
 }

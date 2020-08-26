@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.organisms
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
@@ -18,8 +19,10 @@ import company.tap.tapuilibrary.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.enums.GoPayLoginMethod.EMAIL
 import company.tap.tapuilibrary.enums.GoPayLoginMethod.PHONE
 import company.tap.tapuilibrary.interfaces.GoPayLoginInterface
+import company.tap.tapuilibrary.interfaces.TapView
 import company.tap.tapuilibrary.utils.FakeThemeManager
 import company.tap.tapuilibrary.views.TabAnimatedActionButton
+import company.tap.thememanager.theme.EditTextTheme
 
 /**
  *
@@ -28,7 +31,7 @@ import company.tap.tapuilibrary.views.TabAnimatedActionButton
  *
  */
 class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs) {
+    LinearLayout(context, attrs) , TapView<EditTextTheme> {
 
      var loginTabLayout: TabLayout
      var textInput: TextInputEditText
@@ -171,6 +174,15 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         tabText.text = text
         tabText.typeface = Typeface.create("sans-serif-light", Typeface.NORMAL);
         return tabText
+    }
+
+    override fun setTheme(theme: EditTextTheme) {
+        theme.maxLines?.let { it }
+        theme.textColor?.let {it }
+        theme.textSize?.let {it}
+        theme.letterSpacing?.let { it }
+        theme.textColorHint?.let {  }
+        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
     }
 
 }
