@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="120dp"
-    android:layout_height="match_parent">
+    android:layout_width="120dp"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
     <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/zain"
-        android:padding="5dp"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:src="@drawable/zain"/>
+        android:padding="5dp"
+        android:src="@drawable/zain" />
 
     <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/ooredoo"
-        android:padding="5dp"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        android:src="@drawable/ooredoo"/>
+        android:padding="5dp"
+        android:src="@drawable/ooredoo" />
 
 </LinearLayout>

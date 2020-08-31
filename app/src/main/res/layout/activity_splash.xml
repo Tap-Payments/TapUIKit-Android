@@ -6,11 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".activities.SplashActivity">
 
-    <company.tap.tapuilibrary.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Welcome to Tap UI Kit"
         android:gravity="center"
-        android:textSize="30sp"/>
+        android:text="Welcome to Tap UI Kit"
+        android:textSize="30sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

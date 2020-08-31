@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="horizontal"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
 
     <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/mobile_image"
-        android:src="@drawable/mobile"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"/>
+        android:src="@drawable/mobile" />
 
     <EditText
         android:id="@+id/mobile_number"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="sans-serif-light"
         android:hint="965 00000000"
         android:inputType="phone"
         android:maxLength="12"
-        android:layout_marginStart="20dp"
-        android:textSize="@dimen/font_size_17sp"
-        android:fontFamily="sans-serif-light"
-        android:background="@android:color/transparent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:textSize="@dimen/font_size_17sp" />
 
 </LinearLayout>

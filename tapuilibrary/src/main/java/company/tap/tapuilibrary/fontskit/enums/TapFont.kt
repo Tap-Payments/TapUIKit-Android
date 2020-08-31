@@ -43,7 +43,7 @@ enum class TapFont {
     companion object {
         fun tapFontType(tapFont: TapFont):String {
             return when(tapFont){
-                robotoRegular -> "company/tap/tapuilibrary/fontskit/assets/fonts/Roboto-Regular.ttf"
+                robotoRegular -> "fonts/Roboto-Regular.ttf"
                 robotoThin ->"fonts/Roboto-Thin.ttf"
                 robotoLight->"fonts/Roboto-Light.ttf"
                 robotoMedium->"fonts/Roboto-Medium.ttf"

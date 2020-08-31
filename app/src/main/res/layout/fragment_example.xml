@@ -3,33 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".fragments.ExampleFragment">
 
     <LinearLayout
         android:id="@+id/buttons_layout"
-        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <Button
             android:id="@+id/knet"
-            android:text="KNET"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="KNET" />
 
         <Button
             android:id="@+id/otp"
-            android:text="OTP"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="OTP" />
 
         <Button
             android:id="@+id/gopay"
-            android:text="goPay"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="goPay" />
 
     </LinearLayout>
 
@@ -41,8 +41,8 @@
 
     <FrameLayout
         android:id="@+id/fragment_container"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </LinearLayout>

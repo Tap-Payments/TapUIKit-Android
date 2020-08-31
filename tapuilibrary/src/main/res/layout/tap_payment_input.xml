@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
         android:id="@+id/sections_tablayout"
@@ -12,53 +12,52 @@
 
     <LinearLayout
 
-        android:background="@color/header_gray"
         android:layout_width="match_parent"
         android:layout_height="44dp"
+        android:background="@color/header_gray"
         android:orientation="horizontal"
         android:weightSum="4">
 
         <LinearLayout
             android:id="@+id/payment_input_layout"
-            android:paddingStart="18dp"
-            android:paddingEnd="18dp"
             android:layout_width="0dp"
             android:layout_height="44dp"
             android:layout_gravity="start"
+            android:layout_weight="4"
             android:orientation="horizontal"
-            android:layout_weight="4"/>
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp" />
+
         <LinearLayout
+            android:id="@+id/linear_paylayout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/linear_paylayout">
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/clear_text"
-                android:src="@drawable/delete_text"
                 android:layout_width="44dp"
                 android:layout_height="match_parent"
+                android:src="@drawable/delete_text"
                 android:visibility="gone" />
 
             <ImageView
-                    android:id="@+id/card_scanner_button"
-                    android:padding="10dp"
-                    android:src="@drawable/scan"
-                    android:layout_width="44dp"
-                android:layout_height="match_parent" />
+                android:id="@+id/card_scanner_button"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@drawable/scan" />
 
-                <ImageView
-                    android:id="@+id/nfc_button"
-                    android:padding="10dp"
-                    android:src="@drawable/nfc_gray"
-                    android:layout_width="44dp"
-                    android:layout_height="match_parent" />
+            <ImageView
+                android:id="@+id/nfc_button"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@drawable/nfc_gray" />
 
-            </LinearLayout>
-
+        </LinearLayout>
 
 
     </LinearLayout>
-
 
 
 </LinearLayout>

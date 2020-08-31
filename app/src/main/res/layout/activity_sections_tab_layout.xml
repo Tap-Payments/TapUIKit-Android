@@ -6,25 +6,25 @@
     android:orientation="vertical"
     tools:context=".activities.SectionsTabLayout">
 
-    <company.tap.tapuilibrary.views.TapSelectionTabLayout
+    <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
         android:id="@+id/sections_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <LinearLayout
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
-        android:background="@color/white"
         android:id="@+id/payment_input_layout"
         android:layout_width="match_parent"
         android:layout_height="44dp"
-        android:orientation="horizontal" />
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp" />
 
 
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
             android:layout_width="wrap_content"
@@ -39,8 +39,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:onClick="selectTab"
             android:elevation="0dp"
+            android:onClick="selectTab"
             android:text="Select Tab" />
 
         <Button
@@ -55,16 +55,16 @@
     </LinearLayout>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:gravity="center"
-        android:textSize="20sp"
         android:text="Payment Input Organism"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:textSize="20sp" />
 
     <company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
         android:id="@+id/tap_payment_input"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>

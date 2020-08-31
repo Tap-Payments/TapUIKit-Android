@@ -1,48 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:theme="@android:style/Theme.Translucent">
 
-    <company.tap.tapuilibrary.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/demo_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tap Switch Demo"
-        android:textSize="18sp"
         android:gravity="center_horizontal"
-        />
+        android:text="Tap Switch Demo"
+        android:textSize="18sp" />
 
 
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        >
+        android:layout_gravity="center_horizontal">
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Merchant Checkout set from backend"
-            android:textColor="@color/black_27"/>
+            android:textColor="@color/black_27" />
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="goPay Checkout set from backend"
-            android:textColor="@color/black_27"/>
+            android:textColor="@color/black_27" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Both set from backend"
-            android:textColor="@color/black_27"/>
+            android:textColor="@color/black_27" />
 
     </RadioGroup>
 
-    <company.tap.tapuilibrary.views.TapCardSwitch
+    <company.tap.tapuilibrary.uikit.views.TapCardSwitch
         android:id="@+id/switch_pay_demo"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 </LinearLayout>

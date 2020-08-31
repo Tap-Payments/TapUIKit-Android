@@ -45,25 +45,26 @@ save your mobile number." />
                 android:layout_marginEnd="@dimen/margin_basic_16dp"
                 android:layout_marginBottom="22dp"
                 android:layout_weight="0.2"
+                android:checked="true"
                 android:theme="@style/SwitchPrimary"
-                android:visibility="visible"
-                android:checked="true" />
+                android:visibility="visible" />
         </LinearLayout>
     </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
     <LinearLayout
+        android:id="@+id/switches_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:alpha="0.8"
         android:orientation="vertical"
-        android:visibility="gone"
-        android:id="@+id/switches_layout"
-        android:alpha="0.8">
+        android:visibility="gone">
 
         <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switch_merchant_checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_basic_16dp"
+            android:checked="true"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.02"
             android:textColor="#4b4847"
@@ -71,8 +72,7 @@ save your mobile number." />
             android:textStyle="normal"
             android:theme="@style/SwitchSecondary"
             app:switchPadding="90dp"
-            tools:text="Save for [merchant_name] Checkouts"
-            android:checked="true"/>
+            tools:text="Save for [merchant_name] Checkouts" />
 
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
             android:id="@+id/switch_separator"
@@ -101,11 +101,11 @@ save your mobile number." />
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_basic_16dp"
             android:layout_marginEnd="@dimen/margin_basic_16dp"
+            android:checked="true"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.01"
             android:lineSpacingExtra="1sp"
             android:textColor="#7e7e7e"
-            android:checked="true"
             android:textSize="10sp"
             android:textStyle="normal"
             android:theme="@style/SwitchSecondary"
@@ -118,11 +118,11 @@ save your mobile number." />
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_basic_16dp"
             android:layout_marginTop="@dimen/margin_basic_8dp"
+            android:layout_marginBottom="@dimen/margin_basic_16dp"
             android:fontFamily="sans-serif-light"
             android:textColor="#4b4847"
             android:textSize="12sp"
             android:textStyle="normal"
-            tools:text="Please check your email or SMS’s in order to complete the goPay Checkout signup process."
-            android:layout_marginBottom="@dimen/margin_basic_16dp"/>
+            tools:text="Please check your email or SMS’s in order to complete the goPay Checkout signup process." />
     </LinearLayout>
 </LinearLayout>

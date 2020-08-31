@@ -337,7 +337,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         if(context?.let { LocalizationManager.getLocale(it).language } == "en") {
             fontChanger = FontChanger(
                 activity?.assets,
-                tapFontType(TapFont.robotoRegular)
+                tapFontType(TapFont.robotoMedium)
             )
             fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
         }else{

@@ -54,7 +54,8 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
 //    implementation 'com.github.Tap-Payments:TapFontsKit-Android:1.0.4'
     implementation 'com.squareup.picasso:picasso:2.5.2'
-    implementation 'com.github.Tap-Payments:TapCardInputKit-Android:0.0.3.7'
+    implementation 'com.github.Tap-Payments:TapCardInputKit-Android:0.1.0.1'
+    api 'com.github.Tap-Payments:TapCardInputKit-Android:0.1.0.1'
     api 'com.github.Tap-Payments:LocalisationManager-Android:0.0.1.6'
     implementation 'com.github.Tap-Payments:TapNFCCardReaderKit-Android:0.0.1'
     implementation "io.reactivex.rxjava2:rxjava:2.2.19"
@@ -65,7 +66,8 @@ dependencies {
     implementation 'io.alterac.blurkit:blurkit:1.1.0'
     implementation 'androidx.biometric:biometric:1.0.1'
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-beta8"
-//    implementation 'com.github.Tap-Payments:TapUIKit-Android:0.1.1.0'
+    implementation 'com.github.Tap-Payments:TapUIKit-Android:0.1.1.7'
+    api 'com.github.Tap-Payments:TapUIKit-Android:0.1.1.7'
 //    api 'com.github.Tap-Payments:TapThemeManger-Android:0.1.0.2'
 //    implementation 'com.github.Tap-Payments:TapThemeManger-Android:0.1.0.2'
 

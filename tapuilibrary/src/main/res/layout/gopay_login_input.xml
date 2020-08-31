@@ -30,20 +30,20 @@
             android:id="@+id/text_input_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:hintEnabled="false"
+            app:endIconDrawable="@drawable/delete_text"
             app:endIconMode="clear_text"
             app:endIconTint="@null"
-            app:endIconDrawable="@drawable/delete_text">
+            app:hintEnabled="false">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/gopay_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginStart="15dp"
-                android:inputType="textEmailAddress"
                 android:background="@android:color/transparent"
                 android:fontFamily="sans-serif-light"
-                android:hint="email@email.com" />
+                android:hint="email@email.com"
+                android:inputType="textEmailAddress" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

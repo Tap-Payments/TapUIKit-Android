@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<company.tap.tapuilibrary.uikit.atoms.TapChip
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<company.tap.tapuilibrary.uikit.atoms.TapChip xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:id="@+id/tapcard_Chip"
     android:layout_width="wrap_content"
     android:layout_height="55dp"
-    app:cardUseCompatPadding="true"
-    app:cardPreventCornerOverlap="false"
+    android:orientation="horizontal"
+    android:outlineSpotShadowColor="#4cffffff"
     app:cardCornerRadius="8dp"
-    android:id="@+id/tapcard_Chip"
-    app:elevation="8dp"
+    app:cardPreventCornerOverlap="false"
+    app:cardUseCompatPadding="true"
     app:contentPadding="2dp"
-    android:outlineSpotShadowColor="#4cffffff" >
+    app:elevation="8dp">
+
     <LinearLayout
-        android:orientation="horizontal"
         android:layout_width="wrap_content"
+        android:layout_height="55dp"
         android:layout_gravity="center"
         android:gravity="center"
-        android:layout_height="55dp">
+        android:orientation="horizontal">
 
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
             android:id="@+id/imageView_currency"
@@ -32,15 +32,15 @@
             android:id="@+id/textView_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="normal"
-            android:textColor="#4b4847"
-            android:gravity="center_horizontal"
-            tools:text="KWD"
-            android:layout_marginTop="12dp"
             android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="10dp"
             android:layout_marginBottom="12dp"
-            android:layout_marginEnd="10dp" />
+            android:fontFamily="sans-serif"
+            android:gravity="center_horizontal"
+            android:textColor="#4b4847"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            tools:text="KWD" />
     </LinearLayout>
 </company.tap.tapuilibrary.uikit.atoms.TapChip>

@@ -1,76 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
-    android:layout_gravity="start"
-    android:background="@color/white"
     android:layout_width="match_parent"
-    android:layout_height="50dp">
+    android:layout_height="50dp"
+    android:layout_gravity="start"
+    android:background="@color/white">
 
     <company.tap.tapuilibrary.uikit.atoms.TapChip
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/businessName"
-        android:layoutDirection="locale"
         android:id="@+id/tapChipIcon"
-        android:background="@color/black_27"
-        android:visibility="visible"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="@dimen/margin_basic_16dp"
+        android:background="@color/black_27"
+        android:layoutDirection="locale"
+        android:visibility="visible"
         app:cardCornerRadius="8dp"
-        app:cardElevation="@dimen/margin_basic_0dp">
+        app:cardElevation="@dimen/margin_basic_0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/businessName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-            <company.tap.tapuilibrary.uikit.atoms.TapImageView
-                android:id="@+id/businessIcon"
-                android:background="@color/black_27"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"/>
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
-                android:id="@+id/placeholderText"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:background="#000000"
-                android:textColor="#ffffff"
-                tools:text="@android:string/autofill"
-                android:gravity="center"
-                android:visibility="visible"/>
-        </company.tap.tapuilibrary.uikit.atoms.TapChip>
+        <company.tap.tapuilibrary.uikit.atoms.TapImageView
+            android:id="@+id/businessIcon"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/black_27" />
+
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            android:id="@+id/placeholderText"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:background="#000000"
+            android:gravity="center"
+            android:textColor="#ffffff"
+            android:visibility="visible"
+            tools:text="@android:string/autofill" />
+    </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/paymentFor"
-        app:layout_constraintBottom_toTopOf="@+id/businessName"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="@dimen/action_bar_back_button_width"
-        android:gravity="center_vertical"
+        style="@style/TextStyle"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="@dimen/action_bar_back_button_width"
         android:layout_marginTop="@dimen/margin_basic_3dp"
+        android:gravity="center_vertical"
         android:shadowColor="#00a8a8a8"
-        android:textSize="12sp"
         android:textAllCaps="true"
-        style="@style/TextStyle"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/businessName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
+        app:layout_constraintTop_toTopOf="parent"
         tools:text="Payment for " />
+
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/businessName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/paymentFor"
-        app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginStart="@dimen/action_bar_back_button_width"
-        android:gravity="top"
-        android:layout_marginBottom="8dp"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:textSize="16sp"
+        android:layout_marginStart="@dimen/action_bar_back_button_width"
+        android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif"
-        android:textStyle="normal"
+        android:gravity="top"
         android:textColor="#4b4847"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
+        app:layout_constraintTop_toBottomOf="@+id/paymentFor"
         tools:text="Business Name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
