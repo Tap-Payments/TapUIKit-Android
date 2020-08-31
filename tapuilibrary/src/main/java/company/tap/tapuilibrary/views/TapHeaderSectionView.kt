@@ -76,11 +76,11 @@ class TapHeaderSectionView : LinearLayout {
             businessName.text = it
         }
         headerDataSource.businessImageResources?.let {
-          //  businessIcon.setImageURI(Uri.parse(it))
-            Glide.with(this)
+            businessIcon.setImageURI(Uri.parse(it))
+          /*  Glide.with(this)
                 .load(Uri.parse(it))
                 .placeholder(TextDrawable(it))
-                .into(businessIcon)
+                .into(businessIcon)*/
         }
         headerDataSource.businessFor?.let {
             paymentFor.text = it
