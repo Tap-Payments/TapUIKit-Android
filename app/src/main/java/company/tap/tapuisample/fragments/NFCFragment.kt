@@ -16,14 +16,12 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.nfcreader.open.reader.TapEmvCard
 import company.tap.nfcreader.open.reader.TapNfcCardReader
 import company.tap.nfcreader.open.utils.TapCardUtils
 import company.tap.nfcreader.open.utils.TapNfcUtils
-import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.views.TapBottomSheetDialog
-import company.tap.tapuilibrary.views.TapNFCView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.views.TapNFCView
 import company.tap.tapuisample.R
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

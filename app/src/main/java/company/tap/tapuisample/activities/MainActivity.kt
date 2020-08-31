@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
-import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -25,13 +24,13 @@ import androidx.core.content.ContextCompat
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
-import com.tap.tapfontskit.FontChanger
-import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
-import company.tap.tapuilibrary.interfaces.TapSwitchInterface
-import company.tap.tapuilibrary.models.DialogConfigurations
-import company.tap.tapuilibrary.utils.BaseActivity
+import company.tap.tapuilibrary.fontskit.FontChanger
+import company.tap.tapuilibrary.fontskit.enums.TapFont
+import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
+import company.tap.tapuilibrary.uikit.interfaces.TapSwitchInterface
+import company.tap.tapuilibrary.uikit.models.DialogConfigurations
+import company.tap.tapuilibrary.uikit.utils.BaseActivity
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.*
 import java.security.KeyStore
@@ -43,7 +42,8 @@ import javax.crypto.SecretKey
 
 
 class MainActivity : BaseActivity(),
-    TapAmountSectionInterface, TapSwitchInterface, InlineViewCallback {
+    TapAmountSectionInterface,
+    TapSwitchInterface, InlineViewCallback {
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
     private val modalNFCBottomSheet = NFCSampleFragment()
@@ -62,14 +62,14 @@ class MainActivity : BaseActivity(),
         context = this
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
 
-        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
-        if (LocalizationManager.getLocale(context) == Locale("en")) {
-            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
-            fontChanger.replaceFonts((findViewById(android.R.id.content)))
-        }else{
-            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.tajawalMedium))
-            fontChanger.replaceFonts((findViewById(android.R.id.content)))
-        }
+//        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
+//        if (LocalizationManager.getLocale(context) == Locale("en")) {
+//            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
+//            fontChanger.replaceFonts((findViewById(android.R.id.content)))
+//        }else{
+//            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.tajawalMedium))
+//            fontChanger.replaceFonts((findViewById(android.R.id.content)))
+//        }
        // Blurry.with(context).radius(25).sampling(2).onto()
     }
 

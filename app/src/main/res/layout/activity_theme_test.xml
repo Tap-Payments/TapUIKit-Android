@@ -7,7 +7,7 @@
     tools:context=".activities.ThemeTestActivity">
 
 
-    <company.tap.tapuilibrary.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextView
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -18,7 +18,7 @@
         android:text="@string/app_name"
         android:gravity="center" />
 
-    <company.tap.tapuilibrary.atoms.TapButton
+    <company.tap.tapuilibrary.uikit.atoms.TapButton
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

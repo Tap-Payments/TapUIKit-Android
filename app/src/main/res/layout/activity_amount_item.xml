@@ -6,11 +6,11 @@
     android:layout_height="wrap_content"
     tools:context=".activities.AmountItemActivity"
     android:orientation="vertical">
-    <company.tap.tapuilibrary.views.TapListItemView
+    <company.tap.tapuilibrary.uikit.views.TapListItemView
         android:id="@+id/amount_items"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-    <company.tap.tapuilibrary.atoms.TapSwitch
+    <company.tap.tapuilibrary.uikit.atoms.TapSwitch
         android:id="@+id/switch_discount"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -19,12 +19,12 @@
         android:layout_marginEnd="7dp"
         android:layout_marginStart="7dp"
        />
-    <company.tap.tapuilibrary.views.TapCardSwitch
+    <company.tap.tapuilibrary.uikit.views.TapCardSwitch
         android:id="@+id/pay_card_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="2dp"/>
-    <company.tap.tapuilibrary.views.TapOTPView
+    <company.tap.tapuilibrary.uikit.views.TapOTPView
         android:id="@+id/otp_view_demo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

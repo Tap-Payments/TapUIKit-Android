@@ -2,9 +2,7 @@ package company.tap.tapuisample.fragments
 
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,16 +11,14 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.transition.TransitionManager
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.atoms.TapSeparatorView
-import company.tap.tapuilibrary.atoms.TapSwitch
-import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.datasource.TapSwitchDataSource
-import company.tap.tapuilibrary.interfaces.TapSwitchInterface
-import company.tap.tapuilibrary.views.TapBottomSheetDialog
-import company.tap.tapuilibrary.views.TapCardSwitch
-import company.tap.tapuisample.BlurBuilder
+import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+import company.tap.tapuilibrary.uikit.atoms.TapSwitch
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.uikit.interfaces.TapSwitchInterface
+import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
+import company.tap.tapuilibrary.uikit.views.TapCardSwitch
 import company.tap.tapuisample.R
-import jp.wasabeef.blurry.Blurry
 
 
 /**
@@ -181,7 +177,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSave = LocalizationManager.getValue("cardSaveLabel","TapCardInputKit"),
+            switchSave = LocalizationManager.getValue("cardSaveLabel", "TapCardInputKit"),
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",

@@ -2,12 +2,11 @@ package company.tap.tapuisample.activities
 
 import android.graphics.Color
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import company.tap.tapuilibrary.datasource.ActionButtonDataSource
-import company.tap.tapuilibrary.enums.ActionButtonState
-import company.tap.tapuilibrary.views.TabAnimatedActionButton
+import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
+import company.tap.tapuilibrary.uikit.enums.ActionButtonState
+import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuisample.R
 
 

@@ -9,10 +9,9 @@ import android.widget.Toast
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import company.tap.tapuilibrary.datasource.ActionButtonDataSource
-import company.tap.tapuilibrary.enums.ActionButtonState
-import company.tap.tapuilibrary.views.TapBottomSheetDialog
-
+import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
+import company.tap.tapuilibrary.uikit.enums.ActionButtonState
+import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
 import company.tap.tapuisample.R
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract

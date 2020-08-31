@@ -10,14 +10,14 @@ import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
 import company.tap.tapcardvalidator_android.CardValidator
-import company.tap.tapuilibrary.animation.AnimationEngine
-import company.tap.tapuilibrary.enums.TabSectionType
-import company.tap.tapuilibrary.models.SectionTabItem
-import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
-import company.tap.tapuilibrary.models.TabSection
-import company.tap.tapuilibrary.organisms.TapPaymentInput
-import company.tap.tapuilibrary.views.TapMobilePaymentView
-import company.tap.tapuilibrary.views.TapSelectionTabLayout
+import company.tap.tapuilibrary.uikit.animation.AnimationEngine
+import company.tap.tapuilibrary.uikit.enums.TabSectionType
+import company.tap.tapuilibrary.uikit.models.SectionTabItem
+import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.uikit.models.TabSection
+import company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
+import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
+import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 
@@ -25,7 +25,8 @@ import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
  * Sample Activity to show how TableLayout functions .
  *
  * **/
-class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
+class SectionsTabLayout : AppCompatActivity(),
+    TapSelectionTabLayoutInterface {
 
     lateinit var tabLayout: TapSelectionTabLayout
     lateinit var paymentInput: TapPaymentInput
@@ -42,14 +43,24 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         paymentInput = findViewById(R.id.tap_payment_input)
         tabLayout = findViewById(R.id.sections_tablayout)
         tabLayout.setTabLayoutInterface(this)
-        tapMobileInputView = TapMobilePaymentView(this, null)
+        tapMobileInputView =
+            TapMobilePaymentView(this, null)
         tapCardInputView = InlineCardInput(this)
         tapCardInputView.holderNameEnabled = false
         tabLayout.addSection(getCardList())
         tabLayout.addSection(getMobileList())
         setupBrandDetection()
 
-        paymentInput.addTabLayoutSection(TabSection(TabSectionType.CARD, getCardList()), TabSection(TabSectionType.MOBILE, getMobileList()))
+        paymentInput.addTabLayoutSection(
+            TabSection(
+                TabSectionType.CARD,
+                getCardList()
+            ),
+            TabSection(
+                TabSectionType.MOBILE,
+                getMobileList()
+            )
+        )
     }
 
     private fun setupBrandDetection() {

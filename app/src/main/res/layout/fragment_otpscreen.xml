@@ -17,7 +17,7 @@
         android:id="@+id/otp_linearlayout"
 
        >
-    <company.tap.tapuilibrary.views.TapOTPView
+    <company.tap.tapuilibrary.uikit.views.TapOTPView
         android:id="@+id/otp_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

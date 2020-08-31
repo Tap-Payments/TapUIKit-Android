@@ -33,7 +33,7 @@
 
     </LinearLayout>
 
-    <company.tap.tapuilibrary.views.TabAnimatedActionButton
+    <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
         android:id="@+id/action_button"
         android:layout_width="match_parent"
         android:layout_height="40dp"

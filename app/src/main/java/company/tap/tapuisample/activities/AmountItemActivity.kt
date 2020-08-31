@@ -5,14 +5,14 @@ import android.graphics.Paint
 import android.graphics.Typeface
 import android.os.Bundle
 import android.view.View
-import com.tap.tapfontskit.enums.TapFont
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.datasource.ItemViewDataSource
-import company.tap.tapuilibrary.datasource.TapSwitchDataSource
-import company.tap.tapuilibrary.utils.BaseActivity
-import company.tap.tapuilibrary.views.TapListItemView
-import company.tap.tapuilibrary.views.TapCardSwitch
+import company.tap.tapuilibrary.fontskit.enums.TapFont
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.datasource.ItemViewDataSource
+import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.uikit.utils.BaseActivity
+import company.tap.tapuilibrary.uikit.views.TapCardSwitch
+import company.tap.tapuilibrary.uikit.views.TapListItemView
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_amount_item.*
 /**
@@ -70,13 +70,13 @@ class AmountItemActivity : BaseActivity() {
 
     //Set data to TapSwitchDataSource
     private fun getSwitchDataSource(): TapSwitchDataSource {
-        return TapSwitchDataSource (
-           // switchSave =LocalizationManager.getValue("cardSaveLabel","TapCardInputKit"),
+        return TapSwitchDataSource(
+            // switchSave =LocalizationManager.getValue("cardSaveLabel","TapCardInputKit"),
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
-            switchSavegoPayCheckout =  "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
+            switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
             alertgoPaySignup = "Please check your email or SMS’s in order to complete the goPay Checkout signup process."
-                )
+        )
 
     }
 

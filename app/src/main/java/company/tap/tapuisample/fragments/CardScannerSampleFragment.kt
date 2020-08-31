@@ -12,21 +12,20 @@ import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
 import com.bumptech.glide.Glide
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.cardscanner.TapCard
 import company.tap.cardscanner.TapTextRecognitionCallBack
 import company.tap.cardscanner.TapTextRecognitionML
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.atoms.TapButton
-import company.tap.tapuilibrary.atoms.TapImageView
-import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.datasource.AmountViewDataSource
-import company.tap.tapuilibrary.datasource.HeaderDataSource
-import company.tap.tapuilibrary.views.TapAmountSectionView
-import company.tap.tapuilibrary.views.TapBottomSheetDialog
-import company.tap.tapuilibrary.views.TapHeaderSectionView
+import company.tap.tapuilibrary.uikit.atoms.TapButton
+import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
+import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
+import company.tap.tapuilibrary.uikit.views.TapAmountSectionView
+import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
+import company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
 import company.tap.tapuisample.R
-import company.tap.tapuilibrary.views.TextDrawable
+import company.tap.tapuilibrary.uikit.views.TextDrawable
 import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.custom_card_view.*
 
@@ -132,7 +131,7 @@ class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallB
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
             businessName = businessName,
-            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection",""),
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection", ""),
             businessImageResources = imageUrl,
             businessPlaceHolder = businessName?.get(0).toString()
         )
@@ -170,7 +169,7 @@ class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallB
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
             selectedCurr = "KD1000,000.000",
-            itemCount = LocalizationManager.getValue("close","Common")
+            itemCount = LocalizationManager.getValue("close", "Common")
         )
     }
 

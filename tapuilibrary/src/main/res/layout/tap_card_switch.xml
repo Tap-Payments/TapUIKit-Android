@@ -9,7 +9,7 @@
     android:layoutDirection="locale"
     android:orientation="vertical">
 
-    <company.tap.tapuilibrary.atoms.TapChip
+    <company.tap.tapuilibrary.uikit.atoms.TapChip
         style="@style/CustomCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             android:orientation="horizontal"
             android:weightSum="0.5">
 
-            <company.tap.tapuilibrary.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextView
                 android:id="@+id/text_save"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 tools:text="For faster and easier checkout,
 save your mobile number." />
 
-            <company.tap.tapuilibrary.atoms.TapSwitch
+            <company.tap.tapuilibrary.uikit.atoms.TapSwitch
                 android:id="@+id/switch_save_mobile"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -49,7 +49,7 @@ save your mobile number." />
                 android:visibility="visible"
                 android:checked="true" />
         </LinearLayout>
-    </company.tap.tapuilibrary.atoms.TapChip>
+    </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -59,7 +59,7 @@ save your mobile number." />
         android:id="@+id/switches_layout"
         android:alpha="0.8">
 
-        <company.tap.tapuilibrary.atoms.TapSwitch
+        <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switch_merchant_checkout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@ save your mobile number." />
             tools:text="Save for [merchant_name] Checkouts"
             android:checked="true"/>
 
-        <company.tap.tapuilibrary.atoms.TapSeparatorView
+        <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
             android:id="@+id/switch_separator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -82,7 +82,7 @@ save your mobile number." />
             android:layout_marginEnd="21dp"
             android:background="@color/white" />
 
-        <company.tap.tapuilibrary.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/save_goPay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -95,7 +95,7 @@ save your mobile number." />
             android:textStyle="normal"
             tools:text="Save for goPay Checkouts" />
 
-        <company.tap.tapuilibrary.atoms.TapSwitch
+        <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switch_gopay_checkout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -112,7 +112,7 @@ save your mobile number." />
             app:switchPadding="40dp"
             tools:text="By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites." />
 
-        <company.tap.tapuilibrary.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/alert_gopay_signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

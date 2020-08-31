@@ -8,7 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="50dp">
 
-    <company.tap.tapuilibrary.atoms.TapChip
+    <company.tap.tapuilibrary.uikit.atoms.TapChip
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,13 +23,13 @@
         app:cardCornerRadius="8dp"
         app:cardElevation="@dimen/margin_basic_0dp">
 
-            <company.tap.tapuilibrary.atoms.TapImageView
+            <company.tap.tapuilibrary.uikit.atoms.TapImageView
                 android:id="@+id/businessIcon"
                 android:background="@color/black_27"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"/>
-            <company.tap.tapuilibrary.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextView
                 android:id="@+id/placeholderText"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
@@ -38,9 +38,9 @@
                 tools:text="@android:string/autofill"
                 android:gravity="center"
                 android:visibility="visible"/>
-        </company.tap.tapuilibrary.atoms.TapChip>
+        </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
-    <company.tap.tapuilibrary.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/paymentFor"
         app:layout_constraintBottom_toTopOf="@+id/businessName"
         app:layout_constraintTop_toTopOf="parent"
@@ -56,7 +56,7 @@
         android:textAllCaps="true"
         style="@style/TextStyle"
         tools:text="Payment for " />
-    <company.tap.tapuilibrary.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/businessName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/paymentFor"

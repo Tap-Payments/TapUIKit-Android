@@ -9,33 +9,32 @@ import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.atoms.TapChipGroup
-import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.model.CurrencyModel
+import company.tap.tapuilibrary.uikit.model.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import company.tap.tapuilibrary.adapters.CurrencyAdapter
-import company.tap.tapuilibrary.adapters.context
-import company.tap.tapuilibrary.animation.AnimationEngine
-import company.tap.tapuilibrary.datasource.GoPayLoginDataSource
-import company.tap.tapuilibrary.interfaces.GoPayLoginInterface
-import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
-import company.tap.tapuilibrary.models.SectionTabItem
-import company.tap.tapuilibrary.organisms.GoPayLoginInput
-import company.tap.tapuilibrary.organisms.GoPayPasswordInput
-import company.tap.tapuilibrary.utils.BaseActivity
-import company.tap.tapuilibrary.views.TapMobilePaymentView
-import company.tap.tapuilibrary.views.TapSelectionTabLayout
+import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
+import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
+import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
+import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.uikit.models.SectionTabItem
+import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
+import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
+import company.tap.tapuilibrary.uikit.utils.BaseActivity
+import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
+import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
 import kotlinx.android.synthetic.main.activity_cardview.*
 
 /***
  * A sample Activity to show Chips .
  * */
 
-class TapChipsActivity : BaseActivity(), TapSelectionTabLayoutInterface, GoPayLoginInterface {
+class TapChipsActivity : BaseActivity(),
+    TapSelectionTabLayoutInterface,
+    GoPayLoginInterface {
     private lateinit var chipRecycler: RecyclerView
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     private lateinit var currencyList: ArrayList<CurrencyModel>

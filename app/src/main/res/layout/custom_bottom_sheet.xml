@@ -12,7 +12,7 @@
     android:gravity="bottom">
 
 
-    <company.tap.tapuilibrary.atoms.TapDragIndicator
+    <company.tap.tapuilibrary.uikit.atoms.TapDragIndicator
         android:layout_width="75dp"
         android:layout_height="4dp"
         android:layout_marginEnd="150dp"
@@ -21,16 +21,16 @@
         android:background="@drawable/corner_radius"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         app:cardElevation="@dimen/margin_basic_0dp">
-        <company.tap.tapuilibrary.atoms.TapSeparatorView
+        <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/indicatorSeparator"
             android:layout_gravity="center_horizontal"
             android:background="@color/separator_color" />
 
-    </company.tap.tapuilibrary.atoms.TapDragIndicator>
+    </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>
 
-    <company.tap.tapuilibrary.views.TapHeaderSectionView
+    <company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
         android:id="@+id/headerView"
         android:layout_marginTop="@dimen/margin_basic_9dp"
         android:layout_marginBottom="@dimen/margin_basic_9dp"
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:background="@color/header_gray"
         />
-    <company.tap.tapuilibrary.atoms.TapSeparatorView
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:layout_height="0.7dp"
         android:id="@+id/topSeparator"
@@ -47,7 +47,7 @@
         android:layout_marginEnd="@dimen/default_padding"
         android:background="@color/separator_color"/>
 
-    <company.tap.tapuilibrary.views.TapAmountSectionView
+    <company.tap.tapuilibrary.uikit.views.TapAmountSectionView
         android:id="@+id/amount_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
         android:paddingStart="@dimen/activity_total_margin"
         android:background="@color/item_list"
        />
-    <company.tap.tapuilibrary.atoms.TapSeparatorView
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:id="@+id/separator"
         android:layout_height="0.7dp"
@@ -73,14 +73,14 @@
         android:layout_height="match_parent"
         android:padding="5dp"
         android:background="@color/header_color">
-        <company.tap.tapuilibrary.atoms.TapChipGroup
+        <company.tap.tapuilibrary.uikit.atoms.TapChipGroup
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/mainChipgroup"
             android:background="@color/chip_background"
             android:orientation="horizontal" />
     </FrameLayout>
-    <company.tap.tapuilibrary.atoms.TapSeparatorView
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:layout_width="wrap_content"
         android:layout_height="0.7dp"
         android:layoutDirection="locale"
@@ -91,19 +91,19 @@
         android:visibility="visible"/>
     </LinearLayout>
 
-    <company.tap.tapuilibrary.organisms.TapPaymentInput
+    <company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
         android:id="@+id/tap_payment_input0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/selection_tab_color"
         android:layoutDirection="locale" />
 
-    <company.tap.tapuilibrary.atoms.TapSeparatorView
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:layout_height="0.7dp"
         android:id="@+id/separatorــ"
         android:background="@color/separator_color" />
-    <company.tap.tapuilibrary.views.TapAlertView
+    <company.tap.tapuilibrary.uikit.views.TapAlertView
         android:id="@+id/alert_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
         >
     </FrameLayout>
 
-    <company.tap.tapuilibrary.views.TapCardSwitch
+    <company.tap.tapuilibrary.uikit.views.TapCardSwitch
         android:layout_height="wrap_content"
         android:id="@+id/switch_pay_demo"
         android:layout_width="match_parent"
@@ -141,7 +141,7 @@
         android:layout_height="wrap_content"
         android:minHeight="80dp"
         android:background="@color/chip_background">
-        <company.tap.tapuilibrary.views.TabAnimatedActionButton
+        <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
             android:id="@+id/actionButton"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -8,5 +8,4 @@
     android:paddingStart="15dp"
     android:paddingEnd="15dp"
     android:textSize="24sp"
-    android:gravity="center"
-   />
+    android:gravity="center" />

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <company.tap.tapuilibrary.atoms.TapImageView
+    <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/mobile_image"
         android:src="@drawable/mobile"
         android:layout_marginTop="10dp"

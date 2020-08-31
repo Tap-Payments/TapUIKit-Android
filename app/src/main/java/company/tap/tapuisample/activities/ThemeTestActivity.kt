@@ -5,9 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuisample.R
-import company.tap.thememanager.manager.ThemeManager
-import company.tap.thememanager.theme.TextViewTheme
 
 import kotlinx.android.synthetic.main.activity_theme_test.*
 

@@ -3,7 +3,7 @@
     android:orientation="horizontal" android:layout_width="240dp"
     android:layout_height="match_parent">
 
-    <company.tap.tapuilibrary.atoms.TapImageView
+    <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/visa"
         android:padding="7dp"
         android:layout_width="0dp"
@@ -11,7 +11,7 @@
         android:layout_weight="33"
         android:src="@drawable/visa"/>
 
-    <company.tap.tapuilibrary.atoms.TapImageView
+    <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/master"
         android:padding="5dp"
         android:layout_width="0dp"
@@ -19,7 +19,7 @@
         android:layout_weight="33"
         android:src="@drawable/mastercard"/>
 
-    <company.tap.tapuilibrary.atoms.TapImageView
+    <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/amex"
         android:padding="5dp"
         android:layout_width="0dp"

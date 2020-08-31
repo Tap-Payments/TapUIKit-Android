@@ -28,4 +28,8 @@
         <attr name="cursorWidth" format="dimension" />
         <attr name="cursorColor" format="reference|color" />
     </declare-styleable>
+    <declare-styleable name="tap_FontListPreferences">
+        <attr name="tap_fontDirectory" format="string"/>
+        <attr name="tap_fontPreviewString" format="string" />
+    </declare-styleable>
 </resources>

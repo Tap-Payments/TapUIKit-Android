@@ -10,8 +10,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.views.TapOTPView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.views.TapOTPView
 import company.tap.tapuisample.R
 import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.fragment_otpscreen.*
@@ -24,8 +24,8 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 class OTPFragment: DialogFragment() {
-    private lateinit var otpView:TapOTPView
-    private lateinit var otpSent:TapTextView
+    private lateinit var otpView: TapOTPView
+    private lateinit var otpSent: TapTextView
     private lateinit var otpMobile:TapTextView
     private lateinit var timerText:TapTextView
 

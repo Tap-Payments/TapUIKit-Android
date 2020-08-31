@@ -28,33 +28,32 @@ import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import com.tap.tapfontskit.FontChanger
-import com.tap.tapfontskit.enums.TapFont
-import com.tap.tapfontskit.enums.TapFont.Companion.tapFontType
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
 import company.tap.tapcardvalidator_android.CardValidator
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.animation.AnimationEngine
-import company.tap.tapuilibrary.atoms.*
-import company.tap.tapuilibrary.datasource.ActionButtonDataSource
-import company.tap.tapuilibrary.datasource.AmountViewDataSource
-import company.tap.tapuilibrary.datasource.HeaderDataSource
-import company.tap.tapuilibrary.datasource.TapSwitchDataSource
-import company.tap.tapuilibrary.enums.ActionButtonState
-import company.tap.tapuilibrary.fragment.CurrencyViewFragment
-import company.tap.tapuilibrary.interfaces.TapAmountSectionInterface
-import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
-import company.tap.tapuilibrary.models.SectionTabItem
-import company.tap.tapuilibrary.views.*
+import company.tap.tapuilibrary.fontskit.FontChanger
+import company.tap.tapuilibrary.fontskit.enums.TapFont
+import company.tap.tapuilibrary.fontskit.enums.TapFont.Companion.tapFontType
+import company.tap.tapuilibrary.uikit.animation.AnimationEngine
+import company.tap.tapuilibrary.uikit.atoms.*
+import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
+import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
+import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
+import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.uikit.enums.ActionButtonState
+import company.tap.tapuilibrary.uikit.fragment.CurrencyViewFragment
+import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
+import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.uikit.models.SectionTabItem
+import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import kotlinx.android.synthetic.main.item_gopay.*
 import kotlin.collections.ArrayList
 
 
@@ -64,7 +63,8 @@ import kotlin.collections.ArrayList
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInterface,
+open class BottomSheetDialog : TapBottomSheetDialog(),
+    TapSelectionTabLayoutInterface,
     OnCardSelectedActionListener,
     WebViewContract {
 
@@ -300,7 +300,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
     //Setting data to TapSwitchDataSource
     private fun getSwitchDataSource( switchText: String): TapSwitchDataSource {
         return TapSwitchDataSource(
-            switchSave =  switchText,
+            switchSave = switchText,
             switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
@@ -314,7 +314,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         val nfcFragment = NFCFragment()
 
         tabLayout.setTabLayoutInterface(this)
-        tapMobileInputView = TapMobilePaymentView(context, null)
+        tapMobileInputView =
+            TapMobilePaymentView(context, null)
         if (context != null) {
             tapCardInputView = InlineCardInput(context!!)
             println("mobile view $tapCardInputView")
@@ -448,7 +449,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         if (isFragmentAdded) {
             currentCurrency.visibility = View.VISIBLE
         }
-        val currencyViewFragment = CurrencyViewFragment()
+        val currencyViewFragment =
+            CurrencyViewFragment()
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
                 if (isFragmentAdded) {
@@ -578,7 +580,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(), TapSelectionTabLayoutInte
         return AmountViewDataSource(
             selectedCurr = "SR1000,000.000",
             currentCurr = "KD1000,000.000",
-            itemCount = if(context?.let { LocalizationManager.getLocale(it).language } == "en") getString(R.string.items) else "22 عنصر"
+            itemCount = if (context?.let { LocalizationManager.getLocale(it).language } == "en") getString(
+                R.string.items
+            ) else "22 عنصر"
         )
     }
 
