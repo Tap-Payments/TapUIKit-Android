@@ -22,8 +22,6 @@ import company.tap.tapuilibrary.uikit.utils.TapColorUtils
 import company.tap.tapuilibrary.uikit.utils.TapTextWatcher
 
 /**
- * Created by AhlaamK on 8/26/20.
-
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/

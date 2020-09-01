@@ -1,20 +1,18 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.ButtonTheme
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapButton
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
 
 
-/**
- * Created by AhlaamK on 6/11/20.
-
-Copyright (c) 2020    Tap Payments.
-All rights reserved.
- **/
 
 class TapAmountSectionView: LinearLayout {
      var selectedCurrency: TapTextView
@@ -59,6 +57,28 @@ class TapAmountSectionView: LinearLayout {
         currentCurrency  = findViewById(R.id.textView_currentcurrency)
         itemCount = findViewById(R.id.textView_itemcount)
         itemCount.elevation = 0F
+        setTheme()
+    }
+    fun setTheme(){
+        val buttonTheme = ButtonTheme()
+        buttonTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
+        buttonTheme.borderColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color"))
+        buttonTheme.borderWidth = ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.width")
+        buttonTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor"))
+
+        itemCount.setTheme(buttonTheme)
+
+        val currentCurrencyTextViewTheme = TextViewTheme()
+        currentCurrencyTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.originalAmountLabelColor"))
+        currentCurrencyTextViewTheme.textSize = ThemeManager.getFontSize("amountSectionView.itemsLabelFont")
+        currentCurrencyTextViewTheme.font = ThemeManager.getFontName("amountSectionView.originalAmountLabelFont")
+        currentCurrency.setTheme(currentCurrencyTextViewTheme)
+
+        val selectedCurrencyTextViewTheme = TextViewTheme()
+        selectedCurrencyTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.convertedAmountLabelColor"))
+        selectedCurrencyTextViewTheme.textSize = ThemeManager.getFontSize("amountSectionView.convertedAmountLabelFont")
+        selectedCurrencyTextViewTheme.font = ThemeManager.getFontName("amountSectionView.convertedAmountLabelFont")
+        currentCurrency.setTheme(selectedCurrencyTextViewTheme)
     }
 
     /**

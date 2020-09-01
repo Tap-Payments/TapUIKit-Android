@@ -1,17 +1,14 @@
 package company.tap.tapuilibrary.uikit.atoms
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 
-/**
- *
- * Created by Mario Gamal on 5/8/20
- * Copyright © 2020 Tap Payments. All rights reserved.
- *
- */
 
 /**
  * A ChipGroup is used to hold multiple Chips. By default, the chips are reflowed across
@@ -32,5 +29,19 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
         groupName = findViewById(R.id.group_name)
         groupAction = findViewById(R.id.group_action)
         chipsRecycler = findViewById(R.id.chip_recycler)
+        setTheme()
+    }
+
+    fun setTheme(){
+
+        val groupNameTextViewTheme = TextViewTheme()
+        groupNameTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
+        groupNameTextViewTheme.font = ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
+        groupName.setTheme(groupNameTextViewTheme)
+
+        val groupActionTextViewTheme = TextViewTheme()
+        groupActionTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
+        groupActionTextViewTheme.font = ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
+        groupAction.setTheme(groupActionTextViewTheme)
     }
 }

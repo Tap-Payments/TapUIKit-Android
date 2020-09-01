@@ -15,6 +15,5 @@ class GoPayLayout (context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
     init {
         inflate(context, R.layout.gopay_layout, this)
-
     }
 }

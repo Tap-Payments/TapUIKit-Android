@@ -7,8 +7,6 @@ import company.tap.tapuilibrary.themekit.theme.ButtonTheme
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 
 /**
- * Created by AhlaamK on 4/15/20.
-
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
@@ -25,7 +23,6 @@ All rights reserved.
 open class TapButton(context: Context, attributeSet: AttributeSet) :
     AppCompatButton(context, attributeSet),
         TapView<ButtonTheme> {
-
     /**
      * Set the configure the current theme. If null is provided then the default Theme is returned
      * on the next call

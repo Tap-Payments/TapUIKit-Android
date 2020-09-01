@@ -83,9 +83,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private lateinit var businessIcon: TapImageView
     private lateinit var businessPlaceholder: TapTextView
     lateinit var tabLayout: TapSelectionTabLayout
-    private var imageUrl: String? = null
+//    private var imageUrl: String? = null
 
-    //    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
+        private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
     var fontChanger: FontChanger? = null
     private var selectedTab = 0
     private lateinit var tapCardInputView: InlineCardInput
@@ -415,15 +415,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         businessPlaceholder = view.findViewById(R.id.placeholderText)
         businessInitial = businessName?.get(0).toString()
         businessPlaceholder.text = businessInitial
-
-        Glide.with(this)
-            .load(imageUrl)
-            .placeholder(
-                TextDrawable(
-                    businessInitial.toString()
+        if (imageUrl == null ){
+            businessIcon.setBackgroundColor(Color.BLACK)
+        }else{
+            Glide.with(this)
+                .load(imageUrl)
+                .placeholder(
+                    TextDrawable(
+                        businessInitial.toString()
+                    )
                 )
-            )
-            .into(businessIcon)
+                .into(businessIcon)
+        }
+
 
 
     }
@@ -433,8 +437,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             businessName = businessName,
             businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
 //            businessFor = paymentFor ,
-            businessImageResources = imageUrl,
-            businessPlaceHolder = businessName?.get(0).toString()
+            businessImageResources = imageUrl
+//            businessPlaceHolder = businessName?.get(0).toString()
         )
     }
 

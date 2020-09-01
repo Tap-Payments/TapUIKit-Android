@@ -8,8 +8,6 @@ import company.tap.tapuilibrary.themekit.theme.ChipTheme
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 
 /**
- * Created by AhlaamK on 6/10/20.
-
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/

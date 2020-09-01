@@ -13,7 +13,6 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="@dimen/margin_basic_16dp"
-        android:background="@color/black_27"
         android:layoutDirection="locale"
         android:visibility="visible"
         app:cardCornerRadius="8dp"
@@ -27,14 +26,12 @@
             android:id="@+id/businessIcon"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@color/black_27" />
+            android:layout_gravity="center" />
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/placeholderText"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="#000000"
             android:gravity="center"
             android:textColor="#ffffff"
             android:visibility="visible"
