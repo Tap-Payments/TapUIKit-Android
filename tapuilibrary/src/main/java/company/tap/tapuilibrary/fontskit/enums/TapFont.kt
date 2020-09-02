@@ -43,26 +43,26 @@ enum class TapFont {
     companion object {
         fun tapFontType(tapFont: TapFont):String {
             return when(tapFont){
-                robotoRegular -> "assets/fonts/Roboto-Regular.ttf"
-                robotoThin ->"assets/fonts/Roboto-Thin.ttf"
-                robotoLight->"assets/fonts/Roboto-Light.ttf"
-                robotoMedium->"assets/fonts/Roboto-Medium.ttf"
-                robotoBold->"assets/fonts/Roboto-Bold.ttf"
+                robotoRegular -> "fonts/Roboto-Regular.ttf"
+                robotoThin ->"fonts/Roboto-Thin.ttf"
+                robotoLight->"fonts/Roboto-Light.ttf"
+                robotoMedium->"fonts/Roboto-Medium.ttf"
+                robotoBold->"fonts/Roboto-Bold.ttf"
 
-                tajawalRegular -> "assets/fonts/Tajawal-Bold.ttf"
-                tajawalThin ->"assets/fonts/Tajawal-Thin.ttf"
-                tajawalLight->"assets/fonts/Tajawal-Light.ttf"
-                tajawalMedium->"assets/fonts/Tajawal-Medium.ttf"
-                tajawalBold->"assets/fonts/Tajawal-Bold.ttf"
+                tajawalRegular -> "fonts/Tajawal-Bold.ttf"
+                tajawalThin ->"fonts/Tajawal-Thin.ttf"
+                tajawalLight->"fonts/Tajawal-Light.ttf"
+                tajawalMedium->"fonts/Tajawal-Medium.ttf"
+                tajawalBold->"fonts/Tajawal-Bold.ttf"
 
-                circeExtraLight->"assets/fonts/Circe-ExtraLight.ttf"
-                circeLight->"assets/fonts/Circe-Light.ttf"
-                circeRegular->"assets/fonts/Circe-Regular.ttf"
-                circeBold->"assets/fonts/Circe-Bold.ttf"
-                helveticaNeueBold->"assets/fonts/HelveticaNeueLTW20-Bold.ttf"
-                helveticaNeueLight->"assets/fonts/HelveticaNeueLTW20-Light.ttf"
-                helveticaNeueRegular->"assets/fonts/HelveticaNeueLTW20-Roman.ttf"
-               else->"assets/fonts/Roboto-Regular.ttf"
+                circeExtraLight->"fonts/Circe-ExtraLight.ttf"
+                circeLight->"fonts/Circe-Light.ttf"
+                circeRegular->"fonts/Circe-Regular.ttf"
+                circeBold->"fonts/Circe-Bold.ttf"
+                helveticaNeueBold->"fonts/HelveticaNeueLTW20-Bold.ttf"
+                helveticaNeueLight->"fonts/HelveticaNeueLTW20-Light.ttf"
+                helveticaNeueRegular->"fonts/HelveticaNeueLTW20-Roman.ttf"
+               else->"fonts/Roboto-Regular.ttf"
             }
         }
     }
