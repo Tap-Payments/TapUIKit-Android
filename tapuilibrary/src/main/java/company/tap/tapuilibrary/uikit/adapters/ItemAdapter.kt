@@ -7,7 +7,6 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -23,8 +22,6 @@ import kotlin.collections.ArrayList
 
 
 /**
- * Created by AhlaamK on 6/22/20.
-
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
