@@ -7,7 +7,6 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 open class TabSelectTheme : BaseTextTheme() {
-    var backgroundColor: Int? = null
     var selectedBackgroundColor:Int?= null
     var unselectedBackgroundColor:Int?= null
 }

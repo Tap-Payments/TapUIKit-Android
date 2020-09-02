@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.uikit.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,9 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.ChipTheme
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.model.CurrencyModel
 
 
@@ -46,8 +50,24 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             this.photo = photo
             Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
             view.textView_currency.text = photo.currencyCode
+
+            setTheme()
+        }
+        fun setTheme(){
+            val totalQuantityTextViewTheme = TextViewTheme()
+            totalQuantityTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.labelTextColor"))
+            totalQuantityTextViewTheme.textSize = ThemeManager.getFontSize("horizontalList.chips.currencyChip.labelTextFont")
+            totalQuantityTextViewTheme.font = ThemeManager.getFontName("horizontalList.chips.currencyChip.labelTextFont")
+            view.textView_currency.setTheme(totalQuantityTextViewTheme)
+
+            val chipTheme = ChipTheme()
+            chipTheme.backgroundColor= Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor"))
+            chipTheme.outlineSpotShadowColor=  Color.parseColor( ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
+            view.tapcard_Chip.setTheme(chipTheme)
+            view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         }
     }
+
 
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.bindPhoto(photos[position])
@@ -67,6 +87,9 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
         }
 
     }
+
+
+
 
 }
 

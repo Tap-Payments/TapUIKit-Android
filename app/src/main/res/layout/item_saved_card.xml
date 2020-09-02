@@ -22,13 +22,15 @@
         android:visibility="visible" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:paddingStart="12dp"
         android:paddingTop="10dp"
         android:paddingEnd="12dp"
         android:paddingBottom="10dp">
+
+
 
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
             android:id="@+id/imageView_amex"
@@ -40,7 +42,7 @@
             app:layout_constraintRight_toLeftOf="@+id/textView_carddetails"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <company.tap.tapuilibrary.uikit.atoms.TapImageView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/textView_carddetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

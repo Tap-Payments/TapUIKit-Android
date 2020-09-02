@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.uikit.fragment
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -11,11 +12,13 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
 import company.tap.tapuilibrary.uikit.adapters.ItemAdapter
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.model.CurrencyModel
+import kotlinx.android.synthetic.main.item_frame_currency.*
 
 
 /**
@@ -38,6 +41,8 @@ open class CurrencyViewFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
         fillData()
 
+        val mainView = view.findViewById<LinearLayout>(R.id.mainView)
+        mainView.setBackgroundColor(Color.parseColor( ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
         currencyGroup.orientation = LinearLayout.HORIZONTAL
         val groupName = currencyGroup.findViewById<TapTextView>(R.id.group_name)
@@ -113,6 +118,16 @@ open class CurrencyViewFragment : Fragment() {
             )
         )
 
+    }
+
+
+
+    fun setTheme(){
+        chipRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        currencyLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+
+        //currencyLayout1
     }
 
 }

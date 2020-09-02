@@ -36,6 +36,7 @@ import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.fontskit.FontChanger
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.fontskit.enums.TapFont.Companion.tapFontType
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.animation.AnimationEngine
 import company.tap.tapuilibrary.uikit.atoms.*
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
@@ -158,6 +159,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         actionButton.stateListAnimator = null
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
+        mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
        // checkboxString = getString(R.string.nfc_text)
         //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 

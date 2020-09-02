@@ -13,6 +13,7 @@ import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
+import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
 /**
@@ -108,6 +109,7 @@ class TapHeaderSectionView : LinearLayout {
         businessPlaceholderTextViewTheme.font = ThemeManager.getFontName("merchantHeaderView.merchantLogoPlaceHolderFont")
         businessPlaceholder.setTheme(businessPlaceholderTextViewTheme)
 
+        constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
     }
 

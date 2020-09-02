@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import kotlinx.android.synthetic.main.tap_chip_group.view.*
 
 
 /**
@@ -33,7 +34,6 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
     }
 
     fun setTheme(){
-
         val groupNameTextViewTheme = TextViewTheme()
         groupNameTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
         groupNameTextViewTheme.font = ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
@@ -43,5 +43,8 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
         groupActionTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
         groupActionTextViewTheme.font = ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
         groupAction.setTheme(groupActionTextViewTheme)
+
+        linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        chipsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
     }
 }

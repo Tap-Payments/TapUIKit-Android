@@ -27,6 +27,7 @@ import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.fontskit.FontChanger
 import company.tap.tapuilibrary.fontskit.enums.TapFont
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.uikit.models.DialogConfigurations
@@ -61,6 +62,7 @@ class MainActivity : BaseActivity(),
         setContentView(R.layout.activity_main)
         context = this
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
+        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme)
 
 //        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
 //        if (LocalizationManager.getLocale(context) == Locale("en")) {

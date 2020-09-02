@@ -7,5 +7,4 @@ package company.tap.tapuilibrary.themekit.theme
 open class ButtonTheme : BaseTextTheme(){
     var borderWidth: Double? = null
     var borderColor: Int? = null
-    var backgroundColor: Int? = null
 }
