@@ -7,7 +7,6 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -19,7 +18,6 @@ import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.ItemViewDataSource
 import company.tap.tapuilibrary.uikit.views.TapListItemView
-import kotlinx.android.synthetic.main.item_view_adapter.view.*
 
 
 /**
@@ -38,11 +36,10 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     private lateinit var totalAmount: TapTextView
     private lateinit var totalQuantity: TapTextView
     private lateinit var itemName: TapTextView
-    private lateinit var mainViewLinear: LinearLayout
+//    private lateinit var mainViewLinear: LinearLayout
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_view_adapter, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_view_adapter, parent, false)
         context = parent.context
         itemViewAdapter = v.findViewById(R.id.amount_item_view)
         return ItemHolder(v)
@@ -69,7 +66,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         discount = holder.itemView.findViewById(R.id.discount_text)
         totalAmount = holder.itemView.findViewById(R.id.total_amount)
         itemName = holder.itemView.findViewById(R.id.item_title)
-        mainViewLinear = holder.itemView.findViewById(R.id.mainViewLinear)
+//        mainViewLinear = holder.itemView.findViewById<LinearLayout>(R.id.mainViewLinear)
 
         val isExpanded = position == mExpandedPosition
         descriptionTextView.text =
@@ -145,12 +142,11 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         itemViewAdapter.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
         val descriptionTextViewTheme = TextViewTheme()
         descriptionTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("itemsList.item.descLabelColor"))
+        descriptionTextViewTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor"))
         descriptionTextViewTheme.textSize = ThemeManager.getFontSize("itemsList.item.descLabelFont")
         descriptionTextViewTheme.font = ThemeManager.getFontName("itemsList.item.descLabelFont")
         descriptionTextView.setTheme(descriptionTextViewTheme)
-        descriptionTextView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
-        mainViewLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
-        descriptionTextView.setTheme(descriptionTextViewTheme)
+//        descriptionTextView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
         discount.setTheme(descriptionTextViewTheme)
         descText.setTheme(descriptionTextViewTheme)
 
