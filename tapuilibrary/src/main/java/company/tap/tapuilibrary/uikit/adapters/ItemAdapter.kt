@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -37,6 +38,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     private lateinit var totalAmount: TapTextView
     private lateinit var totalQuantity: TapTextView
     private lateinit var itemName: TapTextView
+    private lateinit var mainViewLinear: LinearLayout
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val v =
@@ -67,6 +69,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         discount = holder.itemView.findViewById(R.id.discount_text)
         totalAmount = holder.itemView.findViewById(R.id.total_amount)
         itemName = holder.itemView.findViewById(R.id.item_title)
+        mainViewLinear = holder.itemView.findViewById(R.id.mainViewLinear)
 
         val isExpanded = position == mExpandedPosition
         descriptionTextView.text =
@@ -146,7 +149,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         descriptionTextViewTheme.font = ThemeManager.getFontName("itemsList.item.descLabelFont")
         descriptionTextView.setTheme(descriptionTextViewTheme)
         descriptionTextView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
-        itemViewAdapter.mainViewLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
+        mainViewLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
         descriptionTextView.setTheme(descriptionTextViewTheme)
         discount.setTheme(descriptionTextViewTheme)
         descText.setTheme(descriptionTextViewTheme)
