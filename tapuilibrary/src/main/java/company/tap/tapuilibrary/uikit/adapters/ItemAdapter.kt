@@ -18,6 +18,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.ItemViewDataSource
 import company.tap.tapuilibrary.uikit.views.TapListItemView
+import kotlinx.android.synthetic.main.item_view_adapter.view.*
 
 
 /**
@@ -55,7 +56,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         initView(holder, position)
         setTheme()
         setFonts()
-//        checkItemListPosition(position)
+        checkItemListPosition(position)
     }
 
     private fun initView(holder: ItemHolder, position: Int) {
@@ -81,7 +82,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         }
 
         if (isExpanded) {
-//            previousExpandedPosition = position
+            previousExpandedPosition = position
             descText.text = LocalizationManager.getValue("hideDesc", "ItemList")
         } else {
             descText.text = LocalizationManager.getValue("showDesc", "ItemList")
@@ -123,32 +124,32 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         )
     }
 
-//    private fun checkItemListPosition(position: Int) {
-//        if (itemList[position] % 2 == 0) {
-//            discount.visibility= View.VISIBLE
-//            discount.text = LocalizationManager.getValue("Discount", "ItemList")
-//            totalAmount.paintFlags = totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
-//            itemName.text = "ITEM TITLE " + itemList[position]
-//        } else {
-////            discount.visibility= View.INVISIBLE
-////            totalAmount.paintFlags = totalAmount.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
-//            itemName.text = "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE TITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLE " + itemList[position]
-//        }
-//    }
+    private fun checkItemListPosition(position: Int) {
+        if (itemList[position] % 2 == 0) {
+            discount.visibility= View.VISIBLE
+            discount.text = LocalizationManager.getValue("Discount", "ItemList")
+            totalAmount.paintFlags = totalAmount.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            itemName.text = "ITEM TITLE " + itemList[position]
+        } else {
+            discount.visibility= View.INVISIBLE
+//            totalAmount.paintFlags = totalAmount.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
+            itemName.text = "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE TITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLE " + itemList[position]
+        }
+    }
 
 
     fun setTheme() {
-
         itemViewAdapter.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
         val descriptionTextViewTheme = TextViewTheme()
-        descriptionTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("itemsList.item.descLabelColor"))
+        descriptionTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("itemsList.item.descLabelColor"))
         descriptionTextViewTheme.textSize = ThemeManager.getFontSize("itemsList.item.descLabelFont")
         descriptionTextViewTheme.font = ThemeManager.getFontName("itemsList.item.descLabelFont")
         descriptionTextView.setTheme(descriptionTextViewTheme)
-        descText.setTheme(descriptionTextViewTheme)
-        discount.setTheme(descriptionTextViewTheme)
+        descriptionTextView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
+        itemViewAdapter.mainViewLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
         descriptionTextView.setTheme(descriptionTextViewTheme)
+        discount.setTheme(descriptionTextViewTheme)
+        descText.setTheme(descriptionTextViewTheme)
 
         val totalQuantityTextViewTheme = TextViewTheme()
         totalQuantityTextViewTheme.textColor =
