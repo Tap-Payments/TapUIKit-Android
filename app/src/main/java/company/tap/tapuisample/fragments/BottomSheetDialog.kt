@@ -59,7 +59,6 @@ import kotlin.collections.ArrayList
 
 
 /**
- * Created by AhlaamK on 6/10/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
@@ -339,13 +338,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         if(context?.let { LocalizationManager.getLocale(it).language } == "en") {
             fontChanger = FontChanger(
                 activity?.assets,
-                tapFontType(TapFont.robotoMedium)
+                tapFontType(TapFont.RobotoMedium)
             )
             fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
         }else{
             fontChanger = FontChanger(
                 activity?.assets,
-                tapFontType(TapFont.tajawalMedium)
+                tapFontType(TapFont.TajawalMedium)
             )
             fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
         }

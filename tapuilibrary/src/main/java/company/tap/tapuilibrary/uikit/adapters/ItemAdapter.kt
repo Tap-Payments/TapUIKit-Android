@@ -69,23 +69,23 @@ class ItemAdapter (private val itemList: ArrayList<Int>) :
          itemName = holder.itemView.findViewById(R.id.item_title)
         itemName.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.robotoRegular))
+                TapFont.RobotoRegular))
         totalAmount.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.robotoRegular))
+                TapFont.RobotoRegular))
         discount.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.robotoLight))
+                TapFont.RobotoLight))
         descText.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.robotoLight))
+                TapFont.RobotoLight))
         descriptionTextView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.robotoLight))
+                TapFont.RobotoLight))
         itemViewadapter.setItemViewDataSource(getItemViewDataSource())
         totalQuantity.typeface=Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.robotoRegular))
+                TapFont.RobotoRegular))
         if(itemList[position]%2==0){
             discount.text = LocalizationManager.getValue("Discount","ItemList")
             totalAmount.paintFlags =

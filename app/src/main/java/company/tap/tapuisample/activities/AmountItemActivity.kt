@@ -45,11 +45,11 @@ class AmountItemActivity : BaseActivity() {
         cardswitch = findViewById(R.id.pay_card_switch)
         cardswitch.setSwitchDataSource(getSwitchDataSource())
         descrTxt.typeface = Typeface.createFromAsset(this.assets, TapFont.tapFontType(
-            TapFont.robotoLight))
+            TapFont.RobotoLight))
         totalAmount.typeface = Typeface.createFromAsset(this.assets, TapFont.tapFontType(
-            TapFont.robotoRegular))
+            TapFont.RobotoRegular))
         discount.typeface = Typeface.createFromAsset(this.assets, TapFont.tapFontType(
-            TapFont.robotoLight))
+            TapFont.RobotoLight))
         descrTxt.text = LocalizationManager.getValue("showDesc","ItemList")
         discount.text = LocalizationManager.getValue("Discount","ItemList")
         discount.visibility = View.INVISIBLE

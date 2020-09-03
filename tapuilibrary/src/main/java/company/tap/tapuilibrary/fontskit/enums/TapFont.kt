@@ -2,66 +2,66 @@ package company.tap.tapuilibrary.fontskit.enums
 
 
 /**
- * Created by AhlaamK on 6/17/20.
 
 Copyright (c) 2020    Tap Payments.
-All rights reserved.
+All rights
+reserved.
  **/
 enum class TapFont {
     helveticaNeueThin,
-    helveticaNeueLight,
-    helveticaNeueMedium,
-    helveticaNeueRegular,
-    helveticaNeueBold,
+    HelveticaNeueLight,
+    HelveticaNeueMedium,
+    HelveticaNeueRegular,
+    HelveticaNeueBold,
 
-    robotoThin,
-    robotoLight,
-    robotoMedium,
-    robotoRegular,
-    robotoBold,
+    RobotoThin,
+    RobotoLight,
+    RobotoMedium,
+    RobotoRegular,
+    RobotoBold,
 
-    tajawalThin,
-    tajawalLight,
-    tajawalMedium,
-    tajawalRegular,
-    tajawalBold,
+    TajawalThin,
+    TajawalLight,
+    TajawalMedium,
+    TajawalRegular,
+    TajawalBold,
 
 
-    circeExtraLight,
-    circeLight,
-    circeRegular,
-    circeBold,
+    CirceExtraLight,
+    CirceLight,
+    CirceRegular,
+    CirceBold,
 
-    arabicHelveticaNeueLight,
-    arabicHelveticaNeueRegular,
-    arabicHelveticaNeueBold,
+    ArabicHelveticaNeueLight,
+    ArabicHelveticaNeueRegular,
+    ArabicHelveticaNeueBold,
 
-    systemDefault;
+    SystemDefault;
 
 
 
     companion object {
         fun tapFontType(tapFont: TapFont):String {
             return when(tapFont){
-                robotoRegular -> "fonts/Roboto-Regular.ttf"
-                robotoThin ->"fonts/Roboto-Thin.ttf"
-                robotoLight->"fonts/Roboto-Light.ttf"
-                robotoMedium->"fonts/Roboto-Medium.ttf"
-                robotoBold->"fonts/Roboto-Bold.ttf"
+                RobotoRegular -> "fonts/Roboto-Regular.ttf"
+                RobotoThin ->"fonts/Roboto-Thin.ttf"
+                RobotoLight->"fonts/Roboto-Light.ttf"
+                RobotoMedium->"fonts/Roboto-Medium.ttf"
+                RobotoBold->"fonts/Roboto-Bold.ttf"
 
-                tajawalRegular -> "fonts/Tajawal-Bold.ttf"
-                tajawalThin ->"fonts/Tajawal-Thin.ttf"
-                tajawalLight->"fonts/Tajawal-Light.ttf"
-                tajawalMedium->"fonts/Tajawal-Medium.ttf"
-                tajawalBold->"fonts/Tajawal-Bold.ttf"
+                TajawalRegular -> "fonts/Tajawal-Bold.ttf"
+                TajawalThin ->"fonts/Tajawal-Thin.ttf"
+                TajawalLight->"fonts/Tajawal-Light.ttf"
+                TajawalMedium->"fonts/Tajawal-Medium.ttf"
+                TajawalBold->"fonts/Tajawal-Bold.ttf"
 
-                circeExtraLight->"fonts/Circe-ExtraLight.ttf"
-                circeLight->"fonts/Circe-Light.ttf"
-                circeRegular->"fonts/Circe-Regular.ttf"
-                circeBold->"fonts/Circe-Bold.ttf"
-                helveticaNeueBold->"fonts/HelveticaNeueLTW20-Bold.ttf"
-                helveticaNeueLight->"fonts/HelveticaNeueLTW20-Light.ttf"
-                helveticaNeueRegular->"fonts/HelveticaNeueLTW20-Roman.ttf"
+                CirceExtraLight->"fonts/Circe-ExtraLight.ttf"
+                CirceLight->"fonts/Circe-Light.ttf"
+                CirceRegular->"fonts/Circe-Regular.ttf"
+                CirceBold->"fonts/Circe-Bold.ttf"
+                HelveticaNeueBold->"fonts/HelveticaNeueLTW20-Bold.ttf"
+                HelveticaNeueLight->"fonts/HelveticaNeueLTW20-Light.ttf"
+                HelveticaNeueRegular->"fonts/HelveticaNeueLTW20-Roman.ttf"
                else->"fonts/Roboto-Regular.ttf"
             }
         }

@@ -124,7 +124,7 @@ class MainActivity : BaseActivity(),
     }
 
     fun openSwitchView(view: View) {
-        fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoLight))
+        fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.RobotoLight))
         fontChanger.replaceFonts((findViewById(android.R.id.content)))
         val modalswitchBottomSheet =
             SwitchFragment()

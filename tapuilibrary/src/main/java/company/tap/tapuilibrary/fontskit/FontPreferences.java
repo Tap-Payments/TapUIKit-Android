@@ -19,6 +19,7 @@ import java.util.List;
 
 import company.tap.tapuilibrary.R;
 
+
 public class FontPreferences extends ListPreference {
     private static final int   MIN_FONT_FILE_LENGTH = 5;
 
@@ -37,17 +38,20 @@ public class FontPreferences extends ListPreference {
         final String[] assetFonts;
 
         try {
+            assert fontDirectory != null;
             assetFonts = context.getAssets().list(fontDirectory);
         } catch (final IOException e) {
             throw new IllegalStateException("FontListPreference was not able to search for fonts in the assets/" + fontDirectory + " folder since the folder is not present. Please create it!", e);
         }
 
-        for (final String font : assetFonts) {
-            if (font != null && font.length() > MIN_FONT_FILE_LENGTH) {
-                final String fontType = font.substring(font.length() - 3);
+        if (assetFonts != null) {
+            for (final String font : assetFonts) {
+                if (font != null && font.length() > MIN_FONT_FILE_LENGTH) {
+                    final String fontType = font.substring(font.length() - 3);
 
-                if ("ttf".equals(fontType) || "otf".equals(fontType)) {
-                    fonts.add(new Font(StringFormatUtils.addAtEndIfNotPresent(fontDirectory, "/") + font));
+                    if ("ttf".equals(fontType) || "otf".equals(fontType)) {
+                        fonts.add(new Font(StringFormatUtils.addAtEndIfNotPresent(fontDirectory, "/") + font));
+                    }
                 }
             }
         }

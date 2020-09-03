@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary.fontskit
+package company.tap.tapuilibrary.fontskit;
 
 import android.content.res.AssetManager
 import android.graphics.Typeface
@@ -8,7 +8,6 @@ import android.widget.TextView
 
 
 /**
- * Created by AhlaamK on 6/21/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
