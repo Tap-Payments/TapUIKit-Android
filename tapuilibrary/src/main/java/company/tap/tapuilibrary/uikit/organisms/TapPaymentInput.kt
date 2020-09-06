@@ -58,8 +58,8 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 //        tabLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")))
 
         var tabSelectTheme = TabSelectTheme()
-        tabSelectTheme.selectedBackgroundColor = Color.parseColor(ThemeManager.getValue("goPay.Valid.loginBar.underline.selected.backgroundColor"))
-        tabSelectTheme.unselectedBackgroundColor = Color.parseColor(ThemeManager.getValue("goPay.Valid.loginBar.underline.unselected.backgroundColor"))
+        tabSelectTheme.selectedBackgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.selected.backgroundColor"))
+        tabSelectTheme.unselectedBackgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
         setTheme(tabSelectTheme)
     }
 
