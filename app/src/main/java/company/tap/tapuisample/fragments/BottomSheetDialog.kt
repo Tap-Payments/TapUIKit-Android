@@ -122,8 +122,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view: View = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
-        return view
+        return inflater.inflate(R.layout.custom_bottom_sheet, container, false)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
