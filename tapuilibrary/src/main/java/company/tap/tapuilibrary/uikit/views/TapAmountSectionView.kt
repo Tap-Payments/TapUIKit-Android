@@ -65,7 +65,7 @@ class TapAmountSectionView: LinearLayout {
         val buttonTheme = ButtonTheme()
         buttonTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
         buttonTheme.borderColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color"))
-        buttonTheme.borderWidth = ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.width") as Double
+//        buttonTheme.borderWidth = (ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.width"))
         buttonTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor"))
 
         itemCount.setTheme(buttonTheme)
