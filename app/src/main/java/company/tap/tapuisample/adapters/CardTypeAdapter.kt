@@ -111,16 +111,20 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>,private val onCardS
         }
         holder.itemView.deleteImageView1?.setOnClickListener {
            // it.startAnimation(null)
-            it.animation=null
-            it.startAnimation(null)
+//            it.animation=null
+//            it.startAnimation(null)
+            it.clearAnimation()
         }
         holder.itemView.deleteImageView2?.setOnClickListener {
            // it.startAnimation(null)
-            it.animation=null
+//            it.animation=null
+            it.clearAnimation()
         }
         holder.itemView.deleteImageView3?.setOnClickListener {
            // it.startAnimation(null)
-            it.animation=null
+//            it.animation=null
+            it.clearAnimation()
+
         }
 
 

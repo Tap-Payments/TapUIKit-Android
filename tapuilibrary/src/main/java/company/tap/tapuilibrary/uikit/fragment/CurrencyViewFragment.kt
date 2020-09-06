@@ -56,7 +56,6 @@ open class CurrencyViewFragment(private  val itemList: ArrayList<Int>  ) : Fragm
     private fun initView() {
         chipRecycler = currencyGroup.findViewById<View>(R.id.chip_recycler) as RecyclerView
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter = CurrencyAdapter(currencyList)
         itemsRecycler = view?.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         itemsRecycler.adapter = ItemAdapter(itemList)
@@ -92,6 +91,8 @@ open class CurrencyViewFragment(private  val itemList: ArrayList<Int>  ) : Fragm
         currencyList.add(CurrencyModel("QAR", "https://www.countryflags.io/qa/flat/24.png"))
         currencyList.add(CurrencyModel("KWD", "https://www.countryflags.io/kw/flat/24.png"))
         currencyList.add(CurrencyModel("SAR", "https://www.countryflags.io/sa/flat/24.png"))
+
+        chipRecycler.adapter = CurrencyAdapter(currencyList)
     }
 
 
