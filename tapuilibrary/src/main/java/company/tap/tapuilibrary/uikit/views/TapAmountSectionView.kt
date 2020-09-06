@@ -12,11 +12,13 @@ import company.tap.tapuilibrary.uikit.atoms.TapButton
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
 import kotlinx.android.synthetic.main.tap_main_amount.view.*
+import kotlinx.android.synthetic.main.tap_main_amount.view.constraint
+import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
 class TapAmountSectionView: LinearLayout {
-     var selectedCurrency: TapTextView
-     var currentCurrency:TapTextView
+     private var selectedCurrency: TapTextView
+     private var currentCurrency:TapTextView
      var itemCount: TapButton
   private var amountViewDataSource: AmountViewDataSource? = null
     /**
@@ -57,7 +59,7 @@ class TapAmountSectionView: LinearLayout {
         currentCurrency  = findViewById(R.id.textView_currentcurrency)
         itemCount = findViewById(R.id.textView_itemcount)
         itemCount.elevation = 0F
-//        setTheme()
+        setTheme()
     }
     fun setTheme(){
         val buttonTheme = ButtonTheme()
@@ -78,7 +80,7 @@ class TapAmountSectionView: LinearLayout {
         selectedCurrencyTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.convertedAmountLabelColor"))
         selectedCurrencyTextViewTheme.textSize = ThemeManager.getFontSize("amountSectionView.convertedAmountLabelFont")
         selectedCurrencyTextViewTheme.font = ThemeManager.getFontName("amountSectionView.convertedAmountLabelFont")
-        currentCurrency.setTheme(selectedCurrencyTextViewTheme)
+        selectedCurrency.setTheme(selectedCurrencyTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
     }

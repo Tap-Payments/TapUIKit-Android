@@ -22,109 +22,85 @@ import kotlinx.android.synthetic.main.item_frame_currency.*
 
 
 /**
- * Created by AhlaamK on 6/21/20.
-
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class CurrencyViewFragment : Fragment() {
+open class CurrencyViewFragment(private  val itemList: ArrayList<Int>  ) : Fragment() {
     private lateinit var chipRecycler: RecyclerView
-    lateinit var currencyList: ArrayList<CurrencyModel>
-
+    private lateinit var currencyList: ArrayList<CurrencyModel>
     private lateinit var itemsRecycler: RecyclerView
-    private val itemList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22)
-    @SuppressLint("ClickableViewAccessibility")
+    private lateinit var mainView: LinearLayout
+    private lateinit var groupAction: TapTextView
+    private lateinit var groupName: TapTextView
+    private lateinit var currencyGroup: TapChipGroup
+
+//    private val itemListDummy: ArrayList<Int> =
+//        arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
+        mainView = view.findViewById(R.id.mainView)
+        currencyGroup = view.findViewById(R.id.currencyLayout1)
+        groupName = currencyGroup.findViewById(R.id.group_name)
+        groupAction = currencyGroup.findViewById(R.id.group_action)
+        initView()
         fillData()
+        setTheme()
+        setOnClickAction()
+        return view
+    }
 
-        val mainView = view.findViewById<LinearLayout>(R.id.mainView)
-        mainView.setBackgroundColor(Color.parseColor( ThemeManager.getValue("merchantHeaderView.backgroundColor")))
-        val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
-        currencyGroup.orientation = LinearLayout.HORIZONTAL
-        val groupName = currencyGroup.findViewById<TapTextView>(R.id.group_name)
-        groupName.visibility=View.GONE
-        val groupAction = currencyGroup.findViewById<TapTextView>(R.id.group_action)
-        groupAction.visibility=View.GONE
+    private fun initView() {
         chipRecycler = currencyGroup.findViewById<View>(R.id.chip_recycler) as RecyclerView
-       // chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter =
-            CurrencyAdapter(currencyList)
-        itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
-        itemsRecycler.setHasFixedSize(false)
+        chipRecycler.adapter = CurrencyAdapter(currencyList)
+        itemsRecycler = view?.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        itemsRecycler.adapter =
-            ItemAdapter(itemList)
+        itemsRecycler.adapter = ItemAdapter(itemList)
+//        itemsRecycler.adapter = ItemAdapter(itemListDummy)
+        currencyGroup.orientation = LinearLayout.HORIZONTAL
+        itemsRecycler.setHasFixedSize(false)
+        groupName.visibility = View.GONE
+        groupAction.visibility = View.GONE
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private fun setOnClickAction() {
         itemsRecycler.setOnTouchListener { v, event ->
-            val action = event.action
-            when (action) {
+            when (event.action) {
                 MotionEvent.ACTION_DOWN ->                         // Disallow NestedScrollView to intercept touch events.
                     v.parent.requestDisallowInterceptTouchEvent(true)
                 MotionEvent.ACTION_UP ->                         // Allow NestedScrollView to intercept touch events.
                     v.parent.requestDisallowInterceptTouchEvent(false)
             }
-
             // Handle RecyclerView touch events.
             v.onTouchEvent(event)
             true
         }
-
-        return view
     }
 
     //Filling dummy data for currency chips
     private fun fillData() {
         currencyList = ArrayList()
-
         //adding some dummy data to the list
-        currencyList.add(
-            CurrencyModel(
-                "KWD",
-                "https://www.countryflags.io/kw/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "SAR",
-                "https://www.countryflags.io/sa/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "BHD",
-                "https://www.countryflags.io/bh/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "QAR",
-                "https://www.countryflags.io/qa/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "KWD",
-                "https://www.countryflags.io/kw/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "SAR",
-                "https://www.countryflags.io/sa/flat/24.png"
-            )
-        )
-
+        currencyList.add(CurrencyModel("KWD", "https://www.countryflags.io/kw/flat/24.png"))
+        currencyList.add(CurrencyModel("SAR", "https://www.countryflags.io/sa/flat/24.png"))
+        currencyList.add(CurrencyModel("BHD", "https://www.countryflags.io/bh/flat/24.png"))
+        currencyList.add(CurrencyModel("QAR", "https://www.countryflags.io/qa/flat/24.png"))
+        currencyList.add(CurrencyModel("KWD", "https://www.countryflags.io/kw/flat/24.png"))
+        currencyList.add(CurrencyModel("SAR", "https://www.countryflags.io/sa/flat/24.png"))
     }
 
 
-
-    fun setTheme(){
+    fun setTheme() {
         chipRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         currencyLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+        mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        itemsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
 
         //currencyLayout1
