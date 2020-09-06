@@ -54,12 +54,11 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun applyTheme(){
-        tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")))
-//        tabLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")))
 
         var tabSelectTheme = TabSelectTheme()
         tabSelectTheme.selectedBackgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.selected.backgroundColor"))
         tabSelectTheme.unselectedBackgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
+        tabSelectTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor"))
         setTheme(tabSelectTheme)
     }
 
