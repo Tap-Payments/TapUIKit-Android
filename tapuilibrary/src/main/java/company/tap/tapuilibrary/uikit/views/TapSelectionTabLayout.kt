@@ -12,6 +12,7 @@ import androidx.annotation.ColorRes
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
@@ -26,11 +27,10 @@ import company.tap.tapuilibrary.uikit.utils.MetricsUtil
 class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
 
-    private var indicatorColor = Color.parseColor(INDICATOR_COLOR)
-    private var invalidIndicatorColor = Color.parseColor(INVALID_INDICATOR_COLOR)
+    private var indicatorColor = INDICATOR_COLOR
+    private var invalidIndicatorColor = INVALID_INDICATOR_COLOR
     private var indicatorHeight = MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
-    private var unselectedAlphaLevel =
-        UNSELECTED_ALPHA
+    private var unselectedAlphaLevel = UNSELECTED_ALPHA
     private var maxItemWidth = MetricsUtil.convertDpToPixel(MAX_ITEM_WIDTH, context).toInt()
     private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
@@ -243,8 +243,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         for (items in itemsCount) {
             totalItemsCount += items
         }
-        val itemSize =
-            (Resources.getSystem().displayMetrics.widthPixels - SCREEN_MARGINS) / totalItemsCount
+        val itemSize = (Resources.getSystem().displayMetrics.widthPixels - SCREEN_MARGINS) / totalItemsCount
         return if (itemSize > maxItemWidth) maxItemWidth else itemSize
     }
 
@@ -335,7 +334,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     fun resetBehaviour() {
         resetTabsAlpha()
         changeClickableState(true)
-        tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
+        tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
             it.imageView?.setImageDrawable(it.selectedImage)
             it.indicator?.visibility = View.INVISIBLE
@@ -362,9 +361,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     companion object {
         const val SCREEN_MARGINS = 140
         const val INDICATOR_HEIGHT = 2f
-        const val INDICATOR_COLOR = "#2ace00"
-        const val INVALID_INDICATOR_COLOR = "#a8a8a8"
-        const val UNSELECTED_ALPHA = 0.5f
-        const val MAX_ITEM_WIDTH = 100f
+//        const val INDICATOR_COLOR = "#2ace00"
+         val INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.selected.backgroundColor"))
+//        const val INVALID_INDICATOR_COLOR = "#a8a8a8"
+         val INVALID_INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
+         val UNSELECTED_ALPHA = ThemeManager.getValue("cardPhoneList.icon.otherSegmentSelected.alpha") as Float
+         val MAX_ITEM_WIDTH = ThemeManager.getValue("cardPhoneList.maxWidth") as Float
     }
 }

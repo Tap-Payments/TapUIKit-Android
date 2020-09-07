@@ -21,10 +21,10 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<TabSelectTheme> {
 
-    var tabLayout: TapSelectionTabLayout
+    private var tabLayout: TapSelectionTabLayout
     private var paymentInputContainer: LinearLayout
-    var tabLinear: LinearLayout
-    var clearView: ImageView
+    private var tabLinear: LinearLayout
+    private var clearView: ImageView
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
@@ -35,7 +35,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         clearView.setOnClickListener {
             rootView.invalidate()
         }
-        applyTheme()
+//        applyTheme()
     }
 
     fun addTabLayoutSection(vararg sections: TabSection) {
@@ -54,8 +54,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun applyTheme(){
-
-        var tabSelectTheme = TabSelectTheme()
+        val tabSelectTheme = TabSelectTheme()
         tabSelectTheme.selectedBackgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.selected.backgroundColor"))
         tabSelectTheme.unselectedBackgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
         tabSelectTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor"))

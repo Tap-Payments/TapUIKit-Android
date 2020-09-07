@@ -1,4 +1,4 @@
-package company.tap.tapuisample.adapters
+package company.tap.tapuilibrary.uikit.adapters
 
 
 import android.annotation.SuppressLint
@@ -8,17 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import company.tap.tapuisample.R
-import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
+import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.uikit.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.item_gopay.view.*
 import kotlinx.android.synthetic.main.item_knet.view.*
 import kotlinx.android.synthetic.main.item_saved_card.view.*
 
-
 /**
+ * Created by OlaMonir 8/9/2020
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+
 
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCardSelectedActionListener: OnCardSelectedActionListener? = null) :
@@ -69,28 +70,8 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
             params.leftMargin = 28
             holder.itemView.layoutParams = params
         }
-
-
         checkPosition(holder,position)
         setOnClickActions(holder)
-
-    }
-
-    private fun setOnClickActions(holder: RecyclerView.ViewHolder){
-
-        holder.itemView.deleteImageView1?.setOnClickListener {
-            onCardSelectedActionListener?.onDeleteIconClicked(true,holder.itemView.id)
-        }
-        holder.itemView.deleteImageView2?.setOnClickListener {
-            onCardSelectedActionListener?.onDeleteIconClicked(true,holder.itemView.id)
-        }
-        holder.itemView.deleteImageView3?.setOnClickListener {
-            onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-            holder.itemView.clearAnimation()
-            it.animate().cancel()
-            it.clearAnimation()
-
-        }
     }
 
 
@@ -98,9 +79,9 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
         when {
             getItemViewType(position) == TYPE_SAVED_CARD -> {
                 if (selectedPosition == position) {
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_shadow)
+                    holder.itemView.setBackgroundResource(R.drawable.border_shadow)
                 } else
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_unclick)
+                    holder.itemView.setBackgroundResource(R.drawable.border_unclick)
                 (holder as SavedViewHolder)
                 holder.itemView.setOnClickListener {
                     selectedPosition = position
@@ -109,47 +90,55 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
             }
             getItemViewType(position) == TYPE_REDIRECT -> {
                 if (selectedPosition == position)
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_shadow)
+                    holder.itemView.setBackgroundResource(R.drawable.border_shadow)
                 else
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_unclick)
+                    holder.itemView.setBackgroundResource(R.drawable.border_unclick)
                 (holder as SingleViewHolder)
                 holder.itemView.setOnClickListener {
                     onCardSelectedActionListener?.onCardSelectedAction(true)
                     selectedPosition = position
                     notifyDataSetChanged()
                 }
-
             }
             else -> {
                 if (selectedPosition == position)
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_gopay)
+                    holder.itemView.setBackgroundResource(R.drawable.border_gopay)
                 else
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_gopay_unclick)
+                    holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
                 (holder as GoPayViewHolder)
                 holder.itemView.setOnClickListener {
                     selectedPosition = position
                     onCardSelectedActionListener?.onCardSelectedAction(true)
                     notifyDataSetChanged()
                 }
-
             }
         }
+    }
 
+    private fun setOnClickActions(holder: RecyclerView.ViewHolder){
+
+        holder.itemView.deleteImageView1.setOnClickListener {
+            onCardSelectedActionListener?.onDeleteIconClicked(true,holder.itemView.id)
+        }
+        holder.itemView.deleteImageView2.setOnClickListener {
+            onCardSelectedActionListener?.onDeleteIconClicked(true,holder.itemView.id)
+        }
+        holder.itemView.deleteImageView3.setOnClickListener {
+            onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
+            holder.itemView.clearAnimation()
+            it.animate().cancel()
+            it.clearAnimation()
+        }
     }
 
     internal class SavedViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-    }
+        RecyclerView.ViewHolder(itemView) {}
 
     internal class SingleViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-
-    }
+        RecyclerView.ViewHolder(itemView) {}
 
     internal class GoPayViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-
-    }
+        RecyclerView.ViewHolder(itemView) {}
 
 
 }

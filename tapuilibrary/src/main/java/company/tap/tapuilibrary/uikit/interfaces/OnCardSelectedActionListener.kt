@@ -1,4 +1,4 @@
-package company.tap.tapuisample.interfaces
+package company.tap.tapuilibrary.uikit.interfaces
 
 /**
  * Created by OlaMonir on 7/22/20.

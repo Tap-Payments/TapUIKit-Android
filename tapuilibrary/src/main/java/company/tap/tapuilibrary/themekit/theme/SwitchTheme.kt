@@ -7,5 +7,4 @@ package company.tap.tapuilibrary.themekit.theme
 open class SwitchTheme : BaseTextTheme() {
     var thumbTint: Int? = null
     var trackTint: Int? = null
-
 }

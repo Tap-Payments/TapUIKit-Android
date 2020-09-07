@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -376,6 +377,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         }
         delImageView1?.setOnClickListener {
+            Log.d("mmmmm", "mmmm" )
             stopShakingCards(chipRecycler)
         }
         delImageView2?.setOnClickListener {
@@ -394,8 +396,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     private fun stopShakingCards(chipsView: RecyclerView){
-        val animShake:Animation=  AnimationUtils.loadAnimation(context, R.anim.shake)
-        chipsView.startAnimation(null)
+        val animShake:Animation =  AnimationUtils.loadAnimation(context, R.anim.shake)
+        chipsView.clearAnimation()
+        chipsView.animation =  null
     }
 
 
@@ -926,6 +929,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             }
         } else
             actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay))
+    }
+
+    override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {
+        if (stopAnimation)   stopShakingCards(chipRecycler)
     }
 
 
