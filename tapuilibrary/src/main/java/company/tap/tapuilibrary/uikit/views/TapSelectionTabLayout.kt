@@ -365,7 +365,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
          val INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.selected.backgroundColor"))
 //        const val INVALID_INDICATOR_COLOR = "#a8a8a8"
          val INVALID_INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
-         val UNSELECTED_ALPHA = ThemeManager.getValue("cardPhoneList.icon.otherSegmentSelected.alpha") as Float
-         val MAX_ITEM_WIDTH = ThemeManager.getValue("cardPhoneList.maxWidth") as Float
+         val UNSELECTED_ALPHA = (ThemeManager.getValue("cardPhoneList.icon.otherSegmentSelected.alpha") as Double).toFloat()
+         val MAX_ITEM_WIDTH = (ThemeManager.getValue("cardPhoneList.maxWidth") as Double).toFloat()
     }
 }
