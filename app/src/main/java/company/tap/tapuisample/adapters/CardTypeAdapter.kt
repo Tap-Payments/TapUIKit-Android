@@ -11,6 +11,7 @@ import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ChipTheme
+import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.item_gopay.view.*
@@ -29,9 +30,11 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
     private val TYPE_REDIRECT = 2
     private val TYPE_GO_PAY = 3
     private var selectedPosition = -1
-//    private lateinit var  tapCardChip2 :TapChip
-//    private lateinit var  tapCardChip3 :TapChip
-//    private lateinit var  tapCardChip1 :TapChip
+    private lateinit var  tapCardChip2 :TapChip
+    private lateinit var  tapCardChip3 :TapChip
+    private lateinit var  tapCardChip1 :TapChip
+    private var tapChipgrp :TapChip?=null
+
 
 
 
@@ -40,17 +43,17 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
         return when (viewType) {
             TYPE_SAVED_CARD -> {
                 view = LayoutInflater.from(parent.context).inflate(R.layout.item_saved_card, parent, false)
-//                tapCardChip2= view.findViewById(R.id.tapCardChip2)
+                tapCardChip2= view.findViewById(R.id.tapCardChip2)
                 SavedViewHolder(view)
             }
             TYPE_REDIRECT -> {
                 view = LayoutInflater.from(parent.context).inflate(R.layout.item_knet, parent, false)
-//                tapCardChip3= view.findViewById(R.id.tapCardChip3)
+                tapCardChip3= view.findViewById(R.id.tapCardChip3)
                 SingleViewHolder(view)
             }
             else -> {
                 view = LayoutInflater.from(parent.context).inflate(R.layout.item_gopay, parent, false)
-//                tapCardChip1= view.findViewById(R.id.tapCardChip1)
+                tapCardChip1= view.findViewById(R.id.tapCardChip1)
                 GoPayViewHolder(view)
             }
         }
@@ -81,6 +84,16 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
             holder.itemView.layoutParams = params
         }
 
+
+
+
+        if (holder.itemViewType == TYPE_SAVED_CARD){
+            tapChipgrp = holder.itemView.findViewById(R.id.tapCardChip2)
+            val chipTheme = ChipTheme()
+            chipTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+            chipTheme.chipHeight = 100.0
+            tapChipgrp?.setTheme(chipTheme)
+        }
 
         checkPosition(holder,position)
         setOnClickActions(holder)
@@ -161,17 +174,11 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
 //        tapCardChip3?.setTheme(chipTheme)
     }
 
-    internal class SavedViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-    }
+    internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 
-    internal class SingleViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-    }
+    internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 
-    internal class GoPayViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView) {
-    }
+    internal class GoPayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 
 
 }

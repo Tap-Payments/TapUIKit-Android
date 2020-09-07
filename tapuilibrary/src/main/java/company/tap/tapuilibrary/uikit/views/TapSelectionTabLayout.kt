@@ -48,6 +48,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout = findViewById(R.id.tab_layout)
         tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)
+        tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         setSelectionBehaviour()
     }
 

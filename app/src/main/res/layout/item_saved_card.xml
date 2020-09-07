@@ -30,8 +30,6 @@
         android:paddingEnd="12dp"
         android:paddingBottom="10dp">
 
-
-
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
             android:id="@+id/imageView_amex"
             android:layout_width="20dp"
