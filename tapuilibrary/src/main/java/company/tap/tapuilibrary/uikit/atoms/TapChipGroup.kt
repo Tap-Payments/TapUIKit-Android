@@ -7,7 +7,9 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.ChipTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import kotlinx.android.synthetic.main.item_knet.view.*
 import kotlinx.android.synthetic.main.tap_chip_group.view.*
 
 
@@ -46,5 +48,10 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
 
         linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         chipsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+
+        val chipTheme = ChipTheme()
+        chipTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor"))
+        chipTheme.chipHeight = 100.0
+        chipsRecycler.tapcard_Chip.setTheme(chipTheme)
     }
 }

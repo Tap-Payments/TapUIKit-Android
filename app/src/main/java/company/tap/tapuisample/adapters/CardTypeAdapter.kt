@@ -2,18 +2,20 @@ package company.tap.tapuisample.adapters
 
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.ChipTheme
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.item_gopay.view.*
 import kotlinx.android.synthetic.main.item_knet.view.*
 import kotlinx.android.synthetic.main.item_saved_card.view.*
-
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -27,20 +29,28 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
     private val TYPE_REDIRECT = 2
     private val TYPE_GO_PAY = 3
     private var selectedPosition = -1
+//    private lateinit var  tapCardChip2 :TapChip
+//    private lateinit var  tapCardChip3 :TapChip
+//    private lateinit var  tapCardChip1 :TapChip
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
         return when (viewType) {
             TYPE_SAVED_CARD -> {
                 view = LayoutInflater.from(parent.context).inflate(R.layout.item_saved_card, parent, false)
+//                tapCardChip2= view.findViewById(R.id.tapCardChip2)
                 SavedViewHolder(view)
             }
             TYPE_REDIRECT -> {
                 view = LayoutInflater.from(parent.context).inflate(R.layout.item_knet, parent, false)
+//                tapCardChip3= view.findViewById(R.id.tapCardChip3)
                 SingleViewHolder(view)
             }
             else -> {
                 view = LayoutInflater.from(parent.context).inflate(R.layout.item_gopay, parent, false)
+//                tapCardChip1= view.findViewById(R.id.tapCardChip1)
                 GoPayViewHolder(view)
             }
         }
@@ -63,6 +73,7 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
         println("position printed: $position")
         if (position == 0){
             val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
@@ -89,7 +100,6 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
             holder.itemView.clearAnimation()
             it.animate().cancel()
             it.clearAnimation()
-
         }
     }
 
@@ -98,9 +108,9 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
         when {
             getItemViewType(position) == TYPE_SAVED_CARD -> {
                 if (selectedPosition == position) {
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_shadow)
+                    holder.itemView.setBackgroundResource(R.drawable.border_shadow)
                 } else
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_unclick)
+                    holder.itemView.setBackgroundResource(R.drawable.border_unclick)
                 (holder as SavedViewHolder)
                 holder.itemView.setOnClickListener {
                     selectedPosition = position
@@ -109,9 +119,9 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
             }
             getItemViewType(position) == TYPE_REDIRECT -> {
                 if (selectedPosition == position)
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_shadow)
+                    holder.itemView.setBackgroundResource(R.drawable.border_shadow)
                 else
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_unclick)
+                    holder.itemView.setBackgroundResource(R.drawable.border_unclick)
                 (holder as SingleViewHolder)
                 holder.itemView.setOnClickListener {
                     onCardSelectedActionListener?.onCardSelectedAction(true)
@@ -122,19 +132,33 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
             }
             else -> {
                 if (selectedPosition == position)
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_gopay)
+                    holder.itemView.setBackgroundResource(R.drawable.border_gopay)
                 else
-                    holder.itemView.setBackgroundResource(company.tap.tapuilibrary.R.drawable.border_gopay_unclick)
+                    holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
                 (holder as GoPayViewHolder)
                 holder.itemView.setOnClickListener {
                     selectedPosition = position
                     onCardSelectedActionListener?.onCardSelectedAction(true)
                     notifyDataSetChanged()
                 }
-
             }
         }
 
+    }
+
+    fun setTheme(){
+
+        val chipTheme = ChipTheme()
+        chipTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+        chipTheme.chipHeight = 100.0
+
+
+
+//        tapCardChip2?.view?.backgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+//        tapCardChip3?.view?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+//        tapCardChip1?.setTheme(chipTheme)
+//        tapCardChip2?.setTheme(chipTheme)
+//        tapCardChip3?.setTheme(chipTheme)
     }
 
     internal class SavedViewHolder(itemView: View) :
@@ -143,12 +167,10 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
 
     internal class SingleViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-
     }
 
     internal class GoPayViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-
     }
 
 

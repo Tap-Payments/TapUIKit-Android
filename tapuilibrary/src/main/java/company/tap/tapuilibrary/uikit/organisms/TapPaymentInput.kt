@@ -55,9 +55,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     private fun applyTheme(){
         val tabSelectTheme = TabSelectTheme()
-        tabSelectTheme.selectedBackgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.selected.backgroundColor"))
-        tabSelectTheme.unselectedBackgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
-        tabSelectTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor"))
+        tabSelectTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor"))
         setTheme(tabSelectTheme)
     }
 

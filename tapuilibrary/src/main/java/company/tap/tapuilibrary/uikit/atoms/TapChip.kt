@@ -25,7 +25,7 @@ open class TapChip(context: Context, attributeSet: AttributeSet?) :
     MaterialCardView(context, attributeSet),
     TapView<ChipTheme> {
      lateinit var view: View
-     lateinit var viewsList: List<View>
+     private lateinit var viewsList: List<View>
 
     /**
      *  @param context The Context the view is running in, through which it can
@@ -52,6 +52,7 @@ open class TapChip(context: Context, attributeSet: AttributeSet?) :
     override fun setTheme(theme: ChipTheme) {
         theme.cardCornerRadius?.let { radius = it.toFloat() }
         theme.cardElevation?.let { cardElevation = it.toFloat() }
+        theme.backgroundColor?.let { setCardBackgroundColor(it)  }
         theme.chipHeight?.let { height }
         theme.outlineSpotShadowColor?.let {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
