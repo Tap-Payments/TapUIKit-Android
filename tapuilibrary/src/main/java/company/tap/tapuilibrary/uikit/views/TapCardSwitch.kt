@@ -104,8 +104,8 @@ class TapCardSwitch: LinearLayout {
 
         // Main switch
         var switchSaveMobileSwitchTheme = SwitchTheme()
-        switchSaveMobileSwitchTheme.thumbTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.whiteTwo"))
-        switchSaveMobileSwitchTheme.trackTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.whiteTwo"))
+        switchSaveMobileSwitchTheme.thumbTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+        switchSaveMobileSwitchTheme.trackTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
         switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
 
         // Merchant
