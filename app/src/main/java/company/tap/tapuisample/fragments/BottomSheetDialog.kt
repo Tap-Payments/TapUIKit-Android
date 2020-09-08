@@ -113,6 +113,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var alertMessage : TapTextView? = null
     private var clearView : ImageView? = null
     private var linearLayoutPay : LinearLayout? = null
+    private var tapSeparatorViewLinear : LinearLayout? = null
     private val cardFragment = CardScannerFragment()
     private var cardFragmentadded :Boolean = false
     private var delImageView1 :ImageView?=null
@@ -161,6 +162,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
         setSeparatorTheme()
         mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
        // checkboxString = getString(R.string.nfc_text)
         //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 
@@ -214,6 +216,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         alertMessage = view.findViewById(R.id.textview_alert_message)
         clearView = view.findViewById(R.id.clear_text)
         linearLayoutPay = view.findViewById(R.id.linear_paylayout)
+        tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
+        tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+
         tapCardInputView.clearFocus()
         clearView?.setOnClickListener {
             tabLayout.resetBehaviour()
@@ -246,9 +251,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             tabLayout.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
-            fragment_container.visibility = View.GONE
+            mainChipGroup?.visibility = View.GONE
             // nfcScanBtn.visibility= View.GONE
-            fragment_container.visibility = View.GONE
+            mainChipGroup?.visibility = View.GONE
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE
             actionButton.visibility = View.GONE
@@ -264,9 +269,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             tabLayout.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
-            fragment_container.visibility = View.GONE
+            mainChipGroup?.visibility = View.GONE
             // nfcScanBtn.visibility= View.GONE
-            fragment_container.visibility = View.GONE
+            mainChipGroup?.visibility = View.GONE
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE
             actionButton.visibility = View.GONE
@@ -490,7 +495,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     TransitionManager.beginDelayedTransition(layout, removeTransition)
                 }
 */
-                fragment_container.visibility = View.VISIBLE
+                    mainChipGroup?.visibility = View.VISIBLE
                 //  tabLayout.visibility = View.GONE
                 //  paymentLayout.visibility = View.GONE
                 tap_payment_input0.visibility = View.VISIBLE
@@ -524,7 +529,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                indicatorSeparator.visibility = View.GONE
                 Handler().postDelayed({
 
-                    fragment_container.visibility = View.GONE
+                    mainChipGroup?.visibility = View.GONE
                     tap_payment_input0.visibility = View.GONE
 
 

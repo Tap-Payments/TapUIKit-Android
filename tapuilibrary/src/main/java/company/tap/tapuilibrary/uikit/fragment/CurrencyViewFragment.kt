@@ -25,7 +25,7 @@ import kotlinx.android.synthetic.main.item_frame_currency.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class CurrencyViewFragment(private  val itemList: ArrayList<Int>  ) : Fragment() {
+open class CurrencyViewFragment(private val itemList: ArrayList<Int>) : Fragment() {
     private lateinit var chipRecycler: RecyclerView
     private lateinit var currencyList: ArrayList<CurrencyModel>
     private lateinit var itemsRecycler: RecyclerView
@@ -34,8 +34,8 @@ open class CurrencyViewFragment(private  val itemList: ArrayList<Int>  ) : Fragm
     private lateinit var groupName: TapTextView
     private lateinit var currencyGroup: TapChipGroup
 
-//    private val itemListDummy: ArrayList<Int> =
-//        arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)
+    private val itemListDummy: ArrayList<Int> =
+        arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,8 +58,11 @@ open class CurrencyViewFragment(private  val itemList: ArrayList<Int>  ) : Fragm
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         itemsRecycler = view?.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        itemsRecycler.adapter = ItemAdapter(itemList)
-//        itemsRecycler.adapter = ItemAdapter(itemListDummy)
+        if (itemList.isNullOrEmpty()) {
+            itemsRecycler.adapter = ItemAdapter(itemListDummy)
+        } else {
+            itemsRecycler.adapter = ItemAdapter(itemList)
+        }
         currencyGroup.orientation = LinearLayout.HORIZONTAL
         itemsRecycler.setHasFixedSize(false)
         groupName.visibility = View.GONE

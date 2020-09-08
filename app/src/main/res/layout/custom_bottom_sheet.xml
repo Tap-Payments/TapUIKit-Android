@@ -61,18 +61,18 @@
         android:layout_height="0.7dp"
         android:background="@color/separator_color" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/chip_background"
-        android:layoutDirection="locale"
-        android:orientation="vertical">
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:background="@color/chip_background"-->
+<!--        android:layoutDirection="locale"-->
+<!--        android:orientation="vertical">-->
 
-        <FrameLayout
-            android:id="@+id/fragment_container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/header_color">
+<!--        <FrameLayout-->
+<!--            android:id="@+id/fragment_container"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="@color/header_color">-->
 
             <company.tap.tapuilibrary.uikit.atoms.TapChipGroup
                 android:id="@+id/mainChipgroup"
@@ -80,18 +80,25 @@
                 android:layout_height="match_parent"
                 android:background="@color/chip_background"
                 android:orientation="horizontal" />
-        </FrameLayout>
+<!--        </FrameLayout>-->
+
+
+<!--    </LinearLayout>-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tapSeparatorViewLinear">
 
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
             android:id="@+id/separator_"
             android:layout_width="wrap_content"
             android:layout_height="0.7dp"
-            android:layout_marginStart="@dimen/activity_horizontal_margin"
-            android:layout_marginEnd="@dimen/activity_horizontal_margin"
-            android:background="@color/separator_color"
-            android:layoutDirection="locale"
-            android:visibility="visible" />
+            android:layout_marginStart="@dimen/default_padding"
+            android:layout_marginEnd="@dimen/default_padding"
+            android:background="@color/separator_color" />
+
     </LinearLayout>
+
 
     <company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
         android:id="@+id/tap_payment_input0"
@@ -104,6 +111,7 @@
         android:id="@+id/separatorــ"
         android:layout_width="match_parent"
         android:layout_height="0.7dp"
+        android:visibility="gone"
         android:background="@color/separator_color" />
 
     <company.tap.tapuilibrary.uikit.views.TapAlertView
@@ -116,12 +124,12 @@
     <FrameLayout
         android:id="@+id/fragment_container1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"/>
 
     <FrameLayout
         android:id="@+id/fragment_container_nfc"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></FrameLayout>
+        android:layout_height="match_parent"/>
 
     <company.tap.tapuilibrary.uikit.views.TapCardSwitch
         android:id="@+id/switch_pay_demo"
@@ -129,8 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:background="@color/chip_background"
-        android:layoutDirection="locale"
-        android:paddingStart="@dimen/default_padding" />
+        android:layoutDirection="locale" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
