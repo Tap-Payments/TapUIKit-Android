@@ -40,6 +40,7 @@ open class CurrencyViewFragment : Fragment() {
         fillData()
 
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
+        val mainView = view.findViewById<LinearLayout>(R.id.mainView)
         currencyGroup.orientation = LinearLayout.HORIZONTAL
         val groupName = currencyGroup.findViewById<TapTextView>(R.id.group_name)
         groupName.visibility=View.GONE
@@ -54,14 +55,13 @@ open class CurrencyViewFragment : Fragment() {
         itemsRecycler.setHasFixedSize(false)
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         itemsRecycler.adapter = ItemAdapter(itemList)
-//        setTheme()
+
+
         chipRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         currencyGroup.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
-
-//        mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         itemsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
-        currencyGroup.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         itemsRecycler.setOnTouchListener { v, event ->
             val action = event.action
             when (action) {
