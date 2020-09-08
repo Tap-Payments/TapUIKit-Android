@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -36,6 +37,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     private lateinit var totalAmount: TapTextView
     private lateinit var totalQuantity: TapTextView
     private lateinit var itemName: TapTextView
+    private lateinit var mainViewLinear: LinearLayout
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val v =
@@ -60,6 +62,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
     private fun initView(holder: ItemHolder, position: Int) {
         descriptionTextView = holder.itemView.findViewById(R.id.description_textView)
+        mainViewLinear = holder.itemView.findViewById(R.id.mainViewLinear)
         descText = holder.itemView.findViewById(R.id.show_description)
         itemSeparator = holder.itemView.findViewById(R.id.itemseparator)
         totalQuantity = holder.itemView.findViewById(R.id.total_quantity)
@@ -120,6 +123,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         descriptionTextView.setTheme(descriptionTextViewTheme)
         discount.setTheme(descriptionTextViewTheme)
         descText.setTheme(descriptionTextViewTheme)
+        mainViewLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
 
         val totalQuantityTextViewTheme = TextViewTheme()
         totalQuantityTextViewTheme.textColor =

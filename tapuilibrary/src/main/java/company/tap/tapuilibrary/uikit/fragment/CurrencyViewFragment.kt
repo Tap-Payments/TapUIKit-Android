@@ -49,8 +49,7 @@ open class CurrencyViewFragment : Fragment() {
         chipRecycler = currencyGroup.findViewById<View>(R.id.chip_recycler) as RecyclerView
         // chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter =
-            CurrencyAdapter(currencyList)
+        chipRecycler.adapter = CurrencyAdapter(currencyList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.setHasFixedSize(false)
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -63,14 +62,12 @@ open class CurrencyViewFragment : Fragment() {
         mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
         itemsRecycler.setOnTouchListener { v, event ->
-            val action = event.action
-            when (action) {
+            when (event.action) {
                 MotionEvent.ACTION_DOWN ->                         // Disallow NestedScrollView to intercept touch events.
                     v.parent.requestDisallowInterceptTouchEvent(true)
                 MotionEvent.ACTION_UP ->                         // Allow NestedScrollView to intercept touch events.
                     v.parent.requestDisallowInterceptTouchEvent(false)
             }
-
             // Handle RecyclerView touch events.
             v.onTouchEvent(event)
             true
