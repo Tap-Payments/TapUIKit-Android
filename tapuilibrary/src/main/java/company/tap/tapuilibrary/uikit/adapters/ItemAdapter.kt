@@ -37,7 +37,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     private lateinit var totalAmount: TapTextView
     private lateinit var totalQuantity: TapTextView
     private lateinit var itemName: TapTextView
-    private lateinit var mainViewLinear: LinearLayout
+//    private lateinit var mainViewLinear: LinearLayout
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         val v =
@@ -67,7 +67,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         totalQuantity = holder.itemView.findViewById(R.id.total_quantity)
         discount = holder.itemView.findViewById(R.id.discount_text)
         totalAmount = holder.itemView.findViewById(R.id.total_amount)
-        mainViewLinear = holder.itemView.findViewById(R.id.mainViewLinear)!!
+//        mainViewLinear = holder.itemView.findViewById(R.id.mainViewLinear)
         itemName = holder.itemView.findViewById(R.id.item_title)
         val isExpanded = position == mExpandedPosition
         descriptionTextView.text = "Lorem ipsum dolor sit amet, ex exercitation ullamco laboris."
@@ -123,7 +123,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         descriptionTextView.setTheme(descriptionTextViewTheme)
         discount.setTheme(descriptionTextViewTheme)
         descText.setTheme(descriptionTextViewTheme)
-        mainViewLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
+//        mainViewLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
 
         val totalQuantityTextViewTheme = TextViewTheme()
         totalQuantityTextViewTheme.textColor =
