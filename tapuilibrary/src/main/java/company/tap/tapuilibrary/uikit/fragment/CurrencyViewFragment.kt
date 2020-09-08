@@ -56,7 +56,7 @@ open class CurrencyViewFragment : Fragment() {
         itemsRecycler.adapter = ItemAdapter(itemList)
 //        setTheme()
         chipRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
-        currencyLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        currencyGroup.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
         mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         itemsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
