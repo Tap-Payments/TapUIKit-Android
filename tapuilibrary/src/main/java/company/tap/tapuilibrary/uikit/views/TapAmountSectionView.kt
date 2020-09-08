@@ -75,11 +75,13 @@ class TapAmountSectionView: LinearLayout {
         itemCount.setTheme(buttonTheme)
         val shapeAppearanceModel = ShapeAppearanceModel()
             .toBuilder()
-            .setAllCorners(CornerFamily.ROUNDED, (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat())
+            .setAllCorners(CornerFamily.ROUNDED, 30f)
             .build()
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         ViewCompat.setBackground(itemCount, shapeDrawable)
-
+//        shapeDrawable.fillColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
+//        shapeDrawable.setStroke(2.0f )
+//(ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat()
 //        itemCount.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
 
         val currentCurrencyTextViewTheme = TextViewTheme()
