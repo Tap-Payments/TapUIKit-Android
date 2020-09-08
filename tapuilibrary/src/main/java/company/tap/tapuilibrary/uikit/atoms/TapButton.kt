@@ -1,10 +1,18 @@
 package company.tap.tapuilibrary.uikit.atoms
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
+import android.view.View
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.view.ViewCompat
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ButtonTheme
 import company.tap.tapuilibrary.uikit.interfaces.TapView
+
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -29,8 +37,10 @@ open class TapButton(context: Context, attributeSet: AttributeSet) :
      * @param theme Theme to consume in the wrapper, a value of null resets the theme to the default
      */
     override fun setTheme(theme: ButtonTheme) {
+
         theme.textColor?.let { setTextColor(it) }
         theme.backgroundColor?.let { setBackgroundColor(it) }
+//        theme.cornerRadius?.let { ViewCompat.setBackground(null  , shapeDrawable) }
         theme.textSize?.let { textSize = it.toFloat() }
         theme.letterSpacing?.let { letterSpacing = it.toFloat() }
         invalidate()

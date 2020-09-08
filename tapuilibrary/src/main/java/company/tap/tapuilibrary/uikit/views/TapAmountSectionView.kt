@@ -4,6 +4,10 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import androidx.core.view.ViewCompat
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ButtonTheme
@@ -66,8 +70,17 @@ class TapAmountSectionView: LinearLayout {
         buttonTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsLabelColor"))
         buttonTheme.borderColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color"))
         buttonTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
+        buttonTheme.cornerRadius = ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")
+        buttonTheme.borderWidth = ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.width")
         itemCount.setTheme(buttonTheme)
-        itemCount.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
+        val shapeAppearanceModel = ShapeAppearanceModel()
+            .toBuilder()
+            .setAllCorners(CornerFamily.ROUNDED, ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
+            .build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        ViewCompat.setBackground(itemCount, shapeDrawable)
+
+//        itemCount.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
 
         val currentCurrencyTextViewTheme = TextViewTheme()
         currentCurrencyTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.originalAmountLabelColor"))
@@ -82,6 +95,10 @@ class TapAmountSectionView: LinearLayout {
         selectedCurrency.setTheme(selectedCurrencyTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
+
+
+
+
     }
 
     /**
