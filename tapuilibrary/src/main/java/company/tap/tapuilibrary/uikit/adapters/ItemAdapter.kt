@@ -62,12 +62,12 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
     private fun initView(holder: ItemHolder, position: Int) {
         descriptionTextView = holder.itemView.findViewById(R.id.description_textView)
-        mainViewLinear = holder.itemView.findViewById(R.id.mainViewLinear)
         descText = holder.itemView.findViewById(R.id.show_description)
         itemSeparator = holder.itemView.findViewById(R.id.itemseparator)
         totalQuantity = holder.itemView.findViewById(R.id.total_quantity)
         discount = holder.itemView.findViewById(R.id.discount_text)
         totalAmount = holder.itemView.findViewById(R.id.total_amount)
+        mainViewLinear = holder.itemView.findViewById(R.id.mainViewLinear)!!
         itemName = holder.itemView.findViewById(R.id.item_title)
         val isExpanded = position == mExpandedPosition
         descriptionTextView.text = "Lorem ipsum dolor sit amet, ex exercitation ullamco laboris."
