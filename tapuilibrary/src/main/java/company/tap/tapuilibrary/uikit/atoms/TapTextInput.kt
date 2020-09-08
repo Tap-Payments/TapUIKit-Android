@@ -1,4 +1,3 @@
-/*
 package company.tap.tapuilibrary.uikit.atoms
 
 import android.content.Context
@@ -22,14 +21,12 @@ import company.tap.tapuilibrary.uikit.utils.TapColorUtils
 import company.tap.tapuilibrary.uikit.utils.TapTextWatcher
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 
-*/
 /**
  *
  * Created by Mario Gamal on 5/7/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
- *//*
-
+ */
 open class TapTextInput  @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
@@ -41,16 +38,14 @@ open class TapTextInput  @JvmOverloads constructor(
     private var afterTextChangedListener: AfterTextChangedListener? = null
     private var deleteEmptyListener: DeleteEmptyListener? = null
     var cachedColorStateList: ColorStateList? = null
-    private set
+        private set
 
-    */
-/**
+    /**
      * Gets whether or not the text should be displayed in error mode.
      *
      * Sets whether or not the text should be put into "error mode," which displays
      * the text in an error color determined by the original text color.
-     *//*
-
+     */
     var shouldShowError: Boolean = false
         set(shouldShowError) {
             fieldErrorMessage?.let {
@@ -85,11 +80,9 @@ open class TapTextInput  @JvmOverloads constructor(
     private val hintHandler: Handler = Handler()
     private var errorMessageListener: ErrorMessageListener? = null
 
-    */
-/**
+    /**
      * @return the color used for error text.
-     *//*
-
+     */
     // It's possible that we need to verify this value again
     // in case the user programmatically changes the text color.
     val defaultErrorColorInt: Int
@@ -120,25 +113,21 @@ open class TapTextInput  @JvmOverloads constructor(
         }
     }
 
-    */
-/**
+    /**
      * Sets a listener that can react to changes in text, but only by reflecting the new
      * text in the field.
      *
      * @param afterTextChangedListener the [AfterTextChangedListener] to attach to this view
-     *//*
-
+     */
     fun setAfterTextChangedListener(afterTextChangedListener: AfterTextChangedListener?) {
         this.afterTextChangedListener = afterTextChangedListener
     }
 
-    */
-/**
+    /**
      * Sets a listener that can react to the user attempting to delete the empty string.
      *
      * @param deleteEmptyListener the [DeleteEmptyListener] to attach to this view
-     *//*
-
+     */
     fun setDeleteEmptyListener(deleteEmptyListener: DeleteEmptyListener?) {
         this.deleteEmptyListener = deleteEmptyListener
     }
@@ -151,49 +140,41 @@ open class TapTextInput  @JvmOverloads constructor(
         this.fieldErrorMessage = errorMessage
     }
 
-    */
-/**
+    /**
      * Sets the error text color on this [TapEditText].
      *
      * @param errorColor a [ColorInt]
-     *//*
-
+     */
     fun setErrorColor(@ColorInt errorColor: Int) {
         this.errorColor = errorColor
     }
 
-    */
-/**
+    /**
      * Change the hint value of this control after a delay.
      *
      * @param hintResource the string resource for the hint text
      * @param delayMilliseconds a delay period, measured in milliseconds
-     *//*
-
+     */
     fun setHintDelayed(@StringRes hintResource: Int, delayMilliseconds: Long) {
         setHintDelayed(resources.getText(hintResource), delayMilliseconds)
     }
 
-    */
-/**
+    /**
      * Change the hint value of this control after a delay.
      *
      * @param hint the hint text
      * @param delayMilliseconds a delay period, measured in milliseconds
-     *//*
-
+     */
     fun setHintDelayed(hint: CharSequence, delayMilliseconds: Long) {
         hintHandler.postDelayed({
             setHintSafely(hint)
         }, delayMilliseconds)
     }
 
-    */
-/**
+    /**
      * Call setHint() and guard against NPE. This is a workaround for a
      * [known issue on Samsung devices](https://issuetracker.google.com/issues/37127697).
-     *//*
-
+     */
     private fun setHintSafely(hint: CharSequence) {
         try {
             setHint(hint)
@@ -288,4 +269,4 @@ open class TapTextInput  @JvmOverloads constructor(
         theme.letterSpacing?.let { letterSpacing = it.toFloat() }
         invalidate()
     }
-}*/
+}

@@ -322,10 +322,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         val nfcFragment = NFCFragment()
 
         tabLayout.setTabLayoutInterface(this)
-        tapMobileInputView =
-            TapMobilePaymentView(context, null)
+        tapMobileInputView = TapMobilePaymentView(context, null)
         if (context != null) {
-            tapCardInputView = InlineCardInput(context!!)
+            tapCardInputView = context?.let { InlineCardInput(it) }!!
             println("mobile view $tapCardInputView")
         }
 
