@@ -53,8 +53,15 @@ open class CurrencyViewFragment : Fragment() {
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.setHasFixedSize(false)
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        itemsRecycler.adapter =
-            ItemAdapter(itemList)
+        itemsRecycler.adapter = ItemAdapter(itemList)
+//        setTheme()
+        chipRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        currencyLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+        mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        itemsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+        currencyGroup.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         itemsRecycler.setOnTouchListener { v, event ->
             val action = event.action
             when (action) {
@@ -114,4 +121,18 @@ open class CurrencyViewFragment : Fragment() {
             )
         )
 
-    }}
+    }
+
+
+
+    fun setTheme() {
+        chipRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        currencyLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+        mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        itemsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+
+        //currencyLayout1
+    }
+}
