@@ -49,9 +49,9 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
         linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         chipsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
-        val chipTheme = ChipTheme()
-        chipTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor"))
-        chipTheme.chipHeight = 100.0
-        chipsRecycler.tapcard_Chip.setTheme(chipTheme)
+//        val chipTheme = ChipTheme()
+//        chipTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor"))
+//        chipTheme.chipHeight = 100.0
+//        chipsRecycler.tapcard_Chip.setTheme(chipTheme)
     }
 }

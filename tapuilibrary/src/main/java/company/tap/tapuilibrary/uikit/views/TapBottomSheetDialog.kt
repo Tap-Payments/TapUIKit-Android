@@ -18,13 +18,13 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.TapBottomDialogInterface
 import company.tap.tapuilibrary.uikit.models.DialogConfigurations
 
 
 /**
  *
- * Created by Mario Gamal on 6/3/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
@@ -34,7 +34,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private var topRightCorner = 16f
     private var bottomRightCorner = 0f
     private var bottomLeftCorner = 0f
-    private var backgroundColor = Color.WHITE
+    private var backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
 
     var bottomSheetLayout: FrameLayout? = null
     lateinit var bottomSheetDialog: BottomSheetDialog
@@ -139,4 +139,5 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     }
 
     open fun onNewIntent(intent: Intent?) {}
+
 }

@@ -30,6 +30,7 @@ open class TapButton(context: Context, attributeSet: AttributeSet) :
      */
     override fun setTheme(theme: ButtonTheme) {
         theme.textColor?.let { setTextColor(it) }
+        theme.backgroundColor?.let { setBackgroundColor(it) }
         theme.textSize?.let { textSize = it.toFloat() }
         theme.letterSpacing?.let { letterSpacing = it.toFloat() }
         invalidate()
