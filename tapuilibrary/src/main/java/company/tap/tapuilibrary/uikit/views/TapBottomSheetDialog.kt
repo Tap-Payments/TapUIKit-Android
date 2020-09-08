@@ -25,6 +25,7 @@ import company.tap.tapuilibrary.uikit.models.DialogConfigurations
 
 /**
  *
+ * Created by Mario Gamal on 6/3/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
@@ -34,7 +35,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private var topRightCorner = 16f
     private var bottomRightCorner = 0f
     private var bottomLeftCorner = 0f
-    private var backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+    private var  backgroundColor = Color.WHITE
 
     var bottomSheetLayout: FrameLayout? = null
     lateinit var bottomSheetDialog: BottomSheetDialog
@@ -54,7 +55,9 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
             bottomSheetBehavior.isDraggable
             bottomSheetDialog.behavior.isFitToContents
-            view?.alpha = 0.0f;
+            backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+
+                view?.alpha = 0.0f;
             view?.animate()
                 ?.alpha(1.0f)
                 ?.setListener(null);
@@ -140,4 +143,9 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     open fun onNewIntent(intent: Intent?) {}
 
+
+
+    fun setTheme(){
+
+    }
 }
