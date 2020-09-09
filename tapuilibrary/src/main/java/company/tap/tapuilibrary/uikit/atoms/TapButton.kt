@@ -40,7 +40,7 @@ open class TapButton(context: Context, attributeSet: AttributeSet) :
 
         theme.textColor?.let { setTextColor(it) }
         theme.backgroundColor?.let { setBackgroundColor(it) }
-//        theme.cornerRadius?.let { ViewCompat.setBackground(null  , shapeDrawable) }
+//        theme.cornerRadius?.let {  }
         theme.textSize?.let { textSize = it.toFloat() }
         theme.letterSpacing?.let { letterSpacing = it.toFloat() }
         invalidate()

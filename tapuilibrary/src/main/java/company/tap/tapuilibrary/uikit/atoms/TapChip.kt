@@ -24,7 +24,7 @@ All rights reserved.
 open class TapChip(context: Context, attributeSet: AttributeSet?) :
     MaterialCardView(context, attributeSet),
     TapView<ChipTheme> {
-//     lateinit var view: View
+     lateinit var view: View
      private lateinit var viewsList: List<View>
 
     /**
@@ -37,7 +37,7 @@ open class TapChip(context: Context, attributeSet: AttributeSet?) :
         context,
         attributeSet
     ) {
-//        this.view = view
+        this.view = view
     }
 
     constructor(context: Context, viewList: List<View>) : this(context, null) {
