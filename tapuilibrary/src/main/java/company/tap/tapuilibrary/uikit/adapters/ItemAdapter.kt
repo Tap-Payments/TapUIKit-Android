@@ -65,6 +65,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         descriptionTextView.text = "Lorem ipsum dolor sit amet, ex exercitation ullamco laboris."
         descriptionTextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
         holder.itemView.isActivated = isExpanded
+        holder.itemView.setBackgroundColor( Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor")))
 
         onItemClickAction(holder, position, isExpanded)
         showHideDescText(isExpanded, position, descText)
