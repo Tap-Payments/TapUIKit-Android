@@ -7,10 +7,10 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     app:cardCornerRadius="8dp"
+    app:cardElevation="8dp"
     app:cardPreventCornerOverlap="false"
     app:cardUseCompatPadding="true"
-    app:contentPadding="5dp"
-    app:elevation="8dp">
+    app:contentPadding="5dp">
 
     <ImageView
         android:id="@+id/deleteImageView2"
