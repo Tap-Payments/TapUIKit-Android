@@ -50,11 +50,11 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
             ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
         groupAction?.setTheme(groupActionTextViewTheme)
 
-//        linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-//        chipsRecycler?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        chipsRecycler?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
-        linearMainView.setBackgroundColor(Color.BLACK)
-        chipsRecycler?.setBackgroundColor(Color.BLACK)
+//        linearMainView.setBackgroundColor(Color.BLACK)
+//        chipsRecycler?.linearMainView?.setBackgroundColor(Color.BLACK)
 
 
         val shapeAppearanceModel = ShapeAppearanceModel()
@@ -66,6 +66,7 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
             .build()
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         chipsRecycler?.tapcard_Chip?.let { ViewCompat.setBackground(it, shapeDrawable) }
+        chipsRecycler?.tapcard_Chip?.setCardBackgroundColor(Color.BLACK)
 
 
 //        val chipTheme = ChipTheme()
