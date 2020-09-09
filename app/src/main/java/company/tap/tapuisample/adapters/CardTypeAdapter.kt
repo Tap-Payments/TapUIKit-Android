@@ -78,9 +78,14 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
             params.leftMargin = 28
             holder.itemView.layoutParams = params
         }
-        val tapCardChip3 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip3)
-        val tapCardChip1 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip1)
-        val tapCardChip2 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip2)
+
+        val tapCardChip1 by lazy { holder.itemView.findViewById<TapChip>(R.id.tapCardChip1) }
+        val tapCardChip2 by lazy { holder.itemView.findViewById<TapChip>(R.id.tapCardChip2) }
+        val tapCardChip3 by lazy { holder.itemView.findViewById<TapChip>(R.id.tapCardChip3) }
+
+//        val tapCardChip3 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip3)
+//        val tapCardChip1 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip1)
+//        val tapCardChip2 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip2)
 
 
 
@@ -162,28 +167,30 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
 
         val chipTheme = ChipTheme()
 
+//
+//        val shapeAppearanceModel = ShapeAppearanceModel()
+//            .toBuilder()
+//            .setAllCorners(
+//                CornerFamily.ROUNDED,
+//                (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat()
+//            )
+//            .build()
+//        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+//        tapCardChip1?.let { ViewCompat.setBackground(it, shapeDrawable) }
+//        tapCardChip2?.let { ViewCompat.setBackground(it, shapeDrawable) }
+//        tapCardChip3?.let { ViewCompat.setBackground(it, shapeDrawable) }
+//        tapCardChip1?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
+//        tapCardChip2?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
+//        tapCardChip3?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
 
-        val shapeAppearanceModel = ShapeAppearanceModel()
-            .toBuilder()
-            .setAllCorners(
-                CornerFamily.ROUNDED,
-                (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat()
-            )
-            .build()
-        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
-        tapCardChip1?.let { ViewCompat.setBackground(it, shapeDrawable) }
-        tapCardChip2?.let { ViewCompat.setBackground(it, shapeDrawable) }
-        tapCardChip3?.let { ViewCompat.setBackground(it, shapeDrawable) }
-        tapCardChip1?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-        tapCardChip2?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-        tapCardChip3?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-
-        tapCardChip1?.view?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
+        tapCardChip1?.setBackgroundColor(Color.BLACK)
+        tapCardChip2?.setBackgroundColor(Color.BLACK)
+        tapCardChip3?.setBackgroundColor(Color.BLACK)
 
 
-        tapCardChip1?.setTheme(chipTheme)
-        tapCardChip2?.setTheme(chipTheme)
-        tapCardChip3?.setTheme(chipTheme)
+//        tapCardChip1?.setTheme(chipTheme)
+//        tapCardChip2?.setTheme(chipTheme)
+//        tapCardChip3?.setTheme(chipTheme)
     }
 
     internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
