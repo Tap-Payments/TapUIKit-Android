@@ -52,8 +52,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     }
 
     private fun initView(holder: ItemHolder, position: Int) {
-        val descriptionTextView =
-            holder.itemView.findViewById<TapTextView>(R.id.description_textView)
+        val descriptionTextView = holder.itemView.findViewById<TapTextView>(R.id.description_textView)
         val descText = holder.itemView.findViewById<TapTextView>(R.id.show_description)
         val itemSeparator = holder.itemView.findViewById<TapSeparatorView>(R.id.itemseparator)
         val totalQuantity = holder.itemView.findViewById<TapTextView>(R.id.total_quantity)
@@ -62,6 +61,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         val mainViewLinear = holder.itemView.findViewById<LinearLayout>(R.id.mainViewLinear)
         val itemName = holder.itemView.findViewById<TapTextView>(R.id.item_title)
         val isExpanded = position == mExpandedPosition
+
         descriptionTextView.text = "Lorem ipsum dolor sit amet, ex exercitation ullamco laboris."
         descriptionTextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
         holder.itemView.isActivated = isExpanded
@@ -109,22 +109,22 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
     fun setTheme(descriptionTextView:TapTextView?,discount:TapTextView?,descText:TapTextView?,totalQuantity:TapTextView?,
                  totalAmount:TapTextView?,itemName:TapTextView?, itemSeparator: TapSeparatorView?,mainViewLinear :LinearLayout?) {
-        itemViewAdapter.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
+
+        itemViewAdapter.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor")))
         val descriptionTextViewTheme = TextViewTheme()
-        descriptionTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("itemsList.item.descLabelColor"))
-        descriptionTextViewTheme.backgroundColor =
-            Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor"))
+        descriptionTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("itemsList.item.descLabelColor"))
+        descriptionTextViewTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor"))
         descriptionTextViewTheme.textSize = ThemeManager.getFontSize("itemsList.item.descLabelFont")
         descriptionTextViewTheme.font = ThemeManager.getFontName("itemsList.item.descLabelFont")
         descriptionTextView?.setTheme(descriptionTextViewTheme)
         discount?.setTheme(descriptionTextViewTheme)
         descText?.setTheme(descriptionTextViewTheme)
-        mainViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor")))
+
+        mainViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor")))
 
         val totalQuantityTextViewTheme = TextViewTheme()
         totalQuantityTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("itemsList.backgroundColor"))
+            Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor"))
         totalQuantityTextViewTheme.textSize =
             ThemeManager.getFontSize("itemsList.item.count.countLabelFont")
         totalQuantityTextViewTheme.font =
@@ -151,8 +151,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
 
         val separatorViewTheme = SeparatorViewTheme()
-        separatorViewTheme.strokeColor =
-            Color.parseColor(ThemeManager.getValue("itemsList.separatorColor"))
+        separatorViewTheme.strokeColor = Color.parseColor(ThemeManager.getValue("itemsList.separatorColor"))
         itemSeparator?.setTheme(separatorViewTheme)
 
     }
