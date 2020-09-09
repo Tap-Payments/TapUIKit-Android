@@ -26,40 +26,43 @@ import kotlinx.android.synthetic.main.tap_chip_group.view.*
  **/
 open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
 
-    var groupName: TapTextView
-    var groupAction: TapTextView
-    var chipsRecycler: RecyclerView
-
     //Initialize views
     init {
         inflate(context, R.layout.tap_chip_group, this)
-        groupName = findViewById(R.id.group_name)
-        groupAction = findViewById(R.id.group_action)
-        chipsRecycler = findViewById(R.id.chip_recycler)
-        setTheme()
+        val groupName = findViewById<TapTextView>(R.id.group_name)
+        val groupAction = findViewById<TapTextView>(R.id.group_action)
+        val chipsRecycler = findViewById<RecyclerView>(R.id.chip_recycler)
+        setTheme(groupName,groupAction,chipsRecycler)
     }
 
-    fun setTheme(){
+    fun setTheme(groupName:TapTextView?,groupAction :TapTextView?, chipsRecycler:RecyclerView? ) {
         val groupNameTextViewTheme = TextViewTheme()
-        groupNameTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
-        groupNameTextViewTheme.font = ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
-        groupName.setTheme(groupNameTextViewTheme)
+        groupNameTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
+        groupNameTextViewTheme.font =
+            ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
+        groupName?.setTheme(groupNameTextViewTheme)
 
         val groupActionTextViewTheme = TextViewTheme()
-        groupActionTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
-        groupActionTextViewTheme.font = ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
-        groupAction.setTheme(groupActionTextViewTheme)
+        groupActionTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
+        groupActionTextViewTheme.font =
+            ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
+        groupAction?.setTheme(groupActionTextViewTheme)
 
         linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-        chipsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        chipsRecycler?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
 
         val shapeAppearanceModel = ShapeAppearanceModel()
             .toBuilder()
-            .setAllCorners(CornerFamily.ROUNDED, (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat())
+            .setAllCorners(
+                CornerFamily.ROUNDED,
+                (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat()
+            )
             .build()
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
-        ViewCompat.setBackground(chipsRecycler.tapcard_Chip, shapeDrawable)
+        chipsRecycler?.tapcard_Chip?.let { ViewCompat.setBackground(it, shapeDrawable) }
 
 
 //        val chipTheme = ChipTheme()
