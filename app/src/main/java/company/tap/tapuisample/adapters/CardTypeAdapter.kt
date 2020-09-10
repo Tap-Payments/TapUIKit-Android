@@ -21,6 +21,7 @@ import com.google.android.material.shape.ShapeAppearanceModel
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapChip
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.item_gopay.view.*
@@ -116,8 +117,6 @@ class CardTypeAdapter(
             /////////////////////////SAVED CARDS //////////////////////////////////////////////
             getItemViewType(position) == TYPE_SAVED_CARD -> {
                 if (selectedPosition == position) {
-//                    checkClicked(holder,position)
-
                     /**
                      * Method to draw bordered view
                      * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
@@ -133,7 +132,6 @@ class CardTypeAdapter(
                         (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
                         0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
                         parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
-//                    checkUnclicked(holder,position)
                 }
                     (holder as SavedViewHolder)
                 holder.itemView.setOnClickListener {
@@ -151,7 +149,6 @@ class CardTypeAdapter(
                         (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
                         7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
                         parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
-//                    checkClickedKnet(holder,position)
                 }
                 else{
 
@@ -159,7 +156,6 @@ class CardTypeAdapter(
                         (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
                         0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
                         parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
-//                    checkUnclickedKnet(holder,position)
                 }
                     (holder as SingleViewHolder)
                 holder.itemView.setOnClickListener {
@@ -176,16 +172,14 @@ class CardTypeAdapter(
                 if (selectedPosition == position) {
                     setBorderedView(holder.itemView,
                         (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-                        7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
-                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
-//                    checkClickedGoPay(holder,position)
+                        7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.backgroundColor")))
                 }
                 else{
                     setBorderedView(holder.itemView,
                         (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-                        0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
-                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
-//                    checkUnclickedGoPay(holder,position)
+                        0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.backgroundColor")))
                 }
                     (holder as GoPayViewHolder)
                 holder.itemView.setOnClickListener {

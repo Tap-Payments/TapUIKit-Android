@@ -51,7 +51,7 @@ All rights reserved.
  * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
  */
 
-fun setBorderedView(view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int) {
+fun setBorderedView(view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int, shadowColor: Int) {
     val shapeAppearanceModel = ShapeAppearanceModel()
         .toBuilder()
         .setAllCorners(CornerFamily.ROUNDED, cornerRadius)
@@ -59,5 +59,23 @@ fun setBorderedView(view: View, cornerRadius:Float,strokeWidth: Float, strokeCol
     val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
     ViewCompat.setBackground(view, shapeDrawable)
     shapeDrawable.setStroke(strokeWidth, strokeColor)
+    shapeDrawable.setShadowColor(shadowColor)
     shapeDrawable.setTint(tintColor)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
