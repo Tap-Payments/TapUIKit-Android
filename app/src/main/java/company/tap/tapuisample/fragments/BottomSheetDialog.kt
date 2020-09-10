@@ -4,6 +4,7 @@ package company.tap.tapuisample.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -22,6 +23,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Transition
@@ -162,6 +164,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
         setSeparatorTheme()
         mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+
+
+
+
 
        // checkboxString = getString(R.string.nfc_text)
         //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
@@ -370,6 +377,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        groupName?.setTextColor(R.color.darker_gray)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+
+        val divider = DividerItemDecoration(context,
+            DividerItemDecoration.HORIZONTAL)
+        divider.setDrawable(ShapeDrawable().apply {
+            intrinsicWidth = 15
+            paint.color = Color.TRANSPARENT }) // note: currently (support version 28.0.0), we can not use tranparent color here, if we use transparent, we still see a small divider line. So if we want to display transparent space, we can set color = background color or we can create a custom ItemDecoration instead of DividerItemDecoration.
+        chipRecycler.addItemDecoration(divider)
+
         chipRecycler.adapter = CardTypeAdapter(paymentsList, this)
         delImageView1 = tapChipgrp?.findViewById(R.id.deleteImageView1)
         delImageView2 = tapChipgrp?.findViewById(R.id.deleteImageView2)

@@ -5,20 +5,17 @@
     android:id="@+id/tapCardChip1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     app:cardBackgroundColor="@color/glowingShadow"
     app:cardCornerRadius="8dp"
+    android:layout_gravity="center"
     app:cardElevation="8dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="5dp">
+    app:contentPadding="7dp">
 
     <ImageView
         android:id="@+id/deleteImageView1"
         android:layout_width="20dp"
         android:layout_height="12dp"
         android:layout_gravity="right|top"
-        android:elevation="15dp"
         android:src="@drawable/btn_close_normal"
         android:visibility="visible" />
 

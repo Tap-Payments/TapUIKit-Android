@@ -2,12 +2,16 @@ package company.tap.tapuisample.adapters
 
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Color.*
+import android.graphics.ColorMatrixColorFilter
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.shape.CornerFamily
@@ -15,6 +19,7 @@ import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ChipTheme
+import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
@@ -43,8 +48,7 @@ class CardTypeAdapter(
         val view: View
         return when (viewType) {
             TYPE_SAVED_CARD -> {
-                view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_saved_card, parent, false)
+                view = LayoutInflater.from(parent.context).inflate(R.layout.item_saved_card, parent, false)
                 SavedViewHolder(view)
             }
             TYPE_REDIRECT -> {
@@ -110,22 +114,13 @@ class CardTypeAdapter(
     private fun checkPosition(holder: RecyclerView.ViewHolder, position: Int) {
         when {
             getItemViewType(position) == TYPE_SAVED_CARD -> {
-                checkTYPE_SAVED_CARDClicked(holder,position)
-
                 if (selectedPosition == position) {
-                    checkTYPE_SAVED_CARDClicked(holder,position)
-
-//                    checkTYPE_SAVED_CARDClicked(holder,position)
-
-//                    holder.itemView.setBackgroundResource(R.drawable.border_shadow)
+                    checkClicked(holder,position)
                 } else {
-//                    holder.itemView.setBackgroundResource(R.drawable.border_unclick)
-
+                    checkUnclicked(holder,position)
                 }
                     (holder as SavedViewHolder)
                 holder.itemView.setOnClickListener {
-                    checkTYPE_SAVED_CARDClicked(holder,position)
-
                     selectedPosition = position
                     notifyDataSetChanged()
                 }
@@ -135,12 +130,11 @@ class CardTypeAdapter(
             getItemViewType(position) == TYPE_REDIRECT -> {
 
                 if (selectedPosition == position) {
-                    setTYPE_REDIRECT(holder,position)
-
-//                    holder.itemView.setBackgroundResource(R.drawable.border_shadow)
+                    checkClickedKnet(holder,position)
                 }
-                else
-//                    holder.itemView.setBackgroundResource(R.drawable.border_unclick)
+                else{
+                    checkUnclickedKnet(holder,position)
+                }
                     (holder as SingleViewHolder)
                 holder.itemView.setOnClickListener {
                     onCardSelectedActionListener?.onCardSelectedAction(true)
@@ -151,16 +145,14 @@ class CardTypeAdapter(
             }
 
             /////////////////////////////////////////////////////////////////////////////////
-
             else -> {
 
                 if (selectedPosition == position) {
-//                    checkTYPE_SAVED_CARD(holder,position)
-
-//                    holder.itemView.setBackgroundResource(R.drawable.border_gopay)
+                    checkClickedGoPay(holder,position)
                 }
-                else
-//                    holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
+                else{
+                    checkUnclickedGoPay(holder,position)
+                }
                     (holder as GoPayViewHolder)
                 holder.itemView.setOnClickListener {
                     selectedPosition = position
@@ -169,57 +161,76 @@ class CardTypeAdapter(
                 }
             }
         }
-
     }
 
-    fun checkTYPE_SAVED_CARDClicked(holder: RecyclerView.ViewHolder, position: Int){
-        val shapeAppearanceModel = ShapeAppearanceModel()
-            .toBuilder()
-            .setAllCorners(
-                CornerFamily.ROUNDED,
-                30f
-            )
-            .build()
+    //// set layout of saved cards when click
+    @SuppressLint("ResourceType")
+    fun checkClicked(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
-        val chipTheme = ChipTheme()
-        chipTheme.chipHeight= 20.0
-        chipTheme.cardElevation = 50
-        chipTheme.backgroundColor = Color.WHITE
+        shapeDrawable.setStroke(7.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, R.color.bg_gray) }
         val tapCardChip2 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip2)
-        tapCardChip2.setTheme(chipTheme)
+        tapCardChip2.minimumHeight = 10
     }
 
-
-    fun checkTYPE_SAVED_CARDUnclicked(holder: RecyclerView.ViewHolder, position: Int){
-        val shapeAppearanceModel = ShapeAppearanceModel()
-            .toBuilder()
-            .setAllCorners(
-                CornerFamily.ROUNDED,
-                (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat()
-            )
-            .build()
+    //// set layout of saved cards when unclick
+    @SuppressLint("ResourceType")
+    fun checkUnclicked(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
-        val chipTheme = ChipTheme()
-//        chipTheme.chipHeight= ThemeManager.getValue("horizontalList.chips.savedCardChip.")
-        chipTheme.backgroundColor = Color.BLUE
-        val tapCardChip2 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip2)
-        tapCardChip2.setTheme(chipTheme)
+        shapeDrawable.setStroke(0.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, WHITE) }
     }
-
-
-
-
-    fun setTYPE_REDIRECT(holder: RecyclerView.ViewHolder, position: Int){
-        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat()).build()
+    //// set layout of saved cards when click
+    @SuppressLint("ResourceType")
+    fun checkClickedKnet(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
-        val chipTheme = ChipTheme()
-        chipTheme.backgroundColor = Color.WHITE
+        shapeDrawable.setStroke(7.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, GREEN) }
         val tapCardChip3 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip3)
-        tapCardChip3.setTheme(chipTheme)
+        tapCardChip3.minimumHeight = 10
     }
+
+    //// set layout of saved cards when unclick
+    @SuppressLint("ResourceType")
+    fun checkUnclickedKnet(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
+        shapeDrawable.setStroke(0.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, WHITE) }
+    }
+
+
+
+    @SuppressLint("ResourceType")
+    fun checkClickedGoPay(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
+        shapeDrawable.setStroke(7.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, GREEN) }
+        val tapCardChip1 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip1)
+        tapCardChip1.minimumHeight = 10
+    }
+
+    //// set layout of saved cards when unclick
+    @SuppressLint("ResourceType")
+    fun checkUnclickedGoPay(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
+        shapeDrawable.setStroke(0.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, WHITE) }
+    }
+
+
+
 
     class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

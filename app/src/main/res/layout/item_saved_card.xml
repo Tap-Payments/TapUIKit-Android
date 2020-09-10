@@ -5,19 +5,18 @@
     android:id="@+id/tapCardChip2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     app:cardCornerRadius="8dp"
+    android:layout_gravity="center"
     app:cardElevation="8dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="5dp">
+    android:layout_marginEnd="5dp"
+    app:contentPadding="7dp">
+
 
     <ImageView
         android:id="@+id/deleteImageView2"
         android:layout_width="20dp"
         android:layout_height="12dp"
         android:layout_gravity="right|top"
-        android:elevation="15dp"
         android:src="@drawable/btn_close_normal"
         android:visibility="visible" />
 
@@ -26,9 +25,9 @@
         android:layout_height="40dp"
         android:orientation="horizontal"
         android:paddingStart="12dp"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:paddingEnd="12dp"
-        android:paddingBottom="10dp">
+        android:paddingBottom="5dp">
 
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
             android:id="@+id/imageView_amex"
