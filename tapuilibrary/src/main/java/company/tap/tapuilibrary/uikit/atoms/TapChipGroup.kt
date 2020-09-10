@@ -25,13 +25,14 @@ import kotlinx.android.synthetic.main.tap_chip_group.view.*
  *  @param attrs The attributes of the XML Button tag being used to inflate the view.
  **/
 open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+    val groupName by lazy { findViewById<TapTextView>(R.id.group_name) }
+    val groupAction by lazy { findViewById<TapTextView>(R.id.group_name) }
+    val chipsRecycler by lazy { findViewById<RecyclerView>(R.id.chip_recycler) }
+
 
     //Initialize views
     init {
         inflate(context, R.layout.tap_chip_group, this)
-        val groupName = findViewById<TapTextView>(R.id.group_name)
-        val groupAction = findViewById<TapTextView>(R.id.group_action)
-        val chipsRecycler = findViewById<RecyclerView>(R.id.chip_recycler)
         setTheme(groupName,groupAction,chipsRecycler)
     }
 
@@ -53,25 +54,5 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
         linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         chipsRecycler?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
-//        linearMainView.setBackgroundColor(Color.BLACK)
-//        chipsRecycler?.linearMainView?.setBackgroundColor(Color.BLACK)
-
-
-        val shapeAppearanceModel = ShapeAppearanceModel()
-            .toBuilder()
-            .setAllCorners(
-                CornerFamily.ROUNDED,
-                (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat()
-            )
-            .build()
-        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
-        chipsRecycler?.tapcard_Chip?.let { ViewCompat.setBackground(it, shapeDrawable) }
-        chipsRecycler?.tapcard_Chip?.setCardBackgroundColor(Color.BLACK)
-
-
-//        val chipTheme = ChipTheme()
-//        chipTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor"))
-//        chipTheme.chipHeight = 100.0
-//        chipsRecycler.tapcard_Chip.setTheme(chipTheme)
     }
 }

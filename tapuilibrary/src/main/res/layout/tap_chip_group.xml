@@ -53,6 +53,7 @@
         android:nestedScrollingEnabled="false"
         android:orientation="horizontal"
         android:paddingTop="@dimen/margin_basic_6dp"
+        android:layout_gravity="center"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
 </LinearLayout>

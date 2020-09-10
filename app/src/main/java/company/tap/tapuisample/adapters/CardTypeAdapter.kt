@@ -2,12 +2,16 @@ package company.tap.tapuisample.adapters
 
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Color.*
+import android.graphics.ColorMatrixColorFilter
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.shape.CornerFamily
@@ -15,7 +19,9 @@ import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ChipTheme
+import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapChip
+import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.item_gopay.view.*
@@ -28,12 +34,15 @@ All rights reserved.
  **/
 
 @Suppress("PrivatePropertyName")
-class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCardSelectedActionListener: OnCardSelectedActionListener? = null) :
+class CardTypeAdapter(
+    private val arrayList: ArrayList<Int>,
+    private val onCardSelectedActionListener: OnCardSelectedActionListener? = null
+) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_SAVED_CARD = 1
     private val TYPE_REDIRECT = 2
     private val TYPE_GO_PAY = 3
-    private var selectedPosition = -1
+    private var selectedPosition = 0
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -44,11 +53,13 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
                 SavedViewHolder(view)
             }
             TYPE_REDIRECT -> {
-                view = LayoutInflater.from(parent.context).inflate(R.layout.item_knet, parent, false)
+                view =
+                    LayoutInflater.from(parent.context).inflate(R.layout.item_knet, parent, false)
                 SingleViewHolder(view)
             }
             else -> {
-                view = LayoutInflater.from(parent.context).inflate(R.layout.item_gopay, parent, false)
+                view =
+                    LayoutInflater.from(parent.context).inflate(R.layout.item_gopay, parent, false)
                 GoPayViewHolder(view)
             }
         }
@@ -73,44 +84,24 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         println("position printed: $position")
-        if (position == 0){
+        if (position == 0) {
             val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
             params.leftMargin = 28
             holder.itemView.layoutParams = params
         }
 
-        val tapCardChip1 by lazy { holder.itemView.findViewById<TapChip>(R.id.tapCardChip1) }
-        val tapCardChip2 by lazy { holder.itemView.findViewById<TapChip>(R.id.tapCardChip2) }
-        val tapCardChip3 by lazy { holder.itemView.findViewById<TapChip>(R.id.tapCardChip3) }
-
-//        val tapCardChip3 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip3)
-//        val tapCardChip1 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip1)
-//        val tapCardChip2 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip2)
-
-
-
-
-
-//        if (holder.itemViewType == TYPE_SAVED_CARD){
-//            val chipTheme = ChipTheme()
-//            chipTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor"))
-//            chipTheme.chipHeight = 100.0
-//            tapCardChip2?.setTheme(chipTheme)
-//        }
-
-        setTheme(tapCardChip1,tapCardChip2,tapCardChip3)
-        checkPosition(holder,position)
+        checkPosition(holder, position)
         setOnClickActions(holder)
 
     }
 
-    private fun setOnClickActions(holder: RecyclerView.ViewHolder){
+    private fun setOnClickActions(holder: RecyclerView.ViewHolder) {
 
         holder.itemView.deleteImageView1?.setOnClickListener {
-            onCardSelectedActionListener?.onDeleteIconClicked(true,holder.itemView.id)
+            onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
         }
         holder.itemView.deleteImageView2?.setOnClickListener {
-            onCardSelectedActionListener?.onDeleteIconClicked(true,holder.itemView.id)
+            onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
         }
         holder.itemView.deleteImageView3?.setOnClickListener {
             onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
@@ -121,25 +112,32 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
     }
 
 
-    private fun checkPosition(holder: RecyclerView.ViewHolder, position: Int){
+    private fun checkPosition(holder: RecyclerView.ViewHolder, position: Int) {
         when {
+            /////////////////////////SAVED CARDS //////////////////////////////////////////////
             getItemViewType(position) == TYPE_SAVED_CARD -> {
                 if (selectedPosition == position) {
-                    holder.itemView.setBackgroundResource(R.drawable.border_shadow)
-                } else
-                    holder.itemView.setBackgroundResource(R.drawable.border_unclick)
-                (holder as SavedViewHolder)
+                    checkClicked(holder,position)
+                } else {
+                    checkUnclicked(holder,position)
+                }
+                    (holder as SavedViewHolder)
                 holder.itemView.setOnClickListener {
                     selectedPosition = position
                     notifyDataSetChanged()
                 }
             }
+
+            //////////////////////////////KNET///////////////////////////////////////////////////
             getItemViewType(position) == TYPE_REDIRECT -> {
-                if (selectedPosition == position)
-                    holder.itemView.setBackgroundResource(R.drawable.border_shadow)
-                else
-                    holder.itemView.setBackgroundResource(R.drawable.border_unclick)
-                (holder as SingleViewHolder)
+
+                if (selectedPosition == position) {
+                    checkClickedKnet(holder,position)
+                }
+                else{
+                    checkUnclickedKnet(holder,position)
+                }
+                    (holder as SingleViewHolder)
                 holder.itemView.setOnClickListener {
                     onCardSelectedActionListener?.onCardSelectedAction(true)
                     selectedPosition = position
@@ -147,12 +145,17 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
                 }
 
             }
+
+            ////////////////////////////Gopay///////////////////////////////////////
             else -> {
-                if (selectedPosition == position)
-                    holder.itemView.setBackgroundResource(R.drawable.border_gopay)
-                else
-                    holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
-                (holder as GoPayViewHolder)
+
+                if (selectedPosition == position) {
+                    checkClickedGoPay(holder,position)
+                }
+                else{
+                    checkUnclickedGoPay(holder,position)
+                }
+                    (holder as GoPayViewHolder)
                 holder.itemView.setOnClickListener {
                     selectedPosition = position
                     onCardSelectedActionListener?.onCardSelectedAction(true)
@@ -160,40 +163,78 @@ class CardTypeAdapter (private val arrayList: ArrayList<Int>, private val onCard
                 }
             }
         }
-
     }
 
-    private fun setTheme(tapCardChip1:TapChip?, tapCardChip2 :TapChip?, tapCardChip3:TapChip?){
-
-        val chipTheme = ChipTheme()
-
-//
-//        val shapeAppearanceModel = ShapeAppearanceModel()
-//            .toBuilder()
-//            .setAllCorners(
-//                CornerFamily.ROUNDED,
-//                (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat()
-//            )
-//            .build()
-//        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
-//        tapCardChip1?.let { ViewCompat.setBackground(it, shapeDrawable) }
-//        tapCardChip2?.let { ViewCompat.setBackground(it, shapeDrawable) }
-//        tapCardChip3?.let { ViewCompat.setBackground(it, shapeDrawable) }
-//        tapCardChip1?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-//        tapCardChip2?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-//        tapCardChip3?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-
-        tapCardChip1?.setBackgroundColor(Color.BLACK)
-        tapCardChip2?.setBackgroundColor(Color.BLACK)
-        tapCardChip3?.setBackgroundColor(Color.BLACK)
-
-
-//        tapCardChip1?.setTheme(chipTheme)
-//        tapCardChip2?.setTheme(chipTheme)
-//        tapCardChip3?.setTheme(chipTheme)
+    //// set layout of saved cards when click
+    @SuppressLint("ResourceType")
+    fun checkClicked(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
+        shapeDrawable.setStroke((ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(), parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")))
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it,Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor"))) }
+        val tapCardChip2 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip2)
+        tapCardChip2.minimumHeight = 10
     }
 
-    internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    //// set layout of saved cards when unclick
+    @SuppressLint("ResourceType")
+    fun checkUnclicked(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it,Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor"))) }
+    }
+    //// set layout of saved cards when click
+    @SuppressLint("ResourceType")
+    fun checkClickedKnet(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
+        shapeDrawable.setStroke(7.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, R.color.bg_gray) }
+        val tapCardChip3 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip3)
+        tapCardChip3.minimumHeight = 10
+    }
+
+    //// set layout of saved cards when unclick
+    @SuppressLint("ResourceType")
+    fun checkUnclickedKnet(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
+        shapeDrawable.setStroke(0.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, R.color.bg_gray) }
+    }
+
+
+
+    @SuppressLint("ResourceType")
+    fun checkClickedGoPay(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
+        shapeDrawable.setStroke(7.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, R.color.bg_gray) }
+        val tapCardChip1 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip1)
+        tapCardChip1.minimumHeight = 10
+    }
+
+    //// set layout of saved cards when unclick
+    @SuppressLint("ResourceType")
+    fun checkUnclickedGoPay(holder: RecyclerView.ViewHolder, position: Int){
+        val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
+        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+        holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
+        shapeDrawable.setStroke(0.0f, GREEN)
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, parseColor(ThemeManager.getValue(""))) }
+    }
+
+
+
+
+    class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
 
     internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
