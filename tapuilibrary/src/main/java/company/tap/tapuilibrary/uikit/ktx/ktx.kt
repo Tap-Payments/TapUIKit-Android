@@ -1,6 +1,5 @@
 package company.tap.tapuilibrary.uikit.ktx
 
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
@@ -14,7 +13,6 @@ import com.bumptech.glide.request.RequestListener
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
-import company.tap.tapuilibrary.themekit.ThemeManager
 
 
 /**
