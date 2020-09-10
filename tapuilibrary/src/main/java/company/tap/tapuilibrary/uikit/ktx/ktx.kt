@@ -1,13 +1,20 @@
 package company.tap.tapuilibrary.uikit.ktx
 
+import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.ImageView
+import androidx.core.view.ViewCompat
 import androidx.vectordrawable.graphics.drawable.Animatable2Compat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
+import com.google.android.material.shape.CornerFamily
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
+import company.tap.tapuilibrary.themekit.ThemeManager
 
 
 /**
@@ -38,4 +45,21 @@ All rights reserved.
         }
     }) .into(image)
     return image
+}
+
+
+/**
+ * Method to draw bordered view
+ * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
+ */
+
+fun setBorderedView(view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int) {
+    val shapeAppearanceModel = ShapeAppearanceModel()
+        .toBuilder()
+        .setAllCorners(CornerFamily.ROUNDED, cornerRadius)
+        .build()
+    val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+    ViewCompat.setBackground(view, shapeDrawable)
+    shapeDrawable.setStroke(strokeWidth, strokeColor)
+    shapeDrawable.setTint(tintColor)
 }

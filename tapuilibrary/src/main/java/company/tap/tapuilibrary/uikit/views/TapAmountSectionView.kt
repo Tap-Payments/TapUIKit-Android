@@ -15,6 +15,7 @@ import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapButton
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import kotlinx.android.synthetic.main.tap_main_amount.view.*
 import kotlinx.android.synthetic.main.tap_main_amount.view.constraint
 import kotlinx.android.synthetic.main.tap_main_header.view.*
@@ -72,12 +73,8 @@ class TapAmountSectionView: LinearLayout {
         buttonTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
         buttonTheme.cornerRadius = ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")
         itemCount.setTheme(buttonTheme)
-        val shapeAppearanceModel = ShapeAppearanceModel()
-            .toBuilder()
-            .setAllCorners(CornerFamily.ROUNDED, (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")as Int).toFloat())
-            .build()
-        val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
-        ViewCompat.setBackground(itemCount, shapeDrawable)
+
+        setBorderedView(itemCount,(ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")as Int).toFloat(),0.0f,ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner"),Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
 
         val currentCurrencyTextViewTheme = TextViewTheme()
         currentCurrencyTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.originalAmountLabelColor"))

@@ -3,6 +3,7 @@ package company.tap.tapuisample.adapters
 
 import android.annotation.SuppressLint
 import android.content.res.ColorStateList
+import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.Color.*
 import android.graphics.ColorMatrixColorFilter
@@ -22,6 +23,7 @@ import company.tap.tapuilibrary.themekit.theme.ChipTheme
 import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.item_gopay.view.*
@@ -117,9 +119,24 @@ class CardTypeAdapter(
             /////////////////////////SAVED CARDS //////////////////////////////////////////////
             getItemViewType(position) == TYPE_SAVED_CARD -> {
                 if (selectedPosition == position) {
-                    checkClicked(holder,position)
+//                    checkClicked(holder,position)
+
+                    /**
+                     * Method to draw bordered view
+                     * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
+                     */
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+
                 } else {
-                    checkUnclicked(holder,position)
+
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+//                    checkUnclicked(holder,position)
                 }
                     (holder as SavedViewHolder)
                 holder.itemView.setOnClickListener {
@@ -132,10 +149,20 @@ class CardTypeAdapter(
             getItemViewType(position) == TYPE_REDIRECT -> {
 
                 if (selectedPosition == position) {
-                    checkClickedKnet(holder,position)
+
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+//                    checkClickedKnet(holder,position)
                 }
                 else{
-                    checkUnclickedKnet(holder,position)
+
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+//                    checkUnclickedKnet(holder,position)
                 }
                     (holder as SingleViewHolder)
                 holder.itemView.setOnClickListener {
@@ -150,10 +177,18 @@ class CardTypeAdapter(
             else -> {
 
                 if (selectedPosition == position) {
-                    checkClickedGoPay(holder,position)
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+//                    checkClickedGoPay(holder,position)
                 }
                 else{
-                    checkUnclickedGoPay(holder,position)
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+//                    checkUnclickedGoPay(holder,position)
                 }
                     (holder as GoPayViewHolder)
                 holder.itemView.setOnClickListener {
@@ -172,7 +207,9 @@ class CardTypeAdapter(
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
         shapeDrawable.setStroke((ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(), parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")))
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it,Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor"))) }
+//        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it,parseColor("#ff1c1c1e")) }
+        shapeDrawable.setTint(Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+
         val tapCardChip2 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip2)
         tapCardChip2.minimumHeight = 10
     }
@@ -183,7 +220,10 @@ class CardTypeAdapter(
         val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it,Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor"))) }
+//        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor"))) }
+        shapeDrawable.setTint(Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+
+        //        someLayout.getBackground().setColorFilter(Color.parseColor("#ff8800"), PorterDuff.Mode.SRC_ATOP);
     }
     //// set layout of saved cards when click
     @SuppressLint("ResourceType")
@@ -204,7 +244,8 @@ class CardTypeAdapter(
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
         shapeDrawable.setStroke(0.0f, GREEN)
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, R.color.bg_gray) }
+        shapeDrawable.setTint(Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+
     }
 
 
@@ -227,7 +268,7 @@ class CardTypeAdapter(
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
         shapeDrawable.setStroke(0.0f, GREEN)
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, parseColor(ThemeManager.getValue(""))) }
+        shapeDrawable.setTint(Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
     }
 
 
