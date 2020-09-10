@@ -21,6 +21,7 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ChipTheme
 import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapChip
+import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.item_gopay.view.*
@@ -41,7 +42,7 @@ class CardTypeAdapter(
     private val TYPE_SAVED_CARD = 1
     private val TYPE_REDIRECT = 2
     private val TYPE_GO_PAY = 3
-    private var selectedPosition = -1
+    private var selectedPosition = 0
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -113,6 +114,7 @@ class CardTypeAdapter(
 
     private fun checkPosition(holder: RecyclerView.ViewHolder, position: Int) {
         when {
+            /////////////////////////SAVED CARDS //////////////////////////////////////////////
             getItemViewType(position) == TYPE_SAVED_CARD -> {
                 if (selectedPosition == position) {
                     checkClicked(holder,position)
@@ -126,7 +128,7 @@ class CardTypeAdapter(
                 }
             }
 
-            /////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////KNET///////////////////////////////////////////////////
             getItemViewType(position) == TYPE_REDIRECT -> {
 
                 if (selectedPosition == position) {
@@ -144,7 +146,7 @@ class CardTypeAdapter(
 
             }
 
-            /////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////Gopay///////////////////////////////////////
             else -> {
 
                 if (selectedPosition == position) {
@@ -169,8 +171,8 @@ class CardTypeAdapter(
         val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
-        shapeDrawable.setStroke(7.0f, GREEN)
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, R.color.bg_gray) }
+        shapeDrawable.setStroke((ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(), parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")))
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it,Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor"))) }
         val tapCardChip2 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip2)
         tapCardChip2.minimumHeight = 10
     }
@@ -181,8 +183,7 @@ class CardTypeAdapter(
         val shapeAppearanceModel = ShapeAppearanceModel().toBuilder().setAllCorners(CornerFamily.ROUNDED, 30f).build()
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
-        shapeDrawable.setStroke(0.0f, GREEN)
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, WHITE) }
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it,Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor"))) }
     }
     //// set layout of saved cards when click
     @SuppressLint("ResourceType")
@@ -191,7 +192,7 @@ class CardTypeAdapter(
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
         shapeDrawable.setStroke(7.0f, GREEN)
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, GREEN) }
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, R.color.bg_gray) }
         val tapCardChip3 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip3)
         tapCardChip3.minimumHeight = 10
     }
@@ -203,7 +204,7 @@ class CardTypeAdapter(
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
         shapeDrawable.setStroke(0.0f, GREEN)
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, WHITE) }
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, R.color.bg_gray) }
     }
 
 
@@ -214,7 +215,7 @@ class CardTypeAdapter(
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
         shapeDrawable.setStroke(7.0f, GREEN)
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, GREEN) }
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, R.color.bg_gray) }
         val tapCardChip1 = holder.itemView.findViewById<TapChip>(R.id.tapCardChip1)
         tapCardChip1.minimumHeight = 10
     }
@@ -226,7 +227,7 @@ class CardTypeAdapter(
         val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
         holder.itemView.let { ViewCompat.setBackground(it, shapeDrawable) }
         shapeDrawable.setStroke(0.0f, GREEN)
-        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, WHITE) }
+        shapeDrawable.fillColor = context?.let { ContextCompat.getColorStateList(it, parseColor(ThemeManager.getValue(""))) }
     }
 
 
