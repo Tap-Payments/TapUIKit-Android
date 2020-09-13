@@ -50,6 +50,7 @@ import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
 import company.tap.tapuilibrary.uikit.fragment.CurrencyViewFragment
+import company.tap.tapuilibrary.uikit.fragment.NFCFragment
 import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
@@ -256,7 +257,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         }
        // alertMessage?.visibility = View.GONE
         nfcButton?.setOnClickListener {
-            val nfcFragment = company.tap.tapuilibrary.uikit.fragment.NFCFragment()
+            val nfcFragment = NFCFragment()
             tabLayout.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
