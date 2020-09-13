@@ -97,7 +97,7 @@ class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCa
 
 
 
-  
+
 
 
 

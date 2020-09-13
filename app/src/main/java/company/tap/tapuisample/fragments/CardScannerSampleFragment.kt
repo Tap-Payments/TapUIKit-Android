@@ -24,7 +24,7 @@ import company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
 import company.tap.tapuisample.R
 
 import jp.wasabeef.blurry.Blurry
-import kotlinx.android.synthetic.main.custom_card_view.*
+
 
 /**
  * Created by AhlaamK on 7/6/20.
@@ -64,13 +64,7 @@ class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallB
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default","Hints","scan")
 
-        FrameManager.getInstance().setFrameColor(Color.WHITE)
-        // blurLayout = view.findViewById(R.id.blurLayout)
-        view.post(Runnable {
 
-            Blurry.with(context).radius(25).sampling(2).onto(cardscan_view)
-            cardscan_view.bringChildToFront(inline_container)
-        })
         return view
 
     }
