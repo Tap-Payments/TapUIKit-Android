@@ -1030,11 +1030,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     fun setTapMobileInputViewTheme(){
-//       val editTextTheme = EditTextTheme()
-//        editTextTheme.backgroundTint = Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor"))
-//        editTextTheme.textColorHint = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
-//        editTextTheme.textSize = ThemeManager.getFontSize("phoneCard.textFields.font")
-//        tapMobileInputView.setTheme(editTextTheme)
+       val editTextTheme = EditTextTheme()
+        editTextTheme.backgroundTint = Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor"))
+        editTextTheme.textColorHint = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+        editTextTheme.textSize = ThemeManager.getFontSize("phoneCard.textFields.font")
+        tapMobileInputView.setTheme(editTextTheme)
+        tapMobileInputView.mobileNumber.setBackgroundColor(Color.RED)
+//        tapMobileInputView.mobileImage.setBackgroundColor(Color.RED)
+
     }
 }
 
