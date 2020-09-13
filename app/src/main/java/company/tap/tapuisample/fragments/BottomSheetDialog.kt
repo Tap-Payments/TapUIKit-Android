@@ -221,8 +221,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private fun initializeCardForm(view: View) {
         cardScannerBtn = view.findViewById(R.id.card_scanner_button)
         nfcButton = view.findViewById(R.id.nfc_button)
-        mobileNumberEditText = view.findViewById(R.id.mobile_number)
-        alertMessage = view.findViewById(R.id.textview_alert_message)
+        mobileNumberEditText = view.findViewById(R.id.mobileNumber)
+        alertMessage = view.findViewById(R.id.textViewAlertMessage)
         clearView = view.findViewById(R.id.clear_text)
         linearLayoutPay = view.findViewById(R.id.linear_paylayout)
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
