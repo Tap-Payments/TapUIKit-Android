@@ -27,7 +27,8 @@ import company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
 import company.tap.tapuisample.R
 import company.tap.tapuilibrary.uikit.views.TextDrawable
 import jp.wasabeef.blurry.Blurry
-import kotlinx.android.synthetic.main.custom_card_view.*
+import kotlinx.android.synthetic.main.custom_card_view_example.*
+
 
 /**
  * Created by AhlaamK on 7/6/20.
