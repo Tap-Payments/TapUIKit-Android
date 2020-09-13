@@ -21,7 +21,7 @@ import company.tap.tapuilibrary.uikit.interfaces.TapView
 class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<EditTextTheme> {
-    val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
+    val mobileNumber by lazy { findViewById<TapTextView>(R.id.mobileNumber) }
 
 
     init {
