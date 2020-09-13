@@ -65,8 +65,8 @@ dependencies {
     implementation 'io.alterac.blurkit:blurkit:1.1.0'
     implementation 'androidx.biometric:biometric:1.0.1'
     implementation "androidx.constraintlayout:constraintlayout:2.0.1"
-    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.0.53'
-    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.0.53'
+    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.0.54'
+    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.0.54'
 //    implementation 'com.github.Tap-Payments:TapFontsKit-Android:1.0.4'
 //    api 'com.github.Tap-Payments:TapThemeManger-Android:0.1.0.2'
 //    implementation 'com.github.Tap-Payments:TapThemeManger-Android:0.1.0.2'
