@@ -17,18 +17,20 @@ All rights reserved.
 /**
  * TapItemsView  is a molecule for setting Amount, Description and Quantity.
  */
-class TapListItemView:LinearLayout {
-     var itemTitle: TapTextView
-     var totalAmount: TapTextView
-     var totalQuantity: TapTextView
-     var itemAmount: TapTextView
+class TapListItemView : LinearLayout {
+    var itemTitle: TapTextView
+    var totalAmount: TapTextView
+    var totalQuantity: TapTextView
+    var itemAmount: TapTextView
     private var itemViewDataSource: ItemViewDataSource? = null
+
     /**
      * Simple constructor to use when creating a TapItemsView from code.
      *  @param context The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
      **/
     constructor(context: Context) : super(context)
+
     /**
      *  @param context The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
@@ -36,6 +38,7 @@ class TapListItemView:LinearLayout {
      *
      */
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+
     /**
      *  @param context The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
@@ -50,6 +53,7 @@ class TapListItemView:LinearLayout {
         attrs,
         defStyleAttr
     )
+
     init {
         inflate(context, R.layout.tap_items_view_, this)
         itemTitle = findViewById(R.id.item_title)

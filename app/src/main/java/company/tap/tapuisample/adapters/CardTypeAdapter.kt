@@ -2,12 +2,15 @@ package company.tap.tapuisample.adapters
 
 
 import android.annotation.SuppressLint
+import android.graphics.Color.parseColor
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.item_gopay.view.*
@@ -107,17 +110,20 @@ class CardTypeAdapter(
                      * Method to draw bordered view
                      * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
                      */
-//                    setBorderedView(holder.itemView,
-//                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-//                        7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        7.0f,
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
 
                 } else {
-//
-//                    setBorderedView(holder.itemView,
-//                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-//                        0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        0.0f,
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
                 }
                     (holder as SavedViewHolder)
                 holder.itemView.setOnClickListener {
@@ -131,17 +137,20 @@ class CardTypeAdapter(
 
                 if (selectedPosition == position) {
 
-//                    setBorderedView(holder.itemView,
-//                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-//                        7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        7.0f,
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
                 }
                 else{
-
-//                    setBorderedView(holder.itemView,
-//                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-//                        0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        0.0f,
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
                 }
                     (holder as SingleViewHolder)
                 holder.itemView.setOnClickListener {
@@ -156,16 +165,18 @@ class CardTypeAdapter(
             else -> {
 
                 if (selectedPosition == position) {
-//                    setBorderedView(holder.itemView,
-//                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-//                        7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.backgroundColor")))
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        7.0f,parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.backgroundColor")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.backgroundColor")))
                 }
                 else{
-//                    setBorderedView(holder.itemView,
-//                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-//                        0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.backgroundColor")))
+                    setBorderedView(holder.itemView,
+                        (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                        0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.backgroundColor")),
+                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.backgroundColor")))
                 }
                     (holder as GoPayViewHolder)
                 holder.itemView.setOnClickListener {

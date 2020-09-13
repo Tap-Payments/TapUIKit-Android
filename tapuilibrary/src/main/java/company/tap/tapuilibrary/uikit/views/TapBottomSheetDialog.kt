@@ -25,7 +25,7 @@ import company.tap.tapuilibrary.uikit.models.DialogConfigurations
 
 /**
  *
- * Created by Mario Gamal on 6/3/20
+ * Created on 6/3/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
@@ -35,7 +35,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private var topRightCorner = 16f
     private var bottomRightCorner = 0f
     private var bottomLeftCorner = 0f
-    private var  backgroundColor = Color.WHITE
+    private var backgroundColor = Color.WHITE
 
     var bottomSheetLayout: FrameLayout? = null
     lateinit var bottomSheetDialog: BottomSheetDialog
@@ -51,17 +51,20 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         bottomSheetDialog.setOnShowListener {
             val dialog = it as BottomSheetDialog
-            val bottomSheetLayout = dialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
+            val bottomSheetLayout =
+                dialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
             bottomSheetBehavior.isDraggable
             bottomSheetDialog.behavior.isFitToContents
-            backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+            backgroundColor =
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
 
-                view?.alpha = 0.0f;
+            view?.alpha = 0.0f;
             view?.animate()
                 ?.alpha(1.0f)
                 ?.setListener(null);
-            bottomSheetBehavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
+            bottomSheetBehavior.addBottomSheetCallback(object :
+                BottomSheetBehavior.BottomSheetCallback() {
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
                     tapBottomDialogInterface?.onSlide(slideOffset)
                 }
@@ -81,12 +84,13 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setDialogConfigurations()
-             changeBackground()
+        changeBackground()
     }
 
     private fun changeBackground() {
         bottomSheetDialog.setOnShowListener {
-            bottomSheetLayout = bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
+            bottomSheetLayout =
+                bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
             bottomSheetLayout?.background = getBackgroundDrawable()
             tapBottomDialogInterface?.onShow()
         }
@@ -96,7 +100,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         arguments?.let {
             dialog?.setCanceledOnTouchOutside(it.getBoolean(DialogConfigurations.Cancelable, true))
             dialog?.window?.setDimAmount(it.getFloat(DialogConfigurations.Dim, 0.5f))
-            backgroundColor = it.getInt(DialogConfigurations.Color,Color.WHITE)
+            backgroundColor = it.getInt(DialogConfigurations.Color, Color.WHITE)
             val corners = it.getFloatArray(DialogConfigurations.Corners)
             corners?.let { array ->
                 topLeftCorner = array[0]
@@ -144,8 +148,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     open fun onNewIntent(intent: Intent?) {}
 
 
-
-    fun setTheme(){
+    fun setTheme() {
 
     }
 }

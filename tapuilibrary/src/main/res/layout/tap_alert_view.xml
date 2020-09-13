@@ -4,12 +4,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/tapAlertLinear"
     android:paddingLeft="@dimen/margin_basic_25dp"
     android:paddingTop="@dimen/margin_basic_15dp"
     android:paddingBottom="@dimen/margin_basic_15dp">
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
-        android:id="@+id/textview_alert_message"
+        android:id="@+id/textViewAlertMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
