@@ -21,11 +21,12 @@ import kotlinx.android.synthetic.main.tap_main_amount.view.constraint
 import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
-class TapAmountSectionView: LinearLayout {
-     private var selectedCurrency: TapTextView
-     private var currentCurrency:TapTextView
-     var itemCount: TapButton
-  private var amountViewDataSource: AmountViewDataSource? = null
+class TapAmountSectionView : LinearLayout {
+    private var selectedCurrency: TapTextView
+    private var currentCurrency: TapTextView
+    var itemCount: TapButton
+    private var amountViewDataSource: AmountViewDataSource? = null
+
     /**
      * Simple constructor to use when creating a TapAmountSectionView from code.
      *  @param context The Context the view is running in, through which it can
@@ -55,41 +56,55 @@ class TapAmountSectionView: LinearLayout {
         attrs,
         defStyleAttr
     )
+
     init {
         inflate(
             context,
             R.layout.tap_main_amount, this
         )
         selectedCurrency = findViewById(R.id.textview_selectedcurrency)
-        currentCurrency  = findViewById(R.id.textView_currentcurrency)
+        currentCurrency = findViewById(R.id.textView_currentcurrency)
         itemCount = findViewById(R.id.textView_itemcount)
         itemCount.elevation = 0F
         setTheme()
     }
-    fun setTheme(){
+
+    fun setTheme() {
         val buttonTheme = ButtonTheme()
-        buttonTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsLabelColor"))
-        buttonTheme.borderColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color"))
-        buttonTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
-        buttonTheme.cornerRadius = ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")
+        buttonTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsLabelColor"))
+        buttonTheme.borderColor =
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color"))
+        buttonTheme.backgroundColor =
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
+        buttonTheme.cornerRadius =
+            ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")
         itemCount.setTheme(buttonTheme)
 
-        setBorderedView(itemCount,
-            (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")as Int).toFloat(),
-            0.0f,ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner"),
+        setBorderedView(
+            itemCount,
+            (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
+            0.0f, ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner"),
             Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
+        )
 
         val currentCurrencyTextViewTheme = TextViewTheme()
-        currentCurrencyTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.originalAmountLabelColor"))
-        currentCurrencyTextViewTheme.textSize = ThemeManager.getFontSize("amountSectionView.itemsLabelFont")
-        currentCurrencyTextViewTheme.font = ThemeManager.getFontName("amountSectionView.originalAmountLabelFont")
+        currentCurrencyTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("amountSectionView.originalAmountLabelColor"))
+        currentCurrencyTextViewTheme.textSize =
+            ThemeManager.getFontSize("amountSectionView.itemsLabelFont")
+        currentCurrencyTextViewTheme.font =
+            ThemeManager.getFontName("amountSectionView.originalAmountLabelFont")
         currentCurrency.setTheme(currentCurrencyTextViewTheme)
 
         val selectedCurrencyTextViewTheme = TextViewTheme()
-        selectedCurrencyTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("amountSectionView.convertedAmountLabelColor"))
-        selectedCurrencyTextViewTheme.textSize = ThemeManager.getFontSize("amountSectionView.convertedAmountLabelFont")
-        selectedCurrencyTextViewTheme.font = ThemeManager.getFontName("amountSectionView.convertedAmountLabelFont")
+        selectedCurrencyTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("amountSectionView.convertedAmountLabelColor"))
+        selectedCurrencyTextViewTheme.textSize =
+            ThemeManager.getFontSize("amountSectionView.convertedAmountLabelFont")
+        selectedCurrencyTextViewTheme.font =
+            ThemeManager.getFontName("amountSectionView.convertedAmountLabelFont")
         selectedCurrency.setTheme(selectedCurrencyTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))

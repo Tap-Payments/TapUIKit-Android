@@ -7,13 +7,16 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 
 /**
- * Created by AhlaamK on 8/10/20.
+ * Created  on 8/10/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 class TapAlertView : LinearLayout {
-    var alertMessage: TapTextView
+
+    val alertMessage by lazy { findViewById<TapTextView>(R.id.textViewAlertMessage) }
+    val tapAlertLinear by lazy { findViewById<LinearLayout>(R.id.tapAlertLinear) }
+
 
     /**
      * Simple constructor to use when creating a TapAlertView from code.
@@ -49,7 +52,13 @@ class TapAlertView : LinearLayout {
             context,
             R.layout.tap_alert_view, this
         )
-        alertMessage = findViewById(R.id.textview_alert_message)
+//        alertMessage = findViewById(R.id.textViewAlertMessage)
+//        tapAlertLinear = findViewById(R.id.tapAlertLinear)
+
+    }
+
+    fun setTheme(){
+
 
     }
 }

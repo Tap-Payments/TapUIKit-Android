@@ -21,15 +21,15 @@ All rights reserved.
  * TapCardSwitch is a molecule element for setting saveMobile ,saveMerchantCheckout and
  *  savegoPayCheckout for Merchant
  **/
-class TapCardSwitch: LinearLayout {
-     private var switchSaveMobile: TapSwitch
-     private var saveTextView: TapTextView
-     private var switchSaveMerchant: TapSwitch
-     private var switchgoPayCheckout: TapSwitch
-     private var savegoPay: TapTextView
-     private var alertgoPaySignup: TapTextView
-     private var tapCardSwitchLinear: LinearLayout
-     lateinit var attrs: AttributeSet
+class TapCardSwitch : LinearLayout {
+    private var switchSaveMobile: TapSwitch
+    private var saveTextView: TapTextView
+    private var switchSaveMerchant: TapSwitch
+    private var switchgoPayCheckout: TapSwitch
+    private var savegoPay: TapTextView
+    private var alertgoPaySignup: TapTextView
+    private var tapCardSwitchLinear: LinearLayout
+    lateinit var attrs: AttributeSet
     private var tapSwitchDataSource: TapSwitchDataSource? = null
 
     /**
@@ -84,7 +84,7 @@ class TapCardSwitch: LinearLayout {
             saveTextView.text = it
         }
         tapSwitchDataSource.switchSaveMerchantCheckout?.let {
-            switchSaveMerchant.text=it
+            switchSaveMerchant.text = it
         }
         tapSwitchDataSource.switchSavegoPayCheckout?.let {
             switchgoPayCheckout.text = it
@@ -98,46 +98,60 @@ class TapCardSwitch: LinearLayout {
     }
 
 
-    fun setTheme(){
+    fun setTheme() {
 
         tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
         // Main switch
         var switchSaveMobileSwitchTheme = SwitchTheme()
-        switchSaveMobileSwitchTheme.thumbTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-        switchSaveMobileSwitchTheme.trackTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+        switchSaveMobileSwitchTheme.thumbTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+        switchSaveMobileSwitchTheme.trackTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
         switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
 
         // Merchant
         var switchSaveMerchantSwitchTheme = SwitchTheme()
-        switchSaveMerchantSwitchTheme.thumbTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
-        switchSaveMerchantSwitchTheme.trackTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+        switchSaveMerchantSwitchTheme.thumbTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+        switchSaveMerchantSwitchTheme.trackTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
         switchSaveMerchant.setTheme(switchSaveMerchantSwitchTheme)
 
         // Go Pay
         var switchGoPayCheckoutSwitchTheme = SwitchTheme()
-        switchGoPayCheckoutSwitchTheme.thumbTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
-        switchGoPayCheckoutSwitchTheme.trackTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+        switchGoPayCheckoutSwitchTheme.thumbTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+        switchGoPayCheckoutSwitchTheme.trackTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
         switchgoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
 
         // main save
         var saveTextViewTextViewTheme = TextViewTheme()
-        saveTextViewTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.title.textColor"))
-        saveTextViewTextViewTheme.textSize = ThemeManager.getFontSize("TapSwitchView.main.title.textFont")
-        saveTextViewTextViewTheme.font = ThemeManager.getFontName("TapSwitchView.main.title.textFont")
+        saveTextViewTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.title.textColor"))
+        saveTextViewTextViewTheme.textSize =
+            ThemeManager.getFontSize("TapSwitchView.main.title.textFont")
+        saveTextViewTextViewTheme.font =
+            ThemeManager.getFontName("TapSwitchView.main.title.textFont")
         saveTextView.setTheme(saveTextViewTextViewTheme)
 
         // Go Pay Text
         var saveGoPayTextViewTheme = TextViewTheme()
-        saveGoPayTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.title.textColor"))
-        saveGoPayTextViewTheme.textSize = ThemeManager.getFontSize("TapSwitchView.goPay.title.textFont")
+        saveGoPayTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.title.textColor"))
+        saveGoPayTextViewTheme.textSize =
+            ThemeManager.getFontSize("TapSwitchView.goPay.title.textFont")
         saveGoPayTextViewTheme.font = ThemeManager.getFontName("TapSwitchView.goPay.title.textFont")
         savegoPay.setTheme(saveGoPayTextViewTheme)
 
         var alertGoPaySignUpTextViewTheme = TextViewTheme()
-        alertGoPaySignUpTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.notes.textColor"))
-        alertGoPaySignUpTextViewTheme.textSize = ThemeManager.getFontSize("TapSwitchView.merchant.notes.textFont")
-        alertGoPaySignUpTextViewTheme.font = ThemeManager.getFontName("TapSwitchView.merchant.notes.textFont")
+        alertGoPaySignUpTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.notes.textColor"))
+        alertGoPaySignUpTextViewTheme.textSize =
+            ThemeManager.getFontSize("TapSwitchView.merchant.notes.textFont")
+        alertGoPaySignUpTextViewTheme.font =
+            ThemeManager.getFontName("TapSwitchView.merchant.notes.textFont")
         alertgoPaySignup.setTheme(alertGoPaySignUpTextViewTheme)
     }
 

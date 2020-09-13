@@ -40,6 +40,7 @@ import company.tap.tapuilibrary.fontskit.FontChanger
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.fontskit.enums.TapFont.Companion.tapFontType
 import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.uikit.animation.AnimationEngine
 import company.tap.tapuilibrary.uikit.atoms.*
@@ -163,6 +164,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
         setSeparatorTheme()
+        setTapMobileInputViewTheme()
         mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
 
@@ -381,7 +383,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         val divider = DividerItemDecoration(context,
             DividerItemDecoration.HORIZONTAL)
         divider.setDrawable(ShapeDrawable().apply {
-            intrinsicWidth = 15
+            intrinsicWidth = 25
             paint.color = Color.TRANSPARENT }) // note: currently (support version 28.0.0), we can not use tranparent color here, if we use transparent, we still see a small divider line. So if we want to display transparent space, we can set color = background color or we can create a custom ItemDecoration instead of DividerItemDecoration.
         chipRecycler.addItemDecoration(divider)
 
@@ -1025,6 +1027,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         separatorViewTheme.strokeColor = Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
         indicatorSeparator.setTheme(separatorViewTheme)
+    }
+
+    fun setTapMobileInputViewTheme(){
+       val editTextTheme = EditTextTheme()
+        editTextTheme.backgroundTint = Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor"))
+//        editTextTheme.textColorHint = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+        editTextTheme.textColorHint = Color.GREEN
+        editTextTheme.textSize = ThemeManager.getFontSize("phoneCard.textFields.font")
+
     }
 }
 
