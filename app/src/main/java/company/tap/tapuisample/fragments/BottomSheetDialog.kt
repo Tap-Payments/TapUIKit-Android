@@ -256,7 +256,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         }
        // alertMessage?.visibility = View.GONE
         nfcButton?.setOnClickListener {
-            val nfcFragment = NFCFragment()
+            val nfcFragment = company.tap.tapuilibrary.uikit.fragment.NFCFragment()
             tabLayout.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
@@ -328,7 +328,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private fun tabLayoutInit(view: View) {
         tabLayout = view.findViewById(R.id.sections_tablayout)
         //    nfcScanBtn = view.findViewById(R.id.nfc_scan)
-        val nfcFragment = NFCFragment()
+        val nfcFragment = company.tap.tapuilibrary.uikit.fragment.NFCFragment()
 
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(context, null)
