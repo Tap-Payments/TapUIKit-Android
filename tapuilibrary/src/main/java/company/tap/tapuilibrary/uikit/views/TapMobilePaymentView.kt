@@ -21,7 +21,7 @@ import company.tap.tapuilibrary.uikit.interfaces.TapView
  *
  */
 class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs),
+    ConstraintLayout(context, attrs),
     TapView<EditTextTheme> {
     val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
     val mobileImage by lazy { findViewById<TapImageView>(R.id.mobileImage) }
