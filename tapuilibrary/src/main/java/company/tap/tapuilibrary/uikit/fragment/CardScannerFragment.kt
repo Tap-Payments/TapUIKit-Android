@@ -1,4 +1,4 @@
-package company.tap.tapuisample.fragments
+package company.tap.tapuilibrary.uikit.fragment
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -12,18 +12,18 @@ import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
-import com.bumptech.glide.Glide
 import company.tap.cardscanner.TapCard
 import company.tap.cardscanner.TapTextRecognitionCallBack
 import company.tap.cardscanner.TapTextRecognitionML
 import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.uikit.atoms.TapButton
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 
 import company.tap.tapuilibrary.uikit.views.TapAmountSectionView
 import company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
-import company.tap.tapuisample.R
+
 
 import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.custom_card_view.*
@@ -94,31 +94,10 @@ class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCa
        // })
     }
 */
-    private fun amountViewInit(view: View) {
-        amountSectionView = view.findViewById(R.id.amount_section_card)
-       // amountSectionView.setAmountViewDataSource(getAmountViewDataSOurce())
-        currentCurrency = amountSectionView.findViewById(R.id.textView_currentcurrency)
-        selectedCurrency = amountSectionView.findViewById(R.id.textview_selectedcurrency)
-        itemCount = amountSectionView.findViewById(R.id.textView_itemcount)
-        currentCurrency.visibility =View.GONE
-    }
 
 
-    @SuppressLint("ResourceType")
-    private fun headerViewInit(view: View) {
 
-        tapHeaderSectionView = view.findViewById(R.id.headerView_card)
-        businessName = getString(R.string.tap_payments)
-       
-
-        businessIcon = tapHeaderSectionView.findViewById(R.id.businessIcon)
-
-        businessPlaceholder = tapHeaderSectionView.findViewById(R.id.placeholderText)
-        businessInitial = businessName?.get(0).toString()
-        businessPlaceholder.text = businessInitial
-
-
-    }
+  
 
 
 

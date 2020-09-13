@@ -117,7 +117,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var clearView : ImageView? = null
     private var linearLayoutPay : LinearLayout? = null
     private var tapSeparatorViewLinear : LinearLayout? = null
-    private val cardFragment = CardScannerFragment()
+    private val cardFragment = company.tap.tapuilibrary.uikit.fragment.CardScannerFragment()
     private var cardFragmentadded :Boolean = false
     private var delImageView1 :ImageView?=null
     private var delImageView2 :ImageView?=null
@@ -339,7 +339,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         bottomSheetDialog.behavior.state = STATE_EXPANDED
         cardScannerBtn?.setOnClickListener {
-            val cardScannerFragment = CardScannerFragment()
+            val cardScannerFragment = company.tap.tapuilibrary.uikit.fragment.CardScannerFragment()
             childFragmentManager
                 .beginTransaction()
                 .add(R.id.fragment_container_nfc, cardScannerFragment)
