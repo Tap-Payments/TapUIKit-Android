@@ -7,8 +7,11 @@ import android.util.AttributeSet
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.core.view.size
+import com.bumptech.glide.Glide
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
+import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 
@@ -22,16 +25,29 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<EditTextTheme> {
     val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
+    val mobileImage by lazy { findViewById<TapImageView>(R.id.mobileImage) }
+    val mobilePaymentMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
 
 
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
         mobileNumber.requestFocus()
+        setTheme()
+//        Glide.with(this)
+//            .load("").into(mobileImage)
     }
 
     fun clearNumber() {
         mobileNumber.text = null
     }
+
+     fun setTheme() {
+         mobileNumber.setBackgroundColor( Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+         mobileNumber.setHintTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
+         mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
+         mobileNumber.letterSpacing = (ThemeManager.getValue("phoneCard.commonAttributes.itemSpacing")as Int).toFloat()
+         mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+     }
 
     override fun setTheme(theme: EditTextTheme) {
 //            theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
