@@ -39,12 +39,11 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     }
 
      fun setTheme() {
-         mobileNumber.setBackgroundColor( Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-         mobileNumber.setTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
-         mobileNumber.setHintTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
-         mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
+//         mobileNumber.setBackgroundColor( Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+//         mobileNumber.setTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
+//         mobileNumber.setHintTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
+//         mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
          mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-//         mobileNumber.letterSpacing = (ThemeManager.getValue("phoneCard.commonAttributes.itemSpacing")as Int).toFloat()
          mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
      }
 
