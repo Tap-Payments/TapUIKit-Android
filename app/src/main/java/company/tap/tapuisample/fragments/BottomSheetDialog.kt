@@ -166,12 +166,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         setSeparatorTheme()
         setTapMobileInputViewTheme()
         mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
-
-
-
-
-
-
        // checkboxString = getString(R.string.nfc_text)
         //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 

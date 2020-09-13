@@ -31,7 +31,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
         mobileNumber.requestFocus()
-        setTheme()
+//        setTheme()
     }
 
     fun clearNumber() {
