@@ -638,7 +638,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 nfcButton?.visibility = View.GONE
                 clearView?.visibility = View.VISIBLE
 
-                // tapMobileInputView.mobileInputEditText.text
                 mobileNumberEditText?.addTextChangedListener(object : TextWatcher {
                     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
 
@@ -1029,8 +1028,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         editTextTheme.textColorHint = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         editTextTheme.textSize = ThemeManager.getFontSize("phoneCard.textFields.font")
         tapMobileInputView.setTheme(editTextTheme)
-        tapMobileInputView.mobileNumber.setBackgroundColor(Color.RED)
-//        tapMobileInputView.mobileImage.setBackgroundColor(Color.RED)
+        tapMobileInputView.mobileNumber.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+        tapMobileInputView.mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+        tapMobileInputView.mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
 
     }
 }

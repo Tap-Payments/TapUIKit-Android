@@ -35,7 +35,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         clearView.setOnClickListener {
             rootView.invalidate()
         }
-        applyTheme()
+//        applyTheme()
     }
 
     fun addTabLayoutSection(vararg sections: TabSection) {
