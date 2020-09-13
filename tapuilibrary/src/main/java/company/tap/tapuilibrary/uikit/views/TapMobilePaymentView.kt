@@ -33,8 +33,6 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         inflate(context, R.layout.tap_mobile_payment_view, this)
         mobileNumber.requestFocus()
         setTheme()
-//        Glide.with(this)
-//            .load("").into(mobileImage)
     }
 
     fun clearNumber() {
@@ -43,9 +41,10 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
 
      fun setTheme() {
          mobileNumber.setBackgroundColor( Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+         mobileNumber.setTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
          mobileNumber.setHintTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
          mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
-         mobileNumber.letterSpacing = (ThemeManager.getValue("phoneCard.commonAttributes.itemSpacing")as Int).toFloat()
+//         mobileNumber.letterSpacing = (ThemeManager.getValue("phoneCard.commonAttributes.itemSpacing")as Int).toFloat()
          mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
      }
 
