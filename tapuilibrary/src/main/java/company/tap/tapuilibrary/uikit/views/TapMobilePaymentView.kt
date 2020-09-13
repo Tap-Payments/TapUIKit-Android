@@ -20,32 +20,60 @@ import company.tap.tapuilibrary.uikit.interfaces.TapView
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
+//class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
+//    LinearLayout(context, attrs),
+//    TapView<EditTextTheme> {
+//    val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
+//    val mobileImage by lazy { findViewById<TapImageView>(R.id.mobileImage) }
+//    val mobilePaymentMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
+//
+//
+//    init {
+//        inflate(context, R.layout.tap_mobile_payment_view, this)
+//        mobileNumber.requestFocus()
+////        setTheme()
+//    }
+//
+//    fun clearNumber() {
+//        mobileNumber.text = null
+//    }
+//
+//     fun setTheme() {
+////         mobileNumber.setBackgroundColor( Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+////         mobileNumber.setTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
+////         mobileNumber.setHintTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
+////         mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
+//         mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+//         mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+//     }
+//
+//    override fun setTheme(theme: EditTextTheme) {
+////            theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
+//        theme.backgroundTint?.let { mobileNumber.setBackgroundColor(it) }
+//        theme.textColorHint?.let { mobileNumber.setHintTextColor(it) }
+//        theme.letterSpacing?.let { mobileNumber.letterSpacing = it.toFloat() }
+//        theme.textSize?.let { mobileNumber.textSize = it.toFloat() }
+//    }
+//}
+
+
+
+
+
 class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<EditTextTheme> {
     val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
-    val mobileImage by lazy { findViewById<TapImageView>(R.id.mobileImage) }
-    val mobilePaymentMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
 
 
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
         mobileNumber.requestFocus()
-//        setTheme()
     }
 
     fun clearNumber() {
         mobileNumber.text = null
     }
-
-     fun setTheme() {
-//         mobileNumber.setBackgroundColor( Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-//         mobileNumber.setTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
-//         mobileNumber.setHintTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
-//         mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
-         mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-         mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-     }
 
     override fun setTheme(theme: EditTextTheme) {
 //            theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
