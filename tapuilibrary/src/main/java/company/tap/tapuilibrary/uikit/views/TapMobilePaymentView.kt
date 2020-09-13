@@ -14,7 +14,7 @@ import company.tap.tapuilibrary.uikit.interfaces.TapView
 
 /**
  *
- * Created by Mario Gamal on 7/1/20
+ * Created on 7/1/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
