@@ -76,8 +76,14 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     fun setButtonDataSource(dataSource: ActionButtonDataSource,  isValid: Boolean = false) {
         this.dataSource = dataSource
-        if (isValid) initValidBackground() else initInvalidBackground()
-//        initBackground()
+        if (isValid)
+        {
+            initValidBackground()
+            setDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+        } else{
+            initInvalidBackground()
+            setDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+        }
         addView(getTextView())
     }
 
@@ -129,6 +135,18 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 //        }
         background = backgroundDrawable
         elevation = 0F
+    }
+
+
+    private fun setDataSource(backgroundColor: Int, textColor:Int): ActionButtonDataSource {
+        return ActionButtonDataSource(
+            text = "Pay",
+            textSize = 18f,
+            textColor = Color.WHITE,
+            cornerRadius = 100f,
+            successImageResources = R.drawable.checkmark,
+            backgroundColor = resources.getColor(backgroundColor)
+        )
     }
 
     private fun initInvalidBackground() {
