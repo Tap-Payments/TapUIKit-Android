@@ -311,7 +311,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
         switchSaveMobileSwitchTheme.trackTint =
             Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-//        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
+        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
 
         switchSaveDemo?.visibility = View.GONE
     }
