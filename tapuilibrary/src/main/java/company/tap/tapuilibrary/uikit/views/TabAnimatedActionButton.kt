@@ -66,7 +66,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         initActionButtonDataSource()
     }
 
-    private fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null){
+     fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null){
         dataSource = ActionButtonDataSource(
             text = "Pay",
             textSize = 18f,

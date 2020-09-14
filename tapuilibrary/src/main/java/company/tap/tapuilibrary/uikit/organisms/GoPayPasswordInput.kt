@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.textfield.TextInputLayout
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.atoms.TextInputEditText
@@ -50,11 +51,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         signInButton.isEnabled = false
-        signInButton.setButtonDataSource(
-            getButtonDataSource(
-                FakeThemeManager.getGoPaySignInButtonColor()
-            )
-        )
+        signInButton.setButtonDataSource(false)
         signInButton.setOnClickListener {
             textInputLayout.error = "Incorrect Password"
         }
@@ -74,14 +71,13 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     private fun changeButtonStatus(isEnabled: Boolean) {
         signInButton.isEnabled = isEnabled
-        signInButton.setButtonDataSource(
-            getButtonDataSource(
-                if (isEnabled)
-                    FakeThemeManager.getGoPayValidatedColor()
-                else
-                    FakeThemeManager.getGoPaySignInButtonColor()
-            )
-        )
+
+        if (isEnabled){
+            signInButton.initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+        }else{
+            signInButton.initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+        }
+
     }
 
     private fun getButtonDataSource(color: Int): ActionButtonDataSource {
