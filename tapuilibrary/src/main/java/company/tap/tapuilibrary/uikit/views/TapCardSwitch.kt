@@ -22,13 +22,13 @@ All rights reserved.
  *  saveGoPayCheckout for Merchant
  **/
 class TapCardSwitch : LinearLayout {
-    private val switchSaveMobile by lazy { findViewById<TapSwitch>(R.id.switch_save_mobile) }
-    private val saveTextView by lazy { findViewById<TapTextView>(R.id.text_save) }
-    private val saveGoPay by lazy { findViewById<TapTextView>(R.id.save_goPay) }
-    private val alertGoPaySignUp by lazy { findViewById<TapTextView>(R.id.alert_gopay_signup) }
-    private val switchSaveMerchant by lazy { findViewById<TapSwitch>(R.id.switch_merchant_checkout) }
-    private val switchGoPayCheckout by lazy { findViewById<TapSwitch>(R.id.switch_gopay_checkout) }
-    private val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
+     val switchSaveMobile by lazy { findViewById<TapSwitch>(R.id.switch_save_mobile) }
+     val saveTextView by lazy { findViewById<TapTextView>(R.id.text_save) }
+     val saveGoPay by lazy { findViewById<TapTextView>(R.id.save_goPay) }
+     val alertGoPaySignUp by lazy { findViewById<TapTextView>(R.id.alert_gopay_signup) }
+     val switchSaveMerchant by lazy { findViewById<TapSwitch>(R.id.switch_merchant_checkout) }
+     val switchGoPayCheckout by lazy { findViewById<TapSwitch>(R.id.switch_gopay_checkout) }
+     val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
     lateinit var attrs: AttributeSet
     private var tapSwitchDataSource: TapSwitchDataSource? = null
 
