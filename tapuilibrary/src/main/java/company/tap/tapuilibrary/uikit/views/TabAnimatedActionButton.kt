@@ -142,10 +142,10 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return ActionButtonDataSource(
             text = "Pay",
             textSize = 18f,
-            textColor = Color.WHITE,
+            textColor = textColor,
             cornerRadius = 100f,
             successImageResources = R.drawable.checkmark,
-            backgroundColor = resources.getColor(backgroundColor)
+            backgroundColor = backgroundColor
         )
     }
 
