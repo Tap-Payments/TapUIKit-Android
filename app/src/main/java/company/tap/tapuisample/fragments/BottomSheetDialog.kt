@@ -307,11 +307,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
         var switchSaveMobileSwitchTheme = SwitchTheme()
-        switchSaveMobileSwitchTheme.thumbTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-        switchSaveMobileSwitchTheme.trackTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-//        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
+        switchSaveMobileSwitchTheme.thumbTint = Color.GREEN
+        switchSaveMobileSwitchTheme.trackTint = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+        switchSaveMobileSwitchTheme.backgroundColor= Color.GREEN
+        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
 
         switchSaveDemo?.visibility = View.GONE
     }
