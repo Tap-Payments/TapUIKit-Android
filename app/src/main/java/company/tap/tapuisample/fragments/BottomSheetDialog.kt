@@ -42,6 +42,7 @@ import company.tap.tapuilibrary.fontskit.enums.TapFont.Companion.tapFontType
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
+import company.tap.tapuilibrary.themekit.theme.SwitchTheme
 import company.tap.tapuilibrary.uikit.animation.AnimationEngine
 import company.tap.tapuilibrary.uikit.atoms.*
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
@@ -305,6 +306,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
+        var switchSaveMobileSwitchTheme = SwitchTheme()
+        switchSaveMobileSwitchTheme.thumbTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+        switchSaveMobileSwitchTheme.trackTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+//        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
+
         switchSaveDemo?.visibility = View.GONE
     }
 
@@ -1031,7 +1039,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapMobileInputView.mobileNumber.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
         tapMobileInputView.mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
         tapMobileInputView.mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-
     }
 }
 

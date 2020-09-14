@@ -31,21 +31,22 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
         mobileNumber.requestFocus()
-        initTheme()
+//        initTheme()
     }
 
     fun clearNumber() {
         mobileNumber.text = null
     }
 
-     fun initTheme() {
+//     fun initTheme() {
 //         mobileNumber.setBackgroundColor( Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
 //         mobileNumber.setTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
 //         mobileNumber.setHintTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
 //         mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
-         mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-         mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-     }
+//         mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+//         mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+//         mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+//     }
 
     override fun setTheme(theme: EditTextTheme) {
 //            theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }

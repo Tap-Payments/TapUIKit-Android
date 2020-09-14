@@ -19,16 +19,16 @@ All rights reserved.
 
 /**
  * TapCardSwitch is a molecule element for setting saveMobile ,saveMerchantCheckout and
- *  savegoPayCheckout for Merchant
+ *  saveGoPayCheckout for Merchant
  **/
 class TapCardSwitch : LinearLayout {
-    private var switchSaveMobile: TapSwitch
-    private var saveTextView: TapTextView
-    private var switchSaveMerchant: TapSwitch
-    private var switchgoPayCheckout: TapSwitch
-    private var savegoPay: TapTextView
-    private var alertgoPaySignup: TapTextView
-    private var tapCardSwitchLinear: LinearLayout
+    private val switchSaveMobile by lazy { findViewById<TapSwitch>(R.id.switch_save_mobile) }
+    private val saveTextView by lazy { findViewById<TapTextView>(R.id.text_save) }
+    private val saveGoPay by lazy { findViewById<TapTextView>(R.id.save_goPay) }
+    private val alertGoPaySignUp by lazy { findViewById<TapTextView>(R.id.alert_gopay_signup) }
+    private val switchSaveMerchant by lazy { findViewById<TapSwitch>(R.id.switch_merchant_checkout) }
+    private val switchGoPayCheckout by lazy { findViewById<TapSwitch>(R.id.switch_gopay_checkout) }
+    private val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
     lateinit var attrs: AttributeSet
     private var tapSwitchDataSource: TapSwitchDataSource? = null
 
@@ -64,13 +64,6 @@ class TapCardSwitch : LinearLayout {
 
     init {
         inflate(context, R.layout.tap_card_switch, this)
-        switchSaveMobile = findViewById(R.id.switch_save_mobile)
-        switchSaveMerchant = findViewById(R.id.switch_merchant_checkout)
-        switchgoPayCheckout = findViewById(R.id.switch_gopay_checkout)
-        savegoPay = findViewById(R.id.save_goPay)
-        alertgoPaySignup = findViewById(R.id.alert_gopay_signup)
-        tapCardSwitchLinear = findViewById(R.id.tapCardSwitchLinear)
-        saveTextView = findViewById(R.id.text_save)
         setTheme()
     }
 
@@ -87,13 +80,13 @@ class TapCardSwitch : LinearLayout {
             switchSaveMerchant.text = it
         }
         tapSwitchDataSource.switchSavegoPayCheckout?.let {
-            switchgoPayCheckout.text = it
+            switchGoPayCheckout.text = it
         }
         tapSwitchDataSource.alertgoPaySignup?.let {
-            alertgoPaySignup.text = it
+            alertGoPaySignUp.text = it
         }
         tapSwitchDataSource.savegoPayText?.let {
-            savegoPay.text = it
+            saveGoPay.text = it
         }
     }
 
@@ -124,7 +117,7 @@ class TapCardSwitch : LinearLayout {
             Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
         switchGoPayCheckoutSwitchTheme.trackTint =
             Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
-        switchgoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
+        switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
 
         // main save
         var saveTextViewTextViewTheme = TextViewTheme()
@@ -143,7 +136,7 @@ class TapCardSwitch : LinearLayout {
         saveGoPayTextViewTheme.textSize =
             ThemeManager.getFontSize("TapSwitchView.goPay.title.textFont")
         saveGoPayTextViewTheme.font = ThemeManager.getFontName("TapSwitchView.goPay.title.textFont")
-        savegoPay.setTheme(saveGoPayTextViewTheme)
+        saveGoPay.setTheme(saveGoPayTextViewTheme)
 
         var alertGoPaySignUpTextViewTheme = TextViewTheme()
         alertGoPaySignUpTextViewTheme.textColor =
@@ -152,7 +145,7 @@ class TapCardSwitch : LinearLayout {
             ThemeManager.getFontSize("TapSwitchView.merchant.notes.textFont")
         alertGoPaySignUpTextViewTheme.font =
             ThemeManager.getFontName("TapSwitchView.merchant.notes.textFont")
-        alertgoPaySignup.setTheme(alertGoPaySignUpTextViewTheme)
+        alertGoPaySignUp.setTheme(alertGoPaySignUpTextViewTheme)
     }
 
 
