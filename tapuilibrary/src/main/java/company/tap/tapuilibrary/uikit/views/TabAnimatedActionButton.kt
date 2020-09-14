@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
@@ -14,6 +15,7 @@ import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.animation.MorphingAnimation
 import company.tap.tapuilibrary.uikit.animation.MorphingAnimation.AnimationTarget.*
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
@@ -72,9 +74,10 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         this.actionButtonInterface = actionButtonInterface
     }
 
-    fun setButtonDataSource(dataSource: ActionButtonDataSource) {
+    fun setButtonDataSource(dataSource: ActionButtonDataSource,  isValid: Boolean = false) {
         this.dataSource = dataSource
-        initBackground()
+        if (isValid) initValidBackground() else initInvalidBackground()
+//        initBackground()
         addView(getTextView())
     }
 
@@ -112,6 +115,30 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         dataSource?.backgroundColor?.let {
             backgroundDrawable.color = ColorStateList.valueOf(it)
         }
+        background = backgroundDrawable
+        elevation = 0F
+    }
+
+    private fun initValidBackground() {
+        dataSource?.cornerRadius?.let {
+            backgroundDrawable.cornerRadius = it
+        }
+        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")))
+//        dataSource?.backgroundColor?.let {
+//            backgroundDrawable.color = ColorStateList.valueOf(it)
+//        }
+        background = backgroundDrawable
+        elevation = 0F
+    }
+
+    private fun initInvalidBackground() {
+        dataSource?.cornerRadius?.let {
+            backgroundDrawable.cornerRadius = it
+        }
+        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
+//        dataSource?.backgroundColor?.let {
+//            backgroundDrawable.color = ColorStateList.valueOf(it)
+//        }
         background = backgroundDrawable
         elevation = 0F
     }

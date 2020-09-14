@@ -22,6 +22,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -73,6 +74,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     TapSelectionTabLayoutInterface,
     OnCardSelectedActionListener,
     WebViewContract {
+
+    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
@@ -1027,6 +1030,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         separatorViewTheme.strokeColor = Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
         indicatorSeparator.setTheme(separatorViewTheme)
+        // set theme for background of action button
+        outerLayout?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("actionButton.BackgroundColor.default")))
     }
 
     fun setTapMobileInputViewTheme(){

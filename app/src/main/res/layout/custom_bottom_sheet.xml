@@ -78,7 +78,6 @@
                 android:id="@+id/mainChipgroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/chip_background"
                 android:orientation="horizontal" />
 <!--        </FrameLayout>-->
 
@@ -104,7 +103,6 @@
         android:id="@+id/tap_payment_input0"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/selection_tab_color"
         android:layoutDirection="locale" />
 
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
@@ -143,7 +141,6 @@
         android:id="@+id/outer_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/chip_background"
         android:minHeight="80dp">
 
         <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
