@@ -165,7 +165,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     ) {
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
-        actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay), false)
+//        actionButton.setButtonDataSource( false)
         actionButton.isActivated = false
         actionButton.stateListAnimator = null
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
@@ -192,17 +192,17 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        }
 //    }
 
-    private fun getSuccessDataSource(backgroundColor: Int): ActionButtonDataSource {
-        actionButton.stateListAnimator = null
-        return ActionButtonDataSource(
-            text = getString(R.string.pay),
-            textSize = 18f,
-            textColor = Color.WHITE,
-            cornerRadius = 100f,
-            successImageResources = R.drawable.checkmark,
-            backgroundColor = resources.getColor(backgroundColor)
-        )
-    }
+//    private fun getSuccessDataSource(backgroundColor: Int): ActionButtonDataSource {
+//        actionButton.stateListAnimator = null
+//        return ActionButtonDataSource(
+//            text = getString(R.string.pay),
+//            textSize = 18f,
+//            textColor = Color.WHITE,
+//            cornerRadius = 100f,
+//            successImageResources = R.drawable.checkmark,
+//            backgroundColor = resources.getColor(backgroundColor)
+//        )
+//    }
 
     @SuppressLint("SetTextI18n")
     private fun initializeViews(view: View) {
@@ -905,7 +905,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     override fun onCardSelectedAction(isSelected: Boolean) {
         if (isSelected) {
-            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_green))
+//            actionButton.setButtonDataSource()
             actionButton.isActivated = true
             actionButton.setOnClickListener {
                 if (actionButton.isActivated){
@@ -929,8 +929,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                changeBottomSheetTransition()
                 }
             }
-        } else
-            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay), false)
+        }
+//        else actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay), false)
     }
 
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {
@@ -954,7 +954,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         if (done) {
             actionButton.visibility = View.VISIBLE
             webViewContainer.visibility = View.GONE
-            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_green), true)
+//            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_green), true)
             actionButton.isActivated = true
             actionButton.changeButtonState(ActionButtonState.SUCCESS)
         } else {
