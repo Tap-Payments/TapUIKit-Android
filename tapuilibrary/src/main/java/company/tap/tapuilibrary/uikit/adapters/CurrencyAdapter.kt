@@ -107,7 +107,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
                 holder.itemView,
                 (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
                 0.0f,
-                ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"),
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
             )
