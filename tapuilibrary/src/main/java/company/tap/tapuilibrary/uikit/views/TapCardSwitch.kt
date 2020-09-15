@@ -8,6 +8,7 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
@@ -31,6 +32,7 @@ class TapCardSwitch : LinearLayout {
      val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
      val saveSwitchLinear by lazy { findViewById<LinearLayout>(R.id.save_switch_linear) }
      val switchesLayout by lazy { findViewById<LinearLayout>(R.id.switches_layout) }
+     val saveSwitchChip by lazy { findViewById<TapChip>(R.id.saveSwitchChip) }
     lateinit var attrs: AttributeSet
     private var tapSwitchDataSource: TapSwitchDataSource? = null
 
@@ -97,6 +99,7 @@ class TapCardSwitch : LinearLayout {
 
         tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
         saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        saveSwitchChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
         // Main switch
         var switchSaveMobileSwitchTheme = SwitchTheme()

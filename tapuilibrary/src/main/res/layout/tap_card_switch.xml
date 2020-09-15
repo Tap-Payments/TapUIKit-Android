@@ -14,8 +14,9 @@
         style="@style/CustomCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/saveSwitchChip"
         android:orientation="vertical"
-        app:cardCornerRadius="20dp"
+        app:cardCornerRadius="10dp"
         tools:cardBackgroundColor="@color/chip_background">
 
         <LinearLayout
