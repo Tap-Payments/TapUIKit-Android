@@ -314,7 +314,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
 //        switchDemo.alertGoPaySignUp.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //        switchDemo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-        switchSaveDemo?.visibility = View.GONE
+//        switchSaveDemo?.visibility = View.GONE
     }
 
     //Setting data to TapSwitchDataSource
@@ -370,7 +370,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     @SuppressLint("ResourceAsColor")
     private fun setupChip(view: View) {
-        mainChipGroup = view.findViewById<TapChipGroup>(R.id.mainChipgroup)
+        mainChipGroup = view.findViewById(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         groupName = view.findViewById<TapTextView>(R.id.group_name)
         groupName?.text =
@@ -636,6 +636,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             paymentLayout.removeAllViews()
             if (position == 0) {
                 paymentLayout.addView(tapCardInputView)
+//                switchDemo.tapCardSwitchLinear.setBackgroundColor(Color.GREEN)
                 switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.nfc_text)))
                 cardScannerBtn?.visibility = View.VISIBLE
                 nfcButton?.visibility = View.VISIBLE

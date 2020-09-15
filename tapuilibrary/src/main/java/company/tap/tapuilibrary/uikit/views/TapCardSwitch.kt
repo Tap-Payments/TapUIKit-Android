@@ -135,7 +135,6 @@ class TapCardSwitch : LinearLayout {
         saveTextView.setTheme(saveTextViewTextViewTheme)
         saveTextView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
-
         // Go Pay Text
         var saveGoPayTextViewTheme = TextViewTheme()
         saveGoPayTextViewTheme.textColor =

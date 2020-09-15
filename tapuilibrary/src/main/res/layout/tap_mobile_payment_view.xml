@@ -22,7 +22,7 @@
         android:layout_marginStart="20dp"
         android:textSize="@dimen/font_size_17sp"
         android:fontFamily="sans-serif-light"
-        android:background="@android:color/transparent"
+        tools:background="@android:color/transparent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
