@@ -80,10 +80,9 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
                     it,
                     (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
                     0.0f,
-                    ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"),
-                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
-                )
+                   Color.GREEN,
+                    Color.GREEN,
+                    Color.GREEN                )
             }
         }
     }
