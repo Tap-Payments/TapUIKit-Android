@@ -4,7 +4,9 @@ package company.tap.tapuisample.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.StateListDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -44,6 +46,7 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.animation.AnimationEngine
 import company.tap.tapuilibrary.uikit.atoms.*
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
@@ -173,6 +176,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
         setSeparatorTheme()
         setTapMobileInputViewTheme()
+        setThemee()
         mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         // checkboxString = getString(R.string.nfc_text)
         //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
@@ -651,8 +655,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 clearView?.visibility = View.VISIBLE
 
                 mobileNumberEditText?.addTextChangedListener(object : TextWatcher {
-                    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    override fun onTextChanged(
+                        s: CharSequence,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
                     }
+
                     override fun afterTextChanged(mobileText: Editable) {
                         if (mobileText.length == 12) {
                             mobileNumberEditText?.text = mobileText
@@ -660,7 +670,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         println("mobile number value ${mobileText.length}")
                     }
 
-                    override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                    override fun beforeTextChanged(
+                        s: CharSequence,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
                     }
                 })
             }
@@ -891,7 +906,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             actionButton.setButtonDataSource(true)
             actionButton.isActivated = true
             actionButton.setOnClickListener {
-                if (actionButton.isActivated){
+                if (actionButton.isActivated) {
                     changeBottomSheetTransition()
                     hideAllViews()
                     if (paymentsList[2] == 3) {
@@ -912,8 +927,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                changeBottomSheetTransition()
                 }
             }
-        }
-        else actionButton.setButtonDataSource(false)
+        } else actionButton.setButtonDataSource(false)
     }
 
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {
@@ -1026,8 +1040,124 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         editTextTheme.textSize = ThemeManager.getFontSize("phoneCard.textFields.font")
         tapMobileInputView.setTheme(editTextTheme)
         tapMobileInputView.mobileNumber.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-        tapMobileInputView.mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+        tapMobileInputView.mobilePaymentMainLinear.setBackgroundColor(
+            Color.parseColor(
+                ThemeManager.getValue(
+                    "phoneCard.commonAttributes.backgroundColor"
+                )
+            )
+        )
         tapMobileInputView.mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
     }
+
+
+    fun setThemee() {
+
+        switchDemo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        switchDemo.saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        switchDemo.saveSwitchChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+
+        // Main switch
+        var switchSaveMobileSwitchTheme = SwitchTheme()
+        switchSaveMobileSwitchTheme.thumbTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+        switchSaveMobileSwitchTheme.trackTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
+
+
+        // Merchant
+        var switchSaveMerchantSwitchTheme = SwitchTheme()
+        switchSaveMerchantSwitchTheme.thumbTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+        switchSaveMerchantSwitchTheme.trackTint =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+        switchDemo.switchSaveMerchant.setTheme(switchSaveMerchantSwitchTheme)
+
+
+        // Go Pay
+//        var switchGoPayCheckoutSwitchTheme = SwitchTheme()
+//        switchGoPayCheckoutSwitchTheme.thumbTint =
+//            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+//        switchGoPayCheckoutSwitchTheme.trackTint =
+//            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+//        switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
+
+        switchDemo.switchGoPayCheckout.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                Log.d("true","true")
+                var switchGoPayCheckoutSwitchThemee = SwitchTheme()
+                switchGoPayCheckoutSwitchThemee.thumbTint =
+                    Color.GREEN
+                switchGoPayCheckoutSwitchThemee.trackTint =
+                    Color.GREEN
+                switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchThemee)
+
+            }else{
+                Log.d("false","false")
+                var switchGoPayCheckoutSwitchTheme = SwitchTheme()
+                switchGoPayCheckoutSwitchTheme.thumbTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+                switchGoPayCheckoutSwitchTheme.trackTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+                switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
+
+            }
+        }
+
+//        if (switchDemo.switchGoPayCheckout.isChecked) {
+//            var switchGoPayCheckoutSwitchThemee = SwitchTheme()
+//            switchGoPayCheckoutSwitchThemee.thumbTint =
+//                Color.GREEN
+//            switchGoPayCheckoutSwitchThemee.trackTint =
+//                Color.GREEN
+//            switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchThemee)
+//
+//        } else {
+//            var switchGoPayCheckoutSwitchTheme = SwitchTheme()
+//            switchGoPayCheckoutSwitchTheme.thumbTint =
+//                Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+//            switchGoPayCheckoutSwitchTheme.trackTint =
+//                Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+//            switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
+//
+//        }
+
+
+        // main save
+        var saveTextViewTextViewTheme = TextViewTheme()
+        saveTextViewTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.title.textColor"))
+        saveTextViewTextViewTheme.textSize =
+            ThemeManager.getFontSize("TapSwitchView.main.title.textFont")
+        saveTextViewTextViewTheme.font =
+            ThemeManager.getFontName("TapSwitchView.main.title.textFont")
+        switchDemo.saveTextView.setTheme(saveTextViewTextViewTheme)
+
+        // Go Pay Text
+        var saveGoPayTextViewTheme = TextViewTheme()
+        saveGoPayTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.title.textColor"))
+        saveGoPayTextViewTheme.textSize =
+            ThemeManager.getFontSize("TapSwitchView.goPay.title.textFont")
+        saveGoPayTextViewTheme.font = ThemeManager.getFontName("TapSwitchView.goPay.title.textFont")
+        switchDemo.saveGoPay.setTheme(saveGoPayTextViewTheme)
+
+        var alertGoPaySignUpTextViewTheme = TextViewTheme()
+        alertGoPaySignUpTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.notes.textColor"))
+        alertGoPaySignUpTextViewTheme.textSize =
+            ThemeManager.getFontSize("TapSwitchView.merchant.notes.textFont")
+        alertGoPaySignUpTextViewTheme.font =
+            ThemeManager.getFontName("TapSwitchView.merchant.notes.textFont")
+        switchDemo.alertGoPaySignUp.setTheme(alertGoPaySignUpTextViewTheme)
+
+
+        var separatorViewTheme = SeparatorViewTheme()
+        separatorViewTheme.strokeColor =
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.CurvedSeparator.BackgroundColor"))
+        switchDemo.switchSeparator.setTheme(separatorViewTheme)
+    }
+
 }
 

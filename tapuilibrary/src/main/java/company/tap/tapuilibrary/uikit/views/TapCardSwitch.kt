@@ -2,8 +2,12 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.StateListDrawable
 import android.util.AttributeSet
+import android.util.Log
 import android.widget.LinearLayout
+import androidx.appcompat.widget.SwitchCompat
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
@@ -14,6 +18,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -105,29 +110,84 @@ class TapCardSwitch : LinearLayout {
         saveSwitchChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
         // Main switch
-        var switchSaveMobileSwitchTheme = SwitchTheme()
-        switchSaveMobileSwitchTheme.thumbTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-        switchSaveMobileSwitchTheme.trackTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-        switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
+//        var switchSaveMobileSwitchTheme = SwitchTheme()
+//        switchSaveMobileSwitchTheme.thumbTint =
+//            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+//        switchSaveMobileSwitchTheme.trackTint =
+//            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+//        switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
+
+
+        switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                Log.d("true","true")
+                var switchSaveMobileSwitchThemeEnable = SwitchTheme()
+                switchSaveMobileSwitchThemeEnable.thumbTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+                switchSaveMobileSwitchThemeEnable.trackTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+                switchSaveMobile.setTheme(switchSaveMobileSwitchThemeEnable)
+
+            }else{
+                Log.d("false","false")
+                var switchSaveMobileSwitchThemeDisable = SwitchTheme()
+                switchSaveMobileSwitchThemeDisable.thumbTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                switchSaveMobileSwitchThemeDisable.trackTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                switchSaveMobile.setTheme(switchSaveMobileSwitchThemeDisable)
+
+            }
+        }
+
+
 
         // Merchant
-        var switchSaveMerchantSwitchTheme = SwitchTheme()
-        switchSaveMerchantSwitchTheme.thumbTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.backgroundColor"))
-        switchSaveMerchantSwitchTheme.trackTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
-        switchSaveMerchant.setTheme(switchSaveMerchantSwitchTheme)
+        switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                Log.d("true","true")
+                var switchSaveMerchantSwitchThemeEnable = SwitchTheme()
+                switchSaveMerchantSwitchThemeEnable.thumbTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+                switchSaveMerchantSwitchThemeEnable.trackTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+                switchSaveMobile.setTheme(switchSaveMerchantSwitchThemeEnable)
+
+            }else{
+                Log.d("false","false")
+                var switchSaveMerchantSwitchThemeDisable = SwitchTheme()
+                switchSaveMerchantSwitchThemeDisable.thumbTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                switchSaveMerchantSwitchThemeDisable.trackTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                switchSaveMobile.setTheme(switchSaveMerchantSwitchThemeDisable)
+
+            }
+        }
+
 
 
         // Go Pay
-        var switchGoPayCheckoutSwitchTheme = SwitchTheme()
-        switchGoPayCheckoutSwitchTheme.thumbTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
-        switchGoPayCheckoutSwitchTheme.trackTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-        switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
+        switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
+            if(isChecked){
+                Log.d("true","true")
+                var switchGoPayCheckoutSwitchThemeEnable = SwitchTheme()
+                switchGoPayCheckoutSwitchThemeEnable.thumbTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+                switchGoPayCheckoutSwitchThemeEnable.trackTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+                switchSaveMobile.setTheme(switchGoPayCheckoutSwitchThemeEnable)
+
+            }else{
+                Log.d("false","false")
+                var switchGoPayCheckoutSwitchThemeDisable = SwitchTheme()
+                switchGoPayCheckoutSwitchThemeDisable.thumbTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                switchGoPayCheckoutSwitchThemeDisable.trackTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                switchSaveMobile.setTheme(switchGoPayCheckoutSwitchThemeDisable)
+            }
+        }
 
 
         // main save
