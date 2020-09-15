@@ -13,6 +13,7 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ChipTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapChip
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.model.CurrencyModel
 
 
@@ -27,6 +28,9 @@ All rights reserved.
 
 var selectedPosition = -1
 var context: Context? = null
+var viewType :ViewGroup? = null
+val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
+
 
 class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
     RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
@@ -55,8 +59,8 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             setTheme()
         }
         fun setTheme(){
-            var tapCard_Chip = view.findViewById<TapChip>(R.id.tapcard_Chip)
-            tapCard_Chip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")))
+//            var tapCard_Chip = view.findViewById<TapChip>(R.id.tapcard_Chip)
+            tapCard_Chip?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")))
             val totalQuantityTextViewTheme = TextViewTheme()
             totalQuantityTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.labelTextColor"))
             totalQuantityTextViewTheme.textSize = ThemeManager.getFontSize("horizontalList.chips.currencyChip.labelTextFont")
@@ -68,7 +72,18 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             chipTheme.outlineSpotShadowColor=  Color.parseColor( ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
             view.tapcard_Chip.setTheme(chipTheme)
             view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-            tapCard_Chip.setTheme(chipTheme)
+            tapCard_Chip?.setTheme(chipTheme)
+
+            tapCard_Chip?.let {
+                setBorderedView(
+                    it,
+                    (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
+                    0.0f,
+                    ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"),
+                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
+                )
+            }
         }
     }
 
@@ -76,10 +91,31 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.bindPhoto(photos[position])
         if (selectedPosition == position) {
-            holder.itemView.setBackgroundResource(R.drawable.border_currency)
-        } else
+//            holder.itemView.setBackgroundResource(R.drawable.border_currency)
+            tapCard_Chip?.let {
+                setBorderedView(
+                    it,
+                    (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
+                    0.5f,
+                    ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"),
+                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
+                )
+            }
+        } else{
+            tapCard_Chip?.let {
+                setBorderedView(
+                    it,
+                    (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
+                    0.0f,
+                    ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"),
+                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
+                )
+            }
+        }
 
-            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
+//            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
         holder.itemView.setOnClickListener {
             selectedPosition = position
             Toast.makeText(
