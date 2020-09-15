@@ -6,7 +6,7 @@
     android:id="@+id/tapCardSwitchLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/chip_background"
+    tools:background="@color/chip_background"
     android:layoutDirection="locale"
     android:orientation="vertical">
 
@@ -14,12 +14,15 @@
         style="@style/CustomCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/saveSwitchChip"
         android:orientation="vertical"
-        app:cardBackgroundColor="@color/chip_background">
+        app:cardCornerRadius="10dp"
+        tools:cardBackgroundColor="@color/chip_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/save_switch_linear"
             android:orientation="horizontal"
             android:weightSum="0.5">
 
@@ -46,7 +49,7 @@ save your mobile number." />
                 android:layout_marginEnd="@dimen/margin_basic_16dp"
                 android:layout_marginBottom="22dp"
                 android:layout_weight="0.2"
-                android:checked="true"
+                android:checked="false"
                 android:theme="@style/SwitchPrimary"
                 android:visibility="visible" />
         </LinearLayout>
@@ -78,7 +81,7 @@ save your mobile number." />
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
             android:id="@+id/switch_separator"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.6dp"
             android:layout_marginStart="@dimen/margin_basic_13dp"
             android:layout_marginEnd="21dp"
             android:background="@color/white" />
