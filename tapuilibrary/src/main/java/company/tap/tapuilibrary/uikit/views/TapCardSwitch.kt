@@ -110,14 +110,6 @@ class TapCardSwitch : LinearLayout {
         saveSwitchChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
         // Main switch
-//        var switchSaveMobileSwitchTheme = SwitchTheme()
-//        switchSaveMobileSwitchTheme.thumbTint =
-//            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-//        switchSaveMobileSwitchTheme.trackTint =
-//            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-//        switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
-
-
         switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
             if(isChecked){
                 Log.d("true","true")
@@ -136,11 +128,8 @@ class TapCardSwitch : LinearLayout {
                 switchSaveMobileSwitchThemeDisable.trackTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchSaveMobile.setTheme(switchSaveMobileSwitchThemeDisable)
-
             }
         }
-
-
 
         // Merchant
         switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
@@ -152,7 +141,6 @@ class TapCardSwitch : LinearLayout {
                 switchSaveMerchantSwitchThemeEnable.trackTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
                 switchSaveMobile.setTheme(switchSaveMerchantSwitchThemeEnable)
-
             }else{
                 Log.d("false","false")
                 var switchSaveMerchantSwitchThemeDisable = SwitchTheme()

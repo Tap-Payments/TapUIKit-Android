@@ -12,6 +12,7 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ChipTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.model.CurrencyModel
 
 
@@ -54,6 +55,8 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             setTheme()
         }
         fun setTheme(){
+            var tapCard_Chip = view.findViewById<TapChip>(R.id.tapcard_Chip)
+            tapCard_Chip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")))
             val totalQuantityTextViewTheme = TextViewTheme()
             totalQuantityTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.labelTextColor"))
             totalQuantityTextViewTheme.textSize = ThemeManager.getFontSize("horizontalList.chips.currencyChip.labelTextFont")

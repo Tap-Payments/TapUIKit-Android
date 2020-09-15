@@ -176,7 +176,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
         setSeparatorTheme()
         setTapMobileInputViewTheme()
-        setThemee()
         mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         // checkboxString = getString(R.string.nfc_text)
         //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
@@ -1050,114 +1049,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapMobileInputView.mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
     }
 
-
-    fun setThemee() {
-
-        switchDemo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-        switchDemo.saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-        switchDemo.saveSwitchChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-
-        // Main switch
-        var switchSaveMobileSwitchTheme = SwitchTheme()
-        switchSaveMobileSwitchTheme.thumbTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-        switchSaveMobileSwitchTheme.trackTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
-
-
-        // Merchant
-        var switchSaveMerchantSwitchTheme = SwitchTheme()
-        switchSaveMerchantSwitchTheme.thumbTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
-        switchSaveMerchantSwitchTheme.trackTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
-        switchDemo.switchSaveMerchant.setTheme(switchSaveMerchantSwitchTheme)
-
-
-        // Go Pay
-//        var switchGoPayCheckoutSwitchTheme = SwitchTheme()
-//        switchGoPayCheckoutSwitchTheme.thumbTint =
-//            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
-//        switchGoPayCheckoutSwitchTheme.trackTint =
-//            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
-//        switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
-
-        switchDemo.switchGoPayCheckout.setOnCheckedChangeListener { _, isChecked ->
-            if(isChecked){
-                Log.d("true","true")
-                var switchGoPayCheckoutSwitchThemee = SwitchTheme()
-                switchGoPayCheckoutSwitchThemee.thumbTint =
-                    Color.GREEN
-                switchGoPayCheckoutSwitchThemee.trackTint =
-                    Color.GREEN
-                switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchThemee)
-
-            }else{
-                Log.d("false","false")
-                var switchGoPayCheckoutSwitchTheme = SwitchTheme()
-                switchGoPayCheckoutSwitchTheme.thumbTint =
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
-                switchGoPayCheckoutSwitchTheme.trackTint =
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
-                switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
-
-            }
-        }
-
-//        if (switchDemo.switchGoPayCheckout.isChecked) {
-//            var switchGoPayCheckoutSwitchThemee = SwitchTheme()
-//            switchGoPayCheckoutSwitchThemee.thumbTint =
-//                Color.GREEN
-//            switchGoPayCheckoutSwitchThemee.trackTint =
-//                Color.GREEN
-//            switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchThemee)
-//
-//        } else {
-//            var switchGoPayCheckoutSwitchTheme = SwitchTheme()
-//            switchGoPayCheckoutSwitchTheme.thumbTint =
-//                Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
-//            switchGoPayCheckoutSwitchTheme.trackTint =
-//                Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
-//            switchDemo.switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
-//
-//        }
-
-
-        // main save
-        var saveTextViewTextViewTheme = TextViewTheme()
-        saveTextViewTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.title.textColor"))
-        saveTextViewTextViewTheme.textSize =
-            ThemeManager.getFontSize("TapSwitchView.main.title.textFont")
-        saveTextViewTextViewTheme.font =
-            ThemeManager.getFontName("TapSwitchView.main.title.textFont")
-        switchDemo.saveTextView.setTheme(saveTextViewTextViewTheme)
-
-        // Go Pay Text
-        var saveGoPayTextViewTheme = TextViewTheme()
-        saveGoPayTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.title.textColor"))
-        saveGoPayTextViewTheme.textSize =
-            ThemeManager.getFontSize("TapSwitchView.goPay.title.textFont")
-        saveGoPayTextViewTheme.font = ThemeManager.getFontName("TapSwitchView.goPay.title.textFont")
-        switchDemo.saveGoPay.setTheme(saveGoPayTextViewTheme)
-
-        var alertGoPaySignUpTextViewTheme = TextViewTheme()
-        alertGoPaySignUpTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.notes.textColor"))
-        alertGoPaySignUpTextViewTheme.textSize =
-            ThemeManager.getFontSize("TapSwitchView.merchant.notes.textFont")
-        alertGoPaySignUpTextViewTheme.font =
-            ThemeManager.getFontName("TapSwitchView.merchant.notes.textFont")
-        switchDemo.alertGoPaySignUp.setTheme(alertGoPaySignUpTextViewTheme)
-
-
-        var separatorViewTheme = SeparatorViewTheme()
-        separatorViewTheme.strokeColor =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.CurvedSeparator.BackgroundColor"))
-        switchDemo.switchSeparator.setTheme(separatorViewTheme)
-    }
 
 }
 

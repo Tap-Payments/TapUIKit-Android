@@ -61,7 +61,7 @@ save your mobile number." />
         android:layout_height="match_parent"
         android:alpha="0.8"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switch_merchant_checkout"
