@@ -28,8 +28,8 @@ All rights reserved.
 
 var selectedPosition = -1
 var context: Context? = null
-var viewType :ViewGroup? = null
-val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
+//var viewType :ViewGroup? = null
+//val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
 
 
 class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
@@ -59,7 +59,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             setTheme()
         }
         fun setTheme(){
-//            var tapCard_Chip = view.findViewById<TapChip>(R.id.tapcard_Chip)
+            var tapCard_Chip = view.findViewById<TapChip>(R.id.tapcard_Chip)
             tapCard_Chip?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")))
             val totalQuantityTextViewTheme = TextViewTheme()
             totalQuantityTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.labelTextColor"))
