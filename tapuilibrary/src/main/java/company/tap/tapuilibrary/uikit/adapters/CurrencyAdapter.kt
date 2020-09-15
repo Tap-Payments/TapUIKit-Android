@@ -68,6 +68,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             chipTheme.outlineSpotShadowColor=  Color.parseColor( ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
             view.tapcard_Chip.setTheme(chipTheme)
             view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+            tapCard_Chip.setTheme(chipTheme)
         }
     }
 
