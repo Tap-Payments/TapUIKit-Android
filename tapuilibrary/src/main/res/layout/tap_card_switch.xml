@@ -6,7 +6,7 @@
     android:id="@+id/tapCardSwitchLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/chip_background"
+    tools:background="@color/chip_background"
     android:layoutDirection="locale"
     android:orientation="vertical">
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:cardBackgroundColor="@color/chip_background">
+        tools:cardBackgroundColor="@color/chip_background">
 
         <LinearLayout
             android:layout_width="match_parent"

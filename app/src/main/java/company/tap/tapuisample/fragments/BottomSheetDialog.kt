@@ -296,14 +296,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     private fun switchViewInit(view: View) {
-
-        /* if(selectedTab==0){
-             checkboxString = getString(R.string.nfc_text)
-         }else{
-             checkboxString = getString(R.string.mobile_text)
-         }*/
         switchDemo = view.findViewById(R.id.switch_pay_demo)
-        switchDemo.setSwitchDataSource(getSwitchDataSource("ola"))
+//        switchDemo.setSwitchDataSource(getSwitchDataSource("ola"))
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         separatorView = switchDemo.findViewById(R.id.switch_separator)
@@ -312,12 +306,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
-        var switchSaveMobileSwitchTheme = SwitchTheme()
-        switchSaveMobileSwitchTheme.thumbTint = Color.GREEN
-        switchSaveMobileSwitchTheme.trackTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-        switchSaveMobileSwitchTheme.backgroundColor = Color.GREEN
-        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
+//        var switchSaveMobileSwitchTheme = SwitchTheme()
+//        switchSaveMobileSwitchTheme.thumbTint = Color.GREEN
+//        switchSaveMobileSwitchTheme.trackTint =
+//            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+//        switchSaveMobileSwitchTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+//        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
+//        switchDemo.alertGoPaySignUp.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+//        switchDemo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
         switchSaveDemo?.visibility = View.GONE
     }
 
@@ -644,7 +640,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 cardScannerBtn?.visibility = View.VISIBLE
                 nfcButton?.visibility = View.VISIBLE
                 clearView?.visibility = View.GONE
-
             } else if (position == 1) {
                 //paymentLayout.removeAllViews()
                 paymentLayout.addView(tapMobileInputView)
@@ -655,33 +650,18 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 clearView?.visibility = View.VISIBLE
 
                 mobileNumberEditText?.addTextChangedListener(object : TextWatcher {
-                    override fun onTextChanged(
-                        s: CharSequence,
-                        start: Int,
-                        before: Int,
-                        count: Int
-                    ) {
-
-
+                    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                     }
-
                     override fun afterTextChanged(mobileText: Editable) {
                         if (mobileText.length == 12) {
-                            mobileNumberEditText?.setText(mobileText)
-
+                            mobileNumberEditText?.text = mobileText
                         }
                         println("mobile number value ${mobileText.length}")
                     }
 
-                    override fun beforeTextChanged(
-                        s: CharSequence,
-                        start: Int,
-                        count: Int,
-                        after: Int
-                    ) {
+                    override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                     }
                 })
-
             }
 
 
