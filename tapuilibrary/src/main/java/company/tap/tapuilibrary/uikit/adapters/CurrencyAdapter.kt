@@ -91,14 +91,18 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.bindPhoto(photos[position])
         if (selectedPosition == position) {
+            /**
+             * Method to draw bordered view
+             * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
+             */
+
 //            holder.itemView.setBackgroundResource(R.drawable.border_currency)
             tapCard_Chip?.let {
-                setBorderedView(
-                    it,
+                setBorderedView(it,
                     (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
-                    0.5f,
+                    1.5f,
                     ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"),
-                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color")),
                     Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
                 )
             }
