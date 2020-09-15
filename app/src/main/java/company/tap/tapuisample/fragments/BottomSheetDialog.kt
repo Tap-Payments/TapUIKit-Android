@@ -166,6 +166,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
 //        actionButton.setButtonDataSource( false)
+        actionButton.setButtonDataSource(false)
         actionButton.isActivated = false
         actionButton.stateListAnimator = null
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
@@ -905,13 +906,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     override fun onCardSelectedAction(isSelected: Boolean) {
         if (isSelected) {
-//            actionButton.setButtonDataSource()
+            actionButton.setButtonDataSource(true)
             actionButton.isActivated = true
             actionButton.setOnClickListener {
                 if (actionButton.isActivated){
                     changeBottomSheetTransition()
                     hideAllViews()
-                    if (paymentsList.get(2) == 3) {
+                    if (paymentsList[2] == 3) {
                         Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
                         childFragmentManager
                             .beginTransaction()
@@ -930,7 +931,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 }
             }
         }
-//        else actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_pay), false)
+        else actionButton.setButtonDataSource(false)
     }
 
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {

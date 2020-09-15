@@ -18,7 +18,7 @@ class ActionButtonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_action_button)
         actionButton = findViewById(R.id.action_button)
-        actionButton.setButtonDataSource(getIdleDataSource())
+        actionButton.setButtonDataSource(false)
         actionButton.setOnClickListener {
             pickStatus()
         }
@@ -32,10 +32,10 @@ class ActionButtonActivity : AppCompatActivity() {
         builder.setTitle("Pick Status")
         builder.setItems(items) { _, position ->
             if (position == 0) {
-                actionButton.setButtonDataSource(getSuccessDataSource())
+//                actionButton.setButtonDataSource(getSuccessDataSource())
                 actionButton.changeButtonState(ActionButtonState.SUCCESS)
             } else {
-                actionButton.setButtonDataSource(getErrorDataSource())
+//                actionButton.setButtonDataSource(getErrorDataSource())
                 actionButton.changeButtonState(ActionButtonState.ERROR)
             }
             alert?.hide()

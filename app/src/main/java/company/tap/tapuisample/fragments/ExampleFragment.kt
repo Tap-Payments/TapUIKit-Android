@@ -32,7 +32,7 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract {
         super.onViewCreated(view, savedInstanceState)
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
-        action_button.setButtonDataSource(getSuccessDataSource())
+        action_button.setButtonDataSource(false)
 
         knet.setOnClickListener {
             clickAction = 1
@@ -72,7 +72,7 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract {
         if (done) {
             action_button.visibility = View.VISIBLE
             fragment_container.visibility = View.GONE
-            action_button.setButtonDataSource(getSuccessDataSource())
+            action_button.setButtonDataSource(false)
             action_button.changeButtonState(ActionButtonState.SUCCESS)
         } else {
             action_button.visibility = View.GONE
