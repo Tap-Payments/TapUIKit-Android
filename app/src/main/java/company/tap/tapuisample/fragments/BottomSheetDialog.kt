@@ -318,7 +318,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
         switchSaveMobileSwitchTheme.backgroundColor = Color.GREEN
         switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
-
         switchSaveDemo?.visibility = View.GONE
     }
 
@@ -507,7 +506,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 // dialog?.window?.attributes?.windowAnimations= R.anim.slide_down
 
                 Handler().postDelayed({
-
                     childFragmentManager
                         .beginTransaction()
                         .remove(currencyViewFragment)
@@ -525,6 +523,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                  }
  */
                 mainChipGroup?.visibility = View.VISIBLE
+                separator_.visibility = View.VISIBLE
+                tapSeparatorViewLinear?.visibility = View.VISIBLE
                 //  tabLayout.visibility = View.GONE
                 //  paymentLayout.visibility = View.GONE
                 tap_payment_input0.visibility = View.VISIBLE
@@ -714,6 +714,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tabLayout.addSection(items)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     private fun addMobileTab() {
         val items = ArrayList<SectionTabItem>()
         items.add(
@@ -979,7 +980,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switchMerchantCheckout?.isChecked = false
         switchgoPayCheckout?.isChecked = false
         switchgoPayCheckout?.visibility = View.GONE
-//                currentCurrency.visibility = View.GONE
         tabLayout.visibility = View.GONE
         paymentLayout.visibility = View.GONE
         tapHeaderSectionView.visibility = View.GONE
@@ -1028,6 +1028,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
         indicatorSeparator.setTheme(separatorViewTheme)
+        topSeparator.setTheme(separatorViewTheme)
+        separator.setTheme(separatorViewTheme)
+        separator_.setTheme(separatorViewTheme)
+
         // set theme for background of action button
         outerLayout?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("actionButton.BackgroundColor.default")))
     }
@@ -1041,13 +1045,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         editTextTheme.textSize = ThemeManager.getFontSize("phoneCard.textFields.font")
         tapMobileInputView.setTheme(editTextTheme)
         tapMobileInputView.mobileNumber.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-        tapMobileInputView.mobilePaymentMainLinear.setBackgroundColor(
-            Color.parseColor(
-                ThemeManager.getValue(
-                    "phoneCard.commonAttributes.backgroundColor"
-                )
-            )
-        )
+        tapMobileInputView.mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
         tapMobileInputView.mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
     }
 }
