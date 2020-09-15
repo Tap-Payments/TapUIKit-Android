@@ -74,16 +74,13 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
             tapCard_Chip?.setTheme(chipTheme)
 
-
-//            tapCard_Chip?.let {
-//                setBorderedView(
-//                    it,
-//                    (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
-//                    0.0f,
-//                   Color.GREEN,
-//                    Color.GREEN,
-//                    Color.GREEN                )
-//            }
+            setBorderedView(tapCard_Chip,
+                (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                3.0f,
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color")),
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor"))
+            )
         }
     }
 
@@ -97,26 +94,23 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
              */
 
 //            holder.itemView.setBackgroundResource(R.drawable.border_currency)
-//            tapCard_Chip?.let {
-//                setBorderedView(it,
-//                    (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-//                    7.0f,
-//                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
-//                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),
-//                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor"))
-//                )
-//            }
+            setBorderedView(
+                holder.itemView,
+                (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                7.0f,
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color")),
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor"))
+            )
         } else{
-//            tapCard_Chip?.let {
-//                setBorderedView(
-//                    it,
-//                    (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
-//                    0.0f,
-//                    ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"),
-//                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
-//                    Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
-//                )
-//            }
+            setBorderedView(
+                holder.itemView,
+                (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
+                0.0f,
+                ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"),
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
+            )
         }
 
 //            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
