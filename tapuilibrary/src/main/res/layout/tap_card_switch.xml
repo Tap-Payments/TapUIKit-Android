@@ -15,11 +15,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        app:cardCornerRadius="20dp"
         tools:cardBackgroundColor="@color/chip_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/save_switch_linear"
             android:orientation="horizontal"
             android:weightSum="0.5">
 
@@ -58,7 +60,7 @@ save your mobile number." />
         android:layout_height="match_parent"
         android:alpha="0.8"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switch_merchant_checkout"
@@ -78,7 +80,7 @@ save your mobile number." />
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
             android:id="@+id/switch_separator"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="0.6dp"
             android:layout_marginStart="@dimen/margin_basic_13dp"
             android:layout_marginEnd="21dp"
             android:background="@color/white" />
