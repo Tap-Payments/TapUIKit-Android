@@ -29,6 +29,8 @@ class TapCardSwitch : LinearLayout {
      val switchSaveMerchant by lazy { findViewById<TapSwitch>(R.id.switch_merchant_checkout) }
      val switchGoPayCheckout by lazy { findViewById<TapSwitch>(R.id.switch_gopay_checkout) }
      val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
+     val saveSwitchLinear by lazy { findViewById<LinearLayout>(R.id.save_switch_linear) }
+     val switchesLayout by lazy { findViewById<LinearLayout>(R.id.switches_layout) }
     lateinit var attrs: AttributeSet
     private var tapSwitchDataSource: TapSwitchDataSource? = null
 
@@ -94,6 +96,7 @@ class TapCardSwitch : LinearLayout {
     fun setTheme() {
 
         tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
         // Main switch
         var switchSaveMobileSwitchTheme = SwitchTheme()
@@ -102,7 +105,6 @@ class TapCardSwitch : LinearLayout {
         switchSaveMobileSwitchTheme.trackTint =
             Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
         switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
-        switchSaveMobile.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
         // Merchant
         var switchSaveMerchantSwitchTheme = SwitchTheme()
@@ -111,7 +113,6 @@ class TapCardSwitch : LinearLayout {
         switchSaveMerchantSwitchTheme.trackTint =
             Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
         switchSaveMerchant.setTheme(switchSaveMerchantSwitchTheme)
-        switchSaveMerchant.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
 
         // Go Pay
@@ -121,7 +122,6 @@ class TapCardSwitch : LinearLayout {
         switchGoPayCheckoutSwitchTheme.trackTint =
             Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
         switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchTheme)
-        switchGoPayCheckout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
 
         // main save
@@ -133,7 +133,6 @@ class TapCardSwitch : LinearLayout {
         saveTextViewTextViewTheme.font =
             ThemeManager.getFontName("TapSwitchView.main.title.textFont")
         saveTextView.setTheme(saveTextViewTextViewTheme)
-        saveTextView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
         // Go Pay Text
         var saveGoPayTextViewTheme = TextViewTheme()
