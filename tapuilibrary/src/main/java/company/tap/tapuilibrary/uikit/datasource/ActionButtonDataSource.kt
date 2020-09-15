@@ -16,6 +16,7 @@ data class ActionButtonDataSource(
     val textSize: Float? = null,
     val cornerRadius: Float? = null,
     val successImage: Drawable? = null,
+    val isActivated: Boolean? = false,
 
     @ColorInt
     val textColor: Int? = null,

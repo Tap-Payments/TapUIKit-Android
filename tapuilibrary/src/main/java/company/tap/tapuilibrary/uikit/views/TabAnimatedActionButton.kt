@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
@@ -14,6 +15,7 @@ import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.animation.MorphingAnimation
 import company.tap.tapuilibrary.uikit.animation.MorphingAnimation.AnimationTarget.*
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
@@ -61,6 +63,18 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         morphingAnimation =
             MorphingAnimation(this)
         morphingAnimation.setAnimationEndListener(this)
+        initActionButtonDataSource()
+    }
+
+     fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null){
+        dataSource = ActionButtonDataSource(
+            text = "Pay",
+            textSize = 18f,
+            textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
+            cornerRadius = 100f,
+            successImageResources = R.drawable.checkmark,
+            backgroundColor = backgroundColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
+        )
     }
 
     /**
@@ -72,15 +86,20 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         this.actionButtonInterface = actionButtonInterface
     }
 
-    fun setButtonDataSource(dataSource: ActionButtonDataSource) {
-        this.dataSource = dataSource
-        initBackground()
+    fun setButtonDataSource(isValid: Boolean = false) {
+        if (isValid)
+        {
+            initValidBackground()
+            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+        } else{
+            initInvalidBackground()
+            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+        }
         addView(getTextView())
     }
 
     fun addTapLoadingView() {
-        tapLoadingView =
-            TapLoadingView(context, null)
+        tapLoadingView = TapLoadingView(context, null)
         tapLoadingView?.setOnProgressCompleteListener(this)
         addChildView(tapLoadingView!!)
     }
@@ -103,15 +122,26 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
 
     /**
-     * setup the background drawable color and corner radius from datasource
+     * setup the initValidBackground background drawable color and corner radius from datasource
      */
-    private fun initBackground() {
+
+    private fun initValidBackground() {
         dataSource?.cornerRadius?.let {
             backgroundDrawable.cornerRadius = it
         }
-        dataSource?.backgroundColor?.let {
-            backgroundDrawable.color = ColorStateList.valueOf(it)
+        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")))
+        background = backgroundDrawable
+        elevation = 0F
+    }
+
+    /**
+     * setup the initInvalidBackground background drawable color and corner radius from datasource
+     */
+    private fun initInvalidBackground() {
+        dataSource?.cornerRadius?.let {
+            backgroundDrawable.cornerRadius = it
         }
+        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
         background = backgroundDrawable
         elevation = 0F
     }
@@ -137,7 +167,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT
-
         )
         params.setMargins(20)
         image.layoutParams = params
@@ -173,9 +202,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         addView(view)
     }
 
-    /**
-     *
-     */
     override fun onMorphAnimationEnd() {
         tapLoadingView?.completeProgress()
     }
@@ -196,7 +222,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             }
         }
     }
-
     /**
      * Constants values
      */

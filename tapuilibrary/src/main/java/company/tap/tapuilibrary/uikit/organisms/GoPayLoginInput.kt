@@ -65,11 +65,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         actionButton.isEnabled = false
-        actionButton.setButtonDataSource(
-            getButtonDataSource(
-                Color.parseColor("#d7d7d7")
-            )
-        )
+        actionButton.setButtonDataSource( false)
         actionButton.setOnClickListener {
             when (inputType) {
                 EMAIL -> loginInterface?.onEmailValidated()
@@ -106,7 +102,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun disableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
-        actionButton.setButtonDataSource(getButtonDataSource(FakeThemeManager.getGoPayUnValidatedColor()))
+        actionButton.setButtonDataSource(false)
     }
 
     private fun isValidEmail(email: String): Boolean {
@@ -121,7 +117,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
-        actionButton.setButtonDataSource(getButtonDataSource(FakeThemeManager.getGoPayValidatedColor()))
+        actionButton.setButtonDataSource(true)
         actionButton.isEnabled = true
     }
 
