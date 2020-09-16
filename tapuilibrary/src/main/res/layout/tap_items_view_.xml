@@ -82,22 +82,30 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/total_quantity"
+        app:layout_constraintEnd_toStartOf="@+id/quantityRelative"
         tools:text="KD000,000.000" />
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
-        android:id="@+id/total_quantity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/pay_btn_padding_vertical"
+    <RelativeLayout
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:id="@+id/quantityRelative"
         android:background="@drawable/rounded_circle"
         android:gravity="center"
         android:paddingBottom="2dp"
-        android:textColor="#4b4847"
-        android:textSize="9sp"
-        android:textStyle="normal"
+        android:layout_marginStart="@dimen/pay_btn_padding_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="2" />
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            android:id="@+id/total_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#4b4847"
+            android:textSize="9sp"
+            android:textStyle="normal"
+            tools:text="2" />
+    </RelativeLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
