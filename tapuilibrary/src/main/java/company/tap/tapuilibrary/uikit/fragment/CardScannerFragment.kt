@@ -20,17 +20,25 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.uikit.atoms.TapButton
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
+<<<<<<< HEAD
 
 import company.tap.tapuilibrary.uikit.views.TapAmountSectionView
 import company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
 
 
+=======
+import company.tap.tapuilibrary.uikit.views.TapAmountSectionView
+import company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
+>>>>>>> merging-kits
 import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.custom_card_view.*
 
 /**
  * Created by AhlaamK on 7/6/20.
+<<<<<<< HEAD
 
+=======
+>>>>>>> merging-kits
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/

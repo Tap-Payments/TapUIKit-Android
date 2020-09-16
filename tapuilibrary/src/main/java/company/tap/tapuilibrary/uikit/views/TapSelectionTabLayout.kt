@@ -183,7 +183,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val layout = getSectionItemLayout()
         val indicator = getTabSelectionIndicator()
         val params = LayoutParams(
-            getItemWidth(), 0
+            LayoutParams.MATCH_PARENT, 0
         )
         params.setMargins(0, 30, 0, 30)
         params.weight = 1f

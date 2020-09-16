@@ -23,15 +23,22 @@ import company.tap.nfcreader.open.utils.TapNfcUtils
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.views.TapNFCView
+<<<<<<< HEAD
 
+=======
+>>>>>>> merging-kits
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.Disposables
 
 
 /**
+<<<<<<< HEAD
  * Created by AhlaamK on 7/2/20.
 
+=======
+ * Created on 7/2/20.
+>>>>>>> merging-kits
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
