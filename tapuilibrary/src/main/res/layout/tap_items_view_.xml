@@ -91,6 +91,7 @@
         android:id="@+id/quantityRelative"
         android:background="@drawable/rounded_circle"
         android:gravity="center"
+        android:paddingBottom="2dp"
         android:layout_marginStart="@dimen/pay_btn_padding_vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -99,7 +100,6 @@
             android:id="@+id/total_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="2dp"
             android:textColor="#4b4847"
             android:textSize="9sp"
             android:textStyle="normal"

@@ -150,9 +150,9 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
                 it,
                 50f,
                 0.0f,
-                Color.parseColor(ThemeManager.getValue("itemsList.item.count.backgroundColor")),
-                Color.parseColor(ThemeManager.getValue("itemsList.item.count.backgroundColor")),
-                Color.parseColor(ThemeManager.getValue("itemsList.item.count.backgroundColor"))
+                Color.parseColor(ThemeManager.getValue("itemsList.separatorColor")),
+                Color.parseColor(ThemeManager.getValue("itemsList.separatorColor")),
+                Color.parseColor(ThemeManager.getValue("itemsList.separatorColor"))
             )
         }
 
