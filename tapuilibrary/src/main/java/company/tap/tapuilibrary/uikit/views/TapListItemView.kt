@@ -3,6 +3,7 @@ package company.tap.tapuilibrary.uikit.views
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.ItemViewDataSource
@@ -22,6 +23,7 @@ class TapListItemView : LinearLayout {
     val totalAmount by lazy { findViewById<TapTextView>(R.id.total_amount) }
     val totalQuantity by lazy { findViewById<TapTextView>(R.id.total_quantity) }
     val itemAmount by lazy { findViewById<TapTextView>(R.id.item_amount) }
+    val quantityRelative by lazy { findViewById<RelativeLayout>(R.id.quantityRelative) }
     private var itemViewDataSource: ItemViewDataSource? = null
 
     /**

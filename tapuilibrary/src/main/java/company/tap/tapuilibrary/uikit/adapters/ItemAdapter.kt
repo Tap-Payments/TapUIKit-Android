@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.taplocalizationkit.LocalizationManager
@@ -19,6 +20,7 @@ import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.ItemViewDataSource
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.views.TapListItemView
 
 
@@ -57,6 +59,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         val itemSeparator = holder.itemView.findViewById<TapSeparatorView>(R.id.itemseparator)
         val totalQuantity = holder.itemView.findViewById<TapTextView>(R.id.total_quantity)
         val discount = holder.itemView.findViewById<TapTextView>(R.id.discount_text)
+        val quantityRelative = holder.itemView.findViewById<RelativeLayout>(R.id.quantityRelative)
         val totalAmount = holder.itemView.findViewById<TapTextView>(R.id.total_amount)
         val mainViewLinear = holder.itemView.findViewById<LinearLayout>(R.id.mainViewLinear)
         val itemName = holder.itemView.findViewById<TapTextView>(R.id.item_title)
@@ -69,7 +72,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
         onItemClickAction(holder, position, isExpanded)
         showHideDescText(isExpanded, position, descText)
-        setTheme(descriptionTextView,discount,descText,totalQuantity,totalAmount,itemName,itemSeparator,mainViewLinear)
+        setTheme(descriptionTextView,discount,descText,totalQuantity,totalAmount,itemName,itemSeparator,mainViewLinear,quantityRelative)
         setFonts(itemName,totalAmount,discount,descText,descriptionTextView,totalQuantity)
         checkItemListPosition(position,discount, totalAmount, itemName)
     }
@@ -109,7 +112,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
 
     fun setTheme(descriptionTextView:TapTextView?,discount:TapTextView?,descText:TapTextView?,totalQuantity:TapTextView?,
-                 totalAmount:TapTextView?,itemName:TapTextView?, itemSeparator: TapSeparatorView?,mainViewLinear :LinearLayout?) {
+                 totalAmount:TapTextView?,itemName:TapTextView?, itemSeparator: TapSeparatorView?,mainViewLinear :LinearLayout?, quantityRelative:RelativeLayout?) {
 
         itemViewAdapter.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor")))
         val descriptionTextViewTheme = TextViewTheme()
@@ -141,6 +144,17 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         totalAmountTextViewTheme.font =
             ThemeManager.getFontName("itemsList.item.calculatedPriceLabelFont")
         totalAmount?.setTheme(totalAmountTextViewTheme)
+
+        quantityRelative?.let {
+            setBorderedView(
+                it,
+                50f,
+                0.0f,
+                Color.parseColor(ThemeManager.getValue("itemsList.item.count.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("itemsList.item.count.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("itemsList.item.count.backgroundColor"))
+            )
+        }
 
 
         val itemTitleTextViewTheme = TextViewTheme()
