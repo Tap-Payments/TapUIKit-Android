@@ -71,13 +71,13 @@ class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCa
         cardScanText?.text = LocalizationManager.getValue("Default","Hints","scan")
         //headerViewInit(view)
         // amountViewInit(view)
-        FrameManager.getInstance().setFrameColor(Color.WHITE)
+     //   FrameManager.getInstance().setFrameColor(Color.WHITE)
         // blurLayout = view.findViewById(R.id.blurLayout)
-        view.post(Runnable {
+       /* view.post(Runnable {
 
             Blurry.with(context).radius(25).sampling(2).onto(cardscan_view)
             cardscan_view.bringChildToFront(inline_container)
-        })
+        })*/
         return view
 
     }
