@@ -29,7 +29,8 @@ All rights reserved.
  **/
 open class CurrencyViewFragment : Fragment() {
     private lateinit var chipRecycler: RecyclerView
-    lateinit var currencyList: ArrayList<CurrencyModel>
+   // lateinit var currencyList: ArrayList<CurrencyModel>
+    lateinit var currencyList: ArrayList<String>
 
     private lateinit var itemsRecycler: RecyclerView
     private val itemList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22)
@@ -95,9 +96,8 @@ open class CurrencyViewFragment : Fragment() {
     //Filling dummy data for currency chips
     private fun fillData() {
         currencyList = ArrayList()
-
         //adding some dummy data to the list
-        currencyList.add(
+      /*  currencyList.add(
             CurrencyModel(
                 "KWD",
                 "https://www.countryflags.io/kw/flat/24.png"
@@ -132,7 +132,7 @@ open class CurrencyViewFragment : Fragment() {
                 "SAR",
                 "https://www.countryflags.io/sa/flat/24.png"
             )
-        )
+        )*/
 
     }
 
