@@ -1,37 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
+
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
     >
-=======
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
->>>>>>> merging-kits
+
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:text="NFC DEMO"
-<<<<<<< HEAD
+
         android:visibility="gone"/>
-=======
-        android:visibility="gone" />
->>>>>>> merging-kits
+
 
 
     <company.tap.tapuilibrary.uikit.views.TapNFCView
         android:id="@+id/custom_nfc"
         android:layout_width="match_parent"
-<<<<<<< HEAD
+
         android:layout_height="wrap_content"
         />
-=======
-        android:layout_height="wrap_content" />
->>>>>>> merging-kits
+
 
 </LinearLayout>
