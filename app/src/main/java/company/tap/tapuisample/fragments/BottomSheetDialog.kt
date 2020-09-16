@@ -95,9 +95,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private lateinit var businessIcon: TapImageView
     private lateinit var businessPlaceholder: TapTextView
     lateinit var tabLayout: TapSelectionTabLayout
-//    private var imageUrl: String? = null
+    private var imageUrl: String? = null
 
-    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
+//    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
     var fontChanger: FontChanger? = null
     private var selectedTab = 0
     private lateinit var tapCardInputView: InlineCardInput
@@ -453,8 +453,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         businessInitial = businessName?.get(0).toString()
         businessPlaceholder.text = businessInitial
         if (imageUrl == null) {
-            businessIcon.setBackgroundColor(Color.BLACK)
+            businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         } else {
+//            Glide.with(this)
+//                .load(imageUrl)
+//                .into(businessIcon)
+
             Glide.with(this)
                 .load(imageUrl)
                 .placeholder(
@@ -463,6 +467,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     )
                 )
                 .into(businessIcon)
+
         }
 
 

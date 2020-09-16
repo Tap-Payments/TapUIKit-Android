@@ -18,10 +18,10 @@ All rights reserved.
  * TapItemsView  is a molecule for setting Amount, Description and Quantity.
  */
 class TapListItemView : LinearLayout {
-    var itemTitle: TapTextView
-    var totalAmount: TapTextView
-    var totalQuantity: TapTextView
-    var itemAmount: TapTextView
+    val itemTitle by lazy { findViewById<TapTextView>(R.id.item_title) }
+    val totalAmount by lazy { findViewById<TapTextView>(R.id.total_amount) }
+    val totalQuantity by lazy { findViewById<TapTextView>(R.id.total_quantity) }
+    val itemAmount by lazy { findViewById<TapTextView>(R.id.item_amount) }
     private var itemViewDataSource: ItemViewDataSource? = null
 
     /**
@@ -56,10 +56,6 @@ class TapListItemView : LinearLayout {
 
     init {
         inflate(context, R.layout.tap_items_view_, this)
-        itemTitle = findViewById(R.id.item_title)
-        itemAmount = findViewById(R.id.item_amount)
-        totalAmount = findViewById(R.id.total_amount)
-        totalQuantity = findViewById(R.id.total_quantity)
     }
 
     /**

@@ -125,7 +125,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
         val totalQuantityTextViewTheme = TextViewTheme()
         totalQuantityTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor"))
+            Color.parseColor(ThemeManager.getValue("itemsList.item.count.countLabelColor"))
         totalQuantityTextViewTheme.textSize =
             ThemeManager.getFontSize("itemsList.item.count.countLabelFont")
         totalQuantityTextViewTheme.font =
