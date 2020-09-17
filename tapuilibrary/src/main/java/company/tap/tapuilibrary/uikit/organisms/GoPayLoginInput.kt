@@ -13,6 +13,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
@@ -35,7 +36,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     TapView<EditTextTheme> {
 
      var loginTabLayout: TabLayout
-     var textInput: TextInputEditText
+     val textInput by lazy { findViewById<TextInputEditText>(R.id.gopay_text_input) }
      var textInputLayout: TextInputLayout
      var loginMethodImage: ImageView
      var actionButton: TabAnimatedActionButton
@@ -46,7 +47,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     init {
         inflate(context, R.layout.gopay_login_input, this)
         loginTabLayout = findViewById(R.id.login_type)
-        textInput = findViewById(R.id.gopay_text_input)
         textInputLayout = findViewById(R.id.text_input_layout)
         loginMethodImage = findViewById(R.id.login_method_icon)
         actionButton = findViewById(R.id.gopay_button)
@@ -180,6 +180,23 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         theme.letterSpacing?.let { it }
         theme.textColorHint?.let {  }
         theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
+    }
+
+    fun setFontsEnglish() {
+        textInput?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+    }
+
+    fun setFontsArabic() {
+        textInput?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+
     }
 
 }
