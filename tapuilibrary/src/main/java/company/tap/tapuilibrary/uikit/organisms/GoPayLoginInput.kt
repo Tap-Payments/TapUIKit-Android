@@ -12,6 +12,7 @@ import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
@@ -32,15 +33,15 @@ import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
  *
  */
 class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs) ,
+    LinearLayout(context, attrs),
     TapView<EditTextTheme> {
 
-     var loginTabLayout: TabLayout
-     val textInput by lazy { findViewById<TextInputEditText>(R.id.gopay_text_input) }
-     var textInputLayout: TextInputLayout
-     var loginMethodImage: ImageView
-     var actionButton: TabAnimatedActionButton
-     var dataSource: GoPayLoginDataSource? = null
+    var loginTabLayout: TabLayout
+    val textInput by lazy { findViewById<TextInputEditText>(R.id.gopay_text_input) }
+    var textInputLayout: TextInputLayout
+    var loginMethodImage: ImageView
+    var actionButton: TabAnimatedActionButton
+    var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
     private var inputType = EMAIL
 
@@ -50,6 +51,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textInputLayout = findViewById(R.id.text_input_layout)
         loginMethodImage = findViewById(R.id.login_method_icon)
         actionButton = findViewById(R.id.gopay_button)
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {
@@ -65,7 +67,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         actionButton.isEnabled = false
-        actionButton.setButtonDataSource( false)
+        actionButton.setButtonDataSource(false)
         actionButton.setOnClickListener {
             when (inputType) {
                 EMAIL -> loginInterface?.onEmailValidated()
@@ -175,10 +177,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     override fun setTheme(theme: EditTextTheme) {
         theme.maxLines?.let { it }
-        theme.textColor?.let {it }
-        theme.textSize?.let {it}
+        theme.textColor?.let { it }
+        theme.textSize?.let { it }
         theme.letterSpacing?.let { it }
-        theme.textColorHint?.let {  }
+        theme.textColorHint?.let { }
         theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
     }
 

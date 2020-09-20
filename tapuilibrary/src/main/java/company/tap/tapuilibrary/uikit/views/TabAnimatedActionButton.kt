@@ -87,7 +87,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         this.actionButtonInterface = actionButtonInterface
     }
 
-    fun setButtonDataSource(isValid: Boolean = false,lang : String, buttonText: String?= null) {
+    fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null) {
         if (isValid)
         {
             initValidBackground()
@@ -96,7 +96,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             initInvalidBackground()
             initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), buttonText)
         }
-        addView(getTextView(lang))
+        addView(getTextView(lang?: "en"))
     }
 
     fun addTapLoadingView() {

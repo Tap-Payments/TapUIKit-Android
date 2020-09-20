@@ -1,9 +1,12 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 
 /**
@@ -47,18 +50,36 @@ class TapAlertView : LinearLayout {
         attrs,
         defStyleAttr
     )
+
     init {
         inflate(
             context,
             R.layout.tap_alert_view, this
         )
-//        alertMessage = findViewById(R.id.textViewAlertMessage)
-//        tapAlertLinear = findViewById(R.id.tapAlertLinear)
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") {
+            setFontsEnglish()
+        } else {
+            setFontsArabic()
+        }
+
 
     }
 
-    fun setTheme(){
-
-
+    fun setFontsEnglish() {
+        alertMessage?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
     }
+
+    fun setFontsArabic() {
+        alertMessage?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+    }
+
+
 }

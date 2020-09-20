@@ -2,13 +2,16 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.core.view.ViewCompat
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ButtonTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
@@ -22,9 +25,9 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
 class TapAmountSectionView : LinearLayout {
-    private var selectedCurrency: TapTextView
-    private var currentCurrency: TapTextView
-    var itemCount: TapButton
+    val selectedCurrency by lazy { findViewById<TapTextView>(R.id.textview_selectedcurrency) }
+    val currentCurrency by lazy { findViewById<TapTextView>(R.id.textView_currentcurrency) }
+    val itemCount by lazy { findViewById<TapButton>(R.id.textView_itemcount) }
     private var amountViewDataSource: AmountViewDataSource? = null
 
     /**
@@ -58,15 +61,11 @@ class TapAmountSectionView : LinearLayout {
     )
 
     init {
-        inflate(
-            context,
-            R.layout.tap_main_amount, this
-        )
-        selectedCurrency = findViewById(R.id.textview_selectedcurrency)
-        currentCurrency = findViewById(R.id.textView_currentcurrency)
-        itemCount = findViewById(R.id.textView_itemcount)
+        inflate(context, R.layout.tap_main_amount, this)
         itemCount.elevation = 0F
         setTheme()
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
     }
 
     fun setTheme() {
@@ -128,7 +127,42 @@ class TapAmountSectionView : LinearLayout {
         }
 
         itemCount.elevation = 0F
+    }
 
+    fun setFontsEnglish() {
+        selectedCurrency?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
+        currentCurrency?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        itemCount?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+    }
+
+    fun setFontsArabic() {
+        selectedCurrency?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalRegular
+            )
+        )
+        currentCurrency?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        itemCount?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
     }
 
 
