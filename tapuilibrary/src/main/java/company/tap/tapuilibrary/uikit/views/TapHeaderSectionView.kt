@@ -130,19 +130,19 @@ class TapHeaderSectionView : LinearLayout {
 
     fun setFontsEnglish() {
         businessName?.typeface = Typeface.createFromAsset(
-            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
+            context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
 
         paymentFor?.typeface = Typeface.createFromAsset(
-            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
+            context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
 
         businessPlaceholder?.typeface = Typeface.createFromAsset(
-            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
+            context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
@@ -151,19 +151,19 @@ class TapHeaderSectionView : LinearLayout {
 
     fun setFontsArabic() {
         businessName?.typeface = Typeface.createFromAsset(
-            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
+            context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
 
         paymentFor?.typeface = Typeface.createFromAsset(
-            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
+            context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
 
         businessPlaceholder?.typeface = Typeface.createFromAsset(
-            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
+            context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
