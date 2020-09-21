@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
-        android:id="@+id/tabLayoutTopSeparator"
+        android:id="@+id/sections_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -59,9 +59,5 @@
 
     </LinearLayout>
 
-<!--    <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout-->
-<!--        android:id="@+id/tabLayoutBottomSeparator"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content" />-->
 
 </LinearLayout>
