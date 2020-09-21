@@ -15,6 +15,7 @@ import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.animation.MorphingAnimation
 import company.tap.tapuilibrary.uikit.animation.MorphingAnimation.AnimationTarget.*
@@ -66,9 +67,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         initActionButtonDataSource()
     }
 
-     fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null){
+     fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
         dataSource = ActionButtonDataSource(
-            text = "Pay",
+            text = buttonText ?: "Pay",
             textSize = 18f,
             textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
             cornerRadius = 100f,
@@ -86,16 +87,16 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         this.actionButtonInterface = actionButtonInterface
     }
 
-    fun setButtonDataSource(isValid: Boolean = false) {
+    fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null) {
         if (isValid)
         {
             initValidBackground()
-            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),buttonText)
         } else{
             initInvalidBackground()
-            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), buttonText)
         }
-        addView(getTextView())
+        addView(getTextView(lang?: "en"))
     }
 
     fun addTapLoadingView() {
@@ -146,9 +147,12 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         elevation = 0F
     }
 
-    private fun getTextView(): TextView {
+    private fun getTextView(lang : String): TextView {
         val textView = TextView(context)
-        textView.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
+        if (lang == "en") setFontEnglish(textView)
+        else setFontArabic(textView)
+
+
         dataSource?.text?.let {
             textView.text = it
         }
@@ -160,6 +164,22 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         }
         textView.gravity = Gravity.CENTER
         return textView
+    }
+
+    fun setFontEnglish(textView:TextView ){
+        textView.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+    }
+
+    fun setFontArabic(textView:TextView){
+        textView.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
     }
 
      fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int,  actionAfterAnimationDone: ()-> Unit): ImageView {

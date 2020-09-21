@@ -2,18 +2,15 @@ package company.tap.tapuilibrary.uikit.atoms
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.shape.CornerFamily
-import com.google.android.material.shape.MaterialShapeDrawable
-import com.google.android.material.shape.ShapeAppearanceModel
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.themekit.theme.ChipTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
-import kotlinx.android.synthetic.main.item_knet.view.*
 import kotlinx.android.synthetic.main.tap_chip_group.view.*
 
 
@@ -34,9 +31,10 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
     init {
         inflate(context, R.layout.tap_chip_group, this)
         setTheme(groupName,groupAction,chipsRecycler)
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
-    fun setTheme(groupName:TapTextView?,groupAction :TapTextView?, chipsRecycler:RecyclerView? ) {
+    fun setTheme(groupName: TapTextView?, groupAction: TapTextView?, chipsRecycler: RecyclerView?) {
         val groupNameTextViewTheme = TextViewTheme()
         groupNameTextViewTheme.textColor =
             Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
@@ -53,6 +51,47 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
 
         linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         chipsRecycler?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-
     }
+
+    private fun setFontsEnglish() {
+//        var fontName = ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
+//        if(TapFont.values().any { it.name == fontName }) {
+//
+//            groupName?.typeface = Typeface.createFromAsset(
+//                context?.assets, TapFont.tapFontType(
+//                    TapFont.RobotoLight
+//                )
+//            )
+//            groupAction?.typeface = Typeface.createFromAsset(
+//                context?.assets, TapFont.tapFontType(
+//                    TapFont.RobotoLight
+//                )
+//            )
+//        }
+
+        groupName?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        groupAction?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+    }
+
+    private fun setFontsArabic() {
+        groupName?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        groupAction?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+    }
+
 }

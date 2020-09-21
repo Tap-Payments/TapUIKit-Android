@@ -2,14 +2,18 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.net.Uri
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ButtonTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
@@ -21,10 +25,11 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
  *  businessPlaceHodler for Merchant
  **/
 class TapHeaderSectionView : LinearLayout {
-    var businessIcon: TapImageView
-    var businessName: TapTextView
-    var paymentFor: TapTextView
-    var businessPlaceholder: TapTextView
+
+    val businessIcon by lazy { findViewById<TapImageView>(R.id.businessIcon) }
+    val businessName by lazy { findViewById<TapTextView>(R.id.businessName) }
+    val paymentFor by lazy { findViewById<TapTextView>(R.id.paymentFor) }
+    val businessPlaceholder by lazy { findViewById<TapTextView>(R.id.placeholderText) }
     private var headerDataSource: HeaderDataSource? = null
 
     /**
@@ -59,11 +64,8 @@ class TapHeaderSectionView : LinearLayout {
 
     init {
         inflate(context, R.layout.tap_main_header, this)
-        businessIcon = findViewById(R.id.businessIcon)
-        businessName = findViewById(R.id.businessName)
-        paymentFor = findViewById(R.id.paymentFor)
-        businessPlaceholder = findViewById(R.id.placeholderText)
         setTheme()
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
     /**
@@ -126,7 +128,53 @@ class TapHeaderSectionView : LinearLayout {
     }
 
 
+    fun setFontsEnglish() {
+        businessName?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
+        paymentFor?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
+        businessPlaceholder?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
+    }
+
+    fun setFontsArabic() {
+        businessName?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+
+        paymentFor?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+
+        businessPlaceholder?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+
+    }
+
 }
+
+
+
+
 
 /*
 fun Any.into(businessIcon: TapImageView): Any {
