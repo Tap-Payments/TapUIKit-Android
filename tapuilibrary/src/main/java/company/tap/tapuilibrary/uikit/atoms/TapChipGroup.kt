@@ -4,10 +4,9 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
-import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -32,6 +31,7 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
     init {
         inflate(context, R.layout.tap_chip_group, this)
         setTheme(groupName,groupAction,chipsRecycler)
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
     fun setTheme(groupName: TapTextView?, groupAction: TapTextView?, chipsRecycler: RecyclerView?) {
@@ -53,8 +53,22 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
         chipsRecycler?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
     }
 
+    private fun setFontsEnglish() {
+//        var fontName = ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
+//        if(TapFont.values().any { it.name == fontName }) {
+//
+//            groupName?.typeface = Typeface.createFromAsset(
+//                context?.assets, TapFont.tapFontType(
+//                    TapFont.RobotoLight
+//                )
+//            )
+//            groupAction?.typeface = Typeface.createFromAsset(
+//                context?.assets, TapFont.tapFontType(
+//                    TapFont.RobotoLight
+//                )
+//            )
+//        }
 
-    fun setFontsEnglish() {
         groupName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -67,8 +81,7 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
         )
     }
 
-
-    fun setFontsArabic() {
+    private fun setFontsArabic() {
         groupName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
@@ -80,8 +93,5 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
             )
         )
     }
-
-
-
 
 }
