@@ -21,7 +21,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<TabSelectTheme> {
 
-    private var tabLayoutBottomSeparator: TapSelectionTabLayout
+//    private var tabLayoutBottomSeparator: TapSelectionTabLayout
     private var tabLayoutTopSeparator: TapSelectionTabLayout
     private var paymentInputContainer: LinearLayout
     private var tabLinear: LinearLayout
@@ -29,7 +29,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
-        tabLayoutBottomSeparator = findViewById(R.id.tabLayoutBottomSeparator)
+//        tabLayoutBottomSeparator = findViewById(R.id.tabLayoutBottomSeparator)
         tabLayoutTopSeparator = findViewById(R.id.tabLayoutTopSeparator)
         paymentInputContainer = findViewById(R.id.payment_input_layout)
         tabLinear = findViewById(R.id.tabLinear)
