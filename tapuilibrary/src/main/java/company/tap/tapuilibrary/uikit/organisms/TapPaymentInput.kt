@@ -21,14 +21,16 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<TabSelectTheme> {
 
-    private var tabLayout: TapSelectionTabLayout
+    private var tabLayoutBottomSeparator: TapSelectionTabLayout
+    private var tabLayoutTopSeparator: TapSelectionTabLayout
     private var paymentInputContainer: LinearLayout
     private var tabLinear: LinearLayout
     private var clearView: ImageView
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
-        tabLayout = findViewById(R.id.sections_tablayout)
+        tabLayoutBottomSeparator = findViewById(R.id.tabLayoutBottomSeparator)
+        tabLayoutTopSeparator = findViewById(R.id.tabLayoutTopSeparator)
         paymentInputContainer = findViewById(R.id.payment_input_layout)
         tabLinear = findViewById(R.id.tabLinear)
         clearView = findViewById(R.id.clear_text)
@@ -40,7 +42,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     fun addTabLayoutSection(vararg sections: TabSection) {
         sections.forEach {
-            tabLayout.addSection(it.items)
+            tabLayoutTopSeparator.addSection(it.items)
         }
     }
     fun clearCardNumber() {
