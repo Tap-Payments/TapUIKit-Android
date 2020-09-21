@@ -231,8 +231,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         clearView = view.findViewById(R.id.clear_text)
         linearLayoutPay = view.findViewById(R.id.linear_paylayout)
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
+        view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        
         tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
+        tapCardInputView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         tapCardInputView?.clearFocus()
         clearView?.setOnClickListener {
             tabLayout?.resetBehaviour()
@@ -259,6 +262,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         }
         // alertMessage?.visibility = View.GONE
+        nfcButton?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         nfcButton?.setOnClickListener {
             val nfcFragment = NFCFragment()
             tabLayout?.visibility = View.GONE
@@ -277,6 +281,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 .add(R.id.fragment_container_nfc, nfcFragment)
                 .commit()
         }
+        cardScannerBtn?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         cardScannerBtn?.setOnClickListener {
             // val cardFragment = CardScannerFragment()
             tabLayout?.visibility = View.GONE
@@ -352,6 +357,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 .commit()
             cardFragmentadded = true
         }
+        tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
+
 
     }
 

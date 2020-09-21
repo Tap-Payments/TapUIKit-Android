@@ -21,17 +21,13 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<TabSelectTheme> {
 
-    private var tabLayout: TapSelectionTabLayout
-    private var paymentInputContainer: LinearLayout
-    private var tabLinear: LinearLayout
-    private var clearView: ImageView
+     val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
+     val paymentInputContainer by lazy { findViewById<LinearLayout>(R.id.payment_input_layout) }
+     val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
+     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
-        tabLayout = findViewById(R.id.sections_tablayout)
-        paymentInputContainer = findViewById(R.id.payment_input_layout)
-        tabLinear = findViewById(R.id.tabLinear)
-        clearView = findViewById(R.id.clear_text)
         clearView.setOnClickListener {
             rootView.invalidate()
         }
