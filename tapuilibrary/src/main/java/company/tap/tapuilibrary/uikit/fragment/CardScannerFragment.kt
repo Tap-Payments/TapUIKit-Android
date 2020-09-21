@@ -31,12 +31,8 @@ import kotlinx.android.synthetic.main.custom_card_view.*
 
 /**
  * Created by AhlaamK on 7/6/20.
-<<<<<<< HEAD
-
-=======
->>>>>>> merging-kits
-Copyright (c) 2020    Tap Payments.
-All rights reserved.
+*Copyright (c) 2020    Tap Payments.
+*All rights reserved.
  **/
 class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCallback{
     private var textRecognitionML: TapTextRecognitionML? = null
