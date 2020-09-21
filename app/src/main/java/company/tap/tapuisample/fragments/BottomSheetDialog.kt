@@ -224,6 +224,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     private fun initializeCardForm(view: View) {
+
         cardScannerBtn = view.findViewById(R.id.card_scanner_button)
         nfcButton = view.findViewById(R.id.nfc_button)
         mobileNumberEditText = view.findViewById(R.id.mobileNumber)
@@ -232,10 +233,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         linearLayoutPay = view.findViewById(R.id.linear_paylayout)
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
         view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-        
+//        val linear by lazy { view.findViewById<LinearLayout>(R.id.tabLinear) }
+//        linear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+//
+
         tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
-        tapCardInputView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
+//        tapCardInputView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         tapCardInputView?.clearFocus()
         clearView?.setOnClickListener {
             tabLayout?.resetBehaviour()
@@ -262,7 +266,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         }
         // alertMessage?.visibility = View.GONE
-        nfcButton?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
+//        nfcButton?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         nfcButton?.setOnClickListener {
             val nfcFragment = NFCFragment()
             tabLayout?.visibility = View.GONE
