@@ -510,7 +510,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
               val itemListDummy: ArrayList<String> =
             arrayListOf("1", "", "", "", "")
 
-        val currencyViewFragment = CurrencyViewFragment()
+        val currencyViewFragment = CurrencyViewFragment(itemListDummy)
 //        val currencyViewFragment = CurrencyViewFragment()
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()
