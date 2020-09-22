@@ -51,10 +51,7 @@ class CardScannerFragment : Fragment(), TapTextRecognitionCallBack, InlineViewCa
         val view: View = inflater.inflate(R.layout.custom_card_view, container, false)
 
 
-        childFragmentManager
-             .beginTransaction()
-             .add(R.id.inline_container, InlineViewFragment())
-             .commit()
+
         //  bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default", "Hints", "scan")
@@ -69,6 +66,10 @@ class CardScannerFragment : Fragment(), TapTextRecognitionCallBack, InlineViewCa
     override fun onAttach(context: Context) {
         super.onAttach(context)
         textRecognitionML = TapTextRecognitionML(this)
+        childFragmentManager
+            .beginTransaction()
+            .add(R.id.inline_container, InlineViewFragment())
+            .commit()
     }
 
     override fun onRecognitionSuccess(card: TapCard?) {
