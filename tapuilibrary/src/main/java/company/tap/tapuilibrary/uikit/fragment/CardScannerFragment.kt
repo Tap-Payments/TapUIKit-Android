@@ -57,7 +57,10 @@ class CardScannerFragment : Fragment(), TapTextRecognitionCallBack, InlineViewCa
         cardScanText?.text = LocalizationManager.getValue("Default", "Hints", "scan")
         //headerViewInit(view)
         // amountViewInit(view)
-
+        fragmentManager
+            ?.beginTransaction()
+            ?.add(R.id.inline_container, InlineViewFragment())
+            ?.commit()
         return view
 
     }
@@ -66,10 +69,7 @@ class CardScannerFragment : Fragment(), TapTextRecognitionCallBack, InlineViewCa
     override fun onAttach(context: Context) {
         super.onAttach(context)
         textRecognitionML = TapTextRecognitionML(this)
-        childFragmentManager
-            .beginTransaction()
-            .add(R.id.inline_container, InlineViewFragment())
-            .commit()
+
     }
 
     override fun onRecognitionSuccess(card: TapCard?) {
