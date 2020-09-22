@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import cards.pay.paycardsrecognizer.sdk.Card
 import cards.pay.paycardsrecognizer.sdk.FrameManager
 import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
+import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
 import company.tap.cardscanner.TapCard
 import company.tap.cardscanner.TapTextRecognitionCallBack
 import company.tap.cardscanner.TapTextRecognitionML
@@ -50,10 +51,10 @@ class CardScannerFragment : Fragment(), TapTextRecognitionCallBack, InlineViewCa
         val view: View = inflater.inflate(R.layout.custom_card_view, container, false)
 
 
-        /* childFragmentManager
+        childFragmentManager
              .beginTransaction()
              .add(R.id.inline_container, InlineViewFragment())
-             .commit()*/
+             .commit()
         //  bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default", "Hints", "scan")
