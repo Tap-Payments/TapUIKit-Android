@@ -31,16 +31,6 @@ import company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
 class CardScannerFragment : Fragment(), TapTextRecognitionCallBack, InlineViewCallback {
     private var textRecognitionML: TapTextRecognitionML? = null
     private var cardScanText: TapTextView? = null
-    private lateinit var tapHeaderSectionView: TapHeaderSectionView
-    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
-    private var businessName: String? = null
-    private var businessInitial: String? = null
-    private lateinit var businessIcon: TapImageView
-    private lateinit var businessPlaceholder: TapTextView
-    private lateinit var amountSectionView: TapAmountSectionView
-    private lateinit var selectedCurrency: TapTextView
-    private lateinit var currentCurrency: TapTextView
-    private lateinit var itemCount: TapButton
 
     // var blurLayout: BlurLayout? = null
     override fun onCreateView(
@@ -50,17 +40,16 @@ class CardScannerFragment : Fragment(), TapTextRecognitionCallBack, InlineViewCa
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_card_view, container, false)
 
-
+        childFragmentManager
+            .beginTransaction()
+            .add(R.id.inline_container, InlineViewFragment())
+            .commit()
 
         //  bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default", "Hints", "scan")
         //headerViewInit(view)
         // amountViewInit(view)
-        fragmentManager
-            ?.beginTransaction()
-            ?.add(R.id.inline_container, InlineViewFragment())
-            ?.commit()
         return view
 
     }
