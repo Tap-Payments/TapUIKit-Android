@@ -21,28 +21,23 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<TabSelectTheme> {
 
-    private var tabLayoutBottomSeparator: TapSelectionTabLayout
-    private var tabLayoutTopSeparator: TapSelectionTabLayout
-    private var paymentInputContainer: LinearLayout
-    private var tabLinear: LinearLayout
-    private var clearView: ImageView
+     val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
+     val paymentInputContainer by lazy { findViewById<LinearLayout>(R.id.payment_input_layout) }
+     val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
+     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
-        tabLayoutBottomSeparator = findViewById(R.id.tabLayoutBottomSeparator)
-        tabLayoutTopSeparator = findViewById(R.id.tabLayoutTopSeparator)
-        paymentInputContainer = findViewById(R.id.payment_input_layout)
-        tabLinear = findViewById(R.id.tabLinear)
-        clearView = findViewById(R.id.clear_text)
+                applyTheme()
+
         clearView.setOnClickListener {
             rootView.invalidate()
         }
-//        applyTheme()
     }
 
     fun addTabLayoutSection(vararg sections: TabSection) {
         sections.forEach {
-            tabLayoutTopSeparator.addSection(it.items)
+            tabLayout.addSection(it.items)
         }
     }
     fun clearCardNumber() {
@@ -56,9 +51,11 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun applyTheme(){
-        val tabSelectTheme = TabSelectTheme()
-        tabSelectTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor"))
-        setTheme(tabSelectTheme)
+//        val tabSelectTheme = TabSelectTheme()
+//        tabSelectTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor"))
+//        setTheme(tabSelectTheme)
+        tabLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
+
     }
 
 }

@@ -75,8 +75,7 @@ class TapChipsActivity : BaseActivity(),
         header_view.visibility = View.GONE
         chipRecycler = currencyLayout.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter =
-            CurrencyAdapter(currencyList)
+//        chipRecycler.adapter = CurrencyAdapter(currencyList)
     }
 
     private fun setUpSwitch() {
