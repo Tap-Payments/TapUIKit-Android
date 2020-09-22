@@ -220,7 +220,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         addMobileTab()
         setupBrandDetection()
         configureSwitch()
-
     }
 
     private fun initializeCardForm(view: View) {

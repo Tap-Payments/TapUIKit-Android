@@ -24,13 +24,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="25dp"
-            android:src="@drawable/gopay_mail" />
+            android:src="@drawable/mail" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:endIconDrawable="@drawable/delete_text"
+            app:endIconDrawable="@drawable/close"
             app:endIconMode="clear_text"
             app:endIconTint="@null"
             app:hintEnabled="false">

@@ -55,7 +55,6 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 //        tabSelectTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor"))
 //        setTheme(tabSelectTheme)
         tabLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
-
     }
 
 }
