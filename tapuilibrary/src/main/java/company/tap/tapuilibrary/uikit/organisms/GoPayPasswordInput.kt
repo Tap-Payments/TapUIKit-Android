@@ -24,6 +24,7 @@ import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 /**
  *
  * Created by Mario Gamal on 7/16/20
+ * Modified by Ahlaamk 
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
@@ -34,6 +35,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     var textInputLayout: TextInputLayout
     val passwordTextInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input) }
     val changeEmail by lazy { findViewById<TapTextView>(R.id.change_email) }
+    val passwordemailText by lazy { findViewById<TapTextView>(R.id.gopay_password_text) }
     var signInButton: TabAnimatedActionButton
     private var loginInterface: GoPayLoginInterface? = null
 
@@ -47,8 +49,9 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
-    fun setLoginInterface(loginInterface: GoPayLoginInterface) {
+    fun setLoginInterface(loginInterface: GoPayLoginInterface, emailText:String) {
         this.loginInterface = loginInterface
+        passwordemailText?.text = emailText
     }
 
     private fun initButton() {
