@@ -222,7 +222,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         addMobileTab()
         setupBrandDetection()
         configureSwitch()
-
     }
 
     private fun initializeCardForm(view: View) {
@@ -513,7 +512,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
               val itemListDummy: ArrayList<String> =
             arrayListOf("1", "", "", "", "")
 
-        val currencyViewFragment = CurrencyViewFragment()
+        val currencyViewFragment = CurrencyViewFragment(itemListDummy)
 //        val currencyViewFragment = CurrencyViewFragment()
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()

@@ -15,6 +15,7 @@ import com.google.android.material.textfield.TextInputLayout
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
@@ -158,11 +159,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         when (inputType) {
             EMAIL -> {
                 textInput.hint = dataSource?.emailInputHint ?: "mail@mail.com"
-                loginMethodImage.setImageResource(R.drawable.gopay_mail)
+                textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.commonAttributes.textFields.textColor")))
+                loginMethodImage.setImageResource(R.drawable.mail)
             }
             PHONE -> {
                 textInput.hint = dataSource?.phoneInputHint ?: "00000000"
-                loginMethodImage.setImageResource(R.drawable.gopay_mobile)
+                textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.textFields.textColor")))
+                loginMethodImage.setImageResource(R.drawable.phone)
             }
         }
     }
