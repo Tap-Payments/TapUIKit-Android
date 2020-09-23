@@ -32,7 +32,7 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
-    sourceSets{
+    sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
     }
     dataBinding {
@@ -55,7 +55,7 @@ dependencies {
     annotationProcessor 'com.android.databinding:compiler:3.1.4'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-    implementation  'jp.wasabeef:blurry:3.0.0'
+    implementation 'jp.wasabeef:blurry:3.0.0'
     implementation 'io.alterac.blurkit:blurkit:1.1.0'
     api 'com.github.Tap-Payments:LocalisationManager-Android:0.0.1.8'
     implementation 'com.squareup.picasso:picasso:2.5.2'

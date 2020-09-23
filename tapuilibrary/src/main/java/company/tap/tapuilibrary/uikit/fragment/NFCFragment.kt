@@ -20,6 +20,7 @@ import company.tap.nfcreader.open.reader.TapEmvCard
 import company.tap.nfcreader.open.reader.TapNfcCardReader
 import company.tap.nfcreader.open.utils.TapCardUtils
 import company.tap.nfcreader.open.utils.TapNfcUtils
+
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.views.TapNFCView
@@ -29,7 +30,8 @@ import io.reactivex.disposables.Disposables
 
 
 /**
- * Created on 7/2/20.
+ * Created by AhlaamK on 7/2/20.
+
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
@@ -46,7 +48,7 @@ class NFCFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_sheet_nfc, container, false)
-        // bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+       // bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         initView(view)
         return view
@@ -126,7 +128,7 @@ class NFCFragment : Fragment() {
                 emvCard.toString().replace(", ", ",\n")
             )
         )
-        //  Toast.makeText(context, text, Toast.LENGTH_LONG).show()
+      //  Toast.makeText(context, text, Toast.LENGTH_LONG).show()
         Toast.makeText(context, "Scanned Successful!!!\n $text", Toast.LENGTH_LONG).show()
 
         val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
