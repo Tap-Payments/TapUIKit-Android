@@ -87,25 +87,25 @@ class TapListItemView : LinearLayout {
 
     fun setFontsEnglish() {
         itemTitle?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
+            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
 
         totalAmount?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
+            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
 
         totalQuantity?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
+            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
 
         itemAmount?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
+            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
@@ -114,25 +114,25 @@ class TapListItemView : LinearLayout {
 
     fun setFontsArabic() {
         itemTitle?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
+            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
 
         totalAmount?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
+            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
 
         totalQuantity?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
+            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
 
         itemAmount?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
+            company.tap.tapuilibrary.uikit.adapters.context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
