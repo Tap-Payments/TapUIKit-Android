@@ -160,7 +160,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             EMAIL -> {
                 textInput.hint = dataSource?.emailInputHint ?: "mail@mail.com"
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.commonAttributes.textFields.textColor")))
-                loginMethodImage.setImageResource(R.drawable.mail)
+                loginMethodImage.setImageResource(R.drawable.ic_mail)
             }
             PHONE -> {
                 textInput.hint = dataSource?.phoneInputHint ?: "00000000"

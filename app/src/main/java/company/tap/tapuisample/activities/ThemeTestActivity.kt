@@ -27,25 +27,31 @@ class ThemeTestActivity : AppCompatActivity() {
 //        ThemeManager.loadTapTheme(this, "https://kar-tempo.s3.ap-south-1.amazonaws.com/theme-tap.json")
         ThemeManager.loadTapTheme(resources, theme)
         val textViewTheme = TextViewTheme()
-        textViewTheme.textColor = Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.lightPeach"))
-         textView.setTheme(textViewTheme)
+        textViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.lightPeach"))
+        textView.setTheme(textViewTheme)
 //        = (ThemeManager.getValue<Int>("inlineCard.saveCardOption.labelTextFont") as String ).toFloat()
 //        textView.setTheme(textViewTheme) = Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.orange"))
     }
 
 
-
-
-
     fun swap(view: View?) {
         if (currentTheme == R.raw.defaultdarktheme) {
             initAppTheme(R.raw.defaultlighttheme)
-            Toast.makeText(applicationContext, "Theme switched to defaultlighttheme", Toast.LENGTH_SHORT).show()
-        }
-        else {
+            setTheme(R.style.AppTheme);
+            Toast.makeText(
+                applicationContext,
+                "Theme switched to defaultlighttheme",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
             initAppTheme(R.raw.defaultdarktheme)
-            Toast.makeText(applicationContext, "Theme switched defaultdarktheme", Toast.LENGTH_SHORT).show()
-
+            setTheme(R.style.AppThemeBlack);
+            Toast.makeText(
+                applicationContext,
+                "Theme switched defaultdarktheme",
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 }

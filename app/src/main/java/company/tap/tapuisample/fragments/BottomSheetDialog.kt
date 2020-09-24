@@ -15,10 +15,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.TranslateAnimation
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.view.animation.TranslateAnimation
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -67,7 +67,6 @@ import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import kotlin.collections.ArrayList
 
 
 /**
@@ -344,7 +343,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private fun tabLayoutInit(view: View) {
         tabLayout = view.findViewById(R.id.sections_tablayout)
         //    nfcScanBtn = view.findViewById(R.id.nfc_scan)
-        val nfcFragment = company.tap.tapuilibrary.uikit.fragment.NFCFragment()
+        val nfcFragment = NFCFragment()
 
         tabLayout?.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(context, null)
@@ -355,7 +354,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         bottomSheetDialog.behavior.state = STATE_EXPANDED
         cardScannerBtn?.setOnClickListener {
-            val cardScannerFragment = company.tap.tapuilibrary.uikit.fragment.CardScannerFragment()
+            val cardScannerFragment = CardScannerFragment()
             childFragmentManager
                 .beginTransaction()
                 .add(R.id.fragment_container_nfc, cardScannerFragment)
@@ -482,7 +481,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         }
 
-
     }
 
     private fun getHeaderDataSource(): HeaderDataSource {
@@ -510,9 +508,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //            arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)
 
               val itemListDummy: ArrayList<String> =
-            arrayListOf("1", "", "", "", "")
+            arrayListOf("1", "2", "3", "4", "5")
 
-        val currencyViewFragment = CurrencyViewFragment(itemListDummy)
+        val currencyViewFragment = CurrencyViewFragment()
 //        val currencyViewFragment = CurrencyViewFragment()
         itemCount.setOnClickListener {
             tapAmountSectionInterface?.didClickItems()

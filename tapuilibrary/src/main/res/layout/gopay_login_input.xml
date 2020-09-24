@@ -25,13 +25,13 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="25dp"
-            android:src="@drawable/mail" />
+            android:src="@drawable/ic_mail" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:endIconDrawable="@drawable/close"
+            app:endIconDrawable="@drawable/ic_close"
             app:endIconMode="clear_text"
             app:endIconTint="@null"
             app:hintEnabled="false">
