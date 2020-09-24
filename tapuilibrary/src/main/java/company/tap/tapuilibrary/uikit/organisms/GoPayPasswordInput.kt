@@ -35,7 +35,11 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     var textInputLayout: TextInputLayout
     val passwordTextInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input) }
     val changeEmail by lazy { findViewById<TapTextView>(R.id.change_email) }
+<<<<<<< Updated upstream
     val passwordemailText by lazy { findViewById<TapTextView>(R.id.gopay_password_text) }
+=======
+    val emailPasswordText by lazy { findViewById<TapTextView>(R.id.emailPasswrdtext) }
+>>>>>>> Stashed changes
     var signInButton: TabAnimatedActionButton
     private var loginInterface: GoPayLoginInterface? = null
 
@@ -49,9 +53,15 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
+<<<<<<< Updated upstream
     fun setLoginInterface(loginInterface: GoPayLoginInterface, emailText:String) {
         this.loginInterface = loginInterface
         passwordemailText?.text = emailText
+=======
+    fun setLoginInterface(loginInterface: GoPayLoginInterface,emailString: String) {
+        this.loginInterface = loginInterface
+        emailPasswordText?.text = emailString
+>>>>>>> Stashed changes
     }
 
     private fun initButton() {
