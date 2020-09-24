@@ -15,6 +15,7 @@ import company.tap.tapuilibrary.uikit.model.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
+import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
@@ -47,10 +48,11 @@ class TapChipsActivity : BaseActivity(),
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cardview)
+        setupTabLayout()
+
         setUpSwitch()
         setupCardChip()
         setupCurrencyChips()
-        setupTabLayout()
     }
 
     private fun setupTabLayout() {
@@ -58,10 +60,10 @@ class TapChipsActivity : BaseActivity(),
         gopaySelectTab.setTabLayoutInterface(this)
         goPayLoginInput = findViewById(R.id.gopay_login_input)
         goPayPasswordInput = findViewById(R.id.goPay_password)
-       // tapMobileInputView = TapMobilePaymentView(context, null)
-      //  ll.addView(tapMobileInputView)
-        //addCard()
-        //addMobile()
+//        tapMobileInputView = TapMobilePaymentView(context, null)
+//        ll.addView(tapMobileInputView)
+//        addCard()
+//        addMobile()
         goPayLoginInput.changeDataSource(GoPayLoginDataSource())
         goPayLoginInput.setLoginInterface(this)
 
@@ -199,7 +201,7 @@ class TapChipsActivity : BaseActivity(),
     override fun onChangeClicked() {
       //  AnimationEngine.applyTransition(bottomSheet, SLIDE)
         goPayLoginInput.visibility = View.VISIBLE
-        goPayPasswordInput.visibility = View.GONE
+        goPayPasswordInput.visibility = View.VISIBLE
     }
 
     override fun onEmailValidated() {

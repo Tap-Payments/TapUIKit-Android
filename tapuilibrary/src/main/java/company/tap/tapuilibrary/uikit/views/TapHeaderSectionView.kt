@@ -77,18 +77,6 @@ class TapHeaderSectionView : LinearLayout {
         headerDataSource.businessName?.let {
             businessName.text = it
         }
-//        if (headerDataSource.businessImageResources!= null){
-////            businessIcon.setImageURI(Uri.parse(headerDataSource.businessImageResources))
-//            Glide.with(this)
-//                .load(Uri.parse(headerDataSource.businessImageResources))
-//                .into(businessIcon)
-//        }else{
-//                businessPlaceholder.text = headerDataSource.businessPlaceHolder?.get(0).toString()
-//        }
-//
-//
-
-
         if (headerDataSource.businessImageResources == null) {
             businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
             businessPlaceholder.text = headerDataSource.businessName?.get(0).toString()
@@ -101,17 +89,14 @@ class TapHeaderSectionView : LinearLayout {
                         headerDataSource.businessName?.get(0).toString()
                     )
                 )
+                .error(
+                    TextDrawable(
+                    headerDataSource.businessName?.get(0).toString()
+                ))
                 .into(businessIcon)
 
         }
-//
 
-//        headerDataSource.businessImageResources?.let {
-//            Glide.with(this)
-//                .load(Uri.parse(it))
-//                .placeholder(TextDrawable(it))
-//                .into(businessIcon)
-//        }
         headerDataSource.businessFor?.let {
             paymentFor.text = it
         }

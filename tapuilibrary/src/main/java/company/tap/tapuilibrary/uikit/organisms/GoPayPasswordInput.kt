@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import androidx.core.view.get
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.textfield.TextInputLayout
 import company.tap.taplocalizationkit.LocalizationManager
@@ -31,21 +32,30 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<EditTextTheme> {
 
-    var textInputLayout: TextInputLayout
     val passwordTextInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input) }
     val changeEmail by lazy { findViewById<TapTextView>(R.id.change_email) }
-    var signInButton: TabAnimatedActionButton
+    val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
+    val gopayPasswordInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input) }
+    val signInButton by lazy { findViewById<TabAnimatedActionButton>(R.id.sigin_button) }
     private var loginInterface: GoPayLoginInterface? = null
 
     init {
         inflate(context, R.layout.gopay_password_input, this)
-        textInputLayout = findViewById(R.id.text_input_layout)
-        signInButton = findViewById(R.id.sigin_button)
         initButton()
         initChange()
         initPasswordInput()
+        setPasswordValidation()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
+    fun setPasswordValidation(){
+        if (gopayPasswordInput.text?.length!! > 7){
+            changeButtonStatus(true)
+        }else{
+            changeButtonStatus(false)
+        }
+        signInButton.isEnabled = gopayPasswordInput.text?.length!! > 7
+    }
+
 
     fun setLoginInterface(loginInterface: GoPayLoginInterface) {
         this.loginInterface = loginInterface
@@ -81,8 +91,8 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
             )
         } else {
             signInButton.initActionButtonDataSource(
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
             )
         }
 
