@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ChipTheme
@@ -32,7 +31,7 @@ var context: Context? = null
 //val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
 
 
-class CurrencyAdapter(private val photos: ArrayList<String>) :
+class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
     RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
         val v =
