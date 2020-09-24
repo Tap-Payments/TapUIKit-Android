@@ -91,14 +91,14 @@ class TapHeaderSectionView : LinearLayout {
 
         if (headerDataSource.businessImageResources == null) {
             businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-            businessPlaceholder.text = headerDataSource.businessPlaceHolder?.get(0).toString()
+            businessPlaceholder.text = headerDataSource.businessName?.get(0).toString()
 
         } else {
             Glide.with(this)
                 .load(headerDataSource.businessImageResources)
                 .placeholder(
                     TextDrawable(
-                        headerDataSource.businessPlaceHolder?.get(0).toString()
+                        headerDataSource.businessName?.get(0).toString()
                     )
                 )
                 .into(businessIcon)
