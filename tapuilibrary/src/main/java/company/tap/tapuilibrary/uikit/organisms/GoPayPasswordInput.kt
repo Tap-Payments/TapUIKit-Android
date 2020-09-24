@@ -50,9 +50,10 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     fun setPasswordValidation(){
         if (gopayPasswordInput.text?.length!! > 7){
             changeButtonStatus(true)
-            signInButton.setButtonDataSource(true)
+            signInButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("signin","ActionButton") )
         }else{
             changeButtonStatus(false)
+            signInButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("signin","ActionButton") )
         }
         signInButton.isEnabled = gopayPasswordInput.text?.length!! > 7
     }
