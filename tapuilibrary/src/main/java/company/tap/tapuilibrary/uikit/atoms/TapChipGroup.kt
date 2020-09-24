@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.tap_chip_group.view.*
  **/
 open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     val groupName by lazy { findViewById<TapTextView>(R.id.group_name) }
-    val groupAction by lazy { findViewById<TapTextView>(R.id.group_name) }
+    val groupAction by lazy { findViewById<TapTextView>(R.id.group_action) }
     val chipsRecycler by lazy { findViewById<RecyclerView>(R.id.chip_recycler) }
 
 
