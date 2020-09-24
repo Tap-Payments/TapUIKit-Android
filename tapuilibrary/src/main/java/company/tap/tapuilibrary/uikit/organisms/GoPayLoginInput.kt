@@ -104,8 +104,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun disableNext() {
+        actionButton.setButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("next","Common") )
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
-        actionButton.setButtonDataSource(false)
     }
 
     private fun isValidEmail(email: String): Boolean {
@@ -120,7 +120,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
-        actionButton.setButtonDataSource(true,null, LocalizationManager.getValue("next","Common"))
+        actionButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("next","Common") )
         actionButton.isEnabled = true
     }
 
