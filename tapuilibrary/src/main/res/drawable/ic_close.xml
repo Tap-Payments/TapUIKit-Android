@@ -6,18 +6,18 @@
   <path
       android:pathData="M-314,0L61,0 61,44 -314,44z"
       android:strokeWidth=".7"
-      android:fillColor="?colorPrimary"
+      android:fillColor="#00E0E0E0"
       android:strokeColor="#E0E0E0"
       android:fillType="evenOdd"/>
   <path
       android:pathData="M-314,0L61,0 61,44 -314,44z"
       android:strokeWidth=".7"
-      android:fillColor="?colorPrimary"
+      android:fillColor="#00E0E0E0"
       android:strokeColor="#E0E0E0"
       android:fillType="evenOdd"/>
   <path
       android:pathData="M0,0H44V44H0z"
-      android:fillColor="?colorPrimary"
+      android:fillColor="#00E0E0E0"
       android:fillAlpha="0.3"
       android:fillType="evenOdd"/>
   <path
