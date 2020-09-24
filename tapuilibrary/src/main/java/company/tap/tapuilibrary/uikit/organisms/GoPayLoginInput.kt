@@ -165,7 +165,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             PHONE -> {
                 textInput.hint = dataSource?.phoneInputHint ?: "00000000"
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
-                loginMethodImage.setImageResource(R.drawable.phone)
+                loginMethodImage.setImageResource(R.drawable.ic_mobile)
             }
         }
     }
