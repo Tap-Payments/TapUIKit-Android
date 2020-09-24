@@ -461,34 +461,34 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         businessIcon = view.findViewById(R.id.businessIcon)
 
         businessPlaceholder = view.findViewById(R.id.placeholderText)
-        businessInitial = businessName?.get(0).toString()
-        businessPlaceholder.text = businessInitial
-        if (imageUrl == null) {
-            businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-        } else {
+//        businessInitial = businessName?.get(0).toString()
+//        businessPlaceholder.text = businessInitial
+//        if (imageUrl == null) {
+//            businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+//        } else {
+////            Glide.with(this)
+////                .load(imageUrl)
+////                .into(businessIcon)
+//
 //            Glide.with(this)
 //                .load(imageUrl)
+//                .placeholder(
+//                    TextDrawable(
+//                        businessInitial.toString()
+//                    )
+//                )
 //                .into(businessIcon)
-
-            Glide.with(this)
-                .load(imageUrl)
-                .placeholder(
-                    TextDrawable(
-                        businessInitial.toString()
-                    )
-                )
-                .into(businessIcon)
-
-        }
+//
+//        }
 
     }
 
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
             businessName = businessName,
-            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection")
 //            businessFor = paymentFor ,
-            businessImageResources = imageUrl
+//            businessImageResources = imageUrl
 //            businessPlaceHolder = businessName?.get(0).toString()
         )
     }
