@@ -97,7 +97,7 @@ open class CurrencyViewFragment() : Fragment() {
     private fun fillData() {
         currencyList = ArrayList()
         //adding some dummy data to the list
-      /*  currencyList.add(
+        currencyList.add(
             CurrencyModel(
                 "KWD",
                 "https://www.countryflags.io/kw/flat/24.png"
@@ -132,7 +132,7 @@ open class CurrencyViewFragment() : Fragment() {
                 "SAR",
                 "https://www.countryflags.io/sa/flat/24.png"
             )
-        )*/
+        )
 
     }
 

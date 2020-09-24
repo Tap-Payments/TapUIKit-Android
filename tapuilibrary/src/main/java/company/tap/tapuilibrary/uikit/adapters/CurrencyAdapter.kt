@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ChipTheme
@@ -50,10 +51,10 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
         private var photo: CurrencyModel? = null
 
 
-        fun bindPhoto(photo: String) {
+        fun bindPhoto(photo: CurrencyModel) {
           //  this.photo = photo
-         //   Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
-            view.textView_currency.text = photo
+            Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
+           // view.textView_currency.text = photo
 
             setTheme()
         }
