@@ -77,13 +77,20 @@ class TapHeaderSectionView : LinearLayout {
         headerDataSource.businessName?.let {
             businessName.text = it
         }
-        headerDataSource.businessImageResources?.let {
-            //  businessIcon.setImageURI(Uri.parse(it))
+        if (headerDataSource.businessImageResources!= null){
+//            businessIcon.setImageURI(Uri.parse(headerDataSource.businessImageResources))
             Glide.with(this)
-                .load(Uri.parse(it))
-                .placeholder(TextDrawable(it))
+                .load(Uri.parse(headerDataSource.businessImageResources))
                 .into(businessIcon)
+        }else{
+                businessPlaceholder.text = headerDataSource.businessPlaceHolder?.get(0).toString()
         }
+//        headerDataSource.businessImageResources?.let {
+//            Glide.with(this)
+//                .load(Uri.parse(it))
+//                .placeholder(TextDrawable(it))
+//                .into(businessIcon)
+//        }
         headerDataSource.businessFor?.let {
             paymentFor.text = it
         }
