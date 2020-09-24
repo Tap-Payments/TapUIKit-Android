@@ -170,8 +170,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         super.onViewCreated(view, savedInstanceState)
         initializeViews(view)
 //        actionButton.setButtonDataSource( false)
-        actionButton.setButtonDataSource(false)
-        actionButton.isActivated = false
+        actionButton.setButtonDataSource(false,null, "next")
+        actionButton.isActivated = true
         actionButton.stateListAnimator = null
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
