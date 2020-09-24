@@ -68,7 +68,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         actionButton.isEnabled = false
-        actionButton.setButtonDataSource(false)
+        actionButton.setButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("pay","ActionButton") )
         actionButton.setOnClickListener {
             when (inputType) {
                 EMAIL -> loginInterface?.onEmailValidated()
