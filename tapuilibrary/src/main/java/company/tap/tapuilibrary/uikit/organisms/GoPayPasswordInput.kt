@@ -50,6 +50,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     fun setPasswordValidation(){
         if (gopayPasswordInput.text?.length!! > 7){
             changeButtonStatus(true)
+            signInButton.setButtonDataSource(true)
         }else{
             changeButtonStatus(false)
         }
