@@ -12,13 +12,13 @@
   <path
       android:pathData="M4.674,9.536L18.022,9.536 18.022,11.386 4.674,11.386z"
       android:strokeWidth=".75"
-      android:fillColor="?colorPrimary"
+      android:fillColor="#00E0E0E0"
       android:fillType="evenOdd"
       android:strokeColor="#98989F"/>
   <path
       android:pathData="M1.46,1.448L5.219,1.448 5.219,0.857 0.86,0.857 0.86,5.154 1.46,5.154zM17.477,0.857L17.477,1.448 21.236,1.448 21.236,5.154 21.836,5.154 21.836,0.857zM1.46,15.139L0.86,15.139 0.86,19.435 5.219,19.435 5.219,18.844 1.46,18.844zM21.236,18.844L17.477,18.844 17.477,19.435 21.836,19.435 21.836,15.139 21.236,15.139z"
       android:strokeWidth=".5"
-      android:fillColor="?colorPrimary"
+      android:fillColor="#00E0E0E0"
       android:fillType="evenOdd"
       android:strokeColor="#98989F"/>
 </vector>
