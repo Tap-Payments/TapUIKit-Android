@@ -52,9 +52,9 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
 
 
         fun bindPhoto(photo: CurrencyModel) {
-            this.photo = photo
+          //  this.photo = photo
             Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
-            view.textView_currency.text = photo.currencyCode
+           // view.textView_currency.text = photo
 
             setTheme()
         }

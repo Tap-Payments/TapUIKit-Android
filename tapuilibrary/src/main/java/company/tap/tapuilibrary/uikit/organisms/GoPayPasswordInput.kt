@@ -37,6 +37,10 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
     val gopayPasswordInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input) }
     val signInButton by lazy { findViewById<TabAnimatedActionButton>(R.id.sigin_button) }
+
+    val passwordemailText by lazy { findViewById<TapTextView>(R.id.gopay_password_text) }
+
+    var signInButton: TabAnimatedActionButton
     private var loginInterface: GoPayLoginInterface? = null
 
     init {
@@ -59,7 +63,8 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
 
-    fun setLoginInterface(loginInterface: GoPayLoginInterface) {
+
+    fun setLoginInterface(loginInterface: GoPayLoginInterface, emailText:String) {
         this.loginInterface = loginInterface
     }
 
