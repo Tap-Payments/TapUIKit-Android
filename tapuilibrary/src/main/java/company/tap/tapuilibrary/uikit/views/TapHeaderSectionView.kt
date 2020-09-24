@@ -77,14 +77,35 @@ class TapHeaderSectionView : LinearLayout {
         headerDataSource.businessName?.let {
             businessName.text = it
         }
-        if (headerDataSource.businessImageResources!= null){
-//            businessIcon.setImageURI(Uri.parse(headerDataSource.businessImageResources))
+//        if (headerDataSource.businessImageResources!= null){
+////            businessIcon.setImageURI(Uri.parse(headerDataSource.businessImageResources))
+//            Glide.with(this)
+//                .load(Uri.parse(headerDataSource.businessImageResources))
+//                .into(businessIcon)
+//        }else{
+//                businessPlaceholder.text = headerDataSource.businessPlaceHolder?.get(0).toString()
+//        }
+//
+//
+
+
+        if (headerDataSource.businessImageResources == null) {
+            businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+            businessPlaceholder.text = headerDataSource.businessPlaceHolder?.get(0).toString()
+
+        } else {
             Glide.with(this)
-                .load(Uri.parse(headerDataSource.businessImageResources))
+                .load(headerDataSource.businessImageResources)
+                .placeholder(
+                    TextDrawable(
+                        headerDataSource.businessPlaceHolder?.get(0).toString()
+                    )
+                )
                 .into(businessIcon)
-        }else{
-                businessPlaceholder.text = headerDataSource.businessPlaceHolder?.get(0).toString()
+
         }
+//
+
 //        headerDataSource.businessImageResources?.let {
 //            Glide.with(this)
 //                .load(Uri.parse(it))
