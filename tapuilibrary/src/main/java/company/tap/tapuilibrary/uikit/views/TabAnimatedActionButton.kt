@@ -134,6 +134,14 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")))
         background = backgroundDrawable
         elevation = 0F
+
+        dataSource = ActionButtonDataSource(
+            textSize = 18f,
+            textColor = Color.WHITE,
+            cornerRadius = 100f,
+            successImageResources = R.drawable.checkmark,
+            backgroundColor = Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor"))
+        )
     }
 
     /**
