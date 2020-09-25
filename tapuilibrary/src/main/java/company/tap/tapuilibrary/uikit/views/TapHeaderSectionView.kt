@@ -74,9 +74,8 @@ class TapHeaderSectionView : LinearLayout {
      **/
     fun setHeaderDataSource(headerDataSource: HeaderDataSource) {
         this.headerDataSource = headerDataSource
-        headerDataSource.businessName?.let {
-            businessName.text = it
-        }
+        businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
+        businessPlaceholder.setTextColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderLabelColor")))
         if (headerDataSource.businessImageResources == null) {
             businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
             businessPlaceholder.text = headerDataSource.businessName?.get(0).toString()
@@ -94,7 +93,6 @@ class TapHeaderSectionView : LinearLayout {
                     headerDataSource.businessName?.get(0).toString()
                 ))
                 .into(businessIcon)
-
         }
 
         headerDataSource.businessFor?.let {
@@ -102,6 +100,9 @@ class TapHeaderSectionView : LinearLayout {
         }
         headerDataSource.businessPlaceHolder?.let {
             businessPlaceholder.text = it
+        }
+        headerDataSource.businessName?.let {
+            businessName.text = it
         }
 
     }
