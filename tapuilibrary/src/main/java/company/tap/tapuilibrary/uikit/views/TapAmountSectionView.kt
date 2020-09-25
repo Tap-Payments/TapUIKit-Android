@@ -83,7 +83,7 @@ class TapAmountSectionView : LinearLayout {
         setBorderedView(
             itemCount,
             (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
-            0.0f, ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner"),
+            (ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.width")as Int).toFloat(), Color.parseColor( ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color")),
             Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")),
             Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
         )

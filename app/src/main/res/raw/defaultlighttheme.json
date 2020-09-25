@@ -8,6 +8,7 @@
             "greyishBrown" : "#4b4847",
             "veryLightPinkTwo" : "#dfdfdf",
             "brownGrey" : "#a8a8a8",
+            "brownGrey0" : "#00a8a8a8",
             "whiteTwo": "#f4f4f4",
             "deepSkyBlue": "#007aff",
             "white30":"#ffffff4D",
@@ -254,7 +255,7 @@
     },
     "merchantHeaderView": {
         "titleLabelFont" : "Roboto-Regular,12",
-        "titleLabelColor" : "lightPeach",
+        "titleLabelColor" : "brownGrey0",
         "subTitleLabelFont" : "Roboto-Regular,16",
         "subTitleLabelColor" : "greyishBrown",
         "merchantLogoCorner" : 8,
@@ -273,9 +274,9 @@
         "itemsNumberButtonBackgroundColor" : "whiteTwo",
         "itemsNumberButtonBorder" : {
             "color" : "veryLightPinkTwo",
-            "width" : 1
+            "width" : 2
         },
-        "itemsNumberButtonCorner" : 10,
+        "itemsNumberButtonCorner" : 30,
         "backgroundColor" : "white"
     },
     "horizontalList": {
