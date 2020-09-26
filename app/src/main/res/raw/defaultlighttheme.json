@@ -254,10 +254,10 @@
         "backgroundColor": "white"
     },
     "merchantHeaderView": {
-        "titleLabelFont" : "Roboto-Regular,16",
-        "titleLabelColor" : "greyishBrown",
-        "subTitleLabelFont" : "Roboto-Regular,12",
-        "subTitleLabelColor" : "brownGrey",
+        "titleLabelFont" : "Roboto-Regular,12",
+        "titleLabelColor" : "brownGrey",
+        "subTitleLabelFont" : "Roboto-Regular,16",
+        "subTitleLabelColor" : "greyishBrown",
         "merchantLogoCorner" : 8,
         "merchantLogoPlaceHolderColor" : "black",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
@@ -273,8 +273,8 @@
         "itemsLabelColor" : "greyishBrown",
         "itemsNumberButtonBackgroundColor" : "whiteTwo",
         "itemsNumberButtonBorder" : {
-            "color" : "greyishBrown",
-            "width" : 2
+            "color" : "brownGrey",
+            "width" : 1
         },
         "itemsNumberButtonCorner" : 30,
         "backgroundColor" : "white"

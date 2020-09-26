@@ -92,10 +92,10 @@ class TapAmountSectionView : LinearLayout {
         currentCurrencyTextViewTheme.textColor =
             Color.parseColor(ThemeManager.getValue("amountSectionView.originalAmountLabelColor"))
         currentCurrencyTextViewTheme.textSize =
-            ThemeManager.getFontSize("amountSectionView.itemsLabelFont")
+            ThemeManager.getFontSize("amountSectionView.originalAmountLabelFont")
         currentCurrencyTextViewTheme.font =
             ThemeManager.getFontName("amountSectionView.originalAmountLabelFont")
-        currentCurrency.setTheme(currentCurrencyTextViewTheme)
+        selectedCurrency.setTheme(currentCurrencyTextViewTheme)
 
         val selectedCurrencyTextViewTheme = TextViewTheme()
         selectedCurrencyTextViewTheme.textColor =
@@ -104,7 +104,7 @@ class TapAmountSectionView : LinearLayout {
             ThemeManager.getFontSize("amountSectionView.convertedAmountLabelFont")
         selectedCurrencyTextViewTheme.font =
             ThemeManager.getFontName("amountSectionView.convertedAmountLabelFont")
-        selectedCurrency.setTheme(selectedCurrencyTextViewTheme)
+        currentCurrency.setTheme(selectedCurrencyTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
 
