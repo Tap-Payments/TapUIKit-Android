@@ -297,7 +297,7 @@
             }
         },
         "chips": {
-            "radius" : 8,
+            "radius" : 25,
             "currencyChip": {
                 "backgroundColor" : "white",
                 "labelTextFont": "Roboto-Regular,12",
