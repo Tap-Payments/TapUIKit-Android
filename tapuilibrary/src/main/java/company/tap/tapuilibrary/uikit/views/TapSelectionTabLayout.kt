@@ -208,7 +208,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun getSectionItemLayout(): LinearLayout {
         val linearLayout = LinearLayout(context)
         val params = LayoutParams(
-            LayoutParams.WRAP_CONTENT,
+            LayoutParams.MATCH_PARENT,
             LayoutParams.MATCH_PARENT
         )
         linearLayout.layoutParams = params
