@@ -32,7 +32,7 @@ class CardTypeAdapter(
     private val TYPE_SAVED_CARD = 1
     private val TYPE_REDIRECT = 2
     private val TYPE_GO_PAY = 3
-    private var selectedPosition = 0
+    private var selectedPosition = -1
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

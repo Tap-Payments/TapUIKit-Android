@@ -448,10 +448,10 @@
         "insets":16,
         "underline":{
             "unselected": {
-                "backgroundColor" : "brownGrey"
+                "backgroundColor" : "whiteTwo"
             },
             "selected": {
-                "backgroundColor" : "vibrantGreen"
+                "backgroundColor" : "brownGrey"
             }
         },
         "icon":{
