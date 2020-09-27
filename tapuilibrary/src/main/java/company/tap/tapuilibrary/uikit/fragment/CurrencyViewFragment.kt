@@ -39,7 +39,7 @@ open class CurrencyViewFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
-        //fillData()
+        fillData()
 
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
         val mainView = view.findViewById<LinearLayout>(R.id.mainView)
@@ -52,6 +52,7 @@ open class CurrencyViewFragment() : Fragment() {
         // chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
        // chipRecycler.adapter = CurrencyAdapter(currencyList)
+        if(currencyList!= null)
         chipRecycler.adapter = CurrencyAdapter(currencyList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.setHasFixedSize(false)
@@ -95,7 +96,7 @@ open class CurrencyViewFragment() : Fragment() {
 
     //Filling dummy data for currency chips
     private fun fillData() {
-        currencyList = ArrayList()
+      //  currencyList = ArrayList()
         println("curr list valu   ${currencyList.size} $currencyList")
         //adding some dummy data to the list
      /*   currencyList.add(
@@ -150,5 +151,9 @@ open class CurrencyViewFragment() : Fragment() {
 
 
         //currencyLayout1
+    }
+    @JvmName("setCurrencyList1")
+    fun setCurrencyList(ApiCurrencyList :ArrayList<String>){
+        currencyList = ApiCurrencyList
     }
 }
