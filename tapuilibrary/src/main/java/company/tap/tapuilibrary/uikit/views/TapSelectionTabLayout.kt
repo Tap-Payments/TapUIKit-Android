@@ -165,7 +165,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun getSectionLayout(): LinearLayout {
         val linearLayout = LinearLayout(context)
         val params = LayoutParams(
-            LayoutParams.WRAP_CONTENT,
+            LayoutParams.MATCH_PARENT,
             LayoutParams.MATCH_PARENT
         )
         linearLayout.layoutParams = params
@@ -244,8 +244,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         for (items in itemsCount) {
             totalItemsCount += items
         }
-        val itemSize =
-            (Resources.getSystem().displayMetrics.widthPixels - 0) / totalItemsCount
+        val itemSize = (Resources.getSystem().displayMetrics.widthPixels - 0) / totalItemsCount
         return if (itemSize > maxItemWidth) maxItemWidth else itemSize
     }
 
