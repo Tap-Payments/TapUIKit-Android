@@ -288,10 +288,10 @@
                 "backgroundColor" : "whiteTwo",
                 "leftButton": {
                     "labelTextFont": "Roboto-Regular,10",
-                    "labelTextColor": "greyishBrown"
+                    "labelTextColor": "brownGrey"
                 },
                 "rightButton": {
-                    "labelTextFont": "Roboto-Regular,10",
+                    "labelTextFont": "Roboto-Light,10",
                     "labelTextColor": "greyishBrown"
                 }
             }

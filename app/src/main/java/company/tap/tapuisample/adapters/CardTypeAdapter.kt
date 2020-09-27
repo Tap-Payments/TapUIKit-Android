@@ -2,6 +2,7 @@ package company.tap.tapuisample.adapters
 
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.graphics.Color.parseColor
 import android.os.Build
 import android.view.LayoutInflater
@@ -112,11 +113,10 @@ class CardTypeAdapter(
                      */
                     setBorderedView(holder.itemView,
                         (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-                        7.0f,
+                        0.0f,
                         parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")),
                         parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),
-                        parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))
-
+                        Color.GREEN)
                 } else {
                     setBorderedView(holder.itemView,
                         (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),

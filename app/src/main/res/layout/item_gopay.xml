@@ -8,8 +8,8 @@
     app:cardBackgroundColor="@color/glowingShadow"
     app:cardCornerRadius="8dp"
     android:layout_gravity="center"
-    app:cardElevation="8dp"
-    app:contentPadding="7dp">
+    app:cardElevation="5dp"
+    app:contentPadding="6dp">
 
     <ImageView
         android:id="@+id/deleteImageView1"
@@ -21,7 +21,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:layout_gravity="center_vertical">
 
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
