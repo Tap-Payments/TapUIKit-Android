@@ -34,7 +34,8 @@
             "brownGreySix": "#a7a7a7",
             "brownGreySeven": "#7e7e7e",
             "white78": "#f9f9f9C6",
-            "brownGreyFour": "#a6a6a6"
+            "brownGreyFour": "#a6a6a6",
+            "graySeparator": "#e0e0e0"
         }
     },
     "inlineCard": {
@@ -313,7 +314,7 @@
                 },
                 "unSelected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
+                        "color" : "brownGrey",
                         "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
@@ -334,7 +335,7 @@
                 },
                 "unSelected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
+                        "color" : "brownGrey",
                         "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
@@ -357,7 +358,7 @@
                 },
                 "unSelected": {
                     "shadow": {
-                        "color" : "lightPeriwinkle",
+                        "color" : "brownGrey",
                         "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,

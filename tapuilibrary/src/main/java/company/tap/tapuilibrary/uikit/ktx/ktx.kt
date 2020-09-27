@@ -62,6 +62,7 @@ fun setBorderedView(view: View, cornerRadius:Float,strokeWidth: Float, strokeCol
     shapeDrawable.setStroke(strokeWidth, strokeColor)
     shapeDrawable.setShadowColor(shadowColor)
     shapeDrawable.setTint(tintColor)
+    shapeDrawable.shadowRadius= 5
 }
 
 

@@ -184,31 +184,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
 
-    //    fun replaceFont(){
-//        if (LocalizationManager.getLocale(context!!) == Locale("en")) {
-////            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoRegular))
-////            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoThin))
-////            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoLight))
-//            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.robotoMedium))
-//            fontChanger?.replaceFonts(headerView)
-//        }else{
-//            fontChanger = FontChanger(context?.assets, TapFont.tapFontType(TapFont.tajawalMedium))
-//            fontChanger?.replaceFonts(headerView)
-//        }
-//    }
-
-//    private fun getSuccessDataSource(backgroundColor: Int): ActionButtonDataSource {
-//        actionButton.stateListAnimator = null
-//        return ActionButtonDataSource(
-//            text = getString(R.string.pay),
-//            textSize = 18f,
-//            textColor = Color.WHITE,
-//            cornerRadius = 100f,
-//            successImageResources = R.drawable.checkmark,
-//            backgroundColor = resources.getColor(backgroundColor)
-//        )
-//    }
-
     @SuppressLint("SetTextI18n")
     private fun initializeViews(view: View) {
         headerViewInit(view)
@@ -389,13 +364,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         groupName = view.findViewById<TapTextView>(R.id.group_name)
         groupName?.text =
             LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders", "leftTitle")
-//        groupName?.text = getString(R.string.select)
-//        groupName?.setTextColor(R.color.darker_gray)
         groupAction = view.findViewById<TapTextView>(R.id.group_action)
         groupAction?.text =
             LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders", "rightTitle")
-//        groupAction?.text = getString(R.string.edit)
-//        groupName?.setTextColor(R.color.darker_gray)
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 
@@ -545,6 +516,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 //  tabLayout.visibility = View.GONE
                 //  paymentLayout.visibility = View.GONE
                 tap_payment_input0.visibility = View.VISIBLE
+                separatorــ.visibility = View.VISIBLE
+                separatorــ.setBackgroundColor(Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor")))
                 paymentLayout.removeAllViews()
                 paymentLayout.addView(tapCardInputView)
                 /*  Handler().postDelayed({
@@ -1043,6 +1016,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         topSeparator.setTheme(separatorViewTheme)
         separator.setTheme(separatorViewTheme)
         separator_.setTheme(separatorViewTheme)
+        separatorــ.setTheme(separatorViewTheme)
+
 
         // set theme for background of action button
         outerLayout?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("actionButton.BackgroundColor.default")))

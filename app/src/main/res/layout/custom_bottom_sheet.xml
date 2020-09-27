@@ -109,7 +109,7 @@
         android:id="@+id/separatorــ"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:background="@color/separator_color" />
 
     <company.tap.tapuilibrary.uikit.views.TapAlertView
