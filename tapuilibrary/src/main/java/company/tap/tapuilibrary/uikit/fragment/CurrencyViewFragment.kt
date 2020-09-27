@@ -96,6 +96,7 @@ open class CurrencyViewFragment() : Fragment() {
     //Filling dummy data for currency chips
     private fun fillData() {
         currencyList = ArrayList()
+        println("curr list valu   ${currencyList.size} $currencyList")
         //adding some dummy data to the list
      /*   currencyList.add(
             CurrencyModel(
