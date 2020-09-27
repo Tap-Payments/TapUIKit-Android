@@ -36,13 +36,14 @@
 
     <company.tap.tapuilibrary.uikit.atoms.TapButton
         android:id="@+id/textView_itemcount"
-        android:layout_width="70dp"
-        android:layout_height="@dimen/margin_basic_20dp"
+        android:layout_width="75dp"
+        android:layout_height="@dimen/margin_basic_23dp"
         android:layout_alignParentEnd="true"
         android:background="@drawable/rounded_rectangle"
         android:elevation="@dimen/margin_basic_0dp"
         android:fontFamily="sans-serif-light"
         android:gravity="center"
+        android:padding="@dimen/margin_basic_4dp"
         android:stateListAnimator="@null"
         android:textColor="@color/text_color"
         android:textSize="9sp"

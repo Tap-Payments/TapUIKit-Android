@@ -8,6 +8,7 @@
             "greyishBrown" : "#4b4847",
             "veryLightPinkTwo" : "#dfdfdf",
             "brownGrey" : "#a8a8a8",
+            "brownGrey0" : "#00a8a8a8",
             "whiteTwo": "#f4f4f4",
             "deepSkyBlue": "#007aff",
             "white30":"#ffffff4D",
@@ -254,7 +255,7 @@
     },
     "merchantHeaderView": {
         "titleLabelFont" : "Roboto-Regular,12",
-        "titleLabelColor" : "lightPeach",
+        "titleLabelColor" : "brownGrey",
         "subTitleLabelFont" : "Roboto-Regular,16",
         "subTitleLabelColor" : "greyishBrown",
         "merchantLogoCorner" : 8,
@@ -272,10 +273,10 @@
         "itemsLabelColor" : "greyishBrown",
         "itemsNumberButtonBackgroundColor" : "whiteTwo",
         "itemsNumberButtonBorder" : {
-            "color" : "veryLightPinkTwo",
+            "color" : "brownGrey",
             "width" : 1
         },
-        "itemsNumberButtonCorner" : 10,
+        "itemsNumberButtonCorner" : 30,
         "backgroundColor" : "white"
     },
     "horizontalList": {
@@ -287,16 +288,16 @@
                 "backgroundColor" : "whiteTwo",
                 "leftButton": {
                     "labelTextFont": "Roboto-Regular,10",
-                    "labelTextColor": "greyishBrown"
+                    "labelTextColor": "brownGrey"
                 },
                 "rightButton": {
-                    "labelTextFont": "Roboto-Regular,10",
+                    "labelTextFont": "Roboto-Light,10",
                     "labelTextColor": "greyishBrown"
                 }
             }
         },
         "chips": {
-            "radius" : 8,
+            "radius" : 25,
             "currencyChip": {
                 "backgroundColor" : "white",
                 "labelTextFont": "Roboto-Regular,12",

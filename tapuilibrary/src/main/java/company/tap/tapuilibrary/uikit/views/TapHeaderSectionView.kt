@@ -74,11 +74,10 @@ class TapHeaderSectionView : LinearLayout {
      **/
     fun setHeaderDataSource(headerDataSource: HeaderDataSource) {
         this.headerDataSource = headerDataSource
-        headerDataSource.businessName?.let {
-            businessName.text = it
-        }
+        businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
+        businessPlaceholder.setTextColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderLabelColor")))
         if (headerDataSource.businessImageResources == null) {
-            businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+            businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
             businessPlaceholder.text = headerDataSource.businessName?.get(0).toString()
 
         } else {
@@ -94,7 +93,6 @@ class TapHeaderSectionView : LinearLayout {
                     headerDataSource.businessName?.get(0).toString()
                 ))
                 .into(businessIcon)
-
         }
 
         headerDataSource.businessFor?.let {
@@ -102,6 +100,9 @@ class TapHeaderSectionView : LinearLayout {
         }
         headerDataSource.businessPlaceHolder?.let {
             businessPlaceholder.text = it
+        }
+        headerDataSource.businessName?.let {
+            businessName.text = it
         }
 
     }
@@ -111,25 +112,25 @@ class TapHeaderSectionView : LinearLayout {
 
         val businessNameTextViewTheme = TextViewTheme()
         businessNameTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.titleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
         businessNameTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.titleLabelFont")
+            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
         businessNameTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.titleLabelFont")
+            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
         businessName.setTheme(businessNameTextViewTheme)
 
         val paymentForTextViewTheme = TextViewTheme()
         paymentForTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("merchantHeaderView.titleLabelColor"))
         paymentForTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("merchantHeaderView.titleLabelFont")
         paymentForTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("merchantHeaderView.titleLabelFont")
         paymentFor.setTheme(paymentForTextViewTheme)
 
         val businessPlaceholderTextViewTheme = TextViewTheme()
         businessPlaceholderTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor"))
+            Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderLabelColor"))
         businessPlaceholderTextViewTheme.textSize =
             ThemeManager.getFontSize("merchantHeaderView.merchantLogoPlaceHolderFont")
         businessPlaceholderTextViewTheme.font =
@@ -144,19 +145,19 @@ class TapHeaderSectionView : LinearLayout {
     fun setFontsEnglish() {
         businessName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
 
         paymentFor?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
 
         businessPlaceholder?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
 
@@ -165,19 +166,19 @@ class TapHeaderSectionView : LinearLayout {
     fun setFontsArabic() {
         businessName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalRegular
             )
         )
 
         paymentFor?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalRegular
             )
         )
 
         businessPlaceholder?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalRegular
             )
         )
 

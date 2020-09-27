@@ -38,15 +38,17 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
         val groupNameTextViewTheme = TextViewTheme()
         groupNameTextViewTheme.textColor =
             Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
-        groupNameTextViewTheme.font =
-            ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
+        groupNameTextViewTheme.textSize =  ThemeManager.getFontSize("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
+//        groupNameTextViewTheme.font =
+//            ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
         groupName?.setTheme(groupNameTextViewTheme)
 
         val groupActionTextViewTheme = TextViewTheme()
         groupActionTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
-        groupActionTextViewTheme.font =
-            ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
+            Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.rightButton.labelTextColor"))
+        groupActionTextViewTheme.textSize =  ThemeManager.getFontSize("horizontalList.headers.gatewayHeader.rightButton.labelTextFont")
+//        groupActionTextViewTheme.font =
+//            ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
         groupAction?.setTheme(groupActionTextViewTheme)
 
         linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
@@ -54,24 +56,10 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
     }
 
     private fun setFontsEnglish() {
-//        var fontName = ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
-//        if(TapFont.values().any { it.name == fontName }) {
-//
-//            groupName?.typeface = Typeface.createFromAsset(
-//                context?.assets, TapFont.tapFontType(
-//                    TapFont.RobotoLight
-//                )
-//            )
-//            groupAction?.typeface = Typeface.createFromAsset(
-//                context?.assets, TapFont.tapFontType(
-//                    TapFont.RobotoLight
-//                )
-//            )
-//        }
 
         groupName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
         groupAction?.typeface = Typeface.createFromAsset(
@@ -84,7 +72,7 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
     private fun setFontsArabic() {
         groupName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalRegular
             )
         )
         groupAction?.typeface = Typeface.createFromAsset(
