@@ -29,7 +29,7 @@ All rights reserved.
  **/
 open class CurrencyViewFragment() : Fragment() {
     private lateinit var chipRecycler: RecyclerView
-    lateinit var currencyList: ArrayList<CurrencyModel>
+     var currencyList: ArrayList<CurrencyModel>? = null
    // lateinit var currencyList: ArrayList<String>
 
     private lateinit var itemsRecycler: RecyclerView
@@ -52,7 +52,7 @@ open class CurrencyViewFragment() : Fragment() {
         chipRecycler = currencyGroup.findViewById<View>(R.id.chip_recycler) as RecyclerView
         // chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter = CurrencyAdapter(currencyList)
+        chipRecycler.adapter = currencyList?.let { CurrencyAdapter(it) }
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.setHasFixedSize(false)
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -97,37 +97,37 @@ open class CurrencyViewFragment() : Fragment() {
     private fun fillData() {
         currencyList = ArrayList()
         //adding some dummy data to the list
-        currencyList.add(
+        currencyList?.add(
             CurrencyModel(
                 "KWD",
                 "https://www.countryflags.io/kw/flat/24.png"
             )
         )
-        currencyList.add(
+        currencyList?.add(
             CurrencyModel(
                 "SAR",
                 "https://www.countryflags.io/sa/flat/24.png"
             )
         )
-        currencyList.add(
+        currencyList?.add(
             CurrencyModel(
                 "BHD",
                 "https://www.countryflags.io/bh/flat/24.png"
             )
         )
-        currencyList.add(
+        currencyList?.add(
             CurrencyModel(
                 "QAR",
                 "https://www.countryflags.io/qa/flat/24.png"
             )
         )
-        currencyList.add(
+        currencyList?.add(
             CurrencyModel(
                 "KWD",
                 "https://www.countryflags.io/kw/flat/24.png"
             )
         )
-        currencyList.add(
+        currencyList?.add(
             CurrencyModel(
                 "SAR",
                 "https://www.countryflags.io/sa/flat/24.png"
