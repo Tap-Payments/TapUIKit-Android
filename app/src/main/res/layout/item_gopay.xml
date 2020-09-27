@@ -8,7 +8,7 @@
     app:cardBackgroundColor="@color/glowingShadow"
     app:cardCornerRadius="8dp"
     android:layout_gravity="center"
-    app:cardElevation="5dp"
+    app:cardElevation="10dp"
     app:contentPadding="6dp">
 
     <ImageView

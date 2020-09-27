@@ -2,23 +2,20 @@
 <company.tap.tapuilibrary.uikit.atoms.TapChip xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tapcard_Chip"
+    android:id="@+id/tapCardChip1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     app:cardBackgroundColor="@color/glowingShadow"
     app:cardCornerRadius="8dp"
-    app:cardElevation="8dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="5dp">
+    android:layout_gravity="center"
+    app:cardElevation="10dp"
+    app:contentPadding="6dp">
 
     <ImageView
         android:id="@+id/deleteImageView1"
         android:layout_width="20dp"
         android:layout_height="12dp"
         android:layout_gravity="right|top"
-        android:elevation="15dp"
         android:src="@drawable/btn_close_normal"
         android:visibility="visible" />
 
@@ -33,7 +30,7 @@
             android:layout_height="@dimen/margin_basic_20dp"
             android:layout_marginLeft="@dimen/margin_basic_20dp"
             android:layout_marginTop="@dimen/margin_basic_10dp"
-            android:layout_marginRight="@dimen/margin_basic_20dp"
+            android:layout_marginRight="@dimen/activity_total_margin"
             android:layout_marginBottom="@dimen/margin_basic_10dp"
             android:src="@drawable/tap"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -45,7 +42,7 @@
             android:id="@+id/goPayText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_basic_20dp"
+            android:layout_marginLeft="@dimen/activity_total_margin"
             android:layout_marginTop="@dimen/margin_basic_10dp"
             android:layout_marginRight="@dimen/margin_basic_20dp"
             android:layout_marginBottom="@dimen/margin_basic_10dp"

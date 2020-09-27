@@ -2,22 +2,20 @@
 <company.tap.tapuilibrary.uikit.atoms.TapChip xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tapcard_Chip"
+    android:id="@+id/tapCardChip2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
     app:cardCornerRadius="8dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="5dp"
-    app:elevation="8dp">
+    android:layout_gravity="center"
+    app:cardElevation="6dp"
+    app:contentPadding="6dp">
+
 
     <ImageView
         android:id="@+id/deleteImageView2"
         android:layout_width="20dp"
         android:layout_height="12dp"
         android:layout_gravity="right|top"
-        android:elevation="15dp"
         android:src="@drawable/btn_close_normal"
         android:visibility="visible" />
 
@@ -26,11 +24,9 @@
         android:layout_height="35dp"
         android:orientation="horizontal"
         android:paddingStart="12dp"
-        android:paddingTop="10dp"
+        android:paddingTop="5dp"
         android:paddingEnd="12dp"
-        android:paddingBottom="10dp">
-
-
+        android:paddingBottom="5dp">
 
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
             android:id="@+id/imageView_amex"
@@ -46,7 +42,7 @@
             android:id="@+id/textView_carddetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="3dp"
+            android:layout_marginStart="5dp"
             android:fontFamily="sans-serif"
             android:text="•••• XXXX"
             android:textColor="#4b4847"
