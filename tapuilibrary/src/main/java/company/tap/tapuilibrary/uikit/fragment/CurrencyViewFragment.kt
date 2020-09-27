@@ -19,7 +19,6 @@ import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
 import company.tap.tapuilibrary.uikit.adapters.ItemAdapter
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
-import company.tap.tapuilibrary.uikit.model.CurrencyModel
 import kotlinx.android.synthetic.main.item_frame_currency.*
 
 
@@ -29,8 +28,8 @@ All rights reserved.
  **/
 open class CurrencyViewFragment() : Fragment() {
     private lateinit var chipRecycler: RecyclerView
-    lateinit var currencyList: ArrayList<CurrencyModel>
-   // lateinit var currencyList: ArrayList<String>
+   // lateinit var currencyList: ArrayList<CurrencyModel>
+    lateinit var currencyList: ArrayList<String>
 
     private lateinit var itemsRecycler: RecyclerView
     private val itemList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22)
@@ -52,6 +51,7 @@ open class CurrencyViewFragment() : Fragment() {
         chipRecycler = currencyGroup.findViewById<View>(R.id.chip_recycler) as RecyclerView
         // chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+       // chipRecycler.adapter = CurrencyAdapter(currencyList)
         chipRecycler.adapter = CurrencyAdapter(currencyList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.setHasFixedSize(false)
@@ -97,7 +97,7 @@ open class CurrencyViewFragment() : Fragment() {
     private fun fillData() {
         currencyList = ArrayList()
         //adding some dummy data to the list
-        currencyList.add(
+     /*   currencyList.add(
             CurrencyModel(
                 "KWD",
                 "https://www.countryflags.io/kw/flat/24.png"
@@ -132,7 +132,7 @@ open class CurrencyViewFragment() : Fragment() {
                 "SAR",
                 "https://www.countryflags.io/sa/flat/24.png"
             )
-        )
+        )*/
 
     }
 

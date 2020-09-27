@@ -32,7 +32,7 @@ var context: Context? = null
 //val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
 
 
-class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
+class CurrencyAdapter(private val photos: ArrayList<String>) :
     RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
         val v =
