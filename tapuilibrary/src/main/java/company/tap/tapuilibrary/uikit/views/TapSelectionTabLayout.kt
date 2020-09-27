@@ -245,7 +245,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             totalItemsCount += items
         }
         val itemSize =
-            (Resources.getSystem().displayMetrics.widthPixels - SCREEN_MARGINS) / totalItemsCount
+            (Resources.getSystem().displayMetrics.widthPixels - 0) / totalItemsCount
         return if (itemSize > maxItemWidth) maxItemWidth else itemSize
     }
 
