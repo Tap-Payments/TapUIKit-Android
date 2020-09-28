@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.cardbusinesskit.testmodels.Items
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -28,7 +29,7 @@ import company.tap.tapuilibrary.uikit.views.TapListItemView
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class ItemAdapter(private val itemList: ArrayList<Object>) :
+class ItemAdapter(private val itemList: ArrayList<Items>) :
     RecyclerView.Adapter<ItemAdapter.ItemHolder>() {
     private var previousExpandedPosition = -1
     private var mExpandedPosition = -1
@@ -63,10 +64,17 @@ class ItemAdapter(private val itemList: ArrayList<Object>) :
         val mainViewLinear = holder.itemView.findViewById<LinearLayout>(R.id.mainViewLinear)
         val itemName = holder.itemView.findViewById<TapTextView>(R.id.item_title)
         val isExpanded = position == mExpandedPosition
-
-        descriptionTextView.text = "Lorem ipsum dolor sit amet, ex exercitation ullamco laboris."
+        if(itemList.size!=0){
+        for (i in 0 until itemList.size) {
+            descriptionTextView.text = itemList.get(i).description
+            descriptionTextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
+            holder.itemView.isActivated = isExpanded
+        }
+        }else{
+        descriptionTextView.text = itemList.get(0).description
         descriptionTextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
         holder.itemView.isActivated = isExpanded
+        }
         holder.itemView.setBackgroundColor( Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor")))
 
         onItemClickAction(holder, position, isExpanded)
@@ -96,7 +104,8 @@ class ItemAdapter(private val itemList: ArrayList<Object>) :
 
 
     private fun checkItemListPosition(position: Int, discount:TapTextView? , totalAmount:TapTextView? ,itemName: TapTextView? ) {
-       /* if (itemList[position] % 2 == 0) {
+        if(itemList.size==0) {
+            if (position % 2 == 0) {
             discount?.visibility = View.VISIBLE
             discount?.text = LocalizationManager.getValue("Discount", "ItemList")
             totalAmount?.paintFlags = totalAmount?.paintFlags?.or(Paint.STRIKE_THRU_TEXT_FLAG)!!
@@ -106,9 +115,14 @@ class ItemAdapter(private val itemList: ArrayList<Object>) :
             totalAmount?.paintFlags = totalAmount?.paintFlags?.and(Paint.STRIKE_THRU_TEXT_FLAG.inv())!!
             itemName?.text =
                 "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE TITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLE " + itemList[position]
-        }*/
+        }
+        }else
+        for (i in 0 until itemList.size) {
+            itemName?.text = itemList[i].name
+            discount?.text = itemList[i].discount.toString()
+            totalAmount?.text = itemList[i].amount.toString()
+        }
 
-        itemName?.text = "ITEM TITLE " + itemList[position]
     }
 
 
