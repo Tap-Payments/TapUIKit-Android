@@ -20,30 +20,33 @@ import company.tap.tapuilibrary.uikit.adapters.ItemAdapter
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import kotlinx.android.synthetic.main.item_frame_currency.*
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 /**
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class CurrencyViewFragment(private var currencyLists:ArrayList<String>) : Fragment() {
+open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, private var itemLists:List<Object>) : Fragment() {
     private lateinit var chipRecycler: RecyclerView
 
     // lateinit var currencyList: ArrayList<CurrencyModel>
     lateinit var currencyList: ArrayList<String>
 
     private lateinit var itemsRecycler: RecyclerView
-    private val itemList: ArrayList<Int> =
-        arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)
-
+   /* private var itemList: ArrayList<Int> =
+        arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)*/
+    private lateinit var itemList: ArrayList<Object>
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
-        //fillData()
+
         currencyList = currencyLists
+        itemList = itemLists as ArrayList<Object>
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
         val mainView = view.findViewById<LinearLayout>(R.id.mainView)
         currencyGroup.orientation = LinearLayout.HORIZONTAL
@@ -60,6 +63,7 @@ open class CurrencyViewFragment(private var currencyLists:ArrayList<String>) : F
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.setHasFixedSize(false)
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        if (this::itemList.isInitialized)
         itemsRecycler.adapter = ItemAdapter(itemList)
 
 

@@ -28,7 +28,7 @@ import company.tap.tapuilibrary.uikit.views.TapListItemView
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class ItemAdapter(private val itemList: ArrayList<Int>) :
+class ItemAdapter(private val itemList: ArrayList<Object>) :
     RecyclerView.Adapter<ItemAdapter.ItemHolder>() {
     private var previousExpandedPosition = -1
     private var mExpandedPosition = -1
@@ -96,7 +96,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
 
     private fun checkItemListPosition(position: Int, discount:TapTextView? , totalAmount:TapTextView? ,itemName: TapTextView? ) {
-        if (itemList[position] % 2 == 0) {
+       /* if (itemList[position] % 2 == 0) {
             discount?.visibility = View.VISIBLE
             discount?.text = LocalizationManager.getValue("Discount", "ItemList")
             totalAmount?.paintFlags = totalAmount?.paintFlags?.or(Paint.STRIKE_THRU_TEXT_FLAG)!!
@@ -106,7 +106,9 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
             totalAmount?.paintFlags = totalAmount?.paintFlags?.and(Paint.STRIKE_THRU_TEXT_FLAG.inv())!!
             itemName?.text =
                 "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE TITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLE " + itemList[position]
-        }
+        }*/
+
+        itemName?.text = "ITEM TITLE " + itemList[position]
     }
 
 
