@@ -634,7 +634,7 @@
             "BackgroundColor": "whiteTwo"
         },
         "main": {
-            "backgroundColor": "brownGrey",
+            "backgroundColor": "brownGreySix",
             "title": {
                 "textFont": "Roboto-Light,12",
                 "textColor": "brownGreySix"
