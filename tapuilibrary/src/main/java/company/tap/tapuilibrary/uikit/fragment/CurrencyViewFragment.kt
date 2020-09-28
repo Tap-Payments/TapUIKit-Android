@@ -26,7 +26,7 @@ import kotlinx.android.synthetic.main.item_frame_currency.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class CurrencyViewFragment() : Fragment() {
+open class CurrencyViewFragment(private var currencyLists:ArrayList<String>) : Fragment() {
     private lateinit var chipRecycler: RecyclerView
 
     // lateinit var currencyList: ArrayList<CurrencyModel>
@@ -42,8 +42,8 @@ open class CurrencyViewFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
-        fillData()
-
+        //fillData()
+        currencyList = currencyLists
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
         val mainView = view.findViewById<LinearLayout>(R.id.mainView)
         currencyGroup.orientation = LinearLayout.HORIZONTAL
