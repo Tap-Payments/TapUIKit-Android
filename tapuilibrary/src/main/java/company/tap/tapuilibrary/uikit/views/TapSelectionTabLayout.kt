@@ -208,7 +208,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun getSectionItemLayout(): LinearLayout {
         val linearLayout = LinearLayout(context)
         val params = LayoutParams(
-            LayoutParams.WRAP_CONTENT,
+            LayoutParams.MATCH_PARENT,
             LayoutParams.MATCH_PARENT
         )
         linearLayout.layoutParams = params
@@ -225,7 +225,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun getTabSelectionIndicator(): View {
         val view = View(context)
         val params = LayoutParams(
-            LayoutParams.WRAP_CONTENT,
+            LayoutParams.MATCH_PARENT,
             indicatorHeight
         )
         view.setBackgroundColor(indicatorColor)
