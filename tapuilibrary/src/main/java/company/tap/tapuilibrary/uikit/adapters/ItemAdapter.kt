@@ -69,6 +69,10 @@ class ItemAdapter(private val itemList: ArrayList<Items>) :
             descriptionTextView.text = itemList.get(i).description
             descriptionTextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
             holder.itemView.isActivated = isExpanded
+            totalQuantity.text = itemList[i].quantity.toString()
+
+          itemViewAdapter.setItemViewDataSource(getItemViewDataSource(itemList[i].amount.toString(),itemList[i].currency,itemList[i].quantity.toString()))
+
         }
         }else{
         descriptionTextView.text = itemList.get(0).description
@@ -215,7 +219,7 @@ class ItemAdapter(private val itemList: ArrayList<Items>) :
                 TapFont.RobotoLight
             )
         )
-        itemViewAdapter.setItemViewDataSource(getItemViewDataSource())
+       // itemViewAdapter.setItemViewDataSource(getItemViewDataSource())
         totalQuantity?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoRegular
@@ -223,11 +227,11 @@ class ItemAdapter(private val itemList: ArrayList<Items>) :
         )
     }
 
-    private fun getItemViewDataSource(): ItemViewDataSource {
+    private fun getItemViewDataSource(itemAmount:String,totalAmnt:String,quantity:String): ItemViewDataSource {
         return ItemViewDataSource(
-            itemAmount = "KD000,000",
-            totalAmount = "KD000,000.000",
-            totalQuantity = "2"
+            itemAmount = itemAmount,
+            totalAmount = totalAmnt,
+            totalQuantity = quantity
         )
     }
 
