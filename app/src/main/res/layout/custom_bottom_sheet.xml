@@ -25,7 +25,7 @@
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
             android:id="@+id/indicatorSeparator"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:background="@color/separator_color" />
 
@@ -43,7 +43,7 @@
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:id="@+id/topSeparator"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
         android:layout_marginStart="@dimen/default_padding"
         android:layout_marginEnd="@dimen/default_padding"
         android:background="@color/separator_color" />
@@ -58,7 +58,7 @@
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:id="@+id/separator"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
         android:background="@color/separator_color" />
 
 <!--    <LinearLayout-->
@@ -91,7 +91,7 @@
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
             android:id="@+id/separator_"
             android:layout_width="wrap_content"
-            android:layout_height="0.5dp"
+            android:layout_height="1dp"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
             android:background="@color/separator_color" />
@@ -108,7 +108,7 @@
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:id="@+id/separatorــ"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="1dp"
         android:visibility="visible"
         android:background="@color/separator_color" />
 

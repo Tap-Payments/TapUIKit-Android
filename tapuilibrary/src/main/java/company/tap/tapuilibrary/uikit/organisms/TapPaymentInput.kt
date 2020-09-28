@@ -60,8 +60,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     }
     private fun setSeparatorTheme() {
         val separatorViewTheme = SeparatorViewTheme()
-        separatorViewTheme.strokeColor =
-            Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
+        separatorViewTheme.strokeColor = Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
         separator.setTheme(separatorViewTheme)
   }

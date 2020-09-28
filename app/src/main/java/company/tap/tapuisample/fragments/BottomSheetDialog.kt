@@ -1009,8 +1009,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     fun setSeparatorTheme() {
         val separatorViewTheme = SeparatorViewTheme()
-        separatorViewTheme.strokeColor =
-            Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
+        separatorViewTheme.strokeColor = Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
         indicatorSeparator.setTheme(separatorViewTheme)
         topSeparator.setTheme(separatorViewTheme)

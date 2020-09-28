@@ -243,7 +243,7 @@
         "dimmedColor": "black50"
     },
     "tapSeparationLine": {
-        "backgroundColor": "veryLightPinkTwo",
+        "backgroundColor": "graySeparator",
         "height" : 1,
         "initialTrailingConstraint" : 0
     },
@@ -629,12 +629,12 @@
         }
     },
     "TapSwitchView": {
-        "backgroundColor": "clear",
+        "backgroundColor": "whiteTwo",
         "CurvedSeparator": {
             "BackgroundColor": "whiteTwo"
         },
         "main": {
-            "backgroundColor": "whiteTwo",
+            "backgroundColor": "brownGrey",
             "title": {
                 "textFont": "Roboto-Light,12",
                 "textColor": "brownGreySix"
@@ -645,7 +645,7 @@
             }
         },
         "goPay": {
-            "backgroundColor": "clear",
+            "backgroundColor": "brownGrey",
             "SwitchOnColor": "azure",
             "title": {
                 "textFont": "Roboto-Light,14",
@@ -661,7 +661,7 @@
             }
         },
         "merchant": {
-            "backgroundColor": "clear",
+            "backgroundColor": "brownGrey",
             "SwitchOnColor": "azure",
             "title": {
                 "textFont": "Roboto-Light,14",
