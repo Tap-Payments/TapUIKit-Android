@@ -123,8 +123,16 @@ class ItemAdapter(private val itemList: ArrayList<Items>) :
         }else
         for (i in 0 until itemList.size) {
             itemName?.text = itemList[i].name
-            discount?.text = itemList[i].discount.toString()
-            totalAmount?.text = itemList[i].amount.toString()
+            if(itemList[i].discount?.type.equals("P")){
+                discount?.visibility = View.VISIBLE
+                discount?.text = itemList[i].discount.value.toString()
+                totalAmount?.paintFlags = totalAmount?.paintFlags?.or(Paint.STRIKE_THRU_TEXT_FLAG)!!
+                totalAmount?.text = itemList[i].amount.toString()
+
+            }else{
+                discount?.visibility = View.INVISIBLE
+                totalAmount?.paintFlags = totalAmount?.paintFlags?.and(Paint.STRIKE_THRU_TEXT_FLAG.inv())!!
+            }
         }
 
     }
