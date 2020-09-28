@@ -21,7 +21,6 @@ import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import kotlinx.android.synthetic.main.item_frame_currency.*
 
-
 /**
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
