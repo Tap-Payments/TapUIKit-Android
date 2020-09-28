@@ -28,14 +28,15 @@
             "cherryRed20":"#e12132",
             "deepSkyBlue15":"#007aff26",
             "brownGreyFive":"#aeaeae",
-            "deepSkyBlue15":"#007aff26",
             "veryLightPinkThree": "#d7d7d7",
             "azure": "#009aff",
             "brownGreySix": "#a7a7a7",
             "brownGreySeven": "#7e7e7e",
             "white78": "#f9f9f9C6",
             "brownGreyFour": "#a6a6a6",
-            "graySeparator": "#e0e0e0"
+            "graySeparator": "#e0e0e0",
+            "black_50": "#80000000",
+            "switch_background": "#c7f9f9f9"
         }
     },
     "inlineCard": {
@@ -628,13 +629,23 @@
             }
         }
     },
+
+
+
+
+
+
+
+
+
+
     "TapSwitchView": {
-        "backgroundColor": "whiteTwo",
+        "backgroundColor": "brownGreySix",
         "CurvedSeparator": {
             "BackgroundColor": "whiteTwo"
         },
         "main": {
-            "backgroundColor": "brownGreySix",
+            "backgroundColor": "white80",
             "title": {
                 "textFont": "Roboto-Light,12",
                 "textColor": "brownGreySix"
