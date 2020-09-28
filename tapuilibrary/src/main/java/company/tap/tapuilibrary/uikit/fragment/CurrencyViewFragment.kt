@@ -42,7 +42,7 @@ open class CurrencyViewFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
-        //fillData()
+        fillData()
 
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
         val mainView = view.findViewById<LinearLayout>(R.id.mainView)
@@ -97,7 +97,10 @@ open class CurrencyViewFragment() : Fragment() {
     //Filling dummy data for currency chips
     private fun fillData() {
         //  currencyList = ArrayList()
-        println("curr list valu   ${currencyList.size} $currencyList")
+        val arguments = arguments
+        val arraylistCurrency = arguments?.getString("arraylistcurrency")
+        println("desired_string list valu   ${arraylistCurrency.toString()} $arraylistCurrency")
+
         //adding some dummy data to the list
         /*   currencyList.add(
                CurrencyModel(
