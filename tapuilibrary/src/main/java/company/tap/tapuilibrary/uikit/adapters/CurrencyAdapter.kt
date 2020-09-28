@@ -32,7 +32,7 @@ var context: Context? = null
 //val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
 
 
-class CurrencyAdapter(private val photos: ArrayList<String>) :
+class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
     RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
         val v =
@@ -43,7 +43,7 @@ class CurrencyAdapter(private val photos: ArrayList<String>) :
         )
     }
 
-    override fun getItemCount() = photos.size
+    override fun getItemCount() = arraylistcurency.size
 
 
     class CurrencyHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -86,7 +86,7 @@ class CurrencyAdapter(private val photos: ArrayList<String>) :
 
 
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
-        holder.bindPhoto(photos[position])
+        holder.bindPhoto(arraylistcurency[position])
         if (selectedPosition == position) {
             /**
              * Method to draw bordered view
