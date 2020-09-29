@@ -32,7 +32,7 @@ var context: Context? = null
 //val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
 
 
-class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
+class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
     RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
         val v =
@@ -43,7 +43,7 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
         )
     }
 
-    override fun getItemCount() = arraylistcurency.size
+    override fun getItemCount() = photos.size
 
 
     class CurrencyHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -51,10 +51,10 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
         private var photo: CurrencyModel? = null
 
 
-        fun bindPhoto(photo: String) {
-          //  this.photo = photo
-          //  Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
-           view.textView_currency.text = photo
+        fun bindPhoto(photo: CurrencyModel) {
+            this.photo = photo
+            Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
+            view.textView_currency.text = photo.currencyCode
 
             setTheme()
         }
@@ -86,7 +86,7 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
 
 
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
-        holder.bindPhoto(arraylistcurency[position])
+        holder.bindPhoto(photos[position])
         if (selectedPosition == position) {
             /**
              * Method to draw bordered view
