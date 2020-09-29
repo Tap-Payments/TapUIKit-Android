@@ -656,7 +656,7 @@
             }
         },
         "goPay": {
-            "backgroundColor": "switch_background",
+            "backgroundColor": "brownGreySix",
             "SwitchOnColor": "azure",
             "title": {
                 "textFont": "Roboto-Light,14",
@@ -672,7 +672,7 @@
             }
         },
         "merchant": {
-            "backgroundColor": "switch_background",
+            "backgroundColor": "brownGreySix",
             "SwitchOnColor": "azure",
             "title": {
                 "textFont": "Roboto-Light,14",

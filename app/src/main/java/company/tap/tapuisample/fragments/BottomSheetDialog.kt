@@ -303,15 +303,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 ////            outerLayout?.setBackgroundColor(Color.GREEN)
 //        }
 
-//        var switchSaveMobileSwitchTheme = SwitchTheme()
-//        switchSaveMobileSwitchTheme.thumbTint = Color.GREEN
-//        switchSaveMobileSwitchTheme.trackTint =
-//            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-//        switchSaveMobileSwitchTheme.backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-//        switchDemo.switchSaveMobile.setTheme(switchSaveMobileSwitchTheme)
-//        switchDemo.alertGoPaySignUp.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-//        switchDemo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-//        switchSaveDemo?.visibility = View.GONE
     }
 
     //Setting data to TapSwitchDataSource
@@ -985,7 +976,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switchDemo.visibility = View.GONE
         tabLayout?.visibility = View.GONE
         paymentLayout.visibility = View.GONE
-        tapHeaderSectionView.visibility = View.GONE
         businessIcon.visibility = View.GONE
         businessPlaceholder.visibility = View.GONE
         businessPlaceholder.visibility = View.GONE
