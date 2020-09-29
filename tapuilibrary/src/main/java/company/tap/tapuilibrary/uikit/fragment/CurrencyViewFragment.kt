@@ -69,9 +69,6 @@ open class CurrencyViewFragment : Fragment() {
         chipRecycler.addItemDecoration(divider)
 
 
-
-
-
 //        chipRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         currencyGroup.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         itemsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))

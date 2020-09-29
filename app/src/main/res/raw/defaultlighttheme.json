@@ -36,7 +36,7 @@
             "brownGreyFour": "#a6a6a6",
             "graySeparator": "#e0e0e0",
             "black_50": "#80000000",
-            "switch_background": "#c7f9f9f9"
+            "switch_background": "#d4d2ca"
         }
     },
     "inlineCard": {
@@ -592,7 +592,7 @@
         },
         "BackgroundColor": {
             "Otp" : "clear",
-            "default" : "whiteTwo"
+            "default" : "black50"
         }
     },
     "TapOtpView": {
@@ -640,12 +640,12 @@
 
 
     "TapSwitchView": {
-        "backgroundColor": "brownGreySix",
+        "backgroundColor": "whiteTwo",
         "CurvedSeparator": {
             "BackgroundColor": "whiteTwo"
         },
         "main": {
-            "backgroundColor": "white80",
+            "backgroundColor": "brownGreySix",
             "title": {
                 "textFont": "Roboto-Light,12",
                 "textColor": "brownGreySix"
@@ -656,7 +656,7 @@
             }
         },
         "goPay": {
-            "backgroundColor": "brownGrey",
+            "backgroundColor": "switch_background",
             "SwitchOnColor": "azure",
             "title": {
                 "textFont": "Roboto-Light,14",
@@ -672,7 +672,7 @@
             }
         },
         "merchant": {
-            "backgroundColor": "brownGrey",
+            "backgroundColor": "switch_background",
             "SwitchOnColor": "azure",
             "title": {
                 "textFont": "Roboto-Light,14",

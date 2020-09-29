@@ -5,7 +5,7 @@
     android:id="@+id/mainView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/corner_radius"
+    tools:background="@drawable/corner_radius"
     android:gravity="bottom"
     android:orientation="vertical"
     app:cardCornerRadius="@dimen/margin_basic_8dp"
