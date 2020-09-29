@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-//import company.tap.cardbusinesskit.testmodels.Items
+import company.tap.cardbusinesskit.testmodels.Items
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
@@ -29,16 +29,16 @@ import kotlin.collections.ArrayList
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class CurrencyViewFragment(private var currencyLists:ArrayList<String>) : Fragment() {
+open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, private var itemLists:List<Items>) : Fragment() {
     private lateinit var chipRecycler: RecyclerView
 
     // lateinit var currencyList: ArrayList<CurrencyModel>
     lateinit var currencyList: ArrayList<String>
 
     private lateinit var itemsRecycler: RecyclerView
-    private var itemList: ArrayList<Int> =
-        arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)
-//    private lateinit var itemList: ArrayList<Items>
+//    private var itemList: ArrayList<Int> =
+//        arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)
+    private lateinit var itemList: ArrayList<Items>
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
