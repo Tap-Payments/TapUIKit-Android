@@ -112,8 +112,8 @@ class TapCardSwitch : LinearLayout {
 //        saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
         saveSwitchChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
         switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-        switchSaveMerchant.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-        switchGoPayCheckout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.backgroundColor")))
+//        switchSaveMerchant.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+//        switchGoPayCheckout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.backgroundColor")))
 
         // Main switch
         switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->

@@ -180,6 +180,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         setTapMobileInputViewTheme()
 //        mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         mainView.setBackgroundColor(Color.TRANSPARENT)
+        outer_layout?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+
         // checkboxString = getString(R.string.nfc_text)
         //checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
 
@@ -286,7 +288,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     private fun switchViewInit(view: View) {
         switchDemo = view.findViewById(R.id.switch_pay_demo)
-//        switchDemo.setSwitchDataSource(getSwitchDataSource("ola"))
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         separatorView = switchDemo.findViewById(R.id.switch_separator)
@@ -295,13 +296,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
-//        if (savegoPay?.visibility == View.VISIBLE) {
-//            outerLayout?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-//        }
-//        if (savegoPay?.visibility == View.GONE) {
-//            outerLayout?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-////            outerLayout?.setBackgroundColor(Color.GREEN)
-//        }
 
     }
 
@@ -843,6 +837,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             println("isChecked Save value $isChecked")
 
             if (isChecked) {
+//                outer_layout?.setBackgroundColor(Color.TRANSPARENT)
+                outer_layout?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+
+
                 switchLayout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.isChecked = true
@@ -852,6 +850,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 alertgoPay?.visibility = View.VISIBLE
                 separatorView?.visibility = View.VISIBLE
             } else {
+//                outer_layout?.setBackgroundColor(Color.BLUE)
+                outer_layout?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+
+
                 switchLayout?.visibility = View.GONE
                 switchMerchantCheckout?.visibility = View.GONE
                 switchMerchantCheckout?.isChecked = false
