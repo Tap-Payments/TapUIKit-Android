@@ -43,7 +43,7 @@ open class CurrencyViewFragment : Fragment() {
 
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
         val mainView = view.findViewById<LinearLayout>(R.id.mainView)
-        mainView.visibility=View.GONE
+//        mainView.visibility=View.GONE
         currencyGroup.orientation = LinearLayout.HORIZONTAL
         val groupName = currencyGroup.findViewById<TapTextView>(R.id.group_name)
         groupName.visibility=View.GONE

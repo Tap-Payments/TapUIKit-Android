@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/chip_background"
         android:orientation="horizontal"
-        android:padding="@dimen/margin_basic_10dp">
+        android:padding="@dimen/margin_basic_16dp">
 
     </company.tap.tapuilibrary.uikit.atoms.TapChipGroup>
 
@@ -24,8 +24,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/items_recylerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"/>
+        android:layout_height="match_parent" />
 
 </LinearLayout>
 
