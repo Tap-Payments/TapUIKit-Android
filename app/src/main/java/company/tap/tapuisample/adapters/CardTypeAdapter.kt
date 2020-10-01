@@ -154,6 +154,7 @@ class CardTypeAdapter(
                         parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),// tint color
                         parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color")))// shadow color
                     holder.itemView.outlineSpotShadowColor= parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color"))
+//                    holder.itemView.outlineAmbientShadowColor= parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.selected.shadow.color"))
 
                 }
                 else{
@@ -164,6 +165,7 @@ class CardTypeAdapter(
                         parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),// tint color
                         parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")))// shadow color
                     holder.itemView.outlineSpotShadowColor =  parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.unSelected.shadow.color"))
+//                    holder.itemView.outlineAmbientShadowColor =  parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.unSelected.shadow.color"))
 
                 }
                     (holder as SingleViewHolder)

@@ -80,6 +80,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor"))
+
             )
         }
     }

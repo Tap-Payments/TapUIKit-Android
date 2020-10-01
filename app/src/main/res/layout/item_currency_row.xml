@@ -8,9 +8,9 @@
     android:orientation="horizontal"
     android:outlineSpotShadowColor="#d9d9da"
     app:cardCornerRadius="8dp"
-    app:cardPreventCornerOverlap="false"
-    app:cardUseCompatPadding="true"
-    app:contentPadding="2dp"
+    android:layout_marginBottom="@dimen/margin_basic_20dp"
+    android:layout_marginTop="@dimen/margin_basic_20dp"
+    app:cardElevation="8dp"
     app:elevation="8dp">
 
     <LinearLayout
