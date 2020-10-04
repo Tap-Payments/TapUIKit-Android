@@ -85,7 +85,7 @@
             <company.tap.tapuilibrary.uikit.atoms.TapChipGroup
                 android:id="@+id/mainChipgroup"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="90dp"
                 android:orientation="horizontal" />
 <!--        </FrameLayout>-->
 
