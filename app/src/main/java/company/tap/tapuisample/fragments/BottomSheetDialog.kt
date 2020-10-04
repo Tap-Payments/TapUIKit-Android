@@ -178,7 +178,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        mainView.clipToOutline = true
 
 //        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
-//        mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        backgroundColor = (Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
         initializeViews(view)
 
     }
@@ -845,7 +845,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             if (isChecked) {
 //                Blurry.with(context).radius(5).sampling(1).onto(outer_layout)
 
-//                mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+                backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 actionButton.setButtonDataSource(true,
                     context?.let { LocalizationManager.getLocale(it).language }, "Pay")
 
@@ -863,7 +863,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     context?.let { LocalizationManager.getLocale(it).language }, "Pay")
 
 //                outer_layout?.setBackgroundColor(Color.BLUE)
-//                mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+                backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
 
 
                 switchLayout?.visibility = View.GONE
