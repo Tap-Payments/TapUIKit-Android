@@ -6,6 +6,8 @@ import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.atoms.TapSwitch
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
 
 /**
  * Created by AhlaamK on 7/1/20.
@@ -20,6 +22,11 @@ All rights reserved.
  **/
 class TapNFCView : LinearLayout {
     private var gifNFC: TapImageView
+    val topLinearNFC by lazy { findViewById<LinearLayout>(R.id.topLinearNFC) }
+    val scanNfc by lazy { findViewById<TapTextView>(R.id.scan_nfc) }
+    val mainLinearNFC by lazy { findViewById<LinearLayout>(R.id.mainLinearNFC) }
+    val aboutNFC by lazy { findViewById<TapTextView>(R.id.aboutNFC) }
+
 
     /**
      * Simple constructor to use when creating a TapNFCView from code.
@@ -55,6 +62,10 @@ class TapNFCView : LinearLayout {
         inflate(context, R.layout.tap_nfc_view, this)
         gifNFC = findViewById(R.id.gif_nfc)
         Glide.with(context).load(R.drawable.nfcgif).into(gifNFC)
+
+    }
+
+    fun setTheme(){
 
     }
 

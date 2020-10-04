@@ -109,7 +109,7 @@
         },
         "textFields": {
             "textColor": "greyishBrown",
-            "errorTextColor": "#FF0000",
+            "errorTextColor": "orange",
             "font" : "Roboto-Light,17",
             "placeHolderColor" : "brownGreyThree"
         }
@@ -140,7 +140,7 @@
         },
         "textFields": {
             "textColor": "greyishBrown",
-            "errorTextColor": "#FF0000",
+            "errorTextColor": "orange",
             "font" : "Roboto-Light,17",
             "placeHolderColor" : "brownGreyThree"
         }
@@ -629,16 +629,6 @@
             }
         }
     },
-
-
-
-
-
-
-
-
-
-
     "TapSwitchView": {
         "backgroundColor": "whiteTwo",
         "CurvedSeparator": {
