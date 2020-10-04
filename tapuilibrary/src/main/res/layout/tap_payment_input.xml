@@ -5,10 +5,18 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
     <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
         android:id="@+id/sections_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+        android:id="@+id/separator"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        tools:background="@color/black_27"
+        android:visibility="visible" />
 
     <LinearLayout
         android:layout_width="match_parent"
