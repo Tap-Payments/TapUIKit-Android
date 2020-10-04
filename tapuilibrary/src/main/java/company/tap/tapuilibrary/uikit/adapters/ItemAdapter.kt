@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.cardbusinesskit.testmodels.Items
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -28,7 +29,7 @@ import company.tap.tapuilibrary.uikit.views.TapListItemView
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class ItemAdapter(private val itemList: ArrayList<Int>) :
+class ItemAdapter(private val itemList: ArrayList<Items>) :
     RecyclerView.Adapter<ItemAdapter.ItemHolder>() {
     private var previousExpandedPosition = -1
     private var mExpandedPosition = -1
@@ -63,10 +64,21 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         val mainViewLinear = holder.itemView.findViewById<LinearLayout>(R.id.mainViewLinear)
         val itemName = holder.itemView.findViewById<TapTextView>(R.id.item_title)
         val isExpanded = position == mExpandedPosition
+        if(itemList.size!=0){
+            for (i in 0 until itemList.size) {
+                descriptionTextView.text = itemList.get(i).description
+                descriptionTextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
+                holder.itemView.isActivated = isExpanded
+                totalQuantity.text = itemList[i].quantity.toString()
 
-        descriptionTextView.text = "Lorem ipsum dolor sit amet, ex exercitation ullamco laboris."
-        descriptionTextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
-        holder.itemView.isActivated = isExpanded
+                itemViewAdapter.setItemViewDataSource(getItemViewDataSource(itemList[i].amount.toString(),itemList[i].currency,itemList[i].quantity.toString()))
+
+            }
+        }else{
+            descriptionTextView.text = itemList.get(0).description
+            descriptionTextView.visibility = if (isExpanded) View.VISIBLE else View.GONE
+            holder.itemView.isActivated = isExpanded
+        }
         holder.itemView.setBackgroundColor( Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor")))
 
         onItemClickAction(holder, position, isExpanded)
@@ -96,17 +108,33 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
 
     private fun checkItemListPosition(position: Int, discount:TapTextView? , totalAmount:TapTextView? ,itemName: TapTextView? ) {
-        if (itemList[position] % 2 == 0) {
-            discount?.visibility = View.VISIBLE
-            discount?.text = LocalizationManager.getValue("Discount", "ItemList")
-            totalAmount?.paintFlags = totalAmount?.paintFlags?.or(Paint.STRIKE_THRU_TEXT_FLAG)!!
-            itemName?.text = "ITEM TITLE " + itemList[position]
-        } else {
-            discount?.visibility = View.INVISIBLE
-            totalAmount?.paintFlags = totalAmount?.paintFlags?.and(Paint.STRIKE_THRU_TEXT_FLAG.inv())!!
-            itemName?.text =
-                "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE TITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLE " + itemList[position]
-        }
+        if(itemList.size==0) {
+            if (position % 2 == 0) {
+                discount?.visibility = View.VISIBLE
+                discount?.text = LocalizationManager.getValue("Discount", "ItemList")
+                totalAmount?.paintFlags = totalAmount?.paintFlags?.or(Paint.STRIKE_THRU_TEXT_FLAG)!!
+                itemName?.text = "ITEM TITLE " + itemList[position]
+            } else {
+                discount?.visibility = View.INVISIBLE
+                totalAmount?.paintFlags = totalAmount?.paintFlags?.and(Paint.STRIKE_THRU_TEXT_FLAG.inv())!!
+                itemName?.text =
+                    "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE TITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLE " + itemList[position]
+            }
+        }else
+            for (i in 0 until itemList.size) {
+                itemName?.text = itemList[i].name
+                if(itemList[i].discount?.type.equals("P")){
+                    discount?.visibility = View.VISIBLE
+                    discount?.text = itemList[i].discount.value.toString()
+                    totalAmount?.paintFlags = totalAmount?.paintFlags?.or(Paint.STRIKE_THRU_TEXT_FLAG)!!
+                    totalAmount?.text = itemList[i].amount.toString()
+
+                }else{
+                    discount?.visibility = View.INVISIBLE
+                    totalAmount?.paintFlags = totalAmount?.paintFlags?.and(Paint.STRIKE_THRU_TEXT_FLAG.inv())!!
+                }
+            }
+
     }
 
 
@@ -199,7 +227,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
                 TapFont.RobotoLight
             )
         )
-        itemViewAdapter.setItemViewDataSource(getItemViewDataSource())
+        // itemViewAdapter.setItemViewDataSource(getItemViewDataSource())
         totalQuantity?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoRegular
@@ -207,11 +235,11 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         )
     }
 
-    private fun getItemViewDataSource(): ItemViewDataSource {
+    private fun getItemViewDataSource(itemAmount:String,totalAmnt:String,quantity:String): ItemViewDataSource {
         return ItemViewDataSource(
-            itemAmount = "KD000,000",
-            totalAmount = "KD000,000.000",
-            totalQuantity = "2"
+            itemAmount = itemAmount,
+            totalAmount = totalAmnt,
+            totalQuantity = quantity
         )
     }
 

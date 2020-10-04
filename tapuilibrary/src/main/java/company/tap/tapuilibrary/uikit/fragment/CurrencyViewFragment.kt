@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.cardbusinesskit.testmodels.Items
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
@@ -27,36 +28,43 @@ import kotlinx.android.synthetic.main.item_frame_currency.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class CurrencyViewFragment : Fragment() {
+open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, private var itemLists:List<Items>) : Fragment() {
     private lateinit var chipRecycler: RecyclerView
-    lateinit var currencyList: ArrayList<CurrencyModel>
+
+    // lateinit var currencyList: ArrayList<CurrencyModel>
+    lateinit var currencyList: ArrayList<String>
 
     private lateinit var itemsRecycler: RecyclerView
-    private val itemList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22)
+    /* private var itemList: ArrayList<Int> =
+         arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)*/
+    private lateinit var itemList: ArrayList<Items>
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
-        fillData()
 
+        currencyList = currencyLists
+        itemList = itemLists as ArrayList<Items>
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
         val mainView = view.findViewById<LinearLayout>(R.id.mainView)
-//        mainView.visibility=View.GONE
         currencyGroup.orientation = LinearLayout.HORIZONTAL
         val groupName = currencyGroup.findViewById<TapTextView>(R.id.group_name)
-        groupName.visibility=View.GONE
+        groupName.visibility = View.GONE
         val groupAction = currencyGroup.findViewById<TapTextView>(R.id.group_action)
-        groupAction.visibility=View.GONE
+        groupAction.visibility = View.GONE
         chipRecycler = currencyGroup.findViewById<View>(R.id.chip_recycler) as RecyclerView
         // chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter = CurrencyAdapter(currencyList)
+        // chipRecycler.adapter = CurrencyAdapter(currencyList)
+        if (this::currencyList.isInitialized)
+            chipRecycler.adapter = CurrencyAdapter(currencyList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
         itemsRecycler.setHasFixedSize(false)
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        itemsRecycler.adapter = ItemAdapter(itemList)
+        if (this::itemList.isInitialized)
+            itemsRecycler.adapter = ItemAdapter(itemList)
 
 
         val divider = DividerItemDecoration(
@@ -92,48 +100,50 @@ open class CurrencyViewFragment : Fragment() {
 
     //Filling dummy data for currency chips
     private fun fillData() {
-        currencyList = ArrayList()
+        //  currencyList = ArrayList()
+        val arguments = arguments
+        val arraylistCurrency = arguments?.getString("arraylistcurrency")
+        println("desired_string list valu   ${arraylistCurrency.toString()} $arraylistCurrency")
 
         //adding some dummy data to the list
-        currencyList.add(
-            CurrencyModel(
-                "KWD",
-                "https://www.countryflags.io/kw/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "SAR",
-                "https://www.countryflags.io/sa/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "BHD",
-                "https://www.countryflags.io/bh/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "QAR",
-                "https://www.countryflags.io/qa/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "KWD",
-                "https://www.countryflags.io/kw/flat/24.png"
-            )
-        )
-        currencyList.add(
-            CurrencyModel(
-                "SAR",
-                "https://www.countryflags.io/sa/flat/24.png"
-            )
-        )
+        /*   currencyList.add(
+               CurrencyModel(
+                   "KWD",
+                   "https://www.countryflags.io/kw/flat/24.png"
+               )
+           )
+           currencyList.add(
+               CurrencyModel(
+                   "SAR",
+                   "https://www.countryflags.io/sa/flat/24.png"
+               )
+           )
+           currencyList.add(
+               CurrencyModel(
+                   "BHD",
+                   "https://www.countryflags.io/bh/flat/24.png"
+               )
+           )
+           currencyList.add(
+               CurrencyModel(
+                   "QAR",
+                   "https://www.countryflags.io/qa/flat/24.png"
+               )
+           )
+           currencyList.add(
+               CurrencyModel(
+                   "KWD",
+                   "https://www.countryflags.io/kw/flat/24.png"
+               )
+           )
+           currencyList.add(
+               CurrencyModel(
+                   "SAR",
+                   "https://www.countryflags.io/sa/flat/24.png"
+               )
+           )*/
 
     }
-
 
 
     fun setTheme() {
@@ -151,6 +161,6 @@ open class CurrencyViewFragment : Fragment() {
 
     @JvmName("setCurrencyList1")
     fun setCurrencyList(ApiCurrencyList: ArrayList<String>) {
-//        currencyList = ApiCurrencyList
+        currencyList = ApiCurrencyList
     }
 }
