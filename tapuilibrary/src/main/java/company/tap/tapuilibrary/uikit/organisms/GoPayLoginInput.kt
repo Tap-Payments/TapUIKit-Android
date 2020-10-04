@@ -331,20 +331,11 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                             if (phone.length >= 6 && !backspacingFlag) {
                                 //we will edit. next call on this textWatcher will be ignored
                                 editedFlag = true
-                                lateinit var ans:String
-                                if(phone[0].equals("1")){
-                                    //here is the core. we substring the raw digits and add the mask as convenient
-                                     ans =  phone.substring(0, 1) + "  " + phone.substring(
-                                        3,
-                                        6
-                                    ) + " " + phone.substring(6)
-                                }else {
-                                    //here is the core. we substring the raw digits and add the mask as convenient
-                                     ans = phone.substring(0, 3) + "  " + phone.substring(
-                                        3,
-                                        6
-                                    ) + " " + phone.substring(6)
-                                }
+                                //here is the core. we substring the raw digits and add the mask as convenient
+                                val ans =  phone.substring(0, 3) + "  " + phone.substring(
+                                    3,
+                                    6
+                                ) + phone.substring(6)
                                 textInput.setText(ans)
                                 //we deliver the cursor to its original position relative to the end of the string
                                 textInput.getText()?.length?.minus(
