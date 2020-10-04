@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
+import android.telephony.PhoneNumberFormattingTextWatcher
+import android.text.Editable
 import android.util.AttributeSet
 import android.util.Patterns
 import android.widget.ImageView
@@ -68,7 +70,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         actionButton.isEnabled = false
-        actionButton.setButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("pay","ActionButton") )
+        actionButton.setButtonDataSource(
+            false,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue(
+                "pay",
+                "ActionButton"
+            )
+        )
         actionButton.setOnClickListener {
             when (inputType) {
                 EMAIL -> loginInterface?.onEmailValidated()
@@ -88,11 +97,100 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun initTextInput() {
-        textInput.doAfterTextChanged {
-            if (isValidInput(it.toString()))
-                enableNext()
-            else
-                disableNext()
+
+
+        when (inputType) {
+            EMAIL -> {
+                textInput.doAfterTextChanged {
+                    if (isValidInput(it.toString()))
+                        enableNext()
+                    else
+                        disableNext()
+                }
+            }
+            PHONE -> {
+                textInput.addTextChangedListener(object : PhoneNumberFormattingTextWatcher() {
+                    //we need to know if the user is erasing or inputing some new character
+                    private var backspacingFlag: Boolean = false
+
+                    //we need to block the :afterTextChanges method to be called again after we just replaced the EditText text
+                    private var editedFlag: Boolean = false
+
+                    //we need to mark the cursor position and restore it after the edition
+                    private var cursorComplement: Int = 0
+
+                    override fun beforeTextChanged(
+                        s: CharSequence,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
+                        //we store the cursor local relative to the end of the string in the EditText before the edition
+                        cursorComplement = s.length - textInput.getSelectionStart()
+                        //we check if the user ir inputing or erasing a character
+                        backspacingFlag = if (count > after) {
+                            true
+                        } else {
+                            false
+                        }
+                    }
+
+
+                    override fun onTextChanged(
+                        s: CharSequence?,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
+                        // nothing to do here =D
+                    }
+
+                    override fun afterTextChanged(s: Editable?) {
+                        val string = s.toString()
+                        //what matters are the phone digits beneath the mask, so we always work with a raw string with only digits
+                        //what matters are the phone digits beneath the mask, so we always work with a raw string with only digits
+                        val phone = string.replace("[^\\d]".toRegex(), "")
+//if the text was just edited, :afterTextChanged is called another time... so we need to verify the flag of edition
+                        //if the flag is false, this is a original user-typed entry. so we go on and do some magic
+                        //if the text was just edited, :afterTextChanged is called another time... so we need to verify the flag of edition
+                        //if the flag is false, this is a original user-typed entry. so we go on and do some magic
+                        if (!editedFlag) {
+
+                            //we start verifying the worst case, many characters mask need to be added
+                            //example: 999999999 <- 6+ digits already typed
+                            // masked: (999) 999-999
+                            if (phone.length >= 6 && !backspacingFlag) {
+                                //we will edit. next call on this textWatcher will be ignored
+                                editedFlag = true
+                                //here is the core. we substring the raw digits and add the mask as convenient
+                                val ans = "(" + phone.substring(0, 3) + ") " + phone.substring(
+                                    3,
+                                    6
+                                ) + "-" + phone.substring(6)
+                                textInput.setText(ans)
+                                //we deliver the cursor to its original position relative to the end of the string
+                                textInput.getText()?.length?.minus(
+                                    cursorComplement
+                                )?.let { textInput.setSelection(it) }
+
+                                //we end at the most simple case, when just one character mask is needed
+                                //example: 99999 <- 3+ digits already typed
+                                // masked: (999) 99
+                            } else if (phone.length >= 3 && !backspacingFlag) {
+                                editedFlag = true
+                                val ans = "(" + phone.substring(0, 3) + ") " + phone.substring(3)
+                                textInput.setText(ans)
+                                textInput.getText()?.length?.minus(
+                                    cursorComplement
+                                )?.let { textInput.setSelection(it) }
+                            }
+                            // We just edited the field, ignoring this cicle of the watcher and getting ready for the next
+                        } else {
+                            editedFlag = false
+                        }
+                    }
+                })
+            }
         }
     }
 
@@ -104,7 +202,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun disableNext() {
-        actionButton.setButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("next","Common") )
+        actionButton.setButtonDataSource(
+            false,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue(
+                "next",
+                "Common"
+            )
+        )
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
     }
 
@@ -120,7 +225,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
-        actionButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("next","Common") )
+        actionButton.setButtonDataSource(
+            true,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue(
+                "next",
+                "Common"
+            )
+        )
         actionButton.isEnabled = true
     }
 
