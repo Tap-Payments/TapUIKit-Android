@@ -59,7 +59,7 @@ class NFCSampleFragment : TapBottomSheetDialog() {
     private fun initView(view: View) {
         customNFC = view.findViewById(R.id.custom_nfc)
         scanNFC = customNFC.findViewById(R.id.scan_nfc)
-        aboutNFC = customNFC.findViewById(R.id.about_nfc)
+        aboutNFC = customNFC.findViewById(R.id.aboutNFC)
         scanNFC.text = "Ready to scan, add the card under the device to scan it."
         aboutNFC.text =
             "Near-field communication is a set of communication protocols for communication between two electronic devices over a distance of 4 cm or less."

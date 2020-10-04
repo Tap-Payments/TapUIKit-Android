@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary.uikit.fragment
+package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.graphics.Color
@@ -15,11 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
-import company.tap.tapuilibrary.uikit.adapters.ItemAdapter
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.model.CurrencyModel
+import company.tap.tapuisample.adapters.CurrencyAdapter
+import company.tap.tapuisample.adapters.ItemAdapter
 import kotlinx.android.synthetic.main.item_frame_currency.*
 
 

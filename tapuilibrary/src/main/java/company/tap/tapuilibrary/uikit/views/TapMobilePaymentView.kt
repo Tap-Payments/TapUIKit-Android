@@ -41,6 +41,9 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     fun initTheme() {
         mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
         mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+        mobileNumber.setHintTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
+        mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
+        mobileNumber.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
     }
 
     override fun setTheme(theme: EditTextTheme) {

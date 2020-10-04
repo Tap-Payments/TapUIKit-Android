@@ -6,26 +6,29 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     app:cardCornerRadius="8dp"
-    android:layout_gravity="center"
-    app:cardElevation="5dp"
-    app:contentPadding="6dp">
-
+    android:elevation="0dp"
+    android:hardwareAccelerated="true"
+    app:cardElevation="8dp"
+    android:layout_marginBottom="@dimen/margin_basic_10dp"
+    android:layout_gravity="center">
 
     <ImageView
         android:id="@+id/deleteImageView2"
-        android:layout_width="20dp"
+        android:layout_width="16dp"
         android:layout_height="12dp"
         android:layout_gravity="right|top"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:src="@drawable/btn_close_normal"
         android:visibility="visible" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
+        android:layout_height="45dp"
         android:orientation="horizontal"
-        android:paddingStart="12dp"
+        android:paddingStart="18dp"
         android:paddingTop="5dp"
-        android:paddingEnd="12dp"
+        android:paddingEnd="18dp"
         android:paddingBottom="5dp">
 
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
