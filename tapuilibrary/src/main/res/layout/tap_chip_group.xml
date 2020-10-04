@@ -5,8 +5,8 @@
     android:id="@+id/linearMainView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/pay_btn_margin_vertical"
-    android:paddingTop="@dimen/pay_btn_margin_vertical"
+    android:paddingBottom="@dimen/margin_basic_6dp"
+    android:paddingTop="@dimen/margin_basic_6dp"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
