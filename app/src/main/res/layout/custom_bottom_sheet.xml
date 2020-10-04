@@ -23,7 +23,6 @@
             android:id="@+id/topLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/corner_radius"
             android:layout_gravity="center"
             android:gravity="center"
             android:paddingTop="@dimen/margin_basic_10dp">
@@ -59,7 +58,7 @@
             android:id="@+id/topSeparator"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
             android:background="@color/separator_color" />
@@ -68,7 +67,6 @@
             android:id="@+id/amount_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/item_list"
             android:layoutDirection="locale" />
 
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
@@ -93,7 +91,7 @@
         <company.tap.tapuilibrary.uikit.atoms.TapChipGroup
             android:id="@+id/mainChipgroup"
             android:layout_width="match_parent"
-            android:layout_height="90dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal" />
         <!--        </FrameLayout>-->
 

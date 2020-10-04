@@ -134,15 +134,16 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         val view: View = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
         bottomSheetDialog.behavior.state = STATE_EXPANDED
+
         return view.rootView
 
 
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-//        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+////        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+//    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -166,30 +167,37 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         @Nullable savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-        initializeViews(view)
         actionButton.setButtonDataSource(false, null, "Pay")
         actionButton.isActivated = true
         actionButton.stateListAnimator = null
 //        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
         setSeparatorTheme()
-        setTapMobileInputViewTheme()
+//        setTapMobileInputViewTheme()
 //        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
 //        mainView.clipToOutline = true
 
 //        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 //        mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        initializeViews(view)
+
     }
 
 
     @SuppressLint("SetTextI18n")
     private fun initializeViews(view: View) {
+
         headerViewInit(view)
         amountViewInit(view)
         tabLayoutInit(view)
         setupChip(view)
         switchViewInit(view)
+
+
         initializeCardForm(view)
+
+
+
         addCardsTab()
         addMobileTab()
         setupBrandDetection()
@@ -204,7 +212,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         clearView = view.findViewById(R.id.clear_text)
         linearLayoutPay = view.findViewById(R.id.linear_paylayout)
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
-        view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+//        view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 //        val linear by lazy { view.findViewById<LinearLayout>(R.id.tabLinear) }
 //        linear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 //
