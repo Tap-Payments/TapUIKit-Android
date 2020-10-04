@@ -230,6 +230,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
                     override fun afterTextChanged(s: Editable?) {
                         val string = s.toString()
+                        if (isValidInput(s.toString()))
+                            enableNext()
+                        else
+                            disableNext()
                         //what matters are the phone digits beneath the mask, so we always work with a raw string with only digits
                         //what matters are the phone digits beneath the mask, so we always work with a raw string with only digits
                         val phone = string.replace("[^\\d]".toRegex(), "")
