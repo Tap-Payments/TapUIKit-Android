@@ -148,7 +148,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                     override fun afterTextChanged(s: Editable?) {
                         val string = s.toString()
                         //what matters are the phone digits beneath the mask, so we always work with a raw string with only digits
-                        //what matters are the phone digits beneath the mask, so we always work with a raw string with only digits
                         val phone = string.replace("[^\\d]".toRegex(), "")
 //if the text was just edited, :afterTextChanged is called another time... so we need to verify the flag of edition
                         //if the flag is false, this is a original user-typed entry. so we go on and do some magic
@@ -163,7 +162,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                                 //we will edit. next call on this textWatcher will be ignored
                                 editedFlag = true
                                 //here is the core. we substring the raw digits and add the mask as convenient
-                                val ans = "(" + phone.substring(0, 3) + ") " + phone.substring(
+                                val ans =  phone.substring(0, 3)+ " "  + phone.substring(
                                     3,
                                     6
                                 ) + "-" + phone.substring(6)
@@ -178,7 +177,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                                 // masked: (999) 99
                             } else if (phone.length >= 3 && !backspacingFlag) {
                                 editedFlag = true
-                                val ans = "(" + phone.substring(0, 3) + ") " + phone.substring(3)
+                                val ans =  phone.substring(0, 3) + " " + phone.substring(3)
                                 textInput.setText(ans)
                                 textInput.getText()?.length?.minus(
                                     cursorComplement
