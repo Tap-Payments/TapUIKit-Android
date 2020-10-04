@@ -27,7 +27,7 @@ import kotlinx.android.synthetic.main.item_frame_currency.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class CurrencyViewFragment : Fragment() {
+open class CurrencyItemsViewFragment : Fragment() {
     private lateinit var chipRecycler: RecyclerView
     lateinit var currencyList: ArrayList<CurrencyModel>
 

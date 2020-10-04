@@ -21,7 +21,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,7 +47,7 @@ import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
 import company.tap.tapuilibrary.uikit.fragment.CardScannerFragment
-import company.tap.tapuilibrary.uikit.fragment.CurrencyViewFragment
+import company.tap.tapuilibrary.uikit.fragment.CurrencyItemsViewFragment
 import company.tap.tapuilibrary.uikit.fragment.NFCFragment
 import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
@@ -460,8 +459,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         val itemListDummy: ArrayList<String> =
             arrayListOf("1", "2", "3", "4", "5")
 
-        val currencyViewFragment = CurrencyViewFragment()
 //        val currencyViewFragment = CurrencyViewFragment()
+        val currencyViewFragment = CurrencyItemsViewFragment()
         itemCount.setOnClickListener {
 
             tapAmountSectionInterface?.didClickItems()
