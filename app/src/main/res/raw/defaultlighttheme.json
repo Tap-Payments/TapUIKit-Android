@@ -36,7 +36,7 @@
             "brownGreyFour": "#a6a6a6",
             "graySeparator": "#e0e0e0",
             "black_50": "#80000000",
-            "switch_background": "#00d5cec4",
+            "switch_background": "#45d4d2ca",
             "currency_chip_background": "#4cffffff",
             "currency_chip_selected_shadow": "#90c2f7",
             "currency_chip_unselected_shadow": "#eeeeef"
@@ -638,7 +638,7 @@
             "BackgroundColor": "whiteTwo"
         },
         "main": {
-            "backgroundColor": "whiteTwo",
+            "backgroundColor": "switch_background",
             "title": {
                 "textFont": "Roboto-Light,12",
                 "textColor": "brownGreySix"
