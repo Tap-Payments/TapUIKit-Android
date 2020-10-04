@@ -86,15 +86,15 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         }
     }
 
-    private fun getButtonDataSource(color: Int): ActionButtonDataSource {
-        return ActionButtonDataSource(
-            text = "Next",
-            textSize = 16f,
-            textColor = Color.WHITE,
-            cornerRadius = 100f,
-            backgroundColor = color
-        )
-    }
+//    private fun getButtonDataSource(color: Int): ActionButtonDataSource {
+//        return ActionButtonDataSource(
+//            text = "Next",
+//            textSize = 16f,
+//            textColor = Color.WHITE,
+//            cornerRadius = 100f,
+//            backgroundColor = color
+//        )
+//    }
 
     private fun initTextInput() {
 
@@ -138,15 +138,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
-        actionButton.setButtonDataSource(
-            true,
-            context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue(
-                "next",
-                "Common"
-            )
-        )
         actionButton.isEnabled = true
+        actionButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("next","Common") )
     }
 
     private fun initTabLayout() {

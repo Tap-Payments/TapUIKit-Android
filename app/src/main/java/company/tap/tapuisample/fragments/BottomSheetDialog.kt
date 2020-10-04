@@ -4,6 +4,7 @@ package company.tap.tapuisample.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -162,12 +163,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         actionButton.setButtonDataSource(false, null, "Pay")
         actionButton.isActivated = true
         actionButton.stateListAnimator = null
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+//        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
         setSeparatorTheme()
         setTapMobileInputViewTheme()
-        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
-        mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+//        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
+        mainView.clipToOutline = true
+
+//        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+//        mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
     }
 
 
@@ -826,7 +830,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             if (isChecked) {
 //                Blurry.with(context).radius(5).sampling(1).onto(outer_layout)
 
-                mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+//                mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
                 actionButton.setButtonDataSource(true,
                     context?.let { LocalizationManager.getLocale(it).language }, "Pay")
 
@@ -844,7 +848,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     context?.let { LocalizationManager.getLocale(it).language }, "Pay")
 
 //                outer_layout?.setBackgroundColor(Color.BLUE)
-                mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+//                mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
 
                 switchLayout?.visibility = View.GONE
