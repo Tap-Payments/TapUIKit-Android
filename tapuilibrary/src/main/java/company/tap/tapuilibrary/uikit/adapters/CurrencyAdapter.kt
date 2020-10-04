@@ -20,7 +20,6 @@ import company.tap.tapuilibrary.uikit.model.CurrencyModel
 import kotlinx.android.synthetic.main.item_currency_row.view.*
 
 /**
- * Created by AhlaamK on 6/20/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
