@@ -14,7 +14,7 @@
             "white30":"#ffffff4D",
             "lightPeriwinkle": "#d9d9da",
             "white80":"#ffffffcc",
-            "vibrantGreen" : "#2bce00",
+            "vibrantGreen" : "#2ace00",
             "vibrantGreenTwo" : "#00d300",
             "paleLilac":"#e4e4e5",
             "clear":"#00000000",
@@ -36,7 +36,7 @@
             "brownGreyFour": "#a6a6a6",
             "graySeparator": "#e0e0e0",
             "black_50": "#80000000",
-            "switch_background": "#d8d6d4",
+            "switch_background": "#00d5cec4",
             "currency_chip_background": "#4cffffff",
             "currency_chip_selected_shadow": "#90c2f7",
             "currency_chip_unselected_shadow": "#eeeeef"
@@ -353,7 +353,7 @@
                 "labelTextColor": "white",
                 "selected": {
                     "shadow": {
-                        "color" : "#83e582",
+                        "color" : "vibrantGreen",
                         "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
@@ -638,7 +638,7 @@
             "BackgroundColor": "whiteTwo"
         },
         "main": {
-            "backgroundColor": "switch_background",
+            "backgroundColor": "whiteTwo",
             "title": {
                 "textFont": "Roboto-Light,12",
                 "textColor": "brownGreySix"

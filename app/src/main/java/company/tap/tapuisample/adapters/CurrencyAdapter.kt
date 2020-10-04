@@ -77,7 +77,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
 
             setBorderedView(tapCard_Chip,
                 (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-                3.0f,
+                0.0f,
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor"))
