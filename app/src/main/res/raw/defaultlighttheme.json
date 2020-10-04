@@ -14,7 +14,7 @@
             "white30":"#ffffff4D",
             "lightPeriwinkle": "#d9d9da",
             "white80":"#ffffffcc",
-            "vibrantGreen" : "#2ace00",
+            "vibrantGreen" : "#2bce00",
             "vibrantGreenTwo" : "#00d300",
             "paleLilac":"#e4e4e5",
             "clear":"#00000000",
@@ -36,7 +36,10 @@
             "brownGreyFour": "#a6a6a6",
             "graySeparator": "#e0e0e0",
             "black_50": "#80000000",
-            "switch_background": "#d8d6d4"
+            "switch_background": "#d8d6d4",
+            "currency_chip_background": "#4cffffff",
+            "currency_chip_selected_shadow": "#90c2f7",
+            "currency_chip_unselected_shadow": "#eeeeef"
         }
     },
     "inlineCard": {
@@ -301,7 +304,7 @@
         "chips": {
             "radius" : 25,
             "currencyChip": {
-                "backgroundColor" : "white",
+                "backgroundColor" : "whiteTwo",
                 "labelTextFont": "Roboto-Regular,12",
                 "labelTextColor": "greyishBrown",
                 "selected": {
@@ -350,7 +353,7 @@
                 "labelTextColor": "white",
                 "selected": {
                     "shadow": {
-                        "color" : "vibrantGreen",
+                        "color" : "#83e582",
                         "radius" : 3,
                         "offsetWidth": 0,
                         "offsetHeight": 0,
