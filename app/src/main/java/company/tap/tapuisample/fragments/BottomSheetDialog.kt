@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
@@ -129,12 +130,18 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.custom_bottom_sheet, container, false)
+
+
+        val view: View = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
+        bottomSheetDialog.behavior.state = STATE_EXPANDED
+        return view.rootView
+
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+//        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
     }
 
     override fun onAttach(context: Context) {
@@ -168,7 +175,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         setSeparatorTheme()
         setTapMobileInputViewTheme()
 //        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
-        mainView.clipToOutline = true
+//        mainView.clipToOutline = true
 
 //        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 //        mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
