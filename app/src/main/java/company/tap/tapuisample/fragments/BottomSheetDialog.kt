@@ -47,7 +47,7 @@ import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
 import company.tap.tapuilibrary.uikit.fragment.CardScannerFragment
-import company.tap.tapuilibrary.uikit.fragment.CurrencyItemsViewFragment
+import company.tap.tapuilibrary.uikit.fragment.CurrencyViewFragment
 import company.tap.tapuilibrary.uikit.fragment.NFCFragment
 import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
@@ -460,7 +460,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             arrayListOf("1", "2", "3", "4", "5")
 
 //        val currencyViewFragment = CurrencyViewFragment()
-        val currencyViewFragment = CurrencyItemsViewFragment()
+        val currencyViewFragment = CurrencyViewFragment()
         itemCount.setOnClickListener {
 
             tapAmountSectionInterface?.didClickItems()

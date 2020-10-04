@@ -86,7 +86,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
 
 
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
-//        holder.bindPhoto(photos[position])
+        holder.bindPhoto(photos[position])
         if (selectedPosition == position) {
             /**
              * Method to draw bordered view
