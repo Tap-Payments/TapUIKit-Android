@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:background="@color/chip_background"
         android:orientation="horizontal"
-        android:padding="@dimen/margin_basic_16dp">
+        android:padding="8dp">
 
     </company.tap.tapuilibrary.uikit.atoms.TapChipGroup>
 
