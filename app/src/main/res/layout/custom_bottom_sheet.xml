@@ -1,155 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="50dp"-->
+<!--    android:background="@drawable/corner_radius"-->
+<!--    card_view:cardCornerRadius="30dp"-->
+<!--    card_view:cardElevation="0dp"-->
+<!--    card_view:contentPadding="0dp">-->
+
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/mainView"
+    android:background="@drawable/corner_radius"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="@drawable/corner_radius"
     android:gravity="bottom"
-    android:orientation="vertical"
-    app:cardCornerRadius="@dimen/margin_basic_8dp"
-    tools:ignore="MissingDefaultResource">
+    android:orientation="vertical">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/topLinear"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:paddingTop="@dimen/margin_basic_10dp">
-
-    <company.tap.tapuilibrary.uikit.atoms.TapDragIndicator
-        android:layout_width="75dp"
-        android:layout_height="4dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginEnd="150dp"
-        android:background="@drawable/corner_radius"
-        app:cardElevation="@dimen/margin_basic_0dp">
-
-        <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-            android:id="@+id/indicatorSeparator"
+        <LinearLayout
+            android:id="@+id/topLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/separator_color" />
+            android:background="@drawable/corner_radius"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="@dimen/margin_basic_10dp">
 
-    </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>
+            <company.tap.tapuilibrary.uikit.atoms.TapDragIndicator
+                android:layout_width="75dp"
+                android:layout_height="4dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginEnd="150dp"
+                android:background="@drawable/corner_radius"
+                app:cardElevation="@dimen/margin_basic_0dp">
 
-</LinearLayout>
+                <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+                    android:id="@+id/indicatorSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@color/separator_color" />
 
+            </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>
 
-    <company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
-        android:id="@+id/headerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/margin_basic_9dp"
-        android:paddingBottom="@dimen/margin_basic_9dp"
-        android:background="@color/header_gray"
-        android:layoutDirection="locale" />
-
-    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-        android:id="@+id/topSeparator"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginStart="@dimen/default_padding"
-        android:layout_marginEnd="@dimen/default_padding"
-        android:background="@color/separator_color" />
-
-    <company.tap.tapuilibrary.uikit.views.TapAmountSectionView
-        android:id="@+id/amount_section"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/item_list"
-        android:layoutDirection="locale" />
-
-    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-        android:id="@+id/separator"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/separator_color" />
-
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:background="@color/chip_background"-->
-<!--        android:layoutDirection="locale"-->
-<!--        android:orientation="vertical">-->
-
-<!--        <FrameLayout-->
-<!--            android:id="@+id/fragment_container"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:background="@color/header_color">-->
-
-            <company.tap.tapuilibrary.uikit.atoms.TapChipGroup
-                android:id="@+id/mainChipgroup"
-                android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:orientation="horizontal" />
-<!--        </FrameLayout>-->
+        </LinearLayout>
 
 
-<!--    </LinearLayout>-->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tapSeparatorViewLinear">
+        <company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
+            android:id="@+id/headerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="locale"
+            android:paddingBottom="@dimen/margin_basic_9dp" />
 
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-            android:id="@+id/separator_"
-            android:layout_width="wrap_content"
+            android:id="@+id/topSeparator"
+            android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginStart="@dimen/default_padding"
             android:layout_marginEnd="@dimen/default_padding"
             android:background="@color/separator_color" />
 
-    </LinearLayout>
+        <company.tap.tapuilibrary.uikit.views.TapAmountSectionView
+            android:id="@+id/amount_section"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/item_list"
+            android:layoutDirection="locale" />
+
+        <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separator_color" />
+
+        <!--    <LinearLayout-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:background="@color/chip_background"-->
+        <!--        android:layoutDirection="locale"-->
+        <!--        android:orientation="vertical">-->
+
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/fragment_container"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:background="@color/header_color">-->
+
+        <company.tap.tapuilibrary.uikit.atoms.TapChipGroup
+            android:id="@+id/mainChipgroup"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:orientation="horizontal" />
+        <!--        </FrameLayout>-->
 
 
-    <company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
-        android:id="@+id/tap_payment_input0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layoutDirection="locale" />
+        <!--    </LinearLayout>-->
+        <LinearLayout
+            android:id="@+id/tapSeparatorViewLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-        android:id="@+id/separatorــ"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:visibility="visible"
-        android:background="@color/separator_color" />
+            <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+                android:id="@+id/separator_"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/default_padding"
+                android:layout_marginEnd="@dimen/default_padding"
+                android:background="@color/separator_color" />
 
-    <company.tap.tapuilibrary.uikit.views.TapAlertView
-        android:id="@+id/alert_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        </LinearLayout>
 
 
-    <FrameLayout
-        android:id="@+id/fragment_container1"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
+            android:id="@+id/tap_payment_input0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="locale" />
 
-    <FrameLayout
-        android:id="@+id/fragment_container_nfc"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+            android:id="@+id/separatorــ"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/separator_color"
+            android:visibility="visible" />
 
-    <company.tap.tapuilibrary.uikit.views.TapCardSwitch
-        android:id="@+id/switch_pay_demo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:layoutDirection="locale" />
+        <company.tap.tapuilibrary.uikit.views.TapAlertView
+            android:id="@+id/alert_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
 
 
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:id="@+id/outer_layout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:minHeight="80dp">-->
+        <FrameLayout
+            android:id="@+id/fragment_container1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/fragment_container_nfc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <company.tap.tapuilibrary.uikit.views.TapCardSwitch
+            android:id="@+id/switch_pay_demo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layoutDirection="locale" />
+
+
+        <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--        android:id="@+id/outer_layout"-->
+        <!--        android:layout_width="match_parent"-->
+        <!--        android:layout_height="wrap_content"-->
+        <!--        android:minHeight="80dp">-->
 
         <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
             android:id="@+id/actionButton"
@@ -157,22 +163,26 @@
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/margin_basic_20dp"
-            android:layout_marginEnd="@dimen/margin_basic_20dp"
             android:layout_marginStart="@dimen/margin_basic_20dp"
+            android:layout_marginEnd="@dimen/margin_basic_20dp"
+            android:layout_marginBottom="@dimen/margin_basic_20dp"
             android:elevation="0dp"
             android:stateListAnimator="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
 
 
-    <FrameLayout
-        android:id="@+id/webViewContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        <FrameLayout
+            android:id="@+id/webViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+
+<!--</androidx.cardview.widget.CardView>-->
+
 
 
