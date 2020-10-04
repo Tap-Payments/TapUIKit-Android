@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary.uikit.adapters
+package company.tap.tapuisample.adapters
 
 import android.annotation.SuppressLint
 import android.graphics.Color

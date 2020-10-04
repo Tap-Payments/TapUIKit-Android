@@ -68,6 +68,7 @@ dependencies {
     implementation 'company.tap:PayCards-Tap-Android:0.1.5.3'
     implementation 'com.github.Tap-Payments:TapCardInputKit-Android:0.1.0.9'
     api 'com.github.Tap-Payments:TapCardInputKit-Android:0.1.0.9'
+    implementation 'jp.wasabeef:blurry:4.0.0'
 
         implementation 'com.github.Tap-Payments:CheckoutSDK-Android:0.0.0.1'
 }

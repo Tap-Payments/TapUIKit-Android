@@ -10,6 +10,8 @@
         android:id="@+id/currencyLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="@dimen/margin_basic_16dp"
+        android:paddingEnd="@dimen/margin_basic_16dp"
         android:background="@color/chip_background"
         android:orientation="horizontal">
 
@@ -18,7 +20,7 @@
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
-        android:background="@color/view_color" />
+        android:background="@color/gray" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/items_recylerview"
