@@ -332,7 +332,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                                 //we will edit. next call on this textWatcher will be ignored
                                 editedFlag = true
                                 //here is the core. we substring the raw digits and add the mask as convenient
-                                val ans = "(" + phone.substring(0, 3) + ") " + phone.substring(
+                                val ans =  phone.substring(0, 3) + "  " + phone.substring(
                                     3,
                                     6
                                 ) + "-" + phone.substring(6)
@@ -347,7 +347,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                                 // masked: (999) 99
                             } else if (phone.length >= 3 && !backspacingFlag) {
                                 editedFlag = true
-                                val ans = "(" + phone.substring(0, 3) + ") " + phone.substring(3)
+                                val ans =  phone.substring(0, 3) + "  " + phone.substring(3)
                                 textInput.setText(ans)
                                 textInput.getText()?.length?.minus(
                                     cursorComplement
