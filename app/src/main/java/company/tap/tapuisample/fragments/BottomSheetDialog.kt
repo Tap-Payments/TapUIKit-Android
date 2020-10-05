@@ -59,7 +59,6 @@ import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
-import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
@@ -381,10 +380,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
 
         groupAction?.setOnClickListener {
-            delImageView2 = tapChipgrp?.findViewById(R.id.deleteImageView2)
 
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
-            delImageView2?.visibility = View.GONE
+            delImageView2?.visibility = View.VISIBLE
             shakingCards(chipRecycler)
 //            delImageView1?.visibility = View.VISIBLE
 
