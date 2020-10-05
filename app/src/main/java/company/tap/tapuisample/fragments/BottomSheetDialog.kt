@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
@@ -129,13 +130,20 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.custom_bottom_sheet, container, false)
+
+
+        val view: View = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
+        bottomSheetDialog.behavior.state = STATE_EXPANDED
+
+        return view.rootView
+
+
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+////        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+//    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -159,30 +167,37 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         @Nullable savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-        initializeViews(view)
         actionButton.setButtonDataSource(false, null, "Pay")
         actionButton.isActivated = true
         actionButton.stateListAnimator = null
 //        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
         setSeparatorTheme()
-        setTapMobileInputViewTheme()
+//        setTapMobileInputViewTheme()
 //        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
-        mainView.clipToOutline = true
+//        mainView.clipToOutline = true
 
 //        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
-//        mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        backgroundColor = (Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        initializeViews(view)
+
     }
 
 
     @SuppressLint("SetTextI18n")
     private fun initializeViews(view: View) {
+
         headerViewInit(view)
         amountViewInit(view)
         tabLayoutInit(view)
         setupChip(view)
         switchViewInit(view)
+
+
         initializeCardForm(view)
+
+
+
         addCardsTab()
         addMobileTab()
         setupBrandDetection()
@@ -197,7 +212,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         clearView = view.findViewById(R.id.clear_text)
         linearLayoutPay = view.findViewById(R.id.linear_paylayout)
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
-        view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+//        view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 //        val linear by lazy { view.findViewById<LinearLayout>(R.id.tabLinear) }
 //        linear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 //
@@ -830,7 +845,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             if (isChecked) {
 //                Blurry.with(context).radius(5).sampling(1).onto(outer_layout)
 
-//                mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+                backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 actionButton.setButtonDataSource(true,
                     context?.let { LocalizationManager.getLocale(it).language }, "Pay")
 
@@ -848,7 +863,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     context?.let { LocalizationManager.getLocale(it).language }, "Pay")
 
 //                outer_layout?.setBackgroundColor(Color.BLUE)
-//                mainView?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+                backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
 
 
                 switchLayout?.visibility = View.GONE

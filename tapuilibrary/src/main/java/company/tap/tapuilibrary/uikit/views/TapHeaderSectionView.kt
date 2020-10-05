@@ -137,7 +137,7 @@ class TapHeaderSectionView : LinearLayout {
             ThemeManager.getFontName("merchantHeaderView.merchantLogoPlaceHolderFont")
         businessPlaceholder.setTheme(businessPlaceholderTextViewTheme)
 
-//        constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
     }
 
