@@ -59,6 +59,7 @@ import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
+import jp.wasabeef.blurry.Blurry
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 
@@ -147,8 +148,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        // This makes sure that the container activity has implemented
-        // the callback interface. If not, it throws an exception
         try {
             tapAmountSectionInterface = context as TapAmountSectionInterface
         } catch (ex: ClassCastException) {
@@ -176,9 +175,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        setTapMobileInputViewTheme()
 //        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
 //        mainView.clipToOutline = true
-
-//        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
-        backgroundColor = (Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+        backgroundColor = (Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         initializeViews(view)
 
     }
@@ -380,12 +378,17 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         delImageView1 = tapChipgrp?.findViewById(R.id.deleteImageView1)
         delImageView2 = tapChipgrp?.findViewById(R.id.deleteImageView2)
         delImageView3 = tapChipgrp?.findViewById(R.id.deleteImageView3)
+
+
         groupAction?.setOnClickListener {
+            delImageView2 = tapChipgrp?.findViewById(R.id.deleteImageView2)
+
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
+            delImageView2?.visibility = View.GONE
             shakingCards(chipRecycler)
-            delImageView1?.visibility = View.VISIBLE
-            delImageView2?.visibility = View.VISIBLE
-            delImageView3?.visibility = View.VISIBLE
+//            delImageView1?.visibility = View.VISIBLE
+
+//            delImageView3?.visibility = View.VISIBLE
 
         }
         delImageView1?.setOnClickListener {
@@ -684,20 +687,20 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
             )
         )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.mastercard
-                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.amex
-                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
-            )
-        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.mastercard
+//                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.amex
+//                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
+//            )
+//        )
         tabLayout?.addSection(items)
     }
 
@@ -843,9 +846,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             println("isChecked Save value $isChecked")
 
             if (isChecked) {
-//                Blurry.with(context).radius(5).sampling(1).onto(outer_layout)
-
+//                Blurry.with(context).radius(1).sampling(1).onto(outer_layout)
+                outer_layout?.setBackgroundColor(Color.WHITE)
+//                outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
                 backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+
                 actionButton.setButtonDataSource(true,
                     context?.let { LocalizationManager.getLocale(it).language }, "Pay")
 
@@ -864,6 +869,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
 //                outer_layout?.setBackgroundColor(Color.BLUE)
                 backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
+                outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+
 
 
                 switchLayout?.visibility = View.GONE

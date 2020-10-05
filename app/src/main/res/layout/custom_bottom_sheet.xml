@@ -14,7 +14,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainView"
     android:layout_width="match_parent"
-    android:layout_height="20dp"
+    android:layout_height="wrap_content"
     android:gravity="bottom"
     tools:ignore="MissingDefaultResource"
     android:orientation="vertical">
@@ -128,6 +128,7 @@
 
         <company.tap.tapuilibrary.uikit.views.TapAlertView
             android:id="@+id/alert_text"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
@@ -150,11 +151,10 @@
             android:layoutDirection="locale" />
 
 
-        <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-        <!--        android:id="@+id/outer_layout"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:minHeight="80dp">-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/outer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
         <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
             android:id="@+id/actionButton"
@@ -165,13 +165,14 @@
             android:layout_marginStart="@dimen/margin_basic_20dp"
             android:layout_marginEnd="@dimen/margin_basic_20dp"
             android:layout_marginBottom="@dimen/margin_basic_20dp"
+            android:layout_marginTop="@dimen/margin_basic_10dp"
             android:elevation="0dp"
             android:stateListAnimator="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-        <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         <FrameLayout
