@@ -45,10 +45,10 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         bottomSheetDialog.behavior.skipCollapsed = true
 //        actionButton.setButtonDataSource(false, null, "pay")
 
-//        actionButton.initActionButtonDataSource(false,context?.let { LocalizationManager.getLocale(it).language },
-//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//            "Pay" )
+        actionButton.initActionButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+            "Pay" )
 
         goPayLoginInput = view.findViewById(company.tap.checkout.R.id.gopay_login_input)
         goPayPasswordInput = view.findViewById(company.tap.checkout.R.id.goPay_password)

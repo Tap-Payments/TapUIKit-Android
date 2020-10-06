@@ -873,7 +873,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
                 actionButton.stateListAnimator = null
 
-                actionButton.initActionButtonDataSource(true, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+                actionButton.initActionButtonDataSource(true,
+                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
                     "Pay" )
@@ -893,10 +894,17 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             } else {
                 actionButton.stateListAnimator = null
 
-                actionButton.initActionButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+
+                actionButton.initActionButtonDataSource(false,
+                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-                    "Pay" )
+                    "ola" )
+                actionButton.initActionButtonDataSource(false,
+                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+                    "monir" )
 //
 //                actionButton.setButtonDataSource(false,
 //                    context?.let { LocalizationManager.getLocale(it).language }, "Pay")

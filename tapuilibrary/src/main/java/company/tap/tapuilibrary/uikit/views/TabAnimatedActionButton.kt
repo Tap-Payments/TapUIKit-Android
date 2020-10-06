@@ -44,6 +44,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private var backgroundDrawable: GradientDrawable = GradientDrawable()
     private var actionButtonInterface: TapActionButtonInterface? = null
     private var tapLoadingView: TapLoadingView? = null
+    var text:String? =null
 
     constructor(context: Context) : super(context) {
         init()
@@ -68,9 +69,14 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 //        initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), "")
     }
 
-     fun initActionButtonDataSource(isValid: Boolean = false,lang : String? = null , backgroundColor: Int? = null, textColor:Int? = null, buttonText: String){
+     fun initActionButtonDataSource(isValid: Boolean = false,
+                                    lang : String? = null ,
+                                    backgroundColor: Int? = null,
+                                    textColor:Int? = null,
+                                    buttonText: String){
+         text= buttonText
         dataSource = ActionButtonDataSource(
-            text = buttonText ,
+            text = "" ,
             textSize = 18f,
             textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
             cornerRadius = 100f,
@@ -160,8 +166,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         if (lang == "en") setFontEnglish(textView)
         else setFontArabic(textView)
 
-
-        dataSource?.text?.let {
+        text?.let {
             textView.text = it
         }
         dataSource?.textSize?.let {
