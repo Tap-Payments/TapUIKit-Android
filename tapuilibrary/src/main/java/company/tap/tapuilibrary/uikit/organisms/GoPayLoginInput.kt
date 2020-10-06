@@ -68,7 +68,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         actionButton.isEnabled = false
-        actionButton.setButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("pay","ActionButton") )
+
+        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },null,null, LocalizationManager.getValue("pay","ActionButton") )
+
         actionButton.setOnClickListener {
             when (inputType) {
                 EMAIL -> loginInterface?.onEmailValidated()
@@ -104,7 +106,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun disableNext() {
-        actionButton.setButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language }, "next" )
+        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },null,null, LocalizationManager.getValue("pay","ActionButton") )
+
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
     }
 
@@ -121,7 +124,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
 //        actionButton.isEnabled = true
-        actionButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, "next" )
+        actionButton.initActionButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language },null,null, "next" )
     }
 
     private fun initTabLayout() {

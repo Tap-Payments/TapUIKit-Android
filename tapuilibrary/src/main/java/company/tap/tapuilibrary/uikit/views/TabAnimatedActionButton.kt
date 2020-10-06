@@ -68,7 +68,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 //        initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), "")
     }
 
-     fun initActionButtonDataSource(isValid: Boolean = false , backgroundColor: Int? = null, textColor:Int? = null, buttonText: String){
+     fun initActionButtonDataSource(isValid: Boolean = false,lang : String? = null , backgroundColor: Int? = null, textColor:Int? = null, buttonText: String){
         dataSource = ActionButtonDataSource(
             text = buttonText ,
             textSize = 18f,
@@ -82,6 +82,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
          }else{
              initInvalidBackground()
          }
+         addView(getTextView(lang?: "en"))
     }
 
     /**

@@ -52,10 +52,16 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     fun setPasswordValidation(){
         if (gopayPasswordInput.text?.length!! > 7){
             changeButtonStatus(true)
-            signInButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("signin","ActionButton") )
+            signInButton.initActionButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language },
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+                LocalizationManager.getValue("signin","ActionButton") )
         }else{
             changeButtonStatus(false)
-            signInButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("signin","ActionButton") )
+            signInButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+                LocalizationManager.getValue("signin","ActionButton") )
         }
         signInButton.isEnabled = gopayPasswordInput.text?.length!! > 7
     }
@@ -69,7 +75,9 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         signInButton.isEnabled = false
-        signInButton.setButtonDataSource(false, LocalizationManager.getLocale(context).language,LocalizationManager.getValue("signin","ActionButton"))
+        signInButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")), LocalizationManager.getValue("signin","ActionButton") )
         signInButton.setOnClickListener {
             textInputLayout.error = "Incorrect Password"
         }
@@ -91,15 +99,13 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         signInButton.isEnabled = isEnabled
 
         if (isEnabled) {
-            signInButton.initActionButtonDataSource(
+            signInButton.initActionButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language },
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),"sign in"
-            )
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")), "next" )
         } else {
-            signInButton.initActionButtonDataSource(
+            signInButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),"sign in"
-            )
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), "next" )
         }
 
     }
