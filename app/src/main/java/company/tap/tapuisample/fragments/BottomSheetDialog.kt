@@ -167,7 +167,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         @Nullable savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-        actionButton.setButtonDataSource(false, null, "Pay")
+        actionButton.setButtonDataSource(false, null, "pay")
         actionButton.isActivated = true
         actionButton.stateListAnimator = null
 //        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
