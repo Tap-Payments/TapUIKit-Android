@@ -69,7 +69,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         signInButton.isEnabled = false
-        signInButton.setButtonDataSource(false)
+        signInButton.setButtonDataSource(false, LocalizationManager.getLocale(context).language,LocalizationManager.getValue("signin","ActionButton"))
         signInButton.setOnClickListener {
             textInputLayout.error = "Incorrect Password"
         }
