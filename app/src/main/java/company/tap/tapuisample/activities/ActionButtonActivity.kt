@@ -4,10 +4,12 @@ import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuisample.R
+import company.tap.tapuisample.adapters.context
 
 
 class ActionButtonActivity : AppCompatActivity() {
@@ -18,7 +20,9 @@ class ActionButtonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_action_button)
         actionButton = findViewById(R.id.action_button)
-        actionButton.setButtonDataSource(false)
+        actionButton.setButtonDataSource(false, LocalizationManager.getLocale(this).language,
+            "Pay")
+
         actionButton.setOnClickListener {
             pickStatus()
         }

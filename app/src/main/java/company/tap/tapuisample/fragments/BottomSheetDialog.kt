@@ -941,7 +941,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     override fun onCardSelectedAction(isSelected: Boolean) {
         if (isSelected) {
-            actionButton.setButtonDataSource(true)
+            actionButton.setButtonDataSource(true, null, "pay")
+
             actionButton.isActivated = true
             actionButton.setOnClickListener {
                 if (actionButton.isActivated) {
@@ -965,7 +966,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                changeBottomSheetTransition()
                 }
             }
-        } else actionButton.setButtonDataSource(false)
+        } else             actionButton.setButtonDataSource(false, null, "pay")
+
     }
 
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {

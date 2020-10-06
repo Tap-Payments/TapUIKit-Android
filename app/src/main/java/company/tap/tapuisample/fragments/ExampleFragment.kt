@@ -20,6 +20,7 @@ import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
 import company.tap.tapuisample.R
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
+import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import kotlinx.android.synthetic.main.fragment_example.*
 
 class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInterface {
@@ -40,7 +41,8 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         super.onViewCreated(view, savedInstanceState)
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
-        action_button.setButtonDataSource(false)
+        actionButton.setButtonDataSource(false, null, "pay")
+
         goPayLoginInput = view.findViewById(company.tap.checkout.R.id.gopay_login_input)
         goPayPasswordInput = view.findViewById(company.tap.checkout.R.id.goPay_password)
 
@@ -88,7 +90,8 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         if (done) {
             action_button.visibility = View.VISIBLE
             fragment_container.visibility = View.GONE
-            action_button.setButtonDataSource(false)
+            actionButton.setButtonDataSource(false, null, "pay")
+
             action_button.changeButtonState(ActionButtonState.SUCCESS)
         } else {
             action_button.visibility = View.GONE
