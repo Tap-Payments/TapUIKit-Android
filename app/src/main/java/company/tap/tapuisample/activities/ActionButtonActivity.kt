@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
@@ -20,8 +21,13 @@ class ActionButtonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_action_button)
         actionButton = findViewById(R.id.action_button)
-        actionButton.setButtonDataSource(false, LocalizationManager.getLocale(this).language,
-            "Pay")
+        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+            "Pay" )
+
+//        actionButton.setButtonDataSource(false, LocalizationManager.getLocale(this).language,
+//            "Pay")
 
         actionButton.setOnClickListener {
             pickStatus()

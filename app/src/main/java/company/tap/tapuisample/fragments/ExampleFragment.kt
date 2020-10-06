@@ -9,6 +9,8 @@ import android.widget.Toast
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.animation.AnimationEngine
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
@@ -41,7 +43,12 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         super.onViewCreated(view, savedInstanceState)
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
-        actionButton.setButtonDataSource(false, null, "pay")
+//        actionButton.setButtonDataSource(false, null, "pay")
+
+        actionButton.initActionButtonDataSource(false,context?.let { LocalizationManager.getLocale(it).language },
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+            "Pay" )
 
         goPayLoginInput = view.findViewById(company.tap.checkout.R.id.gopay_login_input)
         goPayPasswordInput = view.findViewById(company.tap.checkout.R.id.goPay_password)
@@ -90,7 +97,11 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         if (done) {
             action_button.visibility = View.VISIBLE
             fragment_container.visibility = View.GONE
-            actionButton.setButtonDataSource(false, null, "pay")
+            actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+                "Pay" )
+//            actionButton.setButtonDataSource(false, null, "pay")
 
             action_button.changeButtonState(ActionButtonState.SUCCESS)
         } else {
@@ -134,7 +145,7 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
 
         //Todo open otp view here
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
-        Toast.makeText(company.tap.tapuilibrary.uikit.adapters.context,"OTP view to slide up",Toast.LENGTH_SHORT).show()    }
+        Toast.makeText(context,"OTP view to slide up",Toast.LENGTH_SHORT).show()    }
 
 
 }
