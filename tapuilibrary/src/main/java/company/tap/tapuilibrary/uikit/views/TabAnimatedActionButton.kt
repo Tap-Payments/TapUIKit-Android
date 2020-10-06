@@ -65,7 +65,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         morphingAnimation =
             MorphingAnimation(this)
         morphingAnimation.setAnimationEndListener(this)
-        initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), "")
+//        initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), "")
     }
 
      fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String){
@@ -87,6 +87,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun setButtonInterface(actionButtonInterface: TapActionButtonInterface) {
         this.actionButtonInterface = actionButtonInterface
     }
+
 
     fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String) {
         if (isValid)
