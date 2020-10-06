@@ -867,6 +867,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
                 backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
 
+                actionButton.stateListAnimator = null
+
+                actionButton.setButtonDataSource(true,
+                    context?.let { LocalizationManager.getLocale(it).language }, "")
+
                 actionButton.setButtonDataSource(true,
                     context?.let { LocalizationManager.getLocale(it).language }, "Pay")
 
@@ -880,6 +885,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 alertgoPay?.visibility = View.VISIBLE
                 separatorView?.visibility = View.VISIBLE
             } else {
+                actionButton.stateListAnimator = null
+
+                actionButton.setButtonDataSource(false,
+                    context?.let { LocalizationManager.getLocale(it).language }, "")
+
                 actionButton.setButtonDataSource(false,
                     context?.let { LocalizationManager.getLocale(it).language }, "Pay")
 

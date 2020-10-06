@@ -64,10 +64,10 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         morphingAnimation =
             MorphingAnimation(this)
         morphingAnimation.setAnimationEndListener(this)
-        initActionButtonDataSource()
+//        initActionButtonDataSource(null)
     }
 
-     fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
+     fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String){
         dataSource = ActionButtonDataSource(
             text = buttonText ,
             textSize = 18f,
@@ -87,7 +87,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         this.actionButtonInterface = actionButtonInterface
     }
 
-    fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null) {
+    fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String) {
         if (isValid)
         {
             initValidBackground()

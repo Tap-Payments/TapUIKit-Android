@@ -93,12 +93,12 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         if (isEnabled) {
             signInButton.initActionButtonDataSource(
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),"sign in"
             )
         } else {
             signInButton.initActionButtonDataSource(
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),"sign in"
             )
         }
 
