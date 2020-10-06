@@ -99,10 +99,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
                     savegoPay?.visibility = View.GONE
                     alertgoPay?.visibility = View.GONE
                     separatorView?.visibility = View.GONE
-
                 }
-
-
             } else if (radio.id == 2) {
                 bottomSheetLayout?.let { layout ->
                     TransitionManager.beginDelayedTransition(layout)
@@ -112,9 +109,7 @@ open class SwitchFragment : TapBottomSheetDialog() {
                     savegoPay?.visibility = View.VISIBLE
                     alertgoPay?.visibility = View.VISIBLE
                     separatorView?.visibility = View.GONE
-
                 }
-
             } else {
                 bottomSheetLayout?.let { layout ->
                     TransitionManager.beginDelayedTransition(layout)

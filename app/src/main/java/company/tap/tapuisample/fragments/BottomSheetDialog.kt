@@ -73,6 +73,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
+
+
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
     private lateinit var itemCount: TapButton

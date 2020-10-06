@@ -120,7 +120,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
-        actionButton.isEnabled = true
+//        actionButton.isEnabled = true
         actionButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("next","Common") )
     }
 

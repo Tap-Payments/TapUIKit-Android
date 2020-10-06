@@ -9,6 +9,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,7 @@ import kotlinx.android.synthetic.main.item_frame_currency.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+///  set on currency item click action and send request to api to get items list with converted amount and make interface to notify amount section with new converted currency amount
 open class CurrencyViewFragment : Fragment() {
     private lateinit var chipRecycler: RecyclerView
     lateinit var currencyList: ArrayList<CurrencyModel>
@@ -42,19 +44,19 @@ open class CurrencyViewFragment : Fragment() {
         fillData()
 
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
-        val mainView = view.findViewById<LinearLayout>(R.id.mainView)
-//        mainView.visibility=View.GONE
+        val headerView = view.findViewById<ConstraintLayout>(R.id.header_view)
+//        headerView.visibility=View.GONE
         currencyGroup.orientation = LinearLayout.HORIZONTAL
         val groupName = currencyGroup.findViewById<TapTextView>(R.id.group_name)
         groupName.visibility=View.GONE
         val groupAction = currencyGroup.findViewById<TapTextView>(R.id.group_action)
         groupAction.visibility=View.GONE
         chipRecycler = currencyGroup.findViewById<View>(R.id.chip_recycler) as RecyclerView
-        // chipRecycler.setHasFixedSize(true)
+        chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         chipRecycler.adapter = CurrencyAdapter(currencyList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
-        itemsRecycler.setHasFixedSize(false)
+//        itemsRecycler.setHasFixedSize(false)
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         itemsRecycler.adapter = ItemAdapter(itemList)
 
@@ -73,7 +75,7 @@ open class CurrencyViewFragment : Fragment() {
 //        chipRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         currencyGroup.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         itemsRecycler.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-        mainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        headerView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
         itemsRecycler.setOnTouchListener { v, event ->
             when (event.action) {

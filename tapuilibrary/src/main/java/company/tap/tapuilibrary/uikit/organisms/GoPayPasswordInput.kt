@@ -104,15 +104,6 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     }
 
-    private fun getButtonDataSource(color: Int): ActionButtonDataSource {
-        return ActionButtonDataSource(
-            text = "Signin",
-            textSize = 16f,
-            textColor = Color.WHITE,
-            cornerRadius = 100f,
-            backgroundColor = color
-        )
-    }
 
     /**
      * Set the configure the current theme. If null is provided then the default Theme is returned
