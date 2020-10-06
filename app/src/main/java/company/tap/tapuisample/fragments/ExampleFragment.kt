@@ -45,10 +45,10 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         bottomSheetDialog.behavior.skipCollapsed = true
 //        actionButton.setButtonDataSource(false, null, "pay")
 
-        actionButton.initActionButtonDataSource(false,context?.let { LocalizationManager.getLocale(it).language },
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-            "Pay" )
+//        actionButton.initActionButtonDataSource(false,context?.let { LocalizationManager.getLocale(it).language },
+//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+//            "Pay" )
 
         goPayLoginInput = view.findViewById(company.tap.checkout.R.id.gopay_login_input)
         goPayPasswordInput = view.findViewById(company.tap.checkout.R.id.goPay_password)
@@ -118,16 +118,16 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         }
     }
 
-    private fun getSuccessDataSource(): ActionButtonDataSource {
-        return ActionButtonDataSource(
-            text = "Pay",
-            textSize = 20f,
-            textColor = Color.WHITE,
-            cornerRadius = 100f,
-            successImageResources = R.drawable.checkmark,
-            backgroundColor = resources.getColor(R.color.button_green)
-        )
-    }
+//    private fun getSuccessDataSource(): ActionButtonDataSource {
+//        return ActionButtonDataSource(
+//            text = "Pay",
+//            textSize = 20f,
+//            textColor = Color.WHITE,
+//            cornerRadius = 100f,
+//            successImageResources = R.drawable.checkmark,
+//            backgroundColor = resources.getColor(R.color.button_green)
+//        )
+//    }
 
     override fun onChangeClicked() {
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)

@@ -69,7 +69,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun initButton() {
         actionButton.isEnabled = false
 
-        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },null,null, LocalizationManager.getValue("pay","ActionButton") )
+//        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },null,null, LocalizationManager.getValue("pay","ActionButton") )
 
         actionButton.setOnClickListener {
             when (inputType) {
