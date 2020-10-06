@@ -68,7 +68,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 //        initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), "")
     }
 
-     fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String){
+     fun initActionButtonDataSource(isValid: Boolean = false , backgroundColor: Int? = null, textColor:Int? = null, buttonText: String){
         dataSource = ActionButtonDataSource(
             text = buttonText ,
             textSize = 18f,
@@ -77,6 +77,11 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             successImageResources = R.drawable.checkmark,
             backgroundColor = backgroundColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
         )
+         if (isValid){
+             initValidBackground()
+         }else{
+             initInvalidBackground()
+         }
     }
 
     /**
@@ -89,17 +94,17 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     }
 
 
-    fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String) {
-        if (isValid)
-        {
-            initValidBackground()
-            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),buttonText)
-        } else{
-            initInvalidBackground()
-            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), buttonText)
-        }
-        addView(getTextView(lang?: "en"))
-    }
+//    fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String) {
+//        if (isValid)
+//        {
+//            initValidBackground()
+//            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),buttonText)
+//        } else{
+//            initInvalidBackground()
+//            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), buttonText)
+//        }
+//        addView(getTextView(lang?: "en"))
+//    }
 
     fun addTapLoadingView() {
         tapLoadingView = TapLoadingView(context, null)
