@@ -10,6 +10,7 @@ import android.util.AttributeSet
 import android.util.Patterns
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ListView
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
@@ -19,8 +20,8 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
+import company.tap.tapuilibrary.uikit.adapters.CountriesListAdapter
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
-import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod.EMAIL
 import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod.PHONE
@@ -28,6 +29,7 @@ import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.utils.FakeThemeManager
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+
 
 /**
  *
@@ -42,6 +44,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     var loginTabLayout: TabLayout
     val textInput by lazy { findViewById<TextInputEditText>(R.id.gopay_text_input) }
     var textInputLayout: TextInputLayout
+    val listView by lazy { findViewById<ListView>(R.id.listView) }
     var loginMethodImage: ImageView
     var actionButton: TabAnimatedActionButton
     var dataSource: GoPayLoginDataSource? = null
@@ -55,6 +58,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         loginMethodImage = findViewById(R.id.login_method_icon)
         actionButton = findViewById(R.id.gopay_button)
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+        val recourseList:Array<String> = this.resources.getStringArray(
+            R
+                .array.CountryCodes
+        )
+
+
+        listView.adapter = context?.let { CountriesListAdapter(it,recourseList.size, recourseList)}
+
     }
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {
@@ -139,7 +150,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
         actionButton.isEnabled = true
-        actionButton.setButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language }, LocalizationManager.getValue("next","Common") )
+        actionButton.setButtonDataSource(
+            true,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue(
+                "next",
+                "Common"
+            )
+        )
     }
 
     private fun initTabLayout() {
@@ -243,7 +261,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                                 //we will edit. next call on this textWatcher will be ignored
                                 editedFlag = true
                                 //here is the core. we substring the raw digits and add the mask as convenient
-                                val ans =  phone.substring(0, 3) + "  " + phone.substring(
+                                val ans = phone.substring(0, 3) + "  " + phone.substring(
                                     3,
                                     6
                                 ) + phone.substring(6)
@@ -258,7 +276,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                                 // masked: (999) 99
                             } else if (phone.length >= 3 && !backspacingFlag) {
                                 editedFlag = true
-                                val ans =  phone.substring(0, 3) + "  " + phone.substring(3)
+                                val ans = phone.substring(0, 3) + "  " + phone.substring(3)
                                 textInput.setText(ans)
                                 textInput.getText()?.length?.minus(
                                     cursorComplement
