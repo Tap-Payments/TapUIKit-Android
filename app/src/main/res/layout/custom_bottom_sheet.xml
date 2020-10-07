@@ -156,7 +156,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-        <company.tap.tapuisample.TabAnimatedActionButton
+        <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
             android:id="@+id/actionButton"
             style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
