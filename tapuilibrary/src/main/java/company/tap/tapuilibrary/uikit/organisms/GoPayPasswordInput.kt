@@ -55,14 +55,14 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
             signInButton.setButtonDataSource(true,
                 context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("signin","Common.ActionButton"),
+                LocalizationManager.getValue("signin","Common"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
         }else{
             changeButtonStatus(false)
             signInButton.setButtonDataSource(false,
                 context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("signin","Common.ActionButton"),
+                LocalizationManager.getValue("signin","Common"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         }
@@ -81,7 +81,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
         signInButton.setButtonDataSource(false,
             context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue("ActionButton","signin"),
+            LocalizationManager.getValue("signin","Common"),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
       signInButton.setOnClickListener {
@@ -107,7 +107,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         if (isEnabled) {
             signInButton.setButtonDataSource(true,
                 context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("next","Common.ActionButton"),
+                LocalizationManager.getValue("next","Common"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
         } else {
