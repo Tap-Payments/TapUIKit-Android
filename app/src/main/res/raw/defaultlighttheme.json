@@ -39,7 +39,8 @@
             "switch_background": "#d4cfc9",
             "currency_chip_background": "#4cffffff",
             "currency_chip_selected_shadow": "#90c2f7",
-            "currency_chip_unselected_shadow": "#eeeeef"
+            "currency_chip_unselected_shadow": "#eeeeef",
+            "transperant": "#c7f9f9f9"
         }
     },
     "inlineCard": {
@@ -633,7 +634,7 @@
         }
     },
     "TapSwitchView": {
-        "backgroundColor": "whiteTwo",
+        "backgroundColor": "transperant",
         "CurvedSeparator": {
             "BackgroundColor": "whiteTwo"
         },

@@ -17,43 +17,43 @@
         android:id="@+id/saveSwitchChip"
         android:orientation="vertical"
         app:cardCornerRadius="10dp"
-        android:visibility="visible"
+        android:visibility="gone"
         tools:cardBackgroundColor="@color/chip_background">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/save_switch_linear"
-            android:orientation="horizontal"
-            android:weightSum="0.5">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:id="@+id/save_switch_linear"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:weightSum="0.5">-->
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
-                android:id="@+id/text_save"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_basic_16dp"
-                android:layout_marginTop="@dimen/margin_basic_16dp"
-                android:layout_marginBottom="@dimen/margin_basic_10dp"
-                android:layout_weight="0.3"
-                android:fontFamily="sans-serif-light"
-                android:textColor="#a7a7a7"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                tools:text="For faster and easier checkout,
-save your mobile number." />
+<!--            <company.tap.tapuilibrary.uikit.atoms.TapTextView-->
+<!--                android:id="@+id/text_save"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="@dimen/margin_basic_16dp"-->
+<!--                android:layout_marginTop="@dimen/margin_basic_16dp"-->
+<!--                android:layout_marginBottom="@dimen/margin_basic_10dp"-->
+<!--                android:layout_weight="0.3"-->
+<!--                android:fontFamily="sans-serif-light"-->
+<!--                android:textColor="#a7a7a7"-->
+<!--                android:textSize="12sp"-->
+<!--                android:textStyle="normal"-->
+<!--                tools:text="For faster and easier checkout,-->
+<!--save your mobile number." />-->
 
-            <company.tap.tapuilibrary.uikit.atoms.TapSwitch
-                android:id="@+id/switch_save_mobile"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="27dp"
-                android:layout_marginEnd="@dimen/margin_basic_16dp"
-                android:layout_marginBottom="22dp"
-                android:layout_weight="0.2"
-                android:checked="false"
-                android:theme="@style/SwitchPrimary"
-                android:visibility="visible" />
-        </LinearLayout>
+<!--            <company.tap.tapuilibrary.uikit.atoms.TapSwitch-->
+<!--                android:id="@+id/switch_save_mobile"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="27dp"-->
+<!--                android:layout_marginEnd="@dimen/margin_basic_16dp"-->
+<!--                android:layout_marginBottom="22dp"-->
+<!--                android:layout_weight="0.2"-->
+<!--                android:checked="false"-->
+<!--                android:theme="@style/SwitchPrimary"-->
+<!--                android:visibility="visible" />-->
+<!--        </LinearLayout>-->
     </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
     <LinearLayout
@@ -130,4 +130,12 @@ save your mobile number." />
             android:textStyle="normal"
             tools:text="Please check your email or SMS’s in order to complete the goPay Checkout signup process." />
     </LinearLayout>
+
+
+    <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp" />
+
 </LinearLayout>

@@ -2,6 +2,7 @@ package company.tap.tapuisample.fragments
 
 import android.graphics.Color
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -46,7 +47,7 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
         goPayLoginInput?.setLoginInterface(this)
         goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
-        goPayPasswordInput?.rootView?.setBackgroundColor(Color.GREEN)
+        goPayPasswordInput?.rootView?.setBackgroundColor(Color.parseColor("#c7f9f9f9"))
 
 
         knet.setOnClickListener {

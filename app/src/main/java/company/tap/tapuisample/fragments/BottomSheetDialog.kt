@@ -55,6 +55,7 @@ import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.views.*
+import company.tap.tapuilibrary.uikit.views.mainswitch.MainSwitch
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
@@ -101,6 +102,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private lateinit var paymentLayout: LinearLayout
     private lateinit var nfcScanBtn: TapButton
     private lateinit var switchDemo: TapCardSwitch
+    private lateinit var mainSwitch: MainSwitch
+
     private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
     private var switchMerchantCheckout: TapSwitch? = null
@@ -254,6 +257,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             mainChipGroup?.visibility = View.GONE
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE
+            mainSwitch.visibility = View.GONE
             actionButton.visibility = View.GONE
 //            actionButton.visibility = View.GONE
             itemCount.text = "CLOSE"
@@ -273,6 +277,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             mainChipGroup?.visibility = View.GONE
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE
+            mainSwitch.visibility = View.GONE
             actionButton.visibility = View.GONE
 //            outer_layout.visibility = View.GONE
             itemCount.text = "CLOSE"
@@ -286,6 +291,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     private fun switchViewInit(view: View) {
         switchDemo = view.findViewById(R.id.switch_pay_demo)
+        mainSwitch = view.findViewById(R.id.switch_pay_demo)
         switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         separatorView = switchDemo.findViewById(R.id.switch_separator)
@@ -634,6 +640,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 paymentLayout.addView(tapCardInputView)
 //                switchDemo.tapCardSwitchLinear.setBackgroundColor(Color.GREEN)
                 switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.nfc_text)))
+                mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.nfc_text)))
                 cardScannerBtn?.visibility = View.VISIBLE
                 nfcButton?.visibility = View.VISIBLE
                 clearView?.visibility = View.GONE
@@ -641,6 +648,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 //paymentLayout.removeAllViews()
                 paymentLayout.addView(tapMobileInputView)
                 switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
+                mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
                 // paymentLayout.removeView(tapCardInputView)
                 cardScannerBtn?.visibility = View.GONE
                 nfcButton?.visibility = View.GONE
@@ -771,6 +779,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         // checkboxString = getString(R.string.savecard_text)
 
                         switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_save_text)))
+                        mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_save_text)))
                         alertMessage?.visibility = View.VISIBLE
                         alertMessage?.setText("Card number is invalid")
                         alert_text.visibility = View.VISIBLE
@@ -790,6 +799,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         separatorView?.visibility = View.VISIBLE
                         // checkboxString = getString(R.string.savecard_text)
                         switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.savecard_text)))
+                        mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.savecard_text)))
                         alertMessage?.visibility = View.VISIBLE
 
                         if (card.validationState == CardValidationState.invalid) {
@@ -1035,6 +1045,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         businessPlaceholder.visibility = View.GONE
         amountSectionView.visibility = View.GONE
         switchDemo.visibility = View.GONE
+        mainSwitch.visibility = View.GONE
         tabLayout?.visibility = View.GONE
         paymentLayout.visibility = View.GONE
         businessIcon.visibility = View.GONE
@@ -1042,6 +1053,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         businessPlaceholder.visibility = View.GONE
         amountSectionView.visibility = View.GONE
         switchDemo.visibility = View.GONE
+        mainSwitch.visibility = View.GONE
         separatorView?.visibility = View.GONE
         chipRecycler.visibility = View.GONE
 //                selectedCurrency.visibility= View.GONE
