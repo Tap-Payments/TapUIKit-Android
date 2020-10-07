@@ -9,9 +9,6 @@ import android.widget.Toast
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.uikit.animation.AnimationEngine
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
@@ -22,8 +19,6 @@ import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
 import company.tap.tapuisample.R
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
-import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import kotlinx.android.synthetic.main.custom_bottom_sheet.view.*
 import kotlinx.android.synthetic.main.fragment_example.*
 
 class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInterface {
@@ -44,15 +39,6 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         super.onViewCreated(view, savedInstanceState)
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
-//        actionButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),"pay",Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
-
-
-//        view.actionButton.initActionButtonDataSource(false,
-//            company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//            "Pay" )
-
         goPayLoginInput = view.findViewById(R.id.gopay_login_input)
         goPayPasswordInput = view.findViewById(company.tap.checkout.R.id.goPay_password)
 
@@ -60,6 +46,7 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
         goPayLoginInput?.setLoginInterface(this)
         goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
+        goPayPasswordInput?.rootView?.setBackgroundColor(Color.GREEN)
 
 
         knet.setOnClickListener {
@@ -115,11 +102,6 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         if (done) {
             action_button.visibility = View.VISIBLE
             fragment_container.visibility = View.GONE
-//            actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//                "Pay" )
-//            actionButton.setButtonDataSource(false, null, "pay")
 
             action_button.changeButtonState(ActionButtonState.SUCCESS)
         } else {
@@ -136,16 +118,6 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         }
     }
 
-//    private fun getSuccessDataSource(): ActionButtonDataSource {
-//        return ActionButtonDataSource(
-//            text = "Pay",
-//            textSize = 20f,
-//            textColor = Color.WHITE,
-//            cornerRadius = 100f,
-//            successImageResources = R.drawable.checkmark,
-//            backgroundColor = resources.getColor(R.color.button_green)
-//        )
-//    }
 
     override fun onChangeClicked() {
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)

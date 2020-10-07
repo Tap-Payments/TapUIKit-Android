@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import androidx.core.view.get
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.textfield.TextInputLayout
 import company.tap.taplocalizationkit.LocalizationManager
@@ -19,7 +18,6 @@ import company.tap.tapuilibrary.uikit.atoms.TextInputEditText
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
-import company.tap.tapuilibrary.uikit.utils.FakeThemeManager
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
 /**
@@ -38,6 +36,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     val gopayPasswordInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input) }
     val signInButton by lazy { findViewById<TabAnimatedActionButton>(R.id.sigin_button) }
     val passwordemailText by lazy { findViewById<TapTextView>(R.id.gopay_password_text) }
+    val rootView by lazy { findViewById<LinearLayout>(R.id.root_view) }
 
     private var loginInterface: GoPayLoginInterface? = null
 
@@ -117,7 +116,6 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         }
-
     }
 
 

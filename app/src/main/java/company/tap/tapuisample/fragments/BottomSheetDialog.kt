@@ -968,6 +968,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
                 }
             }
+
+            dialog?.window?.attributes?.windowAnimations = R.anim.slide_up
+//        slidingUpAnimate()
+            childFragmentManager.beginTransaction().add(
+                R.id.otherBottomSheet,
+                ExampleFragment()
+            ).commit()
+
         } else
             actionButton.setButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                 "Pay",
