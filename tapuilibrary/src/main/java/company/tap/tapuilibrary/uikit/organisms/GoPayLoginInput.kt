@@ -9,9 +9,7 @@ import android.text.Editable
 import android.util.AttributeSet
 import android.util.Patterns
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.ListView
+import android.widget.*
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
@@ -201,6 +199,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             }
             PHONE -> {
                 listView.visibility = View.VISIBLE
+                listView.setOnItemClickListener { parent, view, position, id ->
+                Toast.makeText(context,"you clciked position $position",Toast.LENGTH_SHORT).show()
+
+                }
                 textInput.hint = dataSource?.phoneInputHint ?: "00000000"
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)

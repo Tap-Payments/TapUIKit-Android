@@ -43,6 +43,7 @@ class CountriesListAdapter(context: Context, resource: Int, values: Array<String
         val textView = rowView.findViewById(R.id.txtViewCountryName) as TextView
         val imageView: ImageView = rowView.findViewById(R.id.imgViewFlag) as ImageView
         val g: List<String> = values[position].split(",")
+        println("selected g value: ${g}")
         textView.setText(GetCountryZipCode(g[1])?.trim())
         println("selected country value: ${GetCountryZipCode(g[1])?.trim()}")
         val pngName = g[1].trim { it <= ' ' }.toLowerCase()
@@ -55,6 +56,8 @@ class CountriesListAdapter(context: Context, resource: Int, values: Array<String
         )
         return rowView
     }
+
+
 
     private fun GetCountryZipCode(ssid: String): String? {
         val loc = Locale("", ssid)
