@@ -81,7 +81,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
         signInButton.setButtonDataSource(false,
             context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue("signin","Common.ActionButton"),
+            LocalizationManager.getValue("Common.ActionButton","signin"),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
       signInButton.setOnClickListener {
