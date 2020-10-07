@@ -35,6 +35,10 @@ import company.tap.tapuilibrary.uikit.ktx.setImage
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
+
+//
+
+
 class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListener,
     TapLoadingView.OnProgressCompletedListener {
 
@@ -44,7 +48,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private var backgroundDrawable: GradientDrawable = GradientDrawable()
     private var actionButtonInterface: TapActionButtonInterface? = null
     private var tapLoadingView: TapLoadingView? = null
-    var text:String? =null
 
     constructor(context: Context) : super(context) {
         init()
@@ -63,32 +66,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     }
 
     private fun init() {
-        morphingAnimation =
-            MorphingAnimation(this)
+        morphingAnimation = MorphingAnimation(this)
         morphingAnimation.setAnimationEndListener(this)
-//        initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), "")
-    }
-
-     fun initActionButtonDataSource(isValid: Boolean = false,
-                                    lang : String? = null ,
-                                    backgroundColor: Int? = null,
-                                    textColor:Int? = null,
-                                    buttonText: String){
-         text= buttonText
-        dataSource = ActionButtonDataSource(
-            text = "" ,
-            textSize = 18f,
-            textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
-            cornerRadius = 100f,
-            successImageResources = R.drawable.checkmark,
-            backgroundColor = backgroundColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
-        )
-         if (isValid){
-             initValidBackground()
-         }else{
-             initInvalidBackground()
-         }
-         addView(getTextView(lang?: "en"))
     }
 
     /**
@@ -100,18 +79,11 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         this.actionButtonInterface = actionButtonInterface
     }
 
-
-//    fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String) {
-//        if (isValid)
-//        {
-//            initValidBackground()
-//            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),buttonText)
-//        } else{
-//            initInvalidBackground()
-//            initActionButtonDataSource(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")), Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), buttonText)
-//        }
-//        addView(getTextView(lang?: "en"))
-//    }
+    fun setButtonDataSource(dataSource: ActionButtonDataSource) {
+        this.dataSource = dataSource
+        initBackground()
+        addView(getTextView())
+    }
 
     fun addTapLoadingView() {
         tapLoadingView = TapLoadingView(context, null)
@@ -124,7 +96,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         addTapLoadingView()
         startStateAnimation()
         when (state) {
-             SUCCESS -> {
+            SUCCESS -> {
                 addChildView(getImageView(R.drawable.success,1) {})
             }
             ERROR -> {
@@ -137,36 +109,23 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
 
     /**
-     * setup the initValidBackground background drawable color and corner radius from datasource
+     * setup the background drawable color and corner radius from datasource
      */
-
-    private fun initValidBackground() {
+    private fun initBackground() {
         dataSource?.cornerRadius?.let {
             backgroundDrawable.cornerRadius = it
         }
-        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")))
+        dataSource?.backgroundColor?.let {
+            backgroundDrawable.color = ColorStateList.valueOf(it)
+        }
         background = backgroundDrawable
         elevation = 0F
     }
 
-    /**
-     * setup the initInvalidBackground background drawable color and corner radius from datasource
-     */
-    private fun initInvalidBackground() {
-        dataSource?.cornerRadius?.let {
-            backgroundDrawable.cornerRadius = it
-        }
-        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
-        background = backgroundDrawable
-        elevation = 0F
-    }
-
-    private fun getTextView(lang : String): TextView {
+    private fun getTextView(): TextView {
         val textView = TextView(context)
-        if (lang == "en") setFontEnglish(textView)
-        else setFontArabic(textView)
-
-        text?.let {
+        textView.typeface = Typeface.create("sans-serif", Typeface.NORMAL)
+        dataSource?.text?.let {
             textView.text = it
         }
         dataSource?.textSize?.let {
@@ -179,47 +138,31 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return textView
     }
 
-    fun setFontEnglish(textView:TextView ){
-        textView.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
-            )
-        )
-    }
-
-    fun setFontArabic(textView:TextView){
-        textView.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
-            )
-        )
-    }
-
-     fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int,  actionAfterAnimationDone: ()-> Unit): ImageView {
+    fun getImageView(@DrawableRes imageRes: Int, gifLoopCount: Int,  actionAfterAnimationDone: ()-> Unit): ImageView {
         val image = ImageView(context)
         val params = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.MATCH_PARENT
+
         )
         params.setMargins(20)
         image.layoutParams = params
-      return image.setImage(image,imageRes,gifLoopCount, actionAfterAnimationDone)
+        return image.setImage(image,imageRes,gifLoopCount, actionAfterAnimationDone)
     }
 
     private fun startStateAnimation() {
-        val animationDataSource =
-            AnimationDataSource(
-                fromHeight = height,
-                toHeight = MAX_RADIUS,
-                fromWidth = width,
-                toWidth = MAX_RADIUS,
-                fromCorners = dataSource?.cornerRadius,
-                toCorners = MAX_CORNERS,
-                fromColor = dataSource?.backgroundColor,
-                toColor = dataSource?.errorColor,
-                duration = MAX_DURATION,
-                background = backgroundDrawable
-            )
+        val animationDataSource = AnimationDataSource(
+            fromHeight = height,
+            toHeight = MAX_RADIUS,
+            fromWidth = width,
+            toWidth = MAX_RADIUS,
+            fromCorners = dataSource?.cornerRadius,
+            toCorners = MAX_CORNERS,
+            fromColor = dataSource?.backgroundColor,
+            toColor = dataSource?.errorColor,
+            duration = MAX_DURATION,
+            background = backgroundDrawable
+        )
         morphingAnimation.start(animationDataSource, WIDTH, HEIGHT, CORNERS)
     }
 
@@ -235,6 +178,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         addView(view)
     }
 
+    /**
+     *
+     */
     override fun onMorphAnimationEnd() {
         tapLoadingView?.completeProgress()
     }
@@ -255,6 +201,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             }
         }
     }
+
     /**
      * Constants values
      */

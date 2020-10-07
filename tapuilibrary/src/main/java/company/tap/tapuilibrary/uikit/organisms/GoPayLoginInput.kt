@@ -69,7 +69,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun initButton() {
         actionButton.isEnabled = false
 
-        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },null,null, LocalizationManager.getValue("pay","ActionButton") )
+        actionButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),LocalizationManager.getValue("pay","ActionButton"),Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
+
 
         actionButton.setOnClickListener {
             when (inputType) {
@@ -106,7 +107,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun disableNext() {
-        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },null,null, LocalizationManager.getValue("pay","ActionButton") )
+        actionButton.isEnabled = false
+        actionButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),LocalizationManager.getValue("pay","ActionButton"),Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
+
+//        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },null,null, LocalizationManager.getValue("pay","ActionButton") )
 
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
     }
@@ -123,8 +127,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
-//        actionButton.isEnabled = true
-        actionButton.initActionButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language },null,null, "ola" )
+        actionButton.isEnabled = true
+        actionButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),"next",Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
+
+//        actionButton.initActionButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language },null,null, "next" )
     }
 
     private fun initTabLayout() {
@@ -206,5 +212,21 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         )
 
     }
+
+    fun getSuccessDataSource(
+        backgroundColor: Int,
+        text: String,
+        textColor: Int
+    ): ActionButtonDataSource {
+        return ActionButtonDataSource(
+            text = text,
+            textSize = 18f,
+            textColor = textColor,
+            cornerRadius = 100f,
+            successImageResources = company.tap.checkout.R.drawable.checkmark,
+            backgroundColor = backgroundColor
+        )
+    }
+
 
 }

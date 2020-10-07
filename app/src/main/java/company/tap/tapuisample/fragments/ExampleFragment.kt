@@ -23,6 +23,7 @@ import company.tap.tapuisample.R
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
+import kotlinx.android.synthetic.main.custom_bottom_sheet.view.*
 import kotlinx.android.synthetic.main.fragment_example.*
 
 class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInterface {
@@ -43,14 +44,16 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         super.onViewCreated(view, savedInstanceState)
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
-//        actionButton.setButtonDataSource(false, null, "pay")
+//        actionButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),"pay",Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
 
-        actionButton.initActionButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-            "Pay" )
 
-        goPayLoginInput = view.findViewById(company.tap.checkout.R.id.gopay_login_input)
+//        view.actionButton.initActionButtonDataSource(false,
+//            company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+//            "Pay" )
+
+        goPayLoginInput = view.findViewById(R.id.gopay_login_input)
         goPayPasswordInput = view.findViewById(company.tap.checkout.R.id.goPay_password)
 
 
@@ -71,6 +74,21 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         action_button.setOnClickListener {
             implementActionBtnOnClick()
         }
+    }
+
+    fun getSuccessDataSource(
+        backgroundColor: Int,
+        text: String,
+        textColor: Int
+    ): ActionButtonDataSource {
+        return ActionButtonDataSource(
+            text = text,
+            textSize = 18f,
+            textColor = textColor,
+            cornerRadius = 100f,
+            successImageResources = company.tap.checkout.R.drawable.checkmark,
+            backgroundColor = backgroundColor
+        )
     }
 
 
@@ -97,10 +115,10 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         if (done) {
             action_button.visibility = View.VISIBLE
             fragment_container.visibility = View.GONE
-            actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-                "Pay" )
+//            actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
+//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+//                "Pay" )
 //            actionButton.setButtonDataSource(false, null, "pay")
 
             action_button.changeButtonState(ActionButtonState.SUCCESS)
