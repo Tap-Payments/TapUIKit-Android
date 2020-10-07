@@ -44,6 +44,7 @@ class CountriesListAdapter(context: Context, resource: Int, values: Array<String
         val imageView: ImageView = rowView.findViewById(R.id.imgViewFlag) as ImageView
         val g: List<String> = values[position].split(",")
         textView.setText(GetCountryZipCode(g[1])?.trim())
+        println("selected country value: ${GetCountryZipCode(g[1])?.trim()}")
         val pngName = g[1].trim { it <= ' ' }.toLowerCase()
         imageView.setImageResource(
             context.resources.getIdentifier(

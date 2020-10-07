@@ -8,6 +8,7 @@ import android.telephony.PhoneNumberFormattingTextWatcher
 import android.text.Editable
 import android.util.AttributeSet
 import android.util.Patterns
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ListView
@@ -199,6 +200,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 loginMethodImage.setImageResource(R.drawable.ic_mail)
             }
             PHONE -> {
+                listView.visibility = View.VISIBLE
                 textInput.hint = dataSource?.phoneInputHint ?: "00000000"
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)
