@@ -168,17 +168,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         @Nullable savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-//        actionButton.setButtonDataSource(false, null, "pay")
-//        actionButton.initActionButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//            "Pay" )
-
-        actionButton.setButtonDataSource(getSuccessDataSource("next"))
-
-        actionButton.isActivated = true
+        actionButton.setButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+            "Pay",
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
         actionButton.stateListAnimator = null
-//        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+        actionButton.isActivated = true
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
         setSeparatorTheme()
 //        setTapMobileInputViewTheme()
@@ -193,18 +188,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     @SuppressLint("SetTextI18n")
     private fun initializeViews(view: View) {
-
         headerViewInit(view)
         amountViewInit(view)
         tabLayoutInit(view)
         setupChip(view)
         switchViewInit(view)
-
-
         initializeCardForm(view)
-
-
-
         addCardsTab()
         addMobileTab()
         setupBrandDetection()
@@ -786,8 +775,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         alert_text.visibility = View.VISIBLE
                         alert_text.setBackgroundColor(Color.parseColor("#19e12131"))
                         alertMessage?.setTextColor(Color.parseColor("#e12131"))
-
-
                     }
                     //  checkboxString =  LocalizationManager.getValue("cardSaveLabel","TapCardInputKit" )
                     if (s?.trim()?.length == 19 && card.validationState == CardValidationState.valid) {
@@ -814,11 +801,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                             alert_text.visibility = View.VISIBLE
                             alert_text.setBackgroundColor(Color.parseColor("#4cffbe60"))
                             alertMessage?.setTextColor(Color.parseColor("#ea611c"))
-
-
                         }
-
-
                     }
                 }
             }
@@ -853,10 +836,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     alert_text.setBackgroundColor(Color.parseColor("#4cffbe60"))
                     alertMessage?.setTextColor(Color.parseColor("#ea611c"))
                 }
-
-
             }
-
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -870,24 +850,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             println("isChecked Save value $isChecked")
 
             if (isChecked) {
-//                Blurry.with(context).radius(1).sampling(1).onto(outer_layout)
                 outer_layout?.setBackgroundColor(Color.WHITE)
-//                outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
                 backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-
                 actionButton.stateListAnimator = null
-
-//                actionButton.initActionButtonDataSource(true,
-//                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-//                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//                    "Pay" )
-                actionButton.setButtonDataSource(getSuccessDataSource("pay"))
-
-
-//                actionButton.setButtonDataSource(true,
-//                    context?.let { LocalizationManager.getLocale(it).language }, "Pay")
-
+                actionButton.setButtonDataSource(true,
+                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+                    "Pay",
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
 
                 switchLayout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.visibility = View.VISIBLE
@@ -900,24 +870,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             } else {
                 actionButton.stateListAnimator = null
 
+                actionButton.setButtonDataSource(true, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+                    "Pay",
+                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
 
-//                actionButton.initActionButtonDataSource(false,
-//                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-//                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//                    "ola" )
-//                actionButton.initActionButtonDataSource(false,
-//                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-//                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//                    "monir" )
-                actionButton.setButtonDataSource(getSuccessDataSource("action"))
-
-//
-//                actionButton.setButtonDataSource(false,
-//                    context?.let { LocalizationManager.getLocale(it).language }, "Pay")
-
-//                outer_layout?.setBackgroundColor(Color.BLUE)
                 backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
                 outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
@@ -965,7 +922,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
 
         private fun getSuccessDataSource(text:String): ActionButtonDataSource {
-        return ActionButtonDataSource(
+            actionButton.stateListAnimator = null
+
+            Log.d("dataSource.text", text)
+
+            return ActionButtonDataSource(
             text = text,
             textSize = 20f,
             textColor = Color.WHITE,
@@ -978,14 +939,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onCardSelectedAction(isSelected: Boolean) {
         if (isSelected) {
 
-            actionButton.setButtonDataSource(getSuccessDataSource("next"))
-
-//            actionButton.initActionButtonDataSource(true, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//                "Pay" )
-
-//            actionButton.setButtonDataSource(true, null, "pay")
+            actionButton.setButtonDataSource(true,
+                company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+                "Pay",
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
 
             actionButton.isActivated = true
             actionButton.setOnClickListener {
@@ -1006,21 +964,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                                 R.drawable.loader,
                                 1
                             ) { replaceBetweenFragments() })
-//                action_button.changeButtonState(ActionButtonState.LOADING)
-//                changeBottomSheetTransition()
+
                 }
             }
         } else
-
-            actionButton.setButtonDataSource(getSuccessDataSource("pay"))
-
-//            actionButton.initActionButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//                "Pay" )
-
-//            actionButton.setButtonDataSource(false, null, "pay")
-
+            actionButton.setButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+                "Pay",
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
     }
 
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {
@@ -1044,7 +995,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         if (done) {
             actionButton.visibility = View.VISIBLE
             webViewContainer.visibility = View.GONE
-//            actionButton.setButtonDataSource(getSuccessDataSource(R.color.button_green), true)
             actionButton.isActivated = true
             actionButton.changeButtonState(ActionButtonState.SUCCESS)
         } else {

@@ -52,20 +52,19 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     fun setPasswordValidation(){
         if (gopayPasswordInput.text?.length!! > 7){
             changeButtonStatus(true)
-            signInButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")), LocalizationManager.getValue("signin","ActionButton"),Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
 
-//            signInButton.initActionButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language },
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//                LocalizationManager.getValue("signin","ActionButton") )
+            signInButton.setButtonDataSource(true,
+                context?.let { LocalizationManager.getLocale(it).language },
+                LocalizationManager.getValue(LocalizationManager.getValue("signin","ActionButton"),"Common"),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
         }else{
             changeButtonStatus(false)
-            signInButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")), LocalizationManager.getValue("signin","ActionButton"),Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
-
-//            signInButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-//                LocalizationManager.getValue("signin","ActionButton") )
+            signInButton.setButtonDataSource(false,
+                context?.let { LocalizationManager.getLocale(it).language },
+                LocalizationManager.getValue(LocalizationManager.getValue("signin","ActionButton"),"Common"),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         }
         signInButton.isEnabled = gopayPasswordInput.text?.length!! > 7
     }
@@ -79,8 +78,12 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         signInButton.isEnabled = false
-        signInButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")), LocalizationManager.getValue("signin","ActionButton"),Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
 
+        signInButton.setButtonDataSource(false,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue(LocalizationManager.getValue("signin","ActionButton"),"Common"),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
       signInButton.setOnClickListener {
             textInputLayout.error = "Incorrect Password"
         }
@@ -102,18 +105,17 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         signInButton.isEnabled = isEnabled
 
         if (isEnabled) {
-            signInButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")), "Next",Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
-
-//            signInButton.initActionButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language },
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")), "next" )
+            signInButton.setButtonDataSource(true,
+                context?.let { LocalizationManager.getLocale(it).language },
+                LocalizationManager.getValue("next","Common"),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
         } else {
-
-            signInButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")), LocalizationManager.getValue("signin","ActionButton"),Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
-
-//            signInButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
-//                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-//                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")), "next" )
+            signInButton.setButtonDataSource(false,
+                context?.let { LocalizationManager.getLocale(it).language },
+                LocalizationManager.getValue( LocalizationManager.getValue("signin","ActionButton"),"Common"),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         }
 
     }
@@ -145,7 +147,6 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
                 TapFont.RobotoLight
             )
         )
-
     }
 
     fun setFontsArabic() {
@@ -154,7 +155,6 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
                 TapFont.TajawalLight
             )
         )
-
         changeEmail?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight

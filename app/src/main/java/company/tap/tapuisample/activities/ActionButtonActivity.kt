@@ -21,10 +21,10 @@ class ActionButtonActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_action_button)
         actionButton = findViewById(R.id.action_button)
-        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
-            "Pay" )
+//        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
+//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
+//            "Pay" )
 
 //        actionButton.setButtonDataSource(false, LocalizationManager.getLocale(this).language,
 //            "Pay")

@@ -69,8 +69,11 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun initButton() {
         actionButton.isEnabled = false
 
-        actionButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),LocalizationManager.getValue("pay","ActionButton"),Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
-
+        actionButton.setButtonDataSource(false,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue("pay","ActionButton"),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
 
         actionButton.setOnClickListener {
             when (inputType) {
@@ -108,10 +111,12 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun disableNext() {
         actionButton.isEnabled = false
-        actionButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),LocalizationManager.getValue("pay","ActionButton"),Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
 
-//        actionButton.initActionButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },null,null, LocalizationManager.getValue("pay","ActionButton") )
-
+        actionButton.setButtonDataSource(false,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue("next","Common"),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
     }
 
@@ -128,9 +133,12 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
         actionButton.isEnabled = true
-        actionButton.setButtonDataSource(getSuccessDataSource( Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),"next",Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))))
+        actionButton.setButtonDataSource(true,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue("next","Common"),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
 
-//        actionButton.initActionButtonDataSource(true, context?.let { LocalizationManager.getLocale(it).language },null,null, "next" )
     }
 
     private fun initTabLayout() {

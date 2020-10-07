@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary.uikit.views
+package company.tap.tapuisample
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -28,7 +28,7 @@ import company.tap.tapuilibrary.uikit.enums.ActionButtonState.ERROR
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState.SUCCESS
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
-
+import company.tap.tapuilibrary.uikit.views.TapLoadingView
 
 
 /**
