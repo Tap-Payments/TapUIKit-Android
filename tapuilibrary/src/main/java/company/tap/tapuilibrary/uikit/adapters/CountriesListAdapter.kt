@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.uikit.adapters
 
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -34,6 +35,7 @@ class CountriesListAdapter(context: Context, resource: Int, values: Array<String
         this.values = values
         this.vi = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
     }
+    @SuppressLint("ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context
             .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
