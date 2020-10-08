@@ -51,9 +51,12 @@ import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
 import company.tap.tapuilibrary.uikit.fragment.CardScannerFragment
 import company.tap.tapuilibrary.uikit.fragment.NFCFragment
+import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
+import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
+import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuilibrary.uikit.views.mainswitch.MainSwitch
 import company.tap.tapuisample.R
@@ -104,6 +107,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private lateinit var mainSwitch: MainSwitch
     private lateinit var payButton: TabAnimatedActionButton
 
+    private lateinit var goPayLoginInput: GoPayLoginInput
+    private lateinit var goPayPassword: GoPayPasswordInput
+
     private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
     private var switchMerchantCheckout: TapSwitch? = null
@@ -134,16 +140,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-
+        savedInstanceState: Bundle?): View? {
         val view: View = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
         bottomSheetDialog.behavior.state = STATE_EXPANDED
+        goPayLoginInput = view.findViewById(R.id.goPayLoginInput)
+        goPayPassword = view.findViewById(R.id.goPayPassword)
 
         return view.rootView
-
-
     }
 
     override fun onAttach(context: Context) {
@@ -156,23 +159,18 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             } catch (ignore: Exception) {
             }
         }
-
         dialog?.window?.attributes?.windowAnimations = R.anim.slide_up
-
     }
 
-    override fun onViewCreated(
-        view: View,
-        @Nullable savedInstanceState: Bundle?
-    ) {
+    override fun onViewCreated(view: View, @Nullable savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         actionButton.setButtonDataSource(
             false, context?.let { LocalizationManager.getLocale(it).language },
             "Pay",
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
         )
+
         actionButton.stateListAnimator = null
         actionButton.isActivated = false
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
@@ -185,6 +183,30 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             (Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         initializeViews(view)
 
+
+        payButton.setOnClickListener {
+            if (actionButton.isActivated) {
+                changeBottomSheetTransition()
+                hideAllViews()
+                if (paymentsList[2] == 3) {
+                    Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
+                    goPayLoginInput.visibility= View.VISIBLE
+                    goPayPassword.visibility= View.VISIBLE
+//                        childFragmentManager
+//                            .beginTransaction()
+//                            .remove(WebFragment(this))
+//                            .commit()
+//                        dialog?.hide()
+                    changeBottomSheetTransition()
+                } else
+                    actionButton.addChildView(
+                        actionButton.getImageView(
+                            R.drawable.loader,
+                            1
+                        ) { replaceBetweenFragments() })
+
+            }
+        }
     }
 
 
@@ -824,29 +846,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                 "Pay",
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-            )
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+
             payButton.isActivated = true
-            payButton.setOnClickListener {
-                if (actionButton.isActivated) {
-                    changeBottomSheetTransition()
-                    hideAllViews()
-                    if (paymentsList[2] == 3) {
-                        Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
-                        childFragmentManager
-                            .beginTransaction()
-                            .remove(WebFragment(this))
-                            .commit()
-                        dialog?.hide()
-                        changeBottomSheetTransition()
-                    } else
-                        actionButton.addChildView(
-                            actionButton.getImageView(
-                                R.drawable.loader,
-                                1
-                            ) { replaceBetweenFragments() })
-                }
-            }
+
         } else
             payButton.setButtonDataSource(
                 false,

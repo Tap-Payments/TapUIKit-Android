@@ -21,6 +21,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import jp.wasabeef.blurry.Blurry
 
 
@@ -46,6 +47,8 @@ class TapCardSwitch : LinearLayout {
     val saveSwitchChip by lazy { findViewById<TapChip>(R.id.saveSwitchChip) }
     val switchSeparator by lazy { findViewById<TapSeparatorView>(R.id.switch_separator) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
+    private var actionButtonInterface: TapActionButtonInterface? = null
+
 
     lateinit var attrs: AttributeSet
     private var tapSwitchDataSource: TapSwitchDataSource? = null
@@ -85,6 +88,7 @@ class TapCardSwitch : LinearLayout {
         setTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initActionButton()
+        payButton.setOnClickListener { actionButtonInterface?.onClickActionButton() }
     }
 
     private fun initActionButton(){
