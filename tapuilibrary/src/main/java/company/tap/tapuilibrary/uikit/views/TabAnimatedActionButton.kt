@@ -26,9 +26,6 @@ import company.tap.tapuilibrary.uikit.enums.ActionButtonState.ERROR
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState.SUCCESS
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
-
-
-
 /**
  *
  * Created on 6/24/20

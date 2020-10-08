@@ -172,7 +172,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        actionButton.setButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+        actionButton.setButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
             "Pay",
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
