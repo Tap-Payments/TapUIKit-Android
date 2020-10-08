@@ -143,6 +143,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+
+    <company.tap.tapuilibrary.uikit.views.mainswitch.MainSwitch
+        android:id="@+id/mainSwitch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
         <company.tap.tapuilibrary.uikit.views.TapCardSwitch
             android:id="@+id/switch_pay_demo"
             android:layout_width="match_parent"
@@ -151,8 +157,10 @@
             android:layoutDirection="locale" />
 
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/outer_layout"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

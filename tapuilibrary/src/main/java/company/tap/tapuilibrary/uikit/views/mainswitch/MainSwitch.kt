@@ -178,8 +178,6 @@ class MainSwitch :LinearLayout {
                 TapFont.RobotoLight
             )
         )
-
-
     }
 
     fun setFontsArabic() {
@@ -188,7 +186,6 @@ class MainSwitch :LinearLayout {
                 TapFont.TajawalLight
             )
         )
-
     }
 
 }

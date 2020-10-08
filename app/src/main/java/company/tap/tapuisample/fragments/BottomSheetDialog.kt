@@ -291,8 +291,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     private fun switchViewInit(view: View) {
         switchDemo = view.findViewById(R.id.switch_pay_demo)
-        mainSwitch = view.findViewById(R.id.switch_pay_demo)
-        switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
+        mainSwitch = view.findViewById(R.id.mainSwitch)
+        switchSaveDemo = mainSwitch.findViewById(R.id.switchSaveMobile)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         separatorView = switchDemo.findViewById(R.id.switch_separator)
         switchMerchantCheckout = switchDemo.findViewById(R.id.switch_merchant_checkout)
@@ -300,6 +300,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
+        mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
 
     }
 
@@ -979,12 +980,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 }
             }
 
-            dialog?.window?.attributes?.windowAnimations = R.anim.slide_up
-//        slidingUpAnimate()
-            childFragmentManager.beginTransaction().add(
-                R.id.otherBottomSheet,
-                ExampleFragment()
-            ).commit()
+//            dialog?.window?.attributes?.windowAnimations = R.anim.slide_up
+////        slidingUpAnimate()
+//            childFragmentManager.beginTransaction().add(
+//                R.id.otherBottomSheet,
+//                ExampleFragment()
+//            ).commit()
 
         } else
             actionButton.setButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },

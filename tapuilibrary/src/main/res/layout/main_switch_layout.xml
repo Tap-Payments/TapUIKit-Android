@@ -17,7 +17,7 @@
         android:id="@+id/mainSwitchChip"
         android:orientation="vertical"
         app:cardCornerRadius="10dp"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:cardBackgroundColor="@color/chip_background">
 
                 <LinearLayout
