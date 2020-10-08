@@ -91,8 +91,8 @@ class TapCardSwitch : LinearLayout {
         payButton.setButtonDataSource(false,
             context?.let { LocalizationManager.getLocale(it).language },
             LocalizationManager.getValue("pay","ActionButton"),
-            Color.parseColor(ThemeManager.getValue("actionButton.InValid.backgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.InValid.titleLabelColor")))
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
     }
 
 
@@ -159,8 +159,8 @@ class TapCardSwitch : LinearLayout {
                 payButton.setButtonDataSource(false,
                     context?.let { LocalizationManager.getLocale(it).language },
                     LocalizationManager.getValue("pay","ActionButton"),
-                    Color.parseColor(ThemeManager.getValue("actionButton.InValid.backgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.InValid.titleLabelColor")))
+                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
             }
         }
 
