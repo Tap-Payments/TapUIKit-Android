@@ -73,7 +73,7 @@ All rights reserved.
  **/
 open class BottomSheetDialog : TapBottomSheetDialog(),
     TapSelectionTabLayoutInterface,
-    OnCardSelectedActionListener,
+    OnCardSelectedActionListener,TapActionButtonInterface,
     WebViewContract {
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
@@ -184,29 +184,29 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         initializeViews(view)
 
 
-        payButton.setOnClickListener {
-            if (actionButton.isActivated) {
-                changeBottomSheetTransition()
-                hideAllViews()
-                if (paymentsList[2] == 3) {
-                    Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
-                    goPayLoginInput.visibility= View.VISIBLE
-                    goPayPassword.visibility= View.VISIBLE
-//                        childFragmentManager
-//                            .beginTransaction()
-//                            .remove(WebFragment(this))
-//                            .commit()
-//                        dialog?.hide()
-                    changeBottomSheetTransition()
-                } else
-                    actionButton.addChildView(
-                        actionButton.getImageView(
-                            R.drawable.loader,
-                            1
-                        ) { replaceBetweenFragments() })
-
-            }
-        }
+//        payButton.setOnClickListener {
+//            if (actionButton.isActivated) {
+//                changeBottomSheetTransition()
+//                hideAllViews()
+//                if (paymentsList[2] == 3) {
+//                    Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
+//                    goPayLoginInput.visibility= View.VISIBLE
+//                    goPayPassword.visibility= View.VISIBLE
+////                        childFragmentManager
+////                            .beginTransaction()
+////                            .remove(WebFragment(this))
+////                            .commit()
+////                        dialog?.hide()
+//                    changeBottomSheetTransition()
+//                } else
+//                    actionButton.addChildView(
+//                        actionButton.getImageView(
+//                            R.drawable.loader,
+//                            1
+//                        ) { replaceBetweenFragments() })
+//
+//            }
+//        }
     }
 
 
@@ -973,6 +973,34 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             )
         )
         tapMobileInputView.mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
+    }
+
+    override fun onStateChanged(state: ActionButtonState) {
+        TODO("Not yet implemented")
+    }
+
+    override fun onClickActionButton() {
+//        if (actionButton.isActivated) {
+            changeBottomSheetTransition()
+            hideAllViews()
+            if (paymentsList[2] == 3) {
+                Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
+                goPayLoginInput.visibility= View.VISIBLE
+                goPayPassword.visibility= View.VISIBLE
+//                        childFragmentManager
+//                            .beginTransaction()
+//                            .remove(WebFragment(this))
+//                            .commit()
+//                        dialog?.hide()
+                changeBottomSheetTransition()
+            } else
+                actionButton.addChildView(
+                    actionButton.getImageView(
+                        R.drawable.loader,
+                        1
+                    ) { replaceBetweenFragments() })
+
+//        }
     }
 
 

@@ -46,6 +46,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         initChange()
         initPasswordInput()
         setPasswordValidation()
+        rootView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
     fun setPasswordValidation(){
@@ -105,7 +106,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         if (isEnabled) {
             signInButton.setButtonDataSource(true,
                 context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("next","Common"),
+                LocalizationManager.getValue("signin","ActionButton"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
         } else {
