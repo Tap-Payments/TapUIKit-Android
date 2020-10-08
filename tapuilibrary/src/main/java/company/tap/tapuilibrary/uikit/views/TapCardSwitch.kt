@@ -211,12 +211,8 @@ class TapCardSwitch : LinearLayout {
                 switchGoPayCheckoutSwitchThemeEnable.trackTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
                 switchSaveMobile.setTheme(switchGoPayCheckoutSwitchThemeEnable)
-                payButton.setButtonDataSource(true,
-                    context?.let { LocalizationManager.getLocale(it).language },
-                    LocalizationManager.getValue("pay","ActionButton"),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
 
+                activateButton(true)
 
             } else {
                 Log.d("false", "false")
@@ -226,13 +222,7 @@ class TapCardSwitch : LinearLayout {
                 switchGoPayCheckoutSwitchThemeDisable.trackTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchSaveMobile.setTheme(switchGoPayCheckoutSwitchThemeDisable)
-
-
-                payButton.setButtonDataSource(false,
-                    context?.let { LocalizationManager.getLocale(it).language },
-                    LocalizationManager.getValue("pay","ActionButton"),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+                activateButton(false)
 
             }
         }
@@ -271,6 +261,24 @@ class TapCardSwitch : LinearLayout {
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("TapSwitchView.CurvedSeparator.BackgroundColor"))
         switchSeparator.setTheme(separatorViewTheme)
+    }
+
+
+    fun activateButton(isActive: Boolean){
+        if (isActive){
+            payButton.setButtonDataSource(true,
+                context?.let { LocalizationManager.getLocale(it).language },
+                LocalizationManager.getValue("pay","ActionButton"),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+        }else{
+            payButton.setButtonDataSource(false,
+                context?.let { LocalizationManager.getLocale(it).language },
+                LocalizationManager.getValue("pay","ActionButton"),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+
+        }
     }
 
 

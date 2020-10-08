@@ -76,7 +76,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
 
-
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
     private lateinit var itemCount: TapButton
@@ -103,6 +102,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private lateinit var nfcScanBtn: TapButton
     private lateinit var switchDemo: TapCardSwitch
     private lateinit var mainSwitch: MainSwitch
+    private lateinit var payButton: TabAnimatedActionButton
 
     private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
@@ -172,10 +172,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        actionButton.setButtonDataSource(false, context?.let { LocalizationManager.getLocale(it).language },
+        actionButton.setButtonDataSource(
+            false, context?.let { LocalizationManager.getLocale(it).language },
             "Pay",
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+        )
         actionButton.stateListAnimator = null
         actionButton.isActivated = true
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
@@ -184,7 +186,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
 //        mainView.clipToOutline = true
         outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-        backgroundColor = (Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        backgroundColor =
+            (Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         initializeViews(view)
 
     }
@@ -293,6 +296,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switchDemo = view.findViewById(R.id.switch_pay_demo)
         mainSwitch = view.findViewById(R.id.mainSwitch)
         switchSaveDemo = mainSwitch.findViewById(R.id.switchSaveMobile)
+        payButton = switchDemo.findViewById(R.id.payButton)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         separatorView = switchDemo.findViewById(R.id.switch_separator)
         switchMerchantCheckout = switchDemo.findViewById(R.id.switch_merchant_checkout)
@@ -301,6 +305,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
         mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
+        switchSaveDemo?.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                switchDemo.activateButton(true)
+            } else {
+                switchDemo.activateButton(false)
+
+            }
+        }
 
     }
 
@@ -543,14 +555,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                              .inflateTransition(R.transition.remove_fragment)
                      TransitionManager.beginDelayedTransition(layout, removeTransition)
                  }*/
-                actionButton.visibility= View.VISIBLE
+                actionButton.visibility = View.VISIBLE
 
                 dialog?.window?.attributes?.windowAnimations = R.anim.fade_in
 
                 selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = getString(R.string.items)
             } else {
-                actionButton.visibility= View.GONE
+                actionButton.visibility = View.GONE
 
                 separator_.visibility = View.GONE
                 separatorــ.visibility = View.GONE
@@ -849,6 +861,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     alertMessage?.setTextColor(Color.parseColor("#ea611c"))
                 }
             }
+
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
@@ -863,13 +876,16 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
             if (isChecked) {
                 outer_layout?.setBackgroundColor(Color.WHITE)
-                backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                backgroundColor =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 actionButton.stateListAnimator = null
-                actionButton.setButtonDataSource(true,
+                actionButton.setButtonDataSource(
+                    true,
                     company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                     "Pay",
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+                )
 
                 switchLayout?.visibility = View.VISIBLE
                 switchMerchantCheckout?.visibility = View.VISIBLE
@@ -882,12 +898,16 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             } else {
                 actionButton.stateListAnimator = null
 
-                actionButton.setButtonDataSource(true, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+                actionButton.setButtonDataSource(
+                    true,
+                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                     "Pay",
                     Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+                )
 
-                backgroundColor = Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
+                backgroundColor =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
                 outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
 
@@ -933,12 +953,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
 
-        private fun getSuccessDataSource(text:String): ActionButtonDataSource {
-            actionButton.stateListAnimator = null
+    private fun getSuccessDataSource(text: String): ActionButtonDataSource {
+        actionButton.stateListAnimator = null
 
-            Log.d("dataSource.text", text)
+        Log.d("dataSource.text", text)
 
-            return ActionButtonDataSource(
+        return ActionButtonDataSource(
             text = text,
             textSize = 20f,
             textColor = Color.WHITE,
@@ -951,14 +971,17 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onCardSelectedAction(isSelected: Boolean) {
         if (isSelected) {
 
-            actionButton.setButtonDataSource(true,
+
+            payButton.setButtonDataSource(
+                true,
                 company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                 "Pay",
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+            )
 
-            actionButton.isActivated = true
-            actionButton.setOnClickListener {
+            payButton.isActivated = true
+            payButton.setOnClickListener {
                 if (actionButton.isActivated) {
                     changeBottomSheetTransition()
                     hideAllViews()
@@ -988,10 +1011,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //            ).commit()
 
         } else
-            actionButton.setButtonDataSource(false, company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+            payButton.setButtonDataSource(
+                false,
+                company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                 "Pay",
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+            )
     }
 
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {
