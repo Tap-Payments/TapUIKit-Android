@@ -62,7 +62,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
             signInButton.setButtonDataSource(false,
                 context?.let { LocalizationManager.getLocale(it).language },
                 LocalizationManager.getValue("signin","ActionButton"),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         }
         signInButton.isEnabled = gopayPasswordInput.text?.length!! > 7
@@ -77,11 +77,10 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         signInButton.isEnabled = false
-
         signInButton.setButtonDataSource(false,
             context?.let { LocalizationManager.getLocale(it).language },
             LocalizationManager.getValue("signin","ActionButton"),
-            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
       signInButton.setOnClickListener {
             textInputLayout.error = "Incorrect Password"
@@ -113,7 +112,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
             signInButton.setButtonDataSource(false,
                 context?.let { LocalizationManager.getLocale(it).language },
                 LocalizationManager.getValue("signin","ActionButton"),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         }
     }
