@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
@@ -42,12 +43,13 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         bottomSheetDialog.behavior.skipCollapsed = true
         goPayLoginInput = view.findViewById(R.id.gopay_login_input)
         goPayPasswordInput = view.findViewById(company.tap.checkout.R.id.goPay_password)
+        backgroundColor = Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo"))
 
 
         goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
         goPayLoginInput?.setLoginInterface(this)
         goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
-        goPayPasswordInput?.rootView?.setBackgroundColor(Color.parseColor("#c7f9f9f9"))
+//        goPayPasswordInput?.rootView?.setBackgroundColor(Color.parseColor("#c7f9f9f9"))
 
 
         knet.setOnClickListener {
