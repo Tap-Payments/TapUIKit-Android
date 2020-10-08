@@ -52,19 +52,8 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     fun setPasswordValidation(){
         if (gopayPasswordInput.text?.length!! > 7){
             changeButtonStatus(true)
-
-            signInButton.setButtonDataSource(true,
-                context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("signin","ActionButton"),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
         }else{
             changeButtonStatus(false)
-            signInButton.setButtonDataSource(false,
-                context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("signin","ActionButton"),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         }
         signInButton.isEnabled = gopayPasswordInput.text?.length!! > 7
     }
@@ -101,7 +90,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun changeButtonStatus(isEnabled: Boolean) {
-        signInButton.isEnabled = isEnabled
+//        signInButton.isEnabled = isEnabled
 
         if (isEnabled) {
             signInButton.setButtonDataSource(true,
