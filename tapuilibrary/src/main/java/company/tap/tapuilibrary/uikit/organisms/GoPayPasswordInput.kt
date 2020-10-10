@@ -46,6 +46,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         initChange()
         initPasswordInput()
         setPasswordValidation()
+        initTheme()
         rootView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
@@ -151,6 +152,13 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         )
     }
 
+    
+    fun initTheme(){
+        passwordTextInput.setErrorColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+        passwordTextInput.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.textColor")))
+        passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
+        changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.passwordField.underline.filled.backgroundColor")))
+    }
 
     fun getSuccessDataSource(
         backgroundColor: Int,

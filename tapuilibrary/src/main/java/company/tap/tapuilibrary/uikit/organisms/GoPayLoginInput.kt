@@ -37,22 +37,26 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<EditTextTheme> {
 
-    var loginTabLayout: TabLayout
+
     val textInput by lazy { findViewById<TextInputEditText>(R.id.gopay_text_input) }
-    var textInputLayout: TextInputLayout
-    var loginMethodImage: ImageView
-    var actionButton: TabAnimatedActionButton
+    val loginTabLayout by lazy { findViewById<TabLayout>(R.id.login_type) }
+    val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
+    val loginMethodImage by lazy { findViewById<ImageView>(R.id.login_method_icon) }
+    val actionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.gopay_button) }
+    val goPayHint by lazy { findViewById<TapTextView>(R.id.gopay_hint) }
     var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
     private var inputType = EMAIL
 
     init {
         inflate(context, R.layout.gopay_login_input, this)
-        loginTabLayout = findViewById(R.id.login_type)
-        textInputLayout = findViewById(R.id.text_input_layout)
-        loginMethodImage = findViewById(R.id.login_method_icon)
-        actionButton = findViewById(R.id.gopay_button)
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
+        loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.selected.backgroundColor")))
+        goPayHint.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
+        goPayHint.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont").toFloat()
+        textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
+        textInput.textSize= ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
     }
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {
@@ -111,7 +115,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun disableNext() {
         actionButton.isEnabled = false
-
         actionButton.setButtonDataSource(false,
             context?.let { LocalizationManager.getLocale(it).language },
             LocalizationManager.getValue("next","Common"),
@@ -210,10 +213,20 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 TapFont.RobotoLight
             )
         )
+        goPayHint?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
     }
 
     fun setFontsArabic() {
         textInput?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
