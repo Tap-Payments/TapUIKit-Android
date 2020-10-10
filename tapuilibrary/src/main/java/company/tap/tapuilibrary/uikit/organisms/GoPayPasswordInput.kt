@@ -66,12 +66,14 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun initButton() {
-        signInButton.isEnabled = false
-        signInButton.setButtonDataSource(false,
-            context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue("signin","ActionButton"),
-            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+
+        changeButtonStatus(false)
+//        signInButton.isEnabled = false
+//        signInButton.setButtonDataSource(false,
+//            context?.let { LocalizationManager.getLocale(it).language },
+//            LocalizationManager.getValue("signin","ActionButton"),
+//            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
+//            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
       signInButton.setOnClickListener {
             textInputLayout.error = "Incorrect Password"
         }
