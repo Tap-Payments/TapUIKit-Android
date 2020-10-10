@@ -90,9 +90,9 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun changeButtonStatus(isEnabled: Boolean) {
-//        signInButton.isEnabled = isEnabled
 
         if (isEnabled) {
+            signInButton.isEnabled = isEnabled
             signInButton.setButtonDataSource(true,
                 context?.let { LocalizationManager.getLocale(it).language },
                 LocalizationManager.getValue("signin","ActionButton"),
