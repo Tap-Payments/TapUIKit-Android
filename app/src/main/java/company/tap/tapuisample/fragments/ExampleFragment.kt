@@ -43,7 +43,7 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         bottomSheetDialog.behavior.skipCollapsed = true
         goPayLoginInput = view.findViewById(R.id.gopay_login_input)
         goPayPasswordInput = view.findViewById(company.tap.checkout.R.id.goPay_password)
-        backgroundColor = Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo"))
+//        backgroundColor = Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo"))
 
 
         goPayLoginInput?.changeDataSource(GoPayLoginDataSource())

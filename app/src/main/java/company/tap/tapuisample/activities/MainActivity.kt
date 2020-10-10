@@ -40,7 +40,7 @@ import java.util.concurrent.Executor
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
-
+//////https://stackoverflow.com/questions/24149690/add-local-library-project-as-a-dependency-to-multiple-projects-in-android-studio
 
 class MainActivity : BaseActivity(),
     TapAmountSectionInterface,
