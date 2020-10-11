@@ -56,6 +56,7 @@ import company.tap.tapuilibrary.uikit.fragment.CardScannerFragment
 import company.tap.tapuilibrary.uikit.fragment.NFCFragment
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
+import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
@@ -68,7 +69,7 @@ import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-
+//    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -77,7 +78,7 @@ All rights reserved.
 open class BottomSheetDialog : TapBottomSheetDialog(),
     TapSelectionTabLayoutInterface,
     OnCardSelectedActionListener,TapActionButtonInterface,
-    WebViewContract {
+    WebViewContract, TapPaymentShowHideClearImage {
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
@@ -237,11 +238,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
         tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
-        mobileNumberEditText?.doOnTextChanged { text, start, before, count ->
-            if (text?.isNotEmpty()!!)
-                clearView?.visibility = View.VISIBLE  }
-
-
         tapCardInputView?.clearFocus()
         clearView?.setOnClickListener {
             tabLayout?.resetBehaviour()
@@ -356,6 +352,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 .commit()
             cardFragmentadded = true
         }
+
+        tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
     }
 
@@ -568,14 +566,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
                 cardScannerBtn?.visibility = View.GONE
                 nfcButton?.visibility = View.GONE
-
                 mobileNumberEditText?.addTextChangedListener(object : TextWatcher {
                     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                        showHideClearImage(true)
                     }
 
                     override fun afterTextChanged(mobileText: Editable) {
                         if (mobileText.length > 2){
                             clearView?.visibility = View.VISIBLE
+                            showHideClearImage(true)
                         }
                         if (mobileText.length == 12) {
                             mobileNumberEditText?.text = mobileText
@@ -994,6 +993,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     ) { replaceBetweenFragments() })
 
 //        }
+    }
+
+    override fun showHideClearImage(show: Boolean) {
+        if (show){
+            clearView?.visibility = View.VISIBLE
+        }else{
+            clearView?.visibility = View.VISIBLE
+        }
     }
 
 

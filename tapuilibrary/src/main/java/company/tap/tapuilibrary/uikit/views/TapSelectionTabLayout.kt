@@ -256,8 +256,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             override fun onTabReselected(tab: TabLayout.Tab?) {}
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                resetBehaviour()
-                fadeOtherTabs(tab?.position)
+//                resetBehaviour()
+//                fadeOtherTabs(tab?.position)
                 tabLayoutInterface?.onTabSelected(tab?.position)
             }
         })
