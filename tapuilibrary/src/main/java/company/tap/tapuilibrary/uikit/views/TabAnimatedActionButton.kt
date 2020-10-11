@@ -90,9 +90,11 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null, backgroundColor: Int, textColor:Int? = null) {
         if (isValid)
         {
+            isActivated = true
             initValidBackground(backgroundColor)
             initActionButtonDataSource(backgroundColor, textColor,buttonText)
         } else{
+            isActivated = false
             initInvalidBackground(backgroundColor)
             initActionButtonDataSource(backgroundColor, textColor, buttonText)
         }

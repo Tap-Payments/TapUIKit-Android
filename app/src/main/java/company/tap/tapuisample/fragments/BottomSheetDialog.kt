@@ -752,6 +752,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 backgroundColor =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 payButton.stateListAnimator = null
+                payButton.isActivated
                 payButton.setButtonDataSource(
                     true,
                     company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
