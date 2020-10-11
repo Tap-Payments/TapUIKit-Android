@@ -8,11 +8,14 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.size
+import androidx.core.widget.doAfterTextChanged
 import com.bumptech.glide.Glide
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
+import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 
 /**
@@ -26,12 +29,25 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
     val mobileImage by lazy { findViewById<TapImageView>(R.id.mobileImage) }
     val mobilePaymentMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
+    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
 
 
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
         mobileNumber.requestFocus()
         initTheme()
+        initView()
+    }
+
+    fun initView(){
+        mobileNumber.doAfterTextChanged {
+            tapPaymentShowHideClearImage?.showHideClearImage(it.toString().length > 1)
+        }
+    }
+
+
+    fun setTapPaymentShowHideClearImage(tapPaymentShowHideClearImage: TapPaymentShowHideClearImage) {
+        this.tapPaymentShowHideClearImage = tapPaymentShowHideClearImage
     }
 
     fun clearNumber() {

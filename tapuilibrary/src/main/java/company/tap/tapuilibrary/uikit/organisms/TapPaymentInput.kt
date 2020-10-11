@@ -3,6 +3,7 @@ package company.tap.tapuilibrary.uikit.organisms
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import company.tap.tapuilibrary.R
@@ -10,6 +11,7 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TabSelectTheme
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.models.TabSection
 import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
@@ -20,7 +22,7 @@ import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
  *
  */
 class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs),
+    LinearLayout(context, attrs), TapPaymentShowHideClearImage,
     TapView<TabSelectTheme> {
 
      val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
@@ -28,6 +30,8 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
      val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
      val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
      val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
+
+
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
@@ -64,5 +68,13 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
         separator.setTheme(separatorViewTheme)
   }
+
+    override fun showHideClearImage(show: Boolean) {
+        if (show){
+            clearView.visibility = View.VISIBLE
+        }else{
+            clearView.visibility = View.GONE
+        }
+    }
 
 }

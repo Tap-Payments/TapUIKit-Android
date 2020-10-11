@@ -22,6 +22,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
+import androidx.core.view.isEmpty
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -234,6 +235,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
         tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
+        if (tapMobileInputView.isEmpty()){
+            clearView?.visibility = View.GONE
+        }else{
+            clearView?.visibility = View.VISIBLE
+        }
         tapCardInputView?.clearFocus()
         clearView?.setOnClickListener {
             tabLayout?.resetBehaviour()
@@ -243,8 +249,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
              tapCardInputView.setCvcCode("")*/
             tapCardInputView.clear()
             alert_text.visibility = View.GONE
-            nfcButton?.visibility = View.VISIBLE
-            cardScannerBtn?.visibility = View.VISIBLE
+//            nfcButton?.visibility = View.VISIBLE
+//            cardScannerBtn?.visibility = View.VISIBLE
             clearView?.visibility = View.GONE
 
             switchSaveDemo?.visibility = View.GONE
@@ -336,6 +342,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         val nfcFragment = NFCFragment()
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(context, null)
+        if (tapMobileInputView.mobileNumber.text.toString().isEmpty()){
+            clearView?.visibility = View.GONE
+        }else{
+            clearView?.visibility = View.VISIBLE
+        }
         if (context != null) {
             tapCardInputView = context?.let { InlineCardInput(it) }!!
             println("mobile view $tapCardInputView")
