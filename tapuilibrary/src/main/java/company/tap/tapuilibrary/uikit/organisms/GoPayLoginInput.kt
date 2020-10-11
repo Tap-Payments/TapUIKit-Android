@@ -75,7 +75,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         actionButton.isEnabled = false
         actionButton.setButtonDataSource(false,
             context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue("pay","ActionButton"),
+            LocalizationManager.getValue("next","Common"),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
 

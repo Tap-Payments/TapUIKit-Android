@@ -122,7 +122,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         theme.textSize?.let { it }
         theme.letterSpacing?.let { it }
         theme.textColorHint?.let { }
-        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
+//        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
     }
 
 
@@ -158,6 +158,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         passwordTextInput.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.textColor")))
         passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
         passwordTextInput.backgroundTintList =  ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+        textInputLayout.backgroundTintList =  ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
     }
 
