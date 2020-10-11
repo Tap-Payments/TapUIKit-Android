@@ -50,18 +50,18 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         rootView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
-    fun setPasswordValidation(){
-        if (gopayPasswordInput.text?.length!! > 7){
+
+    fun setPasswordValidation() {
+        if (gopayPasswordInput.text?.length!! > 7) {
             changeButtonStatus(true)
-        }else{
+        } else {
             changeButtonStatus(false)
         }
         signInButton.isEnabled = gopayPasswordInput.text?.length!! > 7
     }
 
 
-
-    fun setLoginInterface(loginInterface: GoPayLoginInterface, emailText:String) {
+    fun setLoginInterface(loginInterface: GoPayLoginInterface, emailText: String) {
         this.loginInterface = loginInterface
         passwordemailText.text = emailText
     }
@@ -69,13 +69,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     private fun initButton() {
 
         changeButtonStatus(false)
-//        signInButton.isEnabled = false
-//        signInButton.setButtonDataSource(false,
-//            context?.let { LocalizationManager.getLocale(it).language },
-//            LocalizationManager.getValue("signin","ActionButton"),
-//            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
-//            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
-      signInButton.setOnClickListener {
+        signInButton.setOnClickListener {
             textInputLayout.error = "Incorrect Password"
         }
     }
@@ -97,17 +91,21 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
         if (isEnabled) {
             signInButton.isEnabled = isEnabled
-            signInButton.setButtonDataSource(true,
+            signInButton.setButtonDataSource(
+                true,
                 context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("signin","ActionButton"),
+                LocalizationManager.getValue("signin", "ActionButton"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+            )
         } else {
-            signInButton.setButtonDataSource(false,
+            signInButton.setButtonDataSource(
+                false,
                 context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("signin","ActionButton"),
+                LocalizationManager.getValue("signin", "ActionButton"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+            )
         }
     }
 
@@ -153,13 +151,15 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         )
     }
 
-    
-    fun initTheme(){
+
+    fun initTheme() {
         passwordTextInput.setErrorColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         passwordTextInput.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.textColor")))
         passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
-        passwordTextInput.backgroundTintList =  ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
-        textInputLayout.backgroundTintList =  ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+        passwordTextInput.backgroundTintList =
+            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+        textInputLayout.backgroundTintList =
+            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
     }
 

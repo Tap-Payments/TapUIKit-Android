@@ -530,7 +530,7 @@
     },
     "goPay": {
         "loginBar" :{
-            "backgroundColor" : "#45000000",
+            "backgroundColor" : "#99ffffff",
             "underline": {
                 "selected": {
                     "backgroundColor" : "deepSkyBlue"

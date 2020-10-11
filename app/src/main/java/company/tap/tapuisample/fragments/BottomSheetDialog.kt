@@ -620,13 +620,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun addMobileTab() {
         val items = ArrayList<SectionTabItem>()
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.zain_gray
-                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-            )
-        )
 
         items.add(
             SectionTabItem(
