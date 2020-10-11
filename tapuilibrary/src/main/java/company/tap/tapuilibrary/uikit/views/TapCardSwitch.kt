@@ -94,7 +94,7 @@ class TapCardSwitch : LinearLayout {
     private fun initActionButton(){
         payButton.setButtonDataSource(false,
             context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue("ActionButton","pay"),
+            LocalizationManager.getValue("pay","ActionButton"),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
     }
