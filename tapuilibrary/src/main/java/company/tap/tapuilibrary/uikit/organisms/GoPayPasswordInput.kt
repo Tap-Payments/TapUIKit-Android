@@ -157,7 +157,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         passwordTextInput.setErrorColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         passwordTextInput.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.textColor")))
         passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
-        changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.passwordField.underline.filled.backgroundColor")))
+        changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
     }
 
     fun getSuccessDataSource(
