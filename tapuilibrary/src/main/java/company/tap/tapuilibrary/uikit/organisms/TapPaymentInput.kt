@@ -25,25 +25,19 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs), TapPaymentShowHideClearImage,
     TapView<TabSelectTheme> {
 
-     val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
-     val paymentInputContainer by lazy { findViewById<LinearLayout>(R.id.payment_input_layout) }
-     val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
-     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
-     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
-    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
-
-
+    val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
+    val paymentInputContainer by lazy { findViewById<LinearLayout>(R.id.payment_input_layout) }
+    val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
+    val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
+    val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
 
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
-                applyTheme()
-        clearView.visibility = View.GONE
+        applyTheme()
         clearView.setOnClickListener {
             rootView.invalidate()
         }
-        tapPaymentShowHideClearImage = this
-
     }
 
     fun addTabLayoutSection(vararg sections: TabSection) {
@@ -51,6 +45,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
             tabLayout.addSection(it.items)
         }
     }
+
     fun clearCardNumber() {
         paymentInputContainer.clearFocus()
     }
@@ -61,22 +56,24 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         theme.unselectedBackgroundColor?.let { setBackgroundColor(it) }
     }
 
-    private fun applyTheme(){
+    private fun applyTheme() {
         tabLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         clearView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         setSeparatorTheme()
     }
+
     private fun setSeparatorTheme() {
         val separatorViewTheme = SeparatorViewTheme()
-        separatorViewTheme.strokeColor = Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
+        separatorViewTheme.strokeColor =
+            Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
         separator.setTheme(separatorViewTheme)
-  }
+    }
 
     override fun showHideClearImage(show: Boolean) {
-        if (show){
+        if (show) {
             clearView.visibility = View.VISIBLE
-        }else{
+        } else {
             clearView.visibility = View.GONE
         }
     }

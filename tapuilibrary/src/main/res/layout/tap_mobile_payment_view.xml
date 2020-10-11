@@ -18,7 +18,7 @@
         android:id="@+id/mobileNumber"
         android:hint="965 00000000"
         android:inputType="phone"
-        android:maxLength="12"
+        android:maxLength="14"
         android:layout_marginStart="20dp"
         android:textSize="@dimen/font_size_17sp"
         android:fontFamily="sans-serif-light"

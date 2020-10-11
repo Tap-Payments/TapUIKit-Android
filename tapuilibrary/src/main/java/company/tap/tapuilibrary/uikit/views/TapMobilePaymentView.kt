@@ -3,7 +3,10 @@ package company.tap.tapuilibrary.uikit.views
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
+import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -31,7 +34,6 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     val mobilePaymentMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
     private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
 
-
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
         mobileNumber.requestFocus()
@@ -43,6 +45,26 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         mobileNumber.doAfterTextChanged {
             tapPaymentShowHideClearImage?.showHideClearImage(it.toString().length > 1)
         }
+
+
+
+        mobileNumber?.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(mobileText: Editable) {
+                if (mobileText.length > 2){
+                    tapPaymentShowHideClearImage?.showHideClearImage(true)
+                }
+                if (mobileText.length == 12) {
+                    mobileNumber?.text = mobileText
+                }
+                println("mobile number value ${mobileText.length}")
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+        })
     }
 
 

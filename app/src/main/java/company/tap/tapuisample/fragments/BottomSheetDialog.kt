@@ -23,6 +23,8 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
 import androidx.core.view.isEmpty
+import androidx.core.widget.doAfterTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -185,29 +187,29 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         initializeViews(view)
 
 
-//        payButton.setOnClickListener {
-//            if (actionButton.isActivated) {
-//                changeBottomSheetTransition()
-//                hideAllViews()
-//                if (paymentsList[2] == 3) {
-//                    Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
-//                    goPayLoginInput.visibility= View.VISIBLE
-//                    goPayPassword.visibility= View.VISIBLE
-////                        childFragmentManager
-////                            .beginTransaction()
-////                            .remove(WebFragment(this))
-////                            .commit()
-////                        dialog?.hide()
-//                    changeBottomSheetTransition()
-//                } else
-//                    actionButton.addChildView(
-//                        actionButton.getImageView(
-//                            R.drawable.loader,
-//                            1
-//                        ) { replaceBetweenFragments() })
-//
-//            }
-//        }
+        payButton.setOnClickListener {
+            if (actionButton.isActivated) {
+                changeBottomSheetTransition()
+                hideAllViews()
+                if (paymentsList[2] == 3) {
+                    Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
+                    goPayLoginInput.visibility= View.VISIBLE
+                    goPayPassword.visibility= View.VISIBLE
+//                        childFragmentManager
+//                            .beginTransaction()
+//                            .remove(WebFragment(this))
+//                            .commit()
+//                        dialog?.hide()
+                    changeBottomSheetTransition()
+                } else
+                    actionButton.addChildView(
+                        actionButton.getImageView(
+                            R.drawable.loader,
+                            1
+                        ) { replaceBetweenFragments() })
+
+            }
+        }
     }
 
 
@@ -235,15 +237,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
         tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
-        if (tapMobileInputView.isEmpty()){
-            clearView?.visibility = View.GONE
-        }else{
-            clearView?.visibility = View.VISIBLE
-        }
+        mobileNumberEditText?.doOnTextChanged { text, start, before, count ->
+            if (text?.isNotEmpty()!!)
+                clearView?.visibility = View.VISIBLE  }
+
+
         tapCardInputView?.clearFocus()
         clearView?.setOnClickListener {
             tabLayout?.resetBehaviour()
-
             tapMobileInputView.clearNumber()
             /* tapCardInputView.setCardNumber("")
              tapCardInputView.setCvcCode("")*/
@@ -342,11 +343,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         val nfcFragment = NFCFragment()
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(context, null)
-        if (tapMobileInputView.mobileNumber.text.toString().isEmpty()){
-            clearView?.visibility = View.GONE
-        }else{
-            clearView?.visibility = View.VISIBLE
-        }
         if (context != null) {
             tapCardInputView = context?.let { InlineCardInput(it) }!!
             println("mobile view $tapCardInputView")
@@ -572,29 +568,22 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
                 cardScannerBtn?.visibility = View.GONE
                 nfcButton?.visibility = View.GONE
-                clearView?.visibility = View.VISIBLE
+
                 mobileNumberEditText?.addTextChangedListener(object : TextWatcher {
-                    override fun onTextChanged(
-                        s: CharSequence,
-                        start: Int,
-                        before: Int,
-                        count: Int
-                    ) {
+                    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                     }
 
                     override fun afterTextChanged(mobileText: Editable) {
+                        if (mobileText.length > 2){
+                            clearView?.visibility = View.VISIBLE
+                        }
                         if (mobileText.length == 12) {
                             mobileNumberEditText?.text = mobileText
                         }
                         println("mobile number value ${mobileText.length}")
                     }
 
-                    override fun beforeTextChanged(
-                        s: CharSequence,
-                        start: Int,
-                        count: Int,
-                        after: Int
-                    ) {
+                    override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
                     }
                 })
             }
