@@ -551,7 +551,7 @@
             },
             "hintLabel": {
                 "textFont": "Roboto-Light,10",
-                "textColor": "brownGreyThree"
+                "textColor": "greyishBrown"
             }
         },
         "passwordView" :{
@@ -560,13 +560,13 @@
         "passwordField": {
             "backgroundColor" : "clear",
             "textFont": "Roboto-Light,17",
-            "textColor": "greyishBrown",
+            "textColor": "black",
             "placeHolderColor" : "brownGreyThree",
             "showPasswordIcon" : "passwordEye",
             "hidePasswordIcon" : "passwordEye",
             "underline":{
                 "empty": {
-                    "backgroundColor" : "brownGrey"
+                    "backgroundColor" : "deepSkyBlue"
                 },
                 "filled": {
                     "backgroundColor" : "deepSkyBlue"
