@@ -39,7 +39,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         initView()
     }
 
-    fun initView(){
+    private fun initView(){
         mobileNumber.doAfterTextChanged {
             tapPaymentShowHideClearImage?.showHideClearImage(it.toString().length > 1)
         }

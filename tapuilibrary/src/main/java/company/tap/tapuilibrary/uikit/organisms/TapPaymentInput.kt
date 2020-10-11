@@ -30,16 +30,20 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
      val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
      val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
      val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
+    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
+
 
 
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
                 applyTheme()
-
+        clearView.visibility = View.GONE
         clearView.setOnClickListener {
             rootView.invalidate()
         }
+        tapPaymentShowHideClearImage = this
+
     }
 
     fun addTabLayoutSection(vararg sections: TabSection) {
