@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
+import android.text.InputType
 import android.util.AttributeSet
 import android.util.Patterns
 import android.widget.ImageView
@@ -184,6 +185,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             }
             PHONE -> {
                 textInput.hint = dataSource?.phoneInputHint ?: "00000000"
+                textInput.inputType = InputType.TYPE_CLASS_PHONE
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)
             }
