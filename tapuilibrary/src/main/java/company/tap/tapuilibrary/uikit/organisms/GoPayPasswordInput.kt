@@ -22,7 +22,7 @@ import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
 /**
  *
- * Created by Mario Gamal on 7/16/20
+ * Created  on 7/16/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
@@ -89,6 +89,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     private fun initPasswordInput() {
         passwordTextInput.doAfterTextChanged {
             changeButtonStatus(it.toString().length > 7)
+            initTheme()
         }
     }
 
