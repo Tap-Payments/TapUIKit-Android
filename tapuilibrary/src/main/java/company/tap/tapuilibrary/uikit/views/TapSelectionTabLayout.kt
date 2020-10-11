@@ -151,7 +151,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         params.setMargins(0, 30, 0, 30)
 
-        params.weight = 1f
+        params.weight = 1.5f
         for (item in tabItems) {
             item.imageView?.layoutParams = params
         }
@@ -257,7 +257,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 resetBehaviour()
-//                fadeOtherTabs(tab?.position)
+                fadeOtherTabs(tab?.position)
                 tabLayoutInterface?.onTabSelected(tab?.position)
             }
         })
