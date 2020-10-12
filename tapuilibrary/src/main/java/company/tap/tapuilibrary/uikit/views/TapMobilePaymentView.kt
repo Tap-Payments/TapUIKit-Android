@@ -36,7 +36,6 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
     val mobileImage by lazy { findViewById<TapImageView>(R.id.mobileImage) }
     val mobilePaymentMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
-    val countryCodeText by lazy { findViewById<TapTextView>(R.id.countryCodeText) }
     val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
     private var tapPaymentShowHideClearImage: TapPaymentShowHideClearImage? = null
 
@@ -51,15 +50,16 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     private fun initCountryCodePicker() {
         mobileImage.setOnClickListener {
             mobileImage.visibility = View.GONE
-            countryCodeText.visibility = View.VISIBLE
+//            countryCodeText.visibility = View.VISIBLE
             countryCodePicker.visibility = View.VISIBLE
-            countryCodeText.text = countryCodePicker!!.selectedCountryCode }
+//            countryCodeText.text = countryCodePicker!!.selectedCountryCode
+        }
 
-        countryCodeText.setOnClickListener {
-            mobileImage.visibility = View.GONE
-            countryCodeText.visibility = View.VISIBLE
-            countryCodePicker.visibility = View.VISIBLE
-            countryCodeText.text = countryCodePicker!!.selectedCountryCode }
+//        countryCodeText.setOnClickListener {
+//            mobileImage.visibility = View.GONE
+//            countryCodeText.visibility = View.VISIBLE
+////            countryCodePicker.visibility = View.VISIBLE
+//            countryCodeText.text = countryCodePicker!!.selectedCountryCode }
     }
 
 
@@ -88,8 +88,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     }
 
     override fun onCountrySelected() {
-
-        countryCodeText.text = countryCodePicker!!.selectedCountryCode
+//        countryCodeText.text = countryCodePicker!!.selectedCountryCode
 //        countryCode = countryCodePicker!!.selectedCountryCode
 //        countryName = countryCodePicker!!.selectedCountryName
 

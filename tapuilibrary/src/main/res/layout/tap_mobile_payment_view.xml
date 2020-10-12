@@ -25,21 +25,14 @@
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"
+        app:ccpDialog_textColor="@color/gray"
         app:ccp_showFlag="false"
+        app:ccp_showNameCode="false"
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
     </com.hbb20.CountryCodePicker>
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
-        android:id="@+id/countryCodeText"
-        android:layout_height="match_parent"
-        android:layout_width="wrap_content"
-        android:textSize="@dimen/font_size_17sp"
-        android:fontFamily="sans-serif-light"
-        android:visibility="gone"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        tools:text="+965" />
+
 
     <EditText
         android:id="@+id/mobileNumber"
