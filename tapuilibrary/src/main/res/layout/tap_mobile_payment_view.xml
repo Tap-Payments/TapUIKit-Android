@@ -22,6 +22,7 @@
     <com.hbb20.CountryCodePicker
         app:ccp_hintExampleNumber="true"
         android:id="@+id/countryCodePicker"
+        android:fontFamily="sans-serif-light"
         android:clickable="true"
         android:focusable="true"
         android:visibility="gone"
@@ -39,6 +40,7 @@
         android:hint=" 00000000"
         android:inputType="phone"
         android:maxLength="14"
+        android:lineHeight="0.5dp"
         android:layout_marginStart="16dp"
         android:textSize="@dimen/font_size_17sp"
         android:fontFamily="sans-serif-light"

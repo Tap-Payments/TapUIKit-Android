@@ -48,10 +48,15 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
 
 
     private fun initCountryCodePicker() {
+        countryCodePicker.setDefaultCountryUsingNameCode("Kuwait")
+//        countryCodePicker.setDialogBackgroundColor()
+        countryCodePicker.ccpDialogShowFlag = false
+
         mobileImage.setOnClickListener {
             mobileImage.visibility = View.GONE
+            countryCodePicker.launchCountrySelectionDialog()
 //            countryCodeText.visibility = View.VISIBLE
-            countryCodePicker.visibility = View.VISIBLE
+//            countryCodePicker.visibility = View.VISIBLE
 //            countryCodeText.text = countryCodePicker!!.selectedCountryCode
         }
 
