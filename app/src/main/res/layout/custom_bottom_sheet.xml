@@ -182,20 +182,6 @@
             app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-
-    <com.hbb20.CountryCodePicker
-        app:ccp_hintExampleNumber="true"
-        android:id="@+id/countryCodePicker"
-        android:clickable="true"
-        android:focusable="true"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
-
-    </com.hbb20.CountryCodePicker>
-
-
     <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
         android:id="@+id/goPayLoginInput"
         android:visibility="gone"

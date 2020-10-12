@@ -76,7 +76,7 @@ All rights reserved.
 open class BottomSheetDialog : TapBottomSheetDialog(),
     TapSelectionTabLayoutInterface,
     OnCardSelectedActionListener,TapActionButtonInterface,
-    WebViewContract, TapPaymentShowHideClearImage , ShowPickerInterface , CountryCodePicker.OnCountryChangeListener{
+    WebViewContract, TapPaymentShowHideClearImage{
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
@@ -173,6 +173,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
         )
 
+
         actionButton.stateListAnimator = null
         actionButton.isActivated = false
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
@@ -237,6 +238,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
         tapCardInputView?.clearFocus()
+
         clearView?.setOnClickListener {
             tabLayout?.resetBehaviour()
             tapMobileInputView.clearNumber()
@@ -337,6 +339,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         val nfcFragment = NFCFragment()
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(context, null)
+
+
         if (context != null) {
             tapCardInputView = context?.let { InlineCardInput(it) }!!
             println("mobile view $tapCardInputView")
@@ -1002,22 +1006,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         }
     }
 //    private var countryCodePicker:CountryCodePicker?=null
-    private var countryCode:String?=null
-    private var countryName:String?=null
+//    private var countryCode:String?=null
+//    private var countryName:String?=null
 
-    override fun showPicker(): String {
-        countryCodePicker?.visibility = View.VISIBLE
-        return countryName.toString()
-    }
-
-    override fun onCountrySelected() {
-        countryCode=countryCodePicker!!.selectedCountryCode
-        countryName=countryCodePicker!!.selectedCountryName
-
-//        Toast.makeText(this,"Country Code "+countryCode,Toast.LENGTH_SHORT).show()
-//        Toast.makeText(this,"Country Name "+countryName,Toast.LENGTH_SHORT).show()
-
-    }
+//    override fun showPicker(): String {
+//        countryCodePicker?.visibility = View.VISIBLE
+//        return countryName.toString()
+//    }
+//
+//    override fun onCountrySelected() {
+//        countryCode = countryCodePicker!!.selectedCountryCode
+//        countryName = countryCodePicker!!.selectedCountryName
+//
+//    }
 
 
 }

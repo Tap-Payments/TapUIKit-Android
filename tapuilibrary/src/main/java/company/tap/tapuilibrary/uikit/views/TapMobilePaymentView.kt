@@ -13,6 +13,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.size
 import androidx.core.widget.doAfterTextChanged
 import com.bumptech.glide.Glide
+import com.hbb20.CountryCodePicker
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
@@ -22,6 +23,7 @@ import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.uikit.interfaces.ShowPickerInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
+import kotlinx.android.synthetic.main.tap_mobile_payment_view.view.*
 
 /**
  *
@@ -29,14 +31,14 @@ import company.tap.tapuilibrary.uikit.interfaces.TapView
  *
  */
 class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs),
+    LinearLayout(context, attrs), CountryCodePicker.OnCountryChangeListener,
     TapView<EditTextTheme> {
     val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
     val mobileImage by lazy { findViewById<TapImageView>(R.id.mobileImage) }
     val mobilePaymentMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
     val countryCodeText by lazy { findViewById<TapTextView>(R.id.countryCodeText) }
+    val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
     private var tapPaymentShowHideClearImage: TapPaymentShowHideClearImage? = null
-    private var showPickerInterface: ShowPickerInterface? = null
 
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
@@ -50,16 +52,14 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         mobileImage.setOnClickListener {
             mobileImage.visibility = View.GONE
             countryCodeText.visibility = View.VISIBLE
-            countryCodeText.text = showPickerInterface?.showPicker() }
+            countryCodePicker.visibility = View.VISIBLE
+            countryCodeText.text = countryCodePicker!!.selectedCountryCode }
 
         countryCodeText.setOnClickListener {
             mobileImage.visibility = View.GONE
             countryCodeText.visibility = View.VISIBLE
-            countryCodeText.text = showPickerInterface?.showPicker() }
-    }
-
-    fun initShowPickerInterface(showPickerInterface: ShowPickerInterface) {
-        this.showPickerInterface = showPickerInterface
+            countryCodePicker.visibility = View.VISIBLE
+            countryCodeText.text = countryCodePicker!!.selectedCountryCode }
     }
 
 
@@ -85,6 +85,14 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         theme.textColorHint?.let { mobileNumber.setHintTextColor(it) }
         theme.letterSpacing?.let { mobileNumber.letterSpacing = it.toFloat() }
         theme.textSize?.let { mobileNumber.textSize = it.toFloat() }
+    }
+
+    override fun onCountrySelected() {
+
+        countryCodeText.text = countryCodePicker!!.selectedCountryCode
+//        countryCode = countryCodePicker!!.selectedCountryCode
+//        countryName = countryCodePicker!!.selectedCountryName
+
     }
 
 }

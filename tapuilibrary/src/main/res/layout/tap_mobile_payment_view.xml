@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mobilePaymentMainLinear"
     android:orientation="horizontal"
     android:paddingStart="10dp"
@@ -15,6 +16,19 @@
         android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"/>
+
+
+
+    <com.hbb20.CountryCodePicker
+        app:ccp_hintExampleNumber="true"
+        android:id="@+id/countryCodePicker"
+        android:clickable="true"
+        android:focusable="true"
+        android:visibility="gone"
+        app:ccp_showFlag="false"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+    </com.hbb20.CountryCodePicker>
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/countryCodeText"
