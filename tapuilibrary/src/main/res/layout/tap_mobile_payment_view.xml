@@ -29,6 +29,7 @@
         app:ccpDialog_textColor="@color/gray"
         app:ccp_showFlag="false"
         app:ccp_showNameCode="false"
+        app:ccp_customMasterCountries="@string/select_country"
         android:layout_width="wrap_content"
         android:layout_height="match_parent">
     </com.hbb20.CountryCodePicker>
