@@ -34,6 +34,7 @@ import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+import com.hbb20.CountryCodePicker
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
@@ -54,10 +55,7 @@ import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
 import company.tap.tapuilibrary.uikit.fragment.CardScannerFragment
 import company.tap.tapuilibrary.uikit.fragment.NFCFragment
-import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
-import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
-import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
-import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.uikit.interfaces.*
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
@@ -78,7 +76,7 @@ All rights reserved.
 open class BottomSheetDialog : TapBottomSheetDialog(),
     TapSelectionTabLayoutInterface,
     OnCardSelectedActionListener,TapActionButtonInterface,
-    WebViewContract, TapPaymentShowHideClearImage {
+    WebViewContract, TapPaymentShowHideClearImage , ShowPickerInterface , CountryCodePicker.OnCountryChangeListener{
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
@@ -1002,6 +1000,23 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         }else{
             clearView?.visibility = View.VISIBLE
         }
+    }
+//    private var countryCodePicker:CountryCodePicker?=null
+    private var countryCode:String?=null
+    private var countryName:String?=null
+
+    override fun showPicker(): String {
+        countryCodePicker?.visibility = View.VISIBLE
+        return countryName.toString()
+    }
+
+    override fun onCountrySelected() {
+        countryCode=countryCodePicker!!.selectedCountryCode
+        countryName=countryCodePicker!!.selectedCountryName
+
+//        Toast.makeText(this,"Country Code "+countryCode,Toast.LENGTH_SHORT).show()
+//        Toast.makeText(this,"Country Name "+countryName,Toast.LENGTH_SHORT).show()
+
     }
 
 

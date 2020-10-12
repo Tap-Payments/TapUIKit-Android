@@ -17,7 +17,9 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
+import company.tap.tapuilibrary.uikit.interfaces.ShowPickerInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 
@@ -32,39 +34,32 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
     val mobileImage by lazy { findViewById<TapImageView>(R.id.mobileImage) }
     val mobilePaymentMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
-    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
+    val countryCodeText by lazy { findViewById<TapTextView>(R.id.countryCodeText) }
+    private var tapPaymentShowHideClearImage: TapPaymentShowHideClearImage? = null
+    private var showPickerInterface: ShowPickerInterface? = null
 
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
         mobileNumber.requestFocus()
         initTheme()
-        initView()
+        initCountryCodePicker()
     }
 
-    private fun initView(){
-        mobileNumber.doAfterTextChanged {
-            tapPaymentShowHideClearImage?.showHideClearImage(it.toString().length > 1)
-        }
 
+    private fun initCountryCodePicker() {
+        mobileImage.setOnClickListener {
+            mobileImage.visibility = View.GONE
+            countryCodeText.visibility = View.VISIBLE
+            countryCodeText.text = showPickerInterface?.showPicker() }
 
+        countryCodeText.setOnClickListener {
+            mobileImage.visibility = View.GONE
+            countryCodeText.visibility = View.VISIBLE
+            countryCodeText.text = showPickerInterface?.showPicker() }
+    }
 
-        mobileNumber?.addTextChangedListener(object : TextWatcher {
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-            }
-
-            override fun afterTextChanged(mobileText: Editable) {
-                if (mobileText.length > 2){
-                    tapPaymentShowHideClearImage?.showHideClearImage(true)
-                }
-                if (mobileText.length == 12) {
-                    mobileNumber?.text = mobileText
-                }
-                println("mobile number value ${mobileText.length}")
-            }
-
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
-        })
+    fun initShowPickerInterface(showPickerInterface: ShowPickerInterface) {
+        this.showPickerInterface = showPickerInterface
     }
 
 
@@ -79,7 +74,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     fun initTheme() {
         mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
         mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
-        mobileNumber.setHintTextColor( Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
+        mobileNumber.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
         mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
         mobileNumber.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
     }
@@ -91,4 +86,8 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         theme.letterSpacing?.let { mobileNumber.letterSpacing = it.toFloat() }
         theme.textSize?.let { mobileNumber.textSize = it.toFloat() }
     }
+
 }
+
+
+
