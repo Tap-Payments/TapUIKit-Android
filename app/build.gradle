@@ -74,11 +74,11 @@ dependencies {
     implementation 'androidx.biometric:biometric:1.0.1'
     implementation "androidx.constraintlayout:constraintlayout:2.0.1"
     implementation 'jp.wasabeef:blurry:4.0.0'
-    implementation "com.hbb20:ccp:2.2.2"
+    implementation "com.hbb20:ccp:2.4.1"
 
     // 1.1.0.116 last stable version number
-    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.0.376'
-    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.0.376'
+    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.0.377'
+    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.0.377'
 //    implementation 'com.github.Tap-Payments:TapFontsKit-Android:1.0.4'
 //    api 'com.github.Tap-Payments:TapThemeManger-Android:0.1.0.2'
 //    implementation 'com.github.Tap-Payments:TapThemeManger-Android:0.1.0.2'
