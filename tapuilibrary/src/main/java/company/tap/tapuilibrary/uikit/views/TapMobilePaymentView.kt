@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -48,9 +49,10 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
 
 
     private fun initCountryCodePicker() {
+        Log.d("defaultCountryCode", countryCodePicker.defaultCountryCode)
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
+        Log.d("defaultCountryCode", countryCodePicker.defaultCountryCode)
         countryCodePicker.ccpDialogShowFlag = false
-
         mobileImage.setOnClickListener {
             mobileImage.visibility = View.GONE
             countryCodePicker.launchCountrySelectionDialog()
