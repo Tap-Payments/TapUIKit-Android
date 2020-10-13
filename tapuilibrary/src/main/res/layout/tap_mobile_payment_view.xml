@@ -24,6 +24,7 @@
         android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true"
+        app:ccp_defaultPhoneCode="965"
         app:ccp_contentColor="@color/gray"
         android:fontFamily="sans-serif-light"
         android:visibility="gone"

@@ -77,6 +77,8 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         mobileNumber.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
         mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
         mobileNumber.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
+        mobileNumber.setBackgroundResource(android.R.color.transparent);
+
     }
 
     override fun setTheme(theme: EditTextTheme) {
