@@ -318,6 +318,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
+        mainSwitch.mainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
         mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
 
     }
