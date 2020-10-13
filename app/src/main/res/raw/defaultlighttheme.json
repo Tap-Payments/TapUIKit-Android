@@ -635,7 +635,7 @@
         }
     },
     "TapSwitchView": {
-        "backgroundColor": "transperant",
+        "backgroundColor": "whiteTwo",
         "CurvedSeparator": {
             "BackgroundColor": "whiteTwo"
         },
