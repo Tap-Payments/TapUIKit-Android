@@ -36,6 +36,7 @@
             "brownGreyFour": "#a6a6a6",
             "graySeparator": "#e0e0e0",
             "black_50": "#80000000",
+            "main_switch_background": "#E0E0E0",
             "switch_background": "#d4cfc9",
             "currency_chip_background": "#4cffffff",
             "currency_chip_selected_shadow": "#90c2f7",
@@ -634,13 +635,14 @@
             }
         }
     },
+
     "TapSwitchView": {
-        "backgroundColor": "whiteTwo",
+        "backgroundColor": "main_switch_background",
         "CurvedSeparator": {
             "BackgroundColor": "whiteTwo"
         },
         "main": {
-            "backgroundColor": "switch_background",
+            "backgroundColor": "whiteTwo",
             "title": {
                 "textFont": "Roboto-Light,12",
                 "textColor": "brownGreySix"
