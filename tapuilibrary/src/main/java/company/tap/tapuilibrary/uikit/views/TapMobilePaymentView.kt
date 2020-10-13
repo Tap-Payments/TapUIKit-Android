@@ -56,7 +56,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         mobileImage.setOnClickListener {
             mobileImage.visibility = View.GONE
             countryCodePicker.launchCountrySelectionDialog()
-            countryCodePicker.visibility = View.VISIBLE
+
         }
 
     }
@@ -87,6 +87,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     }
 
     override fun onCountrySelected() {
+        countryCodePicker.visibility = View.VISIBLE
 //        countryCodeText.text = countryCodePicker!!.selectedCountryCode
 //        countryCode = countryCodePicker!!.selectedCountryCode
 //        countryName = countryCodePicker!!.selectedCountryName
