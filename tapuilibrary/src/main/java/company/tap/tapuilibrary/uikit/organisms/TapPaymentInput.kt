@@ -2,6 +2,8 @@ package company.tap.tapuilibrary.uikit.organisms
 
 import android.content.Context
 import android.graphics.Color
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
@@ -14,6 +16,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.models.TabSection
+import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
 
 /**
@@ -30,6 +33,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
+    private lateinit var tapMobileInputView: TapMobilePaymentView
 
 
     init {
@@ -38,6 +42,29 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         clearView.setOnClickListener {
             rootView.invalidate()
         }
+        tapMobileInputView = TapMobilePaymentView(context, null)
+        tapMobileInputView.mobileNumber
+
+
+
+        tapMobileInputView.mobileNumber?.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                showHideClearImage(true)
+
+            }
+            override fun afterTextChanged(mobileText: Editable) {
+                if (mobileText.length > 2){
+                    clearView?.visibility = View.VISIBLE
+                }else{
+                    clearView?.visibility = View.GONE
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+        })
+
+        tapMobileInputView.setTapPaymentShowHideClearImage(this)
+
     }
 
     fun addTabLayoutSection(vararg sections: TabSection) {

@@ -278,7 +278,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     }
 
     /**
-     * public funtion that select the tab based on the required brand
+     * public function that select the tab based on the required brand
      *
      * @param type the required brand type to be selected
      */

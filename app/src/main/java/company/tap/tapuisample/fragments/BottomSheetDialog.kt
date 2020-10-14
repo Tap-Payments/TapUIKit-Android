@@ -4,13 +4,11 @@ package company.tap.tapuisample.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,19 +20,13 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.annotation.Nullable
-import androidx.core.view.isEmpty
-import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import com.hbb20.CountryCodePicker
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
@@ -76,7 +68,7 @@ All rights reserved.
 open class BottomSheetDialog : TapBottomSheetDialog(),
     TapSelectionTabLayoutInterface,
     OnCardSelectedActionListener,TapActionButtonInterface,
-    WebViewContract, TapPaymentShowHideClearImage{
+    WebViewContract{
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
@@ -356,7 +348,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             cardFragmentadded = true
         }
 
-        tapMobileInputView.setTapPaymentShowHideClearImage(this)
+//        tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
     }
 
@@ -554,7 +546,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onTabSelected(position: Int?) {
         position?.let {
             selectedTab = it
-            AnimationEngine.applyTransition(paymentLayout)
+//            AnimationEngine.applyTransition(paymentLayout)
             paymentLayout.removeAllViews()
             if (position == 0) {
                 paymentLayout.addView(tapCardInputView)
@@ -571,13 +563,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 nfcButton?.visibility = View.GONE
                 mobileNumberEditText?.addTextChangedListener(object : TextWatcher {
                     override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                        showHideClearImage(true)
+//                        showHideClearImage(true)
+//                        tapMobileInputView.
+
                     }
 
                     override fun afterTextChanged(mobileText: Editable) {
                         if (mobileText.length > 2){
                             clearView?.visibility = View.VISIBLE
-                            showHideClearImage(true)
+//                            showHideClearImage(true)
                         }
                         if (mobileText.length == 12) {
                             mobileNumberEditText?.text = mobileText
@@ -999,28 +993,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        }
     }
 
-    override fun showHideClearImage(show: Boolean) {
-        if (show){
-            clearView?.visibility = View.VISIBLE
-        }else{
-            clearView?.visibility = View.VISIBLE
-        }
-    }
-//    private var countryCodePicker:CountryCodePicker?=null
-//    private var countryCode:String?=null
-//    private var countryName:String?=null
-
-//    override fun showPicker(): String {
-//        countryCodePicker?.visibility = View.VISIBLE
-//        return countryName.toString()
+//    override fun showHideClearImage(show: Boolean) {
+//        if (show){
+//            clearView?.visibility = View.VISIBLE
+//        }else{
+//            clearView?.visibility = View.VISIBLE
+//        }
 //    }
-//
-//    override fun onCountrySelected() {
-//        countryCode = countryCodePicker!!.selectedCountryCode
-//        countryName = countryCodePicker!!.selectedCountryName
-//
-//    }
-
 
 }
 
