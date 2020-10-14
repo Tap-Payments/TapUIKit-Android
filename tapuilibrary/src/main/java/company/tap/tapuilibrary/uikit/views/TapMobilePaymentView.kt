@@ -43,6 +43,22 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     init {
         inflate(context, R.layout.tap_mobile_payment_view, this)
         mobileNumber.requestFocus()
+        mobileNumber.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                tapPaymentShowHideClearImage?.showHideClearImage(true)
+            }
+            override fun afterTextChanged(mobileText: Editable) {
+                if (mobileText.length > 2){
+                    tapPaymentShowHideClearImage?.showHideClearImage(true)
+                }else{
+                    tapPaymentShowHideClearImage?.showHideClearImage(false)
+                }
+
+            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+        })
+
         initTheme()
         initCountryCodePicker()
     }

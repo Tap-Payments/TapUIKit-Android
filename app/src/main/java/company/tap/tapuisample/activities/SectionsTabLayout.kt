@@ -54,7 +54,6 @@ class SectionsTabLayout : AppCompatActivity(),
         tabLayout.addSection(getCardList())
         tabLayout.addSection(getMobileList())
         setupBrandDetection()
-        paymentInput.clearView.visibility = View.VISIBLE
 
 
         paymentInput.addTabLayoutSection(
@@ -177,7 +176,13 @@ class SectionsTabLayout : AppCompatActivity(),
     }
 
     override fun showHideClearImage(show: Boolean) {
+        if (show){
+            paymentInput.clearView.visibility = View.VISIBLE
 
+        }else{
+            paymentInput.clearView.visibility = View.GONE
+
+        }
     }
 
 }

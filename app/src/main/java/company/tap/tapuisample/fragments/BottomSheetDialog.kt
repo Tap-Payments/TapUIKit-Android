@@ -966,7 +966,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     override fun onStateChanged(state: ActionButtonState) {
-        TODO("Not yet implemented")
+
     }
 
     override fun onClickActionButton() {

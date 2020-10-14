@@ -33,7 +33,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
-    private lateinit var tapMobileInputView: TapMobilePaymentView
+    private  var tapMobileInputView: TapMobilePaymentView
 
 
     init {
@@ -42,10 +42,8 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         clearView.setOnClickListener {
             rootView.invalidate()
         }
+
         tapMobileInputView = TapMobilePaymentView(context, null)
-        tapMobileInputView.mobileNumber
-
-
 
         tapMobileInputView.mobileNumber?.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
