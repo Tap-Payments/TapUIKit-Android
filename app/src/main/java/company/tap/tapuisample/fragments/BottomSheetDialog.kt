@@ -67,7 +67,7 @@ All rights reserved.
  **/
 open class BottomSheetDialog : TapBottomSheetDialog(),
     TapSelectionTabLayoutInterface,
-    OnCardSelectedActionListener,TapActionButtonInterface,
+    OnCardSelectedActionListener,TapActionButtonInterface,TapPaymentShowHideClearImage,
     WebViewContract{
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
@@ -348,7 +348,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             cardFragmentadded = true
         }
 
-//        tapMobileInputView.setTapPaymentShowHideClearImage(this)
+        tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
     }
 
@@ -993,13 +993,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        }
     }
 
-//    override fun showHideClearImage(show: Boolean) {
-//        if (show){
-//            clearView?.visibility = View.VISIBLE
-//        }else{
-//            clearView?.visibility = View.VISIBLE
-//        }
-//    }
+    override fun showHideClearImage(show: Boolean) {
+        if (show){
+            clearView?.visibility = View.VISIBLE
+        }else{
+            clearView?.visibility = View.VISIBLE
+        }
+    }
 
 }
 
