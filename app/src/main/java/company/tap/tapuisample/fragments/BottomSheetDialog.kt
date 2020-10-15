@@ -73,6 +73,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
 
+    /**
+     * tomorrow
+     * 1- setting dark values in dark theme
+     * 2- fix font arabic
+     */
+
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
     private lateinit var itemCount: TapButton
@@ -768,7 +774,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             } else {
                 payButton.stateListAnimator = null
                 payButton.setButtonDataSource(
-                    true,
+                    false,
                     company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                     "Pay",
                     Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
@@ -831,6 +837,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     override fun onCardSelectedAction(isSelected: Boolean) {
         if (isSelected) {
+            payButton.isActivated = true
             payButton.setButtonDataSource(
                 true,
                 company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
@@ -838,9 +845,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
 
-            payButton.isActivated = true
+        } else {
 
-        } else
+            payButton.isActivated = false
             payButton.setButtonDataSource(
                 false,
                 company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
@@ -848,6 +855,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
             )
+        }
     }
 
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {

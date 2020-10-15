@@ -41,7 +41,8 @@
             "currency_chip_background": "#4cffffff",
             "currency_chip_selected_shadow": "#90c2f7",
             "currency_chip_unselected_shadow": "#eeeeef",
-            "transperant": "#c7f9f9f9"
+            "transperant": "#c7f9f9f9",
+            "invalid_action": "#b9b9b9"
         }
     },
     "inlineCard": {
@@ -283,7 +284,7 @@
             "color" : "brownGrey",
             "width" : 1
         },
-        "itemsNumberButtonCorner" : 30,
+        "itemsNumberButtonCorner" : 25,
         "backgroundColor" : "white"
     },
     "horizontalList": {
@@ -587,7 +588,7 @@
             }
         },
         "Invalid" : {
-            "goLoginBackgroundColor" : "#b9b9b9",
+            "goLoginBackgroundColor" : "invalid_action",
             "backgroundColor" : "veryLightPinkThree",
             "titleLabelColor" : "white"
         },
