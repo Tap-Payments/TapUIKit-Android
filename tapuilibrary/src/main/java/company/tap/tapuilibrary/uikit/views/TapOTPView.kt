@@ -19,7 +19,7 @@ import androidx.core.view.ViewCompat
 import company.tap.tapuilibrary.R
 
 /**
- * Created by AhlaamK on 7/12/20.
+ * Created  on 7/12/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.

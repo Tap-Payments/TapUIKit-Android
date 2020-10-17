@@ -92,7 +92,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="otpFragment"
-        android:visibility="gone"
+        android:visibility="visible"
         android:text="OTP Fragment" />
 
     <Button

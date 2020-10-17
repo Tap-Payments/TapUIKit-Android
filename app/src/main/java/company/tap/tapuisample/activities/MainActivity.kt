@@ -137,10 +137,10 @@ class MainActivity : BaseActivity(),
 
     fun openNFCView(view: View) {
         modalNFCBottomSheet.arguments = getArguments()
-        modalNFCBottomSheet.show(
-            supportFragmentManager,
-            BottomSheetDialog.TAG
-        )
+//        modalNFCBottomSheet.show(
+//            supportFragmentManager,
+//            BottomSheetDialog.TAG
+//        )
 
 
     }

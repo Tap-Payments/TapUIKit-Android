@@ -108,6 +108,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             holder.itemView.outlineSpotShadowColor =
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
 
+
         } else{
             setBorderedView(
                 holder.itemView,

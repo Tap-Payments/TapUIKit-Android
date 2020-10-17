@@ -1,8 +1,6 @@
 package company.tap.tapuisample.fragments
 
-import android.graphics.Color
 import android.os.Bundle
-import android.provider.CalendarContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +8,6 @@ import android.widget.Toast
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
@@ -138,7 +135,11 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
 
         //Todo open otp view here
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
-        Toast.makeText(context,"OTP view to slide up",Toast.LENGTH_SHORT).show()    }
+        Toast.makeText(context,"OTP view to slide up",Toast.LENGTH_SHORT).show()
+
+        activity?.supportFragmentManager?.let { OTPFragment().show(it,null) }
+
+    }
 
 
 }
