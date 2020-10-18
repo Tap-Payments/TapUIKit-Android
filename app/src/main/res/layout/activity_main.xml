@@ -84,7 +84,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="openFragment"
-        android:text="Show Fragment" />
+        android:text="Go Pay" />
 
     <Button
         android:layout_width="wrap_content"
@@ -92,6 +92,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="otpFragment"
+        android:visibility="visible"
         android:text="OTP Fragment" />
 
     <Button

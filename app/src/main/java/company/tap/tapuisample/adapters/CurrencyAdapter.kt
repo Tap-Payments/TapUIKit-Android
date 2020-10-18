@@ -108,6 +108,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             holder.itemView.outlineSpotShadowColor =
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
 
+
         } else{
             setBorderedView(
                 holder.itemView,
@@ -126,11 +127,15 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
 //            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
         holder.itemView.setOnClickListener {
             company.tap.tapuilibrary.uikit.adapters.selectedPosition = position
+
+
             Toast.makeText(
                 context,
                 "You click ${holder.itemView.textView_currency.text}",
                 Toast.LENGTH_SHORT
             ).show()
+
+
             notifyDataSetChanged()
         }
 

@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary.uikit.views
+package company.tap.tapuisample
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -14,6 +15,7 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -26,6 +28,9 @@ import company.tap.tapuilibrary.uikit.enums.ActionButtonState.ERROR
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState.SUCCESS
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
+import company.tap.tapuilibrary.uikit.views.TapLoadingView
+
+
 /**
  *
  * Created on 6/24/20
@@ -90,11 +95,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null, backgroundColor: Int, textColor:Int? = null) {
         if (isValid)
         {
-            isActivated = true
             initValidBackground(backgroundColor)
             initActionButtonDataSource(backgroundColor, textColor,buttonText)
         } else{
-            isActivated = false
             initInvalidBackground(backgroundColor)
             initActionButtonDataSource(backgroundColor, textColor, buttonText)
         }

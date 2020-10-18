@@ -28,6 +28,8 @@ import kotlinx.android.synthetic.main.item_frame_currency.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+
+///  set on currency item click action and send request to api to get items list with converted amount and make interface to notify amount section with new converted currency amount
 open class CurrencyViewFragment : Fragment() {
     private lateinit var chipRecycler: RecyclerView
     lateinit var currencyList: ArrayList<CurrencyModel>

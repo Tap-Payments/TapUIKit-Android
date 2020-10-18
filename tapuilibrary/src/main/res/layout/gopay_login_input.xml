@@ -27,6 +27,27 @@
             android:layout_marginStart="25dp"
             android:src="@drawable/ic_mail" />
 
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/countryCodePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_marginStart="5dp"
+            app:ccp_defaultPhoneCode="965"
+            app:ccp_contentColor="@color/gray"
+            android:fontFamily="sans-serif-light"
+            android:visibility="gone"
+            app:ccpDialog_showCloseIcon="true"
+            app:ccpDialog_showNameCode="false"
+            app:ccp_customMasterCountries="KW,QA,BH,SA,UAE"
+            app:ccpDialog_textColor="@color/gray"
+            app:ccp_hintExampleNumber="true"
+            app:ccp_showFlag="false"
+            app:ccp_showNameCode="false"/>
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout"
             android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
@@ -12,6 +13,7 @@ import company.tap.tapcardvalidator_android.CardValidationState
 import company.tap.tapcardvalidator_android.CardValidator
 import company.tap.tapuilibrary.uikit.animation.AnimationEngine
 import company.tap.tapuilibrary.uikit.enums.TabSectionType
+import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.TabSection
@@ -26,10 +28,12 @@ import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
  *
  * **/
 class SectionsTabLayout : AppCompatActivity(),
-    TapSelectionTabLayoutInterface {
+    TapSelectionTabLayoutInterface , TapPaymentShowHideClearImage {
 
     lateinit var tabLayout: TapSelectionTabLayout
     lateinit var paymentInput: TapPaymentInput
+
+    private var mobileNumberEditText: EditText? = null
 
     private var selectedTab = 0
     private lateinit var tapCardInputView: InlineCardInput
@@ -43,13 +47,14 @@ class SectionsTabLayout : AppCompatActivity(),
         paymentInput = findViewById(R.id.tap_payment_input)
         tabLayout = findViewById(R.id.sections_tablayout)
         tabLayout.setTabLayoutInterface(this)
-        tapMobileInputView =
-            TapMobilePaymentView(this, null)
+        tapMobileInputView = TapMobilePaymentView(this, null)
+        tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tapCardInputView = InlineCardInput(this)
         tapCardInputView.holderNameEnabled = false
         tabLayout.addSection(getCardList())
         tabLayout.addSection(getMobileList())
         setupBrandDetection()
+
 
         paymentInput.addTabLayoutSection(
             TabSection(
@@ -141,16 +146,16 @@ class SectionsTabLayout : AppCompatActivity(),
 
     fun resetSelection(view: View) {
         tabLayout.resetBehaviour()
+
     }
 
     override fun onTabSelected(position: Int?) {
         position?.let {
             selectedTab = it
-            AnimationEngine.applyTransition(payment_input_layout)
+//            AnimationEngine.applyTransition(payment_input_layout)
             payment_input_layout.removeAllViews()
             if (position == 0)
                 payment_input_layout.addView(tapCardInputView)
-
             else
                 payment_input_layout.addView(tapMobileInputView)
         }
@@ -168,6 +173,16 @@ class SectionsTabLayout : AppCompatActivity(),
         }
         alert = builder.create()
         alert.show()
+    }
+
+    override fun showHideClearImage(show: Boolean) {
+        if (show){
+            paymentInput.clearView.visibility = View.VISIBLE
+
+        }else{
+            paymentInput.clearView.visibility = View.GONE
+
+        }
     }
 
 }

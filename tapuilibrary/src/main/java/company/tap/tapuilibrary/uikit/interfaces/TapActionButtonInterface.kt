@@ -10,4 +10,5 @@ import company.tap.tapuilibrary.uikit.enums.ActionButtonState
  */
 interface TapActionButtonInterface {
     fun onStateChanged(state: ActionButtonState)
+    fun onClickActionButton()
 }

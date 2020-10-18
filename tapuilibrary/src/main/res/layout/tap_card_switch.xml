@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CustomCardViewStyle"
+    android:elevation="8dp"
     android:id="@+id/tapCardSwitchLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,7 +18,7 @@
         android:id="@+id/saveSwitchChip"
         android:orientation="vertical"
         app:cardCornerRadius="10dp"
-        android:visibility="visible"
+        android:visibility="gone"
         tools:cardBackgroundColor="@color/chip_background">
 
         <LinearLayout
@@ -130,4 +131,12 @@ save your mobile number." />
             android:textStyle="normal"
             tools:text="Please check your email or SMS’s in order to complete the goPay Checkout signup process." />
     </LinearLayout>
+
+
+    <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="20dp" />
+
 </LinearLayout>

@@ -2,10 +2,12 @@ package company.tap.tapuilibrary.uikit.adapters
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import company.tap.tapuilibrary.R
@@ -24,6 +26,7 @@ import kotlinx.android.synthetic.main.item_currency_row.view.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+
 
 var selectedPosition = -1
 var context: Context? = null
@@ -75,7 +78,7 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
 
             setBorderedView(tapCard_Chip,
                 (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-                3.0f,
+                0.0f,
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor"))
@@ -84,9 +87,12 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.bindPhoto(arraylistcurency[position])
         if (selectedPosition == position) {
+        holder.bindPhoto(photos[position])
+        if (company.tap.tapuilibrary.uikit.adapters.selectedPosition == position) {
             /**
              * Method to draw bordered view
              * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
@@ -96,11 +102,14 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
             setBorderedView(
                 holder.itemView,
                 (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
-                7.0f,
+                0.0f,
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color")),
-                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
-                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor"))
+                Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.white")),
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
             )
+            holder.itemView.outlineSpotShadowColor =
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
+
         } else{
             setBorderedView(
                 holder.itemView,
@@ -109,17 +118,25 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
+
             )
+            holder.itemView.outlineSpotShadowColor =
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
+
         }
 
 //            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
         holder.itemView.setOnClickListener {
-            selectedPosition = position
+            company.tap.tapuilibrary.uikit.adapters.selectedPosition = position
+
+
             Toast.makeText(
                 context,
                 "You click ${holder.itemView.textView_currency.text}",
                 Toast.LENGTH_SHORT
             ).show()
+
+
             notifyDataSetChanged()
         }
 

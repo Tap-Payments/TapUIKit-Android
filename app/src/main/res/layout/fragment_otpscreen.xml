@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:blurkit="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/otp_blur"
+    android:layout_gravity="bottom"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/otp_linearlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
         android:orientation="vertical">
 
         <company.tap.tapuilibrary.uikit.views.TapOTPView
@@ -23,6 +25,7 @@
             android:layout_marginStart="19dp"
             android:layout_marginEnd="19dp"
             android:cursorVisible="true"
+            android:layout_gravity="center"
             android:inputType="number"
             android:textColor="#4b4847"
             app:itemCount="6"
@@ -77,8 +80,8 @@
 
         </LinearLayout>
 
-        <company.tap.tapuilibrary.uikit.atoms.TapButton
-            android:id="@+id/action_button"
+        <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+            android:id="@+id/otpViewActionButton"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_margin="20dp"
@@ -90,7 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-</RelativeLayout>
+</LinearLayout>
 
 
     <!-- android:background="#1A000000"-->

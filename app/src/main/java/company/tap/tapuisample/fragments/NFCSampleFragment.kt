@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.nfcreader.open.reader.TapEmvCard
@@ -35,7 +36,7 @@ import io.reactivex.disposables.Disposables
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class NFCSampleFragment : TapBottomSheetDialog() {
+class NFCSampleFragment : Fragment() {
     private lateinit var customNFC: TapNFCView
     private lateinit var scanNFC: TapTextView
     private lateinit var aboutNFC: TapTextView
@@ -48,7 +49,7 @@ class NFCSampleFragment : TapBottomSheetDialog() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_nfc_example, container, false)
-        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+//        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         initView(view)
         return view.rootView
