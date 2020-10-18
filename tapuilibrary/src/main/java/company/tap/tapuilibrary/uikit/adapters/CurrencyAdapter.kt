@@ -91,8 +91,8 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.bindPhoto(arraylistcurency[position])
         if (selectedPosition == position) {
-        holder.bindPhoto(photos[position])
-        if (company.tap.tapuilibrary.uikit.adapters.selectedPosition == position) {
+       // holder.bindPhoto(photos[position])
+        //if (company.tap.tapuilibrary.uikit.adapters.selectedPosition == position) {
             /**
              * Method to draw bordered view
              * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
