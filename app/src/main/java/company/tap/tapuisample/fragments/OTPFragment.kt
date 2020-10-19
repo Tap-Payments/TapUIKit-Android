@@ -100,7 +100,6 @@ class OTPFragment: TapBottomSheetDialog() {
         otpMobile = view.findViewById(R.id.mobile_textview)
         otpMobile.text= "+965 6••••111"
         timerText = view.findViewById(R.id.timer_textview)
-
     }
 
 

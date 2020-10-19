@@ -27,6 +27,8 @@ import androidx.transition.Transition
 import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+//import com.warrag.otpreader.OTPBroadcastReceiver
+//import com.warrag.otpreader.OTPManager
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
@@ -1084,17 +1086,33 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         goPayPasswordInput?.visibility = View.GONE
         goPayLoginInput?.visibility = View.GONE
 
-        otpView.visibility = View.VISIBLE
         initOTPView()
     }
 
     fun initOTPView(){
-        otpViewActionButton.setButtonDataSource(
-            false, context?.let { LocalizationManager.getLocale(it).language },
-            "Confirm",
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-        )
+
+
+        OTPManager.OTPManagerBuilder(activity).setListener(object : OTPBroadcastReceiver.OTPReceiverListener {
+
+            override fun onOTPReceived(message: String) {
+
+            }
+
+            override fun onOTPTimeout() {
+
+            }
+        }).build().start()
+
+
+//        otpView.visibility = View.VISIBLE
+
+
+//        otpViewActionButton.setButtonDataSource(
+//            false, context?.let { LocalizationManager.getLocale(it).language },
+//            "Confirm",
+//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+//        )
     }
 
 }
