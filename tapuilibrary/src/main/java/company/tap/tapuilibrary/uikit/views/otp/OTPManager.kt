@@ -40,7 +40,7 @@ class OTPManager(builder: OTPManagerBuilder) {
 
         // Listen for success/failure of the start Task. If in a background thread, this
         // can be made blocking using Tasks.await(task, [timeout]);
-        task.addOnSuccessListener { TODO("Not yet implemented") }
+        task.addOnSuccessListener { }
         task.addOnFailureListener { e -> // Failed to start retriever, inspect Exception for more details
             // ...
             e.printStackTrace()
