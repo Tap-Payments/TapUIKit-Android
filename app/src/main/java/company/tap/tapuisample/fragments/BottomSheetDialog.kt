@@ -52,6 +52,8 @@ import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuilibrary.uikit.views.mainswitch.MainSwitch
+import company.tap.tapuilibrary.uikit.views.otp.OTPBroadcastReceiver
+import company.tap.tapuilibrary.uikit.views.otp.OTPManager
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
@@ -1092,9 +1094,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     fun initOTPView(){
 
 
-        OTPManager.OTPManagerBuilder(activity).setListener(object : OTPBroadcastReceiver.OTPReceiverListener {
+        OTPManager.OTPManagerBuilder(requireActivity()).setListener(object : OTPBroadcastReceiver.OTPReceiverListener {
 
-            override fun onOTPReceived(message: String) {
+            override fun onOTPReceived(message: String?) {
 
             }
 
