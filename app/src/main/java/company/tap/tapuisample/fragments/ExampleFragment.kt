@@ -122,7 +122,8 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
     override fun onChangeClicked() {
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
         goPayLoginInput?.visibility = View.VISIBLE
-        goPayPasswordInput?.visibility = View.GONE    }
+        goPayPasswordInput?.visibility = View.GONE
+    }
 
     override fun onEmailValidated() {
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
