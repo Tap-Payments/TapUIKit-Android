@@ -71,9 +71,9 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 open class BottomSheetDialog : TapBottomSheetDialog(),
-    TapSelectionTabLayoutInterface,GoPayLoginInterface,
-    OnCardSelectedActionListener,TapActionButtonInterface,TapPaymentShowHideClearImage,
-    WebViewContract{
+    TapSelectionTabLayoutInterface, GoPayLoginInterface,OpenOTPInterface,
+    OnCardSelectedActionListener, TapActionButtonInterface, TapPaymentShowHideClearImage,
+    WebViewContract {
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
@@ -141,15 +141,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var delImageView3: ImageView? = null
     private var tapChipgrp: TapChip? = null
     private var goPayPasswordInput: GoPayPasswordInput? = null
-    private  var goPayLoginInput: GoPayLoginInput? = null
-
-
+    private var goPayLoginInput: GoPayLoginInput? = null
 
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?): View? {
+        savedInstanceState: Bundle?
+    ): View? {
         val view: View = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
         bottomSheetDialog.behavior.state = STATE_EXPANDED
 
@@ -159,7 +158,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
 
-    fun initGoPay(view: View){
+    fun initGoPay(view: View) {
         goPayLoginInput = view.findViewById(R.id.goPayLoginInput)
         goPayPasswordInput = view.findViewById(R.id.goPayPassword)
 //        backgroundColor = Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo"))
@@ -169,6 +168,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        goPayPasswordInput?.rootView?.setBackgroundColor(Color.parseColor("#c7f9f9f9"))
 
     }
+
     override fun onAttach(context: Context) {
         super.onAttach(context)
         try {
@@ -219,7 +219,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     topSeparator.visibility = View.VISIBLE
                     separator.visibility = View.VISIBLE
                     businessIcon.visibility = View.VISIBLE
-
 
 
 //                    Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
@@ -497,14 +496,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
 
-
-
-
-    fun setItemCountActions(){
-        if (itemCount.text.contains("close")){
+    fun setItemCountActions() {
+        if (itemCount.text.contains("close")) {
 
         }
     }
+
     @SuppressLint("SetTextI18n")
     private fun amountViewInit(view: View) {
         amountSectionView = view.findViewById(R.id.amount_section)
@@ -515,7 +512,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         if (isFragmentAdded) {
             currentCurrency.visibility = View.VISIBLE
-        }else{
+        } else {
             currentCurrency.visibility = View.GONE
         }
 //        val itemListDummy: ArrayList<Int> =
@@ -633,14 +630,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 cardScannerBtn?.visibility = View.GONE
                 nfcButton?.visibility = View.GONE
                 mobileNumberEditText?.addTextChangedListener(object : TextWatcher {
-                    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                    override fun onTextChanged(
+                        s: CharSequence,
+                        start: Int,
+                        before: Int,
+                        count: Int
+                    ) {
 //                        showHideClearImage(true)
 //                        tapMobileInputView.
 
                     }
 
                     override fun afterTextChanged(mobileText: Editable) {
-                        if (mobileText.length > 2){
+                        if (mobileText.length > 2) {
                             clearView?.visibility = View.VISIBLE
 //                            showHideClearImage(true)
                         }
@@ -650,7 +652,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         println("mobile number value ${mobileText.length}")
                     }
 
-                    override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+                    override fun beforeTextChanged(
+                        s: CharSequence,
+                        start: Int,
+                        count: Int,
+                        after: Int
+                    ) {
                     }
                 })
             }
@@ -908,7 +915,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
                 "Pay",
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+            )
 
         } else {
 
@@ -1063,9 +1071,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     override fun showHideClearImage(show: Boolean) {
-        if (show){
+        if (show) {
             clearView?.visibility = View.VISIBLE
-        }else{
+        } else {
             clearView?.visibility = View.VISIBLE
         }
     }
@@ -1080,7 +1088,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
         goPayLoginInput?.visibility = View.GONE
         goPayPasswordInput?.visibility = View.VISIBLE
-        goPayPasswordInput?.setLoginInterface(this,goPayLoginInput?.textInput?.text.toString())
+        goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
     }
 
     override fun onPhoneValidated() {
@@ -1092,33 +1100,47 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         initOTPView()
     }
 
-    fun initOTPView(){
-        Toast.makeText(context,"OTP view to slide up",Toast.LENGTH_SHORT).show()
+    fun initOTPView() {
+        Toast.makeText(context, "OTP view to slide up", Toast.LENGTH_SHORT).show()
 
         otpView.visibility = View.VISIBLE
         startCountdown()
 
-        otpView?.otp_sent?.text = LocalizationManager.getValue("Message","TapOtpView","Ready")
+        otpView?.otp_sent?.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
 
         initOTPConfirmationButton()
 
     }
 
-    fun initOTPConfirmationButton(){
-        if (otpView.otp_view_input.text?.length != otp_view_input.itemCount){
-            otpViewActionButton.setButtonDataSource(
-                false, context?.let { LocalizationManager.getLocale(it).language },
-                "Confirm",
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-            )
-        }
-        otpViewActionButton.setButtonDataSource(
-            true, context?.let { LocalizationManager.getLocale(it).language },
-            "Confirm",
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-        )
+    fun initOTPConfirmationButton() {
+
+        otpView.otp_view_input.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+
+            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+
+                if (charSequence.length != otp_view_input.itemCount) {
+                    otpViewActionButton.setButtonDataSource(
+                        false, context?.let { LocalizationManager.getLocale(it).language },
+                        "Confirm",
+                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+                    )
+                } else {
+                    otpViewActionButton.setButtonDataSource(
+                        true, context?.let { LocalizationManager.getLocale(it).language },
+                        "Confirm",
+                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+                    )
+                }
+            }
+
+            override fun afterTextChanged(editable: Editable) {
+
+            }
+        })
+
     }
 
     private fun startCountdown() {
@@ -1126,16 +1148,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             override fun onTick(millisUntilFinished: Long) {
                 val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
-                otpView?.timer_textview?.text=("$minutes:$second")
+                otpView?.timer_textview?.text = ("$minutes:$second")
             }
 
             override fun onFinish() {
-                otpView?.timer_textview?.text=("00:00")
+                otpView?.timer_textview?.text = ("00:00")
             }
         }.start()
 
     }
 
+    override fun getPhoneNumber(phoneNumber: String) {
+        otpView?.mobile_textview?.text = phoneNumber
+    }
 
 
 }

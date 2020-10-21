@@ -26,6 +26,7 @@ import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod.EMAIL
 import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod.PHONE
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
+import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.utils.FakeThemeManager
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
@@ -51,6 +52,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
+    private var openOTPInterface: OpenOTPInterface? = null
     private var inputType = EMAIL
 
     init {
@@ -81,6 +83,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     fun setLoginInterface(loginInterface: GoPayLoginInterface) {
         this.loginInterface = loginInterface
+    }
+
+    fun setOpenOTPInterface(openOTPInterface: OpenOTPInterface) {
+        this.openOTPInterface = openOTPInterface
     }
 
     private fun initButton() {
@@ -142,6 +148,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun isValidPhone(phone: String): Boolean {
+        openOTPInterface?.getPhoneNumber(phone)
         return phone.length > 7
     }
 

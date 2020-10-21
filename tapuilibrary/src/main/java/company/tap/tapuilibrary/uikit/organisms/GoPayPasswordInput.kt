@@ -67,7 +67,6 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun initButton() {
-
         changeButtonStatus(false)
         signInButton.setOnClickListener {
             textInputLayout.error = "Incorrect Password"
