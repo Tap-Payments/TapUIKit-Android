@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.text.InputType
 import android.util.AttributeSet
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.ImageView
@@ -54,6 +55,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private var loginInterface: GoPayLoginInterface? = null
     private var openOTPInterface: OpenOTPInterface? = null
     private var inputType = EMAIL
+    private var countryCode = ""
 
     init {
         inflate(context, R.layout.gopay_login_input, this)
@@ -67,9 +69,11 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initCountryCodePicker() {
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
+        countryCode = countryCodePicker.defaultCountryCode
         countryCodePicker.ccpDialogShowFlag = false
         loginMethodImage.visibility = View.GONE
         countryCodePicker.launchCountrySelectionDialog()
+        countryCode = countryCodePicker.selectedCountryCode
         countryCodePicker.visibility = View.VISIBLE
     }
 
@@ -148,7 +152,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun isValidPhone(phone: String): Boolean {
-        openOTPInterface?.getPhoneNumber(phone, countryCodePicker.selectedCountryCode)
+        Log.d("countryCodePicker", countryCodePicker.selectedCountryCode)
+        openOTPInterface?.getPhoneNumber(phone, countryCode)
         return phone.length > 7
     }
 
@@ -272,7 +277,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     override fun onCountrySelected() {
-
+        countryCode = countryCodePicker.selectedCountryCode
     }
 
 
