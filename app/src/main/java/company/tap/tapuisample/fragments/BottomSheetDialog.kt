@@ -1,8 +1,6 @@
 package company.tap.tapuisample.fragments
 
 
-//import com.warrag.otpreader.OTPBroadcastReceiver
-//import com.warrag.otpreader.OTPManager
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
@@ -1168,8 +1166,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     }
 
-    override fun getPhoneNumber(phoneNumber: String) {
-        otpView?.mobileNumberText?.text = phoneNumber
+
+    @SuppressLint("SetTextI18n")
+    override fun getPhoneNumber(phoneNumber: String, countryCode: String) {
+        otpView?.mobileNumberText?.text = countryCode +  phoneNumber
     }
 
     override fun onChangePhoneClicked() {
