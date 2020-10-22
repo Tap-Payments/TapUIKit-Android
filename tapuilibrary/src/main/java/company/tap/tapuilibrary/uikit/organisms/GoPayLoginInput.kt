@@ -55,7 +55,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private var loginInterface: GoPayLoginInterface? = null
     private var openOTPInterface: OpenOTPInterface? = null
     private var inputType = EMAIL
-    private var countryCode = ""
+    private var countryCode :String ? = null
 
     init {
         inflate(context, R.layout.gopay_login_input, this)
@@ -153,7 +153,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun isValidPhone(phone: String): Boolean {
         Log.d("countryCodePicker", countryCodePicker.selectedCountryCode)
-        openOTPInterface?.getPhoneNumber(phone, countryCode)
+        countryCode?.let { openOTPInterface?.getPhoneNumber(phone, it) }
         return phone.length > 7
     }
 
