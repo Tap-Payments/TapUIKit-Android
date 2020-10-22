@@ -11,11 +11,8 @@ import android.widget.LinearLayout
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
-import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
-import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuilibrary.uikit.views.TapOTPView
 
@@ -95,7 +92,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     private fun initChange() {
         changePhone.setOnClickListener {
-            openOTPInterface?.onChangeClicked()
+            openOTPInterface?.onChangePhoneClicked()
         }
     }
 
@@ -123,13 +120,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
         mobileNumberText.text= phoneNumber
     }
 
-    override fun onChangeClicked() {
-    }
+    override fun onChangePhoneClicked() {
 
-//    override fun onChangeClicked() {
-//        otpMainView.visibility = View.GONE
-////        goPayLoginInput?.visibility = View.VISIBLE
-//    }
+        otpMainView.visibility = View.GONE
+    }
 
     fun initOTPConfirmationButton() {
         otpViewActionButton.setButtonDataSource(

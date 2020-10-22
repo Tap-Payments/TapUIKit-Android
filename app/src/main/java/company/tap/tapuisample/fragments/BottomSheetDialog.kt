@@ -1171,6 +1171,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        otpView?.mobile_textview?.text = phoneNumber
     }
 
+    override fun onChangePhoneClicked() {
+        goPayLoginInput?.visibility = View.VISIBLE
+//        goPayPasswordInput?.visibility = View.GONE
+        otpView?.visibility = View.GONE
+    }
+
 
 }
 
