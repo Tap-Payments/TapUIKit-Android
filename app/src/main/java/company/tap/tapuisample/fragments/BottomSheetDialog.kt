@@ -1099,6 +1099,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        activity?.supportFragmentManager?.let { OTPFragment().show(it,null) }
         goPayPasswordInput?.visibility = View.GONE
         goPayLoginInput?.visibility = View.GONE
+        otpView?.visibility = View.VISIBLE
 
 //        initOTPView()
     }

@@ -85,6 +85,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         inflate(context, R.layout.otp_view, this)
         startCountdown()
         prepareTextViews()
+        initOTPConfirmationButton()
 //        goPayLoginInput = GoPayLoginInput(context, attrs)
 //        goPayLoginInput?.setOpenOTPInterface(this)
         initChange()
