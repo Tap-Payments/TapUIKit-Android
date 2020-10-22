@@ -38,7 +38,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
     val timerText by lazy { findViewById<TapTextView>(R.id.timerText) }
     val changePhone by lazy { findViewById<TapTextView>(R.id.changePhone) }
     val otpViewActionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.otpViewActionButton) }
-    private var goPayLoginInput: GoPayLoginInput? = null
+//    private var goPayLoginInput: GoPayLoginInput? = null
     private var openOTPInterface: OpenOTPInterface? = null
 
 
@@ -85,8 +85,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
         inflate(context, R.layout.otp_view, this)
         startCountdown()
         prepareTextViews()
-        goPayLoginInput = GoPayLoginInput(context, attrs)
-        goPayLoginInput?.setOpenOTPInterface(this)
+//        goPayLoginInput = GoPayLoginInput(context, attrs)
+//        goPayLoginInput?.setOpenOTPInterface(this)
         initChange()
 //        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
 
@@ -123,9 +123,12 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
     override fun onChangeClicked() {
-        otpMainView.visibility = View.GONE
-        goPayLoginInput?.visibility = View.VISIBLE
     }
+
+//    override fun onChangeClicked() {
+//        otpMainView.visibility = View.GONE
+////        goPayLoginInput?.visibility = View.VISIBLE
+//    }
 
     fun initOTPConfirmationButton() {
         otpViewActionButton.setButtonDataSource(

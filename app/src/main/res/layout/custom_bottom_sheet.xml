@@ -200,11 +200,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <company.tap.tapuilibrary.uikit.views.otp.OTPView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/otpView"/>
 
-        <include
-            android:id="@+id/otpView"
-            android:visibility="gone"
-            layout="@layout/fragment_otpscreen"/>
+<!--        <include-->
+<!--            android:id="@+id/otpView"-->
+<!--            android:visibility="gone"-->
+<!--            layout="@layout/fragment_otpscreen"/>-->
 
 
 
