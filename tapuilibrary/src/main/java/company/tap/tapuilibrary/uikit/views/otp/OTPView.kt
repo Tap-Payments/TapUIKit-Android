@@ -35,16 +35,14 @@ class OTPView : LinearLayout, OpenOTPInterface {
     val timerText by lazy { findViewById<TapTextView>(R.id.timerText) }
     val changePhone by lazy { findViewById<TapTextView>(R.id.changePhone) }
     val otpViewActionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.otpViewActionButton) }
-//    private var goPayLoginInput: GoPayLoginInput? = null
+
+    //    private var goPayLoginInput: GoPayLoginInput? = null
     private var openOTPInterface: OpenOTPInterface? = null
 
 
-
-
-
-    fun setLoginInterface(openOTPInterface: OpenOTPInterface, phoneNumber: String) {
+    fun setOTPInterface(openOTPInterface: OpenOTPInterface) {
         this.openOTPInterface = openOTPInterface
-        mobileNumberText.text = phoneNumber
+//        mobileNumberText.text = phoneNumber
     }
 
     /**
@@ -97,31 +95,30 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
 
-
     private fun startCountdown() {
         object : CountDownTimer(60 * 1000, 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
-                timerText.text=("$minutes:$second")
+                timerText.text = ("$minutes:$second")
             }
+
             override fun onFinish() {
-                timerText.text=("00:00")
+                timerText.text = ("00:00")
             }
         }.start()
 
     }
 
     private fun prepareTextViews() {
-        otpSentText.text = LocalizationManager.getValue("Message","TapOtpView","Ready")
+        otpSentText.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
     }
 
     override fun getPhoneNumber(phoneNumber: String) {
-        mobileNumberText.text= phoneNumber
+        mobileNumberText.text = phoneNumber
     }
 
     override fun onChangePhoneClicked() {
-
         otpMainView.visibility = View.GONE
     }
 

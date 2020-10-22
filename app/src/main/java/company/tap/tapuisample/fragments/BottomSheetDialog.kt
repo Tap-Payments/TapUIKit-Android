@@ -153,6 +153,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         bottomSheetDialog.behavior.state = STATE_EXPANDED
 
         otpView = view.findViewById(R.id.otpView)
+//        otpView.setOTPInterface()
 
         initGoPay(view)
         return view.rootView
