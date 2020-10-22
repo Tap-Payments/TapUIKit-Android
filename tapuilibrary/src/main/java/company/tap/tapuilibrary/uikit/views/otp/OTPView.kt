@@ -114,8 +114,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpSentText.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
     }
 
-    override fun getPhoneNumber(phoneNumber: String) {
-        mobileNumberText.text = phoneNumber
+    override fun getPhoneNumber(phoneNumber: String , countryCode : String) {
+        mobileNumberText.text = countryCode + phoneNumber
     }
 
     override fun onChangePhoneClicked() {

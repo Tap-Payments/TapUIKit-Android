@@ -153,7 +153,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         bottomSheetDialog.behavior.state = STATE_EXPANDED
 
         otpView = view.findViewById(R.id.otpView)
-//        otpView.setOTPInterface()
+        otpView?.setOTPInterface(this)
 
         initGoPay(view)
         return view.rootView
@@ -1169,7 +1169,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     override fun getPhoneNumber(phoneNumber: String) {
-//        otpView?.mobile_textview?.text = phoneNumber
+        otpView?.mobileNumberText?.text = phoneNumber
     }
 
     override fun onChangePhoneClicked() {

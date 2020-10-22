@@ -148,7 +148,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun isValidPhone(phone: String): Boolean {
-        openOTPInterface?.getPhoneNumber(phone)
+        openOTPInterface?.getPhoneNumber(phone, countryCodePicker.defaultCountryCode)
         return phone.length > 7
     }
 
