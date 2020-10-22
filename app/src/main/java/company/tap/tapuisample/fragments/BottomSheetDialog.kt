@@ -53,8 +53,6 @@ import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuilibrary.uikit.views.mainswitch.MainSwitch
-import company.tap.tapuilibrary.uikit.views.otp.OTPBroadcastReceiver
-import company.tap.tapuilibrary.uikit.views.otp.OTPManager
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
@@ -164,6 +162,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        backgroundColor = Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo"))
         goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
         goPayLoginInput?.setLoginInterface(this)
+        goPayLoginInput?.setOpenOTPInterface(this)
         goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
 //        goPayPasswordInput?.rootView?.setBackgroundColor(Color.parseColor("#c7f9f9f9"))
 
@@ -1113,7 +1112,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     fun initOTPConfirmationButton() {
-
+        otpViewActionButton.setButtonDataSource(
+            false, context?.let { LocalizationManager.getLocale(it).language },
+            "Confirm",
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+        )
         otpView.otp_view_input.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 

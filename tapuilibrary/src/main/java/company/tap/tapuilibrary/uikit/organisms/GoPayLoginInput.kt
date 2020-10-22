@@ -33,7 +33,7 @@ import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
 /**
  *
- * Created by Mario Gamal on 7/14/20
+ * Created on 7/14/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
