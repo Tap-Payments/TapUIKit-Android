@@ -89,6 +89,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     init {
         inflate(context, R.layout.otp_view, this)
+//        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         startCountdown()
         prepareTextViews()
         initOTPConfirmationButton()
@@ -96,13 +97,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 //        goPayLoginInput?.setOpenOTPInterface(this)
         initChange()
         initTheme()
-        if (timerText.text == ("00:00") && !isValidOTP) {
-            otpHintText.visibility = View.VISIBLE
-            if (timerText.text == ("00:00") ) otpHintText.text = "OTP Timer Expired! "
-            else if (!isValidOTP) otpHintText.text = "Invalid OTP number! "
-        }
-        else otpHintText.visibility = View.GONE
-//        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
 
     }
 
@@ -115,24 +110,26 @@ class OTPView : LinearLayout, OpenOTPInterface {
         timerTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.Timer.textFont")
         timerText.setTheme(timerTextTheme)
 
+    }
+
+    fun setHintExpiredTheme(){
         val otpHintTextTheme = TextViewTheme()
 
-        if (timerText.text == ("00:00")) {
-            otpHintTextTheme.textColor =
-                (Color.parseColor(ThemeManager.getValue("TapOtpView.Expired.Message.title")))
-            otpHintTextTheme.textSize =
-                ThemeManager.getFontSize("TapOtpView.Expired.Message.textFont")
+        otpHintTextTheme.textColor =
+            (Color.parseColor(ThemeManager.getValue("TapOtpView.Expired.Message.title")))
+        otpHintTextTheme.textSize =
+            ThemeManager.getFontSize("TapOtpView.Expired.Message.textFont")
 
-        } else if (!isValidOTP) {
-            otpHintTextTheme.textColor =
-                (Color.parseColor(ThemeManager.getValue("TapOtpView.Invalid.Message.title")))
-            otpHintTextTheme.textSize =
-                ThemeManager.getFontSize("TapOtpView.Invalid.Message.textFont")
-        }
+        otpHintText.setTheme(otpHintTextTheme)
+    }
 
-        otpHintText.setTheme(timerTextTheme)
-
-
+    fun setHintInValidOtp(){
+        val otpHintTextTheme = TextViewTheme()
+        otpHintTextTheme.textColor =
+            (Color.parseColor(ThemeManager.getValue("TapOtpView.Invalid.Message.title")))
+        otpHintTextTheme.textSize =
+            ThemeManager.getFontSize("TapOtpView.Invalid.Message.textFont")
+        otpHintText.setTheme(otpHintTextTheme)
     }
 
     private fun initChange() {
@@ -152,6 +149,9 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
             override fun onFinish() {
                 timerText.text = ("00:00")
+                otpHintText.visibility - View.VISIBLE
+                otpHintText.text = "OTP Timer Expired! "
+                setHintExpiredTheme()
             }
         }.start()
 
@@ -208,6 +208,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
             if (otpViewActionButton.isEnabled) {
                 isValidOTP =
                     otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput.text.toString()) == true
+
+                if (!isValidOTP) {
+                    otpHintText.visibility = View.VISIBLE
+                    otpHintText.text = "Invalid OTP number! "
+                    setHintInValidOtp()
+                }
+                Log.d("isValidOTP", isValidOTP.toString())
             }
         }
     }

@@ -1184,6 +1184,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     override fun onOtpButtonConfirmationClick(otpNumber: String): Boolean {
+        Log.d("isValidOTP" ,(otpNumber == "111111").toString() )
         return otpNumber == "111111"
     }
 
