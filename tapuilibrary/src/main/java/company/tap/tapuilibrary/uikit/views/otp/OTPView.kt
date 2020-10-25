@@ -1,5 +1,6 @@
 package company.tap.tapuilibrary.uikit.views.otp
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.os.CountDownTimer
@@ -12,8 +13,10 @@ import android.widget.LinearLayout
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
+import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuilibrary.uikit.views.TapOTPView
 
@@ -30,20 +33,27 @@ class OTPView : LinearLayout, OpenOTPInterface {
     lateinit var attrs: AttributeSet
 
     val otpMainView by lazy { findViewById<LinearLayout>(R.id.otpMainView) }
+    val otpLinearLayout by lazy { findViewById<LinearLayout>(R.id.otpLinearLayout) }
     val otpViewInput by lazy { findViewById<TapOTPView>(R.id.otpViewInput) }
     val otpSentText by lazy { findViewById<TapTextView>(R.id.otpSentText) }
     val mobileNumberText by lazy { findViewById<TapTextView>(R.id.mobileNumberText) }
+    val otpHintText by lazy { findViewById<TapTextView>(R.id.otpHintText) }
     val timerText by lazy { findViewById<TapTextView>(R.id.timerText) }
     val changePhone by lazy { findViewById<TapTextView>(R.id.changePhone) }
     val otpViewActionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.otpViewActionButton) }
 
     //    private var goPayLoginInput: GoPayLoginInput? = null
     private var openOTPInterface: OpenOTPInterface? = null
+    private var otpButtonConfirmationInterface: OtpButtonConfirmationInterface? = null
+    var isValidOTP: Boolean = false
 
 
     fun setOTPInterface(openOTPInterface: OpenOTPInterface) {
         this.openOTPInterface = openOTPInterface
-//        mobileNumberText.text = phoneNumber
+    }
+
+    fun setOtpButtonConfirmationInterface(otpButtonConfirmationInterface: OtpButtonConfirmationInterface) {
+        this.otpButtonConfirmationInterface = otpButtonConfirmationInterface
     }
 
     /**
@@ -85,7 +95,37 @@ class OTPView : LinearLayout, OpenOTPInterface {
 //        goPayLoginInput = GoPayLoginInput(context, attrs)
 //        goPayLoginInput?.setOpenOTPInterface(this)
         initChange()
+        initTheme()
+        if (timerText.text == ("00:00") && !isValidOTP) otpHintText.visibility = View.VISIBLE
 //        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
+    }
+
+    fun initTheme() {
+        otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
+
+        val timerTextTheme = TextViewTheme()
+        timerTextTheme.textColor =
+            (Color.parseColor(ThemeManager.getValue("TapOtpView.Timer.textColor")))
+        timerTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.Timer.textFont")
+        timerText.setTheme(timerTextTheme)
+
+        val otpHintTextTheme = TextViewTheme()
+
+        if (timerText.text == ("00:00")) {
+            otpHintTextTheme.textColor =
+                (Color.parseColor(ThemeManager.getValue("TapOtpView.Expired.Message.title")))
+            otpHintTextTheme.textSize =
+                ThemeManager.getFontSize("TapOtpView.Expired.Message.textFont")
+        } else if (!isValidOTP) {
+            otpHintTextTheme.textColor =
+                (Color.parseColor(ThemeManager.getValue("TapOtpView.Invalid.Message.title")))
+            otpHintTextTheme.textSize =
+                ThemeManager.getFontSize("TapOtpView.Invalid.Message.textFont")
+        }
+
+        otpHintText.setTheme(timerTextTheme)
+
 
     }
 
@@ -115,16 +155,16 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpSentText.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
     }
 
-    override fun getPhoneNumber(phoneNumber: String , countryCode : String, maskedValue : String) {
-        val replaced: String = ("+${countryCode}${phoneNumber}").replaceRange(3,9, "*******")
-        mobileNumberText.text = replaced
+    @SuppressLint("SetTextI18n")
+    override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue: String) {
+        mobileNumberText.text = "+${countryCode} $maskedValue"
     }
 
     override fun onChangePhoneClicked() {
         otpMainView.visibility = View.GONE
     }
 
-    fun initOTPConfirmationButton() {
+    private fun initOTPConfirmationButton() {
         otpViewActionButton.setButtonDataSource(
             false, context?.let { LocalizationManager.getLocale(it).language },
             "Confirm",
@@ -137,6 +177,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 
                 if (charSequence.length != otpViewInput.itemCount) {
+                    otpViewActionButton.isEnabled = false
                     otpViewActionButton.setButtonDataSource(
                         false, context?.let { LocalizationManager.getLocale(it).language },
                         "Confirm",
@@ -144,6 +185,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
                         Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
                     )
                 } else {
+                    otpViewActionButton.isEnabled = true
                     otpViewActionButton.setButtonDataSource(
                         true, context?.let { LocalizationManager.getLocale(it).language },
                         "Confirm",
@@ -153,12 +195,15 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 }
             }
 
-            override fun afterTextChanged(editable: Editable) {
-
-            }
+            override fun afterTextChanged(editable: Editable) {}
         })
 
+        otpViewActionButton.setOnClickListener {
+            if (otpViewActionButton.isEnabled) {
+                isValidOTP =
+                    otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput.text.toString()) == true
+            }
+        }
     }
-
 
 }

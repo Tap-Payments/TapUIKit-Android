@@ -70,7 +70,7 @@ All rights reserved.
 open class BottomSheetDialog : TapBottomSheetDialog(),
     TapSelectionTabLayoutInterface, GoPayLoginInterface,OpenOTPInterface,
     OnCardSelectedActionListener, TapActionButtonInterface, TapPaymentShowHideClearImage,
-    WebViewContract {
+    WebViewContract, OtpButtonConfirmationInterface {
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
@@ -139,6 +139,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var tapChipgrp: TapChip? = null
     private var goPayPasswordInput: GoPayPasswordInput? = null
     private var goPayLoginInput: GoPayLoginInput? = null
+    private var otpButtonConfirmationInterface: OtpButtonConfirmationInterface? = null
     private var otpView: OTPView? = null
 
 
@@ -152,6 +153,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         otpView = view.findViewById(R.id.otpView)
         otpView?.setOTPInterface(this)
+        otpView?.setOtpButtonConfirmationInterface(this)
 
         initGoPay(view)
         return view.rootView
@@ -1171,22 +1173,18 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     }
 
-
     @SuppressLint("SetTextI18n")
     override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue : String) {
-        var replaced = ""
-        if (phoneNumber.length > 7)
-         replaced = (phoneNumber).replaceRange(1,5, "****")
-
-//        Log.d("getPhoneNumber" , "96551693350")
-//        Log.d("getPhoneNumberreplaced" , replaced)
-        otpView?.mobileNumberText?.text = "+${countryCode} $replaced"
+        otpView?.mobileNumberText?.text = "+${countryCode} $maskedValue"
     }
 
     override fun onChangePhoneClicked() {
         goPayLoginInput?.visibility = View.VISIBLE
-//        goPayPasswordInput?.visibility = View.GONE
         otpView?.visibility = View.GONE
+    }
+
+    override fun onOtpButtonConfirmationClick(otpNumber: String): Boolean {
+        return otpNumber == "111111"
     }
 
 
