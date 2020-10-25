@@ -19,8 +19,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.uikit.interfaces.TapBottomDialogInterface
 import company.tap.tapuilibrary.uikit.models.DialogConfigurations
+import kotlinx.android.synthetic.main.modal_bottom_sheet.*
 
 
 /**
@@ -73,6 +75,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
                     tapBottomDialogInterface?.onStateChanged(newState)
                 }
             })
+            setSeparatorTheme()
         }
         return bottomSheetDialog
     }
@@ -150,5 +153,15 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     fun setTheme() {
 
+    }
+
+
+    fun setSeparatorTheme() {
+        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        val separatorViewTheme = SeparatorViewTheme()
+        separatorViewTheme.strokeColor =
+            Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
+        separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
+        indicatorSeparator.setTheme(separatorViewTheme)
     }
 }
