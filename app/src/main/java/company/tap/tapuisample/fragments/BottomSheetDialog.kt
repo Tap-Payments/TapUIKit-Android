@@ -1180,6 +1180,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     override fun onChangePhoneClicked() {
         goPayLoginInput?.visibility = View.VISIBLE
+        goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
         otpView?.visibility = View.GONE
     }
 

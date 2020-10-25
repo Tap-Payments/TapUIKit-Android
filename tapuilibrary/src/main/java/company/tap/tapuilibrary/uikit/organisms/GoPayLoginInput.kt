@@ -180,7 +180,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     }
 
-    private fun initTabLayout() {
+     fun initTabLayout() {
         loginTabLayout.removeAllTabs()
         loginTabLayout.addTab(
             loginTabLayout.newTab().setCustomView(
