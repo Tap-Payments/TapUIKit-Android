@@ -60,6 +60,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     init {
         inflate(context, R.layout.gopay_login_input, this)
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+        initTheme()
+    }
+
+    fun initTheme(){
         loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.selected.backgroundColor")))
         goPayHint.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
         goPayHint.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont").toFloat()
@@ -120,18 +124,19 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 //    }
 
     private fun initTextInput() {
-        textInput.doAfterTextChanged {
-            if (isValidInput(it.toString()))
+        textInput.doAfterTextChanged { it ->
+            if (isValidInput(it.toString())) {
                 enableNext()
+                Log.d("countryCodePicker", countryCodePicker.selectedCountryCode)
+                Log.d("phone", it.toString())
+                countryCode?.let { openOTPInterface?.getPhoneNumber(it, it) }
+            }
             else
                 disableNext()
         }
     }
 
     private fun isValidInput(text: String): Boolean {
-        Log.d("countryCodePicker", countryCodePicker.selectedCountryCode)
-        Log.d("phone", text)
-        countryCode?.let { openOTPInterface?.getPhoneNumber(text, it) }
         return when (inputType) {
             EMAIL -> isValidEmail(text)
             PHONE -> isValidPhone(text)
