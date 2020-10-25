@@ -43,6 +43,7 @@ import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.uikit.atoms.*
 import company.tap.tapuilibrary.uikit.datasource.*
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
+import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod
 import company.tap.tapuilibrary.uikit.fragment.CardScannerFragment
 import company.tap.tapuilibrary.uikit.fragment.NFCFragment
 import company.tap.tapuilibrary.uikit.interfaces.*
@@ -1181,7 +1182,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onChangePhoneClicked() {
         goPayLoginInput?.visibility = View.VISIBLE
         goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
-        goPayLoginInput?.initTabLayout()
+        goPayLoginInput?.inputType = GoPayLoginMethod.PHONE
         otpView?.visibility = View.GONE
     }
 

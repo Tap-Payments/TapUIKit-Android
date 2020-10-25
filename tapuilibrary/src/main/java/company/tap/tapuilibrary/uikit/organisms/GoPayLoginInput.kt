@@ -212,6 +212,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun changeInputType() {
         textInput.text = null
+        countryCodePicker.visibility = View.GONE
+        loginMethodImage.visibility = View.VISIBLE
         when (inputType) {
             EMAIL -> {
                 textInput.hint = dataSource?.emailInputHint ?: "mail@mail.com"
