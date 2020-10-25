@@ -1174,11 +1174,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     @SuppressLint("SetTextI18n")
     override fun getPhoneNumber(phoneNumber: String, countryCode: String) {
-//        val replaced: String = ("+${countryCode}${phoneNumber}").replaceRange(3,9, "*******")
+        val replaced: String = (phoneNumber).replaceRange(1,4, "****")
 
 //        Log.d("getPhoneNumber" , "96551693350")
 //        Log.d("getPhoneNumberreplaced" , replaced)
-//        otpView?.mobileNumberText?.text = countryCode +  phoneNumber
+        otpView?.mobileNumberText?.text = "+${countryCode} $replaced"
     }
 
     override fun onChangePhoneClicked() {

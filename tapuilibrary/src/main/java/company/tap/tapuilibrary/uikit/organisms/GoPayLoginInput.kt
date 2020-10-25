@@ -124,16 +124,18 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 //    }
 
     private fun initTextInput() {
-        textInput.doAfterTextChanged { it ->
+        textInput.doAfterTextChanged {
             if (isValidInput(it.toString())) {
                 enableNext()
-                Log.d("countryCodePicker", countryCodePicker.selectedCountryCode)
-                Log.d("phone", it.toString())
-                countryCode?.let { openOTPInterface?.getPhoneNumber(it, it) }
+                sendPhoneNumber()
             }
             else
                 disableNext()
         }
+    }
+
+    fun sendPhoneNumber(){
+        countryCode?.let { openOTPInterface?.getPhoneNumber(textInput.text.toString(), it) }
     }
 
     private fun isValidInput(text: String): Boolean {
