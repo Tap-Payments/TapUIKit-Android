@@ -198,7 +198,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switch_pay_demo.payButton.stateListAnimator = null
         switch_pay_demo.payButton.isActivated = false
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
-        setSeparatorTheme()
+        setAllSeparatorTheme()
 //        setTapMobileInputViewTheme()
 //        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
 //        mainView.clipToOutline = true
@@ -1019,7 +1019,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
 
-    fun setSeparatorTheme() {
+    fun setAllSeparatorTheme() {
         val separatorViewTheme = SeparatorViewTheme()
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))

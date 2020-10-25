@@ -54,7 +54,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
     private var openOTPInterface: OpenOTPInterface? = null
-    private var inputType = EMAIL
+    var inputType = EMAIL
     private var countryCode :String ? = null
 
     init {
