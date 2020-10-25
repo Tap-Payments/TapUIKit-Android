@@ -6,6 +6,7 @@ import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import company.tap.taplocalizationkit.LocalizationManager
@@ -116,6 +117,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     override fun getPhoneNumber(phoneNumber: String , countryCode : String) {
         val replaced: String = ("+${countryCode}${phoneNumber}").replaceRange(3,9, "*******")
+        Log.d("getPhoneNumberreplaced" , replaced)
+
         mobileNumberText.text = replaced
     }
 

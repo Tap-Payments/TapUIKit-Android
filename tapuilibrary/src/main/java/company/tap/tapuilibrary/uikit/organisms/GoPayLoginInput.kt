@@ -129,6 +129,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun isValidInput(text: String): Boolean {
+        Log.d("countryCodePicker", countryCodePicker.selectedCountryCode)
+        Log.d("phone", text)
+        countryCode?.let { openOTPInterface?.getPhoneNumber(text, it) }
         return when (inputType) {
             EMAIL -> isValidEmail(text)
             PHONE -> isValidPhone(text)
@@ -152,8 +155,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun isValidPhone(phone: String): Boolean {
-        Log.d("countryCodePicker", countryCodePicker.selectedCountryCode)
-        countryCode?.let { openOTPInterface?.getPhoneNumber(phone, it) }
         return phone.length > 7
     }
 
