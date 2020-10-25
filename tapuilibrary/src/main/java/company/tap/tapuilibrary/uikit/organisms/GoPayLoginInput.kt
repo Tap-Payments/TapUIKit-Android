@@ -127,7 +127,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textInput.doAfterTextChanged {
             if (isValidInput(it.toString())) {
                 enableNext()
-                if (it.toString().length > 6)
                 sendPhoneNumber()
             }
             else
@@ -136,7 +135,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     fun sendPhoneNumber(){
-        countryCode?.let { openOTPInterface?.getPhoneNumber(textInput.text.toString(), it) }
+        countryCodePicker.selectedCountryCode?.let { openOTPInterface?.getPhoneNumber(textInput.text.toString(), it) }
     }
 
     private fun isValidInput(text: String): Boolean {

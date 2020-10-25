@@ -1176,7 +1176,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun getPhoneNumber(phoneNumber: String, countryCode: String) {
         var replaced = ""
         if (phoneNumber.length > 7)
-         replaced = (phoneNumber).replaceRange(1,4, "****")
+         replaced = (phoneNumber).replaceRange(1,5, "****")
 
 //        Log.d("getPhoneNumber" , "96551693350")
 //        Log.d("getPhoneNumberreplaced" , replaced)
