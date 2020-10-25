@@ -115,10 +115,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpSentText.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
     }
 
-    override fun getPhoneNumber(phoneNumber: String , countryCode : String) {
+    override fun getPhoneNumber(phoneNumber: String , countryCode : String, maskedValue : String) {
         val replaced: String = ("+${countryCode}${phoneNumber}").replaceRange(3,9, "*******")
-        Log.d("getPhoneNumberreplaced" , replaced)
-
         mobileNumberText.text = replaced
     }
 

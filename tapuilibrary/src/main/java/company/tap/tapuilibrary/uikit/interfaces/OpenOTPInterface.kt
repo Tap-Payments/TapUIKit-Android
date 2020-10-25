@@ -9,7 +9,7 @@ package company.tap.tapuilibrary.uikit.interfaces
 
 interface OpenOTPInterface {
 
-    fun getPhoneNumber(phoneNumber : String , countryCode :String)
+    fun getPhoneNumber(phoneNumber : String , countryCode :String, maskedValue : String)
     fun onChangePhoneClicked()
 
 }
