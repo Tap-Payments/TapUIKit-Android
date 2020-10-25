@@ -96,7 +96,12 @@ class OTPView : LinearLayout, OpenOTPInterface {
 //        goPayLoginInput?.setOpenOTPInterface(this)
         initChange()
         initTheme()
-        if (timerText.text == ("00:00") && !isValidOTP) otpHintText.visibility = View.VISIBLE
+        if (timerText.text == ("00:00") && !isValidOTP) {
+            otpHintText.visibility = View.VISIBLE
+            if (timerText.text == ("00:00") ) otpHintText.text = "OTP Timer Expired! "
+            else if (!isValidOTP) otpHintText.text = "Invalid OTP number! "
+        }
+        else otpHintText.visibility = View.GONE
 //        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
 
     }
@@ -117,14 +122,12 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 (Color.parseColor(ThemeManager.getValue("TapOtpView.Expired.Message.title")))
             otpHintTextTheme.textSize =
                 ThemeManager.getFontSize("TapOtpView.Expired.Message.textFont")
-            otpHintText.text = "OTP Timer Expired! "
 
         } else if (!isValidOTP) {
             otpHintTextTheme.textColor =
                 (Color.parseColor(ThemeManager.getValue("TapOtpView.Invalid.Message.title")))
             otpHintTextTheme.textSize =
                 ThemeManager.getFontSize("TapOtpView.Invalid.Message.textFont")
-            otpHintText.text = "Invalid OTP number! "
         }
 
         otpHintText.setTheme(timerTextTheme)
