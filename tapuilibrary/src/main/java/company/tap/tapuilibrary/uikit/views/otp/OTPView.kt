@@ -117,11 +117,14 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 (Color.parseColor(ThemeManager.getValue("TapOtpView.Expired.Message.title")))
             otpHintTextTheme.textSize =
                 ThemeManager.getFontSize("TapOtpView.Expired.Message.textFont")
+            otpHintText.text = "OTP Timer Expired! "
+
         } else if (!isValidOTP) {
             otpHintTextTheme.textColor =
                 (Color.parseColor(ThemeManager.getValue("TapOtpView.Invalid.Message.title")))
             otpHintTextTheme.textSize =
                 ThemeManager.getFontSize("TapOtpView.Invalid.Message.textFont")
+            otpHintText.text = "Invalid OTP number! "
         }
 
         otpHintText.setTheme(timerTextTheme)
