@@ -205,6 +205,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 textInput.hint = dataSource?.emailInputHint ?: "mail@mail.com"
                 textInput.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
+                countryCodePicker.visibility = View.GONE
                 loginMethodImage.setImageResource(R.drawable.ic_mail)
             }
             PHONE -> {

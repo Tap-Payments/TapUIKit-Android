@@ -267,6 +267,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         addMobileTab()
         setupBrandDetection()
         configureSwitch()
+
+        val replaced: String = ("+96551693350").replaceRange(2,9, "*******")
+
+        Log.d("getPhoneNumber" , "96551693350")
+        Log.d("getPhoneNumberreplaced" , replaced)
     }
 
     private fun initializeCardForm(view: View) {

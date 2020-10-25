@@ -115,7 +115,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
     override fun getPhoneNumber(phoneNumber: String , countryCode : String) {
-        mobileNumberText.text = countryCode + phoneNumber
+        val replaced: String = ("+${countryCode}${phoneNumber}").replaceRange(3,9, "*******")
+        mobileNumberText.text = replaced
     }
 
     override fun onChangePhoneClicked() {
