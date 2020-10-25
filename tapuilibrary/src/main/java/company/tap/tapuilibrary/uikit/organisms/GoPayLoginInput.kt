@@ -127,6 +127,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textInput.doAfterTextChanged {
             if (isValidInput(it.toString())) {
                 enableNext()
+                if (it.toString().length > 6)
                 sendPhoneNumber()
             }
             else
