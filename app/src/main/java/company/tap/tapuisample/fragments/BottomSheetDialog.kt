@@ -51,8 +51,8 @@ import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.views.*
-import company.tap.tapuilibrary.uikit.views.mainswitch.MainSwitch
 import company.tap.tapuilibrary.uikit.views.otp.OTPView
+import company.tap.tapuisample.MainSwitch
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
