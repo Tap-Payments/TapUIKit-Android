@@ -270,7 +270,7 @@
         "merchantLogoPlaceHolderColor" : "black",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
         "merchantLogoPlaceHolderLabelColor" : "white",
-        "backgroundColor" : "white"
+        "backgroundColor" : "clear"
     },
     "amountSectionView": {
         "originalAmountLabelFont" : "Roboto-Regular,20",

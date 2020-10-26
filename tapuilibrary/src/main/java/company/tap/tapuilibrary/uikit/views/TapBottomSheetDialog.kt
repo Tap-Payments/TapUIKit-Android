@@ -37,7 +37,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private var topRightCorner = 16f
     private var bottomRightCorner = 0f
     private var bottomLeftCorner = 0f
-     var backgroundColor = Color.TRANSPARENT
+    var backgroundColor = Color.TRANSPARENT
 
     var bottomSheetLayout: FrameLayout? = null
     lateinit var bottomSheetDialog: BottomSheetDialog
@@ -76,6 +76,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
                 }
             })
             setSeparatorTheme()
+            topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         }
         return bottomSheetDialog
     }

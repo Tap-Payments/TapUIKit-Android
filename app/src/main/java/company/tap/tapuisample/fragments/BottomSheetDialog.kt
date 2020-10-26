@@ -204,8 +204,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
 //        mainView.clipToOutline = true
 //        outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-        backgroundColor =
-            (Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+//        backgroundColor =
+//            (Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         initializeViews(view)
 
 
@@ -833,8 +833,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switchSaveDemo?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
 //                outer_layout?.setBackgroundColor(Color.WHITE)
-                backgroundColor =
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+//                backgroundColor =
+//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switch_pay_demo.payButton.stateListAnimator = null
                 switch_pay_demo.payButton.isActivated
                 switch_pay_demo.payButton.setButtonDataSource(
@@ -862,8 +862,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                 )
 
-                backgroundColor =
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
+//                backgroundColor =
+//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
 //                outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
                 switchLayout?.visibility = View.GONE
                 switchMerchantCheckout?.visibility = View.GONE
