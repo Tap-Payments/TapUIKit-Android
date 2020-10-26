@@ -9,14 +9,16 @@
 <!--    card_view:cardElevation="0dp"-->
 <!--    card_view:contentPadding="0dp">-->
 
-<androidx.core.widget.NestedScrollView android:layout_width="match_parent"
-
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
     layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="wrap_content">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content">
 
 
 
     <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mainView"
         android:layout_width="match_parent"
@@ -31,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:visibility="gone"
+                android:visibility="visible"
                 android:paddingTop="@dimen/margin_basic_10dp">
 
                 <company.tap.tapuilibrary.uikit.atoms.TapDragIndicator

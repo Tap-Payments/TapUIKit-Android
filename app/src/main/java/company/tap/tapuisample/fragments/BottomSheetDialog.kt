@@ -75,13 +75,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
 //    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
-
-    /**
-     * tomorrow
-     * 1- setting dark values in dark theme
-     * 2- fix font arabic
-     */
-
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
     private lateinit var itemCount: TapButton
@@ -151,7 +144,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_bottom_sheet, container, false)
         bottomSheetDialog.behavior.state = STATE_EXPANDED
-
         otpView = view.findViewById(R.id.otpView)
         otpView?.setOTPInterface(this)
         otpView?.setOtpButtonConfirmationInterface(this)
@@ -164,7 +156,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     fun initGoPay(view: View) {
         goPayLoginInput = view.findViewById(R.id.goPayLoginInput)
         goPayPasswordInput = view.findViewById(R.id.goPayPassword)
-//        backgroundColor = Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo"))
         goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
         goPayLoginInput?.setLoginInterface(this)
         goPayLoginInput?.setOpenOTPInterface(this)
@@ -270,11 +261,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         addMobileTab()
         setupBrandDetection()
         configureSwitch()
-
-        val replaced: String = ("+96551693350").replaceRange(2,9, "*******")
-
-        Log.d("getPhoneNumber" , "96551693350")
-        Log.d("getPhoneNumberreplaced" , replaced)
     }
 
     private fun initializeCardForm(view: View) {

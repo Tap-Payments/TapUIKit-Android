@@ -104,7 +104,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         arguments?.let {
             dialog?.setCanceledOnTouchOutside(it.getBoolean(DialogConfigurations.Cancelable, true))
             dialog?.window?.setDimAmount(it.getFloat(DialogConfigurations.Dim, 0.5f))
-            backgroundColor = it.getInt(DialogConfigurations.Color, Color.WHITE)
+            backgroundColor = it.getInt(DialogConfigurations.Color, Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
             val corners = it.getFloatArray(DialogConfigurations.Corners)
             corners?.let { array ->
                 topLeftCorner = array[0]
