@@ -6,6 +6,8 @@
     android:id="@+id/tapMainSwitchLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingTop="20dp"
+    android:layout_marginTop="-20dp"
     tools:background="@color/chip_background"
     android:layoutDirection="locale"
     android:orientation="vertical">
@@ -15,9 +17,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mainSwitchChip"
-        android:background="@drawable/corner_radius_bottom"
         android:orientation="vertical"
         android:visibility="visible"
+        app:cardCornerRadius="10dp"
         tools:cardBackgroundColor="@color/chip_background">
 
                 <LinearLayout

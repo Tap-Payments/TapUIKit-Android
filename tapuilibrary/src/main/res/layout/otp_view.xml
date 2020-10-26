@@ -11,9 +11,10 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_gravity="center"
-        android:background="@drawable/corner_radius_bottom">
+        android:layout_marginTop="-20dp"
+        android:layout_height="70dp"
+        app:cardCornerRadius="10dp"
+        android:layout_gravity="center">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
