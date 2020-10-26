@@ -54,6 +54,7 @@ import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuilibrary.uikit.views.otp.OTPView
 import company.tap.tapuisample.MainSwitch
 import company.tap.tapuisample.R
+import company.tap.tapuisample.TapHeaderSectionView
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
@@ -187,6 +188,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         )
 
 
+        /**
+         * set separator background
+         */
+        topSeparatorLinear.setBackgroundColor((Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))))
+
+
         switch_pay_demo.payButton.stateListAnimator = null
         switch_pay_demo.payButton.isActivated = false
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
@@ -195,8 +202,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
 //        mainView.clipToOutline = true
 //        outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-//        backgroundColor =
-//            (Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+        /**
+         * set bottom sheet background
+         */
+        backgroundColor = (Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.main_switch_background")))
+
+
         initializeViews(view)
 
 
@@ -1095,71 +1107,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         goPayLoginInput?.visibility = View.GONE
         otpView?.visibility = View.VISIBLE
 
-//        initOTPView()
     }
 
-    fun initOTPView() {
-//        Toast.makeText(context, "OTP view to slide up", Toast.LENGTH_SHORT).show()
-//
-//        otpView.visibility = View.VISIBLE
-//        startCountdown()
-//
-//        otpView?.otp_sent?.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
-//
-//        initOTPConfirmationButton()
-
-    }
-
-    fun initOTPConfirmationButton() {
-//        otpViewActionButton.setButtonDataSource(
-//            false, context?.let { LocalizationManager.getLocale(it).language },
-//            "Confirm",
-//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-//        )
-//        otpView.otp_view_input.addTextChangedListener(object : TextWatcher {
-//            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-//
-//            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-//
-//                if (charSequence.length != otp_view_input.itemCount) {
-//                    otpViewActionButton.setButtonDataSource(
-//                        false, context?.let { LocalizationManager.getLocale(it).language },
-//                        "Confirm",
-//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-//                    )
-//                } else {
-//                    otpViewActionButton.setButtonDataSource(
-//                        true, context?.let { LocalizationManager.getLocale(it).language },
-//                        "Confirm",
-//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-//                    )
-//                }
-//            }
-//
-//            override fun afterTextChanged(editable: Editable) {
-//
-//            }
-//        })
-
-    }
-
-    private fun startCountdown() {
-//        object : CountDownTimer(60 * 1000, 1000) {
-//            override fun onTick(millisUntilFinished: Long) {
-//                val second = millisUntilFinished / 1000 % 60
-//                val minutes = millisUntilFinished / (1000 * 60) % 60
-//                otpView?.timer_textview?.text = ("$minutes:$second")
-//            }
-//
-//            override fun onFinish() {
-//                otpView?.timer_textview?.text = ("00:00")
-//            }
-//        }.start()
-
-    }
 
     @SuppressLint("SetTextI18n")
     override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue : String) {
@@ -1171,6 +1120,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
         goPayLoginInput?.inputType = GoPayLoginMethod.PHONE
         otpView?.visibility = View.GONE
+        otpView?.changePhoneCardView?.visibility = View.GONE
+
     }
 
     override fun onOtpButtonConfirmationClick(otpNumber: String): Boolean {

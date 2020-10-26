@@ -57,12 +57,16 @@
             </LinearLayout>
 
 
-            <company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
+            <company.tap.tapuisample.TapHeaderSectionView
                 android:id="@+id/headerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layoutDirection="locale"
-                android:paddingBottom="@dimen/margin_basic_9dp" />
+                android:layoutDirection="locale" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/topSeparatorLinear">
 
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                 android:id="@+id/topSeparator"
@@ -72,6 +76,7 @@
                 android:layout_marginStart="@dimen/default_padding"
                 android:layout_marginEnd="@dimen/default_padding"
                 android:background="@color/separator_color" />
+        </LinearLayout>
 
             <company.tap.tapuilibrary.uikit.views.TapAmountSectionView
                 android:id="@+id/amount_section"
@@ -163,6 +168,7 @@
                 android:id="@+id/switch_pay_demo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-5dp"
                 android:layout_gravity="start"
                 android:layoutDirection="locale" />
 

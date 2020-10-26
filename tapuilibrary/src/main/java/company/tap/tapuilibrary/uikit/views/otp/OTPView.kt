@@ -10,6 +10,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -41,6 +42,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
     val timerText by lazy { findViewById<TapTextView>(R.id.timerText) }
     val changePhone by lazy { findViewById<TapTextView>(R.id.changePhone) }
     val otpViewActionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.otpViewActionButton) }
+    val changePhoneCardView by lazy { findViewById<CardView>(R.id.changePhoneCardView) }
 
     //    private var goPayLoginInput: GoPayLoginInput? = null
     private var openOTPInterface: OpenOTPInterface? = null

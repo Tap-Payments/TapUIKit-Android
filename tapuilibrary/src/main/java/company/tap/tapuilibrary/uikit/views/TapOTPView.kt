@@ -64,7 +64,7 @@ class TapOTPView @JvmOverloads constructor(
      * @return Returns the current item's line color.
      */
     @get:ColorInt
-    var currentLineColor = Color.BLACK
+    var currentLineColor = Color.BLUE
         private set
     private var mLineWidth: Int = 0
 

@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_marginTop="-20dp"
         android:layout_height="70dp"
+        android:id="@+id/changePhoneCardView"
         app:cardCornerRadius="10dp"
         android:layout_gravity="center">
 
@@ -88,14 +89,13 @@
             android:fitsSystemWindows="true"
             android:focusable="true"
             android:focusableInTouchMode="true"
-            android:hint="000000"
             android:inputType="number"
             android:textColor="#4b4847"
             android:textCursorDrawable="@color/colorAccent"
             app:itemCount="6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:lineColor="@color/colorAccent"
+            app:lineColor="#a6a6a6"
             app:viewType="line" />
 
         <androidx.constraintlayout.widget.ConstraintLayout

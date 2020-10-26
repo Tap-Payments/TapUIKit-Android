@@ -76,7 +76,6 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
                 }
             })
             setSeparatorTheme()
-            topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         }
         return bottomSheetDialog
     }
