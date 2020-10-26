@@ -15,8 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mainSwitchChip"
+        android:background="@drawable/corner_radius_bottom"
         android:orientation="vertical"
-        app:cardCornerRadius="10dp"
         android:visibility="visible"
         tools:cardBackgroundColor="@color/chip_background">
 

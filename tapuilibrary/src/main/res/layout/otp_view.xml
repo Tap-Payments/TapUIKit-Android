@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="55dp"
         android:layout_gravity="center"
-        app:cardCornerRadius="10dp">
+        android:background="@drawable/corner_radius_bottom">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

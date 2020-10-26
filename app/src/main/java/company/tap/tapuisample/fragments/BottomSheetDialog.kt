@@ -1084,6 +1084,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
         goPayLoginInput?.visibility = View.GONE
         goPayPasswordInput?.visibility = View.VISIBLE
+        otpView?.visibility = View.GONE
         goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
     }
 
