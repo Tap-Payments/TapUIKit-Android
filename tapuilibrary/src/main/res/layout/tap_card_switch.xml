@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CustomCardViewStyle"
     android:elevation="8dp"
-    android:layout_marginTop="-10dp"
-    android:paddingTop="@dimen/margin_basic_10dp"
+    android:layout_marginTop="-20dp"
+    android:paddingTop="20dp"
     android:id="@+id/tapCardSwitchLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -64,6 +64,7 @@ save your mobile number." />
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.8"
+        android:paddingTop="20dp"
         android:orientation="vertical"
         android:visibility="gone">
 
