@@ -125,7 +125,7 @@ class TapCardSwitch : LinearLayout {
 
 
     fun setTheme() {
-        switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+        tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //        saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 //        saveSwitchChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 //        switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
@@ -150,11 +150,11 @@ class TapCardSwitch : LinearLayout {
                     LocalizationManager.getValue("pay","ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
-                switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
 
             } else {
-                switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
                 Log.d("false", "false")
                 var switchSaveMobileSwitchThemeDisable = SwitchTheme()
@@ -187,11 +187,11 @@ class TapCardSwitch : LinearLayout {
                     LocalizationManager.getValue("pay","ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
-                switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
 
             } else {
-                switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
                 Log.d("false", "false")
                 var switchSaveMerchantSwitchThemeDisable = SwitchTheme()
@@ -225,11 +225,11 @@ class TapCardSwitch : LinearLayout {
                 switchSaveMobile.setTheme(switchGoPayCheckoutSwitchThemeEnable)
 
                 activateButton(true)
-                switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
 
             } else {
-                switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
                 Log.d("false", "false")
                 var switchGoPayCheckoutSwitchThemeDisable = SwitchTheme()
