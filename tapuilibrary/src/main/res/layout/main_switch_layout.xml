@@ -15,7 +15,6 @@
         style="@style/CustomCardViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
         android:id="@+id/mainSwitchChip"
         android:orientation="vertical"
         android:visibility="visible"
@@ -27,6 +26,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/mainSwitchLinear"
                     android:orientation="horizontal"
+                    android:paddingTop="10dp"
                     android:weightSum="0.5">
 
                     <company.tap.tapuilibrary.uikit.atoms.TapTextView
