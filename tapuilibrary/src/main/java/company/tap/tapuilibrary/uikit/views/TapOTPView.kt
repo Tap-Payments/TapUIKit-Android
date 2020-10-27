@@ -751,10 +751,10 @@ class TapOTPView @JvmOverloads constructor(
             color = currentTextColor
         }
 
-        if (color != currentLineColor) {
-            currentLineColor = color
-            inval = true
-        }
+//        if (color != currentLineColor) {
+//            currentLineColor = color
+//            inval = true
+//        }
 
         if (inval) {
             invalidate()

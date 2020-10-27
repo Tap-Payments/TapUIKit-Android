@@ -18,7 +18,7 @@ import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
-import kotlinx.android.synthetic.main.modal_bottom_sheet.*
+import company.tap.tapuilibrary.uikit.views.TextDrawable
 import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
@@ -92,8 +92,9 @@ class TapHeaderSectionView : LinearLayout {
                 )
                 .error(
                     TextDrawable(
-                    headerDataSource.businessName?.get(0).toString()
-                ))
+                        headerDataSource.businessName?.get(0).toString()
+                    )
+                )
                 .into(businessIcon)
         }
 
@@ -188,7 +189,7 @@ class TapHeaderSectionView : LinearLayout {
 
 
     fun setSeparatorTheme() {
-        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+//        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
         val separatorViewTheme = SeparatorViewTheme()
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))

@@ -65,6 +65,10 @@ import kotlinx.android.synthetic.main.fragment_otpscreen.view.*
 
 //    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
 
+
+// change otp current underline color
+// change undeline color for input from green to blue
+
 /**
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
@@ -1129,7 +1133,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onChangePhoneClicked() {
         goPayLoginInput?.visibility = View.VISIBLE
         goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
-        goPayLoginInput?.inputType = GoPayLoginMethod.PHONE
+        goPayLoginInput?.inputType = GoPayLoginMethod.EMAIL
         otpView?.visibility = View.GONE
         otpView?.changePhoneCardView?.visibility = View.GONE
 
