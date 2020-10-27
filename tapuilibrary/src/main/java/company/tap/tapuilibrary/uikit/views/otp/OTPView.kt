@@ -106,6 +106,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
     fun initTheme() {
         otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
 
+        changePhoneCardView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.change_layout")))
         val timerTextTheme = TextViewTheme()
         timerTextTheme.textColor =
             (Color.parseColor(ThemeManager.getValue("TapOtpView.Timer.textColor")))

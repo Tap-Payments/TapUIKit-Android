@@ -61,6 +61,7 @@ class MainSwitch :LinearLayout {
 
     init {
         inflate(context, R.layout.main_switch_layout, this)
+        setTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 

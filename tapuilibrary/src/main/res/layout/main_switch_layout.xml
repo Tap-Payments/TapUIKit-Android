@@ -6,7 +6,7 @@
     android:id="@+id/tapMainSwitchLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="-10dp"
+    android:layout_marginTop="-15dp"
     tools:background="@color/chip_background"
     android:layoutDirection="locale"
     android:orientation="vertical">
@@ -26,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/mainSwitchLinear"
                     android:orientation="horizontal"
-                    android:paddingTop="10dp"
+                    android:paddingTop="15dp"
                     android:weightSum="0.5">
 
                     <company.tap.tapuilibrary.uikit.atoms.TapTextView
