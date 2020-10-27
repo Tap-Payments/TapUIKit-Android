@@ -833,6 +833,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
      */
     private fun configureSwitch() {
         switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+//                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
         switchSaveDemo?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

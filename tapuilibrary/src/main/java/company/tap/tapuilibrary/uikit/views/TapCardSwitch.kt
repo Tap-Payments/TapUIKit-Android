@@ -150,6 +150,8 @@ class TapCardSwitch : LinearLayout {
                     LocalizationManager.getValue("pay","ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+
 
             } else {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))

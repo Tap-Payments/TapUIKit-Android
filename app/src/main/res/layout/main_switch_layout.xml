@@ -19,6 +19,7 @@
         android:orientation="vertical"
         android:visibility="visible"
         app:cardCornerRadius="10dp"
+        android:elevation="0dp"
         tools:cardBackgroundColor="@color/chip_background">
 
                 <LinearLayout
