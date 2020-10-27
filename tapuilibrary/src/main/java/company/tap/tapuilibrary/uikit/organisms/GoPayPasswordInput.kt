@@ -120,7 +120,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         theme.textSize?.let { it }
         theme.letterSpacing?.let { it }
         theme.textColorHint?.let { }
-//        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
+        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
     }
 
 
