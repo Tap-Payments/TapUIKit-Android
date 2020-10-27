@@ -837,7 +837,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         switchSaveDemo?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-//                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
 //                outer_layout?.setBackgroundColor(Color.WHITE)
 //                backgroundColor =
@@ -860,7 +860,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 alertgoPay?.visibility = View.VISIBLE
                 separatorView?.visibility = View.VISIBLE
             } else {
-//                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
                 switch_pay_demo.payButton.stateListAnimator = null
                 switch_pay_demo.payButton.setButtonDataSource(

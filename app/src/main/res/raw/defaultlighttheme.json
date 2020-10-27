@@ -41,9 +41,9 @@
             "currency_chip_background": "#4cffffff",
             "currency_chip_selected_shadow": "#90c2f7",
             "currency_chip_unselected_shadow": "#eeeeef",
-            "transperant": "#c7f9f9f9",
+            "transperant": "#3FFFFFFF",
             "invalid_action": "#b9b9b9",
-            "change_layout": "#00007aff"
+            "change_layout": "#f4f4f4"
         }
     },
     "inlineCard": {
@@ -604,7 +604,7 @@
         }
     },
     "TapOtpView": {
-        "backgroundColor": "clear",
+        "backgroundColor": "transperant",
         "OtpController": {
             "bottomLineColor": "brownGreyFour",
             "activeBottomColor": "deepSkyBlue",
