@@ -19,6 +19,7 @@ import androidx.annotation.Px
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.ViewCompat
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 
 /**
  * Created  on 7/12/20.
@@ -64,7 +65,7 @@ class TapOTPView @JvmOverloads constructor(
      * @return Returns the current item's line color.
      */
     @get:ColorInt
-    var currentLineColor = Color.BLUE
+    var currentLineColor = Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.activeBottomColor"))
         private set
     private var mLineWidth: Int = 0
 
@@ -280,7 +281,8 @@ class TapOTPView @JvmOverloads constructor(
             R.styleable.CustomOtpView_lineWidth,
             res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_line_width).toFloat()
         ).toInt()
-        lineColors = a.getColorStateList(R.styleable.CustomOtpView_lineColor)
+//        lineColors = a.getColorStateList(R.styleable.CustomOtpView_lineColor)
+        lineColors = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.bottomLineColor")))
         isCursorVisible = a.getBoolean(R.styleable.CustomOtpView_android_cursorVisible, true)
         mCursorColor = a.getColor(R.styleable.CustomOtpView_cursorColor, currentTextColor)
         mCursorWidth = a.getDimensionPixelSize(
