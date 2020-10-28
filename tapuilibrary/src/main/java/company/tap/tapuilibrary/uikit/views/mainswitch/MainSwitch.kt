@@ -61,6 +61,7 @@ class MainSwitch :LinearLayout {
 
     init {
         inflate(context, R.layout.main_switch_layout, this)
+        setTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
@@ -84,8 +85,10 @@ class MainSwitch :LinearLayout {
     fun setTheme() {
 //        tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 //        saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-        tapMainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-        mainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+//        tapMainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+//        tapMainSwitchLinear.setBackgroundColor(Color.GREEN)
+//        mainSwitchLinear.setBackgroundColor(Color.GREEN)
+//        mainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //        switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //        Blurry.with(context).radius(5).sampling(1).onto(switchesLayout)
 

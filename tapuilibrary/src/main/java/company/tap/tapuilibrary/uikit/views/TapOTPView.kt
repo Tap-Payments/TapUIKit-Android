@@ -291,7 +291,7 @@ class TapOTPView @JvmOverloads constructor(
         a.recycle()
 
         if (lineColors != null) {
-            currentLineColor = lineColors!!.defaultColor
+//            currentLineColor = lineColors!!.defaultColor
         }
         updateCursorHeight()
 
