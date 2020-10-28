@@ -95,7 +95,7 @@
             app:itemCount="6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:lineColor="#a6a6a6"
+            app:lineColor="@color/blue"
             app:viewType="line" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
