@@ -34,14 +34,16 @@
             "brownGreySeven": "#7e7e7e",
             "white78": "#f9f9f9C6",
             "brownGreyFour": "#a6a6a6",
-            "graySeparator": "#e0e0e0",
+            "graySeparator": "#404043",
             "black_50": "#80000000",
-            "main_switch_background": "#E0E0E0",
+            "main_switch_background": "#2b2b2f",
             "switch_background": "#d4cfc9",
             "currency_chip_background": "#4cffffff",
             "currency_chip_selected_shadow": "#90c2f7",
             "currency_chip_unselected_shadow": "#eeeeef",
-            "transperant": "#c7f9f9f9"
+            "transperant": "#c7f9f9f9",
+            "invalid_action": "#b9b9b9",
+            "change_layout": "#f4f4f4"
         }
     },
     "inlineCard": {

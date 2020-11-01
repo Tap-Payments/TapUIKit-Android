@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary.uikit.views.otp
+package company.tap.tapuilibrary.uikit.organisms
 
 import android.annotation.SuppressLint
 import android.content.Context

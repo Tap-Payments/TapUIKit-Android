@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary.uikit.views.mainswitch
+package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.graphics.Color
@@ -6,11 +6,11 @@ import android.graphics.Typeface
 import android.util.AttributeSet
 import android.util.Log
 import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapChip
@@ -28,6 +28,7 @@ class MainSwitch :LinearLayout {
     val mainSwitchLinear by lazy { findViewById<LinearLayout>(R.id.mainSwitchLinear) }
     val mainTextSave by lazy { findViewById<TapTextView>(R.id.mainTextSave) }
     val switchSaveMobile by lazy { findViewById<TapSwitch>(R.id.switchSaveMobile) }
+    val card by lazy { findViewById<CardView>(R.id.card) }
 
     /**
      * Simple constructor to use when creating a TapPayCardSwitch from code.

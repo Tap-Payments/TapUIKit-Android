@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.util.AttributeSet
 import android.util.Log
 import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -23,11 +24,12 @@ class MainSwitch :LinearLayout {
     lateinit var attrs: AttributeSet
     private var tapSwitchDataSource: TapSwitchDataSource? = null
 
-    val tapMainSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapMainSwitchLinear) }
+    val tapMainSwitchLinear by lazy { findViewById<CardView>(R.id.tapMainSwitchLinear) }
     val mainSwitchChip by lazy { findViewById<TapChip>(R.id.mainSwitchChip) }
     val mainSwitchLinear by lazy { findViewById<LinearLayout>(R.id.mainSwitchLinear) }
     val mainTextSave by lazy { findViewById<TapTextView>(R.id.mainTextSave) }
     val switchSaveMobile by lazy { findViewById<TapSwitch>(R.id.switchSaveMobile) }
+
 
     /**
      * Simple constructor to use when creating a TapPayCardSwitch from code.

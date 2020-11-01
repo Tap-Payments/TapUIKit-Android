@@ -41,7 +41,7 @@
             "currency_chip_background": "#4cffffff",
             "currency_chip_selected_shadow": "#90c2f7",
             "currency_chip_unselected_shadow": "#eeeeef",
-            "transperant": "#37FFFFFF",
+            "transperant": "#c7f9f9f9",
             "invalid_action": "#b9b9b9",
             "change_layout": "#f4f4f4"
         }
@@ -606,8 +606,8 @@
     "TapOtpView": {
         "backgroundColor": "transperant",
         "OtpController": {
-            "bottomLineColor": "brownGreyFour",
-            "activeBottomColor": "deepSkyBlue",
+            "bottomLineColor": "deepSkyBlue",
+            "activeBottomColor": "brownGreyFour",
             "textColor": "greyishBrown",
             "textFont": "Roboto-Light,25"
         },

@@ -265,6 +265,7 @@ open class TextInputEditText  @JvmOverloads constructor(
         theme.textColor?.let { setTextColor(it) }
         theme.textSize?.let { textSize = it.toFloat() }
         theme.letterSpacing?.let { letterSpacing = it.toFloat() }
+        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
 //        theme.placeHolderColor?.let { setHintTextColor(it) }
 //        theme.backgroundColor?.let { setBackgroundColor(it) }
 
