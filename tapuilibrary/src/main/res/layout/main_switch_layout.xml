@@ -52,13 +52,13 @@
                     android:id="@+id/switchSaveMobile"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="@dimen/margin_basic_10dp"
                     android:layout_marginEnd="@dimen/margin_basic_16dp"
-                    android:layout_marginBottom="22dp"
+                    android:layout_marginBottom="@dimen/margin_basic_10dp"
                     android:layout_weight="0.2"
                     android:checked="false"
                     android:theme="@style/SwitchPrimary"
-                    android:visibility="visible" />
+                    android:visibility="gone" />
             </LinearLayout>
         </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
