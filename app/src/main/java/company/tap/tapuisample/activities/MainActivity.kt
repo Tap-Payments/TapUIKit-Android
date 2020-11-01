@@ -63,6 +63,7 @@ class MainActivity : BaseActivity(),
         context = this
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
         ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme)
+        setTheme(R.style.AppThemeBlack)
 
 //        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
 //        if (LocalizationManager.getLocale(context) == Locale("en")) {

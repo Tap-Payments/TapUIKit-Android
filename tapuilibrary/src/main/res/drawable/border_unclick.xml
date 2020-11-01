@@ -53,7 +53,7 @@
     <!-- Background -->
     <item>
         <shape>
-            <solid android:color="@color/chip_back"/>
+            <solid android:color="?colorPrimary"/>
             <corners android:radius="8dp" />
         </shape>
     </item>

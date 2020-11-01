@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tapcard_Chip"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_height="40dp"
     android:orientation="horizontal"
     android:outlineSpotShadowColor="#d9d9da"
     app:cardCornerRadius="8dp"

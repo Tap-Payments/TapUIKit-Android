@@ -1,7 +1,7 @@
 {
     "GlobalValues" : {
         "Colors" : {
-            "white" : "#1c1c1e",
+            "white" : "#FFFFFF",
             "black" : "#000000",
             "black50" : "#00000080",
             "lightPeach" : "#98989f",
@@ -48,7 +48,7 @@
     },
     "inlineCard": {
         "commonAttributes": {
-            "backgroundColor": "white",
+            "backgroundColor": "black",
             "borderColor": "clear",
             "cornerRadius": 0,
             "borderWidth": 0,
@@ -123,7 +123,7 @@
     },
     "emailCard": {
         "commonAttributes": {
-            "backgroundColor": "white",
+            "backgroundColor": "black",
             "borderColor": "clear",
             "cornerRadius": 0,
             "borderWidth": 0,
@@ -271,7 +271,7 @@
         "merchantLogoPlaceHolderColor" : "black",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
         "merchantLogoPlaceHolderLabelColor" : "white",
-        "backgroundColor" : "white"
+        "backgroundColor" : "black"
     },
     "amountSectionView": {
         "originalAmountLabelFont" : "Roboto-Regular,20",
@@ -286,7 +286,7 @@
             "width" : 1
         },
         "itemsNumberButtonCorner" : 25,
-        "backgroundColor" : "white"
+        "backgroundColor" : "black"
     },
     "horizontalList": {
         "backgroundColor" : "whiteTwo",
@@ -308,7 +308,7 @@
         "chips": {
             "radius" : 20,
             "currencyChip": {
-                "backgroundColor" : "whiteTwo",
+                "backgroundColor" : "black",
                 "labelTextFont": "Roboto-Regular,12",
                 "labelTextColor": "greyishBrown",
                 "selected": {
@@ -331,7 +331,7 @@
                 }
             },
             "gatewayChip": {
-                "backgroundColor" : "white",
+                "backgroundColor" : "black",
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreen",
@@ -400,7 +400,7 @@
                 }
             },
             "savedCardChip": {
-                "backgroundColor" : "white",
+                "backgroundColor" : "black",
                 "labelTextFont": "Roboto-Regular,12",
                 "labelTextColor": "greyishBrown",
                 "editMode": {
@@ -430,11 +430,11 @@
     },
     "itemsList":
     {
-        "backgroundColor": "white",
+        "backgroundColor": "black",
         "separatorColor": "veryLightPinkTwo",
         "item":{
-            "descriptionBackgroundColor" : "white",
-            "backgroundColor": "white",
+            "descriptionBackgroundColor" : "black",
+            "backgroundColor": "black",
             "titleLabelFont" : "Roboto-Regular,14",
             "titleLabelColor" : "greyishBrown",
             "descLabelFont" : "Roboto-Light,12",
@@ -533,7 +533,7 @@
     },
     "goPay": {
         "loginBar" :{
-            "backgroundColor" : "#99ffffff",
+            "backgroundColor" : "black",
             "underline": {
                 "selected": {
                     "backgroundColor" : "deepSkyBlue"
