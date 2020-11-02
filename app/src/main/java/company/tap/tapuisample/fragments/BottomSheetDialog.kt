@@ -685,10 +685,17 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         items.add(
             SectionTabItem(
                 resources.getDrawable(
-                    R.drawable.ic_visa
+                    R.drawable.visa
                 ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
             )
         )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.visa
+//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+//            )
+//        )
         items.add(
             SectionTabItem(
                 resources.getDrawable(
@@ -696,13 +703,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
             )
         )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.amex
-                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
-            )
-        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.amex
+//                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
+//            )
+//        )
         tabLayout.addSection(items)
     }
 
@@ -717,21 +724,30 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
             )
         )
+//
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.zain_gray
+//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.ooredoo
+//                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
+//            )
+//        )
+//
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.zain_gray
+//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+//            )
+//        )
 
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.zain_gray
-                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.ooredoo
-                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
-            )
-        )
         tabLayout.addSection(items)
     }
 

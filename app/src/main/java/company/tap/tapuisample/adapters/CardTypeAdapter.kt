@@ -244,7 +244,7 @@ class CardTypeAdapter(
         }
         if (getItemViewType(position) === TYPE_SAVED_CARD) {
             if (selectedPosition == position) {
-                holder.itemView.setBackgroundResource(R.drawable.border_shadow)
+                holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
 
                 setBorderedView(holder.itemView.tapCardChip2Constraints,
                     (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),// corner raduis
@@ -270,7 +270,7 @@ class CardTypeAdapter(
         } else if (getItemViewType(position) === TYPE_REDIRECT) {
             if (selectedPosition == position) {
 //                holder.itemView.tapCardChip3Linear.setBackgroundColor(Color.WHITE)
-                holder.itemView.setBackgroundResource(R.drawable.border_shadow)
+                holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
 
                 setBorderedView(holder.itemView.tapCardChip3Linear,
                     (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),// corner raduis
@@ -280,6 +280,7 @@ class CardTypeAdapter(
 
             }
             else {
+                holder.itemView.setBackgroundResource(R.drawable.border_unclick)
 
                 setBorderedView(holder.itemView.tapCardChip3Linear,
                     (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),// corner raduis
@@ -287,7 +288,6 @@ class CardTypeAdapter(
                     Color.parseColor(ThemeManager.getValue("horizontalList.chips.gatewayChip.backgroundColor")),// tint color
                     parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color")))// shadow color
 
-                holder.itemView.setBackgroundResource(R.drawable.border_unclick)
             }
             (holder as SingleViewHolder)
             holder.itemView.setOnClickListener {

@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Drop Shadow Stack -->
+    <!--     Drop Shadow Stack-->
+    <!--    <item>-->
+    <!--        <shape>-->
+    <!--            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />-->
+    <!--            <solid android:color="#8ae589" />-->
+    <!--            <corners android:radius="8dp" />-->
+    <!--&lt;!&ndash;            <gradient&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:angle="45"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:endColor="#2500d300"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:startColor="#2500d300"&ndash;&gt;-->
+    <!--&lt;!&ndash;                android:type="linear" />&ndash;&gt;-->
+
+    <!--        </shape>-->
+    <!--    </item>-->
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#0200d300" />
+            <solid android:color="#e2f1e2" />
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#0500d300" />
+            <solid android:color="#d1efd0" />
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#1000d300" />
+            <solid android:color="#bcecbd" />
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#1500d300" />
+            <solid android:color="#95e796" />
             <corners android:radius="8dp" />
         </shape>
     </item>
-    <item>
-        <shape>
-            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#2000d300" />
-            <corners android:radius="8dp" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#2500d300" />
-            <corners android:radius="8dp" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#3000d300" />
-            <corners android:radius="8dp" />
-        </shape>
-    </item>
+    <!--    <item>-->
+    <!--        <shape>-->
+    <!--            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />-->
+    <!--            <solid android:color="#8ae589" />-->
+    <!--            <corners android:radius="8dp" />-->
+    <!--        </shape>-->
+    <!--    </item>-->
+
     <!-- Background -->
     <item>
         <shape>
@@ -57,4 +57,21 @@
             <corners android:radius="8dp" />
         </shape>
     </item>
+
+
+    <!--    <item>-->
+    <!--        <shape android:shape="rectangle" android:padding="10dp">-->
+    <!--            <corners android:radius="8dp" />-->
+    <!--            <gradient-->
+    <!--                android:angle="45"-->
+    <!--                android:endColor="#2500d300"-->
+    <!--                android:startColor="#2500d300"-->
+    <!--                android:type="linear" />-->
+    <!--            <padding-->
+    <!--                android:bottom="0dp"-->
+    <!--                android:left="0dp"-->
+    <!--                android:right="0dp"-->
+    <!--                android:top="0dp" />-->
+    <!--        </shape>-->
+    <!--    </item>-->
 </layer-list>
