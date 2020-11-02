@@ -286,7 +286,7 @@
             "color" : "brownGrey",
             "width" : 1
         },
-        "itemsNumberButtonCorner" : 25,
+        "itemsNumberButtonCorner" : 30,
         "backgroundColor" : "white"
     },
     "horizontalList": {

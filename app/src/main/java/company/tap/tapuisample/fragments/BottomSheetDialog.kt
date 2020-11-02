@@ -211,7 +211,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         backgroundColor = (Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.main_switch_background")))
 
 
-        separatorــLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.main_switch_background")))
+        separatorــLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
         initializeViews(view)
 
 
