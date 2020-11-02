@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/mainSwitchLinear"
                 android:orientation="horizontal"
-                android:paddingTop="10dp"
+                android:paddingTop="15dp"
                 android:weightSum="0.5">
 
                 <company.tap.tapuilibrary.uikit.atoms.TapTextView
