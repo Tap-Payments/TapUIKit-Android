@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary.uikit.views
+package company.tap.tapuisample
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -149,9 +149,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, 30, 0, 30)
+        params.setMargins(0, 40, 0, 40)
 
-        params.weight = 0.6f
+        params.weight = 1f
         for (item in tabItems) {
             item.imageView?.layoutParams = params
         }
@@ -186,7 +186,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             getItemWidth(), 0
         )
         params.setMargins(0, 30, 0, 30)
-        params.weight = 0.6f
+        params.weight = 1f
         val image = TapImageView(context, null)
         image.setImageDrawable(item.selectedImage)
         image.layoutParams = params
@@ -213,7 +213,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         linearLayout.layoutParams = params
         linearLayout.orientation = VERTICAL
-        linearLayout.weightSum = 0.6f
+        linearLayout.weightSum = 1f
         return linearLayout
     }
 

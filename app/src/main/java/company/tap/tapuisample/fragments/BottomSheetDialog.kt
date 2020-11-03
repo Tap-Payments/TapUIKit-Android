@@ -54,6 +54,7 @@ import company.tap.tapuilibrary.uikit.organisms.OTPView
 import company.tap.tapuisample.MainSwitch
 import company.tap.tapuisample.R
 import company.tap.tapuisample.TapHeaderSectionView
+import company.tap.tapuisample.TapSelectionTabLayout
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
@@ -689,13 +690,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
             )
         )
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.visa
-//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-//            )
-//        )
+
         items.add(
             SectionTabItem(
                 resources.getDrawable(
@@ -739,14 +734,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
             )
         )
-//
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.zain_gray
-//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-//            )
-//        )
+
+
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.zain_gray
+                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+            )
+        )
 
         tabLayout.addSection(items)
     }
