@@ -50,6 +50,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val actionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.gopay_button) }
     val goPayHint by lazy { findViewById<TapTextView>(R.id.gopay_hint) }
     val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
+    val goPayLinear by lazy { findViewById<LinearLayout>(R.id.goPayLinear) }
 
     var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
@@ -64,6 +65,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     fun initTheme(){
+        goPayLinear.setBackgroundColor(ThemeManager.getValue("goPay.loginBar.backgroundColor"))
         loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.selected.backgroundColor")))
         goPayHint.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
         goPayHint.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont").toFloat()
