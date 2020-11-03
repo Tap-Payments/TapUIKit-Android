@@ -185,7 +185,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, 30, 0, 30)
+        params.setMargins(0, 40, 0, 40)
         params.weight = 1f
         val image = TapImageView(context, null)
         image.setImageDrawable(item.selectedImage)
