@@ -11,8 +11,10 @@
         android:id="@+id/login_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="44dp"
         android:background="@color/bg_gray"
-        app:tabIndicatorColor="@color/darker_gray"
+        app:tabIndicatorColor="#a8a8a8"
+        app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable" />
 
     <LinearLayout

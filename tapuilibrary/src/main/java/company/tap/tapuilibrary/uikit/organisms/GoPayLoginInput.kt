@@ -237,7 +237,20 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         val tabText = TapTextView(context, null)
         tabText.setTheme(FakeThemeManager.getGoPayTabLayoutTextTheme(isSelected))
         tabText.text = text
-        tabText.typeface = Typeface.create("sans-serif-light", Typeface.NORMAL);
+        if (LocalizationManager.getLocale(context).language == "en"){
+            tabText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.RobotoLight
+                )
+            )
+        }else{
+            tabText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.TajawalLight
+                )
+            )
+        }
+
         return tabText
     }
 
@@ -256,6 +269,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 TapFont.RobotoLight
             )
         )
+
+
         goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
