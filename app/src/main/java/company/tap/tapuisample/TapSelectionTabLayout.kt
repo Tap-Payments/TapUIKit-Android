@@ -5,11 +5,13 @@ import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import com.google.android.material.tabs.TabLayout
+import com.squareup.picasso.Picasso
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -17,6 +19,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
+import kotlinx.android.synthetic.main.item_currency_row.view.*
 
 /**
  *
@@ -124,11 +127,19 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      */
     fun addSection(items: ArrayList<SectionTabItem>) {
         itemsCount.add(items.size)
-        if (itemsCount.size > 1)
-            editExistItemsSize()
+        if (itemsCount.size > 1) {
+            for (itemsCount in items){
+                if (itemsCount.type == CardBrand.visa) editExistItemsSize_() else editExistItemsSize()
+            }
+        }
+
+
         val sectionLayout = getSectionLayout()
         for (item in items) {
             sectionLayout.addView(getSectionItem(item))
+//            if (item.type == CardBrand.visa) getSectionItem_(item) else sectionLayout.addView(getSectionItem(item))
+
+
         }
         if (tabsView.size != 0)
             sectionLayout.alpha = unselectedAlphaLevel
@@ -149,9 +160,31 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, 35, 0, 35)
+//        params.setMargins(0, 30, 0,
+//            30)
 
-        params.weight = 1f
+        params.weight = 0.8f
+        for (item in tabItems) {
+            if (item.type == CardBrand.visa) {
+                params.setMargins(0, 0, 0,
+                    0)
+                item.imageView?.layoutParams = params
+            }else{
+                params.setMargins(0, 30, 0,
+                    30)
+                item.imageView?.layoutParams = params
+            }
+
+        }
+    }
+
+    private fun editExistItemsSize_() {
+        val params = LayoutParams(
+            getItemWidth(), 0
+        )
+        params.setMargins(0, 0, 0, 0)
+
+        params.weight = 1.6f
         for (item in tabItems) {
             item.imageView?.layoutParams = params
         }
@@ -185,16 +218,34 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, 35, 0, 35)
-        params.weight = 1f
+        params.setMargins(0, 30, 0, 30)
+        params.weight = 0.8f
         val image = TapImageView(context, null)
         image.setImageDrawable(item.selectedImage)
         image.layoutParams = params
-
         item.imageView = image
         item.indicator = indicator
         tabItems.add(item)
+        layout.addView(image)
+        layout.addView(indicator)
+        return layout
+    }
 
+
+    private fun getSectionItem_(item: SectionTabItem): LinearLayout {
+        val layout = getSectionItemLayout()
+        val indicator = getTabSelectionIndicator()
+        val params = LayoutParams(
+            getItemWidth(), 0
+        )
+        params.setMargins(0, 0, 0, 0)
+        params.weight = 0.9f
+        val image = TapImageView(context, null)
+        image.setImageDrawable(item.selectedImage)
+        image.layoutParams = params
+        item.imageView = image
+        item.indicator = indicator
+        tabItems.add(item)
         layout.addView(image)
         layout.addView(indicator)
         return layout

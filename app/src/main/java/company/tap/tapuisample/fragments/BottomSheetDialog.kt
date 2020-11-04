@@ -24,10 +24,9 @@ import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.transition.Transition
-import androidx.transition.TransitionInflater
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+import com.squareup.picasso.Picasso
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
@@ -49,8 +48,8 @@ import company.tap.tapuilibrary.uikit.interfaces.*
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
-import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuilibrary.uikit.organisms.OTPView
+import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuisample.MainSwitch
 import company.tap.tapuisample.R
 import company.tap.tapuisample.TapHeaderSectionView
@@ -60,7 +59,7 @@ import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import kotlinx.android.synthetic.main.custom_bottom_sheet.view.*
+import kotlinx.android.synthetic.main.item_currency_row.view.*
 
 //    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
 
@@ -223,6 +222,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     goPayLoginInput?.visibility = View.VISIBLE
 //                    goPayPasswordInput?.visibility = View.VISIBLE
                     mainChipgroup?.visibility = View.GONE
+                    tapSeparatorViewLinear?.visibility = View.GONE
+                    separatorــLayout?.visibility = View.GONE
                     hideAllViews()
                     tapHeaderSectionView.visibility = View.VISIBLE
                     amountSectionView.visibility = View.VISIBLE
@@ -682,11 +683,21 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun addCardsTab() {
+
         val items = ArrayList<SectionTabItem>()
+
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.mastercard
+//                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
+//            )
+//        )
+
         items.add(
             SectionTabItem(
                 resources.getDrawable(
-                    R.drawable.visa
+                    R.drawable.visa__
                 ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
             )
         )
@@ -698,6 +709,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
             )
         )
+
+
         items.add(
             SectionTabItem(
                 resources.getDrawable(
@@ -727,20 +740,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
             )
         )
+
         items.add(
             SectionTabItem(
                 resources.getDrawable(
                     R.drawable.ooredoo
                 ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
-            )
-        )
-
-
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.zain_gray
-                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
             )
         )
 
