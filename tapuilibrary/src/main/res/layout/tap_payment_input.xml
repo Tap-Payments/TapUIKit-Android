@@ -33,7 +33,7 @@
             android:layout_gravity="start"
             android:layout_weight="4"
             android:orientation="horizontal"
-            android:paddingStart="18dp"
+            android:paddingStart="20dp"
             android:paddingEnd="18dp" />
 
         <LinearLayout
