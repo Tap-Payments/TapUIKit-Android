@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingStart="20dp">
+    android:paddingStart="10dp">
 
     <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/mobileImage"
