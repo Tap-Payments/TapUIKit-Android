@@ -327,6 +327,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE
             mainSwitch.visibility = View.GONE
+            cardSwitch.visibility = View.GONE
             switch_pay_demo.payButton.visibility = View.GONE
 //            actionButton.visibility = View.GONE
             itemCount.text = "CLOSE"
@@ -349,6 +350,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE
             mainSwitch.visibility = View.GONE
+            cardSwitch.visibility = View.GONE
             switch_pay_demo.payButton.visibility = View.GONE
 //            outer_layout.visibility = View.GONE
             itemCount.text = "CLOSE"
@@ -1023,13 +1025,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         amountSectionView.visibility = View.GONE
         switchDemo.visibility = View.GONE
         mainSwitch.visibility = View.GONE
+        cardSwitch.visibility = View.GONE
         tabLayout.visibility = View.GONE
         paymentLayout.visibility = View.GONE
         businessIcon.visibility = View.GONE
         businessPlaceholder.visibility = View.GONE
         amountSectionView.visibility = View.GONE
         switchDemo.visibility = View.GONE
-        mainSwitch.visibility = View.GONE
         separatorView?.visibility = View.GONE
         chipRecycler.visibility = View.GONE
         fragment_container_nfc.visibility = View.GONE
