@@ -8,15 +8,12 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.uikit.views.TapOTPView
 import company.tap.tapuisample.R
-import jp.wasabeef.blurry.Blurry
-import kotlinx.android.synthetic.main.fragment_otpscreen.*
 
 
 /**
@@ -51,7 +48,7 @@ class OTPFragment: TapBottomSheetDialog() {
         bottomSheetDialog.behavior.skipCollapsed = true
         prepareTextViews(view)
         startCountdown(view)
-        otpView = view.findViewById(R.id.otp_view)
+        otpView = view.findViewById(R.id.otp_view_input)
         backgroundColor = Color.WHITE
 
         val rootView = (activity?.window?.decorView as ViewGroup?)
@@ -86,7 +83,6 @@ class OTPFragment: TapBottomSheetDialog() {
                 val minutes = millisUntilFinished / (1000 * 60) % 60
                 timerText.text=("$minutes:$second")
             }
-
             override fun onFinish() {
                 timerText.text=("00:00")
             }
@@ -100,7 +96,6 @@ class OTPFragment: TapBottomSheetDialog() {
         otpMobile = view.findViewById(R.id.mobile_textview)
         otpMobile.text= "+965 6••••111"
         timerText = view.findViewById(R.id.timer_textview)
-
     }
 
 

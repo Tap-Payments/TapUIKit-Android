@@ -8,7 +8,7 @@ import android.view.MotionEvent
 import android.widget.TextView
 
 /**
- * Created by AhlaamK on 7/19/20.
+ * Created  on 7/19/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
@@ -31,15 +31,15 @@ internal class InitialMovementMethod private constructor() : MovementMethod {
     }
 
     override fun onKeyDown(widget: TextView, text: Spannable, keyCode: Int, event: KeyEvent): Boolean {
-        return false
+        return true
     }
 
     override fun onKeyUp(widget: TextView, text: Spannable, keyCode: Int, event: KeyEvent): Boolean {
-        return false
+        return true
     }
 
     override fun onKeyOther(view: TextView, text: Spannable, event: KeyEvent): Boolean {
-        return false
+        return true
     }
 
     override fun onTakeFocus(widget: TextView, text: Spannable, direction: Int) {
@@ -47,19 +47,19 @@ internal class InitialMovementMethod private constructor() : MovementMethod {
     }
 
     override fun onTrackballEvent(widget: TextView, text: Spannable, event: MotionEvent): Boolean {
-        return false
+        return true
     }
 
     override fun onTouchEvent(widget: TextView, text: Spannable, event: MotionEvent): Boolean {
-        return false
+        return true
     }
 
     override fun onGenericMotionEvent(widget: TextView, text: Spannable, event: MotionEvent): Boolean {
-        return false
+        return true
     }
 
     override fun canSelectArbitrarily(): Boolean {
-        return false
+        return true
     }
 
 

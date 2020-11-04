@@ -1,7 +1,7 @@
 {
     "GlobalValues" : {
         "Colors" : {
-            "white" : "#1c1c1e",
+            "white" : "#FFFFFF",
             "black" : "#000000",
             "black50" : "#00000080",
             "lightPeach" : "#98989f",
@@ -34,19 +34,21 @@
             "brownGreySeven": "#7e7e7e",
             "white78": "#f9f9f9C6",
             "brownGreyFour": "#a6a6a6",
-            "graySeparator": "#e0e0e0",
+            "graySeparator": "#404043",
             "black_50": "#80000000",
-            "main_switch_background": "#E0E0E0",
+            "main_switch_background": "#2b2b2f",
             "switch_background": "#d4cfc9",
             "currency_chip_background": "#4cffffff",
             "currency_chip_selected_shadow": "#90c2f7",
             "currency_chip_unselected_shadow": "#eeeeef",
-            "transperant": "#c7f9f9f9"
+            "transperant": "#c7f9f9f9",
+            "invalid_action": "#b9b9b9",
+            "change_layout": "#f4f4f4"
         }
     },
     "inlineCard": {
         "commonAttributes": {
-            "backgroundColor": "white",
+            "backgroundColor": "black",
             "borderColor": "clear",
             "cornerRadius": 0,
             "borderWidth": 0,
@@ -121,7 +123,7 @@
     },
     "emailCard": {
         "commonAttributes": {
-            "backgroundColor": "white",
+            "backgroundColor": "black",
             "borderColor": "clear",
             "cornerRadius": 0,
             "borderWidth": 0,
@@ -269,7 +271,7 @@
         "merchantLogoPlaceHolderColor" : "black",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
         "merchantLogoPlaceHolderLabelColor" : "white",
-        "backgroundColor" : "white"
+        "backgroundColor" : "black"
     },
     "amountSectionView": {
         "originalAmountLabelFont" : "Roboto-Regular,20",
@@ -284,7 +286,7 @@
             "width" : 1
         },
         "itemsNumberButtonCorner" : 25,
-        "backgroundColor" : "white"
+        "backgroundColor" : "black"
     },
     "horizontalList": {
         "backgroundColor" : "whiteTwo",
@@ -306,7 +308,7 @@
         "chips": {
             "radius" : 20,
             "currencyChip": {
-                "backgroundColor" : "whiteTwo",
+                "backgroundColor" : "black",
                 "labelTextFont": "Roboto-Regular,12",
                 "labelTextColor": "greyishBrown",
                 "selected": {
@@ -329,7 +331,7 @@
                 }
             },
             "gatewayChip": {
-                "backgroundColor" : "white",
+                "backgroundColor" : "black",
                 "selected": {
                     "shadow": {
                         "color" : "vibrantGreen",
@@ -398,7 +400,7 @@
                 }
             },
             "savedCardChip": {
-                "backgroundColor" : "white",
+                "backgroundColor" : "black",
                 "labelTextFont": "Roboto-Regular,12",
                 "labelTextColor": "greyishBrown",
                 "editMode": {
@@ -428,11 +430,11 @@
     },
     "itemsList":
     {
-        "backgroundColor": "white",
+        "backgroundColor": "black",
         "separatorColor": "veryLightPinkTwo",
         "item":{
-            "descriptionBackgroundColor" : "white",
-            "backgroundColor": "white",
+            "descriptionBackgroundColor" : "black",
+            "backgroundColor": "black",
             "titleLabelFont" : "Roboto-Regular,14",
             "titleLabelColor" : "greyishBrown",
             "descLabelFont" : "Roboto-Light,12",
@@ -531,7 +533,7 @@
     },
     "goPay": {
         "loginBar" :{
-            "backgroundColor" : "#99ffffff",
+            "backgroundColor" : "black",
             "underline": {
                 "selected": {
                     "backgroundColor" : "deepSkyBlue"

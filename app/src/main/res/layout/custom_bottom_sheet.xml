@@ -9,18 +9,19 @@
 <!--    card_view:cardElevation="0dp"-->
 <!--    card_view:contentPadding="0dp">-->
 
-<androidx.core.widget.NestedScrollView android:layout_width="match_parent"
-
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
     layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_height="wrap_content">
-
-
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content">
 
 
 
     <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mainView"
+        android:background="@color/black_27"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="bottom"
@@ -33,6 +34,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:visibility="gone"
                 android:paddingTop="@dimen/margin_basic_10dp">
 
                 <company.tap.tapuilibrary.uikit.atoms.TapDragIndicator
@@ -55,12 +57,16 @@
             </LinearLayout>
 
 
-            <company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
+            <company.tap.tapuisample.TapHeaderSectionView
                 android:id="@+id/headerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layoutDirection="locale"
-                android:paddingBottom="@dimen/margin_basic_9dp" />
+                android:layoutDirection="locale" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/topSeparatorLinear">
 
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                 android:id="@+id/topSeparator"
@@ -70,6 +76,7 @@
                 android:layout_marginStart="@dimen/default_padding"
                 android:layout_marginEnd="@dimen/default_padding"
                 android:background="@color/separator_color" />
+        </LinearLayout>
 
             <company.tap.tapuilibrary.uikit.views.TapAmountSectionView
                 android:id="@+id/amount_section"
@@ -127,12 +134,21 @@
                 android:layout_height="wrap_content"
                 android:layoutDirection="locale" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:id="@+id/separatorــLayout"
+            android:layout_height="8dp">
+
+
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                 android:id="@+id/separatorــ"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="0.5dp"
                 android:background="@color/separator_color"
                 android:visibility="visible" />
+
+
+        </LinearLayout>
 
             <company.tap.tapuilibrary.uikit.views.TapAlertView
                 android:id="@+id/alert_text"
@@ -151,18 +167,49 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
+<!--        <company.tap.tapuisample.MainSwitch-->
+<!--            android:id="@+id/mainSwitch"-->
+<!--            android:layout_above="@+id/switch_pay_demo"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"/>-->
 
-        <company.tap.tapuilibrary.uikit.views.mainswitch.MainSwitch
-            android:id="@+id/mainSwitch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+<!--        <company.tap.tapuilibrary.uikit.views.TapCardSwitch-->
+<!--            android:id="@+id/switch_pay_demo"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="start"-->
+<!--            android:layoutDirection="locale" />-->
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="-7dp"
+                android:elevation="0.0dp"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="10dp"
+                android:id="@+id/cardSwitch">
+                <company.tap.tapuisample.MainSwitch
+                    android:id="@+id/mainSwitch"
+                    android:layout_gravity="start"
+                    android:layoutDirection="locale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </androidx.cardview.widget.CardView>
+
+
 
             <company.tap.tapuilibrary.uikit.views.TapCardSwitch
                 android:id="@+id/switch_pay_demo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-8dp"
                 android:layout_gravity="start"
                 android:layoutDirection="locale" />
+
+
+
+
 
 
 
@@ -202,11 +249,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-
-        <include
-            android:id="@+id/otpView"
+        <company.tap.tapuilibrary.uikit.organisms.OTPView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:visibility="gone"
-            layout="@layout/fragment_otpscreen"/>
+            android:id="@+id/otpView"/>
+
+<!--        <include-->
+<!--            android:id="@+id/otpView"-->
+<!--            android:visibility="gone"-->
+<!--            layout="@layout/fragment_otpscreen"/>-->
+
 
 
 

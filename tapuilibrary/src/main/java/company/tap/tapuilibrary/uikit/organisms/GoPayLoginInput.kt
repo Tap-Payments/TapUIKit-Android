@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.text.InputType
 import android.util.AttributeSet
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.ImageView
@@ -26,13 +27,14 @@ import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod.EMAIL
 import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod.PHONE
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
+import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.utils.FakeThemeManager
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
 /**
  *
- * Created by Mario Gamal on 7/14/20
+ * Created on 7/14/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
@@ -48,14 +50,22 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val actionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.gopay_button) }
     val goPayHint by lazy { findViewById<TapTextView>(R.id.gopay_hint) }
     val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
+    val goPayLinear by lazy { findViewById<LinearLayout>(R.id.goPayLinear) }
 
     var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
-    private var inputType = EMAIL
+    private var openOTPInterface: OpenOTPInterface? = null
+    var inputType = EMAIL
+    private var countryCode :String ? = null
 
     init {
         inflate(context, R.layout.gopay_login_input, this)
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+        initTheme()
+    }
+
+    fun initTheme(){
+        goPayLinear.setBackgroundColor(Color.parseColor( ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.selected.backgroundColor")))
         goPayHint.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
         goPayHint.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont").toFloat()
@@ -65,9 +75,11 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initCountryCodePicker() {
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
+        countryCode = countryCodePicker.defaultCountryCode
         countryCodePicker.ccpDialogShowFlag = false
         loginMethodImage.visibility = View.GONE
         countryCodePicker.launchCountrySelectionDialog()
+        countryCode = countryCodePicker.selectedCountryCode
         countryCodePicker.visibility = View.VISIBLE
     }
 
@@ -81,6 +93,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     fun setLoginInterface(loginInterface: GoPayLoginInterface) {
         this.loginInterface = loginInterface
+    }
+
+    fun setOpenOTPInterface(openOTPInterface: OpenOTPInterface) {
+        this.openOTPInterface = openOTPInterface
     }
 
     private fun initButton() {
@@ -111,11 +127,21 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initTextInput() {
         textInput.doAfterTextChanged {
-            if (isValidInput(it.toString()))
+            if (isValidInput(it.toString())) {
                 enableNext()
+                sendPhoneNumber()
+            }
             else
                 disableNext()
         }
+    }
+
+    fun sendPhoneNumber(){
+        var replaced = ""
+        if (textInput.text.toString().length > 7)
+            replaced = (textInput.text.toString()).replaceRange(1,6, "****")
+
+        countryCodePicker.selectedCountryCode?.let { openOTPInterface?.getPhoneNumber(textInput.text.toString(), it, replaced) }
     }
 
     private fun isValidInput(text: String): Boolean {
@@ -156,7 +182,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     }
 
-    private fun initTabLayout() {
+     fun initTabLayout() {
         loginTabLayout.removeAllTabs()
         loginTabLayout.addTab(
             loginTabLayout.newTab().setCustomView(
@@ -188,6 +214,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun changeInputType() {
         textInput.text = null
+        countryCodePicker.visibility = View.GONE
+        loginMethodImage.visibility = View.VISIBLE
         when (inputType) {
             EMAIL -> {
                 textInput.hint = dataSource?.emailInputHint ?: "mail@mail.com"
@@ -209,7 +237,20 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         val tabText = TapTextView(context, null)
         tabText.setTheme(FakeThemeManager.getGoPayTabLayoutTextTheme(isSelected))
         tabText.text = text
-        tabText.typeface = Typeface.create("sans-serif-light", Typeface.NORMAL);
+        if (LocalizationManager.getLocale(context).language == "en"){
+            tabText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.RobotoLight
+                )
+            )
+        }else{
+            tabText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.TajawalLight
+                )
+            )
+        }
+
         return tabText
     }
 
@@ -228,6 +269,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 TapFont.RobotoLight
             )
         )
+
+
         goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -265,7 +308,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     override fun onCountrySelected() {
-
+        countryCode = countryCodePicker.selectedCountryCode
     }
 
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="header_color">#F7F7F7</color>
     <color name="error_text_light_theme">#ffeb1c26</color>
     <color name="error_text_dark_theme">#ffe85746</color>
@@ -21,9 +22,9 @@
     <color name="red_error">#e12131</color>
 
 
-        <color name="colorPrimary">#6200EE</color>
-        <color name="colorPrimaryDark">#3700B3</color>
-        <color name="colorAccent">#007aff</color>
+        <color name="colorPrimary">#a8a8a8</color>
+        <color name="colorPrimaryDark">#a8a8a8</color>
+        <color name="colorAccent">#a8a8a8</color>
         <color name="shadowcolor">#14000000</color>
         <color name="glowingShadow">#2ACE00</color>
         <color name="borderColor">#0066FF</color>

@@ -145,7 +145,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         dataSource?.cornerRadius?.let {
             backgroundDrawable.cornerRadius = it
         }
-        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
+        backgroundDrawable.color = ColorStateList.valueOf(backgroundColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
         background = backgroundDrawable
         elevation = 0F
     }

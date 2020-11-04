@@ -30,10 +30,9 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<EditTextTheme> {
 
-    val passwordTextInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input) }
+    val passwordTextInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input_text) }
     val changeEmail by lazy { findViewById<TapTextView>(R.id.change_email) }
     val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
-    val gopayPasswordInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input) }
     val signInButton by lazy { findViewById<TabAnimatedActionButton>(R.id.sigin_button) }
     val passwordemailText by lazy { findViewById<TapTextView>(R.id.gopay_password_text) }
     val rootView by lazy { findViewById<LinearLayout>(R.id.root_view) }
@@ -52,12 +51,12 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     fun setPasswordValidation() {
-        if (gopayPasswordInput.text?.length!! > 7) {
+        if (passwordTextInput.text?.length!! > 7) {
             changeButtonStatus(true)
         } else {
             changeButtonStatus(false)
         }
-        signInButton.isEnabled = gopayPasswordInput.text?.length!! > 7
+        signInButton.isEnabled = passwordTextInput.text?.length!! > 7
     }
 
 
@@ -67,7 +66,6 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun initButton() {
-
         changeButtonStatus(false)
         signInButton.setOnClickListener {
             textInputLayout.error = "Incorrect Password"
@@ -121,7 +119,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         theme.textSize?.let { it }
         theme.letterSpacing?.let { it }
         theme.textColorHint?.let { }
-//        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
+        theme.backgroundTint?.let { backgroundTintList = ColorStateList.valueOf(it) }
     }
 
 

@@ -20,6 +20,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="openTapChip"
+        android:visibility="gone"
         android:text="Show Tap Chips" />
 
     <Button
@@ -34,6 +35,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:visibility="gone"
         android:onClick="openAmountDiscountRow"
         android:text="Show Amount Discount Items" />
 
@@ -42,6 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:visibility="gone"
         android:onClick="openSectionsTabLayout"
         android:text="Show Sections TabLayout" />
 
@@ -50,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="openActionButton"
+        android:visibility="gone"
         android:text="Show Animated Action Button" />
 
     <Button
@@ -58,7 +62,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="openSwitchView"
-
+        android:visibility="gone"
         android:text="Show Switch view" />
 
     <Button
@@ -67,7 +71,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="openNFCView"
-
+        android:visibility="gone"
         android:text="Show NFC view" />
 
     <Button
@@ -75,6 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:visibility="gone"
         android:onClick="openCardScannerView"
         android:text="Show Scanner view" />
 
@@ -84,6 +89,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="openFragment"
+        android:visibility="gone"
         android:text="Go Pay" />
 
     <Button
@@ -92,13 +98,14 @@
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="otpFragment"
-        android:visibility="visible"
+        android:visibility="gone"
         android:text="OTP Fragment" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="openBiometrics"
         android:text="Biometrics" />

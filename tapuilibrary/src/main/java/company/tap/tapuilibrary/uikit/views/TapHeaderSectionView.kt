@@ -12,11 +12,13 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ButtonTheme
+import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
+import company.tap.tapuilibrary.uikit.views.TextDrawable
 import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
@@ -65,6 +67,7 @@ class TapHeaderSectionView : LinearLayout {
     init {
         inflate(context, R.layout.tap_main_header, this)
         setTheme()
+        setSeparatorTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
@@ -79,7 +82,6 @@ class TapHeaderSectionView : LinearLayout {
         if (headerDataSource.businessImageResources == null) {
             businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
             businessPlaceholder.text = headerDataSource.businessName?.get(0).toString()
-
         } else {
             Glide.with(this)
                 .load(headerDataSource.businessImageResources)
@@ -90,8 +92,9 @@ class TapHeaderSectionView : LinearLayout {
                 )
                 .error(
                     TextDrawable(
-                    headerDataSource.businessName?.get(0).toString()
-                ))
+                        headerDataSource.businessName?.get(0).toString()
+                    )
+                )
                 .into(businessIcon)
         }
 
@@ -138,6 +141,7 @@ class TapHeaderSectionView : LinearLayout {
         businessPlaceholder.setTheme(businessPlaceholderTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
     }
 
@@ -182,6 +186,16 @@ class TapHeaderSectionView : LinearLayout {
             )
         )
 
+    }
+
+
+    fun setSeparatorTheme() {
+//        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+        val separatorViewTheme = SeparatorViewTheme()
+        separatorViewTheme.strokeColor =
+            Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
+        separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
+        indicatorSeparator.setTheme(separatorViewTheme)
     }
 
 }

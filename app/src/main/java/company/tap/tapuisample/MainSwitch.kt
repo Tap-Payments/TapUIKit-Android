@@ -1,4 +1,4 @@
-package company.tap.tapuilibrary.uikit.views.mainswitch
+package company.tap.tapuisample
 
 import android.content.Context
 import android.graphics.Color
@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.util.AttributeSet
 import android.util.Log
 import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -23,11 +24,12 @@ class MainSwitch :LinearLayout {
     lateinit var attrs: AttributeSet
     private var tapSwitchDataSource: TapSwitchDataSource? = null
 
-    val tapMainSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapMainSwitchLinear) }
+    val tapMainSwitchLinear by lazy { findViewById<CardView>(R.id.tapMainSwitchLinear) }
     val mainSwitchChip by lazy { findViewById<TapChip>(R.id.mainSwitchChip) }
     val mainSwitchLinear by lazy { findViewById<LinearLayout>(R.id.mainSwitchLinear) }
     val mainTextSave by lazy { findViewById<TapTextView>(R.id.mainTextSave) }
     val switchSaveMobile by lazy { findViewById<TapSwitch>(R.id.switchSaveMobile) }
+
 
     /**
      * Simple constructor to use when creating a TapPayCardSwitch from code.
@@ -61,6 +63,7 @@ class MainSwitch :LinearLayout {
 
     init {
         inflate(context, R.layout.main_switch_layout, this)
+        setTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
@@ -84,8 +87,10 @@ class MainSwitch :LinearLayout {
     fun setTheme() {
 //        tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 //        saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-        tapMainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-        mainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+//        tapMainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+//        tapMainSwitchLinear.setBackgroundColor(Color.GREEN)
+//        mainSwitchLinear.setBackgroundColor(Color.GREEN)
+//        mainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //        switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //        Blurry.with(context).radius(5).sampling(1).onto(switchesLayout)
 

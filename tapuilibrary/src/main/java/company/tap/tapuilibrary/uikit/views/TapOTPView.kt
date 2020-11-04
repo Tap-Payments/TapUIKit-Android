@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.*
@@ -12,11 +13,13 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorInt
 import androidx.annotation.Px
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.ViewCompat
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 
 /**
  * Created  on 7/12/20.
@@ -24,11 +27,16 @@ import company.tap.tapuilibrary.R
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = R.attr.otpViewStyle) : AppCompatEditText(context, attrs, defStyleAttr) {
+
+class TapOTPView @JvmOverloads constructor(
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleAttr: Int = R.attr.otpViewStyle
+) : AppCompatEditText(context, attrs, defStyleAttr) {
 
     private val mViewType: Int
 
-    private var mOtpItemCount: Int = 0
+    var mOtpItemCount: Int = 0
 
     private var mOtpItemWidth: Int = 0
     private var mOtpItemHeight: Int = 0
@@ -39,6 +47,7 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     private val mTextPaint: TextPaint
     private val mAnimatorTextPaint: Paint
 
+
     /**
      * Gets the line colors for the different states (normal, selected, focused) of the CustomOtpView.
      *
@@ -48,6 +57,7 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
      */
     var lineColors: ColorStateList? = null
         private set
+
     /**
      *
      * Return the current color selected for normal line.
@@ -55,7 +65,7 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
      * @return Returns the current item's line color.
      */
     @get:ColorInt
-    var currentLineColor = Color.BLACK
+    var currentLineColor = Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.activeBottomColor"))
         private set
     private var mLineWidth: Int = 0
 
@@ -246,31 +256,44 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
         val a = theme.obtainStyledAttributes(attrs, R.styleable.CustomOtpView, defStyleAttr, 0)
 
-        mViewType = a.getInt(R.styleable.CustomOtpView_viewType,
+        mViewType = a.getInt(
+            R.styleable.CustomOtpView_viewType,
             VIEW_TYPE_RECTANGLE
         )
-        mOtpItemCount = a.getInt(R.styleable.CustomOtpView_itemCount,
+        mOtpItemCount = a.getInt(
+            R.styleable.CustomOtpView_itemCount,
             DEFAULT_COUNT
         )
-        mOtpItemHeight = a.getDimension(R.styleable.CustomOtpView_itemHeight,
-            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_size).toFloat()).toInt()
-        mOtpItemWidth = a.getDimension(R.styleable.CustomOtpView_itemWidth,
-            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_size).toFloat()).toInt()
-        mOtpItemSpacing = a.getDimensionPixelSize(R.styleable.CustomOtpView_itemSpacing,
-            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing))
+        mOtpItemHeight = a.getDimension(
+            R.styleable.CustomOtpView_itemHeight,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_size).toFloat()
+        ).toInt()
+        mOtpItemWidth = a.getDimension(
+            R.styleable.CustomOtpView_itemWidth,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_size).toFloat()
+        ).toInt()
+        mOtpItemSpacing = a.getDimensionPixelSize(
+            R.styleable.CustomOtpView_itemSpacing,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+        )
         mOtpItemRadius = a.getDimension(R.styleable.CustomOtpView_itemRadius, 0f).toInt()
-        mLineWidth = a.getDimension(R.styleable.CustomOtpView_lineWidth,
-            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_line_width).toFloat()).toInt()
-        lineColors = a.getColorStateList(R.styleable.CustomOtpView_lineColor)
+        mLineWidth = a.getDimension(
+            R.styleable.CustomOtpView_lineWidth,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_line_width).toFloat()
+        ).toInt()
+//        lineColors = a.getColorStateList(R.styleable.CustomOtpView_lineColor)
+        lineColors = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.bottomLineColor")))
         isCursorVisible = a.getBoolean(R.styleable.CustomOtpView_android_cursorVisible, true)
         mCursorColor = a.getColor(R.styleable.CustomOtpView_cursorColor, currentTextColor)
-        mCursorWidth = a.getDimensionPixelSize(R.styleable.CustomOtpView_cursorWidth,
-            res.getDimensionPixelSize(R.dimen.otp_customotp_view_cursor_width))
+        mCursorWidth = a.getDimensionPixelSize(
+            R.styleable.CustomOtpView_cursorWidth,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_cursor_width)
+        )
 
         a.recycle()
 
         if (lineColors != null) {
-            currentLineColor = lineColors!!.defaultColor
+//            currentLineColor = lineColors!!.defaultColor
         }
         updateCursorHeight()
 
@@ -319,6 +342,7 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         }
     }
 
+    @SuppressLint("RestrictedApi")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val widthMode = View.MeasureSpec.getMode(widthMeasureSpec)
         val heightMode = View.MeasureSpec.getMode(heightMeasureSpec)
@@ -341,17 +365,42 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
             }
         }
 
-        if (heightMode == View.MeasureSpec.EXACTLY) {
+        height = if (heightMode == View.MeasureSpec.UNSPECIFIED) {
             // Parent has told us how big to be. So be it.
-            height = heightSize
+            heightSize
         } else {
-            height = boxHeight + paddingTop + paddingBottom
+            boxHeight + paddingTop + paddingBottom
         }
 
-        setMeasuredDimension(width, height)
+        when {
+            isFocused && text?.length != mOtpItemCount  -> setMeasuredDimension(width, height + 250)
+
+            text?.length == mOtpItemCount -> {
+                setMeasuredDimension(width, height)
+            }
+            else -> {
+                setMeasuredDimension(width, height)
+            }
+        }
+
+        /////// check if mOtpItemCount set action for change button to valid
+
     }
 
-    override fun onTextChanged(text: CharSequence, start: Int, lengthBefore: Int, lengthAfter: Int) {
+
+    private fun hideKeyboard() {
+        val imm: InputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(windowToken, 0)
+    }
+
+
+
+    override fun onTextChanged(
+        text: CharSequence,
+        start: Int,
+        lengthBefore: Int,
+        lengthAfter: Int
+    ) {
         if (start != text.length) {
             moveSelectionToEnd()
         }
@@ -375,12 +424,13 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         if (focused) {
             moveSelectionToEnd()
             makeBlink()
+        }else{
+            hideKeyboard()
         }
     }
 
     override fun onSelectionChanged(selStart: Int, selEnd: Int) {
         super.onSelectionChanged(selStart, selEnd)
-
         if (selEnd != text?.length) {
             moveSelectionToEnd()
         }
@@ -468,7 +518,10 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
     }
 
     private fun getLineColorForState(vararg states: Int): Int {
-        return if (lineColors != null) lineColors!!.getColorForState(states, currentLineColor) else currentLineColor
+        return if (lineColors != null) lineColors!!.getColorForState(
+            states,
+            currentLineColor
+        ) else currentLineColor
     }
 
     private fun drawPinBox(canvas: Canvas, i: Int) {
@@ -485,7 +538,13 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
                 drawRightCorner = true
             }
         }
-        updateRoundRectPath(mItemBorderRect, mOtpItemRadius.toFloat(), mOtpItemRadius.toFloat(), drawLeftCorner, drawRightCorner)
+        updateRoundRectPath(
+            mItemBorderRect,
+            mOtpItemRadius.toFloat(),
+            mOtpItemRadius.toFloat(),
+            drawLeftCorner,
+            drawRightCorner
+        )
         canvas.drawPath(mPath, mPaint)
     }
 
@@ -510,7 +569,12 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         mPaint.style = Paint.Style.FILL
         mPaint.strokeWidth = mLineWidth.toFloat() / 10
         val halfLineWidth = mLineWidth.toFloat() / 2
-        mItemLineRect.set(mItemBorderRect.left, mItemBorderRect.bottom - halfLineWidth, mItemBorderRect.right, mItemBorderRect.bottom + halfLineWidth)
+        mItemLineRect.set(
+            mItemBorderRect.left,
+            mItemBorderRect.bottom - halfLineWidth,
+            mItemBorderRect.right,
+            mItemBorderRect.bottom + halfLineWidth
+        )
 
         updateRoundRectPath(mItemLineRect, mOtpItemRadius.toFloat(), mOtpItemRadius.toFloat(), l, r)
         canvas.drawPath(mPath, mPaint)
@@ -538,8 +602,10 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         updateRoundRectPath(rectF, rx, ry, l, r, r, l)
     }
 
-    private fun updateRoundRectPath(rectF: RectF, rx: Float, ry: Float,
-                                    tl: Boolean, tr: Boolean, br: Boolean, bl: Boolean) {
+    private fun updateRoundRectPath(
+        rectF: RectF, rx: Float, ry: Float,
+        tl: Boolean, tr: Boolean, br: Boolean, bl: Boolean
+    ) {
         mPath.reset()
 
         val l = rectF.left
@@ -596,7 +662,8 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     private fun updateItemRectF(i: Int) {
         val halfLineWidth = mLineWidth.toFloat() / 2
-        var left = scrollX.toFloat() + ViewCompat.getPaddingStart(this).toFloat() + (i * (mOtpItemSpacing + mOtpItemWidth)).toFloat() + halfLineWidth
+        var left = scrollX.toFloat() + ViewCompat.getPaddingStart(this)
+            .toFloat() + (i * (mOtpItemSpacing + mOtpItemWidth)).toFloat() + halfLineWidth
         if (mOtpItemSpacing == 0 && i > 0) {
             left = left - mLineWidth * i
         }
@@ -629,7 +696,9 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         val cx = mItemCenterPoint.x
         val cy = mItemCenterPoint.y
         val x = cx - Math.abs(mTextRect.width().toFloat()) / 2 - mTextRect.left.toFloat()
-        val y = cy + Math.abs(mTextRect.height().toFloat()) / 2 - mTextRect.bottom// always center vertical
+        val y = cy + Math.abs(
+            mTextRect.height().toFloat()
+        ) / 2 - mTextRect.bottom// always center vertical
         canvas.drawText(text, charAt, charAt + 1, x, y, paint)
     }
 
@@ -684,10 +753,10 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
             color = currentTextColor
         }
 
-        if (color != currentLineColor) {
-            currentLineColor = color
-            inval = true
-        }
+//        if (color != currentLineColor) {
+//            currentLineColor = color
+//            inval = true
+//        }
 
         if (inval) {
             invalidate()
@@ -864,13 +933,14 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         return (dp * resources.displayMetrics.density + 0.5f).toInt()
     }
 
+
     companion object {
 
         private val TAG = "CustomOtpView"
 
         private val DBG = false
 
-        private val BLINK = 500
+        private val BLINK = 5000
 
         private val DEFAULT_COUNT = 4
 
@@ -880,7 +950,8 @@ class TapOTPView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         private val VIEW_TYPE_LINE = 1
 
         private fun isPasswordInputType(inputType: Int): Boolean {
-            val variation = inputType and (EditorInfo.TYPE_MASK_CLASS or EditorInfo.TYPE_MASK_VARIATION)
+            val variation =
+                inputType and (EditorInfo.TYPE_MASK_CLASS or EditorInfo.TYPE_MASK_VARIATION)
             return (variation == EditorInfo.TYPE_CLASS_TEXT or EditorInfo.TYPE_TEXT_VARIATION_PASSWORD
                     || variation == EditorInfo.TYPE_CLASS_TEXT or EditorInfo.TYPE_TEXT_VARIATION_WEB_PASSWORD
                     || variation == EditorInfo.TYPE_CLASS_NUMBER or EditorInfo.TYPE_NUMBER_VARIATION_PASSWORD)

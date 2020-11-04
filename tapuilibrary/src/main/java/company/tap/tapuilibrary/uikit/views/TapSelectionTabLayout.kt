@@ -149,9 +149,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, 25, 0, 25)
+        params.setMargins(0, 30, 0, 30)
 
-        params.weight = 1f
+        params.weight = 0.6f
         for (item in tabItems) {
             item.imageView?.layoutParams = params
         }
@@ -185,8 +185,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, 25, 0, 25)
-        params.weight = 1f
+        params.setMargins(0, 30, 0, 30)
+        params.weight = 0.6f
         val image = TapImageView(context, null)
         image.setImageDrawable(item.selectedImage)
         image.layoutParams = params
@@ -213,7 +213,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         linearLayout.layoutParams = params
         linearLayout.orientation = VERTICAL
-        linearLayout.weightSum = 1f
+        linearLayout.weightSum = 0.6f
         return linearLayout
     }
 

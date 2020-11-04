@@ -8,8 +8,8 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        app:tabGravity="center"
-        app:tabIndicatorFullWidth="true" />
+        android:layout_height="50dp"
+        app:tabGravity="fill"
+         />
 
 </LinearLayout>

@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CustomCardViewStyle"
     android:elevation="8dp"
+    android:layout_marginTop="-25dp"
+    android:paddingTop="20dp"
     android:id="@+id/tapCardSwitchLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -62,6 +64,7 @@ save your mobile number." />
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:alpha="0.8"
+        android:paddingTop="20dp"
         android:orientation="vertical"
         android:visibility="gone">
 
@@ -137,6 +140,9 @@ save your mobile number." />
         android:id="@+id/payButton"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_margin="20dp" />
+        android:layout_marginTop="22dp"
+        android:layout_marginBottom="22dp"
+        android:layout_marginStart="@dimen/margin_basic_20dp"
+        android:layout_marginEnd="@dimen/margin_basic_20dp" />
 
 </LinearLayout>
