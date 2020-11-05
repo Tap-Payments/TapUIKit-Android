@@ -375,7 +375,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             } else {
                 it.imageView?.setImageDrawable(it.selectedImage)
                 it.indicator?.visibility = View.VISIBLE
-                it.indicator?.setBackgroundColor(indicatorColor)
+//                it.indicator?.setBackgroundColor(indicatorColor)
+                it.indicator?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.vibrantGreen")))
             }
         }
     }

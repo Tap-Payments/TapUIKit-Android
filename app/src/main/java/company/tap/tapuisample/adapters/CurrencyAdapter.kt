@@ -28,7 +28,7 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 
-var selectedPosition = -1
+var selectedPosition = 0
 var context: Context? = null
 //var viewType :ViewGroup? = null
 //val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
