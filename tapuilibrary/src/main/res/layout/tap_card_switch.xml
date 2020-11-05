@@ -66,7 +66,7 @@ save your mobile number." />
         android:alpha="0.8"
         android:paddingTop="20dp"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switch_merchant_checkout"
@@ -97,6 +97,7 @@ save your mobile number." />
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_basic_16dp"
             android:layout_marginTop="@dimen/margin_basic_16dp"
+            android:layout_marginEnd="@dimen/margin_basic_16dp"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.02"
             android:textColor="#4b4847"
@@ -128,6 +129,7 @@ save your mobile number." />
             android:layout_marginStart="@dimen/margin_basic_16dp"
             android:layout_marginTop="@dimen/margin_basic_8dp"
             android:layout_marginBottom="@dimen/margin_basic_16dp"
+            android:layout_marginEnd="@dimen/margin_basic_16dp"
             android:fontFamily="sans-serif-light"
             android:textColor="#4b4847"
             android:textSize="12sp"
