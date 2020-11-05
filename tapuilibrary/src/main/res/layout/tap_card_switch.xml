@@ -20,7 +20,7 @@
         android:id="@+id/saveSwitchChip"
         android:orientation="vertical"
         app:cardCornerRadius="10dp"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:cardBackgroundColor="@color/chip_background">
 
         <LinearLayout
@@ -34,7 +34,7 @@
                 android:id="@+id/text_save"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_basic_16dp"
+                android:layout_marginStart="@dimen/margin_basic_20dp"
                 android:layout_marginTop="@dimen/margin_basic_16dp"
                 android:layout_marginBottom="@dimen/margin_basic_10dp"
                 android:layout_weight="0.3"
