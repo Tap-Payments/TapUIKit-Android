@@ -213,6 +213,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
          * set bottom sheet background
          */
         backgroundColor = (Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.main_switch_background")))
+//        backgroundColor = (Color.parseColor("#00000000"))
 
 
         separatorــLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
@@ -800,15 +801,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                          */
                         switch_pay_demo.payButton.isActivated
                         switchSaveDemo?.visibility = View.VISIBLE
-                        switchLayout?.visibility = View.VISIBLE
+//                        switchLayout?.visibility = View.VISIBLE
                         switchMerchantCheckout?.visibility = View.VISIBLE
-                        switchMerchantCheckout?.isChecked = true
-                        switchgoPayCheckout?.isChecked = true
-                        switchSaveDemo?.isChecked = true
+//                        switchMerchantCheckout?.isChecked = true
+//                        switchgoPayCheckout?.isChecked = true
+//                        switchSaveDemo?.isChecked = true
                         cardSwitch.visibility = View.VISIBLE
                         mainSwitch.visibility = View.VISIBLE
-                        switchgoPayCheckout?.visibility = View.VISIBLE
-                        savegoPay?.visibility = View.VISIBLE
+//                        switchgoPayCheckout?.visibility = View.VISIBLE
+//                        savegoPay?.visibility = View.VISIBLE
                         alertgoPay?.visibility = View.VISIBLE
                         separatorView?.visibility = View.VISIBLE
                         switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.savecard_text)))

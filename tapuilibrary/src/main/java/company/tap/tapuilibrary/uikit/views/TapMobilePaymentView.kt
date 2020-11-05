@@ -59,6 +59,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         countryCodePicker.ccpDialogShowFlag = false
         mobileImage.setOnClickListener {
 //            mobileImage.visibility = View.GONE
+            countryCodePicker.showArrow(false)
             countryCodePicker.launchCountrySelectionDialog()
             countryCodePicker.visibility = View.VISIBLE
             countryCodePicker.setDefaultCountryUsingNameCode("KW")
