@@ -158,6 +158,17 @@
 
         </LinearLayout>
 
+        <FrameLayout
+            android:id="@+id/fragment_container1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/fragment_container_nfc"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -185,16 +196,6 @@
             android:layout_marginTop="-8dp"
             android:layout_gravity="start"
             android:layoutDirection="locale" />
-
-            <FrameLayout
-                android:id="@+id/fragment_container1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-
-            <FrameLayout
-                android:id="@+id/fragment_container_nfc"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
 <!--        <company.tap.tapuisample.MainSwitch-->
 <!--            android:id="@+id/mainSwitch"-->

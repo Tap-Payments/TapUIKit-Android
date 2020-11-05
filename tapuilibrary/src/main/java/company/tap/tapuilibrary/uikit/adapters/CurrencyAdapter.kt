@@ -28,7 +28,7 @@ All rights reserved.
  **/
 
 
-var selectedPosition = -1
+var selectedPosition = 0
 var context: Context? = null
 //var viewType :ViewGroup? = null
 //val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
@@ -97,34 +97,33 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
              * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
              */
 
-//            holder.itemView.setBackgroundResource(R.drawable.border_currency)
+            holder.itemView.setBackgroundResource(R.drawable.border_currency)
+
             setBorderedView(
-                holder.itemView,
-                (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),
+                holder.itemView.CurrencyChipLinear,
+                55f,
                 0.0f,
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color")),
                 Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.white")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
             )
-            holder.itemView.outlineSpotShadowColor =
-                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
+//            holder.itemView.outlineSpotShadowColor =
+//                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
+
 
         } else{
+
+            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
+
             setBorderedView(
-                holder.itemView,
-                (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
+                holder.itemView.CurrencyChipLinear,
+                35f,
                 0.0f,
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
-                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
-
-            )
-            holder.itemView.outlineSpotShadowColor =
-                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
-
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color")))
         }
 
-//            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
         holder.itemView.setOnClickListener {
             company.tap.tapuilibrary.uikit.adapters.selectedPosition = position
 

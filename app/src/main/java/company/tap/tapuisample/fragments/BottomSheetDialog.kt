@@ -107,6 +107,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private lateinit var payButton: TabAnimatedActionButton
 
 
+    private var switch_save_mobile: TapSwitch? = null
+
+
+
     private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
     private var switchMerchantCheckout: TapSwitch? = null
@@ -366,6 +370,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switchDemo = view.findViewById(R.id.switch_pay_demo)
         mainSwitch = view.findViewById(R.id.mainSwitch)
         switchSaveDemo = mainSwitch.findViewById(R.id.switchSaveMobile)
+        switch_save_mobile = switchDemo.findViewById(R.id.switch_save_mobile)
         payButton = switchDemo.findViewById(R.id.payButton)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         separatorView = switchDemo.findViewById(R.id.switch_separator)
@@ -688,21 +693,21 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         val items = ArrayList<SectionTabItem>()
 
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.mastercard
-//                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
-//            )
-//        )
-
         items.add(
             SectionTabItem(
                 resources.getDrawable(
-                    R.drawable.visa__
-                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+                    R.drawable.amex
+                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
             )
         )
+
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.visa__
+//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+//            )
+//        )
 
         items.add(
             SectionTabItem(
@@ -790,11 +795,18 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         alertMessage?.setTextColor(Color.parseColor("#e12131"))
                     }
                     if (s?.trim()?.length == 19 && card.validationState == CardValidationState.valid) {
+                        /**
+                         * This an important part for showing switches part correctly as in design
+                         */
+                        switch_pay_demo.payButton.isActivated
                         switchSaveDemo?.visibility = View.VISIBLE
                         switchLayout?.visibility = View.VISIBLE
                         switchMerchantCheckout?.visibility = View.VISIBLE
                         switchMerchantCheckout?.isChecked = true
                         switchgoPayCheckout?.isChecked = true
+                        switchSaveDemo?.isChecked = true
+                        cardSwitch.visibility = View.VISIBLE
+                        mainSwitch.visibility = View.VISIBLE
                         switchgoPayCheckout?.visibility = View.VISIBLE
                         savegoPay?.visibility = View.VISIBLE
                         alertgoPay?.visibility = View.VISIBLE

@@ -56,7 +56,7 @@
                     android:layout_marginEnd="@dimen/margin_basic_16dp"
                     android:layout_marginBottom="@dimen/margin_basic_10dp"
                     android:layout_weight="0.2"
-                    android:checked="true"
+                    android:checked="false"
                     android:theme="@style/SwitchPrimary"
                     android:visibility="gone" />
             </LinearLayout>
