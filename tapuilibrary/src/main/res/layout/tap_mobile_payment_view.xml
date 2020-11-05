@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingStart="16dp">
+    android:paddingStart="@dimen/margin_basic_16dp">
 
     <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/mobileImage"
@@ -14,6 +14,7 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginEnd="@dimen/margin_basic_10dp"
         android:layout_gravity="center"
         android:src="@drawable/mobile"
         android:visibility="visible" />
@@ -25,6 +26,7 @@
         android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true"
+        app:ccp_showArrow="false"
         app:ccp_defaultPhoneCode="965"
         app:ccp_contentColor="@color/gray"
         android:fontFamily="sans-serif-light"
@@ -42,10 +44,10 @@
         android:id="@+id/mobileNumber"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
         android:fontFamily="sans-serif-light"
         android:hint="00000000"
         android:inputType="phone"
+        android:textCursorDrawable="@drawable/cursor_drawable"
         android:lineHeight="0.5dp"
         android:maxLength="10"
         android:textSize="@dimen/font_size_17sp"
