@@ -204,17 +204,18 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 if (LocalizationManager.getLocale(context).language == "en"){
                     tabText.typeface = Typeface.createFromAsset(
                         context?.assets, TapFont.tapFontType(
-                            TapFont.RobotoLight
+                            TapFont.RobotoRegular
                         )
                     )
                 }else{
                     tabText.typeface = Typeface.createFromAsset(
                         context?.assets, TapFont.tapFontType(
-                            TapFont.TajawalLight
+                            TapFont.TajawalRegular
                         )
                     )
                 }
-                tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
+                tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.otherSegmentSelected.textColor")))
+
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
@@ -232,7 +233,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                         )
                     )
                 }
-                tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.otherSegmentSelected.textColor")))
+                tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
                 inputType = if (tab.position == 0) EMAIL else PHONE
                 changeInputType()
             }
@@ -264,6 +265,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         val tabText = TapTextView(context, null)
         tabText.setTheme(FakeThemeManager.getGoPayTabLayoutTextTheme(isSelected))
         tabText.text = text
+
         if (LocalizationManager.getLocale(context).language == "en"){
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
@@ -293,14 +295,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     fun setFontsEnglish() {
         textInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
+                TapFont.RobotoLight
             )
         )
 
 
         goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
+                TapFont.RobotoLight
             )
         )
     }
@@ -308,12 +310,12 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     fun setFontsArabic() {
         textInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
+                TapFont.TajawalLight
             )
         )
         goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
+                TapFont.TajawalLight
             )
         )
 
