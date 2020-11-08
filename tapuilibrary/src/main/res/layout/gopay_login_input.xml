@@ -33,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="25dp"
+            android:layout_marginEnd="@dimen/margin_basic_16dp"
             android:src="@drawable/ic_mail" />
 
 
@@ -55,6 +56,15 @@
             app:ccp_showFlag="false"
             app:ccp_showNameCode="false"/>
 
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            android:id="@+id/countryCodeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="+965"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:textColor="@color/dark_gray" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout"
@@ -69,7 +79,6 @@
                 android:id="@+id/gopay_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
                 android:textCursorDrawable="@color/blue"
                 android:background="@android:color/transparent"
                 android:fontFamily="sans-serif-light"
