@@ -31,7 +31,7 @@ All rights reserved.
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter(
     private val arrayList: ArrayList<Int>,
-    private val onCardSelectedActionListener: OnCardSelectedActionListener? = null
+    private val onCardSelectedActionListener: OnCardSelectedActionListener? = null, var isShaking :Boolean = false
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), OnEditClick {
     private val TYPE_SAVED_CARD = 1
     private val TYPE_REDIRECT = 2
@@ -48,7 +48,7 @@ class CardTypeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
-//        context_ = parent.context
+        context_ = parent.context
         return when (viewType) {
             TYPE_SAVED_CARD -> {
                 view = LayoutInflater.from(parent.context).inflate(R.layout.item_saved_card, parent, false)
@@ -118,6 +118,7 @@ class CardTypeAdapter(
             Log.d("Context" , context__.toString())
             val animShake: Animation = AnimationUtils.loadAnimation(context__, R.anim.shake)
             holder?.itemView?.startAnimation(animShake)
+
         }
     }
 
@@ -125,6 +126,13 @@ class CardTypeAdapter(
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if ( isShaking ){
+            val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
+            holder.itemView.startAnimation(animShake)
+        }else{
+            holder.itemView.clearAnimation()
+            holder.itemView.animation = null
+        }
 
         println("position printed: $position")
         if (position == 0) {
@@ -135,7 +143,6 @@ class CardTypeAdapter(
         if (getItemViewType(position) === TYPE_SAVED_CARD) {
             if (selectedPosition == position) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
-
                 setBorderedView(holder.itemView.tapCardChip2Constraints,
                     (ThemeManager.getValue("horizontalList.chips.radius")as Int).toFloat(),// corner raduis
                     0.0f,parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
@@ -153,6 +160,7 @@ class CardTypeAdapter(
 
             }
             (holder as SavedViewHolder)
+
             holder.itemView.setOnClickListener {
                 selectedPosition = position
                 notifyDataSetChanged()
@@ -180,6 +188,8 @@ class CardTypeAdapter(
 
             }
             (holder as SingleViewHolder)
+            if (isShaking) holder.itemView.deleteImageView3.visibility = View.VISIBLE
+
             holder.itemView.setOnClickListener {
                 onCardSelectedActionListener?.onCardSelectedAction(true)
                 selectedPosition = position

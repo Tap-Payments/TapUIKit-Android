@@ -13,8 +13,8 @@
         android:layout_height="wrap_content"
         android:minHeight="44dp"
         android:background="@color/bg_gray"
-        app:tabIndicatorColor="#a8a8a8"
-        app:tabIndicatorHeight="2dp"
+        app:tabIndicatorColor="@color/red_error"
+        app:tabIndicatorHeight="5dp"
         app:tabMode="scrollable" />
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:layout_width="match_parent"

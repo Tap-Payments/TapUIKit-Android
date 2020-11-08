@@ -66,6 +66,7 @@ import jp.wasabeef.recyclerview.animators.FadeInAnimator
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import kotlinx.android.synthetic.main.item_currency_row.view.*
+import kotlinx.android.synthetic.main.item_knet.*
 
 //    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
 
@@ -480,16 +481,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         delImageView2 = tapChipgrp?.findViewById(R.id.deleteImageView2)
         delImageView3 = tapChipgrp?.findViewById(R.id.deleteImageView3)
 
-        groupAction?.visibility = View.GONE
+        groupAction?.visibility = View.VISIBLE
         groupAction?.setOnClickListener {
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
-            delImageView2?.visibility = View.VISIBLE
-
-
-//            chipRecycler.itemAnimator = SlideInLeftAnimator()
-            val adapter = CardTypeAdapter(paymentsList, this)
-            adapter.startShakingAnimation(context!!)
-
+            deleteImageView3?.visibility = View.VISIBLE
+            chipRecycler.adapter = CardTypeAdapter(paymentsList, this,true)
+        }
+        chipRecycler.setOnClickListener {
+            chipRecycler.adapter = CardTypeAdapter(paymentsList, this,false)
 
         }
         chipRecycler.setOnClickListener {
