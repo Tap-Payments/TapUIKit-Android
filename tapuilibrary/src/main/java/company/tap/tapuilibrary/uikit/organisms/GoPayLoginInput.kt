@@ -104,7 +104,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         countryCodePicker.launchCountrySelectionDialog()
         countryCode = countryCodePicker.selectedCountryCode
         countryCodeTxt.text = countryCodePicker.selectedCountryCode
-
     }
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {
@@ -269,6 +268,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textInput.text = null
         countryCodePicker.visibility = View.GONE
         loginMethodImage.visibility = View.VISIBLE
+        countryCodeTxt.visibility = View.VISIBLE
+
         when (inputType) {
             EMAIL -> {
                 textInput.hint = dataSource?.emailInputHint ?: "mail@mail.com"
@@ -366,7 +367,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     override fun onCountrySelected() {
         countryCode = countryCodePicker.selectedCountryCode
-        countryCodeTxt.text = countryCode
+        countryCodeTxt.text = countryCodePicker.selectedCountryCode
     }
 
 

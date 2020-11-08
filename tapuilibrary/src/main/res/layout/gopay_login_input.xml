@@ -61,7 +61,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="+965"
-            android:visibility="gone"
+            android:visibility="visible"
             android:layout_gravity="center"
             android:textColor="@color/dark_gray" />
 
@@ -71,6 +71,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:endIconDrawable="@drawable/ic_close"
+            android:layout_marginStart="2dp"
             app:endIconMode="clear_text"
             app:endIconTint="@null"
             app:hintEnabled="false">
