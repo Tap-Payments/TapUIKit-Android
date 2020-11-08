@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.uikit.utils
 
 import android.graphics.Color
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 
 /**
@@ -22,8 +23,8 @@ object FakeThemeManager {
         return theme
     }
 
-    fun getGoPaySelectedTabColor() = Color.parseColor("#4b4847")
-    fun getGoPayUnSelectedTabColor() = Color.parseColor("#aeaeae")
+    fun getGoPaySelectedTabColor() = Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor"))
+    fun getGoPayUnSelectedTabColor() = Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor"))
     fun getGoPayValidatedColor() = Color.parseColor("#007aff")
     fun getGoPayUnValidatedColor() = Color.parseColor("#d7d7d7")
     fun getGoPaySignInButtonColor() = Color.parseColor("#b9b9b9")

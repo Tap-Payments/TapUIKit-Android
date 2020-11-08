@@ -67,6 +67,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     fun initTheme(){
         goPayLinear.setBackgroundColor(Color.parseColor( ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.selected.backgroundColor")))
+        loginTabLayout.tabTextColors = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
         goPayHint.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
         goPayHint.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont").toFloat()
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
@@ -200,12 +201,38 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             override fun onTabReselected(tab: TabLayout.Tab?) {}
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 val tabText = tab?.customView as TapTextView
-                tabText.setTextColor(FakeThemeManager.getGoPayUnSelectedTabColor())
+                if (LocalizationManager.getLocale(context).language == "en"){
+                    tabText.typeface = Typeface.createFromAsset(
+                        context?.assets, TapFont.tapFontType(
+                            TapFont.RobotoLight
+                        )
+                    )
+                }else{
+                    tabText.typeface = Typeface.createFromAsset(
+                        context?.assets, TapFont.tapFontType(
+                            TapFont.TajawalLight
+                        )
+                    )
+                }
+                tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
             }
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val tabText = tab?.customView as TapTextView
-                tabText.setTextColor(FakeThemeManager.getGoPaySelectedTabColor())
+                if (LocalizationManager.getLocale(context).language == "en"){
+                    tabText.typeface = Typeface.createFromAsset(
+                        context?.assets, TapFont.tapFontType(
+                            TapFont.RobotoRegular
+                        )
+                    )
+                }else{
+                    tabText.typeface = Typeface.createFromAsset(
+                        context?.assets, TapFont.tapFontType(
+                            TapFont.TajawalRegular
+                        )
+                    )
+                }
+                tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.otherSegmentSelected.textColor")))
                 inputType = if (tab.position == 0) EMAIL else PHONE
                 changeInputType()
             }

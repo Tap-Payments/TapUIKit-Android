@@ -57,6 +57,8 @@ open class CurrencyViewFragment : Fragment() {
         chipRecycler.adapter = CurrencyAdapter(currencyList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
 //        itemsRecycler.setHasFixedSize(false)
+        headerView.visibility = View.GONE
+
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         itemsRecycler.adapter = ItemAdapter(itemList)
 

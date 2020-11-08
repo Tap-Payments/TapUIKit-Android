@@ -537,10 +537,10 @@
             "backgroundColor" : "whiteTwo",
             "underline": {
                 "selected": {
-                    "backgroundColor" : "deepSkyBlue"
+                    "backgroundColor" : "brownGrey"
                 },
                 "unselected": {
-                    "backgroundColor" : "brownGrey"
+                    "backgroundColor" : "deepSkyBlue"
                 }
             },
             "title": {

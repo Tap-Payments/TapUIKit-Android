@@ -74,6 +74,8 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:2.0.2"
     implementation 'jp.wasabeef:blurry:4.0.0'
     implementation "com.hbb20:ccp:2.4.1"
+    implementation 'jp.wasabeef:recyclerview-animators:4.0.1'
+
 
 //    implementation 'com.chaos.view:pinview:1.4.4'
 

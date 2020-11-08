@@ -16,6 +16,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.view.animation.OvershootInterpolator
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -55,9 +56,14 @@ import company.tap.tapuisample.R
 import company.tap.tapuisample.TapHeaderSectionView
 import company.tap.tapuisample.TapSelectionTabLayout
 import company.tap.tapuisample.adapters.CardTypeAdapter
+import company.tap.tapuisample.adapters.OnEditClick
+import company.tap.tapuisample.interfaces.AnimateViewHolder
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
+import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
+import jp.wasabeef.recyclerview.animators.FadeInAnimator
+import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import kotlinx.android.synthetic.main.item_currency_row.view.*
 
@@ -440,6 +446,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         }
     }
 
+    var onEditClick:OnEditClick ? = null
+
+    fun initAdapter(onEditClick: OnEditClick){
+        this.onEditClick = onEditClick
+    }
     @SuppressLint("ResourceAsColor")
     private fun setupChip(view: View) {
         mainChipGroup = view.findViewById(R.id.mainChipgroup)
@@ -452,6 +463,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders", "rightTitle")
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
+
 
         val divider = DividerItemDecoration(
             context,
@@ -468,10 +480,20 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         delImageView2 = tapChipgrp?.findViewById(R.id.deleteImageView2)
         delImageView3 = tapChipgrp?.findViewById(R.id.deleteImageView3)
 
+        groupAction?.visibility = View.GONE
         groupAction?.setOnClickListener {
             Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
             delImageView2?.visibility = View.VISIBLE
-            shakingCards(chipRecycler)
+
+
+//            chipRecycler.itemAnimator = SlideInLeftAnimator()
+            val adapter = CardTypeAdapter(paymentsList, this)
+            adapter.startShakingAnimation(context!!)
+
+
+        }
+        chipRecycler.setOnClickListener {
+            stopShakingCards(chipRecycler)
         }
         delImageView1?.setOnClickListener {
             stopShakingCards(chipRecycler)
@@ -487,6 +509,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private fun shakingCards(chipsView: RecyclerView) {
         val animShake: Animation = AnimationUtils.loadAnimation(context, R.anim.shake)
         chipsView.startAnimation(animShake)
+
     }
 
     private fun stopShakingCards(chipsView: RecyclerView) {
