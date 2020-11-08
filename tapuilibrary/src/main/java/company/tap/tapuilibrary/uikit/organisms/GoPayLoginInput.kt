@@ -56,7 +56,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val goPayLinear by lazy { findViewById<LinearLayout>(R.id.goPayLinear) }
     val goPayTabSeparator by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator) }
     val goPayTabSeparator_ by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator_) }
-    val countryCodeTxt by lazy { findViewById<TapTextView>(R.id.countryCodeTxt) }
+//    val countryCodeTxt by lazy { findViewById<TapTextView>(R.id.countryCodeTxt) }
 
     var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
@@ -96,14 +96,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initCountryCodePicker() {
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
-        countryCodeTxt.visibility =View.VISIBLE
-        countryCodeTxt.text = countryCodePicker.defaultCountryCode
+//        countryCodeTxt.text = countryCodePicker.defaultCountryCode
         countryCode = countryCodePicker.defaultCountryCode
         countryCodePicker.ccpDialogShowFlag = false
 //        loginMethodImage.visibility = View.GONE
         countryCodePicker.launchCountrySelectionDialog()
         countryCode = countryCodePicker.selectedCountryCode
-        countryCodeTxt.text = countryCodePicker.selectedCountryCode
+//        countryCodeTxt.text = countryCodePicker.selectedCountryCode
     }
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {
@@ -257,7 +256,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 }
                 tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
                 inputType = if (tab.position == 0) EMAIL else PHONE
-                if (tab.position == 0){ countryCodeTxt.visibility = View.GONE }else countryCodeTxt.visibility = View.VISIBLE
+                if (tab.position == 0){ countryCodePicker.visibility = View.GONE }else countryCodePicker.visibility = View.VISIBLE
 
                 changeInputType()
             }
@@ -268,7 +267,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textInput.text = null
         countryCodePicker.visibility = View.GONE
         loginMethodImage.visibility = View.VISIBLE
-        countryCodeTxt.visibility = View.VISIBLE
 
         when (inputType) {
             EMAIL -> {
@@ -276,16 +274,15 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 textInput.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mail)
-                countryCodeTxt.visibility = View.GONE
+                countryCodePicker.visibility = View.GONE
             }
             PHONE -> {
-                countryCodeTxt.visibility = View.VISIBLE
-                textInput.hint = dataSource?.phoneInputHint ?: "00000000"
+                countryCodePicker.visibility = View.VISIBLE
+                textInput.hint = dataSource?.phoneInputHint ?:  "00000000"
                 textInput.inputType = InputType.TYPE_CLASS_PHONE
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)
                 loginMethodImage.setOnClickListener { initCountryCodePicker() }
-                countryCodeTxt.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
             }
         }
     }
@@ -367,7 +364,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     override fun onCountrySelected() {
         countryCode = countryCodePicker.selectedCountryCode
-        countryCodeTxt.text = countryCodePicker.selectedCountryCode
+//        countryCodeTxt.text = countryCodePicker.selectedCountryCode
     }
 
 

@@ -43,11 +43,12 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:focusable="true"
+            app:ccp_showArrow="false"
             android:layout_marginStart="5dp"
             app:ccp_defaultPhoneCode="965"
             app:ccp_contentColor="@color/gray"
             android:fontFamily="sans-serif-light"
-            android:visibility="gone"
+            android:visibility="visible"
             app:ccpDialog_showCloseIcon="true"
             app:ccpDialog_showNameCode="false"
             app:ccp_customMasterCountries="KW,QA,BH,SA,UAE"
@@ -61,7 +62,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="+965"
-            android:visibility="visible"
+            android:visibility="gone"
             android:layout_gravity="center"
             android:textColor="@color/dark_gray" />
 
