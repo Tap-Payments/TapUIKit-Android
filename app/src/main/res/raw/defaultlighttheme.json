@@ -555,7 +555,7 @@
             },
             "hintLabel": {
                 "textFont": "Roboto-Light,10",
-                "textColor": "greyishBrown"
+                "textColor": "brownGreyThree"
             }
         },
         "passwordView" :{

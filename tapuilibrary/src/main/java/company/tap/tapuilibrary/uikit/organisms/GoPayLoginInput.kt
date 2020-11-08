@@ -21,6 +21,9 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
+import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
@@ -51,6 +54,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val goPayHint by lazy { findViewById<TapTextView>(R.id.gopay_hint) }
     val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
     val goPayLinear by lazy { findViewById<LinearLayout>(R.id.goPayLinear) }
+    val goPayTabSeparator by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator) }
 
     var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
@@ -62,16 +66,28 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         inflate(context, R.layout.gopay_login_input, this)
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initTheme()
+        setSeparatorTheme()
     }
+
 
     fun initTheme(){
         goPayLinear.setBackgroundColor(Color.parseColor( ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.selected.backgroundColor")))
         loginTabLayout.tabTextColors = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
-        goPayHint.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
-        goPayHint.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont").toFloat()
+        var textThem = TextViewTheme()
+        textThem.textColor = Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor"))
+        textThem.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont")
+        goPayHint.setTheme(textThem)
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
         textInput.textSize= ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
+    }
+
+    fun setSeparatorTheme(){
+        val separatorViewTheme = SeparatorViewTheme()
+        separatorViewTheme.strokeColor =
+            Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
+        separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
+        goPayTabSeparator.setTheme(separatorViewTheme)
     }
 
     private fun initCountryCodePicker() {

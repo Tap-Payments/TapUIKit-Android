@@ -16,6 +16,10 @@
         app:tabIndicatorColor="#a8a8a8"
         app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable" />
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:id="@+id/goPayTabSeparator"/>
 
     <LinearLayout
         android:id="@+id/login_input_layout"
