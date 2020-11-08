@@ -39,7 +39,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private var bottomLeftCorner = 0f
     var backgroundColor = Color.TRANSPARENT
 
-    var bottomSheetLayout: FrameLayout? = null
+    private var bottomSheetLayout: FrameLayout?=null
     lateinit var bottomSheetDialog: BottomSheetDialog
     private var tapBottomDialogInterface: TapBottomDialogInterface? = null
 
@@ -55,7 +55,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
             val dialog = it as BottomSheetDialog
             println("dialog tapn is $dialog")
              bottomSheetLayout =
-                dialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
+                 dialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
             bottomSheetBehavior.isDraggable
             bottomSheetDialog.behavior.isFitToContents
@@ -89,6 +89,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         setDialogConfigurations()
         changeBackground()
+        tapBottomDialogInterface?.onShow()
     }
 
     private fun changeBackground() {
@@ -96,7 +97,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
             bottomSheetLayout =
                 bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
             bottomSheetLayout?.background = getBackgroundDrawable()
-            tapBottomDialogInterface?.onShow()
+
         }
     }
 
