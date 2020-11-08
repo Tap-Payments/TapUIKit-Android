@@ -19,6 +19,7 @@
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:background="#dfdfdf"
         android:id="@+id/goPayTabSeparator"/>
 
     <LinearLayout
@@ -78,6 +79,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdfdf"
+        android:id="@+id/goPayTabSeparator_"/>
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/gopay_hint"
