@@ -74,8 +74,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     fun initTheme(){
         goPayLinear.setBackgroundColor(Color.parseColor( ThemeManager.getValue("goPay.loginBar.backgroundColor")))
-//        loginTabLayout.setSelectedTabIndicator()
-        loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#a8a8a8"))
+        loginTabLayout.setSelectedTabIndicatorColor(Color.RED)
         loginTabLayout.tabTextColors = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
         var textThem = TextViewTheme()
         textThem.textColor = Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor"))
