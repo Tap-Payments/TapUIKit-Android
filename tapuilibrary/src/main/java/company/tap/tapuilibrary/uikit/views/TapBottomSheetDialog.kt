@@ -55,7 +55,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
             val dialog = it as BottomSheetDialog
             println("dialog tapn is $dialog")
              bottomSheetLayout =
-                 dialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
+                 bottomSheetDialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
             bottomSheetBehavior.isDraggable
             bottomSheetDialog.behavior.isFitToContents
