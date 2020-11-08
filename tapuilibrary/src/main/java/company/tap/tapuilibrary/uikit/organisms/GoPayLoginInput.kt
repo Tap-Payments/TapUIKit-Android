@@ -267,13 +267,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         if (LocalizationManager.getLocale(context).language == "en"){
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
-                    TapFont.RobotoLight
+                    TapFont.RobotoRegular
                 )
             )
         }else{
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
-                    TapFont.TajawalLight
+                    TapFont.TajawalRegular
                 )
             )
         }
@@ -293,14 +293,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     fun setFontsEnglish() {
         textInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
 
 
         goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
     }
@@ -308,12 +308,12 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     fun setFontsArabic() {
         textInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalRegular
             )
         )
         goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalRegular
             )
         )
 
