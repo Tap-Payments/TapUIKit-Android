@@ -39,7 +39,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private var bottomLeftCorner = 0f
     var backgroundColor = Color.TRANSPARENT
 
-    private var bottomSheetLayout: FrameLayout?=null
+    var bottomSheetLayout: FrameLayout?=null
     lateinit var bottomSheetDialog: BottomSheetDialog
     private var tapBottomDialogInterface: TapBottomDialogInterface? = null
 
