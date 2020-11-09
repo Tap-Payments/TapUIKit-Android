@@ -119,11 +119,6 @@ class CardTypeAdapter(
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
-//        val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-//        params.rightMargin = 20
-//        holder.itemView.layoutParams = params
-
         println("position printed: $position")
         if (position == 0) {
             val params = holder.itemView.layoutParams as RecyclerView.LayoutParams

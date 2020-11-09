@@ -36,12 +36,16 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         mobileNumber.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 tapPaymentShowHideClearImage?.showHideClearImage(true)
+                countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
             }
             override fun afterTextChanged(mobileText: Editable) {
                 if (mobileText.length > 2){
                     tapPaymentShowHideClearImage?.showHideClearImage(true)
+                    countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+
                 }else{
                     tapPaymentShowHideClearImage?.showHideClearImage(false)
+                    countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
                 }
 
             }
@@ -57,6 +61,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     private fun initCountryCodePicker() {
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
         countryCodePicker.showArrow(false)
+        countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.ccpDialogShowFlag = false
         mobileImage.setOnClickListener {
 //            mobileImage.visibility = View.GONE
