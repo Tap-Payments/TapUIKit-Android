@@ -6,7 +6,7 @@ import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 
 /**
  *
- * Created by Mario Gamal on 7/15/20
+ * Created on 7/15/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
@@ -25,7 +25,7 @@ object FakeThemeManager {
 
     fun getGoPaySelectedTabColor() = Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor"))
     fun getGoPayUnSelectedTabColor() = Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.otherSegmentSelected.textColor"))
-    fun getGoPayValidatedColor() = Color.parseColor("#007aff")
-    fun getGoPayUnValidatedColor() = Color.parseColor("#a8a8a8")
+    fun getGoPayValidatedColor() = Color.parseColor("goPay.loginBar.underline.selected.backgroundColor")
+    fun getGoPayUnValidatedColor() = Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.unselected.backgroundColor"))
     fun getGoPaySignInButtonColor() = Color.parseColor("#b9b9b9")
 }
