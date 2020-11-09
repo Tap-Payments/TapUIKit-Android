@@ -186,8 +186,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpViewActionButton.setButtonDataSource(
             false, context?.let { LocalizationManager.getLocale(it).language },
             "Confirm",
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
         )
         otpViewInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
