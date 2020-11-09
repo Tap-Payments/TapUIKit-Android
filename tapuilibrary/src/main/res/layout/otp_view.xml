@@ -95,6 +95,7 @@
             android:textColor="#4b4847"
             android:textCursorDrawable="@color/colorAccent"
             app:itemCount="6"
+            android:lineHeight="0.2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:lineColor="@color/blue"

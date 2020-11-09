@@ -63,7 +63,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     private fun initCountryCodePicker() {
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
         countryCodePicker.showArrow(false)
-        countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+        countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.ccpDialogShowFlag = false
         mobileImage.setOnClickListener {
 //            mobileImage.visibility = View.GONE
@@ -92,7 +92,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         mobileNumber.setBackgroundResource(android.R.color.transparent)
         mobileNumber?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
 
