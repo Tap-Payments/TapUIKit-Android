@@ -610,7 +610,7 @@
             "bottomLineColor": "deepSkyBlue",
             "activeBottomColor": "brownGreyFour",
             "textColor": "greyishBrown",
-            "textFont": "Roboto-Light,25"
+            "textFont": "Roboto-Light,14"
         },
         "Timer": {
             "textFont": "Roboto-Regular,16",
