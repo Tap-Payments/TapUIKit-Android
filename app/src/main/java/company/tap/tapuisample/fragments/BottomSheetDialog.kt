@@ -56,7 +56,6 @@ import company.tap.tapuisample.R
 import company.tap.tapuisample.TapHeaderSectionView
 import company.tap.tapuisample.TapSelectionTabLayout
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import company.tap.tapuisample.adapters.OnEditClick
 import company.tap.tapuisample.interfaces.AnimateViewHolder
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
@@ -145,6 +144,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var delImageView2: ImageView? = null
     private var delImageView3: ImageView? = null
     private var tapChipgrp: TapChip? = null
+    private var tapCardChip2: TapChip? = null
     private var goPayPasswordInput: GoPayPasswordInput? = null
     private var goPayLoginInput: GoPayLoginInput? = null
     private var otpButtonConfirmationInterface: OtpButtonConfirmationInterface? = null
@@ -210,6 +210,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switch_pay_demo.payButton.stateListAnimator = null
         switch_pay_demo.payButton.isActivated = false
         tapChipgrp = view.findViewById(R.id.tapcard_Chip)
+        tapCardChip2 = view.findViewById(R.id.tapCardChip2)
         setAllSeparatorTheme()
 //        setTapMobileInputViewTheme()
 //        dialog?.getWindow()?.setBackgroundDrawable( ColorDrawable(Color.TRANSPARENT));
@@ -447,74 +448,55 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         }
     }
 
-    var onEditClick:OnEditClick ? = null
-
-    fun initAdapter(onEditClick: OnEditClick){
-        this.onEditClick = onEditClick
-    }
     @SuppressLint("ResourceAsColor")
     private fun setupChip(view: View) {
         mainChipGroup = view.findViewById(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         groupName = view.findViewById<TapTextView>(R.id.group_name)
-        groupName?.text =
-            LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders", "leftTitle")
+        groupName?.text = LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders", "leftTitle")
         groupAction = view.findViewById<TapTextView>(R.id.group_action)
-        groupAction?.text =
-            LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders", "rightTitle")
+        groupAction?.text = LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders", "rightTitle")
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 
 
-        val divider = DividerItemDecoration(
-            context,
-            DividerItemDecoration.HORIZONTAL
-        )
-        divider.setDrawable(ShapeDrawable().apply {
-            intrinsicWidth = 10
-            paint.color = Color.TRANSPARENT
-        }) // note: currently (support version 28.0.0), we can not use tranparent color here, if we use transparent, we still see a small divider line. So if we want to display transparent space, we can set color = background color or we can create a custom ItemDecoration instead of DividerItemDecoration.
-        chipRecycler.addItemDecoration(divider)
+        /**
+         * Setting divider for items
+         */
+//        val divider = DividerItemDecoration(
+//            context,
+//            DividerItemDecoration.HORIZONTAL
+//        )
+//        divider.setDrawable(ShapeDrawable().apply {
+//            intrinsicWidth = 10
+//            paint.color = Color.TRANSPARENT
+//        }) // note: currently (support version 28.0.0), we can not use tranparent color here, if we use transparent, we still see a small divider line. So if we want to display transparent space, we can set color = background color or we can create a custom ItemDecoration instead of DividerItemDecoration.
+//        chipRecycler.addItemDecoration(divider)
 
-        chipRecycler.adapter = CardTypeAdapter(paymentsList, this)
-        delImageView1 = tapChipgrp?.findViewById(R.id.deleteImageView1)
-        delImageView2 = tapChipgrp?.findViewById(R.id.deleteImageView2)
-        delImageView3 = tapChipgrp?.findViewById(R.id.deleteImageView3)
+
+
+        chipRecycler.adapter = CardTypeAdapter(paymentsList, this, false)
 
         groupAction?.visibility = View.VISIBLE
-        groupAction?.setOnClickListener {
-            Toast.makeText(context, "You clicked Edit", Toast.LENGTH_SHORT).show()
-            deleteImageView3?.visibility = View.VISIBLE
-            chipRecycler.adapter = CardTypeAdapter(paymentsList, this,true)
-        }
-        chipRecycler.setOnClickListener {
-            chipRecycler.adapter = CardTypeAdapter(paymentsList, this,false)
 
-        }
-        chipRecycler.setOnClickListener {
-            stopShakingCards(chipRecycler)
-        }
-        delImageView1?.setOnClickListener {
-            stopShakingCards(chipRecycler)
-        }
-        delImageView2?.setOnClickListener {
-            stopShakingCards(chipRecycler)
-        }
-        delImageView3?.setOnClickListener {
-            stopShakingCards(chipRecycler)
-        }
-    }
+            groupAction?.setOnClickListener {
+                if (groupAction?.text == "Close"){
+                    chipRecycler.adapter = CardTypeAdapter(paymentsList, this,false)
+                    groupAction?.text = "Edit"
 
-    private fun shakingCards(chipsView: RecyclerView) {
-        val animShake: Animation = AnimationUtils.loadAnimation(context, R.anim.shake)
-        chipsView.startAnimation(animShake)
+                }else{
+                    chipRecycler.adapter = CardTypeAdapter(paymentsList, this,true)
+                    groupAction?.text = "Close"
+                    groupAction?.tag = 2
+                }
+
+            }
+//        }
 
     }
 
     private fun stopShakingCards(chipsView: RecyclerView) {
-        val animShake: Animation = AnimationUtils.loadAnimation(context, R.anim.shake)
-        chipsView.clearAnimation()
-        chipsView.animation = null
+        chipsView.adapter = CardTypeAdapter(paymentsList, this,false)
     }
 
 
@@ -539,12 +521,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         )
     }
 
-
-    fun setItemCountActions() {
-        if (itemCount.text.contains("close")) {
-
-        }
-    }
 
     @SuppressLint("SetTextI18n")
     private fun amountViewInit(view: View) {
@@ -1014,7 +990,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {
-        if (stopAnimation) stopShakingCards(chipRecycler)
+        if (stopAnimation){
+            stopShakingCards(chipRecycler)
+            groupAction?.text == "Edit"
+        }
     }
 
 

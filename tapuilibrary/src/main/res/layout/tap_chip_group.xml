@@ -49,8 +49,9 @@
         android:id="@+id/chip_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"
+        android:nestedScrollingEnabled="true"
         android:orientation="horizontal"
+        android:paddingBottom="@dimen/margin_basic_6dp"
         android:paddingTop="@dimen/margin_basic_6dp"
         android:layout_gravity="center"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
