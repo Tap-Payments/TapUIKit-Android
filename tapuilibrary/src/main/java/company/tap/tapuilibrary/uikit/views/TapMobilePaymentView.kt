@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -10,6 +11,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import com.hbb20.CountryCodePicker
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
@@ -39,7 +41,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
                 countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
             }
             override fun afterTextChanged(mobileText: Editable) {
-                if (mobileText.length > 2){
+                if (mobileText.length > 1){
                     tapPaymentShowHideClearImage?.showHideClearImage(true)
                     countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
 
@@ -87,7 +89,12 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         mobileNumber.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
         mobileNumber.textSize = ThemeManager.getFontSize("phoneCard.textFields.font").toFloat()
         mobileNumber.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
-        mobileNumber.setBackgroundResource(android.R.color.transparent);
+        mobileNumber.setBackgroundResource(android.R.color.transparent)
+        mobileNumber?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
 
     }
 
