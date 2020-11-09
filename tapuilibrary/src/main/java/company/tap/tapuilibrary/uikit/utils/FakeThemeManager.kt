@@ -25,7 +25,7 @@ object FakeThemeManager {
 
     fun getGoPaySelectedTabColor() = Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor"))
     fun getGoPayUnSelectedTabColor() = Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.otherSegmentSelected.textColor"))
-    fun getGoPayValidatedColor() = Color.parseColor("goPay.loginBar.underline.selected.backgroundColor")
+    fun getGoPayValidatedColor() = Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.selected.backgroundColor"))
     fun getGoPayUnValidatedColor() = Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.unselected.backgroundColor"))
     fun getGoPaySignInButtonColor() = Color.parseColor("#b9b9b9")
 }
