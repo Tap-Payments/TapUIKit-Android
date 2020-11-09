@@ -101,7 +101,26 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 //        loginMethodImage.visibility = View.GONE
         countryCodePicker.launchCountrySelectionDialog()
         countryCode = countryCodePicker.selectedCountryCode
-//        countryCodeTxt.text = countryCodePicker.selectedCountryCode
+        countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+
+
+        countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
+        textInput?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
+        goPayHint?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
     }
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {

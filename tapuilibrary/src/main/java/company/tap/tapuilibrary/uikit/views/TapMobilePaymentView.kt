@@ -63,8 +63,8 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     private fun initCountryCodePicker() {
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
         countryCodePicker.showArrow(false)
-        countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.ccpDialogShowFlag = false
+        countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
