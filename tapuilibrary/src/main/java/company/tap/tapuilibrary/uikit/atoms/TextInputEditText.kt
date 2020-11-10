@@ -199,10 +199,7 @@ open class TextInputEditText  @JvmOverloads constructor(
         cachedColorStateList = textColors
         defaultErrorColor = ContextCompat.getColor(
             context,
-            if (TapColorUtils.isColorDark(
-                    textColors.defaultColor
-                )
-            ) {
+            if (TapColorUtils.isColorDark(textColors.defaultColor)) {
                 // Note: if the _text_ color is dark, then this is a
                 // light theme, and vice-versa.
                 R.color.error_text_light_theme

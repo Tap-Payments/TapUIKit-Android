@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.textfield.TextInputLayout
@@ -30,7 +31,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs),
     TapView<EditTextTheme> {
 
-    val passwordTextInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input_text) }
+    val passwordTextInput by lazy { findViewById<EditText>(R.id.gopay_password_input_text) }
     val changeEmail by lazy { findViewById<TapTextView>(R.id.change_email) }
     val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
     val signInButton by lazy { findViewById<TabAnimatedActionButton>(R.id.sigin_button) }
@@ -151,7 +152,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
 
     fun initTheme() {
-        passwordTextInput.setErrorColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+//        passwordTextInput.setErrorColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         passwordTextInput.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.textColor")))
         passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
         passwordTextInput.backgroundTintList =
