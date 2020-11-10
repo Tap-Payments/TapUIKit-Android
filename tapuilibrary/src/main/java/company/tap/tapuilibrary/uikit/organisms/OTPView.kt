@@ -102,19 +102,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
         initChange()
         initTheme()
         setFonts()
-        blure()
     }
 
-
-    fun blure() {
-        val startMs = System.currentTimeMillis()
-        Blurry.with(context)
-            .radius(25)
-            .sampling(2)
-            .async()
-            .animate(500)
-            .onto(R.id.otpLinearLayout as ViewGroup)
-    }
 
     fun initTheme() {
         otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
