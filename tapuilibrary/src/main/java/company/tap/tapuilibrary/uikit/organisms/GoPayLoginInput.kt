@@ -144,7 +144,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         actionButton.setButtonDataSource(false,
             context?.let { LocalizationManager.getLocale(it).language },
             LocalizationManager.getValue("next","Common"),
-            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
 
         actionButton.setOnClickListener {
@@ -196,7 +196,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         actionButton.setButtonDataSource(false,
             context?.let { LocalizationManager.getLocale(it).language },
             LocalizationManager.getValue("next","Common"),
-            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
     }
