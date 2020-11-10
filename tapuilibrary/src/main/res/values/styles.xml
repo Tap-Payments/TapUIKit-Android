@@ -45,6 +45,9 @@
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">#000000</item>
     </style>
-
+    <style name="AppTheme.TextFloatLabelAppearance" parent="TextAppearance.Design.Hint">
+        <!-- Floating label appearance here -->
+        <item name="android:textColor">@color/blue</item>
+    </style>
 
 </resources>
