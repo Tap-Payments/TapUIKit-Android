@@ -290,10 +290,15 @@ class TapOTPView @JvmOverloads constructor(
 
         /// set space between
         for (x in 0..mOtpItemCount){
-            if (x == mOtpItemCount/2){
-                mOtpItemSpacing = a.getDimensionPixelSize(
+            mOtpItemSpacing = if (x == mOtpItemCount/2){
+                a.getDimensionPixelSize(
                     R.styleable.CustomOtpView_itemSpacing,
                     res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
+                )
+            }else{
+                a.getDimensionPixelSize(
+                    R.styleable.CustomOtpView_itemSpacing,
+                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
                 )
             }
         }

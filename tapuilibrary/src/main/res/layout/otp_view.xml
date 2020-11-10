@@ -85,7 +85,7 @@
 
         <company.tap.tapuilibrary.uikit.views.TapOTPView
             android:id="@+id/otpViewInput"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_gravity="center"
             android:gravity="center"
@@ -99,6 +99,8 @@
             android:inputType="number"
             android:textColor="#4b4847"
             android:textSize="25sp"
+            android:paddingEnd="@dimen/margin_basic_16dp"
+            android:paddingStart="@dimen/margin_basic_16dp"
             android:layout_marginTop="@dimen/margin_basic_20dp"
             android:layout_marginStart="@dimen/margin_basic_23dp"
             android:layout_marginEnd="@dimen/margin_basic_23dp"

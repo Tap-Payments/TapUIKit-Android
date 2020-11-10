@@ -141,11 +141,11 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     /**
      * setup the initInvalidBackground background drawable color and corner radius from datasource
      */
-    private fun initInvalidBackground(backgroundColor: Int? = null) {
+    private fun initInvalidBackground(backgroundColor: Int) {
         dataSource?.cornerRadius?.let {
             backgroundDrawable.cornerRadius = it
         }
-        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
+        backgroundDrawable.color = ColorStateList.valueOf(backgroundColor)
         background = backgroundDrawable
         elevation = 0F
     }
