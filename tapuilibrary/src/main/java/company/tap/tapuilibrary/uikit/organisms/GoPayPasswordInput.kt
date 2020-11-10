@@ -33,7 +33,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     val passwordTextInput by lazy { findViewById<EditText>(R.id.gopay_password_input_text) }
     val changeEmail by lazy { findViewById<TapTextView>(R.id.change_email) }
-    val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
+//    val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
     val signInButton by lazy { findViewById<TabAnimatedActionButton>(R.id.sigin_button) }
     val passwordemailText by lazy { findViewById<TapTextView>(R.id.gopay_password_text) }
     val rootView by lazy { findViewById<LinearLayout>(R.id.root_view) }
@@ -69,7 +69,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     private fun initButton() {
         changeButtonStatus(false)
         signInButton.setOnClickListener {
-            textInputLayout.error = "Incorrect Password"
+//            textInputLayout.error = "Incorrect Password"
         }
     }
 
@@ -155,11 +155,10 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 //        passwordTextInput.setErrorColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         passwordTextInput.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.textColor")))
         passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
-        passwordTextInput.backgroundTintList =
-            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
-        textInputLayout.backgroundTintList =
-            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+        passwordTextInput.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+//        textInputLayout.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+
     }
 
     fun getSuccessDataSource(
