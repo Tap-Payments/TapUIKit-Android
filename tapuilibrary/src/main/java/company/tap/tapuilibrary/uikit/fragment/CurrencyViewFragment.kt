@@ -65,6 +65,8 @@ open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, pri
             chipRecycler.adapter = CurrencyAdapter(currencyList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
 //        itemsRecycler.setHasFixedSize(false)
+        headerView.visibility = View.GONE
+
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
         if (this::itemList.isInitialized)
             itemsRecycler.adapter = ItemAdapter(itemList)

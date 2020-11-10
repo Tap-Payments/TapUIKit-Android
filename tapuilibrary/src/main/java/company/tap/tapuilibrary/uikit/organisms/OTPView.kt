@@ -107,11 +107,20 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
 
         changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
+
+
         val timerTextTheme = TextViewTheme()
         timerTextTheme.textColor =
             (Color.parseColor(ThemeManager.getValue("TapOtpView.Timer.textColor")))
         timerTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.Timer.textFont")
         timerText.setTheme(timerTextTheme)
+
+        val mobileNumberTextTextTheme = TextViewTheme()
+        mobileNumberTextTextTheme.textColor =
+            (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
+        mobileNumberTextTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
+        mobileNumberText.setTheme(mobileNumberTextTextTheme)
+        otpSentText.setTheme(mobileNumberTextTextTheme)
 
     }
 
@@ -177,8 +186,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpViewActionButton.setButtonDataSource(
             false, context?.let { LocalizationManager.getLocale(it).language },
             "Confirm",
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
         )
         otpViewInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}

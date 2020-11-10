@@ -26,12 +26,14 @@ import company.tap.tapuilibrary.uikit.enums.ActionButtonState.ERROR
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState.SUCCESS
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
+
 /**
  *
  * Created on 6/24/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
+
 class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListener,
     TapLoadingView.OnProgressCompletedListener {
 
@@ -90,11 +92,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null, backgroundColor: Int, textColor:Int? = null) {
         if (isValid)
         {
-            isActivated = true
             initValidBackground(backgroundColor)
             initActionButtonDataSource(backgroundColor, textColor,buttonText)
         } else{
-            isActivated = false
             initInvalidBackground(backgroundColor)
             initActionButtonDataSource(backgroundColor, textColor, buttonText)
         }
@@ -145,7 +145,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         dataSource?.cornerRadius?.let {
             backgroundDrawable.cornerRadius = it
         }
-        backgroundDrawable.color = ColorStateList.valueOf(backgroundColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
+        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
         background = backgroundDrawable
         elevation = 0F
     }

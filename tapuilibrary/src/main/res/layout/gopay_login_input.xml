@@ -14,8 +14,13 @@
         android:minHeight="44dp"
         android:background="@color/bg_gray"
         app:tabIndicatorColor="#a8a8a8"
-        app:tabIndicatorHeight="2dp"
+        app:tabIndicatorHeight="1dp"
         app:tabMode="scrollable" />
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdfdf"
+        android:id="@+id/goPayTabSeparator"/>
 
     <LinearLayout
         android:id="@+id/login_input_layout"
@@ -28,6 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginStart="25dp"
+            android:layout_marginEnd="@dimen/margin_basic_16dp"
             android:src="@drawable/ic_mail" />
 
 
@@ -36,12 +42,15 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:clickable="true"
+            android:gravity="center"
             android:focusable="true"
+            app:ccp_showArrow="false"
+            app:ccp_textSize="@dimen/font_size_17sp"
             android:layout_marginStart="5dp"
             app:ccp_defaultPhoneCode="965"
             app:ccp_contentColor="@color/gray"
             android:fontFamily="sans-serif-light"
-            android:visibility="gone"
+            android:visibility="visible"
             app:ccpDialog_showCloseIcon="true"
             app:ccpDialog_showNameCode="false"
             app:ccp_customMasterCountries="KW,QA,BH,SA,UAE"
@@ -50,12 +59,23 @@
             app:ccp_showFlag="false"
             app:ccp_showNameCode="false"/>
 
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            android:id="@+id/countryCodeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="+965"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:textColor="@color/dark_gray" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/text_input_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:cursorVisible="true"
             app:endIconDrawable="@drawable/ic_close"
+            android:layout_marginStart="2dp"
             app:endIconMode="clear_text"
             app:endIconTint="@null"
             app:hintEnabled="false">
@@ -64,8 +84,10 @@
                 android:id="@+id/gopay_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
                 android:textCursorDrawable="@color/blue"
+                android:focusable="true"
+                android:textSize="@dimen/font_size_17sp"
+                android:focusableInTouchMode="true"
                 android:background="@android:color/transparent"
                 android:fontFamily="sans-serif-light"
                 tools:text="email@email.com"
@@ -83,6 +105,11 @@
        >
 </ListView>
 
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dfdfdf"
+        android:id="@+id/goPayTabSeparator_"/>
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/gopay_hint"

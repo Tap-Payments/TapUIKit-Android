@@ -22,7 +22,7 @@
             android:layout_height="55dp"
             android:layout_gravity="center"
             android:orientation="horizontal"
-            android:paddingTop="10dp"
+            android:paddingTop="15dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp">
 
@@ -44,10 +44,11 @@
                 android:id="@+id/mobileNumberText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_basic_10dp"
+                android:layout_marginStart="@dimen/margin_basic_6dp"
                 android:fontFamily="sans-serif-light"
                 android:textColor="#1381f9"
                 android:textSize="12sp"
+                tools:text="mmmmmm"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/otpSentText"
@@ -76,7 +77,7 @@
         android:id="@+id/otpLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-5dp"
+        android:layout_marginTop="-8dp"
         android:paddingTop="-5dp"
         android:orientation="vertical">
 
@@ -95,6 +96,7 @@
             android:textColor="#4b4847"
             android:textCursorDrawable="@color/colorAccent"
             app:itemCount="6"
+            android:lineHeight="0.2dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:lineColor="@color/blue"

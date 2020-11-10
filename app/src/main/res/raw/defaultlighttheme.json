@@ -116,7 +116,7 @@
             "width": 32
         },
         "textFields": {
-            "textColor": "greyishBrown",
+            "textColor": "#838180",
             "errorTextColor": "orange",
             "font" : "Roboto-Light,17",
             "placeHolderColor" : "brownGreyThree"
@@ -555,7 +555,7 @@
             },
             "hintLabel": {
                 "textFont": "Roboto-Light,10",
-                "textColor": "greyishBrown"
+                "textColor": "brownGreyThree"
             }
         },
         "passwordView" :{
@@ -610,7 +610,7 @@
             "bottomLineColor": "deepSkyBlue",
             "activeBottomColor": "brownGreyFour",
             "textColor": "greyishBrown",
-            "textFont": "Roboto-Light,25"
+            "textFont": "Roboto-Light,14"
         },
         "Timer": {
             "textFont": "Roboto-Regular,16",

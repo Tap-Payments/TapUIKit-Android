@@ -23,7 +23,7 @@ import kotlinx.android.synthetic.main.item_currency_row.view.*
 
 /**
  *
- * Created by Mario Gamal on 6/17/20
+ * Created on 6/17/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */

@@ -31,6 +31,7 @@
                 android:id="@+id/mainSwitchLinear"
                 android:orientation="horizontal"
                 android:paddingTop="16dp"
+                android:paddingBottom="@dimen/margin_basic_6dp"
                 android:weightSum="0.5">
 
                 <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -45,8 +46,7 @@
                     android:textColor="#a7a7a7"
                     android:textSize="12sp"
                     android:textStyle="normal"
-                    tools:text="For faster and easier checkout,
-        save your mobile number." />
+                    tools:text="For faster and easier checkout,save your mobile number." />
 
                 <company.tap.tapuilibrary.uikit.atoms.TapSwitch
                     android:id="@+id/switchSaveMobile"

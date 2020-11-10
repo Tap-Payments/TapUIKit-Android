@@ -20,7 +20,7 @@ import company.tap.tapuilibrary.uikit.utils.MetricsUtil
 
 /**
  *
- * Created by Mario Gamal on 6/17/20
+ * Created on 6/17/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
@@ -124,11 +124,19 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      */
     fun addSection(items: ArrayList<SectionTabItem>) {
         itemsCount.add(items.size)
-        if (itemsCount.size > 1)
-            editExistItemsSize()
+        if (itemsCount.size > 1) {
+            for (itemsCount in items){
+                if (itemsCount.type == CardBrand.visa) editExistItemsSize_() else editExistItemsSize()
+            }
+        }
+
+
         val sectionLayout = getSectionLayout()
         for (item in items) {
             sectionLayout.addView(getSectionItem(item))
+//            if (item.type == CardBrand.visa) getSectionItem_(item) else sectionLayout.addView(getSectionItem(item))
+
+
         }
         if (tabsView.size != 0)
             sectionLayout.alpha = unselectedAlphaLevel
@@ -149,9 +157,31 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, 30, 0, 30)
+//        params.setMargins(0, 30, 0,
+//            30)
 
-        params.weight = 0.6f
+        params.weight = 0.8f
+        for (item in tabItems) {
+            if (item.type == CardBrand.visa) {
+                params.setMargins(0, 0, 0,
+                    0)
+                item.imageView?.layoutParams = params
+            }else{
+                params.setMargins(0, 30, 0,
+                    30)
+                item.imageView?.layoutParams = params
+            }
+
+        }
+    }
+
+    private fun editExistItemsSize_() {
+        val params = LayoutParams(
+            getItemWidth(), 0
+        )
+        params.setMargins(0, 0, 0, 0)
+
+        params.weight = 1.6f
         for (item in tabItems) {
             item.imageView?.layoutParams = params
         }
@@ -186,15 +216,33 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             getItemWidth(), 0
         )
         params.setMargins(0, 30, 0, 30)
-        params.weight = 0.6f
+        params.weight = 0.8f
         val image = TapImageView(context, null)
         image.setImageDrawable(item.selectedImage)
         image.layoutParams = params
-
         item.imageView = image
         item.indicator = indicator
         tabItems.add(item)
+        layout.addView(image)
+        layout.addView(indicator)
+        return layout
+    }
 
+
+    private fun getSectionItem_(item: SectionTabItem): LinearLayout {
+        val layout = getSectionItemLayout()
+        val indicator = getTabSelectionIndicator()
+        val params = LayoutParams(
+            getItemWidth(), 0
+        )
+        params.setMargins(0, 0, 0, 0)
+        params.weight = 0.9f
+        val image = TapImageView(context, null)
+        image.setImageDrawable(item.selectedImage)
+        image.layoutParams = params
+        item.imageView = image
+        item.indicator = indicator
+        tabItems.add(item)
         layout.addView(image)
         layout.addView(indicator)
         return layout
@@ -213,7 +261,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         linearLayout.layoutParams = params
         linearLayout.orientation = VERTICAL
-        linearLayout.weightSum = 0.6f
+        linearLayout.weightSum = 1f
         return linearLayout
     }
 
@@ -324,7 +372,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             } else {
                 it.imageView?.setImageDrawable(it.selectedImage)
                 it.indicator?.visibility = View.VISIBLE
-                it.indicator?.setBackgroundColor(indicatorColor)
+//                it.indicator?.setBackgroundColor(indicatorColor)
+                it.indicator?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.vibrantGreen")))
             }
         }
     }
