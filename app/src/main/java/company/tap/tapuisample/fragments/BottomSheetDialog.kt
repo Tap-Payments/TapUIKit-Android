@@ -4,6 +4,7 @@ package company.tap.tapuisample.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import android.os.Handler
@@ -60,6 +61,7 @@ import company.tap.tapuisample.interfaces.AnimateViewHolder
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
+import jp.wasabeef.blurry.Blurry
 import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
 import jp.wasabeef.recyclerview.animators.FadeInAnimator
 import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
@@ -161,9 +163,49 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         otpView = view.findViewById(R.id.otpView)
         otpView?.setOTPInterface(this)
         otpView?.setOtpButtonConfirmationInterface(this)
-
+//        bulr()
         initGoPay(view)
         return view.rootView
+    }
+
+    fun bulr(){
+       payButton.setOnClickListener {
+           val startMs = System.currentTimeMillis()
+           Blurry.with(context)
+               .radius(25)
+               .sampling(2)
+               .async()
+               .animate(500)
+               .onto(R.id.content as ViewGroup)
+           Log.d(getString(R.string.app_name),
+               "TIME " + (System.currentTimeMillis() - startMs).toString() + "ms")
+//            val startMs = System.currentTimeMillis()
+//            Blurry.with(this)
+//                .radius(25)
+//                .sampling(1)
+//                .color(Color.argb(66, 0, 255, 255))
+//                .async()
+//                .capture(findViewById(R.id.right_top))
+//                .into(findViewById(R.id.right_top))
+//
+//            val bitmap = Blurry.with(this)
+//                .radius(10)
+//                .sampling(8)
+//                .capture(findViewById(R.id.right_bottom)).get()
+//            findViewById<ImageView>(R.id.right_bottom).setImageDrawable(BitmapDrawable(resources, bitmap))
+//
+//            Blurry.with(this)
+//                .radius(25)
+//                .sampling(4)
+//                .color(Color.argb(66, 255, 255, 0))
+//                .capture(findViewById(R.id.left_bottom))
+//                .getAsync {
+//                    findViewById<ImageView>(R.id.left_bottom).setImageDrawable(BitmapDrawable(resources, it))
+//                }
+//
+//            Log.d(getString(R.string.app_name),
+//                "TIME " + (System.currentTimeMillis() - startMs).toString() + "ms")
+        }
     }
 
 
@@ -1161,6 +1203,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         goPayLoginInput?.visibility = View.GONE
         otpView?.visibility = View.VISIBLE
         otpView?.changePhoneCardView?.visibility = View.VISIBLE
+
+        Blurry.with(context)
+            .radius(40)
+            .sampling(5)
+            .async()
+            .animate(500)
+            .onto(otpView?.otpLinearLayout as ViewGroup)
 
 
     }
