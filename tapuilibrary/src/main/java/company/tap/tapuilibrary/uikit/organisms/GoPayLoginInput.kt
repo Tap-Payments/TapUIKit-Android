@@ -306,6 +306,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)
                 loginMethodImage.setOnClickListener { initCountryCodePicker() }
+                setListenerForPhone()
 
             }
         }
