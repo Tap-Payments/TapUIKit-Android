@@ -19,6 +19,7 @@ import androidx.annotation.Px
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.ViewCompat
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 
 /**
@@ -258,6 +259,12 @@ class TapOTPView @JvmOverloads constructor(
         mTextPaint.textSize = textSize
 
         mAnimatorTextPaint = TextPaint(mTextPaint)
+
+        mTextPaint.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
 
         val theme = context.theme
 
