@@ -131,7 +131,8 @@ class CardTypeAdapter(
                 params.leftMargin = 35
                 holder.itemView.layoutParams = params
             }
-            for (item in arrayList) {
+
+            for (x in 0..arrayList.size){
                 val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
                 holder.itemView.startAnimation(animShake)
             }

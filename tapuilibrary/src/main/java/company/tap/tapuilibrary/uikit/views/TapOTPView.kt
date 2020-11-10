@@ -295,7 +295,7 @@ class TapOTPView @JvmOverloads constructor(
             }
         }
 
-        
+
         mOtpItemRadius = a.getDimension(R.styleable.CustomOtpView_itemRadius, 0f).toInt()
         mLineWidth = a.getDimension(
             R.styleable.CustomOtpView_lineWidth,
