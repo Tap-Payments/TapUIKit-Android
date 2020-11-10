@@ -14,7 +14,7 @@
         android:minHeight="44dp"
         android:background="@color/bg_gray"
         app:tabIndicatorColor="#a8a8a8"
-        app:tabIndicatorHeight="1dp"
+        app:tabIndicatorHeight="2dp"
         app:tabMode="scrollable" />
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:layout_width="match_parent"
@@ -46,6 +46,7 @@
             android:focusable="true"
             app:ccp_showArrow="false"
             app:ccp_textSize="@dimen/font_size_17sp"
+            android:layout_gravity="center"
             android:layout_marginStart="5dp"
             app:ccp_defaultPhoneCode="965"
             app:ccp_contentColor="@color/gray"
@@ -58,6 +59,7 @@
             app:ccp_hintExampleNumber="true"
             app:ccp_showFlag="false"
             app:ccp_showNameCode="false"/>
+
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/countryCodeTxt"
@@ -86,6 +88,7 @@
                 android:layout_height="match_parent"
                 android:textCursorDrawable="@color/blue"
                 android:focusable="true"
+                android:textFontWeight="500"
                 android:textSize="@dimen/font_size_17sp"
                 android:focusableInTouchMode="true"
                 android:background="@android:color/transparent"

@@ -71,12 +71,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initTheme()
         setSeparatorTheme()
-
-
     }
 
-
-    fun initTheme() {
+    private fun initTheme() {
         goPayLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#a8a8a8"))
         loginTabLayout.tabTextColors =
@@ -86,11 +83,12 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor"))
         textThem.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont")
         goPayHint.setTheme(textThem)
+        textInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
         textInput.textSize = ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
     }
 
-    fun setSeparatorTheme() {
+    private fun setSeparatorTheme() {
         val separatorViewTheme = SeparatorViewTheme()
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
@@ -101,24 +99,23 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initCountryCodePicker() {
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
-//        countryCodeTxt.text = countryCodePicker.defaultCountryCode
         countryCode = countryCodePicker.defaultCountryCode
         countryCodePicker.ccpDialogShowFlag = false
-//        loginMethodImage.visibility = View.GONE
-        countryCodePicker.launchCountrySelectionDialog()
-        countryCode = countryCodePicker.selectedCountryCode
-        countryCodePicker.contentColor =
-            Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
-
+        countryCodePicker.showArrow(false)
+        countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
+        countryCodePicker.launchCountrySelectionDialog()
+        countryCode = countryCodePicker.selectedCountryCode
+        countryCodePicker.contentColor =
+            Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
 
         textInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
 
