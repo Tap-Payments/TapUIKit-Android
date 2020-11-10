@@ -94,6 +94,8 @@
             android:cursorVisible="true"
             android:fitsSystemWindows="true"
             android:focusable="true"
+            android:textFontWeight="200"
+            android:fontFamily="sans-serif-light"
             android:layout_marginStart="@dimen/margin_basic_23dp"
             android:focusableInTouchMode="true"
             android:inputType="number"

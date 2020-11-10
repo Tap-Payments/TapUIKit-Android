@@ -125,6 +125,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
     fun setFonts() {
+
+        otpViewInput.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
         mobileNumberText.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -144,7 +151,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
             )
             changePhone.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
-                    TapFont.RobotoLight
+                    TapFont.RobotoRegular
                 )
             )
         } else {
@@ -155,7 +162,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
             )
             changePhone.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
-                    TapFont.TajawalLight
+                    TapFont.TajawalRegular
                 )
             )
         }

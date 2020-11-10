@@ -638,7 +638,6 @@
             }
         }
     },
-
     "TapSwitchView": {
         "backgroundColor": "transperant",
         "CurvedSeparator": {
@@ -686,6 +685,15 @@
                 "textFont": "Roboto-Light,12",
                 "textColor": "greyishBrown"
             }
+        }
+    },
+    "TapAlertMessage": {
+        "backgroundColor": "#4cffbe60",
+        "separatorColor" : "#33ea6724",
+        "separatorHeight" : 1,
+        "textField": {
+            "textFont": "Roboto-Light,12",
+            "textColor": "#ea611c"
         }
     }
 }
