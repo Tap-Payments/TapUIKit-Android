@@ -86,6 +86,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textThem.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont")
         goPayHint.setTheme(textThem)
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
+        textInputLayout.hintTextColor = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
+        textInputLayout.placeholderTextColor = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
         textInput.textSize= ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
     }
 
@@ -320,7 +322,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     fun setListenerForPhone(){
         textInput.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+                countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
             }
             override fun afterTextChanged(mobileText: Editable) {
                 if (mobileText.length > 1){
