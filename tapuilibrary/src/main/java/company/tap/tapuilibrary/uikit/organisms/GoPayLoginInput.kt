@@ -108,7 +108,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         countryCode = countryCodePicker.selectedCountryCode
         countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
 
-
         countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -291,7 +290,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         countryCodePicker.visibility = View.GONE
         loginMethodImage.visibility = View.VISIBLE
 
+        textInputLayout.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
         when (inputType) {
+
             EMAIL -> {
                 textInput.hint = dataSource?.emailInputHint ?: "mail@mail.com"
                 textInput.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
