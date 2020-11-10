@@ -83,29 +83,72 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <company.tap.tapuilibrary.uikit.views.TapOTPView
-            android:id="@+id/otpViewInput"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:foregroundGravity="center"
-            android:layout_marginTop="@dimen/margin_basic_20dp"
-            android:cursorVisible="true"
-            android:fitsSystemWindows="true"
-            android:focusable="true"
-            android:textFontWeight="200"
-            android:fontFamily="sans-serif-light"
-            android:layout_marginStart="@dimen/margin_basic_23dp"
-            android:focusableInTouchMode="true"
-            android:inputType="number"
-            android:textColor="#4b4847"
-            android:textSize="25sp"
-            android:textCursorDrawable="@color/colorAccent"
-            app:itemCount="6"
-            android:lineHeight="0.2dp"
-            app:lineColor="@color/blue"
-            app:viewType="line" />
+            android:layout_height="match_parent">
+
+            <company.tap.tapuilibrary.uikit.views.TapOTPView
+                android:id="@+id/otpViewInput"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/otpViewInput2"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:foregroundGravity="center"
+                android:layout_marginTop="@dimen/margin_basic_20dp"
+                android:cursorVisible="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:textFontWeight="200"
+                android:fontFamily="sans-serif-light"
+                android:focusableInTouchMode="true"
+                android:inputType="number"
+                android:textColor="#4b4847"
+                android:textSize="25sp"
+                android:textCursorDrawable="@color/colorAccent"
+                app:itemCount="3"
+                android:focusedByDefault="true"
+                android:lineHeight="0.2dp"
+                app:lineColor="@color/blue"
+                app:viewType="line" />
+
+
+            <company.tap.tapuilibrary.uikit.views.TapOTPView
+                android:id="@+id/otpViewInput2"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/otpViewInput"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:foregroundGravity="center"
+                android:layout_marginTop="@dimen/margin_basic_20dp"
+                android:cursorVisible="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:focusedByDefault="true"
+                android:textFontWeight="200"
+                android:fontFamily="sans-serif-light"
+                android:layout_marginStart="@dimen/margin_basic_23dp"
+                android:focusableInTouchMode="true"
+                android:inputType="number"
+                android:textColor="#4b4847"
+                android:textSize="25sp"
+                android:textCursorDrawable="@color/colorAccent"
+                app:itemCount="3"
+                android:lineHeight="0.2dp"
+                app:lineColor="@color/blue"
+                app:viewType="line" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

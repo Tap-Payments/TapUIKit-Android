@@ -106,7 +106,8 @@
 
     <dimen name="otp_customotp_view_item_size">50dp</dimen>
     <dimen name="otp_customotp_view_item_radius">2dp</dimen>
-    <dimen name="otp_customotp_view_item_spacing">10dp</dimen>
+    <dimen name="otp_customotp_view_item_spacing">12dp</dimen>
+    <dimen name="otp_customotp_view_item_extra_spacing">20dp</dimen>
     <dimen name="otp_customotp_view_item_line_width">1dp</dimen>
     <dimen name="otp_customotp_view_cursor_width">2dp</dimen>
 </resources>

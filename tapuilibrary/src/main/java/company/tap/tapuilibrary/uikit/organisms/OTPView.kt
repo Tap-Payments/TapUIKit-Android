@@ -12,6 +12,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import company.tap.taplocalizationkit.LocalizationManager
@@ -41,6 +42,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
     val otpMainView by lazy { findViewById<LinearLayout>(R.id.otpMainView) }
     val otpLinearLayout by lazy { findViewById<LinearLayout>(R.id.otpLinearLayout) }
     val otpViewInput by lazy { findViewById<TapOTPView>(R.id.otpViewInput) }
+    val otpViewInput2 by lazy { findViewById<TapOTPView>(R.id.otpViewInput2) }
     val otpSentText by lazy { findViewById<TapTextView>(R.id.otpSentText) }
     val mobileNumberText by lazy { findViewById<TapTextView>(R.id.mobileNumberText) }
     val otpHintText by lazy { findViewById<TapTextView>(R.id.otpHintText) }
@@ -127,6 +129,12 @@ class OTPView : LinearLayout, OpenOTPInterface {
     fun setFonts() {
 
         otpViewInput.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
+        otpViewInput2.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
@@ -227,6 +235,17 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
     private fun initOTPConfirmationButton() {
+
+
+
+        otpViewInput.setOnEditorActionListener { v, actionId, event ->
+            if(actionId == EditorInfo.IME_ACTION_NEXT){
+                otpViewInput2.requestFocus()
+                true
+            } else {
+                false
+            }
+        }
         otpViewActionButton.setButtonDataSource(
             false, context?.let { LocalizationManager.getLocale(it).language },
             "Confirm",
@@ -260,10 +279,11 @@ class OTPView : LinearLayout, OpenOTPInterface {
             override fun afterTextChanged(editable: Editable) {}
         })
 
+
+
         otpViewActionButton.setOnClickListener {
             if (otpViewActionButton.isEnabled) {
-                isValidOTP =
-                    otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput.text.toString()) == true
+                isValidOTP = otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput.text.toString() + otpViewInput2.text.toString()) == true
 
                 if (!isValidOTP) {
                     otpHintText.visibility = View.VISIBLE

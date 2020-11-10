@@ -241,10 +241,6 @@ class TapOTPView @JvmOverloads constructor(
         }
 
 
-    fun setExtraSpace(){
-
-    }
-
 
     init {
 
@@ -297,7 +293,7 @@ class TapOTPView @JvmOverloads constructor(
             if (x == mOtpItemCount/2){
                 mOtpItemSpacing = a.getDimensionPixelSize(
                     R.styleable.CustomOtpView_itemSpacing,
-                    15
+                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
                 )
             }
         }
@@ -384,7 +380,8 @@ class TapOTPView @JvmOverloads constructor(
         if (widthMode == View.MeasureSpec.EXACTLY) {
             // Parent has told us how big to be. So be it.
             width = widthSize
-        } else {
+        }
+        else {
             val boxesWidth = (mOtpItemCount - 1) * mOtpItemSpacing + mOtpItemCount * mOtpItemWidth
             width = boxesWidth + ViewCompat.getPaddingEnd(this) + ViewCompat.getPaddingStart(this)
             if (mOtpItemSpacing == 0) {
