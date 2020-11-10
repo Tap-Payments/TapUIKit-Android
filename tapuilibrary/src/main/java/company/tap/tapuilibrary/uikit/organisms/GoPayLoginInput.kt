@@ -64,7 +64,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private var loginInterface: GoPayLoginInterface? = null
     private var openOTPInterface: OpenOTPInterface? = null
     var inputType = EMAIL
-    private var countryCode :String ? = null
+    private var countryCode: String? = null
 
     init {
         inflate(context, R.layout.gopay_login_input, this)
@@ -73,25 +73,24 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         setSeparatorTheme()
 
 
-
     }
 
 
-    fun initTheme(){
-        goPayLinear.setBackgroundColor(Color.parseColor( ThemeManager.getValue("goPay.loginBar.backgroundColor")))
+    fun initTheme() {
+        goPayLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#a8a8a8"))
-        loginTabLayout.tabTextColors = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
+        loginTabLayout.tabTextColors =
+            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
         var textThem = TextViewTheme()
-        textThem.textColor = Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor"))
+        textThem.textColor =
+            Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor"))
         textThem.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont")
         goPayHint.setTheme(textThem)
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
-        textInputLayout.hintTextColor = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
-        textInputLayout.placeholderTextColor = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
-        textInput.textSize= ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
+        textInput.textSize = ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
     }
 
-    fun setSeparatorTheme(){
+    fun setSeparatorTheme() {
         val separatorViewTheme = SeparatorViewTheme()
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
@@ -108,7 +107,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 //        loginMethodImage.visibility = View.GONE
         countryCodePicker.launchCountrySelectionDialog()
         countryCode = countryCodePicker.selectedCountryCode
-        countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+        countryCodePicker.contentColor =
+            Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
 
         countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
@@ -147,11 +147,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initButton() {
         actionButton.isEnabled = false
-        actionButton.setButtonDataSource(false,
+        actionButton.setButtonDataSource(
+            false,
             context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue("next","Common"),
+            LocalizationManager.getValue("next", "Common"),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+        )
 
         actionButton.setOnClickListener {
             when (inputType) {
@@ -176,18 +178,23 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             if (isValidInput(it.toString())) {
                 enableNext()
                 sendPhoneNumber()
-            }
-            else
+            } else
                 disableNext()
         }
     }
 
-    fun sendPhoneNumber(){
+    fun sendPhoneNumber() {
         var replaced = ""
         if (textInput.text.toString().length > 7)
-            replaced = (textInput.text.toString()).replaceRange(1,6, "....")
+            replaced = (textInput.text.toString()).replaceRange(1, 6, "....")
 
-        countryCodePicker.selectedCountryCode?.let { openOTPInterface?.getPhoneNumber(textInput.text.toString(), it, replaced) }
+        countryCodePicker.selectedCountryCode?.let {
+            openOTPInterface?.getPhoneNumber(
+                textInput.text.toString(),
+                it,
+                replaced
+            )
+        }
     }
 
     private fun isValidInput(text: String): Boolean {
@@ -199,11 +206,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun disableNext() {
         actionButton.isEnabled = false
-        actionButton.setButtonDataSource(false,
+        actionButton.setButtonDataSource(
+            false,
             context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue("next","Common"),
+            LocalizationManager.getValue("next", "Common"),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+        )
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
     }
 
@@ -220,15 +229,17 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
         actionButton.isEnabled = true
-        actionButton.setButtonDataSource(true,
+        actionButton.setButtonDataSource(
+            true,
             context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue("next","Common"),
+            LocalizationManager.getValue("next", "Common"),
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+        )
 
     }
 
-     fun initTabLayout() {
+    fun initTabLayout() {
         loginTabLayout.removeAllTabs()
         loginTabLayout.addTab(
             loginTabLayout.newTab().setCustomView(
@@ -246,13 +257,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             override fun onTabReselected(tab: TabLayout.Tab?) {}
             override fun onTabUnselected(tab: TabLayout.Tab?) {
                 val tabText = tab?.customView as TapTextView
-                if (LocalizationManager.getLocale(context).language == "en"){
+                if (LocalizationManager.getLocale(context).language == "en") {
                     tabText.typeface = Typeface.createFromAsset(
                         context?.assets, TapFont.tapFontType(
                             TapFont.RobotoRegular
                         )
                     )
-                }else{
+                } else {
                     tabText.typeface = Typeface.createFromAsset(
                         context?.assets, TapFont.tapFontType(
                             TapFont.TajawalRegular
@@ -265,13 +276,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val tabText = tab?.customView as TapTextView
-                if (LocalizationManager.getLocale(context).language == "en"){
+                if (LocalizationManager.getLocale(context).language == "en") {
                     tabText.typeface = Typeface.createFromAsset(
                         context?.assets, TapFont.tapFontType(
                             TapFont.RobotoRegular
                         )
                     )
-                }else{
+                } else {
                     tabText.typeface = Typeface.createFromAsset(
                         context?.assets, TapFont.tapFontType(
                             TapFont.TajawalRegular
@@ -280,7 +291,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 }
                 tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
                 inputType = if (tab.position == 0) EMAIL else PHONE
-                if (tab.position == 0){ countryCodePicker.visibility = View.GONE }else countryCodePicker.visibility = View.VISIBLE
+                if (tab.position == 0) {
+                    countryCodePicker.visibility = View.GONE
+                } else countryCodePicker.visibility = View.VISIBLE
 
                 changeInputType()
             }
@@ -308,7 +321,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             }
             PHONE -> {
                 countryCodePicker.visibility = View.VISIBLE
-                textInput.hint = dataSource?.phoneInputHint ?:  "00000000"
+                textInput.hint = dataSource?.phoneInputHint ?: "00000000"
                 textInput.inputType = InputType.TYPE_CLASS_PHONE
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)
@@ -319,19 +332,24 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         }
     }
 
-    fun setListenerForPhone(){
+    fun setListenerForPhone() {
         textInput.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+                countryCodePicker.contentColor =
+                    Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
             }
+
             override fun afterTextChanged(mobileText: Editable) {
-                if (mobileText.length > 1){
-                    countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
-                }else{
-                    countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+                if (mobileText.length > 1) {
+                    countryCodePicker.contentColor =
+                        Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+                } else {
+                    countryCodePicker.contentColor =
+                        Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
                 }
 
             }
+
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
         })
@@ -342,13 +360,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         tabText.setTheme(FakeThemeManager.getGoPayTabLayoutTextTheme(isSelected))
         tabText.text = text
 
-        if (LocalizationManager.getLocale(context).language == "en"){
+        if (LocalizationManager.getLocale(context).language == "en") {
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
                     TapFont.RobotoRegular
                 )
             )
-        }else{
+        } else {
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
                     TapFont.TajawalRegular
