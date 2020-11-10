@@ -79,26 +79,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-8dp"
         android:paddingTop="-5dp"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="vertical">
 
         <company.tap.tapuilibrary.uikit.views.TapOTPView
             android:id="@+id/otpViewInput"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginStart="19dp"
-            android:layout_marginEnd="19dp"
+            android:gravity="center"
+            android:foregroundGravity="center"
+            android:layout_marginTop="@dimen/margin_basic_20dp"
             android:cursorVisible="true"
             android:fitsSystemWindows="true"
             android:focusable="true"
+            android:layout_marginStart="@dimen/margin_basic_23dp"
             android:focusableInTouchMode="true"
             android:inputType="number"
             android:textColor="#4b4847"
+            android:textSize="25sp"
             android:textCursorDrawable="@color/colorAccent"
             app:itemCount="6"
             android:lineHeight="0.2dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:lineColor="@color/blue"
             app:viewType="line" />
 
@@ -106,7 +109,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="22dp"
-            android:layout_marginBottom="20dp"
             android:orientation="horizontal">
 
             <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -134,6 +136,7 @@
                 android:textColor="#007aff"
                 android:textSize="16sp"
                 android:textStyle="normal"
+                android:layout_marginEnd="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"

@@ -3,16 +3,20 @@ package company.tap.tapuilibrary.uikit.organisms
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.os.CountDownTimer
+import android.provider.Settings.Global.getString
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -20,6 +24,7 @@ import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuilibrary.uikit.views.TapOTPView
+import jp.wasabeef.blurry.Blurry
 
 
 /**
@@ -91,23 +96,18 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     init {
         inflate(context, R.layout.otp_view, this)
-//        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         startCountdown()
         prepareTextViews()
         initOTPConfirmationButton()
-//        goPayLoginInput = GoPayLoginInput(context, attrs)
-//        goPayLoginInput?.setOpenOTPInterface(this)
         initChange()
         initTheme()
-
-
+        setFonts()
     }
+
 
     fun initTheme() {
         otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
-
         changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
-
 
         val timerTextTheme = TextViewTheme()
         timerTextTheme.textColor =
@@ -118,13 +118,50 @@ class OTPView : LinearLayout, OpenOTPInterface {
         val mobileNumberTextTextTheme = TextViewTheme()
         mobileNumberTextTextTheme.textColor =
             (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
-        mobileNumberTextTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
+        mobileNumberTextTextTheme.textSize =
+            ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
         mobileNumberText.setTheme(mobileNumberTextTextTheme)
         otpSentText.setTheme(mobileNumberTextTextTheme)
-
     }
 
-    fun setHintExpiredTheme(){
+    fun setFonts() {
+        mobileNumberText.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        timerText.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
+        if (LocalizationManager.getLocale(context).language == "en") {
+            otpSentText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.RobotoLight
+                )
+            )
+            changePhone.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.RobotoLight
+                )
+            )
+        } else {
+            otpSentText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.TajawalLight
+                )
+            )
+            changePhone.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.TajawalLight
+                )
+            )
+        }
+    }
+
+    fun setHintExpiredTheme() {
         val otpHintTextTheme = TextViewTheme()
 
         otpHintTextTheme.textColor =
@@ -135,7 +172,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpHintText.setTheme(otpHintTextTheme)
     }
 
-    fun setHintInValidOtp(){
+    fun setHintInValidOtp() {
         val otpHintTextTheme = TextViewTheme()
         otpHintTextTheme.textColor =
             (Color.parseColor(ThemeManager.getValue("TapOtpView.Invalid.Message.title")))

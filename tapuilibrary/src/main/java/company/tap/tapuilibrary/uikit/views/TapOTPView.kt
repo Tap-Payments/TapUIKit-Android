@@ -140,24 +140,6 @@ class TapOTPView @JvmOverloads constructor(
         }
 
     /**
-     * @return Returns the spacing between two items.
-     * @see .setItemSpacing
-     */
-    /**
-     * Specifies extra space between two items.
-     *
-     * @attr ref R.styleable#PinView_itemSpacing
-     * @see .getItemSpacing
-     */
-    var itemSpacing: Int
-        @Px
-        get() = mOtpItemSpacing
-        set(@Px itemSpacing) {
-            mOtpItemSpacing = itemSpacing
-            requestLayout()
-        }
-
-    /**
      * @return Returns the height of item.
      * @see .setItemHeight
      */
@@ -238,6 +220,31 @@ class TapOTPView @JvmOverloads constructor(
             }
         }
 
+
+    /**
+     * @return Returns the spacing between two items.
+     * @see .setItemSpacing
+     */
+    /**
+     * Specifies extra space between two items.
+     *
+     * @attr ref R.styleable#PinView_itemSpacing
+     * @see .getItemSpacing
+     */
+    var itemSpacing: Int
+        @Px
+        get() = mOtpItemSpacing
+        set(@Px itemSpacing) {
+            mOtpItemSpacing = itemSpacing
+            requestLayout()
+        }
+
+
+    fun setExtraSpace(){
+
+    }
+
+
     init {
 
         val res = resources
@@ -276,6 +283,19 @@ class TapOTPView @JvmOverloads constructor(
             R.styleable.CustomOtpView_itemSpacing,
             res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
         )
+
+
+        /// set space between
+        for (x in 0..mOtpItemCount){
+            if (x == mOtpItemCount/2){
+                mOtpItemSpacing = a.getDimensionPixelSize(
+                    R.styleable.CustomOtpView_itemSpacing,
+                    15
+                )
+            }
+        }
+
+
         mOtpItemRadius = a.getDimension(R.styleable.CustomOtpView_itemRadius, 0f).toInt()
         mLineWidth = a.getDimension(
             R.styleable.CustomOtpView_lineWidth,

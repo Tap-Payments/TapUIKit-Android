@@ -4,10 +4,13 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuisample.R
+import company.tap.tapuisample.adapters.context
+import jp.wasabeef.blurry.Blurry
 
 import kotlinx.android.synthetic.main.activity_theme_test.*
 
