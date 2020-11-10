@@ -119,8 +119,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
         mobileNumberTextTextTheme.textColor =
             (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
         mobileNumberTextTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
-        mobileNumberText.setTheme(timerTextTheme)
-        otpSentText.setTheme(timerTextTheme)
+        mobileNumberText.setTheme(mobileNumberTextTextTheme)
+        otpSentText.setTheme(mobileNumberTextTextTheme)
 
     }
 
