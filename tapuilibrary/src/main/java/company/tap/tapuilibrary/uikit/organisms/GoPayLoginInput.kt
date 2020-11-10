@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
+import android.text.Editable
 import android.text.InputType
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
 import android.util.Patterns
@@ -69,6 +71,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initTheme()
         setSeparatorTheme()
+
+
+
     }
 
 
@@ -301,8 +306,27 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)
                 loginMethodImage.setOnClickListener { initCountryCodePicker() }
+
             }
         }
+    }
+
+    fun setListenerForPhone(){
+        textInput.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+            }
+            override fun afterTextChanged(mobileText: Editable) {
+                if (mobileText.length > 1){
+                    countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+                }else{
+                    countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+                }
+
+            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+        })
     }
 
     private fun getThemedTabText(text: String, isSelected: Boolean): TapTextView {
