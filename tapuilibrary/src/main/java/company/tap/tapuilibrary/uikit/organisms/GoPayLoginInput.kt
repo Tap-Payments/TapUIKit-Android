@@ -86,6 +86,24 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
         textInput.textSize = ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
+
+
+        countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        textInput?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
+        goPayHint?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
     }
 
     private fun setSeparatorTheme() {
@@ -103,27 +121,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         countryCodePicker.ccpDialogShowFlag = false
         countryCodePicker.showArrow(false)
         countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
-        countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
-            )
-        )
         countryCodePicker.launchCountrySelectionDialog()
         countryCode = countryCodePicker.selectedCountryCode
-        countryCodePicker.contentColor =
-            Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
 
-        textInput?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
-            )
-        )
-
-        goPayHint?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
-            )
-        )
     }
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {
@@ -334,6 +334,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 countryCodePicker.contentColor =
                     Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+
             }
 
             override fun afterTextChanged(mobileText: Editable) {
@@ -386,14 +387,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     fun setFontsEnglish() {
         textInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
 
 
         goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
     }
