@@ -52,6 +52,11 @@
         <item name="android:color">@color/blue</item>
         <item name="tickColorActive">@color/blue</item>
         <item name="android:focusedByDefault">true</item>
+        <item name="boxStrokeColor">@color/blue</item>
+    </style>
+
+    <style name="MyStyle">
+        <item name="colorAccent">@color/blue</item>
     </style>
 
 </resources>
