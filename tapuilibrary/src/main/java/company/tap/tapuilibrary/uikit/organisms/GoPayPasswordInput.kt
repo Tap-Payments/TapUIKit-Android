@@ -49,7 +49,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         initPasswordInput()
         setPasswordValidation()
         initTheme()
-        rootView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
+        rootView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.backgroundColor")))
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
 
     }

@@ -1191,8 +1191,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onEmailValidated() {
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
         goPayLoginInput?.visibility = View.GONE
-        goPayPasswordInput?.visibility = View.VISIBLE
         otpView?.visibility = View.GONE
+        otpView?.changePhoneCardView?.visibility = View.GONE
+        goPayPasswordInput?.visibility = View.VISIBLE
         goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
     }
 
