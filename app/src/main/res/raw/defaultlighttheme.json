@@ -565,8 +565,8 @@
         "passwordField": {
             "backgroundColor" : "transperant",
             "textFont": "Roboto-Light,17",
-            "textColor": "#878787",
-            "placeHolderColor" : "password_hint_color",
+            "textColor": "#4b4847",
+            "placeHolderColor" : "#878787",
             "showPasswordIcon" : "passwordEye",
             "hidePasswordIcon" : "passwordEye",
             "underline":{

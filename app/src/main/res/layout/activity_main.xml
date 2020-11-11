@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layoutDirection="locale"
     android:orientation="vertical"
-    android:background="@color/red_error"
+    android:background="@color/colorPrimary"
     tools:context=".activities.MainActivity">
 
     <Button
