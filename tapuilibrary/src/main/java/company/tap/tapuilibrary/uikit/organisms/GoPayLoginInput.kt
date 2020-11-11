@@ -95,7 +95,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         )
         textInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
+                TapFont.RobotoLight
             )
         )
         goPayHint?.typeface = Typeface.createFromAsset(
@@ -387,14 +387,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     fun setFontsEnglish() {
         textInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
+                TapFont.RobotoLight
             )
         )
 
 
         goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
+                TapFont.RobotoLight
             )
         )
     }
