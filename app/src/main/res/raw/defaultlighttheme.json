@@ -562,7 +562,7 @@
             "backgroundColor": "clear"
         },
         "passwordField": {
-            "backgroundColor" : "clear",
+            "backgroundColor" : "transperant",
             "textFont": "Roboto-Light,17",
             "textColor": "black",
             "placeHolderColor" : "brownGreyThree",

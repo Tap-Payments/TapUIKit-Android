@@ -50,6 +50,8 @@
         <item name="android:textColor">@color/blue</item>
         <item name="android:colorFocusedHighlight">@color/blue</item>
         <item name="android:color">@color/blue</item>
+        <item name="tickColorActive">@color/blue</item>
+        <item name="android:focusedByDefault">true</item>
     </style>
 
 </resources>
