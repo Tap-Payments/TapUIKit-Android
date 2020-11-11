@@ -44,7 +44,8 @@
             "currency_chip_unselected_shadow": "#eeeeef",
             "transperant": "#c7f9f9f9",
             "invalid_action": "#b9b9b9",
-            "change_layout": "#f4f4f4"
+            "change_layout": "#f4f4f4",
+            "password_hint_color": "#878787"
         }
     },
     "inlineCard": {
@@ -564,13 +565,13 @@
         "passwordField": {
             "backgroundColor" : "transperant",
             "textFont": "Roboto-Light,17",
-            "textColor": "black",
-            "placeHolderColor" : "brownGreyThree",
+            "textColor": "#878787",
+            "placeHolderColor" : "password_hint_color",
             "showPasswordIcon" : "passwordEye",
             "hidePasswordIcon" : "passwordEye",
             "underline":{
                 "empty": {
-                    "backgroundColor" : "deepSkyBlue"
+                    "backgroundColor" : "#a0a0a0"
                 },
                 "filled": {
                     "backgroundColor" : "deepSkyBlue"
