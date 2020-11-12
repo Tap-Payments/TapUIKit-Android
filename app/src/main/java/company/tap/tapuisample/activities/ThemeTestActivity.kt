@@ -40,7 +40,7 @@ class ThemeTestActivity : AppCompatActivity() {
 
     fun swap(view: View?) {
         if (currentTheme == R.raw.defaultdarktheme) {
-            initAppTheme(R.raw.defaultlighttheme)
+            initAppTheme(R.raw.defaultdarktheme)
             setTheme(R.style.AppTheme);
             Toast.makeText(
                 applicationContext,

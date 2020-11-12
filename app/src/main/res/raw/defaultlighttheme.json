@@ -117,7 +117,7 @@
             "width": 32
         },
         "textFields": {
-            "textColor": "#838180",
+            "textColor": "#4b4847",
             "errorTextColor": "orange",
             "font" : "Roboto-Light,17",
             "placeHolderColor" : "brownGreyThree"
