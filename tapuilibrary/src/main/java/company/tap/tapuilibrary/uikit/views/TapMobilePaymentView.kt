@@ -100,7 +100,6 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
                 TapFont.RobotoLight
             )
         )
-
     }
 
     override fun setTheme(theme: EditTextTheme) {

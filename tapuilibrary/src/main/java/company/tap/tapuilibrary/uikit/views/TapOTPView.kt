@@ -19,6 +19,7 @@ import androidx.annotation.Px
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.core.view.ViewCompat
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 
 /**
@@ -240,10 +241,6 @@ class TapOTPView @JvmOverloads constructor(
         }
 
 
-    fun setExtraSpace(){
-
-    }
-
 
     init {
 
@@ -258,6 +255,12 @@ class TapOTPView @JvmOverloads constructor(
         mTextPaint.textSize = textSize
 
         mAnimatorTextPaint = TextPaint(mTextPaint)
+
+        mTextPaint.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
 
         val theme = context.theme
 
@@ -287,10 +290,15 @@ class TapOTPView @JvmOverloads constructor(
 
         /// set space between
         for (x in 0..mOtpItemCount){
-            if (x == mOtpItemCount/2){
-                mOtpItemSpacing = a.getDimensionPixelSize(
+            mOtpItemSpacing = if (x == mOtpItemCount/2){
+                a.getDimensionPixelSize(
                     R.styleable.CustomOtpView_itemSpacing,
-                    15
+                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
+                )
+            }else{
+                a.getDimensionPixelSize(
+                    R.styleable.CustomOtpView_itemSpacing,
+                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
                 )
             }
         }
@@ -377,7 +385,8 @@ class TapOTPView @JvmOverloads constructor(
         if (widthMode == View.MeasureSpec.EXACTLY) {
             // Parent has told us how big to be. So be it.
             width = widthSize
-        } else {
+        }
+        else {
             val boxesWidth = (mOtpItemCount - 1) * mOtpItemSpacing + mOtpItemCount * mOtpItemWidth
             width = boxesWidth + ViewCompat.getPaddingEnd(this) + ViewCompat.getPaddingStart(this)
             if (mOtpItemSpacing == 0) {

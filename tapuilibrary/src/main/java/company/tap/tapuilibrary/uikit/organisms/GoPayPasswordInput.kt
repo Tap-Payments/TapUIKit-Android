@@ -4,8 +4,10 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.textfield.TextInputLayout
 import company.tap.taplocalizationkit.LocalizationManager
@@ -19,6 +21,7 @@ import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+
 
 /**
  *
@@ -46,8 +49,9 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         initPasswordInput()
         setPasswordValidation()
         initTheme()
-        rootView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
+        rootView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.backgroundColor")))
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
     }
 
     fun setPasswordValidation() {
@@ -131,7 +135,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         )
         changeEmail?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
     }
@@ -144,7 +148,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         )
         changeEmail?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalRegular
             )
         )
     }
@@ -153,11 +157,9 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     fun initTheme() {
         passwordTextInput.setErrorColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         passwordTextInput.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.textColor")))
-        passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor")))
-        passwordTextInput.backgroundTintList =
-            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
-        textInputLayout.backgroundTintList =
-            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+        passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.placeHolderColor")))
+        passwordTextInput.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
+        textInputLayout.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
         changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
     }
 

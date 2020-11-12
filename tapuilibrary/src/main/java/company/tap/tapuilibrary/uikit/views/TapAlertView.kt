@@ -1,24 +1,31 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
+import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 
 /**
  * Created  on 8/10/20.
 
-Copyright (c) 2020    Tap Payments.
+Copyright (c) 2020   Tap Payments.
 All rights reserved.
  **/
 class TapAlertView : LinearLayout {
 
     val alertMessage by lazy { findViewById<TapTextView>(R.id.textViewAlertMessage) }
     val tapAlertLinear by lazy { findViewById<LinearLayout>(R.id.tapAlertLinear) }
+    val topSeparator by lazy { findViewById<TapSeparatorView>(R.id.topSeparator) }
+    val bottomSeparator by lazy { findViewById<TapSeparatorView>(R.id.bottomSeparator) }
 
 
     /**
@@ -61,8 +68,24 @@ class TapAlertView : LinearLayout {
         } else {
             setFontsArabic()
         }
+        initTheme()
+    }
+
+    fun initTheme(){
+        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapAlertMessage.backgroundColor")))
+
+        var textTheme = TextViewTheme()
+        textTheme.textColor = Color.parseColor(ThemeManager.getValue("TapAlertMessage.textField.textColor"))
+        textTheme.textSize = ThemeManager.getFontSize("TapAlertMessage.textField.textFont")
+        alertMessage.setTheme(textTheme)
 
 
+        val separatorViewTheme = SeparatorViewTheme()
+        separatorViewTheme.strokeColor =
+            Color.parseColor(ThemeManager.getValue("TapAlertMessage.separatorColor"))
+        separatorViewTheme.strokeHeight = ThemeManager.getValue("TapAlertMessage.separatorHeight")
+        topSeparator.setTheme(separatorViewTheme)
+        bottomSeparator.setTheme(separatorViewTheme)
     }
 
     fun setFontsEnglish() {

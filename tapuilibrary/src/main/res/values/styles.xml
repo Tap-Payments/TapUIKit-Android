@@ -45,6 +45,20 @@
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">#000000</item>
     </style>
+    <style name="AppTheme.TextFloatLabelAppearance" parent="TextAppearance.Design.Hint">
+        <!-- Floating label appearance here -->
+        <item name="android:textColor">@color/blue</item>
+        <item name="android:colorFocusedHighlight">@color/blue</item>
+        <item name="android:color">@color/blue</item>
+        <item name="tickColorActive">@color/blue</item>
+        <item name="android:focusedByDefault">true</item>
+        <item name="boxStrokeColor">@color/blue</item>
+    </style>
 
+    <style name="MyStyle">
+        <item name="colorAccent">@color/blue</item>
+        <item name="android:lineHeight">1dp</item>
+        <item name="lineHeight">1dp</item>
+    </style>
 
 </resources>
