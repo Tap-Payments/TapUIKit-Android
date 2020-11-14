@@ -135,7 +135,7 @@ class TapHeaderSectionView : LinearLayout {
 
         setTopBorders(
             topLinear,
-            (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
+            40f,// corner raduis
             0.0f,
             Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
             Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color

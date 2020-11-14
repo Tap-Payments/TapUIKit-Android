@@ -17,18 +17,20 @@ import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.uikit.ktx.setBottomBorders
 
 class MainSwitch :LinearLayout {
 
     lateinit var attrs: AttributeSet
     private var tapSwitchDataSource: TapSwitchDataSource? = null
 
-    val tapMainSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapMainSwitchLinear) }
+    val tapMainSwitchLinear by lazy { findViewById<CardView>(R.id.tapMainSwitchLinear) }
     val mainSwitchChip by lazy { findViewById<TapChip>(R.id.mainSwitchChip) }
     val mainSwitchLinear by lazy { findViewById<LinearLayout>(R.id.mainSwitchLinear) }
     val mainTextSave by lazy { findViewById<TapTextView>(R.id.mainTextSave) }
     val switchSaveMobile by lazy { findViewById<TapSwitch>(R.id.switchSaveMobile) }
     val card by lazy { findViewById<CardView>(R.id.card) }
+
 
     /**
      * Simple constructor to use when creating a TapPayCardSwitch from code.
@@ -96,6 +98,14 @@ class MainSwitch :LinearLayout {
 //        switchSaveMerchant.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //        switchGoPayCheckout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.backgroundColor")))
 
+        setBottomBorders(
+            card,
+            40f,// corner raduis
+            0.0f,
+            Color.parseColor("#00ffffff"),// stroke color
+            Color.parseColor("#00ffffff"),// tint color
+            Color.parseColor("#00ffffff")
+        )//
         // Main switch
         switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

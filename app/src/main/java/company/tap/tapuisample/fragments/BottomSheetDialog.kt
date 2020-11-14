@@ -47,6 +47,7 @@ import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod
 import company.tap.tapuilibrary.uikit.fragment.CardScannerFragment
 import company.tap.tapuilibrary.uikit.fragment.NFCFragment
 import company.tap.tapuilibrary.uikit.interfaces.*
+import company.tap.tapuilibrary.uikit.ktx.setTopBorders
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
@@ -68,6 +69,7 @@ import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import kotlinx.android.synthetic.main.item_currency_row.view.*
 import kotlinx.android.synthetic.main.item_knet.*
+import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 //    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
 
@@ -264,6 +266,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
          */
         backgroundColor = (Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.main_switch_background")))
         backgroundColor = (Color.parseColor("#00000000"))
+        setTopBorders(
+            topLinear,
+            40f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+            Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+        )//
 
 
         separatorــLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))

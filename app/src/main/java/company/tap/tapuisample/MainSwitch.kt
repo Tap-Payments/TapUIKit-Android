@@ -18,6 +18,9 @@ import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.uikit.ktx.setBottomBorders
+import company.tap.tapuilibrary.uikit.ktx.setTopBorders
+import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 
 class MainSwitch :LinearLayout {
 
@@ -29,6 +32,7 @@ class MainSwitch :LinearLayout {
     val mainSwitchLinear by lazy { findViewById<LinearLayout>(R.id.mainSwitchLinear) }
     val mainTextSave by lazy { findViewById<TapTextView>(R.id.mainTextSave) }
     val switchSaveMobile by lazy { findViewById<TapSwitch>(R.id.switchSaveMobile) }
+    val card by lazy { findViewById<CardView>(R.id.card) }
 
 
     /**
@@ -97,6 +101,14 @@ class MainSwitch :LinearLayout {
 //        switchSaveMerchant.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //        switchGoPayCheckout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.backgroundColor")))
 
+        setBottomBorders(
+            card,
+            40f,// corner raduis
+            0.0f,
+            Color.parseColor("#00ffffff"),// stroke color
+            Color.parseColor("#00ffffff"),// tint color
+            Color.parseColor("#00ffffff")
+        )//
         // Main switch
         switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

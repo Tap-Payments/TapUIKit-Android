@@ -27,13 +27,13 @@ import company.tap.tapuilibrary.uikit.enums.ActionButtonState.SUCCESS
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
 
+
 /**
  *
  * Created on 6/24/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
-
 class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListener,
     TapLoadingView.OnProgressCompletedListener {
 
@@ -141,11 +141,11 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     /**
      * setup the initInvalidBackground background drawable color and corner radius from datasource
      */
-    private fun initInvalidBackground(backgroundColor: Int) {
+    private fun initInvalidBackground(backgroundColor: Int? = null) {
         dataSource?.cornerRadius?.let {
             backgroundDrawable.cornerRadius = it
         }
-        backgroundDrawable.color = ColorStateList.valueOf(backgroundColor)
+        backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
         background = backgroundDrawable
         elevation = 0F
     }
