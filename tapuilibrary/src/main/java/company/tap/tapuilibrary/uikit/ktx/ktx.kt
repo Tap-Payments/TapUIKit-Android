@@ -68,6 +68,36 @@ fun setBorderedView(view: View, cornerRadius:Float,strokeWidth: Float, strokeCol
 
 
 
+fun setTopBorders(view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int, shadowColor: Int) {
+    val shapeAppearanceModel = ShapeAppearanceModel()
+        .toBuilder()
+        .setTopLeftCorner(CornerFamily.ROUNDED, cornerRadius)
+        .setTopRightCorner(CornerFamily.ROUNDED, cornerRadius)
+        .build()
+    val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+    ViewCompat.setBackground(view, shapeDrawable)
+    shapeDrawable.setStroke(strokeWidth, strokeColor)
+    shapeDrawable.setShadowColor(shadowColor)
+    shapeDrawable.setTint(tintColor)
+    shapeDrawable.shadowRadius= 10
+    shapeDrawable.elevation = 20f
+}
+fun setBottomBorders(view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int, shadowColor: Int) {
+    val shapeAppearanceModel = ShapeAppearanceModel()
+        .toBuilder()
+        .setBottomLeftCorner(CornerFamily.ROUNDED, cornerRadius)
+        .setBottomRightCorner(CornerFamily.ROUNDED, cornerRadius)
+        .build()
+    val shapeDrawable = MaterialShapeDrawable(shapeAppearanceModel)
+    ViewCompat.setBackground(view, shapeDrawable)
+    shapeDrawable.setStroke(strokeWidth, strokeColor)
+    shapeDrawable.setShadowColor(shadowColor)
+    shapeDrawable.setTint(tintColor)
+    shapeDrawable.shadowRadius= 10
+    shapeDrawable.elevation = 20f
+}
+
+
 
 
 

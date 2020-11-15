@@ -43,7 +43,9 @@
             "currency_chip_unselected_shadow": "#eeeeef",
             "transperant": "#c7f9f9f9",
             "invalid_action": "#b9b9b9",
-            "change_layout": "#f4f4f4"
+            "change_layout": "#f4f4f4",
+            "password_hint_color": "#878787"
+
         }
     },
     "inlineCard": {
@@ -684,6 +686,15 @@
                 "textFont": "Roboto-Light,12",
                 "textColor": "greyishBrown"
             }
+        }
+    },
+    "TapAlertMessage": {
+        "backgroundColor": "#4cffbe60",
+        "separatorColor" : "#33ea6724",
+        "separatorHeight" : 1,
+        "textField": {
+            "textFont": "Roboto-Light,12",
+            "textColor": "#ea611c"
         }
     }
 }

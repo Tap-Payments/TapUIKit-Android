@@ -3,21 +3,21 @@ package company.tap.tapuisample
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
-import android.net.Uri
+import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import androidx.core.graphics.drawable.DrawableCompat
 import com.bumptech.glide.Glide
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.themekit.theme.ButtonTheme
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
-import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
+import company.tap.tapuilibrary.uikit.ktx.setTopBorders
 import company.tap.tapuilibrary.uikit.views.TextDrawable
 import kotlinx.android.synthetic.main.tap_main_header.view.*
 
@@ -36,7 +36,7 @@ class TapHeaderSectionView : LinearLayout {
 
     /**
      * Simple constructor to use when creating a TapHeader from code.
-     *  @param context The Context the view is running in, through which it can
+     *  @param con] ext The Context the view is running in, through which it can
      *  access the current theme, resources, etc.
      **/
     constructor(context: Context) : super(context)
@@ -110,37 +110,37 @@ class TapHeaderSectionView : LinearLayout {
 
     }
 
-
     fun setTheme() {
 
         val businessNameTextViewTheme = TextViewTheme()
-        businessNameTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
-        businessNameTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
-        businessNameTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+        businessNameTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+        businessNameTextViewTheme.textSize = ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+        businessNameTextViewTheme.font = ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
         businessName.setTheme(businessNameTextViewTheme)
 
         val paymentForTextViewTheme = TextViewTheme()
-        paymentForTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.titleLabelColor"))
-        paymentForTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.titleLabelFont")
-        paymentForTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.titleLabelFont")
+        paymentForTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.titleLabelColor"))
+        paymentForTextViewTheme.textSize = ThemeManager.getFontSize("merchantHeaderView.titleLabelFont")
+        paymentForTextViewTheme.font = ThemeManager.getFontName("merchantHeaderView.titleLabelFont")
         paymentFor.setTheme(paymentForTextViewTheme)
 
         val businessPlaceholderTextViewTheme = TextViewTheme()
-        businessPlaceholderTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderLabelColor"))
-        businessPlaceholderTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.merchantLogoPlaceHolderFont")
-        businessPlaceholderTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.merchantLogoPlaceHolderFont")
+        businessPlaceholderTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderLabelColor"))
+        businessPlaceholderTextViewTheme.textSize = ThemeManager.getFontSize("merchantHeaderView.merchantLogoPlaceHolderFont")
+        businessPlaceholderTextViewTheme.font = ThemeManager.getFontName("merchantHeaderView.merchantLogoPlaceHolderFont")
         businessPlaceholder.setTheme(businessPlaceholderTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+//        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+        setTopBorders(
+            topLinear,
+            40f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+            Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+        )//
 
     }
 
