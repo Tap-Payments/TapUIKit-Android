@@ -31,7 +31,7 @@ All rights reserved.
 
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter(
-    private val arrayList: ArrayList<Payment_methods>,
+    private val arrayList1: List<Payment_methods>,
     private val onCardSelectedActionListener: OnCardSelectedActionListener? = null,
     var isShaking: Boolean = false
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -65,11 +65,11 @@ class CardTypeAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (arrayList[position].equals(1)|| arrayList[position].equals(3) || arrayList[position].equals(
+        return if (arrayList1[position].equals(1)|| arrayList1[position].equals(3) || arrayList1[position].equals(
                 5
             )) {
             TYPE_SINGLE
-        } else if (arrayList[position].equals(2)) {
+        } else if (arrayList1[position].equals(2)) {
             TYPE_GO_PAY
         } else {
             TYPE_SAVED_CARD
@@ -77,12 +77,13 @@ class CardTypeAdapter(
     }
 
     override fun getItemCount(): Int {
-        return arrayList.size
+        return arrayList1.size
     }
 
 
     private fun setOnClickActions(holder: RecyclerView.ViewHolder) {
 //        holder.itemView.deleteImageView1?.visibility = View.VISIBLE
+        val arrayList = ArrayList(arrayList1)
         holder.itemView.deleteImageView1?.setOnClickListener {
             onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
             arrayList.removeAt(holder.itemView.id)
@@ -135,7 +136,7 @@ class CardTypeAdapter(
                 holder.itemView.layoutParams = params
             }
 
-            for (x in 0..arrayList.size){
+            for (x in 0..arrayList1.size){
                 val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
                 holder.itemView.startAnimation(animShake)
             }
