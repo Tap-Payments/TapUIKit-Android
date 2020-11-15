@@ -222,14 +222,16 @@ class CardTypeAdapter(
     private fun typeRedirect(holder: RecyclerView.ViewHolder, position: Int) {
         if (selectedPosition == position) {
 //                holder.itemView.tapCardChip3Linear.setBackgroundColor(Color.WHITE)
+            if (ThemeManager.currentTheme != null )
             holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
+
 
             setBorderedView(
                 holder.itemView.tapCardChip3Linear,
                 (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
                 0.0f,
                 parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
-                Color.parseColor(ThemeManager.getValue("horizontalList.chips.gatewayChip.backgroundColor")),// tint color
+                parseColor(ThemeManager.getValue("horizontalList.chips.gatewayChip.backgroundColor")),// tint color
                 parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
             )// shadow color
 
