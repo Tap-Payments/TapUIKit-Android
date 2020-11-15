@@ -14,6 +14,8 @@ import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import company.tap.cardbusinesskit.testmodels.Payment_methods
+import company.tap.checkout.adapters.CardAdapter.Companion.TYPE_SINGLE
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.OnCardSelectedActionListener
@@ -29,7 +31,7 @@ All rights reserved.
 
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter(
-    private val arrayList: ArrayList<Int>,
+    private val arrayList: ArrayList<Payment_methods>,
     private val onCardSelectedActionListener: OnCardSelectedActionListener? = null,
     var isShaking: Boolean = false
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -63,9 +65,11 @@ class CardTypeAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (arrayList[position] == 1 || arrayList[position] == 3 || arrayList[position] == 5) {
-            TYPE_REDIRECT
-        } else if (arrayList[position] == 2) {
+        return if (arrayList[position].equals(1)|| arrayList[position].equals(3) || arrayList[position].equals(
+                5
+            )) {
+            TYPE_SINGLE
+        } else if (arrayList[position].equals(2)) {
             TYPE_GO_PAY
         } else {
             TYPE_SAVED_CARD
@@ -81,7 +85,7 @@ class CardTypeAdapter(
 //        holder.itemView.deleteImageView1?.visibility = View.VISIBLE
         holder.itemView.deleteImageView1?.setOnClickListener {
             onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-            arrayList.remove(holder.itemView.id)
+            arrayList.removeAt(holder.itemView.id)
             holder.itemView.clearAnimation()
             it.animate().cancel()
             it.clearAnimation()
@@ -90,7 +94,7 @@ class CardTypeAdapter(
 
         holder.itemView.deleteImageView2?.setOnClickListener {
             onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-            arrayList.remove(holder.itemView.id)
+            arrayList.removeAt(holder.itemView.id)
             holder.itemView.clearAnimation()
             it.animate().cancel()
             it.clearAnimation()
@@ -99,7 +103,7 @@ class CardTypeAdapter(
 
         holder.itemView.deleteImageView3?.setOnClickListener {
             onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-            arrayList.remove(holder.itemView.id)
+            arrayList.removeAt(holder.itemView.id)
             holder.itemView.clearAnimation()
             it.animate().cancel()
             it.clearAnimation()
