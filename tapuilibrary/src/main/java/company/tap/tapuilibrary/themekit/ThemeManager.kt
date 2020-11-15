@@ -27,7 +27,6 @@ object ThemeManager {
     private lateinit var themeString :String
     var currentTheme :Int? = null
 
-
     //// decide if we load json from path or assets
 
     fun loadTapTheme(resources: Resources, resId: Int) {
