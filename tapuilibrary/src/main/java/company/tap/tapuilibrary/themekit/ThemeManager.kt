@@ -25,7 +25,7 @@ object ThemeManager {
 
     private lateinit var theme: JSONObject
     private lateinit var themeString :String
-    var currentTheme :String? = null
+    var currentTheme :String = ""
 
     //// decide if we load json from path or assets
 

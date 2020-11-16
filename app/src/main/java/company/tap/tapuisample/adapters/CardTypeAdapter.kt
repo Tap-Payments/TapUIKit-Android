@@ -254,7 +254,7 @@ class CardTypeAdapter(
             )// shadow color
 
         } else {
-            if (ThemeManager.currentTheme != null &&  ThemeManager.currentTheme == R.raw.defaultdarktheme){
+            if (ThemeManager.currentTheme.isNullOrEmpty() && ThemeManager.currentTheme.contains("dark") ){
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
             }else{
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick)
