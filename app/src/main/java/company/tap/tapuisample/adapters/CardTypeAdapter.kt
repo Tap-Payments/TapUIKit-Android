@@ -239,7 +239,7 @@ class CardTypeAdapter(
 
     private fun typeSavedCard(holder: ViewHolder, position: Int) {
         if (selectedPosition == position) {
-            if (ThemeManager.currentTheme != null &&  ThemeManager.currentTheme == R.raw.defaultdarktheme){
+            if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("black")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
             }else{
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
@@ -254,7 +254,7 @@ class CardTypeAdapter(
             )// shadow color
 
         } else {
-            if (ThemeManager.currentTheme.isNullOrEmpty() && ThemeManager.currentTheme.contains("dark") ){
+            if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("black")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
             }else{
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick)
@@ -283,7 +283,7 @@ class CardTypeAdapter(
     private fun typeRedirect(holder: ViewHolder, position: Int) {
         if (selectedPosition == position) {
 //                holder.itemView.tapCardChip3Linear.setBackgroundColor(Color.WHITE)
-            if (ThemeManager.currentTheme != null &&  ThemeManager.currentTheme == R.raw.defaultdarktheme){
+            if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("black")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
             }else{
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
@@ -300,7 +300,7 @@ class CardTypeAdapter(
             )// shadow color
 
         } else {
-            if (ThemeManager.currentTheme != null &&  ThemeManager.currentTheme == R.raw.defaultdarktheme){
+            if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("black")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
             }else{
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick)

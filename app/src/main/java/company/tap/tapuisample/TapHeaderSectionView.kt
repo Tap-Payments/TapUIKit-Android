@@ -5,6 +5,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import androidx.core.graphics.drawable.DrawableCompat
@@ -164,7 +165,8 @@ class TapHeaderSectionView : LinearLayout {
             Color.parseColor("#3b3b3c")
         )//
 
-        if (ThemeManager.currentTheme != null && ThemeManager.currentTheme == R.raw.defaultdarktheme) {
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("black")) {
+            Log.d("currentTheme", ThemeManager.currentTheme)
             setBorderedView(
                 tapChipIcon,
                 80f,// corner raduis

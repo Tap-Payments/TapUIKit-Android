@@ -31,6 +31,7 @@ object ThemeManager {
 
     fun loadTapTheme(resources: Resources, resId: Int, themeName : String) {
         currentTheme = themeName
+        Log.d("currentTheme", currentTheme)
         val resourceReader = resources.openRawResource(resId)
         val writer = StringWriter()
         val reader = BufferedReader(InputStreamReader(resourceReader, StandardCharsets.UTF_8))
