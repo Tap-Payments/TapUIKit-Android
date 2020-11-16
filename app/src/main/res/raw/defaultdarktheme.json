@@ -94,7 +94,7 @@
     },
     "phoneCard": {
         "commonAttributes": {
-            "backgroundColor": "white",
+            "backgroundColor": "black",
             "borderColor": "clear",
             "cornerRadius": 0,
             "borderWidth": 0,
@@ -270,9 +270,9 @@
         "subTitleLabelFont" : "Roboto-Regular,16",
         "subTitleLabelColor" : "greyishBrown",
         "merchantLogoCorner" : 8,
-        "merchantLogoPlaceHolderColor" : "black",
+        "merchantLogoPlaceHolderColor" : "white",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
-        "merchantLogoPlaceHolderLabelColor" : "white",
+        "merchantLogoPlaceHolderLabelColor" : "black",
         "backgroundColor" : "black"
     },
     "amountSectionView": {
@@ -287,7 +287,7 @@
             "color" : "brownGrey",
             "width" : 1
         },
-        "itemsNumberButtonCorner" : 25,
+        "itemsNumberButtonCorner" : 30,
         "backgroundColor" : "black"
     },
     "horizontalList": {
