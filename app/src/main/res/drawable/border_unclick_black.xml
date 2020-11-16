@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="MissingDefaultResource">
     <!-- Drop Shadow Stack -->
     <item>
         <shape>
@@ -25,21 +27,21 @@
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#15d9d9da" />
+            <solid android:color="#2b2c2f" />
             <corners android:radius="10dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#20d9d9da" />
+            <solid android:color="#2b2c2f" />
             <corners android:radius="10dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#25d9d9da" />
+            <solid android:color="#2b2c2f" />
             <corners android:radius="10dp" />
         </shape>
     </item>

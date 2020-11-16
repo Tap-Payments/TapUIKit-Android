@@ -25,12 +25,12 @@ object ThemeManager {
 
     private lateinit var theme: JSONObject
     private lateinit var themeString :String
-    var currentTheme :Int? = null
+    var currentTheme :String? = null
 
     //// decide if we load json from path or assets
 
-    fun loadTapTheme(resources: Resources, resId: Int) {
-        currentTheme = resId
+    fun loadTapTheme(resources: Resources, resId: Int, themeName : String) {
+        currentTheme = themeName
         val resourceReader = resources.openRawResource(resId)
         val writer = StringWriter()
         val reader = BufferedReader(InputStreamReader(resourceReader, StandardCharsets.UTF_8))
