@@ -20,7 +20,7 @@ class ThemeTestActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_test)
-        initAppTheme(R.raw.defaultdarktheme)
+        initAppTheme(R.raw.defaultlighttheme)
 
     }
 
