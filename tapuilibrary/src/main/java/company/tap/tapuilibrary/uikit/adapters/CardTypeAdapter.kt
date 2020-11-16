@@ -202,14 +202,14 @@ class CardTypeAdapter(
         } else {
             holder.itemView.setBackgroundResource(R.drawable.border_unclick)
 
-            setBorderedView(
+          /*  setBorderedView(
                 holder.itemView.tapCardChip2Constraints,
                 (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
                 0.0f,
                 parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),// tint color
                 parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
-            )// shadow color
+            )// shadow color*/
 
         }
         (holder as SavedViewHolder)
