@@ -76,6 +76,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
             countryCodePicker.visibility = View.VISIBLE
             countryCodePicker.setDefaultCountryUsingNameCode("KW")
         }
+        countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
 
     }
 

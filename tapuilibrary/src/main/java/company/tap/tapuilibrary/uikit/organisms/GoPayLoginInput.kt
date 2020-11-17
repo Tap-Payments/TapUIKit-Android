@@ -121,7 +121,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun initCountryCodePicker() {
-        countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
         countryCode = countryCodePicker.defaultCountryCode
         countryCodePicker.ccpDialogShowFlag = false
@@ -129,7 +128,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.launchCountrySelectionDialog()
         countryCode = countryCodePicker.selectedCountryCode
-
+        countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
     }
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {
