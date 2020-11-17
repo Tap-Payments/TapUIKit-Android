@@ -47,6 +47,8 @@ import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod
 import company.tap.tapuilibrary.uikit.fragment.CardScannerFragment
 import company.tap.tapuilibrary.uikit.fragment.NFCFragment
 import company.tap.tapuilibrary.uikit.interfaces.*
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
+import company.tap.tapuilibrary.uikit.ktx.setBottomBorders
 import company.tap.tapuilibrary.uikit.ktx.setTopBorders
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
@@ -167,6 +169,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         otpView?.setOtpButtonConfirmationInterface(this)
 //        bulr()
         initGoPay(view)
+
         return view.rootView
     }
 
@@ -392,7 +395,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE
             mainSwitch.visibility = View.GONE
-            cardSwitch.visibility = View.GONE
+//            cardSwitch.visibility = View.GONE
             switch_pay_demo.payButton.visibility = View.GONE
 //            actionButton.visibility = View.GONE
             itemCount.text = "CLOSE"
@@ -442,6 +445,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
         mainSwitch.mainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
         cardSwitch.cardElevation= 0f
+
+
+
 //        card.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
         mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_text)))
 
@@ -880,7 +886,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 }
             }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
@@ -925,10 +933,53 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
+        setBottomBorders(
+            cardSwitch,
+            30f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")),// stroke color
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
+        )//
+        setBottomBorders(
+            cardSwitch,
+            30f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")),// stroke color
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
+        )//
         switchSaveDemo?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
                 cardSwitch.cardElevation = 2.5f
+
+
+                setBorderedView(
+                    mainSwitch.card,
+                    40f,// corner raduis
+                    0.0f,
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// stroke color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                )//
+
+//                setBottomBorders(
+//                    mainSwitch.card,
+//                    30f,// corner raduis
+//                    0.0f,
+//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")),// stroke color
+//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")),// tint color
+//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
+//                )//
+//                setBorderedView(
+//                    mainSwitch,
+//                    30f,// corner raduis
+//                    0.0f,
+//                    Color.parseColor("#ffffff"),// stroke color
+//                    Color.parseColor("#ffffff"),// tint color
+//                    Color.parseColor("#ffffff")
+//                )//
 
 //                outer_layout?.setBackgroundColor(Color.WHITE)
 //                backgroundColor =
@@ -951,6 +1002,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 alertgoPay?.visibility = View.VISIBLE
                 separatorView?.visibility = View.VISIBLE
             } else {
+                setBorderedView(
+                    mainSwitch.card,
+                    0f,// corner raduis
+                    0.0f,
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// stroke color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                )//
                 switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
                 cardSwitch.cardElevation = 0f
 

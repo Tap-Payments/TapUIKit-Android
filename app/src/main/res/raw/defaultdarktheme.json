@@ -609,10 +609,10 @@
     "TapOtpView": {
         "backgroundColor": "clear",
         "OtpController": {
-            "bottomLineColor": "brownGreyFour",
-            "activeBottomColor": "deepSkyBlue",
+            "bottomLineColor": "deepSkyBlue",
+            "activeBottomColor": "brownGreyFour",
             "textColor": "greyishBrown",
-            "textFont": "Roboto-Light,25"
+            "textFont": "Roboto-Light,14"
         },
         "Timer": {
             "textFont": "Roboto-Regular,16",
@@ -641,7 +641,7 @@
         }
     },
     "TapSwitchView": {
-        "backgroundColor": "main_switch_background",
+        "backgroundColor": "clear",
         "CurvedSeparator": {
             "BackgroundColor": "whiteTwo"
         },
