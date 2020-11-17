@@ -58,6 +58,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val goPayLinear by lazy { findViewById<LinearLayout>(R.id.goPayLinear) }
     val goPayTabSeparator by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator) }
     val goPayTabSeparator_ by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator_) }
+    val loginInputLayout by lazy { findViewById<LinearLayout>(R.id.login_input_layout) }
 //    val countryCodeTxt by lazy { findViewById<TapTextView>(R.id.countryCodeTxt) }
 
     var dataSource: GoPayLoginDataSource? = null
@@ -76,6 +77,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun initTheme() {
         goPayLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#a8a8a8"))
+        loginTabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
+        loginInputLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.inputFieldBackground")))
+        goPayHint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.tabTextColors =
             ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
         var textThem = TextViewTheme()
