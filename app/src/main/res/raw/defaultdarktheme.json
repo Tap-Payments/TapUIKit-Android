@@ -536,7 +536,7 @@
     "goPay": {
         "loginBar" :{
             "backgroundColor" : "whiteTwo",
-            "inputFieldBackground" : "black",
+            "inputFieldBackground" : "deepSkyBlue",
             "underline": {
                 "selected": {
                     "backgroundColor" : "deepSkyBlue"

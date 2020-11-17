@@ -78,8 +78,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         goPayLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#a8a8a8"))
         loginTabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
-        loginInputLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.inputFieldBackground")))
-        goPayHint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.tabTextColors =
             ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
         var textThem = TextViewTheme()
@@ -87,9 +85,12 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor"))
         textThem.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont")
         goPayHint.setTheme(textThem)
+        goPayHint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         textInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
         textInput.textSize = ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
+        loginInputLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.inputFieldBackground")))
+
 
 
         countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
