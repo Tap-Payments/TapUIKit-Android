@@ -121,6 +121,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun initCountryCodePicker() {
+        countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
         countryCode = countryCodePicker.defaultCountryCode
         countryCodePicker.ccpDialogShowFlag = false
