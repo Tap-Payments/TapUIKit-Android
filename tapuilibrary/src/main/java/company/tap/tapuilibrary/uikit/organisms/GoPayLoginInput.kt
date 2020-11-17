@@ -90,6 +90,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
         textInput.textSize = ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
         loginInputLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.inputFieldBackground")))
+        countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
 
 
 
