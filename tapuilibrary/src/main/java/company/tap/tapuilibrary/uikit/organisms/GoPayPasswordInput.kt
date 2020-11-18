@@ -7,6 +7,7 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import androidx.cardview.widget.CardView
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.textfield.TextInputLayout
@@ -39,6 +40,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     val signInButton by lazy { findViewById<TabAnimatedActionButton>(R.id.sigin_button) }
     val passwordemailText by lazy { findViewById<TapTextView>(R.id.gopay_password_text) }
     val rootView by lazy { findViewById<LinearLayout>(R.id.root_view) }
+    val changeEmailCardView by lazy { findViewById<CardView>(R.id.changeEmailCardView) }
 
     private var loginInterface: GoPayLoginInterface? = null
 
@@ -161,6 +163,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         passwordTextInput.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
         textInputLayout.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
         changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+        changeEmailCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
     }
 
     fun getSuccessDataSource(

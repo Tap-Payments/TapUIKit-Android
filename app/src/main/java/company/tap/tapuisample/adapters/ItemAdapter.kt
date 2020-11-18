@@ -62,6 +62,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         val totalAmount = holder.itemView.findViewById<TapTextView>(R.id.total_amount)
         val mainViewLinear = holder.itemView.findViewById<LinearLayout>(R.id.mainViewLinear)
         val itemName = holder.itemView.findViewById<TapTextView>(R.id.item_title)
+        val item_amount = holder.itemView.findViewById<TapTextView>(R.id.item_amount)
         val isExpanded = position == mExpandedPosition
 
         descriptionTextView.text = "Lorem ipsum dolor sit amet, ex exercitation ullamco laboris."
@@ -71,8 +72,8 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
         onItemClickAction(holder, position, isExpanded)
         showHideDescText(isExpanded, position, descText)
-        setTheme(descriptionTextView,discount,descText,totalQuantity,totalAmount,itemName,itemSeparator,mainViewLinear,quantityRelative)
-        setFonts(itemName,totalAmount,discount,descText,descriptionTextView,totalQuantity)
+        setTheme(descriptionTextView,discount,descText,totalQuantity,totalAmount,itemName,itemSeparator,mainViewLinear,quantityRelative,item_amount)
+        setFonts(itemName,totalAmount,discount,descText,descriptionTextView,totalQuantity,item_amount)
         checkItemListPosition(position,discount, totalAmount, itemName)
     }
 
@@ -105,13 +106,13 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
             discount?.visibility = View.INVISIBLE
             totalAmount?.paintFlags = totalAmount?.paintFlags?.and(Paint.STRIKE_THRU_TEXT_FLAG.inv())!!
             itemName?.text =
-                "VERY LOOOONNGGGG ITEM TITLE ITEM TITLE TITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLE " + itemList[position]
+                "VERY LOOOONNGGGG ITEM TITLE ITEM ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLETITLE ITEM TITLE " + itemList[position]
         }
     }
 
 
     fun setTheme(descriptionTextView:TapTextView?,discount:TapTextView?,descText:TapTextView?,totalQuantity:TapTextView?,
-                 totalAmount:TapTextView?,itemName:TapTextView?, itemSeparator: TapSeparatorView?,mainViewLinear :LinearLayout?, quantityRelative:RelativeLayout?) {
+                 totalAmount:TapTextView?,itemName:TapTextView?, itemSeparator: TapSeparatorView?,mainViewLinear :LinearLayout?, quantityRelative:RelativeLayout?,item_amount:TapTextView?) {
 
         itemViewAdapter.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor")))
         val descriptionTextViewTheme = TextViewTheme()
@@ -133,6 +134,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         totalQuantityTextViewTheme.font =
             ThemeManager.getFontName("itemsList.item.count.countLabelFont")
         totalQuantity?.setTheme(totalQuantityTextViewTheme)
+        item_amount?.setTheme(totalQuantityTextViewTheme)
 
 
         val totalAmountTextViewTheme = TextViewTheme()
@@ -173,7 +175,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
     private fun setFonts(itemName:TapTextView?,totalAmount:TapTextView?,
                          discount:TapTextView?,descText:TapTextView?,
-                         descriptionTextView:TapTextView?,totalQuantity:TapTextView?) {
+                         descriptionTextView:TapTextView?,totalQuantity:TapTextView?,item_amount:TapTextView?) {
         itemName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoRegular
@@ -194,11 +196,18 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
                 TapFont.RobotoLight
             )
         )
+
         descriptionTextView?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
+        item_amount?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
         itemViewAdapter.setItemViewDataSource(getItemViewDataSource())
         totalQuantity?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(

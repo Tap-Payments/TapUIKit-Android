@@ -172,10 +172,10 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="-7dp"
+            android:layout_marginTop="0dp"
             android:elevation="0.0dp"
+            app:cardCornerRadius="0dp"
             app:cardElevation="0dp"
-            app:cardCornerRadius="10dp"
             android:id="@+id/cardSwitch">
             <company.tap.tapuisample.MainSwitch
                 android:id="@+id/mainSwitch"
@@ -185,15 +185,11 @@
                 android:layout_height="wrap_content"/>
         </androidx.cardview.widget.CardView>
 
-
-
-
-
         <company.tap.tapuilibrary.uikit.views.TapCardSwitch
             android:id="@+id/switch_pay_demo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-8dp"
+            android:layout_marginTop="0dp"
             android:layout_gravity="start"
             android:layoutDirection="locale" />
 

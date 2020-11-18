@@ -165,7 +165,7 @@ class TapHeaderSectionView : LinearLayout {
             Color.parseColor("#3b3b3c")
         )//
 
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("black")) {
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             Log.d("currentTheme", ThemeManager.currentTheme)
             setBorderedView(
                 tapChipIcon,
