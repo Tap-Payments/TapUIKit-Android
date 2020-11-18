@@ -130,6 +130,14 @@ class MainSwitch :LinearLayout {
                 switchSaveMobileSwitchThemeDisable.trackTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchSaveMobile.setTheme(switchSaveMobileSwitchThemeDisable)
+                setBorderedView(
+                    card,
+                    0f,// corner raduis
+                    0.0f,
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// stroke color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                )//
             }
         }
 
