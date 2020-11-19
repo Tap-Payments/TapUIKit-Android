@@ -188,10 +188,12 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     fun sendPhoneNumber() {
         var replaced = ""
+        var countryCodeReplaced = ""
         if (textInput.text.toString().length > 7)
             replaced = (textInput.text.toString()).replaceRange(1, 6, "....")
 
-        countryCodePicker.selectedCountryCode?.let {
+        countryCodeReplaced = (countryCodePicker.selectedCountryCode).replace("+", " ")
+        countryCodeReplaced.let {
             openOTPInterface?.getPhoneNumber(
                 textInput.text.toString(),
                 it,
