@@ -17,6 +17,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.ktx.setBottomBorders
 
 class MainSwitch :LinearLayout {
@@ -98,14 +99,7 @@ class MainSwitch :LinearLayout {
 //        switchSaveMerchant.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 //        switchGoPayCheckout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.backgroundColor")))
 
-        setBottomBorders(
-            card,
-            40f,// corner raduis
-            0.0f,
-            Color.parseColor("#00ffffff"),// stroke color
-            Color.parseColor("#00ffffff"),// tint color
-            Color.parseColor("#00ffffff")
-        )//
+
         // Main switch
         switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -116,6 +110,14 @@ class MainSwitch :LinearLayout {
                 switchSaveMobileSwitchThemeEnable.trackTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
                 switchSaveMobile.setTheme(switchSaveMobileSwitchThemeEnable)
+                setBorderedView(
+                    card,
+                    40f,// corner raduis
+                    0.0f,
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// stroke color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                )//
 
             } else {
                 Log.d("false", "false")
@@ -125,6 +127,14 @@ class MainSwitch :LinearLayout {
                 switchSaveMobileSwitchThemeDisable.trackTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchSaveMobile.setTheme(switchSaveMobileSwitchThemeDisable)
+                setBorderedView(
+                    card,
+                    0f,// corner raduis
+                    0.0f,
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// stroke color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                )//
             }
         }
 
