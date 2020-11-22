@@ -46,6 +46,7 @@
             android:focusable="true"
             app:ccp_showArrow="false"
             app:ccp_textSize="16sp"
+            app:ccp_rememberLastSelection="true"
             android:layout_gravity="center"
             android:layout_marginStart="5dp"
             app:ccp_defaultPhoneCode="965"
