@@ -39,7 +39,7 @@ object  BlurBuilder {
         return outputBitmap
     }
     private fun getScreenshot(v: View): Bitmap? {
-        val b = Bitmap.createBitmap(LinearLayout.LayoutParams.MATCH_PARENT, 220, Bitmap.Config.ARGB_8888)
+        val b = Bitmap.createBitmap(400, 220, Bitmap.Config.ARGB_8888)
         val c = Canvas(b)
         v.draw(c)
         return b

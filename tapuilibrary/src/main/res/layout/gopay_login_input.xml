@@ -4,6 +4,7 @@
     android:id="@+id/goPayLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 

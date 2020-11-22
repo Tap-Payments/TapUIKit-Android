@@ -5,6 +5,7 @@
     android:id="@+id/mobilePaymentMainLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
     android:orientation="horizontal"
     android:paddingStart="@dimen/margin_basic_16dp">
 
