@@ -128,12 +128,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpViewInput.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
 
 
-        val bmp=Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
-        val canvas= Canvas(bmp);
-        canvas.drawColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
-
-        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.color.black_27 )
-        val blurredBitmap: Bitmap? = BlurBuilder.blur(context, bmp)
+        val blurredBitmap: Bitmap? = BlurBuilder.blur(otpLinearLayout)
         otpLinearLayout.setBackground(BitmapDrawable(resources, blurredBitmap))
 
 
