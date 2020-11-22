@@ -2,10 +2,7 @@ package company.tap.tapuilibrary.uikit.organisms
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.Typeface
+import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.os.CountDownTimer
 import android.provider.Settings.Global.getString
@@ -131,10 +128,12 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpViewInput.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
 
 
-
+        val bmp=Bitmap.createBitmap(width,height, Bitmap.Config.ARGB_8888);
+        val canvas= Canvas(bmp);
+        canvas.drawColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
 
         val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.color.black_27 )
-        val blurredBitmap: Bitmap? = BlurBuilder.blur(context, originalBitmap)
+        val blurredBitmap: Bitmap? = BlurBuilder.blur(context, bmp)
         otpLinearLayout.setBackground(BitmapDrawable(resources, blurredBitmap))
 
 
