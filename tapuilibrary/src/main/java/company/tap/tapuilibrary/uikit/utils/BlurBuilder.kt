@@ -8,6 +8,7 @@ import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
 import android.view.View
+import android.widget.LinearLayout
 
 
 /**
@@ -40,7 +41,7 @@ object  BlurBuilder {
         return outputBitmap
     }
     private fun getScreenshot(v: View): Bitmap? {
-        val b = Bitmap.createBitmap(v.width, v.height, Bitmap.Config.ARGB_8888)
+        val b = Bitmap.createBitmap(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, Bitmap.Config.ARGB_8888)
         val c = Canvas(b)
         v.draw(c)
         return b
