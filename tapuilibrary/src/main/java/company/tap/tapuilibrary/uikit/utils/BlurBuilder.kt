@@ -1,4 +1,4 @@
-package company.tap.tapuisample
+package company.tap.tapuilibrary.uikit.utils
 
 import android.content.Context
 import android.graphics.Bitmap

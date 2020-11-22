@@ -2,8 +2,11 @@ package company.tap.tapuilibrary.uikit.organisms
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.BitmapDrawable
 import android.os.CountDownTimer
 import android.provider.Settings.Global.getString
 import android.text.Editable
@@ -24,6 +27,7 @@ import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
+import company.tap.tapuilibrary.uikit.utils.BlurBuilder
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuilibrary.uikit.views.TapOTPView
 import jp.wasabeef.blurry.Blurry
@@ -125,6 +129,15 @@ class OTPView : LinearLayout, OpenOTPInterface {
         mobileNumberText.setTheme(mobileNumberTextTextTheme)
         otpSentText.setTheme(mobileNumberTextTextTheme)
         otpViewInput.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
+
+
+
+
+        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
+        val blurredBitmap: Bitmap? = BlurBuilder.blur(context, originalBitmap)
+        otpLinearLayout.setBackground(BitmapDrawable(resources, blurredBitmap))
+
+
     }
 
     fun setFonts() {
