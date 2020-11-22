@@ -113,11 +113,7 @@ class CardTypeAdapter(
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         println("position printed: $position")
-        if (position == 0) {
-            val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-            params.leftMargin = 28
-            holder.itemView.layoutParams = params
-        }
+
         if (isShaking) {
 
 

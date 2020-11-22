@@ -5,7 +5,6 @@
     android:id="@+id/tapcard_Chip"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_basic_6dp"
     android:layout_marginBottom="12dp"
     app:cardCornerRadius="8dp"
     android:layout_marginTop="12dp"

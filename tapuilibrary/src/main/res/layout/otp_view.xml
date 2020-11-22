@@ -36,6 +36,7 @@
                 android:textColor="#4b4847"
                 android:textSize="12sp"
                 android:textStyle="normal"
+                android:layout_marginStart="@dimen/margin_basic_10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -126,6 +127,8 @@
                 android:layout_gravity="start"
                 android:fontFamily="sans-serif-light"
                 tools:text="OTP Hint"
+                android:cursorVisible="false"
+                android:layout_marginStart="8dp"
                 android:textColor="#4b4847"
                 android:textSize="12sp"
                 android:textStyle="normal"
