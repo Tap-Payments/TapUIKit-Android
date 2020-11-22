@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
+import com.google.android.gms.common.SignInButton
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -123,6 +124,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
             ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
         mobileNumberText.setTheme(mobileNumberTextTextTheme)
         otpSentText.setTheme(mobileNumberTextTextTheme)
+        otpViewInput.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
     }
 
     fun setFonts() {
@@ -205,9 +207,9 @@ class OTPView : LinearLayout, OpenOTPInterface {
             }
 
             override fun onFinish() {
-                timerText.text = ("00:00")
-                otpHintText.visibility - View.VISIBLE
-                otpHintText.text = "OTP Timer Expired! "
+                timerText.text = ("RESEND")
+//                otpHintText.visibility - View.VISIBLE
+//                otpHintText.text = "OTP Timer Expired! "
                 setHintExpiredTheme()
             }
         }.start()
@@ -220,7 +222,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     @SuppressLint("SetTextI18n")
     override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue: String) {
-        mobileNumberText.text = "+${countryCode} $maskedValue"
+        mobileNumberText.text = "${countryCode} $maskedValue"
     }
 
     override fun onChangePhoneClicked() {
