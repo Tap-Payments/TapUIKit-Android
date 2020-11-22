@@ -71,11 +71,11 @@ class MainActivity : BaseActivity(),
         ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
 //        ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme)
         setTheme(R.style.AppThemeBlack)
-
-
-        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
-        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
-        linearMain.setBackground(BitmapDrawable(resources, blurredBitmap))
+//
+//
+//        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
+//        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
+//        linearMain.setBackground(BitmapDrawable(resources, blurredBitmap))
 
 //        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
 //        if (LocalizationManager.getLocale(context) == Locale("en")) {
