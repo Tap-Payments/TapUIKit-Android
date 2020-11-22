@@ -12,8 +12,6 @@ import android.widget.LinearLayout
 
 
 /**
- * Created by AhlaamK on 7/9/20.
-
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
@@ -41,7 +39,7 @@ object  BlurBuilder {
         return outputBitmap
     }
     private fun getScreenshot(v: View): Bitmap? {
-        val b = Bitmap.createBitmap(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, Bitmap.Config.ARGB_8888)
+        val b = Bitmap.createBitmap(LinearLayout.LayoutParams.MATCH_PARENT, 220, Bitmap.Config.ARGB_8888)
         val c = Canvas(b)
         v.draw(c)
         return b

@@ -129,7 +129,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
 
         val blurredBitmap: Bitmap? = BlurBuilder.blur(otpLinearLayout)
-        otpLinearLayout.setBackground(BitmapDrawable(resources, blurredBitmap))
+        otpLinearLayout.background = BitmapDrawable(resources, blurredBitmap)
 
 
     }
