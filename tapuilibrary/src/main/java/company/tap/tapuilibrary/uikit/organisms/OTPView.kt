@@ -130,7 +130,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             otpLinearLayout.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
         } else {
-            otpLinearLayout.setBackgroundResource(R.drawable.blurbackground)
+            otpLinearLayout.setBackgroundResource(R.drawable.ic_blurbackground)
         }
 
 
