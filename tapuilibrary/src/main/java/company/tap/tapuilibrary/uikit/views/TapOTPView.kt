@@ -401,6 +401,7 @@ class TapOTPView @JvmOverloads constructor(
             boxHeight + paddingTop + paddingBottom
         }
 
+        setMeasuredDimension(width, height )
 //        when {
 //            isFocused && text?.length != mOtpItemCount  -> setMeasuredDimension(width, height )
 //
