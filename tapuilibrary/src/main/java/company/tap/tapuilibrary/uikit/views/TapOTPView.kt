@@ -401,16 +401,16 @@ class TapOTPView @JvmOverloads constructor(
             boxHeight + paddingTop + paddingBottom
         }
 
-        when {
-            isFocused && text?.length != mOtpItemCount  -> setMeasuredDimension(width, height )
-
-            text?.length == mOtpItemCount -> {
-                setMeasuredDimension(width, height)
-            }
-            else -> {
-                setMeasuredDimension(width, height)
-            }
-        }
+//        when {
+//            isFocused && text?.length != mOtpItemCount  -> setMeasuredDimension(width, height )
+//
+//            text?.length == mOtpItemCount -> {
+//                setMeasuredDimension(width, height)
+//            }
+//            else -> {
+//                setMeasuredDimension(width, height)
+//            }
+//        }
 
         /////// check if mOtpItemCount set action for change button to valid
 
