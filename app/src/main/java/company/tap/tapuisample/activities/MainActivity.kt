@@ -18,6 +18,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatDelegate
@@ -77,6 +78,7 @@ class MainActivity : BaseActivity(),
         val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
         linearMain.background = BitmapDrawable(resources, blurredBitmap)
 
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
 //        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
 //        if (LocalizationManager.getLocale(context) == Locale("en")) {

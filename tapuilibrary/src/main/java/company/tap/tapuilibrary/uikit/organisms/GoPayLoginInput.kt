@@ -11,7 +11,6 @@ import android.util.AttributeSet
 import android.util.Log
 import android.util.Patterns
 import android.view.View
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.widget.doAfterTextChanged
@@ -49,9 +48,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     TapView<EditTextTheme> {
 
 
-    val textInput by lazy { findViewById<EditText>(R.id.gopay_text_input) }
+    val textInput by lazy { findViewById<TextInputEditText>(R.id.gopay_text_input) }
     val loginTabLayout by lazy { findViewById<TabLayout>(R.id.login_type) }
-//    val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
+    val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
     val loginMethodImage by lazy { findViewById<ImageView>(R.id.login_method_icon) }
     val actionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.gopay_button) }
     val goPayHint by lazy { findViewById<TapTextView>(R.id.gopay_hint) }
@@ -313,11 +312,11 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         countryCodePicker.visibility = View.GONE
         loginMethodImage.visibility = View.VISIBLE
 
-//        textInputLayout.typeface = Typeface.createFromAsset(
-//            context?.assets, TapFont.tapFontType(
-//                TapFont.RobotoLight
-//            )
-//        )
+        textInputLayout.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
         when (inputType) {
 
             EMAIL -> {

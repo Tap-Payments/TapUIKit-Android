@@ -88,22 +88,22 @@
             android:textColor="@color/dark_gray" />
 
 
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            android:id="@+id/text_input_layout"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:cursorVisible="true"-->
-<!--            android:paddingEnd="@dimen/margin_basic_16dp"-->
-<!--            android:isScrollContainer="true"-->
-<!--            android:fitsSystemWindows="true"-->
-<!--            android:windowSoftInputMode="adjustPan|adjustResize"-->
-<!--            app:endIconDrawable="@drawable/ic_close"-->
-<!--            android:layout_marginStart="2dp"-->
-<!--            app:endIconMode="clear_text"-->
-<!--            app:endIconTint="@null"-->
-<!--            app:hintEnabled="false">-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/text_input_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:cursorVisible="true"
+            android:paddingEnd="@dimen/margin_basic_16dp"
+            android:isScrollContainer="true"
+            android:fitsSystemWindows="true"
+            android:windowSoftInputMode="adjustPan|adjustResize"
+            app:endIconDrawable="@drawable/ic_close"
+            android:layout_marginStart="2dp"
+            app:endIconMode="clear_text"
+            app:endIconTint="@null"
+            app:hintEnabled="false">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/gopay_text_input"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -118,7 +118,7 @@
                 tools:text="email@email.com"
                 android:inputType="textEmailAddress" />
 
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
