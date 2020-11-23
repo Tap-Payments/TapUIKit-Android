@@ -607,7 +607,7 @@
         }
     },
     "TapOtpView": {
-        "backgroundColor": "clear",
+        "backgroundColor": "transperant",
         "OtpController": {
             "bottomLineColor": "deepSkyBlue",
             "activeBottomColor": "brownGreyFour",

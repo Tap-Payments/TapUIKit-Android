@@ -607,11 +607,11 @@
         }
     },
     "TapOtpView": {
-        "backgroundColor": "transperant",
+        "backgroundColor": "#d5cdc9",
         "OtpController": {
             "bottomLineColor": "deepSkyBlue",
             "activeBottomColor": "brownGreyFour",
-            "textColor": "greyishBrown",
+            "textColor": "#4b4847",
             "textFont": "Roboto-Light,14"
         },
         "Timer": {

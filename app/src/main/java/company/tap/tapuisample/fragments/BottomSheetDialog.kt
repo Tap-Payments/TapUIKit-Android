@@ -3,6 +3,7 @@ package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.ShapeDrawable
@@ -54,6 +55,7 @@ import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.organisms.OTPView
+import company.tap.tapuilibrary.uikit.utils.BlurBuilder
 import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuisample.MainSwitch
 import company.tap.tapuisample.R
@@ -1273,6 +1275,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         goPayLoginInput?.visibility = View.GONE
         otpView?.visibility = View.VISIBLE
         otpView?.changePhoneCardView?.visibility = View.VISIBLE
+
+        val blurredBitmap: Bitmap? = otpView?.otpLinearLayout?.let { BlurBuilder.blur(it) }
+        otpView?.otpLinearLayout?.background = BitmapDrawable(resources, blurredBitmap)
+
     }
 
 
