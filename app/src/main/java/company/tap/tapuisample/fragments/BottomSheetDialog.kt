@@ -171,6 +171,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         otpView?.setOtpButtonConfirmationInterface(this)
 //        bulr()
         initGoPay(view)
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
 
         return view.rootView
     }

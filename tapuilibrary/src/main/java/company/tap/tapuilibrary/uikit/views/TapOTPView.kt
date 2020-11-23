@@ -193,7 +193,7 @@ class TapOTPView @JvmOverloads constructor(
         set(@Px width) {
             mCursorWidth = width
             if (isCursorVisible()) {
-                invalidateCursor(true)
+                invalidateCursor(false)
             }
         }
 
@@ -217,7 +217,7 @@ class TapOTPView @JvmOverloads constructor(
         set(@ColorInt color) {
             mCursorColor = color
             if (isCursorVisible()) {
-                invalidateCursor(true)
+                invalidateCursor(false)
             }
         }
 

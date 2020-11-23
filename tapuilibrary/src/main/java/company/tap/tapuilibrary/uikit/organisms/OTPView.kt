@@ -105,6 +105,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         initChange()
         initTheme()
         setFonts()
+
     }
 
 
