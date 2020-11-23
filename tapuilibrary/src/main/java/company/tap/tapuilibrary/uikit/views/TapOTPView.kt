@@ -402,7 +402,7 @@ class TapOTPView @JvmOverloads constructor(
         }
 
         when {
-            isFocused && text?.length != mOtpItemCount  -> setMeasuredDimension(width, height + 250)
+            isFocused && text?.length != mOtpItemCount  -> setMeasuredDimension(width, height )
 
             text?.length == mOtpItemCount -> {
                 setMeasuredDimension(width, height)

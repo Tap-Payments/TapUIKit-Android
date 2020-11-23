@@ -78,7 +78,7 @@
     <LinearLayout
         android:id="@+id/otpLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="-8dp"
         android:paddingTop="-5dp"
         android:background="@drawable/ic_blurbackground"
@@ -97,6 +97,7 @@
             android:fitsSystemWindows="true"
             android:focusable="true"
             android:textFontWeight="200"
+            android:windowSoftInputMode="adjustPan"
             android:fontFamily="sans-serif-light"
             android:focusableInTouchMode="true"
             android:inputType="number"

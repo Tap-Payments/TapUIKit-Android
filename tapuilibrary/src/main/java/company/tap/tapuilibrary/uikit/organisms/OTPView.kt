@@ -127,6 +127,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpSentText.setTheme(mobileNumberTextTextTheme)
         otpViewInput.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
 
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            otpLinearLayout.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
+        } else {
+            otpLinearLayout.setBackgroundResource(R.drawable.blurbackground)
+
+        }
+
 
 //        val blurredBitmap: Bitmap? = BlurBuilder.blur(otpLinearLayout)
 //        otpLinearLayout.setBackgroundResource(R.drawable.blurbackground)
@@ -211,7 +218,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
                 timerText.text = ("$minutes:$second")
-                timerText.text = (String.format("%02d", minutes) ) +":"+ (String.format("%02d", second))
+                timerText.text =
+                    (String.format("%02d", minutes)) + ":" + (String.format("%02d", second))
             }
 
             override fun onFinish() {
@@ -276,7 +284,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
         otpViewActionButton.setOnClickListener {
             if (otpViewActionButton.isEnabled) {
-                isValidOTP = otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput.text.toString() ) == true
+                isValidOTP =
+                    otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput.text.toString()) == true
 
                 if (!isValidOTP) {
                     otpHintText.visibility = View.VISIBLE
