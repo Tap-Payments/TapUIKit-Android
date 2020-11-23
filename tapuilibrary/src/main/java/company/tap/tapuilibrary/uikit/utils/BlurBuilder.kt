@@ -9,6 +9,7 @@ import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
 import android.view.View
 import android.widget.LinearLayout
+import kotlin.math.roundToInt
 
 
 /**
@@ -24,8 +25,8 @@ object  BlurBuilder {
     }
 
     fun blur(ctx: Context?, image: Bitmap): Bitmap? {
-        val width = Math.round(image.width * BITMAP_SCALE)
-        val height = Math.round(image.height * BITMAP_SCALE)
+        val width = (image.width * BITMAP_SCALE).roundToInt()
+        val height = (image.height * BITMAP_SCALE).roundToInt()
         val inputBitmap = Bitmap.createScaledBitmap(image, width, height, false)
         val outputBitmap = Bitmap.createBitmap(inputBitmap)
         val rs = RenderScript.create(ctx)
@@ -39,7 +40,7 @@ object  BlurBuilder {
         return outputBitmap
     }
     private fun getScreenshot(v: View): Bitmap? {
-        val b = Bitmap.createBitmap(400, 220, Bitmap.Config.ARGB_8888)
+        val b = Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_8888)
         val c = Canvas(b)
         v.draw(c)
         return b

@@ -69,13 +69,14 @@ class MainActivity : BaseActivity(),
 
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
         ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
-//        ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme)
+        ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme, "defaultlighttheme")
         setTheme(R.style.AppThemeBlack)
-//
-//
+
+
 //        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
 //        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
-//        linearMain.setBackground(BitmapDrawable(resources, blurredBitmap))
+//        linearMain.background = BitmapDrawable(resources, blurredBitmap)
+
 
 //        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
 //        if (LocalizationManager.getLocale(context) == Locale("en")) {
@@ -89,6 +90,10 @@ class MainActivity : BaseActivity(),
     }
 
     fun openBottomSheet(view: View) {
+        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
+        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
+        linearMain.background = BitmapDrawable(resources, blurredBitmap)
+
         val modalBottomSheet = BottomSheetDialog()
         modalBottomSheet.arguments = getArguments()
         modalBottomSheet.show(supportFragmentManager, BottomSheetDialog.TAG)

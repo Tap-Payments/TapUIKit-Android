@@ -109,7 +109,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
 
     fun initTheme() {
-        otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
+//        otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
         changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
 
         val timerTextTheme = TextViewTheme()
@@ -128,8 +128,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpViewInput.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
 
 
-        val blurredBitmap: Bitmap? = BlurBuilder.blur(otpLinearLayout)
-        otpLinearLayout.background = BitmapDrawable(resources, blurredBitmap)
+//        val blurredBitmap: Bitmap? = BlurBuilder.blur(otpLinearLayout)
+        otpLinearLayout.setBackgroundResource(R.drawable.blurbackground)
 
 
     }
