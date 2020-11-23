@@ -19,6 +19,7 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.OnCardSelectedActionListener
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
+import kotlinx.android.synthetic.main.item_gopay.view.*
 import kotlinx.android.synthetic.main.item_knet.view.*
 import kotlinx.android.synthetic.main.item_saved_card.view.*
 
@@ -80,7 +81,7 @@ class CardTypeAdapter(
     }
 
 
-    private fun setOnClickActions(holder: ViewHolder) {
+    private fun setOnClickActions(holder: RecyclerView.ViewHolder) {
 //        holder.itemView.deleteImageView1?.visibility = View.VISIBLE
         val arrayList = ArrayList(arrayList1)
         holder.itemView.deleteImageView1?.setOnClickListener {
@@ -232,7 +233,7 @@ class CardTypeAdapter(
 
     }
 
-    private fun typeSavedCard(holder: ViewHolder, position: Int) {
+    private fun typeSavedCard(holder: RecyclerView.ViewHolder, position: Int) {
         if (selectedPosition == position) {
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
@@ -275,7 +276,7 @@ class CardTypeAdapter(
     }
 
 
-    private fun typeRedirect(holder: ViewHolder, position: Int) {
+    private fun typeRedirect(holder: RecyclerView.ViewHolder, position: Int) {
         if (selectedPosition == position) {
 //                holder.itemView.tapCardChip3Linear.setBackgroundColor(Color.WHITE)
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
