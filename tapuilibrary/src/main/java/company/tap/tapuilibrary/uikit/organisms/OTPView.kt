@@ -2,8 +2,8 @@ package company.tap.tapuilibrary.uikit.organisms
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
+import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
 import android.os.CountDownTimer
 import android.provider.Settings.Global.getString
 import android.text.Editable
@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
+import com.google.android.gms.common.SignInButton
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -23,6 +24,7 @@ import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
+import company.tap.tapuilibrary.uikit.utils.BlurBuilder
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuilibrary.uikit.views.TapOTPView
 import jp.wasabeef.blurry.Blurry
@@ -123,6 +125,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
             ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
         mobileNumberText.setTheme(mobileNumberTextTextTheme)
         otpSentText.setTheme(mobileNumberTextTextTheme)
+        otpViewInput.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
+
+
+        val blurredBitmap: Bitmap? = BlurBuilder.blur(otpLinearLayout)
+        otpLinearLayout.background = BitmapDrawable(resources, blurredBitmap)
+
+
     }
 
     fun setFonts() {
@@ -202,12 +211,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
                 timerText.text = ("$minutes:$second")
+                timerText.text = (String.format("%02d", minutes) ) +":"+ (String.format("%02d", second))
             }
 
             override fun onFinish() {
-                timerText.text = ("00:00")
-                otpHintText.visibility - View.VISIBLE
-                otpHintText.text = "OTP Timer Expired! "
+                timerText.text = ("RESEND")
+//                otpHintText.visibility - View.VISIBLE
+//                otpHintText.text = "OTP Timer Expired! "
                 setHintExpiredTheme()
             }
         }.start()
@@ -220,7 +230,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     @SuppressLint("SetTextI18n")
     override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue: String) {
-        mobileNumberText.text = "+${countryCode} $maskedValue"
+        mobileNumberText.text = "${countryCode} $maskedValue"
     }
 
     override fun onChangePhoneClicked() {

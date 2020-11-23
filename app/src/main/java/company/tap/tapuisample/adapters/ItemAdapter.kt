@@ -62,7 +62,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         val totalAmount = holder.itemView.findViewById<TapTextView>(R.id.total_amount)
         val mainViewLinear = holder.itemView.findViewById<LinearLayout>(R.id.mainViewLinear)
         val itemName = holder.itemView.findViewById<TapTextView>(R.id.item_title)
-        val item_amount = holder.itemView.findViewById<TapTextView>(R.id.item_amount)
+        val itemAmount = holder.itemView.findViewById<TapTextView>(R.id.item_amount)
         val isExpanded = position == mExpandedPosition
 
         descriptionTextView.text = "Lorem ipsum dolor sit amet, ex exercitation ullamco laboris."
@@ -72,8 +72,8 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
         onItemClickAction(holder, position, isExpanded)
         showHideDescText(isExpanded, position, descText)
-        setTheme(descriptionTextView,discount,descText,totalQuantity,totalAmount,itemName,itemSeparator,mainViewLinear,quantityRelative,item_amount)
-        setFonts(itemName,totalAmount,discount,descText,descriptionTextView,totalQuantity,item_amount)
+        setTheme(descriptionTextView,discount,descText,totalQuantity,totalAmount,itemName,itemSeparator,mainViewLinear,quantityRelative,itemAmount)
+        setFonts(itemName,totalAmount,discount,descText,descriptionTextView,totalQuantity,itemAmount)
         checkItemListPosition(position,discount, totalAmount, itemName)
     }
 
@@ -112,7 +112,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
 
 
     fun setTheme(descriptionTextView:TapTextView?,discount:TapTextView?,descText:TapTextView?,totalQuantity:TapTextView?,
-                 totalAmount:TapTextView?,itemName:TapTextView?, itemSeparator: TapSeparatorView?,mainViewLinear :LinearLayout?, quantityRelative:RelativeLayout?,item_amount:TapTextView?) {
+                 totalAmount:TapTextView?,itemName:TapTextView?, itemSeparator: TapSeparatorView?,mainViewLinear :LinearLayout?, quantityRelative:RelativeLayout?,itemAmount:TapTextView?) {
 
         itemViewAdapter.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor")))
         val descriptionTextViewTheme = TextViewTheme()
@@ -134,7 +134,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         totalQuantityTextViewTheme.font =
             ThemeManager.getFontName("itemsList.item.count.countLabelFont")
         totalQuantity?.setTheme(totalQuantityTextViewTheme)
-        item_amount?.setTheme(totalQuantityTextViewTheme)
+        itemAmount?.setTheme(totalQuantityTextViewTheme)
 
 
         val totalAmountTextViewTheme = TextViewTheme()

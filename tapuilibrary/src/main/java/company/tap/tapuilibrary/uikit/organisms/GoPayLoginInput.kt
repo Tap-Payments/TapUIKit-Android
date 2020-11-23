@@ -123,12 +123,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initCountryCodePicker() {
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
-        countryCode = countryCodePicker.defaultCountryCode
+//        countryCode = countryCodePicker.defaultCountryCode.replace("+"," ")
+        countryCode = countryCodePicker.defaultCountryCodeAsInt.toString()
         countryCodePicker.ccpDialogShowFlag = false
         countryCodePicker.showArrow(false)
         countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.launchCountrySelectionDialog()
-        countryCode = countryCodePicker.selectedCountryCode
+        countryCode = countryCodePicker.selectedCountryCodeAsInt.toString()
+//        countryCode = countryCodePicker.selectedCountryCode.replace("+"," ")
         countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
     }
 
@@ -188,10 +190,12 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     fun sendPhoneNumber() {
         var replaced = ""
+        var countryCodeReplaced = ""
         if (textInput.text.toString().length > 7)
             replaced = (textInput.text.toString()).replaceRange(1, 6, "....")
 
-        countryCodePicker.selectedCountryCode?.let {
+        countryCodeReplaced = (countryCodePicker.selectedCountryCode).replace("+", " ")
+        countryCodeReplaced.let {
             openOTPInterface?.getPhoneNumber(
                 textInput.text.toString(),
                 it,

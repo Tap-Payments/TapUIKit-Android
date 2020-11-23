@@ -5,7 +5,10 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -32,8 +35,10 @@ import company.tap.tapuilibrary.uikit.interfaces.TapAmountSectionInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.uikit.models.DialogConfigurations
 import company.tap.tapuilibrary.uikit.utils.BaseActivity
+import company.tap.tapuisample.BlurBuilder
 import company.tap.tapuisample.R
 import company.tap.tapuisample.fragments.*
+import kotlinx.android.synthetic.main.activity_main.*
 import java.security.KeyStore
 import java.util.*
 import java.util.concurrent.Executor
@@ -66,6 +71,11 @@ class MainActivity : BaseActivity(),
         ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
 //        ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme)
         setTheme(R.style.AppThemeBlack)
+//
+//
+//        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
+//        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
+//        linearMain.setBackground(BitmapDrawable(resources, blurredBitmap))
 
 //        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
 //        if (LocalizationManager.getLocale(context) == Locale("en")) {
@@ -87,7 +97,7 @@ class MainActivity : BaseActivity(),
     private fun getArguments(): Bundle {
         val arguments = Bundle()
         arguments.putFloatArray(DialogConfigurations.Corners, floatArrayOf(25f, 25f, 0f, 0f))
-        arguments.putInt(DialogConfigurations.Color,Color.WHITE)
+        arguments.putInt(DialogConfigurations.Color, Color.WHITE)
         arguments.putBoolean(DialogConfigurations.Cancelable, false)
         arguments.putFloat(DialogConfigurations.Dim, 0.75f)
         return arguments
@@ -206,7 +216,7 @@ class MainActivity : BaseActivity(),
     }
 
     fun otpFragment(view: View) {
-        OTPFragment().show(supportFragmentManager,null)
+        OTPFragment().show(supportFragmentManager, null)
     }
 
     fun openBiometrics(view: View) {
@@ -219,32 +229,43 @@ class MainActivity : BaseActivity(),
             BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE ->
                 Log.e("MY_APP_TAG", "Biometric features are currently unavailable.")
             BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED ->
-                Log.e("MY_APP_TAG", "The user hasn't associated " +
-                        "any biometric credentials with their account.")
+                Log.e(
+                    "MY_APP_TAG", "The user hasn't associated " +
+                            "any biometric credentials with their account."
+                )
         }
         executor = ContextCompat.getMainExecutor(this)
         biometricPrompt = BiometricPrompt(this, executor,
             object : BiometricPrompt.AuthenticationCallback() {
-                override fun onAuthenticationError(errorCode: Int,
-                                                   errString: CharSequence) {
+                override fun onAuthenticationError(
+                    errorCode: Int,
+                    errString: CharSequence
+                ) {
                     super.onAuthenticationError(errorCode, errString)
-                    Toast.makeText(applicationContext,
-                        "Authentication error: $errString", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        applicationContext,
+                        "Authentication error: $errString", Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
 
                 override fun onAuthenticationSucceeded(
-                    result: BiometricPrompt.AuthenticationResult) {
+                    result: BiometricPrompt.AuthenticationResult
+                ) {
                     super.onAuthenticationSucceeded(result)
-                    Toast.makeText(applicationContext,
-                        "Authentication succeeded!", Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        applicationContext,
+                        "Authentication succeeded!", Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
 
                 override fun onAuthenticationFailed() {
                     super.onAuthenticationFailed()
-                    Toast.makeText(applicationContext, "Authentication failed",
-                        Toast.LENGTH_SHORT)
+                    Toast.makeText(
+                        applicationContext, "Authentication failed",
+                        Toast.LENGTH_SHORT
+                    )
                         .show()
                 }
             })
@@ -266,7 +287,8 @@ class MainActivity : BaseActivity(),
     @RequiresApi(Build.VERSION_CODES.M)
     private fun generateSecretKey(keyGenParameterSpec: KeyGenParameterSpec) {
         val keyGenerator = KeyGenerator.getInstance(
-            KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore")
+            KeyProperties.KEY_ALGORITHM_AES, "AndroidKeyStore"
+        )
         keyGenerator.init(keyGenParameterSpec)
         keyGenerator.generateKey()
     }
@@ -280,9 +302,11 @@ class MainActivity : BaseActivity(),
     }
 
     private fun getCipher(): Cipher {
-        return Cipher.getInstance(KeyProperties.KEY_ALGORITHM_AES + "/"
-                + KeyProperties.BLOCK_MODE_CBC + "/"
-                + KeyProperties.ENCRYPTION_PADDING_PKCS7)
+        return Cipher.getInstance(
+            KeyProperties.KEY_ALGORITHM_AES + "/"
+                    + KeyProperties.BLOCK_MODE_CBC + "/"
+                    + KeyProperties.ENCRYPTION_PADDING_PKCS7
+        )
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -303,10 +327,10 @@ class MainActivity : BaseActivity(),
             true
         }
         R.id.change_language -> {
-            if (LocalizationManager.getLocale(context) == Locale("en")){
-                LocalizationManager.setLocale(this,Locale("ar"))
-            }else if(LocalizationManager.getLocale(context) == Locale("ar") ){
-                LocalizationManager.setLocale(this,Locale("en"))
+            if (LocalizationManager.getLocale(context) == Locale("en")) {
+                LocalizationManager.setLocale(this, Locale("ar"))
+            } else if (LocalizationManager.getLocale(context) == Locale("ar")) {
+                LocalizationManager.setLocale(this, Locale("en"))
             }
             recreate()
             true

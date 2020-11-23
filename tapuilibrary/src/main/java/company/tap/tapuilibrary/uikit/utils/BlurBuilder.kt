@@ -1,4 +1,4 @@
-package company.tap.tapuisample
+package company.tap.tapuilibrary.uikit.utils
 
 import android.content.Context
 import android.graphics.Bitmap
@@ -8,11 +8,10 @@ import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
 import android.view.View
+import android.widget.LinearLayout
 
 
 /**
- * Created by AhlaamK on 7/9/20.
-
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
@@ -40,7 +39,7 @@ object  BlurBuilder {
         return outputBitmap
     }
     private fun getScreenshot(v: View): Bitmap? {
-        val b = Bitmap.createBitmap(v.width, v.height, Bitmap.Config.ARGB_8888)
+        val b = Bitmap.createBitmap(400, 220, Bitmap.Config.ARGB_8888)
         val c = Canvas(b)
         v.draw(c)
         return b

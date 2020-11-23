@@ -34,7 +34,7 @@ class CardTypeAdapter(
     private val arrayList: ArrayList<Int>,
     private val onCardSelectedActionListener: OnCardSelectedActionListener? = null,
     var isShaking: Boolean = false
-) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+) : RecyclerView.Adapter<ViewHolder>() {
     private val TYPE_SAVED_CARD = 1
     private val TYPE_REDIRECT = 2
     private val TYPE_GO_PAY = 3
@@ -42,7 +42,7 @@ class CardTypeAdapter(
     var context_: Context? = null
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View
         context_ = parent.context
         return when (viewType) {
@@ -113,11 +113,7 @@ class CardTypeAdapter(
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         println("position printed: $position")
-        if (position == 0) {
-            val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-            params.leftMargin = 28
-            holder.itemView.layoutParams = params
-        }
+
         if (isShaking) {
 
 

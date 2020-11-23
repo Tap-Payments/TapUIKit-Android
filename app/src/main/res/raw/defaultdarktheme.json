@@ -611,7 +611,7 @@
         "OtpController": {
             "bottomLineColor": "deepSkyBlue",
             "activeBottomColor": "brownGreyFour",
-            "textColor": "greyishBrown",
+            "textColor": "white",
             "textFont": "Roboto-Light,14"
         },
         "Timer": {

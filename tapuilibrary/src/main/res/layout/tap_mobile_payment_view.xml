@@ -5,6 +5,7 @@
     android:id="@+id/mobilePaymentMainLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
     android:orientation="horizontal"
     android:paddingStart="@dimen/margin_basic_16dp">
 
@@ -27,6 +28,8 @@
         android:clickable="true"
         android:focusable="true"
         app:ccp_showArrow="false"
+        android:paddingStart="-17dp"
+        android:layout_marginStart="@dimen/margin_basic_6dp"
         app:ccp_defaultPhoneCode="965"
         app:ccp_contentColor="@color/gray"
         android:fontFamily="sans-serif-light"

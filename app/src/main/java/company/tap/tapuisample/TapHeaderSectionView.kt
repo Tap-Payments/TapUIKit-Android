@@ -156,14 +156,26 @@ class TapHeaderSectionView : LinearLayout {
         )//
 
 
-        setBorderedView(
-            draggerView,
-            40f,// corner raduis
-            0.0f,
-            Color.parseColor("#3b3b3c"),// stroke color
-            Color.parseColor("#3b3b3c"),// tint color
-            Color.parseColor("#3b3b3c")
-        )//
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            setBorderedView(
+                draggerView,
+                40f,// corner raduis
+                0.0f,
+                Color.parseColor("#3b3b3c"),// stroke color
+                Color.parseColor("#3b3b3c"),// tint color
+                Color.parseColor("#3b3b3c")
+            )//
+        }else{
+            setBorderedView(
+                draggerView,
+                40f,// corner raduis
+                0.0f,
+                Color.parseColor("#e0e0e0"),// stroke color
+                Color.parseColor("#e0e0e0"),// tint color
+                Color.parseColor("#e0e0e0")
+            )//
+        }
+
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             Log.d("currentTheme", ThemeManager.currentTheme)
