@@ -547,7 +547,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 }else{
                     chipRecycler.adapter = CardTypeAdapter(paymentsList, this,true)
                     groupAction?.text = "Close"
-                    groupAction?.tag = 2
                 }
 
             }
@@ -1105,8 +1104,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {
         if (stopAnimation){
             stopShakingCards(chipRecycler)
-            groupAction?.text == "Edit"
-        }
+            groupAction?.text = "Edit"
+        }else groupAction?.text = "Close"
+
     }
 
 
@@ -1276,15 +1276,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         otpView?.visibility = View.VISIBLE
         otpView?.changePhoneCardView?.visibility = View.VISIBLE
 
-        val blurredBitmap: Bitmap? = otpView?.otpLinearLayout?.let { BlurBuilder.blur(it) }
-        otpView?.otpLinearLayout?.background = BitmapDrawable(resources, blurredBitmap)
+//        val blurredBitmap: Bitmap? = otpView?.otpLinearLayout?.let { BlurBuilder.blur(it) }
+//        otpView?.otpLinearLayout?.background = BitmapDrawable(resources, blurredBitmap)
 
     }
 
 
     @SuppressLint("SetTextI18n")
     override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue : String) {
-        otpView?.mobileNumberText?.text = "${countryCode.replace("+"," ")} $maskedValue"
+        otpView?.mobileNumberText?.text = "+${countryCode.replace("+"," ")} $maskedValue"
         Log.d("countrycode", countryCode)
         Log.d("countrycode......", countryCode.replace("+"," "))
     }

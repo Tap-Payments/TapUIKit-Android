@@ -32,14 +32,16 @@ All rights reserved.
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter(
     private val arrayList: ArrayList<Int>,
-    private val onCardSelectedActionListener: OnCardSelectedActionListener? = null,
+    private val onCardSelectedActionListener: OnCardSelectedActionListener,
     var isShaking: Boolean = false
 ) : RecyclerView.Adapter<ViewHolder>() {
     private val TYPE_SAVED_CARD = 1
     private val TYPE_REDIRECT = 2
     private val TYPE_GO_PAY = 3
     private var selectedPosition = -1
+    private var lastPosition = -1
     var context_: Context? = null
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -65,7 +67,7 @@ class CardTypeAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (arrayList[position] == 1 || arrayList[position] == 3 || arrayList[position] == 5) {
+        return if (arrayList[position] == 1 || arrayList[position] == 5) {
             TYPE_REDIRECT
         } else if (arrayList[position] == 2) {
             TYPE_GO_PAY
@@ -80,14 +82,6 @@ class CardTypeAdapter(
 
 
     private fun setOnClickActions(holder: ViewHolder) {
-//        holder.itemView.deleteImageView1?.visibility = View.VISIBLE
-//        holder.itemView.deleteImageView1?.setOnClickListener {
-//            onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-//            arrayList.remove(holder.itemView.id)
-//            holder.itemView.clearAnimation()
-//            it.animate().cancel()
-//            it.clearAnimation()
-//        }
         holder.itemView.deleteImageView2?.visibility = View.VISIBLE
 
         holder.itemView.deleteImageView2?.setOnClickListener {
@@ -97,15 +91,7 @@ class CardTypeAdapter(
             it.animate().cancel()
             it.clearAnimation()
         }
-        holder.itemView.deleteImageView3?.visibility = View.VISIBLE
 
-        holder.itemView.deleteImageView3?.setOnClickListener {
-            onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-            arrayList.remove(holder.itemView.id)
-            holder.itemView.clearAnimation()
-            it.animate().cancel()
-            it.clearAnimation()
-        }
     }
 
 
@@ -115,79 +101,13 @@ class CardTypeAdapter(
         println("position printed: $position")
 
         if (isShaking) {
-
-
-//            if (position == 0) {
-//                val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-//                params.leftMargin = 35
-//                holder.itemView.layoutParams = params
-//            }
-
             for (x in 0..arrayList.size) {
-                val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
-                holder.itemView.startAnimation(animShake)
+                    val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
+                    holder.itemView.startAnimation(animShake)
             }
-
-//            val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-//            params.bottomMargin = 40
-//            params.rightMargin = 30
-//            params.topMargin = 20
-//            holder.itemView.layoutParams = params
             setOnClickActions(holder)
-
         }
 
-
-
-//            when {
-//                /**
-//                 * Saved Cards Type
-//                 */
-//                getItemViewType(position) === TYPE_SAVED_CARD -> {
-//                    holder.itemView.deleteImageView2.visibility =  View.VISIBLE
-//                    setBorderedView(
-//                        holder.itemView.tapCardChip2Constraints,
-//                        (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
-//                        0.0f,
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
-//                        Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),// tint color
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
-//                    )// shadow color
-//                }
-//                /**
-//                 * Knet Type
-//                 */
-//                getItemViewType(position) === TYPE_REDIRECT -> {
-//                    setBorderedView(
-//                        holder.itemView.tapCardChip3Linear,
-//                        (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
-//                        0.0f,
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
-//                        Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),// tint color
-//                        parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
-//                    )// shadow color
-//                }
-//                /**
-//                 * GoPay Type
-//                 */
-//                else -> {
-//                    if (selectedPosition == position)
-//                        holder.itemView.setBackgroundResource(R.drawable.border_gopay)
-//                    else
-//                        holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
-//                    (holder as GoPayViewHolder)
-//                    if (!isShaking) {
-//                        holder.itemView.setOnClickListener {
-//                            selectedPosition = position
-//                            onCardSelectedActionListener?.onCardSelectedAction(false)
-//                            notifyDataSetChanged()
-//                        }
-//                    }
-//                }
-//            }
-//
-//
-//        }else {
             when {
                 /**
                  * Saved Cards Type
@@ -195,8 +115,10 @@ class CardTypeAdapter(
                 getItemViewType(position) === TYPE_SAVED_CARD -> {
 
                     if (isShaking) {
+                        for (x in 0..arrayList.size) {
                             val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
                             holder.itemView.startAnimation(animShake)
+                        }
                         setOnClickActions(holder)
                     }
 
@@ -207,12 +129,22 @@ class CardTypeAdapter(
                  * Knet Type
                  */
                 getItemViewType(position) === TYPE_REDIRECT -> {
+                    if (isShaking) {
+                        for (x in 0..arrayList.size) {
+                            val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
+                            holder.itemView.startAnimation(animShake)
+                        }
+                        setOnClickActions(holder)
+                    }
                     typeRedirect(holder, position)
                 }
                 /**
                  * GoPay Type
                  */
                 else -> {
+                    if (isShaking) {
+                        holder.itemView.alpha = 0.4f
+                    }
                     if (selectedPosition == position)
                         holder.itemView.setBackgroundResource(R.drawable.border_gopay)
                     else
@@ -226,10 +158,10 @@ class CardTypeAdapter(
                             notifyDataSetChanged()
                         }
                     }
+
+
                 }
             }
-
-//        }
 
     }
 
@@ -268,11 +200,12 @@ class CardTypeAdapter(
 
         }
         (holder as SavedViewHolder)
-         holder.itemView.setOnClickListener {
+        if (!isShaking) {
+            holder.itemView.setOnClickListener {
                 selectedPosition = position
                 notifyDataSetChanged()
             }
-//        }
+        }
     }
 
 
@@ -296,6 +229,10 @@ class CardTypeAdapter(
             )// shadow color
 
         } else {
+
+            if (isShaking){
+                holder.itemView.alpha = 0.4f
+            }
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
             }else{
@@ -313,13 +250,13 @@ class CardTypeAdapter(
 
         }
         (holder as SingleViewHolder)
-//        if (!isShaking) {
+        if (!isShaking) {
             holder.itemView.setOnClickListener {
                 onCardSelectedActionListener?.onCardSelectedAction(true)
                 selectedPosition = position
                 notifyDataSetChanged()
             }
-//        }
+        }
 
     }
 

@@ -40,18 +40,4 @@
 
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/deleteImageView3"
-        android:layout_width="16dp"
-        android:layout_height="12dp"
-        android:layout_gravity="top|right"
-        android:adjustViewBounds="true"
-        android:paddingTop="-10dp"
-        android:scaleType="fitStart"
-        android:layout_alignLeft="@id/tapCardChip3Linear"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
-        android:src="@drawable/btn_close_normal"
-        android:visibility="gone"
-        card_view:ignore="RtlHardcoded" />
 </FrameLayout>

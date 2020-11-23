@@ -73,9 +73,9 @@ class MainActivity : BaseActivity(),
         setTheme(R.style.AppThemeBlack)
 
 
-//        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
-//        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
-//        linearMain.background = BitmapDrawable(resources, blurredBitmap)
+        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
+        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
+        linearMain.background = BitmapDrawable(resources, blurredBitmap)
 
 
 //        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
@@ -90,9 +90,9 @@ class MainActivity : BaseActivity(),
     }
 
     fun openBottomSheet(view: View) {
-        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
-        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
-        linearMain.background = BitmapDrawable(resources, blurredBitmap)
+//        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
+//        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
+//        linearMain.background = BitmapDrawable(resources, blurredBitmap)
 
         val modalBottomSheet = BottomSheetDialog()
         modalBottomSheet.arguments = getArguments()
