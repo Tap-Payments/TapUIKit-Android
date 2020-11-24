@@ -285,18 +285,18 @@ class TapOTPView @JvmOverloads constructor(
             R.styleable.CustomOtpView_itemWidth,
             res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_size).toFloat()
         ).toInt()
-        mOtpItemSpacing = a.getDimensionPixelSize(
-            R.styleable.CustomOtpView_itemSpacing,
-            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-        )
+//        mOtpItemSpacing = a.getDimensionPixelSize(
+//            R.styleable.CustomOtpView_itemSpacing,
+//            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//        )
 
 
         /// set space between
         Log.d("mOtpItemCount", mOtpItemCount.toString())
         println(mOtpItemCount.toString())
 
-        for (x in 0 until mOtpItemCount) {
-             if (x == 2) {
+//        for (x in 0 until mOtpItemCount) {
+//             if (x == 2) {
 
 //                val divider = DividerItemDecoration(
 //                    context,
@@ -308,23 +308,23 @@ class TapOTPView @JvmOverloads constructor(
 //                }) // note: currently (support version 28.0.0), we can not use tranparent color here, if we use transparent, we still see a small divider line. So if we want to display transparent space, we can set color = background color or we can create a custom ItemDecoration instead of DividerItemDecoration.
 //                chipRecycler.addItemDecoration(divider)
 
-                Log.d("mOtpItemCount", x.toString())
-                 println(x.toString())
-                itemSpacing = 20
-                 mOtpItemSpacing = 20
+//                Log.d("mOtpItemCount", x.toString())
+//                 println(x.toString())
+//                itemSpacing = 20
+//                 mOtpItemSpacing = 20
 //                 mOtpItemSpacing = a.getDimensionPixelSize(
 //                        R.styleable.CustomOtpView_itemSpacing,
 //                 res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
 //                 )
-            } else {
-                 itemSpacing = 10
-                 mOtpItemSpacing = 10
+//            } else {
+//                 itemSpacing = 10
+//                 mOtpItemSpacing = 10
 //                 mOtpItemSpacing = a.getDimensionPixelSize(
 //                    R.styleable.CustomOtpView_itemSpacing,
 //                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
 //                )
-            }
-        }
+//            }
+//        }
 
 
         mOtpItemRadius = a.getDimension(R.styleable.CustomOtpView_itemRadius, 0f).toInt()
