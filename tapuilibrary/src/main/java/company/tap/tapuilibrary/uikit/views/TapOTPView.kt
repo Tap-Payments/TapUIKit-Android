@@ -1,26 +1,35 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.animation.ValueAnimator
+import android.animation.ValueAnimator.AnimatorUpdateListener
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Resources
 import android.graphics.*
-import android.graphics.drawable.ShapeDrawable
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.text.InputFilter
+import android.text.InputFilter.LengthFilter
 import android.text.TextPaint
 import android.text.TextUtils
 import android.text.method.MovementMethod
 import android.util.AttributeSet
 import android.util.Log
+import android.view.ActionMode
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import androidx.annotation.Nullable
 import androidx.annotation.Px
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
-import androidx.recyclerview.widget.DividerItemDecoration
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -31,6 +40,8 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+
+
 
 class TapOTPView @JvmOverloads constructor(
     context: Context,
@@ -296,46 +307,46 @@ class TapOTPView @JvmOverloads constructor(
         println(mOtpItemCount.toString())
 
 
-        for (i in 0 until 6) {
-            when (i) {
-                0 ->{ mOtpItemSpacing = 10
-                    itemSpacing = 10
-                    mOtpItemSpacing = a.getDimensionPixelSize(
-                        R.styleable.CustomOtpView_itemSpacing,
-                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-                    )}
-                1 -> { mOtpItemSpacing = 10
-                    itemSpacing = 10
-                    mOtpItemSpacing = a.getDimensionPixelSize(
-                        R.styleable.CustomOtpView_itemSpacing,
-                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-                    )}
-                2 -> { mOtpItemSpacing = 20
-                    itemSpacing = 20
-                    mOtpItemSpacing = a.getDimensionPixelSize(
-                        R.styleable.CustomOtpView_itemSpacing,
-                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
-                    )}
-                3 -> { mOtpItemSpacing = 10
-                    itemSpacing = 10
-                    mOtpItemSpacing = a.getDimensionPixelSize(
-                        R.styleable.CustomOtpView_itemSpacing,
-                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-                    )}
-                4 -> { mOtpItemSpacing = 10
-                    itemSpacing = 10
-                    mOtpItemSpacing = a.getDimensionPixelSize(
-                        R.styleable.CustomOtpView_itemSpacing,
-                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-                    )}
-                5 -> { mOtpItemSpacing = 10
-                    itemSpacing = 10
-                    mOtpItemSpacing = a.getDimensionPixelSize(
-                        R.styleable.CustomOtpView_itemSpacing,
-                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-                    )}
-            }
-        }
+//        for (i in 0 until 6) {
+//            when (i) {
+//                0 ->{ mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//                1 -> { mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//                2 -> { mOtpItemSpacing = 20
+//                    itemSpacing = 20
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
+//                    )}
+//                3 -> { mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//                4 -> { mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//                5 -> { mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//            }
+//        }
 //             if (x == 2) {
 
 //                val divider = DividerItemDecoration(
