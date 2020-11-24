@@ -295,7 +295,17 @@ class TapOTPView @JvmOverloads constructor(
         Log.d("mOtpItemCount", mOtpItemCount.toString())
         println(mOtpItemCount.toString())
 
-//        for (x in 0 until mOtpItemCount) {
+
+        for (i in 0 until 6) {
+            when (i) {
+                0 -> itemSpacing = 10
+                1 -> itemSpacing = 10
+                2 -> itemSpacing = 20
+                3 -> itemSpacing = 10
+                4 -> itemSpacing = 10
+                5 -> itemSpacing = 10
+            }
+        }
 //             if (x == 2) {
 
 //                val divider = DividerItemDecoration(
@@ -355,7 +365,7 @@ class TapOTPView @JvmOverloads constructor(
         mPaint.strokeWidth = mLineWidth.toFloat()
         setupAnimator()
 
-        super.setCursorVisible(false)
+        super.setCursorVisible(true)
         setTextIsSelectable(false)
     }
 
