@@ -356,7 +356,7 @@ class GenericKeyEvent internal constructor(
         if (event!!.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DEL && currentView.id != R.id.otpViewInput1 && currentView.text.isEmpty()) {
             //If current is empty then previous EditText's number will also be deleted
             previousView?.requestFocus()
-            previousView?.text = null
+//            previousView?.text = null
             showKeyboard()
             return true
         }
