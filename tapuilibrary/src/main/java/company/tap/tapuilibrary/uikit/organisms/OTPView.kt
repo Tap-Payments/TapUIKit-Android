@@ -355,8 +355,8 @@ class GenericKeyEvent internal constructor(
     override fun onKey(p0: View?, keyCode: Int, event: KeyEvent?): Boolean {
         if (event!!.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DEL && currentView.id != R.id.otpViewInput1 && currentView.text.isEmpty()) {
             //If current is empty then previous EditText's number will also be deleted
-            previousView!!.text = null
-            previousView.requestFocus()
+            previousView?.requestFocus()
+            previousView?.text = null
             showKeyboard()
             return true
         }
@@ -389,10 +389,10 @@ class GenericTextWatcher internal constructor(
         val text = editable.toString()
         when (currentView.id) {
             R.id.otpViewInput1 -> if (text.length == 3) {
-                nextView!!.requestFocus()
                 val inputMethodManager: InputMethodManager =
                     context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+                nextView!!.requestFocus()
             }
 
 
