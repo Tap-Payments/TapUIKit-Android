@@ -293,6 +293,8 @@ class TapOTPView @JvmOverloads constructor(
 
         /// set space between
         Log.d("mOtpItemCount", mOtpItemCount.toString())
+        println(mOtpItemCount.toString())
+
         for (x in 0 until mOtpItemCount) {
              if (x == 2) {
 
@@ -307,16 +309,20 @@ class TapOTPView @JvmOverloads constructor(
 //                chipRecycler.addItemDecoration(divider)
 
                 Log.d("mOtpItemCount", x.toString())
+                 println(x.toString())
                 itemSpacing = 20
-//                a.getDimensionPixelSize(
-//                    R.styleable.CustomOtpView_itemSpacing,
-//                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
-//                )
+                 mOtpItemSpacing = 20
+//                 mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                 res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
+//                 )
             } else {
-                a.getDimensionPixelSize(
-                    R.styleable.CustomOtpView_itemSpacing,
-                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-                )
+                 itemSpacing = 10
+                 mOtpItemSpacing = 10
+//                 mOtpItemSpacing = a.getDimensionPixelSize(
+//                    R.styleable.CustomOtpView_itemSpacing,
+//                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                )
             }
         }
 
@@ -712,7 +718,7 @@ class TapOTPView @JvmOverloads constructor(
         var left = scrollX.toFloat() + ViewCompat.getPaddingStart(this)
             .toFloat() + (i * (mOtpItemSpacing + mOtpItemWidth)).toFloat() + halfLineWidth
         if (mOtpItemSpacing == 0 && i > 0) {
-            left = left - mLineWidth * i
+            left -= mLineWidth * i
         }
         val right = left + mOtpItemWidth - mLineWidth
         val top = scrollY.toFloat() + paddingTop.toFloat() + halfLineWidth
