@@ -89,7 +89,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="wrap_content">
 
 
             <company.tap.tapuilibrary.uikit.views.TapOTPView
@@ -113,8 +113,8 @@
                 android:paddingEnd="@dimen/margin_basic_16dp"
                 android:paddingStart="@dimen/margin_basic_16dp"
                 android:layout_marginTop="@dimen/margin_basic_20dp"
-                android:layout_marginStart="@dimen/margin_basic_23dp"
-                android:layout_marginEnd="@dimen/margin_basic_23dp"
+                android:layout_marginStart="@dimen/margin_basic_20dp"
+                android:layout_marginEnd="35dp"
                 app:itemCount="3"
                 android:focusedByDefault="true"
                 android:lineHeight="0.2dp"
@@ -143,7 +143,7 @@
                 android:paddingStart="@dimen/margin_basic_16dp"
                 android:layout_marginTop="@dimen/margin_basic_20dp"
                 android:layout_marginStart="@dimen/margin_basic_23dp"
-                android:layout_marginEnd="@dimen/margin_basic_23dp"
+                android:layout_marginEnd="@dimen/margin_basic_20dp"
                 app:itemCount="3"
                 android:focusedByDefault="true"
                 android:lineHeight="0.2dp"

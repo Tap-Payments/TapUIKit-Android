@@ -274,6 +274,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                     )
                 } else {
+                    otpViewInput2.requestFocus()
                     otpViewActionButton.isEnabled = true
                     otpViewActionButton.setButtonDataSource(
                         true, context?.let { LocalizationManager.getLocale(it).language },
@@ -285,7 +286,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
             }
 
             override fun afterTextChanged(editable: Editable) {
-                otpViewInput2.requestFocus()
+//                otpViewInput2.requestFocus()
             }
         })
 
