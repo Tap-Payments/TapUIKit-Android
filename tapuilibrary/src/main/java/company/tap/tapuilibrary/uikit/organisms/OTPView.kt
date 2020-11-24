@@ -106,13 +106,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
         setFonts()
 
 
-        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2))
+        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2, context))
 
         /**
          * GenericKeyEvent here works for deleting the element and to switch back to previous EditText
          * first parameter is the current EditText and second parameter is previous EditText
          */
-        otpViewInput2.setOnKeyListener(GenericKeyEvent(otpViewInput2, otpViewInput1))
+        otpViewInput2.setOnKeyListener(GenericKeyEvent(otpViewInput2, otpViewInput1, context))
 
     }
 
@@ -276,7 +276,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
                     otpViewInput1.addTextChangedListener(
                         GenericTextWatcher(
                             otpViewInput1,
-                            otpViewInput2
+                            otpViewInput2,
+                            context
                         )
                     )
 //                    otpViewActionButton.isEnabled = true
@@ -292,7 +293,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 otpViewInput1.addTextChangedListener(
                     GenericTextWatcher(
                         otpViewInput1,
-                        otpViewInput2
+                        otpViewInput2,
+                        context
                     )
                 )
             }
@@ -347,7 +349,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
 class GenericKeyEvent internal constructor(
     private val currentView: EditText,
-    private val previousView: EditText?
+    private val previousView: EditText?,
+    private val context: Context
 ) : View.OnKeyListener {
     override fun onKey(p0: View?, keyCode: Int, event: KeyEvent?): Boolean {
         if (event!!.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DEL && currentView.id != R.id.otpViewInput1 && currentView.text.isEmpty()) {
@@ -362,13 +365,13 @@ class GenericKeyEvent internal constructor(
 
     private fun showKeyboard() {
         val inputMethodManager: InputMethodManager =
-            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
     }
 
     fun closeKeyboard() {
         val inputMethodManager: InputMethodManager =
-            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
     }
 
@@ -378,7 +381,8 @@ class GenericKeyEvent internal constructor(
 
 class GenericTextWatcher internal constructor(
     private val currentView: View,
-    private val nextView: View?
+    private val nextView: View?,
+    private val context: Context
 ) :
     TextWatcher {
     override fun afterTextChanged(editable: Editable) { // TODO Auto-generated method stub
@@ -387,7 +391,7 @@ class GenericTextWatcher internal constructor(
             R.id.otpViewInput1 -> if (text.length == 3) {
                 nextView!!.requestFocus()
                 val inputMethodManager: InputMethodManager =
-                    context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                    context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
             }
 
