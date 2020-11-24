@@ -116,6 +116,7 @@
                 android:layout_marginStart="@dimen/margin_basic_16dp"
                 android:layout_marginEnd="35dp"
                 app:itemCount="6"
+                app:itemSpacing="50dp"
                 android:focusedByDefault="true"
                 android:lineHeight="0.2dp"
                 app:lineColor="@color/blue"

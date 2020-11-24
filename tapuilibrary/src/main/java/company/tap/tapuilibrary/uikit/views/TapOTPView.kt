@@ -285,10 +285,10 @@ class TapOTPView @JvmOverloads constructor(
             R.styleable.CustomOtpView_itemWidth,
             res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_size).toFloat()
         ).toInt()
-//        mOtpItemSpacing = a.getDimensionPixelSize(
-//            R.styleable.CustomOtpView_itemSpacing,
-//            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-//        )
+        mOtpItemSpacing = a.getDimensionPixelSize(
+            R.styleable.CustomOtpView_itemSpacing,
+            res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+        )
 
 
         /// set space between
@@ -298,12 +298,42 @@ class TapOTPView @JvmOverloads constructor(
 
         for (i in 0 until 6) {
             when (i) {
-                0 -> itemSpacing = 10
-                1 -> itemSpacing = 10
-                2 -> itemSpacing = 20
-                3 -> itemSpacing = 10
-                4 -> itemSpacing = 10
-                5 -> itemSpacing = 10
+                0 ->{ mOtpItemSpacing = 10
+                    itemSpacing = 10
+                    mOtpItemSpacing = a.getDimensionPixelSize(
+                        R.styleable.CustomOtpView_itemSpacing,
+                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+                    )}
+                1 -> { mOtpItemSpacing = 10
+                    itemSpacing = 10
+                    mOtpItemSpacing = a.getDimensionPixelSize(
+                        R.styleable.CustomOtpView_itemSpacing,
+                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+                    )}
+                2 -> { mOtpItemSpacing = 20
+                    itemSpacing = 20
+                    mOtpItemSpacing = a.getDimensionPixelSize(
+                        R.styleable.CustomOtpView_itemSpacing,
+                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
+                    )}
+                3 -> { mOtpItemSpacing = 10
+                    itemSpacing = 10
+                    mOtpItemSpacing = a.getDimensionPixelSize(
+                        R.styleable.CustomOtpView_itemSpacing,
+                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+                    )}
+                4 -> { mOtpItemSpacing = 10
+                    itemSpacing = 10
+                    mOtpItemSpacing = a.getDimensionPixelSize(
+                        R.styleable.CustomOtpView_itemSpacing,
+                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+                    )}
+                5 -> { mOtpItemSpacing = 10
+                    itemSpacing = 10
+                    mOtpItemSpacing = a.getDimensionPixelSize(
+                        R.styleable.CustomOtpView_itemSpacing,
+                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+                    )}
             }
         }
 //             if (x == 2) {

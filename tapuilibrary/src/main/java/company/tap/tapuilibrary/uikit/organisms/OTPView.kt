@@ -260,13 +260,16 @@ class OTPView : LinearLayout, OpenOTPInterface {
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
         )
-//        for (x in 0 until otpViewInput1.itemCount){
-//            if (x==1 ){
-//                otpViewInput1.itemSpacing = 20
-//            }else{
-//                otpViewInput1.itemSpacing = 5
-//            }
-//        }
+
+        otpViewInput1.itemSpacing = 20
+
+        for (x in 0 until otpViewInput1.itemCount){
+            if (x==1 ){
+                otpViewInput1.itemSpacing = 20
+            }else{
+                otpViewInput1.itemSpacing = 5
+            }
+        }
         otpViewInput1.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
 
