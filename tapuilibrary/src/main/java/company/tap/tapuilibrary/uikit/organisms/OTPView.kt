@@ -2,34 +2,30 @@ package company.tap.tapuilibrary.uikit.organisms
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.*
-import android.graphics.drawable.BitmapDrawable
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.CountDownTimer
-import android.provider.Settings.Global.getString
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
-import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
-import com.google.android.gms.common.SignInButton
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
-import company.tap.tapuilibrary.uikit.utils.BlurBuilder
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuilibrary.uikit.views.TapOTPView
-import jp.wasabeef.blurry.Blurry
 
 
 /**
@@ -276,18 +272,30 @@ class OTPView : LinearLayout, OpenOTPInterface {
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                     )
-                }else if (charSequence.length == otpViewInput1.itemCount){
-                    otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2))
-                    otpViewActionButton.isEnabled = true
-                    otpViewActionButton.setButtonDataSource(
-                        true, context?.let { LocalizationManager.getLocale(it).language },
-                        "Confirm",
-                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+                } else if (charSequence.length == otpViewInput1.itemCount) {
+                    otpViewInput1.addTextChangedListener(
+                        GenericTextWatcher(
+                            otpViewInput1,
+                            otpViewInput2
+                        )
+                    )
+//                    otpViewActionButton.isEnabled = true
+//                    otpViewActionButton.setButtonDataSource(
+//                        true, context?.let { LocalizationManager.getLocale(it).language },
+//                        "Confirm",
+//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
                 }
             }
 
-            override fun afterTextChanged(editable: Editable) {}
+            override fun afterTextChanged(editable: Editable) {
+                otpViewInput1.addTextChangedListener(
+                    GenericTextWatcher(
+                        otpViewInput1,
+                        otpViewInput2
+                    )
+                )
+            }
         })
 
         otpViewInput2.addTextChangedListener(object : TextWatcher {
@@ -323,7 +331,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpViewActionButton.setOnClickListener {
             if (otpViewActionButton.isEnabled) {
                 isValidOTP =
-                    otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString() ) == true
+                    otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString()) == true
 
                 if (!isValidOTP) {
                     otpHintText.visibility = View.VISIBLE
@@ -336,27 +344,53 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
 }
-class GenericKeyEvent internal constructor(private val currentView: EditText, private val previousView: EditText?) : View.OnKeyListener{
+
+class GenericKeyEvent internal constructor(
+    private val currentView: EditText,
+    private val previousView: EditText?
+) : View.OnKeyListener {
     override fun onKey(p0: View?, keyCode: Int, event: KeyEvent?): Boolean {
-        if(event!!.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DEL && currentView.id != R.id.otpViewInput1 && currentView.text.isEmpty()) {
+        if (event!!.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DEL && currentView.id != R.id.otpViewInput1 && currentView.text.isEmpty()) {
             //If current is empty then previous EditText's number will also be deleted
             previousView!!.text = null
             previousView.requestFocus()
+            showKeyboard()
             return true
         }
         return false
+    }
+
+    private fun showKeyboard() {
+        val inputMethodManager: InputMethodManager =
+            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+    }
+
+    fun closeKeyboard() {
+        val inputMethodManager: InputMethodManager =
+            context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
     }
 
 
 }
 
 
-class GenericTextWatcher internal constructor(private val currentView: View, private val nextView: View?) :
+class GenericTextWatcher internal constructor(
+    private val currentView: View,
+    private val nextView: View?
+) :
     TextWatcher {
     override fun afterTextChanged(editable: Editable) { // TODO Auto-generated method stub
         val text = editable.toString()
         when (currentView.id) {
-            R.id.otpViewInput1 -> if (text.length == 3) nextView!!.requestFocus()
+            R.id.otpViewInput1 -> if (text.length == 3) {
+                nextView!!.requestFocus()
+                val inputMethodManager: InputMethodManager =
+                    context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+            }
+
 
             //You can use EditText4 same as above to hide the keyboard
         }
@@ -377,5 +411,6 @@ class GenericTextWatcher internal constructor(private val currentView: View, pri
         arg3: Int
     ) { // TODO Auto-generated method stub
     }
+
 
 }
