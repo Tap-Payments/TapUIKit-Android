@@ -51,8 +51,15 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         initPasswordInput()
         setPasswordValidation()
         initTheme()
-        rootView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.backgroundColor")))
+//        rootView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.backgroundColor")))
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            rootView.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
+        } else {
+            rootView.setBackgroundResource(R.drawable.ic_blurbackground)
+        }
+
 
     }
 

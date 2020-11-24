@@ -3,6 +3,7 @@ package company.tap.tapuisample.activities
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
@@ -77,6 +78,7 @@ class MainActivity : BaseActivity(),
         val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
         val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
         linearMain.background = BitmapDrawable(resources, blurredBitmap)
+
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 

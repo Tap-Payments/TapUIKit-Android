@@ -126,6 +126,8 @@ class TapCardSwitch : LinearLayout {
 
     fun setTheme() {
         tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+
+
 //        saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 //        saveSwitchChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 //        switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
@@ -150,7 +152,12 @@ class TapCardSwitch : LinearLayout {
                     LocalizationManager.getValue("pay","ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
-                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+                if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
+                } else {
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackground)
+                }
+//                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
 
 
             } else {
@@ -187,8 +194,11 @@ class TapCardSwitch : LinearLayout {
                     LocalizationManager.getValue("pay","ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
-                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-
+                if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
+                } else {
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackground)
+                }
 
             } else {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
@@ -225,8 +235,11 @@ class TapCardSwitch : LinearLayout {
                 switchSaveMobile.setTheme(switchGoPayCheckoutSwitchThemeEnable)
 
                 activateButton(true)
-                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-
+                if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
+                } else {
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackground)
+                }
 
             } else {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
