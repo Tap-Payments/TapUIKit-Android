@@ -110,12 +110,11 @@ class OTPView : LinearLayout, OpenOTPInterface {
         setFonts()
         //GenericTextWatcher here works only for moving to next EditText when a number is entered
 //first parameter is the current EditText and second parameter is next EditText
-        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2))
 
 
 //GenericKeyEvent here works for deleting the element and to switch back to previous EditText
 //first parameter is the current EditText and second parameter is previous EditText
-        otpViewInput1.setOnKeyListener(GenericKeyEvent(otpViewInput1, null))
+//        otpViewInput1.setOnKeyListener(GenericKeyEvent(otpViewInput1, null))
         otpViewInput2.setOnKeyListener(GenericKeyEvent(otpViewInput2, otpViewInput1))
 
     }
@@ -290,6 +289,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
                     )
                 } else {
                     otpViewInput2.requestFocus()
+                    otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2))
+
                     otpViewActionButton.isEnabled = true
                     otpViewActionButton.setButtonDataSource(
                         true, context?.let { LocalizationManager.getLocale(it).language },
