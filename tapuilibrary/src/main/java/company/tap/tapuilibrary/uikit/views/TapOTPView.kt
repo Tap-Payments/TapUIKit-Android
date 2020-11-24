@@ -623,6 +623,8 @@ class TapOTPView @JvmOverloads constructor(
             } else if (i == mOtpItemCount - 1) {
                 // draw only right round
                 l = false
+            }else if(i == 2){
+                r = true
             } else {
                 // draw rect
                 r = false
