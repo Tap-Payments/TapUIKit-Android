@@ -108,13 +108,14 @@ class OTPView : LinearLayout, OpenOTPInterface {
         initChange()
         initTheme()
         setFonts()
-        //GenericTextWatcher here works only for moving to next EditText when a number is entered
-//first parameter is the current EditText and second parameter is next EditText
 
 
-//GenericKeyEvent here works for deleting the element and to switch back to previous EditText
-//first parameter is the current EditText and second parameter is previous EditText
-//        otpViewInput1.setOnKeyListener(GenericKeyEvent(otpViewInput1, null))
+        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2))
+
+        /**
+         * GenericKeyEvent here works for deleting the element and to switch back to previous EditText
+         * first parameter is the current EditText and second parameter is previous EditText
+         */
         otpViewInput2.setOnKeyListener(GenericKeyEvent(otpViewInput2, otpViewInput1))
 
     }
@@ -145,12 +146,6 @@ class OTPView : LinearLayout, OpenOTPInterface {
         } else {
             otpLinearLayout.setBackgroundResource(R.drawable.ic_blurbackground)
         }
-
-
-//        val blurredBitmap: Bitmap? = BlurBuilder.blur(otpLinearLayout)
-//        otpLinearLayout.setBackgroundResource(R.drawable.blurbackground)
-
-
     }
 
     fun setFonts() {
@@ -213,7 +208,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpHintText.setTheme(otpHintTextTheme)
     }
 
-    fun setHintInValidOtp() {
+    private fun setHintInValidOtp() {
         val otpHintTextTheme = TextViewTheme()
         otpHintTextTheme.textColor =
             (Color.parseColor(ThemeManager.getValue("TapOtpView.Invalid.Message.title")))
@@ -241,8 +236,6 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
             override fun onFinish() {
                 timerText.text = ("RESEND")
-//                otpHintText.visibility - View.VISIBLE
-//                otpHintText.text = "OTP Timer Expired! "
                 setHintExpiredTheme()
             }
         }.start()
@@ -263,7 +256,6 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
     private fun initOTPConfirmationButton() {
-
         otpViewActionButton.setButtonDataSource(
             false, context?.let { LocalizationManager.getLocale(it).language },
             "Confirm",
@@ -273,12 +265,9 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
 
         otpViewInput1.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-
-            }
+            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
 
             override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-
                 if (charSequence.length != otpViewInput1.itemCount) {
                     otpViewActionButton.isEnabled = false
                     otpViewActionButton.setButtonDataSource(
@@ -287,22 +276,18 @@ class OTPView : LinearLayout, OpenOTPInterface {
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                     )
-                } else {
-                    otpViewInput2.requestFocus()
+                }else if (charSequence.length == otpViewInput1.itemCount){
                     otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2))
-
                     otpViewActionButton.isEnabled = true
                     otpViewActionButton.setButtonDataSource(
                         true, context?.let { LocalizationManager.getLocale(it).language },
                         "Confirm",
                         Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-                    )
+                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
                 }
             }
 
-            override fun afterTextChanged(editable: Editable) {
-            }
+            override fun afterTextChanged(editable: Editable) {}
         })
 
         otpViewInput2.addTextChangedListener(object : TextWatcher {
@@ -353,10 +338,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 }
 class GenericKeyEvent internal constructor(private val currentView: EditText, private val previousView: EditText?) : View.OnKeyListener{
     override fun onKey(p0: View?, keyCode: Int, event: KeyEvent?): Boolean {
-        if(event!!.action == KeyEvent.ACTION_DOWN &&
-            keyCode == KeyEvent.KEYCODE_DEL &&
-            currentView.id != R.id.otpViewInput1
-            && currentView.text.isEmpty()) {
+        if(event!!.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DEL && currentView.id != R.id.otpViewInput1 && currentView.text.isEmpty()) {
             //If current is empty then previous EditText's number will also be deleted
             previousView!!.text = null
             previousView.requestFocus()
@@ -374,7 +356,7 @@ class GenericTextWatcher internal constructor(private val currentView: View, pri
     override fun afterTextChanged(editable: Editable) { // TODO Auto-generated method stub
         val text = editable.toString()
         when (currentView.id) {
-            R.id.otpViewInput1 -> if (text.length == 1) nextView!!.requestFocus()
+            R.id.otpViewInput1 -> if (text.length == 3) nextView!!.requestFocus()
 
             //You can use EditText4 same as above to hide the keyboard
         }
