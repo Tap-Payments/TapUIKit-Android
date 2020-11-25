@@ -189,7 +189,7 @@
             android:id="@+id/switch_pay_demo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="0dp"
+            android:layout_marginTop="-9dp"
             android:layout_gravity="start"
             android:layoutDirection="locale" />
 
@@ -241,6 +241,7 @@
         <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
             android:id="@+id/goPayLoginInput"
             android:visibility="gone"
+            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -254,6 +255,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:id="@+id/otpView"/>
 
 <!--        <include-->

@@ -7,7 +7,7 @@
     android:fitsSystemWindows="true"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_horizontal"
+    android:gravity="center"
     android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
@@ -81,38 +81,81 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="-8dp"
         android:paddingTop="-5dp"
-        android:background="@drawable/blurbackground"
+        android:background="@drawable/ic_blurbackground"
+        android:windowSoftInputMode="adjustPan"
         android:layout_gravity="center"
         android:gravity="center"
         android:orientation="vertical">
 
-        <company.tap.tapuilibrary.uikit.views.TapOTPView
-            android:id="@+id/otpViewInput"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:foregroundGravity="center"
-            android:cursorVisible="true"
-            android:fitsSystemWindows="true"
-            android:focusable="true"
-            android:textFontWeight="200"
-            android:fontFamily="sans-serif-light"
-            android:focusableInTouchMode="true"
-            android:inputType="number"
-            android:textColor="#4b4847"
-            android:textSize="25sp"
-            android:paddingEnd="@dimen/margin_basic_16dp"
-            android:paddingStart="@dimen/margin_basic_16dp"
-            android:layout_marginTop="@dimen/margin_basic_20dp"
-            android:layout_marginStart="@dimen/margin_basic_23dp"
-            android:layout_marginEnd="@dimen/margin_basic_23dp"
-            android:textCursorDrawable="@color/colorAccent"
-            app:itemCount="6"
-            android:focusedByDefault="true"
-            android:lineHeight="0.2dp"
-            app:lineColor="@color/blue"
-            app:viewType="line" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <company.tap.tapuilibrary.uikit.views.TapOTPView
+                android:id="@+id/otpViewInput1"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:foregroundGravity="center"
+                android:cursorVisible="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:textFontWeight="200"
+                android:fontFamily="sans-serif-light"
+                android:focusableInTouchMode="true"
+                android:inputType="number"
+                android:textColor="#4b4847"
+                android:textSize="25sp"
+                android:paddingEnd="@dimen/margin_basic_16dp"
+                android:paddingStart="@dimen/margin_basic_16dp"
+                android:layout_marginTop="@dimen/margin_basic_20dp"
+                android:layout_marginStart="@dimen/margin_basic_16dp"
+                android:layout_marginEnd="35dp"
+                app:itemCount="3"
+                android:focusedByDefault="true"
+                android:lineHeight="0.2dp"
+                app:lineColor="@color/blue"
+                app:viewType="line" />
+
+            <company.tap.tapuilibrary.uikit.views.TapOTPView
+                android:id="@+id/otpViewInput2"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:foregroundGravity="center"
+                android:cursorVisible="true"
+                android:fitsSystemWindows="true"
+                android:focusable="true"
+                android:textFontWeight="200"
+                android:fontFamily="sans-serif-light"
+                android:focusableInTouchMode="true"
+                android:inputType="number"
+                android:textColor="#4b4847"
+                android:textSize="25sp"
+                android:visibility="visible"
+                android:paddingEnd="@dimen/margin_basic_16dp"
+                android:paddingStart="@dimen/margin_basic_16dp"
+                android:layout_marginTop="@dimen/margin_basic_20dp"
+                android:layout_marginStart="@dimen/margin_basic_23dp"
+                android:layout_marginEnd="@dimen/margin_basic_16dp"
+                app:itemCount="3"
+                android:focusedByDefault="true"
+                android:lineHeight="0.2dp"
+                app:lineColor="@color/blue"
+                app:viewType="line" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 

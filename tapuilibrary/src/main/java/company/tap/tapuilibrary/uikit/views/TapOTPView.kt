@@ -1,22 +1,34 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.animation.ValueAnimator
+import android.animation.ValueAnimator.AnimatorUpdateListener
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
+import android.content.res.Resources
 import android.graphics.*
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.text.InputFilter
+import android.text.InputFilter.LengthFilter
 import android.text.TextPaint
 import android.text.TextUtils
 import android.text.method.MovementMethod
 import android.util.AttributeSet
+import android.util.Log
+import android.view.ActionMode
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.ColorInt
+import androidx.annotation.DrawableRes
+import androidx.annotation.Nullable
 import androidx.annotation.Px
 import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -28,6 +40,8 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
+
+
 
 class TapOTPView @JvmOverloads constructor(
     context: Context,
@@ -66,7 +80,8 @@ class TapOTPView @JvmOverloads constructor(
      * @return Returns the current item's line color.
      */
     @get:ColorInt
-    var currentLineColor = Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.activeBottomColor"))
+    var currentLineColor =
+        Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.activeBottomColor"))
         private set
     private var mLineWidth: Int = 0
 
@@ -193,7 +208,7 @@ class TapOTPView @JvmOverloads constructor(
         set(@Px width) {
             mCursorWidth = width
             if (isCursorVisible()) {
-                invalidateCursor(true)
+                invalidateCursor(false)
             }
         }
 
@@ -217,7 +232,7 @@ class TapOTPView @JvmOverloads constructor(
         set(@ColorInt color) {
             mCursorColor = color
             if (isCursorVisible()) {
-                invalidateCursor(true)
+                invalidateCursor(false)
             }
         }
 
@@ -239,7 +254,6 @@ class TapOTPView @JvmOverloads constructor(
             mOtpItemSpacing = itemSpacing
             requestLayout()
         }
-
 
 
     init {
@@ -289,19 +303,79 @@ class TapOTPView @JvmOverloads constructor(
 
 
         /// set space between
-        for (x in 0 until mOtpItemCount){
-            mOtpItemSpacing = if (x == 2){
-                a.getDimensionPixelSize(
-                    R.styleable.CustomOtpView_itemSpacing,
-                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
-                )
-            }else{
-                a.getDimensionPixelSize(
-                    R.styleable.CustomOtpView_itemSpacing,
-                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-                )
-            }
-        }
+        Log.d("mOtpItemCount", mOtpItemCount.toString())
+        println(mOtpItemCount.toString())
+
+
+//        for (i in 0 until 6) {
+//            when (i) {
+//                0 ->{ mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//                1 -> { mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//                2 -> { mOtpItemSpacing = 20
+//                    itemSpacing = 20
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
+//                    )}
+//                3 -> { mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//                4 -> { mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//                5 -> { mOtpItemSpacing = 10
+//                    itemSpacing = 10
+//                    mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                    )}
+//            }
+//        }
+//             if (x == 2) {
+
+//                val divider = DividerItemDecoration(
+//                    context,
+//                    DividerItemDecoration.HORIZONTAL
+//                )
+//                divider.setDrawable(ShapeDrawable().apply {
+//                    intrinsicWidth = 10
+//                    paint.color = Color.TRANSPARENT
+//                }) // note: currently (support version 28.0.0), we can not use tranparent color here, if we use transparent, we still see a small divider line. So if we want to display transparent space, we can set color = background color or we can create a custom ItemDecoration instead of DividerItemDecoration.
+//                chipRecycler.addItemDecoration(divider)
+
+//                Log.d("mOtpItemCount", x.toString())
+//                 println(x.toString())
+//                itemSpacing = 20
+//                 mOtpItemSpacing = 20
+//                 mOtpItemSpacing = a.getDimensionPixelSize(
+//                        R.styleable.CustomOtpView_itemSpacing,
+//                 res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
+//                 )
+//            } else {
+//                 itemSpacing = 10
+//                 mOtpItemSpacing = 10
+//                 mOtpItemSpacing = a.getDimensionPixelSize(
+//                    R.styleable.CustomOtpView_itemSpacing,
+//                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
+//                )
+//            }
+//        }
 
 
         mOtpItemRadius = a.getDimension(R.styleable.CustomOtpView_itemRadius, 0f).toInt()
@@ -310,7 +384,8 @@ class TapOTPView @JvmOverloads constructor(
             res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_line_width).toFloat()
         ).toInt()
 //        lineColors = a.getColorStateList(R.styleable.CustomOtpView_lineColor)
-        lineColors = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.bottomLineColor")))
+        lineColors =
+            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.bottomLineColor")))
         isCursorVisible = a.getBoolean(R.styleable.CustomOtpView_android_cursorVisible, true)
         mCursorColor = a.getColor(R.styleable.CustomOtpView_cursorColor, currentTextColor)
         mCursorWidth = a.getDimensionPixelSize(
@@ -331,7 +406,7 @@ class TapOTPView @JvmOverloads constructor(
         mPaint.strokeWidth = mLineWidth.toFloat()
         setupAnimator()
 
-        super.setCursorVisible(false)
+        super.setCursorVisible(true)
         setTextIsSelectable(false)
     }
 
@@ -385,8 +460,7 @@ class TapOTPView @JvmOverloads constructor(
         if (widthMode == View.MeasureSpec.EXACTLY) {
             // Parent has told us how big to be. So be it.
             width = widthSize
-        }
-        else {
+        } else {
             val boxesWidth = (mOtpItemCount - 1) * mOtpItemSpacing + mOtpItemCount * mOtpItemWidth
             width = boxesWidth + ViewCompat.getPaddingEnd(this) + ViewCompat.getPaddingStart(this)
             if (mOtpItemSpacing == 0) {
@@ -401,16 +475,17 @@ class TapOTPView @JvmOverloads constructor(
             boxHeight + paddingTop + paddingBottom
         }
 
-        when {
-            isFocused && text?.length != mOtpItemCount  -> setMeasuredDimension(width, height + 250)
-
-            text?.length == mOtpItemCount -> {
-                setMeasuredDimension(width, height)
-            }
-            else -> {
-                setMeasuredDimension(width, height)
-            }
-        }
+        setMeasuredDimension(width, height)
+//        when {
+//            isFocused && text?.length != mOtpItemCount  -> setMeasuredDimension(width, height )
+//
+//            text?.length == mOtpItemCount -> {
+//                setMeasuredDimension(width, height)
+//            }
+//            else -> {
+//                setMeasuredDimension(width, height)
+//            }
+//        }
 
         /////// check if mOtpItemCount set action for change button to valid
 
@@ -418,10 +493,10 @@ class TapOTPView @JvmOverloads constructor(
 
 
     private fun hideKeyboard() {
-        val imm: InputMethodManager = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        val imm: InputMethodManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(windowToken, 0)
     }
-
 
 
     override fun onTextChanged(
@@ -453,7 +528,7 @@ class TapOTPView @JvmOverloads constructor(
         if (focused) {
             moveSelectionToEnd()
             makeBlink()
-        }else{
+        } else {
             hideKeyboard()
         }
     }
@@ -589,6 +664,8 @@ class TapOTPView @JvmOverloads constructor(
             } else if (i == mOtpItemCount - 1) {
                 // draw only right round
                 l = false
+            }else if(i == 2){
+                r = true
             } else {
                 // draw rect
                 r = false
@@ -694,7 +771,7 @@ class TapOTPView @JvmOverloads constructor(
         var left = scrollX.toFloat() + ViewCompat.getPaddingStart(this)
             .toFloat() + (i * (mOtpItemSpacing + mOtpItemWidth)).toFloat() + halfLineWidth
         if (mOtpItemSpacing == 0 && i > 0) {
-            left = left - mLineWidth * i
+            left -= mLineWidth * i
         }
         val right = left + mOtpItemWidth - mLineWidth
         val top = scrollY.toFloat() + paddingTop.toFloat() + halfLineWidth

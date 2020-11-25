@@ -171,49 +171,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         otpView?.setOtpButtonConfirmationInterface(this)
 //        bulr()
         initGoPay(view)
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+
 
         return view.rootView
     }
 
-    fun bulr(){
-       payButton.setOnClickListener {
-           val startMs = System.currentTimeMillis()
-           Blurry.with(context)
-               .radius(25)
-               .sampling(2)
-               .async()
-               .animate(500)
-               .onto(R.id.content as ViewGroup)
-           Log.d(getString(R.string.app_name),
-               "TIME " + (System.currentTimeMillis() - startMs).toString() + "ms")
-//            val startMs = System.currentTimeMillis()
-//            Blurry.with(this)
-//                .radius(25)
-//                .sampling(1)
-//                .color(Color.argb(66, 0, 255, 255))
-//                .async()
-//                .capture(findViewById(R.id.right_top))
-//                .into(findViewById(R.id.right_top))
-//
-//            val bitmap = Blurry.with(this)
-//                .radius(10)
-//                .sampling(8)
-//                .capture(findViewById(R.id.right_bottom)).get()
-//            findViewById<ImageView>(R.id.right_bottom).setImageDrawable(BitmapDrawable(resources, bitmap))
-//
-//            Blurry.with(this)
-//                .radius(25)
-//                .sampling(4)
-//                .color(Color.argb(66, 255, 255, 0))
-//                .capture(findViewById(R.id.left_bottom))
-//                .getAsync {
-//                    findViewById<ImageView>(R.id.left_bottom).setImageDrawable(BitmapDrawable(resources, it))
-//                }
-//
-//            Log.d(getString(R.string.app_name),
-//                "TIME " + (System.currentTimeMillis() - startMs).toString() + "ms")
-        }
-    }
 
 
     fun initGoPay(view: View) {
@@ -547,7 +510,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 }else{
                     chipRecycler.adapter = CardTypeAdapter(paymentsList, this,true)
                     groupAction?.text = "Close"
-                    groupAction?.tag = 2
                 }
 
             }
@@ -953,9 +915,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         )//
         switchSaveDemo?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+                if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+                    switch_pay_demo.tapCardSwitchLinear.setBackgroundResource(company.tap.tapuilibrary.R.drawable.ic_blurbackgroundblack)
+                } else {
+                    switch_pay_demo.tapCardSwitchLinear.setBackgroundResource(company.tap.tapuilibrary.R.drawable.ic_blurbackground)
+                }
                 cardSwitch.cardElevation = 2.5f
-
 
                 setBorderedView(
                     mainSwitch.card,
@@ -1105,8 +1070,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onDeleteIconClicked(stopAnimation: Boolean, itemId: Int) {
         if (stopAnimation){
             stopShakingCards(chipRecycler)
-            groupAction?.text == "Edit"
-        }
+            groupAction?.text = "Edit"
+        }else groupAction?.text = "Close"
+
     }
 
 
@@ -1276,15 +1242,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         otpView?.visibility = View.VISIBLE
         otpView?.changePhoneCardView?.visibility = View.VISIBLE
 
-        val blurredBitmap: Bitmap? = otpView?.otpLinearLayout?.let { BlurBuilder.blur(it) }
-        otpView?.otpLinearLayout?.background = BitmapDrawable(resources, blurredBitmap)
+//        val blurredBitmap: Bitmap? = otpView?.otpLinearLayout?.let { BlurBuilder.blur(it) }
+//        otpView?.otpLinearLayout?.background = BitmapDrawable(resources, blurredBitmap)
 
     }
 
 
     @SuppressLint("SetTextI18n")
     override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue : String) {
-        otpView?.mobileNumberText?.text = "${countryCode.replace("+"," ")} $maskedValue"
+        otpView?.mobileNumberText?.text = "+${countryCode.replace("+"," ")} $maskedValue"
         Log.d("countrycode", countryCode)
         Log.d("countrycode......", countryCode.replace("+"," "))
     }
