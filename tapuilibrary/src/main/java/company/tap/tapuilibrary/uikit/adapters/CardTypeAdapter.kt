@@ -240,6 +240,7 @@ class CardTypeAdapter(
             }else{
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
             }
+            if(holder.itemView.tapCardChip2Constraints !=null)
             setBorderedView(
                 holder.itemView.tapCardChip2Constraints,
                 (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
