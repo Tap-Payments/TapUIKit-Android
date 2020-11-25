@@ -577,7 +577,11 @@
                 "filled": {
                     "backgroundColor" : "deepSkyBlue"
                 }
-            }
+            },
+            "changeTextColor": "#007aff",
+            "changeTextFont": "Roboto-Light,12",
+            "emailTextColor": "#4b4847",
+            "emailTextFont": "Roboto-Light,14"
         }
     },
     "actionButton": {

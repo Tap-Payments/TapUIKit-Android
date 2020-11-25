@@ -563,21 +563,26 @@
         "passwordView" :{
             "backgroundColor": "clear"
         },
+
         "passwordField": {
-            "backgroundColor" : "clear",
+            "backgroundColor" : "transperant",
             "textFont": "Roboto-Light,17",
-            "textColor": "greyishBrown",
-            "placeHolderColor" : "brownGreyThree",
+            "textColor": "#4b4847",
+            "placeHolderColor" : "#878787",
             "showPasswordIcon" : "passwordEye",
             "hidePasswordIcon" : "passwordEye",
             "underline":{
                 "empty": {
-                    "backgroundColor" : "deepSkyBlue"
+                    "backgroundColor" : "#a0a0a0"
                 },
                 "filled": {
                     "backgroundColor" : "deepSkyBlue"
                 }
-            }
+            },
+            "changeTextColor": "#007aff",
+            "changeTextFont": "Roboto-Light,12",
+            "emailTextColor": "#98989f",
+            "emailTextFont": "Roboto-Light,14"
         }
     },
     "actionButton": {
