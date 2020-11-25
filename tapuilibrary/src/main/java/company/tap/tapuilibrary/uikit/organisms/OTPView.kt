@@ -15,6 +15,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -50,6 +51,16 @@ class OTPView : LinearLayout, OpenOTPInterface {
     val changePhone by lazy { findViewById<TapTextView>(R.id.changePhone) }
     val otpViewActionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.otpViewActionButton) }
     val changePhoneCardView by lazy { findViewById<CardView>(R.id.changePhoneCardView) }
+
+    /**
+     * Attributes for goPay OTP view which diffrent with otp
+     * these attributes will show only when user pay with phone number which will be in selection tab of phone number types
+     * if this view visibility =  VISIBLE ->   changePhoneCardView visibility = GONE
+     *
+     */
+    val otpSentConstraintGoPay by lazy { findViewById<ConstraintLayout>(R.id.otpSentConstraintNormalPay) }
+    val otpSentTextNormalPay by lazy { findViewById<TapTextView>(R.id.otpSentTextNormalPay) }
+    val mobileNumberTextNormalPay by lazy { findViewById<TapTextView>(R.id.mobileNumberTextNormalPay) }
 
     //    private var goPayLoginInput: GoPayLoginInput? = null
     private var openOTPInterface: OpenOTPInterface? = null
@@ -126,14 +137,17 @@ class OTPView : LinearLayout, OpenOTPInterface {
             (Color.parseColor(ThemeManager.getValue("TapOtpView.Timer.textColor")))
         timerTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.Timer.textFont")
         timerText.setTheme(timerTextTheme)
+        mobileNumberTextNormalPay.setTheme(timerTextTheme)
+
 
         val mobileNumberTextTextTheme = TextViewTheme()
-        mobileNumberTextTextTheme.textColor =
-            (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
-        mobileNumberTextTextTheme.textSize =
-            ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
+        mobileNumberTextTextTheme.textColor = (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
+        mobileNumberTextTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
         mobileNumberText.setTheme(mobileNumberTextTextTheme)
+
         otpSentText.setTheme(mobileNumberTextTextTheme)
+        otpSentTextNormalPay.setTheme(mobileNumberTextTextTheme)
+
         otpViewInput1.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
         otpViewInput2.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
 
@@ -162,6 +176,11 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 TapFont.RobotoLight
             )
         )
+        mobileNumberTextNormalPay.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
         timerText.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -169,7 +188,14 @@ class OTPView : LinearLayout, OpenOTPInterface {
         )
 
         if (LocalizationManager.getLocale(context).language == "en") {
+
+
             otpSentText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.RobotoLight
+                )
+            )
+            otpSentTextNormalPay.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
                     TapFont.RobotoLight
                 )
@@ -180,7 +206,14 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 )
             )
         } else {
+
+
             otpSentText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.TajawalLight
+                )
+            )
+            otpSentTextNormalPay.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
                     TapFont.TajawalLight
                 )
@@ -240,11 +273,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     private fun prepareTextViews() {
         otpSentText.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
+        otpSentTextNormalPay.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
     }
 
     @SuppressLint("SetTextI18n")
     override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue: String) {
         mobileNumberText.text = "${countryCode} $maskedValue"
+        mobileNumberTextNormalPay.text = "${countryCode} $maskedValue"
     }
 
     override fun onChangePhoneClicked() {
@@ -333,7 +368,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpViewActionButton.setOnClickListener {
             if (otpViewActionButton.isEnabled) {
                 isValidOTP =
-                    otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString()) == true
+                    otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString() + otpViewInput2.text.toString()) == true
 
                 if (!isValidOTP) {
                     otpHintText.visibility = View.VISIBLE
@@ -356,7 +391,7 @@ class GenericKeyEvent internal constructor(
         if (event!!.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DEL && currentView.id != R.id.otpViewInput1 && currentView.text.isEmpty()) {
             //If current is empty then previous EditText's number will also be deleted
             previousView?.requestFocus()
-//            previousView?.text = null
+            previousView?.text = null
             showKeyboard()
             return true
         }
@@ -389,10 +424,10 @@ class GenericTextWatcher internal constructor(
         val text = editable.toString()
         when (currentView.id) {
             R.id.otpViewInput1 -> if (text.length == 3) {
+                nextView!!.requestFocus()
                 val inputMethodManager: InputMethodManager =
                     context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
-                nextView!!.requestFocus()
             }
 
 

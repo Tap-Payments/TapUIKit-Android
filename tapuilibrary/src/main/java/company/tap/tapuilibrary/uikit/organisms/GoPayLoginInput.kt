@@ -3,6 +3,7 @@ package company.tap.tapuilibrary.uikit.organisms
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Rect
 import android.graphics.Typeface
 import android.text.Editable
 import android.text.InputType
@@ -13,6 +14,7 @@ import android.util.Patterns
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
@@ -59,6 +61,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val goPayTabSeparator by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator) }
     val goPayTabSeparator_ by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator_) }
     val loginInputLayout by lazy { findViewById<LinearLayout>(R.id.login_input_layout) }
+    val container by lazy { findViewById<ScrollView>(R.id.container) }
 //    val countryCodeTxt by lazy { findViewById<TapTextView>(R.id.countryCodeTxt) }
 
     var dataSource: GoPayLoginDataSource? = null
@@ -72,6 +75,34 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initTheme()
         setSeparatorTheme()
+        setupKeyboardListener(container) // call in OnCreate or similar
+
+    }
+
+
+
+
+
+
+    private fun setupKeyboardListener(view: View) {
+        view.viewTreeObserver.addOnGlobalLayoutListener {
+            val r = Rect()
+            view.getWindowVisibleDisplayFrame(r)
+            if (Math.abs(view.rootView.height - (r.bottom - r.top)) > 100) { // if more than 100 pixels, its probably a keyboard...
+                onKeyboardShow()
+            }
+        }
+    }
+
+    private fun onKeyboardShow() {
+        container.scrollToBottomWithoutFocusChange()
+    }
+
+    fun ScrollView.scrollToBottomWithoutFocusChange() { // Kotlin extension to scrollView
+        val lastChild = getChildAt(childCount - 1)
+        val bottom = lastChild.bottom + paddingBottom
+        val delta = bottom - (scrollY + height)
+        smoothScrollBy(0, delta)
     }
 
     private fun initTheme() {

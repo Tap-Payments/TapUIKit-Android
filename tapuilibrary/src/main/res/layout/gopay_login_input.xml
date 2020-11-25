@@ -5,13 +5,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
+    <ScrollView
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
         android:fillViewport="true"
         android:isScrollContainer="true"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,12 +21,11 @@
         app:layout_constraintRight_toRightOf="parent">
 
 
-
-
         <LinearLayout
             android:id="@+id/goPayLinear"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             android:orientation="vertical"
@@ -103,12 +104,13 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:cursorVisible="true"
                     android:paddingEnd="@dimen/margin_basic_16dp"
                     android:isScrollContainer="true"
                     android:fitsSystemWindows="true"
                     android:gravity="center"
+                    android:layout_gravity="center"
                     android:focusable="true"
                     android:windowSoftInputMode="adjustPan|adjustResize"
                     app:endIconDrawable="@drawable/ic_close"
@@ -120,9 +122,8 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/gopay_text_input"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:textCursorDrawable="@color/blue"
-                        android:focusable="true"
                         android:textFontWeight="300"
                         android:textSize="@dimen/font_size_17sp"
                         android:fitsSystemWindows="true"
@@ -170,7 +171,7 @@
 <!--            android:layout_height="match_parent">-->
 
 <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
-    </androidx.core.widget.NestedScrollView>
+    </ScrollView>
 
 
 
