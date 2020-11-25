@@ -12,6 +12,7 @@
 <androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     layout_height="wrap_content"
+    android:windowSoftInputMode="adjustResize|adjustPan"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content">
 
@@ -241,6 +242,7 @@
         <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
             android:id="@+id/goPayLoginInput"
             android:visibility="gone"
+            android:windowSoftInputMode="adjustResize|adjustPan"
             android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -255,6 +257,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:windowSoftInputMode="adjustResize|adjustPan"
             android:gravity="center"
             android:layout_gravity="center"
             android:id="@+id/otpView"/>
