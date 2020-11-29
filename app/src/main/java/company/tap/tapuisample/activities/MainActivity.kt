@@ -70,8 +70,8 @@ class MainActivity : BaseActivity(),
         context = this
 
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
-        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
-//        ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme, "defaultlighttheme")
+//        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
+        ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme, "defaultlighttheme")
         setTheme(R.style.AppThemeBlack)
 
 
@@ -221,8 +221,15 @@ class MainActivity : BaseActivity(),
             .show(supportFragmentManager, null)
     }
     fun swapTheme(view: View) {
-        startActivity(Intent(this, ThemeTestActivity::class.java))
-    }
+//        startActivity(Intent(this, ThemeTestActivity::class.java))
+
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme, "defaultlighttheme")
+        }else{
+            ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
+        }
+
+        }
 
     fun otpFragment(view: View) {
         OTPFragment().show(supportFragmentManager, null)

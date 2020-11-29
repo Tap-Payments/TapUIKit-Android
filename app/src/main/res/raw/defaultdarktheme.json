@@ -287,7 +287,7 @@
             "color" : "brownGrey",
             "width" : 1
         },
-        "itemsNumberButtonCorner" : 30,
+        "itemsNumberButtonCorner" : 40,
         "backgroundColor" : "black"
     },
     "horizontalList": {
@@ -567,7 +567,7 @@
         "passwordField": {
             "backgroundColor" : "transperant",
             "textFont": "Roboto-Light,17",
-            "textColor": "#4b4847",
+            "textColor": "#a7a7a7",
             "placeHolderColor" : "#878787",
             "showPasswordIcon" : "passwordEye",
             "hidePasswordIcon" : "passwordEye",
