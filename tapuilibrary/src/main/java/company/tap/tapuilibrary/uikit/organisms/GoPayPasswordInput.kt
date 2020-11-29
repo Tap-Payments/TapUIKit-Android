@@ -170,13 +170,14 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.placeHolderColor")))
         passwordTextInput.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
         textInputLayout.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
-        changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+//        changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         changeEmailCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
 
         val passwordEmailTextTextTheme = TextViewTheme()
-        passwordEmailTextTextTheme.textColor = (Color.parseColor(ThemeManager.getValue("goPay.passwordField.emailTextColor")))
+        passwordEmailTextTextTheme.textColor = Color.parseColor(ThemeManager.getValue("goPay.passwordField.emailTextColor"))
         passwordEmailTextTextTheme.textSize = ThemeManager.getFontSize("goPay.passwordField.emailTextFont")
         passwordemailText.setTheme(passwordEmailTextTextTheme)
+        passwordemailText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.emailTextColor")))
 
         val changeEmailTextTextTheme = TextViewTheme()
         changeEmailTextTextTheme.textColor = (Color.parseColor(ThemeManager.getValue("goPay.passwordField.changeTextColor")))
