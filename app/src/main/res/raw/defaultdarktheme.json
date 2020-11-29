@@ -581,7 +581,7 @@
             },
             "changeTextColor": "#007aff",
             "changeTextFont": "Roboto-Light,12",
-            "emailTextColor": "#ffffff",
+            "emailTextColor": "#a7a7a7",
             "emailTextFont": "Roboto-Light,14"
         }
     },

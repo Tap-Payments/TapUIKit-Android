@@ -65,6 +65,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     fun setPasswordValidation() {
+        initTheme()
         if (passwordTextInput.text?.length!! > 7) {
             changeButtonStatus(true)
         } else {
@@ -106,7 +107,6 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun changeButtonStatus(isEnabled: Boolean) {
-
         if (isEnabled) {
             signInButton.isEnabled = isEnabled
             signInButton.setButtonDataSource(
