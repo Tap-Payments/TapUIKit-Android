@@ -7,11 +7,11 @@
     android:id="@+id/tapCardChip2"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp"
     android:elevation="0dp"
-    android:layout_marginBottom="@dimen/margin_basic_10dp"
-    android:hardwareAccelerated="true"
+    app:cardCornerRadius="8dp"
+    android:layout_marginBottom="@dimen/activity_total_margin10"
     app:cardElevation="0dp"
+    android:hardwareAccelerated="true"
     android:layout_gravity="center">
 
 
@@ -52,17 +52,16 @@
             tools:text="•••• XXXX" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
     <ImageView
         android:id="@+id/deleteImageView2"
         android:layout_width="16dp"
         android:layout_height="12dp"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_gravity="right|top"
-        android:layout_marginTop="-5dp"
-        android:layout_marginEnd="-5dp"
-        android:src="@drawable/btn_close_normal"
+        android:src="@drawable/close_icon"
         android:visibility="gone"
         tools:ignore="RtlHardcoded" />
+
 
 </FrameLayout>

@@ -187,6 +187,15 @@ class TapHeaderSectionView : LinearLayout {
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
             )//
+        }else{
+            setBorderedView(
+                tapChipIcon,
+                80f,// corner raduis
+                0.0f,
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+            )//
         }
     }
 
