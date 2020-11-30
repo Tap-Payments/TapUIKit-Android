@@ -31,8 +31,8 @@ All rights reserved.
 
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter(
-    private val arrayList1: List<Payment_methods>,
-    private val onCardSelectedActionListener: OnCardSelectedActionListener? = null,
+    private val arrayList1: ArrayList<Payment_methods>,
+    private val onCardSelectedActionListener: OnCardSelectedActionListener,
     var isShaking: Boolean = false
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_SAVED_CARD = 1
@@ -50,27 +50,28 @@ class CardTypeAdapter(
         return when (viewType) {
             TYPE_SAVED_CARD -> {
                 view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_saved_card, parent, false)
+                    .inflate(company.tap.checkout.R.layout.item_saved_card, parent, false)
                 SavedViewHolder(view)
             }
             TYPE_REDIRECT -> {
                 view =
-                    LayoutInflater.from(parent.context).inflate(R.layout.item_knet, parent, false)
+                    LayoutInflater.from(parent.context).inflate(company.tap.checkout.R.layout.item_knet, parent, false)
                 SingleViewHolder(view)
             }
             else -> {
                 view =
-                    LayoutInflater.from(parent.context).inflate(R.layout.item_gopay, parent, false)
+                    LayoutInflater.from(parent.context).inflate(company.tap.checkout.R.layout.item_gopay, parent, false)
                 GoPayViewHolder(view)
             }
         }
     }
 
     override fun getItemViewType(position: Int): Int {
-        return if (arrayList1[position].equals(1)|| arrayList1[position].equals(3) || arrayList1[position].equals(
-                5
+        println("array list pos"+arrayList1)
+        return if (arrayList1[position].equals(0)|| arrayList1[position].equals(1) || arrayList1[position].equals(
+                3
             )) {
-            TYPE_SINGLE
+            TYPE_REDIRECT
         } else if (arrayList1[position].equals(2)) {
             TYPE_GO_PAY
         } else {
@@ -84,32 +85,17 @@ class CardTypeAdapter(
 
 
     private fun setOnClickActions(holder: RecyclerView.ViewHolder) {
-//        holder.itemView.deleteImageView1?.visibility = View.VISIBLE
         val arrayList = ArrayList(arrayList1)
-        holder.itemView.deleteImageView1?.setOnClickListener {
-            onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-            arrayList.removeAt(holder.itemView.id)
-            holder.itemView.clearAnimation()
-            it.animate().cancel()
-            it.clearAnimation()
-        }
         holder.itemView.deleteImageView2?.visibility = View.VISIBLE
 
         holder.itemView.deleteImageView2?.setOnClickListener {
             onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-            arrayList.removeAt(holder.itemView.id)
+            arrayList1.removeAt(holder.itemView.id)
             holder.itemView.clearAnimation()
             it.animate().cancel()
             it.clearAnimation()
         }
 
-        holder.itemView.deleteImageView3?.setOnClickListener {
-            onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-            arrayList.removeAt(holder.itemView.id)
-            holder.itemView.clearAnimation()
-            it.animate().cancel()
-            it.clearAnimation()
-        }
     }
 
 
@@ -117,15 +103,10 @@ class CardTypeAdapter(
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         println("position printed: $position")
-        if (position == 0) {
-            val params = holder.itemView.layoutParams as RecyclerView.LayoutParams
-            params.leftMargin = 28
-            holder.itemView.layoutParams = params
-        }
-        if (isShaking) {
 
-            for (x in 0..arrayList1.size){
-                val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
+        if (isShaking) {
+            for (x in 0..arrayList1.size) {
+                val animShake: Animation = AnimationUtils.loadAnimation(context_, company.tap.checkout.R.anim.shake)
                 holder.itemView.startAnimation(animShake)
             }
             setOnClickActions(holder)
@@ -139,7 +120,7 @@ class CardTypeAdapter(
 
                 if (isShaking) {
                     for (x in 0..arrayList1.size) {
-                        val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
+                        val animShake: Animation = AnimationUtils.loadAnimation(context_, company.tap.checkout.R.anim.shake)
                         holder.itemView.startAnimation(animShake)
                     }
                     setOnClickActions(holder)
@@ -154,7 +135,7 @@ class CardTypeAdapter(
             getItemViewType(position) === TYPE_REDIRECT -> {
                 if (isShaking) {
                     for (x in 0..arrayList1.size) {
-                        val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
+                        val animShake: Animation = AnimationUtils.loadAnimation(context_, company.tap.checkout.R.anim.shake)
                         holder.itemView.startAnimation(animShake)
                     }
                     setOnClickActions(holder)
@@ -169,9 +150,9 @@ class CardTypeAdapter(
                     holder.itemView.alpha = 0.4f
                 }
                 if (selectedPosition == position)
-                    holder.itemView.setBackgroundResource(R.drawable.border_gopay)
+                    holder.itemView.setBackgroundResource(company.tap.checkout.R.drawable.border_gopay)
                 else
-                    holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
+                    holder.itemView.setBackgroundResource(company.tap.checkout.R.drawable.border_gopay_unclick)
                 (holder as GoPayViewHolder)
 
                 if (!isShaking) {
@@ -195,7 +176,6 @@ class CardTypeAdapter(
             }else{
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
             }
-            if(holder.itemView.tapCardChip2Constraints !=null)
             setBorderedView(
                 holder.itemView.tapCardChip2Constraints,
                 (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
@@ -213,14 +193,14 @@ class CardTypeAdapter(
             }
 
 
-          /*  setBorderedView(
+            setBorderedView(
                 holder.itemView.tapCardChip2Constraints,
                 (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
                 0.0f,
                 parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.backgroundColor")),// tint color
                 parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
-            )// shadow color*/
+            )// shadow color
 
         }
         (holder as SavedViewHolder)
@@ -260,7 +240,7 @@ class CardTypeAdapter(
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
             }else{
-                holder.itemView.setBackgroundResource(R.drawable.border_unclick)
+                holder.itemView.setBackgroundResource(company.tap.checkout.R.drawable.border_unclick)
             }
 
             setBorderedView(
@@ -287,8 +267,8 @@ class CardTypeAdapter(
 
     internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-
-    internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    }
 
     internal class GoPayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
