@@ -108,10 +108,10 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
 
             setBorderedView(
                 holder.itemView.CurrencyChipLinear,
-                20.0f,
+                (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
                 0.0f,
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color")),
-                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
             )
 //            holder.itemView.outlineSpotShadowColor =
@@ -130,7 +130,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
 
             setBorderedView(
                 holder.itemView.CurrencyChipLinear,
-                20.0f,
+                (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
                 0.0f,
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),

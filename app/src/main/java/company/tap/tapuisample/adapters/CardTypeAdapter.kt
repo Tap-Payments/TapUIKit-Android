@@ -6,20 +6,20 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Color.parseColor
 import android.os.Build
-import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
-import kotlinx.android.synthetic.main.item_gopay.view.*
 import kotlinx.android.synthetic.main.item_knet.view.*
 import kotlinx.android.synthetic.main.item_saved_card.view.*
 
@@ -41,7 +41,6 @@ class CardTypeAdapter(
     private var selectedPosition = -1
     private var lastPosition = -1
     var context_: Context? = null
-
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -102,74 +101,86 @@ class CardTypeAdapter(
 
         if (isShaking) {
             for (x in 0..arrayList.size) {
-                    val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
-                    holder.itemView.startAnimation(animShake)
+                val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
+                holder.itemView.startAnimation(animShake)
             }
             setOnClickActions(holder)
         }
 
-            when {
-                /**
-                 * Saved Cards Type
-                 */
-                getItemViewType(position) === TYPE_SAVED_CARD -> {
+        when {
+            /**
+             * Saved Cards Type
+             */
+            getItemViewType(position) === TYPE_SAVED_CARD -> {
 
-                    if (isShaking) {
-                        for (x in 0..arrayList.size) {
-                            val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
-                            holder.itemView.startAnimation(animShake)
-                        }
-                        setOnClickActions(holder)
-                    }
+                if (isShaking) {
+                    val constraintSet = ConstraintSet()
+                    val margin = getDimension(20f)
+                    constraintSet.clone(holder.itemView.tapCardChip2Constraints)
+                    constraintSet.setMargin(R.id.tapCardChip2Constraints, ConstraintSet.TOP, margin)
+                    constraintSet.setMargin(R.id.tapCardChip2Constraints, ConstraintSet.RIGHT, margin)
+                    constraintSet.applyTo(holder.itemView.tapCardChip2Constraints)
 
-                    typeSavedCard(holder, position)
-
+                    setOnClickActions(holder)
                 }
-                /**
-                 * Knet Type
-                 */
-                getItemViewType(position) === TYPE_REDIRECT -> {
-                    if (isShaking) {
-                        for (x in 0..arrayList.size) {
-                            val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
-                            holder.itemView.startAnimation(animShake)
-                        }
-                        setOnClickActions(holder)
-                    }
-                    typeRedirect(holder, position)
-                }
-                /**
-                 * GoPay Type
-                 */
-                else -> {
-                    if (isShaking) {
-                        holder.itemView.alpha = 0.4f
-                    }
-                    if (selectedPosition == position)
-                        holder.itemView.setBackgroundResource(R.drawable.border_gopay)
-                    else
-                        holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
-                    (holder as GoPayViewHolder)
 
-                    if (!isShaking) {
-                        holder.itemView.setOnClickListener {
-                            selectedPosition = position
-                            onCardSelectedActionListener?.onCardSelectedAction(false)
-                            notifyDataSetChanged()
-                        }
-                    }
+                typeSavedCard(holder, position)
 
-
-                }
             }
+            /**
+             * Knet Type
+             */
+            getItemViewType(position) === TYPE_REDIRECT -> {
+                if (isShaking) {
+                    for (x in 0..arrayList.size) {
+                        val animShake: Animation = AnimationUtils.loadAnimation(
+                            context_,
+                            R.anim.shake
+                        )
+                        holder.itemView.startAnimation(animShake)
+                    }
+                    setOnClickActions(holder)
+                }
+                typeRedirect(holder, position)
+            }
+            /**
+             * GoPay Type
+             */
+            else -> {
+                if (isShaking) {
+                    holder.itemView.alpha = 0.4f
+                }
+                if (selectedPosition == position)
+                    holder.itemView.setBackgroundResource(R.drawable.border_gopay)
+                else
+                    holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
+                (holder as GoPayViewHolder)
 
+                if (!isShaking) {
+                    holder.itemView.setOnClickListener {
+                        selectedPosition = position
+                        onCardSelectedActionListener?.onCardSelectedAction(false)
+                        notifyDataSetChanged()
+                    }
+                }
+
+
+            }
+        }
+
+    }
+
+    fun getDimension(value: Float): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, value, this.context_?.resources?.displayMetrics
+        ).toInt()
     }
 
     private fun typeSavedCard(holder: ViewHolder, position: Int) {
         if (selectedPosition == position) {
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
-            }else{
+            } else {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
             }
             setBorderedView(
@@ -184,7 +195,7 @@ class CardTypeAdapter(
         } else {
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
-            }else{
+            } else {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick)
             }
 
@@ -214,7 +225,7 @@ class CardTypeAdapter(
 //                holder.itemView.tapCardChip3Linear.setBackgroundColor(Color.WHITE)
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
-            }else{
+            } else {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
             }
 
@@ -230,12 +241,12 @@ class CardTypeAdapter(
 
         } else {
 
-            if (isShaking){
+            if (isShaking) {
                 holder.itemView.alpha = 0.4f
             }
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
-            }else{
+            } else {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick)
             }
 

@@ -27,7 +27,6 @@ import company.tap.tapuilibrary.uikit.views.TextDrawable
 import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
-
 /**
  * TapHeader is a molecule element for setting businessName ,businessIcon and
  *  businessPlaceHodler for Merchant
@@ -159,17 +158,38 @@ class TapHeaderSectionView : LinearLayout {
         )//
 
 
-        setBorderedView(
-            draggerView,
-            40f,// corner raduis
-            0.0f,
-            Color.parseColor("#3b3b3c"),// stroke color
-            Color.parseColor("#3b3b3c"),// tint color
-            Color.parseColor("#3b3b3c")
-        )//
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            setBorderedView(
+                draggerView,
+                40f,// corner raduis
+                0.0f,
+                Color.parseColor("#3b3b3c"),// stroke color
+                Color.parseColor("#3b3b3c"),// tint color
+                Color.parseColor("#3b3b3c")
+            )//
+        }else{
+            setBorderedView(
+                draggerView,
+                40f,// corner raduis
+                0.0f,
+                Color.parseColor("#e0e0e0"),// stroke color
+                Color.parseColor("#e0e0e0"),// tint color
+                Color.parseColor("#e0e0e0")
+            )//
+        }
+
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             Log.d("currentTheme", ThemeManager.currentTheme)
+            setBorderedView(
+                tapChipIcon,
+                80f,// corner raduis
+                0.0f,
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+            )//
+        }else{
             setBorderedView(
                 tapChipIcon,
                 80f,// corner raduis

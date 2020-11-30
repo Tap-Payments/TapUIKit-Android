@@ -6,12 +6,14 @@ import android.graphics.Color
 import android.graphics.Color.parseColor
 import android.os.Build
 import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import androidx.annotation.RequiresApi
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.cardbusinesskit.testmodels.Payment_methods
 import company.tap.checkout.adapters.CardAdapter.Companion.TYPE_SINGLE
@@ -123,6 +125,13 @@ class CardTypeAdapter(
                         val animShake: Animation = AnimationUtils.loadAnimation(context_, company.tap.checkout.R.anim.shake)
                         holder.itemView.startAnimation(animShake)
                     }
+                    val constraintSet = ConstraintSet()
+                    val margin = getDimension(20f)
+                    constraintSet.clone(holder.itemView.tapCardChip2Constraints)
+                    constraintSet.setMargin(R.id.tapCardChip2Constraints, ConstraintSet.TOP, margin)
+                    constraintSet.setMargin(R.id.tapCardChip2Constraints, ConstraintSet.RIGHT, margin)
+                    constraintSet.applyTo(holder.itemView.tapCardChip2Constraints)
+
                     setOnClickActions(holder)
                 }
 
@@ -135,7 +144,10 @@ class CardTypeAdapter(
             getItemViewType(position) === TYPE_REDIRECT -> {
                 if (isShaking) {
                     for (x in 0..arrayList1.size) {
-                        val animShake: Animation = AnimationUtils.loadAnimation(context_, company.tap.checkout.R.anim.shake)
+                        val animShake: Animation = AnimationUtils.loadAnimation(
+                            context_,
+                            R.anim.shake
+                        )
                         holder.itemView.startAnimation(animShake)
                     }
                     setOnClickActions(holder)
@@ -169,11 +181,17 @@ class CardTypeAdapter(
 
     }
 
+    fun getDimension(value: Float): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP, value, this.context_?.resources?.displayMetrics
+        ).toInt()
+    }
+
     private fun typeSavedCard(holder: RecyclerView.ViewHolder, position: Int) {
         if (selectedPosition == position) {
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
-            }else{
+            } else {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
             }
             setBorderedView(
@@ -188,7 +206,7 @@ class CardTypeAdapter(
         } else {
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
-            }else{
+            } else {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick)
             }
 
@@ -218,7 +236,7 @@ class CardTypeAdapter(
 //                holder.itemView.tapCardChip3Linear.setBackgroundColor(Color.WHITE)
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
-            }else{
+            } else {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
             }
 
@@ -234,13 +252,15 @@ class CardTypeAdapter(
 
         } else {
 
-            if (isShaking){
+            if (isShaking) {
                 holder.itemView.alpha = 0.4f
             }
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
-            }else{
-                holder.itemView.setBackgroundResource(company.tap.checkout.R.drawable.border_unclick)
+
+            } else {
+                holder.itemView.setBackgroundResource(R.drawable.border_unclick)
+
             }
 
             setBorderedView(
@@ -266,9 +286,7 @@ class CardTypeAdapter(
 
 
     internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-
-    internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-    }
+    internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     internal class GoPayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

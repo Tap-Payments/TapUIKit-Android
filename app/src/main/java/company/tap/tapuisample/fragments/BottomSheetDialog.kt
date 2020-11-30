@@ -4,6 +4,7 @@ package company.tap.tapuisample.fragments
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -18,6 +19,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.Nullable
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
@@ -485,15 +487,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         /**
          * Setting divider for items
          */
-//        val divider = DividerItemDecoration(
-//            context,
-//            DividerItemDecoration.HORIZONTAL
-//        )
-//        divider.setDrawable(ShapeDrawable().apply {
-//            intrinsicWidth = 10
-//            paint.color = Color.TRANSPARENT
-//        }) // note: currently (support version 28.0.0), we can not use tranparent color here, if we use transparent, we still see a small divider line. So if we want to display transparent space, we can set color = background color or we can create a custom ItemDecoration instead of DividerItemDecoration.
-//        chipRecycler.addItemDecoration(divider)
+        val divider = DividerItemDecoration(
+            context,
+            DividerItemDecoration.HORIZONTAL
+        )
+        divider.setDrawable(ShapeDrawable().apply {
+            intrinsicWidth = 10
+            paint.color = Color.TRANSPARENT
+        }) // note: currently (support version 28.0.0), we can not use tranparent color here, if we use transparent, we still see a small divider line. So if we want to display transparent space, we can set color = background color or we can create a custom ItemDecoration instead of DividerItemDecoration.
+        chipRecycler.addItemDecoration(divider)
 
 
 
@@ -811,8 +813,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         alertMessage?.visibility = View.VISIBLE
                         alertMessage?.setText("Card number is invalid")
                         alert_text.visibility = View.VISIBLE
-                        alert_text.setBackgroundColor(Color.parseColor("#19e12131"))
-                        alertMessage?.setTextColor(Color.parseColor("#e12131"))
+//                        alert_text.setBackgroundColor(Color.parseColor("#19e12131"))
+//                        alertMessage?.setTextColor(Color.parseColor("#e12131"))
                     }
                     if (s?.trim()?.length == 19 && card.validationState == CardValidationState.valid) {
                         /**
@@ -837,13 +839,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         if (card.validationState == CardValidationState.invalid) {
                             alertMessage?.setText("Card number is invalid")
                             alert_text.visibility = View.VISIBLE
-                            alert_text.setBackgroundColor(Color.parseColor("#19e12131"))
-                            alertMessage?.setTextColor(Color.parseColor("#e12131"))
+//                            alert_text.setBackgroundColor(Color.parseColor("#19e12131"))
+//                            alertMessage?.setTextColor(Color.parseColor("#e12131"))
                         } else {
                             alertMessage?.setText("Expiry date & CVV number are missing.")
                             alert_text.visibility = View.VISIBLE
                             alert_text.setBackgroundColor(Color.parseColor("#4cffbe60"))
-                            alertMessage?.setTextColor(Color.parseColor("#ea611c"))
+                            alertMessage?.setTextColor(Color.parseColor("#ffffff"))
                         }
                     }
                 }
