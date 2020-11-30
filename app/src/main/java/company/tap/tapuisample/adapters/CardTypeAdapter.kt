@@ -263,7 +263,6 @@ class CardTypeAdapter(
 
     internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
-
     internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     internal class GoPayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

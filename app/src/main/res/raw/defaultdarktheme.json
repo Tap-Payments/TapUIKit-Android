@@ -695,12 +695,12 @@
         }
     },
     "TapAlertMessage": {
-        "backgroundColor": "#4cffbe60",
+        "backgroundColor": "#ea611c",
         "separatorColor" : "#33ea6724",
         "separatorHeight" : 1,
         "textField": {
             "textFont": "Roboto-Light,12",
-            "textColor": "#ea611c"
+            "textColor": "#ffffff"
         }
     }
 }

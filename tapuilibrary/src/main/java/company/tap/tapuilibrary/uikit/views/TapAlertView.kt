@@ -63,12 +63,13 @@ class TapAlertView : LinearLayout {
             context,
             R.layout.tap_alert_view, this
         )
+        initTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") {
             setFontsEnglish()
         } else {
             setFontsArabic()
         }
-        initTheme()
+
     }
 
     fun initTheme(){
@@ -78,6 +79,8 @@ class TapAlertView : LinearLayout {
         textTheme.textColor = Color.parseColor(ThemeManager.getValue("TapAlertMessage.textField.textColor"))
         textTheme.textSize = ThemeManager.getFontSize("TapAlertMessage.textField.textFont")
         alertMessage.setTheme(textTheme)
+        alertMessage.setTextColor(Color.parseColor(ThemeManager.getValue("TapAlertMessage.textField.textColor")))
+        alertMessage.textSize = ThemeManager.getFontSize("TapAlertMessage.textField.textFont").toFloat()
 
 
         val separatorViewTheme = SeparatorViewTheme()

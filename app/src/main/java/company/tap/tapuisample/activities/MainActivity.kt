@@ -70,8 +70,8 @@ class MainActivity : BaseActivity(),
         context = this
 
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
-//        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
-        ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme, "defaultlighttheme")
+        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
+//        ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme, "defaultlighttheme")
         setTheme(R.style.AppThemeBlack)
 
 
