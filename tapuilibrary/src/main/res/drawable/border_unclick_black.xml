@@ -6,28 +6,21 @@
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-           <!-- <solid android:color="#02d9d9da"/>-->
+            <!-- <solid android:color="#02d9d9da"/>-->
             <corners android:radius="30dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-           <!-- <solid android:color="#05d9d9da" />-->
+            <!-- <solid android:color="#05d9d9da" />-->
             <corners android:radius="30dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-          <!--  <solid android:color="#10d9d9da" />-->
-            <corners android:radius="30dp" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#2b2c2f" />
+            <!--  <solid android:color="#10d9d9da" />-->
             <corners android:radius="30dp" />
         </shape>
     </item>
@@ -45,13 +38,20 @@
             <corners android:radius="30dp" />
         </shape>
     </item>
-<!--    <item>-->
-<!--        <shape>-->
-<!--            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />-->
-<!--            <solid android:color="#30d9d9da" />-->
-<!--            <corners android:radius="10dp" />-->
-<!--        </shape>-->
-<!--    </item>-->
+    <item>
+        <shape>
+            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
+            <solid android:color="#2b2c2f" />
+            <corners android:radius="30dp" />
+        </shape>
+    </item>
+    <!--    <item>-->
+    <!--        <shape>-->
+    <!--            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />-->
+    <!--            <solid android:color="#30d9d9da" />-->
+    <!--            <corners android:radius="10dp" />-->
+    <!--        </shape>-->
+    <!--    </item>-->
     <!-- Background -->
     <item>
         <shape>

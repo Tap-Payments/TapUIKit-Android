@@ -16,6 +16,7 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.atoms.TextInputEditText
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
@@ -38,7 +39,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     val changeEmail by lazy { findViewById<TapTextView>(R.id.change_email) }
     val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
     val signInButton by lazy { findViewById<TabAnimatedActionButton>(R.id.sigin_button) }
-    val passwordemailText by lazy { findViewById<TapTextView>(R.id.gopay_password_text) }
+    val passwordEmailText by lazy { findViewById<TapTextView>(R.id.passwordEmailText) }
     val rootView by lazy { findViewById<LinearLayout>(R.id.root_view) }
     val changeEmailCardView by lazy { findViewById<CardView>(R.id.changeEmailCardView) }
 
@@ -64,6 +65,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     fun setPasswordValidation() {
+        initTheme()
         if (passwordTextInput.text?.length!! > 7) {
             changeButtonStatus(true)
         } else {
@@ -75,7 +77,13 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     fun setLoginInterface(loginInterface: GoPayLoginInterface, emailText: String) {
         this.loginInterface = loginInterface
-        passwordemailText.text = emailText
+        passwordEmailText.text = emailText
+        val passwordEmailTextTextTheme = TextViewTheme()
+        passwordEmailTextTextTheme.textColor = Color.parseColor(ThemeManager.getValue("goPay.passwordField.emailTextColor"))
+        passwordEmailTextTextTheme.textSize = ThemeManager.getFontSize("goPay.passwordField.emailTextFont")
+        passwordEmailText.setTheme(passwordEmailTextTextTheme)
+        passwordEmailText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.emailTextColor")))
+
     }
 
     private fun initButton() {
@@ -99,7 +107,6 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun changeButtonStatus(isEnabled: Boolean) {
-
         if (isEnabled) {
             signInButton.isEnabled = isEnabled
             signInButton.setButtonDataSource(
@@ -169,8 +176,19 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.placeHolderColor")))
         passwordTextInput.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
         textInputLayout.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
-        changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
+//        changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         changeEmailCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
+
+        val passwordEmailTextTextTheme = TextViewTheme()
+        passwordEmailTextTextTheme.textColor = Color.parseColor(ThemeManager.getValue("goPay.passwordField.emailTextColor"))
+        passwordEmailTextTextTheme.textSize = ThemeManager.getFontSize("goPay.passwordField.emailTextFont")
+        passwordEmailText.setTheme(passwordEmailTextTextTheme)
+        passwordEmailText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.emailTextColor")))
+
+        val changeEmailTextTextTheme = TextViewTheme()
+        changeEmailTextTextTheme.textColor = (Color.parseColor(ThemeManager.getValue("goPay.passwordField.changeTextColor")))
+        changeEmailTextTextTheme.textSize = ThemeManager.getFontSize("goPay.passwordField.changeTextFont")
+        changeEmail.setTheme(changeEmailTextTextTheme)
     }
 
     fun getSuccessDataSource(

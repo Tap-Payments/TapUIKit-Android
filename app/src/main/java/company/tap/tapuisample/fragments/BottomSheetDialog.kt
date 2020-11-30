@@ -3,10 +3,7 @@ package company.tap.tapuisample.fragments
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.ShapeDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -16,20 +13,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.view.animation.OvershootInterpolator
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.Toast
 import androidx.annotation.Nullable
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
-import com.squareup.picasso.Picasso
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
@@ -55,25 +47,17 @@ import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.organisms.OTPView
-import company.tap.tapuilibrary.uikit.utils.BlurBuilder
 import company.tap.tapuilibrary.uikit.views.*
+import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+import company.tap.tapuisample.*
 import company.tap.tapuisample.MainSwitch
-import company.tap.tapuisample.R
 import company.tap.tapuisample.TapHeaderSectionView
 import company.tap.tapuisample.TapSelectionTabLayout
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import company.tap.tapuisample.interfaces.AnimateViewHolder
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
-import jp.wasabeef.blurry.Blurry
-import jp.wasabeef.recyclerview.adapters.AlphaInAnimationAdapter
-import jp.wasabeef.recyclerview.animators.FadeInAnimator
-import jp.wasabeef.recyclerview.animators.SlideInLeftAnimator
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import kotlinx.android.synthetic.main.item_currency_row.view.*
-import kotlinx.android.synthetic.main.item_knet.*
-import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 //    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
 
@@ -212,6 +196,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
         )
 
+        /**
+         * Calling this class for adjust view up when keyboard is opened
+         */
+        activity?.let { KeyboardUtil(it, view) }
+
+
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
 
         /**
          * set separator background
@@ -476,9 +467,17 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         mainChipGroup = view.findViewById(R.id.mainChipgroup)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         groupName = view.findViewById<TapTextView>(R.id.group_name)
-        groupName?.text = LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders", "leftTitle")
+        groupName?.text = LocalizationManager.getValue(
+            "GatewayHeader",
+            "HorizontalHeaders",
+            "leftTitle"
+        )
         groupAction = view.findViewById<TapTextView>(R.id.group_action)
-        groupAction?.text = LocalizationManager.getValue("GatewayHeader", "HorizontalHeaders", "rightTitle")
+        groupAction?.text = LocalizationManager.getValue(
+            "GatewayHeader",
+            "HorizontalHeaders",
+            "rightTitle"
+        )
         chipRecycler = view.findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
 
@@ -504,11 +503,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
             groupAction?.setOnClickListener {
                 if (groupAction?.text == "Close"){
-                    chipRecycler.adapter = CardTypeAdapter(paymentsList, this,false)
+                    chipRecycler.adapter = CardTypeAdapter(paymentsList, this, false)
                     groupAction?.text = "Edit"
 
                 }else{
-                    chipRecycler.adapter = CardTypeAdapter(paymentsList, this,true)
+                    chipRecycler.adapter = CardTypeAdapter(paymentsList, this, true)
                     groupAction?.text = "Close"
                 }
 
@@ -518,7 +517,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     private fun stopShakingCards(chipsView: RecyclerView) {
-        chipsView.adapter = CardTypeAdapter(paymentsList, this,false)
+        chipsView.adapter = CardTypeAdapter(paymentsList, this, false)
     }
 
 
@@ -853,6 +852,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
             }
+
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
@@ -977,7 +977,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 )//
-                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(
+                    Color.parseColor(
+                        ThemeManager.getValue(
+                            "TapSwitchView.main.backgroundColor"
+                        )
+                    )
+                )
                 cardSwitch.cardElevation = 0f
 
                 switch_pay_demo.payButton.stateListAnimator = null
@@ -1249,10 +1255,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
 
     @SuppressLint("SetTextI18n")
-    override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue : String) {
-        otpView?.mobileNumberText?.text = "+${countryCode.replace("+"," ")} $maskedValue"
+    override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue: String) {
+        otpView?.mobileNumberText?.text = "+${countryCode.replace("+", " ")} $maskedValue"
         Log.d("countrycode", countryCode)
-        Log.d("countrycode......", countryCode.replace("+"," "))
+        Log.d("countrycode......", countryCode.replace("+", " "))
     }
 
     override fun onChangePhoneClicked() {
@@ -1265,7 +1271,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     override fun onOtpButtonConfirmationClick(otpNumber: String): Boolean {
-        Log.d("isValidOTP" ,(otpNumber == "111111").toString() )
+        Log.d("isValidOTP", (otpNumber == "111111").toString())
         return otpNumber == "111111"
     }
 
