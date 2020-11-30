@@ -162,15 +162,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 
         params.weight = 0.8f
         for (item in tabItems) {
-            if (item.type == CardBrand.visa) {
-                params.setMargins(0, 0, 0,
-                    0)
-                item.imageView?.layoutParams = params
-            }else{
-                params.setMargins(0, 30, 0,
-                    30)
-                item.imageView?.layoutParams = params
-            }
+            params.setMargins(0, 30, 0,
+                30)
+            item.imageView?.layoutParams = params
 
         }
     }

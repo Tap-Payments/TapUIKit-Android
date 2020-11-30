@@ -723,13 +723,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             )
         )
 
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.visa__
-//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-//            )
-//        )
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.visa__
+                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+            )
+        )
 
         items.add(
             SectionTabItem(
@@ -761,7 +761,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
             )
         )
-//
+
         items.add(
             SectionTabItem(
                 resources.getDrawable(
