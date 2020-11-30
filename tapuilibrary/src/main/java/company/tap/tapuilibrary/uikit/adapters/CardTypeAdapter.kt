@@ -34,7 +34,7 @@ class CardTypeAdapter(
     private val arrayList1: List<Payment_methods>,
     private val onCardSelectedActionListener: OnCardSelectedActionListener? = null,
     var isShaking: Boolean = false
-) : RecyclerView.Adapter<ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_SAVED_CARD = 1
     private val TYPE_REDIRECT = 2
     private val TYPE_GO_PAY = 3
@@ -44,7 +44,7 @@ class CardTypeAdapter(
 
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
         context_ = parent.context
         return when (viewType) {
@@ -138,7 +138,7 @@ class CardTypeAdapter(
             getItemViewType(position) === TYPE_SAVED_CARD -> {
 
                 if (isShaking) {
-                    for (x in 0..arrayList.size) {
+                    for (x in 0..arrayList1.size) {
                         val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
                         holder.itemView.startAnimation(animShake)
                     }
@@ -153,7 +153,7 @@ class CardTypeAdapter(
              */
             getItemViewType(position) === TYPE_REDIRECT -> {
                 if (isShaking) {
-                    for (x in 0..arrayList.size) {
+                    for (x in 0..arrayList1.size) {
                         val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
                         holder.itemView.startAnimation(animShake)
                     }
