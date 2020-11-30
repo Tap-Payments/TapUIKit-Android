@@ -12,6 +12,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
@@ -84,7 +85,7 @@ class CardTypeAdapter(
         holder.itemView.deleteImageView2?.visibility = View.VISIBLE
 
         holder.itemView.deleteImageView2?.setOnClickListener {
-            onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
+            onCardSelectedActionListener.onDeleteIconClicked(true, holder.itemView.id)
             arrayList.remove(holder.itemView.id)
             holder.itemView.clearAnimation()
             it.animate().cancel()
