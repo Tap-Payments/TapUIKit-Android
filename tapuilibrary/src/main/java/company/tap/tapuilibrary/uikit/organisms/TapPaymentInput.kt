@@ -93,6 +93,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
             Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
         separator.setTheme(separatorViewTheme)
+        separator.setBackgroundColor(Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor")))
     }
 
     override fun showHideClearImage(show: Boolean) {
