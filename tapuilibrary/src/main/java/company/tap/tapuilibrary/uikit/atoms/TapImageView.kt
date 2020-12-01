@@ -21,7 +21,7 @@ All rights reserved.
  * access the current theme, resources, etc.
  * @param attributeSet The attributes of the XML Button tag being used to inflate the view.
  **/
-open class TapImageView(context: Context?, attributeSet: AttributeSet?) : AppCompatImageView(context, attributeSet),
+open class TapImageView(context: Context, attributeSet: AttributeSet?) : AppCompatImageView(context, attributeSet),
     TapView<ImageViewTheme> {
 
 
