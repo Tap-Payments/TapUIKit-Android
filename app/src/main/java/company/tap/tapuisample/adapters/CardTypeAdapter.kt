@@ -100,47 +100,19 @@ class CardTypeAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         println("position printed: $position")
 
-        if (isShaking) {
-            for (x in 0..arrayList.size) {
-                val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
-                holder.itemView.startAnimation(animShake)
-            }
-            setOnClickActions(holder)
-        }
-
         when {
             /**
              * Saved Cards Type
              */
             getItemViewType(position) === TYPE_SAVED_CARD -> {
-
-                if (isShaking) {
-                    val constraintSet = ConstraintSet()
-                    val margin = getDimension(20f)
-                    constraintSet.clone(holder.itemView.tapCardChip2Constraints)
-                    constraintSet.setMargin(R.id.tapCardChip2Constraints, ConstraintSet.TOP, margin)
-                    constraintSet.setMargin(R.id.tapCardChip2Constraints, ConstraintSet.RIGHT, margin)
-                    constraintSet.applyTo(holder.itemView.tapCardChip2Constraints)
-
-                    setOnClickActions(holder)
-                }
-
                 typeSavedCard(holder, position)
-
             }
             /**
              * Knet Type
              */
             getItemViewType(position) === TYPE_REDIRECT -> {
                 if (isShaking) {
-                    for (x in 0..arrayList.size) {
-                        val animShake: Animation = AnimationUtils.loadAnimation(
-                            context_,
-                            R.anim.shake
-                        )
-                        holder.itemView.startAnimation(animShake)
-                    }
-                    setOnClickActions(holder)
+                    holder.itemView.alpha = 0.4f
                 }
                 typeRedirect(holder, position)
             }
@@ -171,18 +143,17 @@ class CardTypeAdapter(
 
     }
 
-    fun getDimension(value: Float): Int {
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP, value, this.context_?.resources?.displayMetrics
-        ).toInt()
-    }
-
     private fun typeSavedCard(holder: ViewHolder, position: Int) {
+        if (isShaking) {
+                val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
+                holder.itemView.startAnimation(animShake)
+            setOnClickActions(holder)
+        }
         if (selectedPosition == position) {
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-                holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
+                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_shadow_black)
             } else {
-                holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
+                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_shadow_)
             }
             setBorderedView(
                 holder.itemView.tapCardChip2Constraints,
@@ -195,9 +166,9 @@ class CardTypeAdapter(
 
         } else {
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-                holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
+                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_unclick_black)
             } else {
-                holder.itemView.setBackgroundResource(R.drawable.border_unclick)
+                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_unclick)
             }
 
 
@@ -241,10 +212,6 @@ class CardTypeAdapter(
             )// shadow color
 
         } else {
-
-            if (isShaking) {
-                holder.itemView.alpha = 0.4f
-            }
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
             } else {

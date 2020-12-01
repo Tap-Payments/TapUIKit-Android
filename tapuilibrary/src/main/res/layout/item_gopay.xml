@@ -10,16 +10,6 @@
     app:cardElevation="8dp"
     android:layout_gravity="center">
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/deleteImageView1"-->
-    <!--        android:layout_width="18dp"-->
-    <!--        android:layout_height="12dp"-->
-    <!--        android:layout_gravity="right|top"-->
-    <!--        android:layout_marginTop="5dp"-->
-    <!--        android:layout_marginEnd="5dp"-->
-    <!--        android:src="@drawable/btn_close_normal"-->
-    <!--        android:visibility="gone" />-->
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="39dp"

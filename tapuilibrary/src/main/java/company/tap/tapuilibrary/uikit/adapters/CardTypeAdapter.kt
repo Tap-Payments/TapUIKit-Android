@@ -16,7 +16,7 @@ import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.cardbusinesskit.testmodels.Payment_methods
-import company.tap.checkout.adapters.CardAdapter.Companion.TYPE_SINGLE
+import company.tap.checkout.internal.dummygener.SavedCards
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.OnCardSelectedActionListener
@@ -33,7 +33,7 @@ All rights reserved.
 
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter(
-    private val arrayList1: ArrayList<Payment_methods>,
+    private val arrayList1: ArrayList<SavedCards>,
     private val onCardSelectedActionListener: OnCardSelectedActionListener,
     var isShaking: Boolean = false
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -69,15 +69,15 @@ class CardTypeAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        println("array list pos"+arrayList1)
-        return if (arrayList1[position].equals(0)|| arrayList1[position].equals(1) || arrayList1[position].equals(
-                3
-            )) {
+        println("array list pos"+arrayList1[position].chipType)
+        return if (arrayList1[position].chipType.equals(1)
+
+            ) {
             TYPE_REDIRECT
-        } else if (arrayList1[position].equals(2)) {
-            TYPE_GO_PAY
-        } else {
+        } else if (arrayList1[position].chipType.equals(5)) {
             TYPE_SAVED_CARD
+        } else {
+            TYPE_GO_PAY
         }
     }
 
@@ -106,51 +106,19 @@ class CardTypeAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         println("position printed: $position")
 
-        if (isShaking) {
-            for (x in 0..arrayList1.size) {
-                val animShake: Animation = AnimationUtils.loadAnimation(context_, company.tap.checkout.R.anim.shake)
-                holder.itemView.startAnimation(animShake)
-            }
-            setOnClickActions(holder)
-        }
-
         when {
             /**
              * Saved Cards Type
              */
             getItemViewType(position) === TYPE_SAVED_CARD -> {
-
-                if (isShaking) {
-                    for (x in 0..arrayList1.size) {
-                        val animShake: Animation = AnimationUtils.loadAnimation(context_, company.tap.checkout.R.anim.shake)
-                        holder.itemView.startAnimation(animShake)
-                    }
-                    val constraintSet = ConstraintSet()
-                    val margin = getDimension(20f)
-                    constraintSet.clone(holder.itemView.tapCardChip2Constraints)
-                    constraintSet.setMargin(R.id.tapCardChip2Constraints, ConstraintSet.TOP, margin)
-                    constraintSet.setMargin(R.id.tapCardChip2Constraints, ConstraintSet.RIGHT, margin)
-                    constraintSet.applyTo(holder.itemView.tapCardChip2Constraints)
-
-                    setOnClickActions(holder)
-                }
-
                 typeSavedCard(holder, position)
-
             }
             /**
              * Knet Type
              */
             getItemViewType(position) === TYPE_REDIRECT -> {
                 if (isShaking) {
-                    for (x in 0..arrayList1.size) {
-                        val animShake: Animation = AnimationUtils.loadAnimation(
-                            context_,
-                            R.anim.shake
-                        )
-                        holder.itemView.startAnimation(animShake)
-                    }
-                    setOnClickActions(holder)
+                    holder.itemView.alpha = 0.4f
                 }
                 typeRedirect(holder, position)
             }
@@ -181,18 +149,17 @@ class CardTypeAdapter(
 
     }
 
-    fun getDimension(value: Float): Int {
-        return TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP, value, this.context_?.resources?.displayMetrics
-        ).toInt()
-    }
-
     private fun typeSavedCard(holder: RecyclerView.ViewHolder, position: Int) {
+        if (isShaking) {
+            val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
+            holder.itemView.startAnimation(animShake)
+            setOnClickActions(holder)
+        }
         if (selectedPosition == position) {
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-                holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
+                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_shadow_black)
             } else {
-                holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
+                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_shadow_)
             }
             setBorderedView(
                 holder.itemView.tapCardChip2Constraints,
@@ -205,9 +172,9 @@ class CardTypeAdapter(
 
         } else {
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-                holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
+                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_unclick_black)
             } else {
-                holder.itemView.setBackgroundResource(R.drawable.border_unclick)
+                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_unclick)
             }
 
 
@@ -251,10 +218,6 @@ class CardTypeAdapter(
             )// shadow color
 
         } else {
-
-            if (isShaking) {
-                holder.itemView.alpha = 0.4f
-            }
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_unclick_black)
 
@@ -292,7 +255,3 @@ class CardTypeAdapter(
 
 
 }
-
-
-
-
