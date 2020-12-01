@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.cardbusinesskit.testmodels.Items
+import company.tap.checkout.internal.dummygener.Items1
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
@@ -29,7 +30,7 @@ import kotlinx.android.synthetic.main.item_frame_currency.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, private var itemLists:List<Items>) : Fragment() {
+open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, private var itemLists:List<Items1>) : Fragment() {
     private lateinit var chipRecycler: RecyclerView
 
     // lateinit var currencyList: ArrayList<CurrencyModel>
