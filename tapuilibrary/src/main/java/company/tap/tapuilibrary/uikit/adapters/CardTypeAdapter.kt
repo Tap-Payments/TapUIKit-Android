@@ -15,6 +15,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
+import android.webkit.URLUtil
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
@@ -249,9 +250,9 @@ class CardTypeAdapter(
                 notifyDataSetChanged()
             }
         }
-        for (i in 0 until arrayList1.size) {
+        for (i in 2 until arrayList1.size) {
             val url = URL(arrayList1[i].chip1.icon)
-            if (url != null) {
+            if ( URLUtil.isValidUrl(url.toString()) ) {
                 val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
                 println("bmp card  id " + bmp)
                 holder.itemView.imageView_knet.setImageBitmap(bmp)
