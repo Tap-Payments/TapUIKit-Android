@@ -2,8 +2,11 @@ package company.tap.tapuilibrary.uikit.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Color.parseColor
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.os.Build
 import android.util.Log
 import android.util.TypedValue
@@ -21,9 +24,11 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.OnCardSelectedActionListener
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
+import company.tap.tapuilibrary.uikit.ktx.setImage
 import kotlinx.android.synthetic.main.item_gopay.view.*
 import kotlinx.android.synthetic.main.item_knet.view.*
 import kotlinx.android.synthetic.main.item_saved_card.view.*
+import java.net.URL
 
 
 /**
@@ -244,11 +249,20 @@ class CardTypeAdapter(
                 notifyDataSetChanged()
             }
         }
+        for (i in 0 until arrayList1.size) {
+            val url = URL(arrayList1[i].chip1.icon)
+            if (url != null) {
+                val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+                println("bmp card  id " + bmp)
+                holder.itemView.imageView_knet.setImageBitmap(bmp)
+            }
+        }
 
     }
 
 
     internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+
     internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     internal class GoPayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
