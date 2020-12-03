@@ -4,12 +4,15 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
+import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
+import androidx.annotation.RequiresApi
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import company.tap.tapcardvalidator_android.CardBrand
@@ -20,6 +23,7 @@ import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
 import kotlinx.android.synthetic.main.item_currency_row.view.*
+import java.lang.Integer.max
 
 /**
  *
@@ -27,6 +31,7 @@ import kotlinx.android.synthetic.main.item_currency_row.view.*
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
+@RequiresApi(Build.VERSION_CODES.N)
 class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs) {
 
@@ -35,7 +40,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var indicatorHeight = MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
     private var unselectedAlphaLevel = UNSELECTED_ALPHA
     private var maxItemWidth = MetricsUtil.convertDpToPixel(MAX_ITEM_WIDTH, context).toInt()
-    private var tabLayout: TabLayout
+    private var tabLayout: CustomTabLayout
     private val itemsCount = ArrayList<Int>()
     private val tabsView = ArrayList<LinearLayout>()
     private val tabItems = ArrayList<SectionTabItem>()
@@ -127,25 +132,25 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      */
     fun addSection(items: ArrayList<SectionTabItem>) {
         itemsCount.add(items.size)
-        if (itemsCount.size > 1) {
-            for (itemsCount in items){
-                if (itemsCount.type == CardBrand.visa) editExistItemsSize_() else editExistItemsSize()
-            }
-        }
-
 
         val sectionLayout = getSectionLayout()
         for (item in items) {
             sectionLayout.addView(getSectionItem(item))
-//            if (item.type == CardBrand.visa) getSectionItem_(item) else sectionLayout.addView(getSectionItem(item))
-
 
         }
+
         if (tabsView.size != 0)
             sectionLayout.alpha = unselectedAlphaLevel
         tabsView.add(sectionLayout)
         val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
         tabLayout.addTab(sectionTab)
+        if(tabsView.size == 1 ){
+            if (items.size == 1){
+                tabLayout.visibility = View.GONE
+            }else{
+                tabLayout.visibility = View.VISIBLE
+            }
+        }else  tabLayout.visibility = View.VISIBLE
     }
 
     fun selectSection(index: Int) {
@@ -163,7 +168,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 //        params.setMargins(0, 30, 0,
 //            30)
 
-        params.weight = 0.8f
+        params.weight = 0.6f
         for (item in tabItems) {
             if (item.type == CardBrand.visa) {
                 params.setMargins(0, 0, 0,

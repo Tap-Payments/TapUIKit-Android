@@ -170,6 +170,19 @@
             android:layout_height="match_parent" />
 
 
+<!--        <com.google.android.material.card.MaterialCardView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content">-->
+
+<!--            <company.tap.cardinputwidget.widget.inline.InlineCardInput-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:shouldShowHolderName="false" />-->
+
+<!--        </com.google.android.material.card.MaterialCardView>-->
+
+
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
