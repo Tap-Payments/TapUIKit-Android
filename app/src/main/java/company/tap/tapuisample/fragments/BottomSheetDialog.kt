@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ShapeDrawable
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -18,6 +19,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.Nullable
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -155,7 +157,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         otpView = view.findViewById(R.id.otpView)
         otpView?.setOTPInterface(this)
         otpView?.setOtpButtonConfirmationInterface(this)
-//        bulr()
         initGoPay(view)
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
 
@@ -424,6 +425,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     private fun tabLayoutInit(view: View) {
         tabLayout = view.findViewById(R.id.sections_tablayout)
+//        tabLayout.visibility =View.GONE
         //    nfcScanBtn = view.findViewById(R.id.nfc_scan)
         val nfcFragment = NFCFragment()
         tabLayout.setTabLayoutInterface(this)
@@ -710,43 +712,36 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun addCardsTab() {
 
         val items = ArrayList<SectionTabItem>()
 
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.amex
-                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
-            )
-        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.amex
+//                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
+//            )
+//        )
 
         items.add(
             SectionTabItem(
                 resources.getDrawable(
-                    R.drawable.visa__
+                    R.drawable.visa
                 ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
             )
         )
+//
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.mastercard
+//                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
+//            )
+//        )
 
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.mastercard
-                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
-            )
-        )
-
-
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.amex
-                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
-            )
-        )
         tabLayout.addSection(items)
     }
 
@@ -761,7 +756,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
             )
         )
-
+//
         items.add(
             SectionTabItem(
                 resources.getDrawable(
@@ -770,15 +765,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             )
         )
 
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.ooredoo
-                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
-            )
-        )
-
-        tabLayout.addSection(items)
+//        tabLayout.addSection(items)
     }
 
     private fun setupBrandDetection() {
@@ -844,8 +831,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         } else {
                             alertMessage?.setText("Expiry date & CVV number are missing.")
                             alert_text.visibility = View.VISIBLE
-                            alert_text.setBackgroundColor(Color.parseColor("#4cffbe60"))
-                            alertMessage?.setTextColor(Color.parseColor("#ffffff"))
+//                            alert_text.setBackgroundColor(Color.parseColor("#4cffbe60"))
+//                            alertMessage?.setTextColor(Color.parseColor("#ffffff"))
                         }
                     }
                 }

@@ -152,9 +152,9 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpViewInput2.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            otpLinearLayout.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
+            otpLinearLayout.setBackgroundResource(R.drawable.blur_background_dark)
         } else {
-            otpLinearLayout.setBackgroundResource(R.drawable.ic_blurbackground)
+            otpLinearLayout.setBackgroundResource(R.drawable.blur_background)
         }
     }
 

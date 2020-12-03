@@ -2,14 +2,17 @@ package company.tap.tapuisample.activities
 
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.AlertDialog
-import android.app.PendingIntent.getActivity
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -47,6 +50,7 @@ import java.util.concurrent.Executor
 import javax.crypto.Cipher
 import javax.crypto.KeyGenerator
 import javax.crypto.SecretKey
+
 //////https://stackoverflow.com/questions/24149690/add-local-library-project-as-a-dependency-to-multiple-projects-in-android-studio
 
 class MainActivity : BaseActivity(),
@@ -68,12 +72,15 @@ class MainActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         context = this
+        setLocale(this, LocalizationManager.getLocale(context).language)
 
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
 //        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
         ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme, "defaultlighttheme")
         setTheme(R.style.AppThemeBlack)
 
+
+        supportActionBar?.setBackgroundDrawable( ColorDrawable(Color.parseColor("#005959")))
 
         val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
         val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
@@ -343,10 +350,12 @@ class MainActivity : BaseActivity(),
             true
         }
         R.id.change_language -> {
-            if (LocalizationManager.getLocale(context) == Locale("en")) {
+            if (LocalizationManager.getLocale(context).language == "en") {
                 LocalizationManager.setLocale(this, Locale("ar"))
-            } else if (LocalizationManager.getLocale(context) == Locale("ar")) {
+                setLocale(this, "ar")
+            } else if (LocalizationManager.getLocale(context).language == "ar") {
                 LocalizationManager.setLocale(this, Locale("en"))
+                setLocale(this, "en")
             }
             recreate()
             true
@@ -360,6 +369,14 @@ class MainActivity : BaseActivity(),
     }
 
 
+    fun setLocale(activity: Activity, languageCode: String?) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val resources: Resources = activity.resources
+        val config: Configuration = resources.configuration
+        config.setLocale(locale)
+        resources.updateConfiguration(config, resources.displayMetrics)
+    }
 
 
 }

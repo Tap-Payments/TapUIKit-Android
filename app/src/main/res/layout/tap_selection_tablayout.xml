@@ -5,16 +5,17 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.google.android.material.tabs.TabLayout
+    <company.tap.tapuisample.CustomTabLayout
         android:id="@+id/tab_layout"
         android:layout_width="fill_parent"
         android:layout_height="52dp"
-        app:tabMaxWidth="0dp"
         app:tabGravity="fill"
-        app:tabMode="fixed"
+        app:tabMode="scrollable"
+        app:tabMaxWidth="0dp"
         android:layout_gravity="fill"
         app:tabIndicatorGravity="bottom"
         android:fitsSystemWindows="true"
         app:tabIndicatorFullWidth="true" />
 
 </LinearLayout>
+<!--    app:tabMode="fixed"-->

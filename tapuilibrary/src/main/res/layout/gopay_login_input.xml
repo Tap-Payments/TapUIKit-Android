@@ -109,7 +109,7 @@
                     android:paddingEnd="@dimen/margin_basic_16dp"
                     android:isScrollContainer="true"
                     android:fitsSystemWindows="true"
-                    android:gravity="center"
+                    android:gravity="center_vertical|start"
                     android:layout_gravity="center"
                     android:focusable="true"
                     android:windowSoftInputMode="adjustPan|adjustResize"
