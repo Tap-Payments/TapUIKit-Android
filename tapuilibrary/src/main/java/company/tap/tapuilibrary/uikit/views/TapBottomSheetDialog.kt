@@ -94,11 +94,13 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     }
 
     private fun changeBackground() {
+        if(this::bottomSheetDialog.isInitialized){
         bottomSheetDialog.setOnShowListener {
             bottomSheetLayout =
                 bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
             bottomSheetLayout?.background = getBackgroundDrawable()
 
+        }
         }
     }
 
