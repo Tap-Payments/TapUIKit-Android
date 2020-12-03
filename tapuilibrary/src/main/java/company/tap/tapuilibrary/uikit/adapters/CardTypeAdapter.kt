@@ -34,7 +34,7 @@ All rights reserved.
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter(
     private val arrayList1: ArrayList<SavedCards>,
-    private val onCardSelectedActionListener: OnCardSelectedActionListener,
+    private val onCardSelectedActionListener: OnCardSelectedActionListener?,
     var isShaking: Boolean = false
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val TYPE_SAVED_CARD = 1
