@@ -41,8 +41,8 @@ All rights reserved.
  **/
 
 @Suppress("PrivatePropertyName")
-class CardTypeAdapter(
-     val arrayList1: ArrayList<SavedCards>,
+class CardTypeAdapterUIKIT(
+     val arrayList1: List<SavedCards>,
     private val onCardSelectedActionListener: OnCardSelectedActionListener?,
     var isShaking: Boolean = false
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -52,12 +52,14 @@ class CardTypeAdapter(
     private var selectedPosition = -1
     private var lastPosition = -1
     var context_: Context? = null
+    lateinit var arrayListSaveCard:  ArrayList<SavedCards>
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
         context_ = parent.context
+        arrayListSaveCard = arrayList1 as ArrayList<SavedCards>
         return when (viewType) {
             TYPE_SAVED_CARD -> {
                 view = LayoutInflater.from(parent.context)
@@ -78,12 +80,9 @@ class CardTypeAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        println("array icon pos"+arrayList1[position].chip1.icon)
-        return if (arrayList1[position].chipType == 1
-
-        ) {
+        return if (arrayListSaveCard[position].chipType == 1) {
             TYPE_REDIRECT
-        } else if (arrayList1[position].chipType == 5) {
+        } else if (arrayListSaveCard[position].chipType == 5) {
             TYPE_SAVED_CARD
         } else {
             TYPE_GO_PAY
@@ -96,12 +95,12 @@ class CardTypeAdapter(
 
 
     private fun setOnClickActions(holder: RecyclerView.ViewHolder) {
-        val arrayList = ArrayList(arrayList1)
+       
         holder.itemView.deleteImageView2?.visibility = View.VISIBLE
 
         holder.itemView.deleteImageView2?.setOnClickListener {
             onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-            arrayList1.removeAt(holder.itemView.id)
+            arrayListSaveCard.removeAt(holder.itemView.id)
             holder.itemView.clearAnimation()
             it.animate().cancel()
             it.clearAnimation()
@@ -204,9 +203,9 @@ class CardTypeAdapter(
                 notifyDataSetChanged()
             }
         }
-        for (i in 2 until arrayList1.size) {
+        for (i in 2 until arrayListSaveCard.size) {
             val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_amex)
-            val url = URL(arrayList1[i].chip1.icon)
+            val url = URL(arrayListSaveCard[i].chip1.icon)
             if ( URLUtil.isValidUrl(url.toString()) ) {
                 val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 
@@ -263,9 +262,9 @@ class CardTypeAdapter(
                 notifyDataSetChanged()
             }
         }
-        for (i in 2 until arrayList1.size) {
+        for (i in 2 until arrayListSaveCard.size) {
             val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_knet)
-            val url = URL(arrayList1[i].chip1.icon)
+            val url = URL(arrayListSaveCard[i].chip1.icon)
             if ( URLUtil.isValidUrl(url.toString()) ) {
                 val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
                 imageViewCard.setImageBitmap(bmp)
