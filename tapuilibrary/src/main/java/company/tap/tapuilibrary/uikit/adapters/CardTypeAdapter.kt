@@ -16,12 +16,15 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import android.webkit.URLUtil
+import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.cardbusinesskit.testmodels.Payment_methods
 import company.tap.checkout.internal.dummygener.SavedCards
 import company.tap.tapuilibrary.R
+
+
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.OnCardSelectedActionListener
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
@@ -39,7 +42,7 @@ All rights reserved.
 
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter(
-    private val arrayList1: ArrayList<SavedCards>,
+     val arrayList1: ArrayList<SavedCards>,
     private val onCardSelectedActionListener: OnCardSelectedActionListener?,
     var isShaking: Boolean = false
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -58,17 +61,17 @@ class CardTypeAdapter(
         return when (viewType) {
             TYPE_SAVED_CARD -> {
                 view = LayoutInflater.from(parent.context)
-                    .inflate(company.tap.checkout.R.layout.item_saved_card, parent, false)
+                    .inflate(R.layout.item_saved_card, parent, false)
                 SavedViewHolder(view)
             }
             TYPE_REDIRECT -> {
                 view =
-                    LayoutInflater.from(parent.context).inflate(company.tap.checkout.R.layout.item_knet, parent, false)
+                    LayoutInflater.from(parent.context).inflate(R.layout.item_knet, parent, false)
                 SingleViewHolder(view)
             }
             else -> {
                 view =
-                    LayoutInflater.from(parent.context).inflate(company.tap.checkout.R.layout.item_gopay, parent, false)
+                    LayoutInflater.from(parent.context).inflate(R.layout.item_gopay, parent, false)
                 GoPayViewHolder(view)
             }
         }
@@ -78,7 +81,7 @@ class CardTypeAdapter(
         println("array list pos"+arrayList1[position].chipType)
         return if (arrayList1[position].chipType.equals(1)
 
-            ) {
+        ) {
             TYPE_REDIRECT
         } else if (arrayList1[position].chipType.equals(5)) {
             TYPE_SAVED_CARD
@@ -136,9 +139,9 @@ class CardTypeAdapter(
                     holder.itemView.alpha = 0.4f
                 }
                 if (selectedPosition == position)
-                    holder.itemView.setBackgroundResource(company.tap.checkout.R.drawable.border_gopay)
+                    holder.itemView.setBackgroundResource(R.drawable.border_gopay)
                 else
-                    holder.itemView.setBackgroundResource(company.tap.checkout.R.drawable.border_gopay_unclick)
+                    holder.itemView.setBackgroundResource(R.drawable.border_gopay_unclick)
                 (holder as GoPayViewHolder)
 
                 if (!isShaking) {
@@ -201,6 +204,16 @@ class CardTypeAdapter(
                 notifyDataSetChanged()
             }
         }
+        for (i in 2 until arrayList1.size) {
+            val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_amex)
+            val url = URL(arrayList1[i].chip1.icon)
+            if ( URLUtil.isValidUrl(url.toString()) ) {
+                val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+
+                imageViewCard.setImageBitmap(bmp)
+            }
+        }
+
     }
 
 
@@ -251,13 +264,14 @@ class CardTypeAdapter(
             }
         }
         for (i in 2 until arrayList1.size) {
+            val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_knet)
             val url = URL(arrayList1[i].chip1.icon)
             if ( URLUtil.isValidUrl(url.toString()) ) {
                 val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
-                println("bmp card  id " + bmp)
-                holder.itemView.imageView_knet.setImageBitmap(bmp)
+                imageViewCard.setImageBitmap(bmp)
             }
         }
+
 
     }
 
@@ -270,3 +284,4 @@ class CardTypeAdapter(
 
 
 }
+
