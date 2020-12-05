@@ -52,8 +52,8 @@ class CardTypeAdapterUIKIT(
     private var selectedPosition = -1
     private var lastPosition = -1
     var context_: Context? = null
-    lateinit var arrayListRedirect:ArrayList<String>
-    lateinit var arrayListCards:ArrayList<String>
+    private var arrayListRedirect:ArrayList<String> = ArrayList()
+    private var arrayListCards:ArrayList<String> = ArrayList()
 
 
 
