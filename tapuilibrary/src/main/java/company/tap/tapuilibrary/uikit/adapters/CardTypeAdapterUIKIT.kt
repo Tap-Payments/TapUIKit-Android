@@ -52,14 +52,14 @@ class CardTypeAdapterUIKIT(
     private var selectedPosition = -1
     private var lastPosition = -1
     var context_: Context? = null
-    lateinit var arrayListSaveCard:  ArrayList<SavedCards>
+    private var arrayListSaveCard:  ArrayList<SavedCards> = arrayList1 as ArrayList<SavedCards>
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
         context_ = parent.context
-        arrayListSaveCard = arrayList1 as ArrayList<SavedCards>
+      //  arrayListSaveCard = arrayList1 as ArrayList<SavedCards>
         return when (viewType) {
             TYPE_SAVED_CARD -> {
                 view = LayoutInflater.from(parent.context)
