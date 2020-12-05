@@ -1,3 +1,4 @@
+/*
 package company.tap.tapuilibrary.uikit.adapters
 
 import android.annotation.SuppressLint
@@ -35,10 +36,12 @@ import kotlinx.android.synthetic.main.item_saved_card.view.*
 import java.net.URL
 
 
+*/
 /**
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
- **/
+ **//*
+
 
 @Suppress("PrivatePropertyName")
 class CardTypeAdapter(
@@ -116,24 +119,30 @@ class CardTypeAdapter(
         println("position printed: $position")
 
         when {
-            /**
+            */
+/**
              * Saved Cards Type
-             */
+             *//*
+
             getItemViewType(position) === TYPE_SAVED_CARD -> {
                 typeSavedCard(holder, position)
             }
-            /**
+            */
+/**
              * Knet Type
-             */
+             *//*
+
             getItemViewType(position) === TYPE_REDIRECT -> {
                 if (isShaking) {
                     holder.itemView.alpha = 0.4f
                 }
                 typeRedirect(holder, position)
             }
-            /**
+            */
+/**
              * GoPay Type
-             */
+             *//*
+
             else -> {
                 if (isShaking) {
                     holder.itemView.alpha = 0.4f
@@ -285,3 +294,4 @@ class CardTypeAdapter(
 
 }
 
+*/

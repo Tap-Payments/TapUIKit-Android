@@ -21,3 +21,4 @@
 #-renamesourcefileattribute SourceFile
 -keep class company.tap.tapuilibrary.uikit.interfaces**{*;}
 -keep class company.tap.tapuilibrary.uikit.adapters.CardTypeAdapter{*;}
+-keep class company.tap.tapuilibrary.uikit.adapters.CardTypeAdapterUIKIT{*;}
