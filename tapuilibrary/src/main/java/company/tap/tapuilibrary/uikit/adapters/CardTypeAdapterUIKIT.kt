@@ -52,6 +52,8 @@ class CardTypeAdapterUIKIT(
     private var selectedPosition = -1
     private var lastPosition = -1
     var context_: Context? = null
+    lateinit var arrayListRedirect:ArrayList<String>
+    lateinit var arrayListCards:ArrayList<String>
 
 
 
@@ -80,8 +82,10 @@ class CardTypeAdapterUIKIT(
 
     override fun getItemViewType(position: Int): Int {
         return if (arrayListsSaveCard[position].chipType == 1) {
+            arrayListRedirect.add(arrayListsSaveCard[position].chip1.icon)
             TYPE_REDIRECT
         } else if (arrayListsSaveCard[position].chipType == 5) {
+            arrayListCards.add(arrayListsSaveCard[position].chip1.icon)
             TYPE_SAVED_CARD
         } else {
             TYPE_GO_PAY
@@ -202,9 +206,9 @@ class CardTypeAdapterUIKIT(
                 notifyDataSetChanged()
             }
         }
-        for (i in 2 until arrayListsSaveCard.size) {
+        for (i in 2 until arrayListCards.size) {
             val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_amex)
-            val url = URL(arrayListsSaveCard[i].chip1.icon)
+            val url = URL(arrayListCards[i])
             if ( URLUtil.isValidUrl(url.toString()) ) {
                 val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 
@@ -261,9 +265,9 @@ class CardTypeAdapterUIKIT(
                 notifyDataSetChanged()
             }
         }
-        for (i in 2 until arrayListsSaveCard.size) {
+        for (i in 2 until arrayListRedirect.size) {
             val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_knet)
-            val url = URL(arrayListsSaveCard[i].chip1.icon)
+            val url = URL(arrayListRedirect[i])
             if ( URLUtil.isValidUrl(url.toString()) ) {
                 val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
                 imageViewCard.setImageBitmap(bmp)
