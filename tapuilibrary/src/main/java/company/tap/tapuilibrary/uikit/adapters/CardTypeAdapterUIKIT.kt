@@ -31,7 +31,7 @@ import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.ktx.setImage
 import kotlinx.android.synthetic.main.item_gopay.view.*
 import kotlinx.android.synthetic.main.item_knet.view.*
-import kotlinx.android.synthetic.main.item_saved_card.view.*
+import kotlinx.android.synthetic.main.item_save_cards.view.*
 import java.net.URL
 
 
@@ -54,17 +54,18 @@ class CardTypeAdapterUIKIT(
     var context_: Context? = null
     private var arrayListRedirect:ArrayList<String> = ArrayList()
     private var arrayListCards:ArrayList<String> = ArrayList()
+    private var totalArrayList:ArrayList<SavedCards> = ArrayList()
 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view: View
         context_ = parent.context
-      //  arrayListSaveCard = arrayList1 as ArrayList<SavedCards>
+        totalArrayList.addAll(arrayListsSaveCard)
         return when (viewType) {
             TYPE_SAVED_CARD -> {
                 view = LayoutInflater.from(parent.context)
-                    .inflate(R.layout.item_saved_card, parent, false)
+                    .inflate(R.layout.item_save_cards, parent, false)
                 SavedViewHolder(view)
             }
             TYPE_REDIRECT -> {
@@ -99,11 +100,11 @@ class CardTypeAdapterUIKIT(
 
     private fun setOnClickActions(holder: RecyclerView.ViewHolder) {
        
-        holder.itemView.deleteImageView2?.visibility = View.VISIBLE
+        holder.itemView.deleteImageViewsaved?.visibility = View.VISIBLE
 
-        holder.itemView.deleteImageView2?.setOnClickListener {
+        holder.itemView.deleteImageViewsaved?.setOnClickListener {
             onCardSelectedActionListener?.onDeleteIconClicked(true, holder.itemView.id)
-           // arrayListsSaveCard as ArrayList<SavedCards>.removeAt(holder.itemView.id)
+             arrayListCards.removeAt(holder.itemView.id)
             holder.itemView.clearAnimation()
             it.animate().cancel()
             it.clearAnimation()
