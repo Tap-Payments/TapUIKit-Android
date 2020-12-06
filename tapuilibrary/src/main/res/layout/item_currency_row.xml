@@ -27,7 +27,8 @@
             android:layout_height="@dimen/margin_basic_23dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
-            android:layout_marginBottom="7dp" />
+            android:layout_marginBottom="7dp"
+            android:visibility="gone"/>
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/textView_currency"
@@ -43,6 +44,7 @@
             android:textColor="#4b4847"
             android:textSize="12sp"
             android:textStyle="normal"
-            tools:text="KWD" />
+            tools:text="KWD"
+            />
     </LinearLayout>
 </company.tap.tapuilibrary.uikit.atoms.TapChip>
