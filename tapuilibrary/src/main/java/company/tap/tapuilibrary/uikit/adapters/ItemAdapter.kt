@@ -11,7 +11,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.annotation.NonNull
 import androidx.recyclerview.widget.RecyclerView
-import company.tap.cardbusinesskit.testmodels.Items
+import company.tap.checkout.internal.dummygener.Items1
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -29,7 +29,7 @@ import company.tap.tapuilibrary.uikit.views.TapListItemView
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class ItemAdapter(private val itemList: ArrayList<Items>) :
+class ItemAdapter(private val itemList: ArrayList<Items1>) :
     RecyclerView.Adapter<ItemAdapter.ItemHolder>() {
     private var previousExpandedPosition = -1
     private var mExpandedPosition = -1
@@ -123,11 +123,11 @@ class ItemAdapter(private val itemList: ArrayList<Items>) :
         }else
             for (i in 0 until itemList.size) {
                 itemName?.text = itemList[i].name
-                if(itemList[i].discount?.type.equals("P")){
+                if(itemList[i].discount1?.type == "P"){
                     discount?.visibility = View.VISIBLE
-                    discount?.text = itemList[i].discount.value.toString()
+                    discount?.text = itemList[i].discount1.value.toString()
                     totalAmount?.paintFlags = totalAmount?.paintFlags?.or(Paint.STRIKE_THRU_TEXT_FLAG)!!
-                    totalAmount?.text = itemList[i].amount.toString()
+                    totalAmount.text = itemList[i].amount.toString()
 
                 }else{
                     discount?.visibility = View.INVISIBLE

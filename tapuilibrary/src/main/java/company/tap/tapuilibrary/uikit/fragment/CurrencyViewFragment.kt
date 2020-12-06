@@ -14,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import company.tap.cardbusinesskit.testmodels.Items
+
 import company.tap.checkout.internal.dummygener.Items1
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -39,7 +39,7 @@ open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, pri
     private lateinit var itemsRecycler: RecyclerView
     /* private var itemList: ArrayList<Int> =
          arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)*/
-    private lateinit var itemList: ArrayList<Items>
+    private lateinit var itemList: ArrayList<Items1>
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +48,7 @@ open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, pri
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
 
         currencyList = currencyLists
-        itemList = itemLists as ArrayList<Items>
+        itemList = itemLists as ArrayList<Items1>
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
         val mainView = view.findViewById<LinearLayout>(R.id.mainView)
         val headerView = view.findViewById<ConstraintLayout>(R.id.header_view)
