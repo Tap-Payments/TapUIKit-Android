@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -71,7 +72,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     private fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
         dataSource = ActionButtonDataSource(
-            text = buttonText ?: "Pay",
+            text = buttonText ?: LocalizationManager.getValue("pay", "ActionButton"),
             textSize = 18f,
             textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
             cornerRadius = 100f,
