@@ -15,8 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import company.tap.checkout.internal.dummygener.Currencies1
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.ChipTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
-
+import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 
 
@@ -30,32 +31,31 @@ All rights reserved.
  **/
 
 
-var selectedPositions = 0
-var context1: Context? = null
+var selectedPosition = 0
+var contexts: Context? = null
 //var viewType :ViewGroup? = null
 //val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
 
 
-class CurrencyAdapter(private val arraylistscurency: ArrayList<Currencies1>) :
-    RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
+class CurrencyTypeAdapter(private val arraylistscurencs: ArrayList<Currencies1>) : RecyclerView.Adapter<CurrencyTypeAdapter.CurrencyHolders>() {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolders {
         val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_currency_row, parent, false)
-        context1 = parent.context
-        return CurrencyHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_currency_rows, parent, false)
+        contexts = parent.context
+        return CurrencyHolders(
             v
         )
     }
 
-    override fun getItemCount() = arraylistscurency.size
+    override fun getItemCount() = arraylistscurencs.size
 
 
-    class CurrencyHolder(v: View) : RecyclerView.ViewHolder(v) {
+    class CurrencyHolders(v: View) : RecyclerView.ViewHolder(v) {
         private var view: View = v
        // private var photo: CurrencyModel? = null
 
 
-        fun bindCurrecnyLists(currenciesListe: ArrayList<Currencies1>) {
+        fun bindCurrecnyList(currenciesListe: ArrayList<Currencies1>) {
             //  this.photo = photo
             //  Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
             for (i in 0 until currenciesListe.size) {
@@ -101,9 +101,9 @@ class CurrencyAdapter(private val arraylistscurency: ArrayList<Currencies1>) :
 
 
     @RequiresApi(Build.VERSION_CODES.P)
-    override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
-        holder.bindCurrecnyLists(arraylistscurency)
-        if (selectedPositions == position) {
+    override fun onBindViewHolder(holder: CurrencyHolders, position: Int) {
+        holder.bindCurrecnyList(arraylistscurencs)
+        if (selectedPosition == position) {
        // holder.bindPhoto(photos[position])
         //if (company.tap.tapuilibrary.uikit.adapters.selectedPosition == position) {
             /**
@@ -151,11 +151,11 @@ class CurrencyAdapter(private val arraylistscurency: ArrayList<Currencies1>) :
         }
 
         holder.itemView.setOnClickListener {
-            selectedPositions = position
+           selectedPosition = position
 
 
             Toast.makeText(
-                context,
+                contexts,
                 "You click ${holder.itemView.textView_currency.text}",
                 Toast.LENGTH_SHORT
             ).show()
