@@ -30,11 +30,12 @@ import kotlinx.android.synthetic.main.item_frame_currency.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, private var itemLists:List<Items1>) : Fragment() {
+open class CurrencyViewFragment(private var currencyLists1:ArrayList<Currencies1>, private var itemLists:List<Items1>) : Fragment() {
     private lateinit var chipRecycler: RecyclerView
 
     // lateinit var currencyList: ArrayList<CurrencyModel>
-    lateinit var currencyList: ArrayList<String>
+    lateinit var currenciesList: ArrayList<Currencies1>
+
 
     private lateinit var itemsRecycler: RecyclerView
     /* private var itemList: ArrayList<Int> =
@@ -47,7 +48,7 @@ open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, pri
     ): View? {
         val view: View = inflater.inflate(R.layout.item_frame_currency, container, false)
 
-        currencyList = currencyLists
+        currenciesList = currencyLists1
         itemList = itemLists as ArrayList<Items1>
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
         val mainView = view.findViewById<LinearLayout>(R.id.mainView)
@@ -62,9 +63,10 @@ open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, pri
         chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         // chipRecycler.adapter = CurrencyAdapter(currencyList)
-        if (this::currencyList.isInitialized)
-            chipRecycler.adapter = CurrencyAdapter(currencyList)
+        if (this::currenciesList.isInitialized)
+            chipRecycler.adapter = CurrencyAdapter(currenciesList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
+
 //        itemsRecycler.setHasFixedSize(false)
         headerView.visibility = View.GONE
 
@@ -166,7 +168,7 @@ open class CurrencyViewFragment(private var currencyLists:ArrayList<String>, pri
     }
 
     @JvmName("setCurrencyList1")
-    fun setCurrencyList(ApiCurrencyList: ArrayList<String>) {
-        currencyList = ApiCurrencyList
+    fun setCurrencyList(ApiCurrencyList: ArrayList<Currencies1>) {
+        currenciesList = ApiCurrencyList
     }
 }

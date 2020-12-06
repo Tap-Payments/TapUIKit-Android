@@ -28,7 +28,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="7dp"
             android:layout_marginBottom="7dp"
-            android:visibility="gone"/>
+           />
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/textView_currency"

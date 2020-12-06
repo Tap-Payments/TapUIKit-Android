@@ -1,16 +1,18 @@
 package company.tap.tapuilibrary.uikit.adapters
 
 import android.content.Context
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.URLUtil
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import company.tap.checkout.internal.dummygener.Currencies1
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ChipTheme
@@ -21,6 +23,7 @@ import company.tap.tapuilibrary.uikit.model.CurrencyModel
 
 
 import kotlinx.android.synthetic.main.item_currency_row.view.*
+import java.net.URL
 
 /**
 
@@ -35,7 +38,7 @@ var context: Context? = null
 //val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
 
 
-class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
+class CurrencyAdapter(private val arraylistscurency: ArrayList<Currencies1>) :
     RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
         val v =
@@ -46,7 +49,7 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
         )
     }
 
-    override fun getItemCount() = arraylistcurency.size
+    override fun getItemCount() = arraylistscurency.size
 
 
     class CurrencyHolder(v: View) : RecyclerView.ViewHolder(v) {
@@ -54,10 +57,21 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
         private var photo: CurrencyModel? = null
 
 
-        fun bindPhoto(photo: String) {
+        fun bindCurrecnyList(currenciesListe: ArrayList<Currencies1>) {
             //  this.photo = photo
             //  Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
-            view.textView_currency.text = photo
+            for (i in 0 until currenciesListe.size) {
+                val url = URL(currenciesListe[i].currencyicon)
+                if ( URLUtil.isValidUrl(url.toString()) ) {
+                    val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+
+                    view.imageView_currency.setImageBitmap(bmp)
+                }
+                view.textView_currency.text = currenciesListe[i].currencytitle
+
+
+            }
+
 
             setTheme()
         }
@@ -90,7 +104,7 @@ class CurrencyAdapter(private val arraylistcurency: ArrayList<String>) :
 
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
-        holder.bindPhoto(arraylistcurency[position])
+        holder.bindCurrecnyList(arraylistscurency)
         if (selectedPosition == position) {
        // holder.bindPhoto(photos[position])
         //if (company.tap.tapuilibrary.uikit.adapters.selectedPosition == position) {
