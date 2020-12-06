@@ -20,6 +20,7 @@ import company.tap.checkout.internal.dummygener.Items1
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
+import company.tap.tapuilibrary.uikit.adapters.CurrencyTypeAdapter
 import company.tap.tapuilibrary.uikit.adapters.ItemAdapter
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -65,7 +66,7 @@ open class CurrencyViewFragment(private var currencyLists1:ArrayList<Currencies1
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
         // chipRecycler.adapter = CurrencyAdapter(currencyList)
         if (this::currenciesList.isInitialized)
-            chipRecycler.adapter = CurrencyAdapter(currenciesList)
+            chipRecycler.adapter = CurrencyTypeAdapter(currenciesList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
 
 //        itemsRecycler.setHasFixedSize(false)
