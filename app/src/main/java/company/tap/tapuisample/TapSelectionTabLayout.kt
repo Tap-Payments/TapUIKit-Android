@@ -45,8 +45,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private val tabsView = ArrayList<LinearLayout>()
     private val tabItems = ArrayList<SectionTabItem>()
     private var touchableList = ArrayList<View>()
-
     private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null
+    private var tabItemAlphaValue = 0.7f
 
     /**
      * Initiating the tablayout with default theme and behaviour
@@ -60,6 +60,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         setSelectionBehaviour()
     }
 
+    fun changeTabItemAlphaValue(tabItemAlphaValue : Float){
+        this.tabItemAlphaValue = tabItemAlphaValue
+    }
     /**
      * Setter fot the callback interface
      *
@@ -136,7 +139,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val sectionLayout = getSectionLayout()
         for (item in items) {
             sectionLayout.addView(getSectionItem(item))
-
+            editExistItemsSize()
         }
 
         if (tabsView.size != 0)
@@ -144,13 +147,13 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabsView.add(sectionLayout)
         val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
         tabLayout.addTab(sectionTab)
-        if(tabsView.size == 1 ){
-            if (items.size == 1){
+        if (tabsView.size == 1) {
+            if (items.size == 1) {
                 tabLayout.visibility = View.GONE
-            }else{
+            } else {
                 tabLayout.visibility = View.VISIBLE
             }
-        }else  tabLayout.visibility = View.VISIBLE
+        } else tabLayout.visibility = View.VISIBLE
     }
 
     fun selectSection(index: Int) {
@@ -162,35 +165,15 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      * private function to modify the items size based on the screen width after adding new section
      */
     private fun editExistItemsSize() {
-        val params = LayoutParams(
+        var params = LayoutParams(
             getItemWidth(), 0
         )
-//        params.setMargins(0, 30, 0,
-//            30)
-
-        params.weight = 0.6f
+        params.weight = tabItemAlphaValue
         for (item in tabItems) {
-            if (item.type == CardBrand.visa) {
-                params.setMargins(0, 0, 0,
-                    0)
-                item.imageView?.layoutParams = params
-            }else{
-                params.setMargins(0, 30, 0,
-                    30)
-                item.imageView?.layoutParams = params
-            }
-
-        }
-    }
-
-    private fun editExistItemsSize_() {
-        val params = LayoutParams(
-            getItemWidth(), 0
-        )
-        params.setMargins(0, 0, 0, 0)
-
-        params.weight = 1.6f
-        for (item in tabItems) {
+            params.setMargins(
+                0, 40, 0,
+                20
+            )
             item.imageView?.layoutParams = params
         }
     }
@@ -431,4 +414,5 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             (ThemeManager.getValue("cardPhoneList.icon.otherSegmentSelected.alpha") as Double).toFloat()
         val MAX_ITEM_WIDTH = (ThemeManager.getValue("cardPhoneList.maxWidth") as Int).toFloat()
     }
+
 }
