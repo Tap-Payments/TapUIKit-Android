@@ -20,9 +20,9 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.OnCardSelectedActionListener
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
+import company.tap.tapuilibrary.uikit.model.CurrencyModel
 import kotlinx.android.synthetic.main.item_knet.view.*
 import kotlinx.android.synthetic.main.item_saved_card.view.*
-
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -143,6 +143,8 @@ class CardTypeAdapter(
     }
 
     private fun typeSavedCard(holder: ViewHolder, position: Int) {
+        holder.itemView.textViewCardDetails.setTextColor(Color.parseColor(ThemeManager.getValue("horizontalList.chips.savedCardChip.labelTextColor")))
+        holder.itemView.textViewCardDetails.textSize = ThemeManager.getFontSize("horizontalList.chips.savedCardChip.labelTextFont").toFloat()
         if (isShaking) {
             val animShake: Animation = AnimationUtils.loadAnimation(context_, R.anim.shake)
             holder.itemView.startAnimation(animShake)
@@ -241,9 +243,14 @@ class CardTypeAdapter(
 
     internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
+
     internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     internal class GoPayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
 
 }
+
+
+
+

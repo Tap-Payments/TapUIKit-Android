@@ -243,13 +243,7 @@ class CardTypeAdapter(
     }
 
 
-    internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        private var view: View = itemView
-        private var photo: CurrencyModel? = null
-
-
-    }
-
+    internal class SavedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     internal class SingleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 

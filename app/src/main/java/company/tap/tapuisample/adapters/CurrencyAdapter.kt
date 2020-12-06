@@ -25,7 +25,6 @@ import kotlinx.android.synthetic.main.item_currency_row.view.*
 import kotlinx.android.synthetic.main.item_saved_card.view.*
 
 /**
-
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
