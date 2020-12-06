@@ -1,4 +1,4 @@
-/*
+
 package company.tap.tapuilibrary.uikit.adapters
 
 import android.content.Context
@@ -24,12 +24,12 @@ import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import kotlinx.android.synthetic.main.item_currency_row.view.*
 import java.net.URL
 
-*/
+
 /**
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
- **//*
+ **/
 
 
 
@@ -109,11 +109,11 @@ class CurrencyAdapter(private val arraylistscurency: ArrayList<Currencies1>) :
         if (selectedPositions == position) {
        // holder.bindPhoto(photos[position])
         //if (company.tap.tapuilibrary.uikit.adapters.selectedPosition == position) {
-            */
+
 /**
              * Method to draw bordered view
              * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
-             *//*
+             */
 
 //border_currency_black.xml
 //            holder.itemView.setBackgroundResource(R.drawable.border_currency)
@@ -178,4 +178,3 @@ class CurrencyAdapter(private val arraylistscurency: ArrayList<Currencies1>) :
 
 
 
-*/

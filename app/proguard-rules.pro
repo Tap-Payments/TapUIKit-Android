@@ -23,4 +23,5 @@
 -keep class company.tap.tapuilibrary.uikit.adapters**{*;}
 -keep class company.tap.tapuilibrary.uikit.adapters.CardTypeAdapterUIKIT{*;}
 -keep class company.tap.tapuilibrary.uikit.adapters.CurrencyTypeAdapter{*;}
+-keep class company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter{*;}
 -keep class company.tap.tapuilibrary.uikit.fragment**{*;}
