@@ -281,13 +281,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         loginTabLayout.removeAllTabs()
         loginTabLayout.addTab(
             loginTabLayout.newTab().setCustomView(
-                getThemedTabText(dataSource?.emailTabText?: LocalizationManager.getValue("email", "Common"), true)
+                getThemedTabText(dataSource?.emailTabText ?: LocalizationManager.getValue("email", "Common"), true)
             )
         )
 
         loginTabLayout.addTab(
             loginTabLayout.newTab().setCustomView(
-                getThemedTabText(dataSource?.phoneTabText?: LocalizationManager.getValue("phone", "Common"), false)
+                getThemedTabText(dataSource?.phoneTabText ?: LocalizationManager.getValue("phone", "Common"), false)
             )
         )
 
