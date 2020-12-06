@@ -19,7 +19,6 @@ import company.tap.checkout.internal.dummygener.Currencies1
 import company.tap.checkout.internal.dummygener.Items1
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
 import company.tap.tapuilibrary.uikit.adapters.CurrencyTypeAdapter
 import company.tap.tapuilibrary.uikit.adapters.ItemAdapter
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
