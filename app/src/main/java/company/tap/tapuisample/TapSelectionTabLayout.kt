@@ -40,7 +40,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var indicatorHeight = MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
     private var unselectedAlphaLevel = UNSELECTED_ALPHA
     private var maxItemWidth = MetricsUtil.convertDpToPixel(MAX_ITEM_WIDTH, context).toInt()
-    private var tabLayout: CustomTabLayout
+    private var tabLayout: TabLayout
     private val itemsCount = ArrayList<Int>()
     private val tabsView = ArrayList<LinearLayout>()
     private val tabItems = ArrayList<SectionTabItem>()
