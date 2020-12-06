@@ -3,6 +3,7 @@ package company.tap.tapuisample.adapters
 import android.content.Context
 import android.graphics.Color
 import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,6 @@ import kotlinx.android.synthetic.main.item_currency_row.view.*
 import kotlinx.android.synthetic.main.item_saved_card.view.*
 
 /**
-
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
@@ -57,6 +57,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
         fun bindPhoto(photo: CurrencyModel) {
             this.photo = photo
             Picasso.with(view.context).load(photo.imageUrl).into(view.imageView_currency)
+            Log.d("imageUrl", photo.imageUrl)
             view.textView_currency.text = photo.currencyCode
 
             setTheme()

@@ -56,11 +56,11 @@
                 android:src="@drawable/mastercard"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/textView_carddetails"
+                app:layout_constraintRight_toLeftOf="@+id/textViewCardDetails"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <company.tap.tapuilibrary.uikit.atoms.TapTextView
-                android:id="@+id/textView_carddetails"
+                android:id="@+id/textViewCardDetails"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"

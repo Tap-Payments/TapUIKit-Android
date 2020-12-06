@@ -734,19 +734,31 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             )
         )
 //
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.mastercard
-//                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
-//            )
-//        )
+        items.add(
+            SectionTabItem(
+                resources.getDrawable(
+                    R.drawable.mastercard
+                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
+            )
+        )
 
         tabLayout.addSection(items)
     }
 
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun addMobileTab() {
+        /**
+         * if there is only one payment method we will set visibility gone for tablayout
+         * and set the payment method icon for inline input card
+         * and set visibility  for separator after chips gone
+         */
+//        tabLayout.visibility = View.GONE
+//        tapSeparatorViewLinear?.visibility = View.GONE
+//        tapCardInputView.setSingleCardInput(company.tap.cardinputwidget.CardBrand.Visa)
+
+
+        tabLayout.changeTabItemAlphaValue(0.7f)
+
         val items = ArrayList<SectionTabItem>()
 
         items.add(
@@ -756,7 +768,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
             )
         )
-//
+
         items.add(
             SectionTabItem(
                 resources.getDrawable(
@@ -765,7 +777,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             )
         )
 
-//        tabLayout.addSection(items)
+        tabLayout.addSection(items) //
     }
 
     private fun setupBrandDetection() {
