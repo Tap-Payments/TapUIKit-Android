@@ -15,6 +15,7 @@ import android.webkit.URLUtil
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import company.tap.checkout.internal.dummygener.SavedCards
 import company.tap.tapuilibrary.R
 
@@ -201,12 +202,16 @@ class CardTypeAdapterUIKIT(
         }
         for (i in 2 until arrayListCards.size) {
             val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_amex)
-            val url = URL(arrayListCards[i])
-            if ( URLUtil.isValidUrl(url.toString()) ) {
-                val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
+          //  val url = URL(arrayListCards[i])
+           // if ( URLUtil.isValidUrl(url.toString()) ) {
+             //   val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
 
-                imageViewCard.setImageBitmap(bmp)
-            }
+                Glide.with(holder.itemView.context)
+                    .load(arrayListsSaveCard[i])
+                    .into(imageViewCard)
+
+               // imageViewCard.setImageBitmap(bmp)
+           // }
         }
 
     }
@@ -260,11 +265,14 @@ class CardTypeAdapterUIKIT(
         }
         for (i in 2 until arrayListRedirect.size) {
             val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_knet)
-            val url = URL(arrayListRedirect[i])
+           /* val url = URL(arrayListRedirect[i])
             if ( URLUtil.isValidUrl(url.toString()) ) {
                 val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
                 imageViewCard.setImageBitmap(bmp)
-            }
+            }*/
+            Glide.with(holder.itemView.context)
+                .load(arrayListRedirect[i])
+                .into(imageViewCard)
         }
 
 
