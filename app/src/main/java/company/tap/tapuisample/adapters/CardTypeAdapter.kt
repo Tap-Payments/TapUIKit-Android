@@ -234,7 +234,7 @@ class CardTypeAdapter(
         (holder as SingleViewHolder)
         if (!isShaking) {
             holder.itemView.setOnClickListener {
-                onCardSelectedActionListener?.onCardSelectedAction(true)
+                onCardSelectedActionListener.onCardSelectedAction(true)
                 selectedPosition = position
                 notifyDataSetChanged()
             }

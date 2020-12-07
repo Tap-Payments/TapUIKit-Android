@@ -13,6 +13,7 @@ import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import com.squareup.picasso.Picasso
 import company.tap.tapcardvalidator_android.CardBrand
@@ -24,6 +25,7 @@ import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
 import kotlinx.android.synthetic.main.item_currency_row.view.*
 import java.lang.Integer.max
+import java.net.URL
 
 /**
  *
@@ -209,27 +211,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.setMargins(0, 30, 0, 30)
         params.weight = 0.8f
         val image = TapImageView(context, null)
-        image.setImageDrawable(item.selectedImage)
-        image.layoutParams = params
-        item.imageView = image
-        item.indicator = indicator
-        tabItems.add(item)
-        layout.addView(image)
-        layout.addView(indicator)
-        return layout
-    }
 
+        Glide.with(this)
+            .load(item.selectedImage)
+            .into(image)
 
-    private fun getSectionItem_(item: SectionTabItem): LinearLayout {
-        val layout = getSectionItemLayout()
-        val indicator = getTabSelectionIndicator()
-        val params = LayoutParams(
-            getItemWidth(), 0
-        )
-        params.setMargins(0, 0, 0, 0)
-        params.weight = 0.9f
-        val image = TapImageView(context, null)
-        image.setImageDrawable(item.selectedImage)
+//        image.setImageDrawable(item.selectedImage)
         image.layoutParams = params
         item.imageView = image
         item.indicator = indicator
