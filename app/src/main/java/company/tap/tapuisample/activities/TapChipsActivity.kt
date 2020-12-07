@@ -173,30 +173,30 @@ class TapChipsActivity : BaseActivity(),
 
     }
 
-    private fun addMobile() {
-        val items = ArrayList<SectionTabItem>()
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.zain_gray
-                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-            )
-        )
-        gopaySelectTab.addSection(items)
-    }
-
-
-    private  fun addCard(){
-        val items = ArrayList<SectionTabItem>()
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.zain_gray
-                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-            )
-        )
-        gopaySelectTab.addSection(items)
-    }
+//    private fun addMobile() {
+//        val items = ArrayList<SectionTabItem>()
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.zain_gray
+//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+//            )
+//        )
+//        gopaySelectTab.addSection(items)
+//    }
+//
+//
+//    private  fun addCard(){
+//        val items = ArrayList<SectionTabItem>()
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.zain_gray
+//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+//            )
+//        )
+//        gopaySelectTab.addSection(items)
+//    }
 
     override fun onChangeClicked() {
       //  AnimationEngine.applyTransition(bottomSheet, SLIDE)

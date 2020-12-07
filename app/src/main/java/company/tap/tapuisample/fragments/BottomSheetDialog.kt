@@ -718,8 +718,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun addCardsTab() {
 
-        val items = ArrayList<SectionTabItem>()
+        tabLayout.changeTabItemAlphaValue(0.9f)
 
+        val items = ArrayList<SectionTabItem>()
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
+            )
+        )
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
+            )
+        )
 //        items.add(
 //            SectionTabItem(
 //                resources.getDrawable(
@@ -728,35 +739,35 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //            )
 //        )
 
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.visa
-                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.visa
-                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.visa
-                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-            )
-        )
-
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.mastercard
-                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
-            )
-        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.visa
+//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.visa
+//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.visa
+//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+//            )
+//        )
+//
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.mastercard
+//                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
+//            )
+//        )
 
         tabLayout.addSection(items)
     }
@@ -773,33 +784,41 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //        tapCardInputView.setSingleCardInput(company.tap.cardinputwidget.CardBrand.Visa)
 
 
-        tabLayout.changeTabItemAlphaValue(0.7f)
+        tabLayout.changeTabItemAlphaValue(0.9f)
 
 
         val items = ArrayList<SectionTabItem>()
 
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
+            )
+        )
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
+            )
+        )
 
-        val thread = Thread {
-            try {
-                //Your code goes here
-
-                val url = URL("https://img.icons8.com/color/2x/visa.png")
-                items.add(
-                    SectionTabItem(
-                        resources.getDrawable(
-                            R.drawable.ooredoo
-                        ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
-                    )
-                )
-
-                print("errorrrr" + "Doneee")
-
-            } catch (e: java.lang.Exception) {
-                print("errorrrr" + e.printStackTrace())
-            }
-        }
-
-        thread.start()
+//        val thread = Thread {
+//            try {
+//                //Your code goes here
+//
+//                val url = URL("https://img.icons8.com/color/2x/visa.png")
+//                items.add(
+//                    SectionTabItem(
+//                        "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
+//                    )
+//                )
+//
+//                print("errorrrr" + "Doneee")
+//
+//            } catch (e: java.lang.Exception) {
+//                print("errorrrr" + e.printStackTrace())
+//            }
+//        }
+//
+//        thread.start()
 
 
 //        items.add(

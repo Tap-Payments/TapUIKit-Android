@@ -85,46 +85,46 @@ class SectionsTabLayout : AppCompatActivity(),
 
     private fun getCardList(): ArrayList<SectionTabItem>{
         val items = ArrayList<SectionTabItem>()
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.ic_visa
-                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.mastercard
-                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.amex
-                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
-            )
-        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.ic_visa
+//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.mastercard
+//                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.amex
+//                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
+//            )
+//        )
         return items
     }
 
     private fun getMobileList(): ArrayList<SectionTabItem>{
         val items = ArrayList<SectionTabItem>()
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.zain_gray
-                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.ooredoo
-                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
-            )
-        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.zain_gray
+//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.ooredoo
+//                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
+//            )
+//        )
         return items
     }
 
@@ -136,16 +136,16 @@ class SectionsTabLayout : AppCompatActivity(),
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(true)
         builder.setTitle("Select Item")
-        builder.setItems(items) { _, position ->
-            tabLayout.selectTab(CardBrand.fromString(items[position]), true)
-            alert?.hide()
-        }
+//        builder.setItems(items) { _, position ->
+//            tabLayout.selectTab(CardBrand.fromString(items[position]), true)
+//            alert?.hide()
+//        }
         alert = builder.create()
         alert.show()
     }
 
     fun resetSelection(view: View) {
-        tabLayout.resetBehaviour()
+//        tabLayout.resetBehaviour()
 
     }
 
@@ -167,10 +167,10 @@ class SectionsTabLayout : AppCompatActivity(),
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(true)
         builder.setTitle("Select Section")
-        builder.setItems(items) { _, position ->
-            tabLayout.selectSection(position)
-            alert?.hide()
-        }
+//        builder.setItems(items) { _, position ->
+//            tabLayout.selectSection(position)
+//            alert?.hide()
+//        }
         alert = builder.create()
         alert.show()
     }
