@@ -99,7 +99,7 @@ class CardTypeAdapter(
     @SuppressLint("ResourceAsColor")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        println("position printed: $position")
+       // println("position printed: $position")
 
         when {
             /**
