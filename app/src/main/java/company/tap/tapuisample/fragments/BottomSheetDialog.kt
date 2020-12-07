@@ -194,7 +194,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         super.onViewCreated(view, savedInstanceState)
         switch_pay_demo.payButton.setButtonDataSource(
             false, context?.let { LocalizationManager.getLocale(it).language },
-            "Pay",
+            LocalizationManager.getValue("pay", "ActionButton"),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
         )
@@ -957,7 +957,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 switch_pay_demo.payButton.setButtonDataSource(
                     true,
                     company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-                    "Pay",
+                    LocalizationManager.getValue("pay", "ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
                 )
@@ -991,7 +991,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 switch_pay_demo.payButton.setButtonDataSource(
                     false,
                     company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-                    "Pay",
+                    LocalizationManager.getValue("pay", "ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                 )
@@ -1056,7 +1056,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             switch_pay_demo.payButton.setButtonDataSource(
                 true,
                 company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-                "Pay",
+                LocalizationManager.getValue("pay", "ActionButton"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
             )
@@ -1067,7 +1067,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             switch_pay_demo.payButton.setButtonDataSource(
                 false,
                 company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-                "Pay",
+                LocalizationManager.getValue("pay", "ActionButton"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
             )
