@@ -5,11 +5,7 @@ import android.content.Context
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Color.parseColor
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.os.Build
-import android.util.Log
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,9 +14,7 @@ import android.view.animation.AnimationUtils
 import android.webkit.URLUtil
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
-import company.tap.cardbusinesskit.testmodels.Payment_methods
 import company.tap.checkout.internal.dummygener.SavedCards
 import company.tap.tapuilibrary.R
 
@@ -28,8 +22,6 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.OnCardSelectedActionListener
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
-import company.tap.tapuilibrary.uikit.ktx.setImage
-import kotlinx.android.synthetic.main.item_gopay.view.*
 import kotlinx.android.synthetic.main.item_knet.view.*
 import kotlinx.android.synthetic.main.item_save_cards.view.*
 import java.net.URL
@@ -150,7 +142,7 @@ class CardTypeAdapterUIKIT(
                 if (!isShaking) {
                     holder.itemView.setOnClickListener {
                         selectedPosition = position
-                        onCardSelectedActionListener?.onCardSelectedAction(false)
+                        onCardSelectedActionListener?.onCardSelectedAction(false,TYPE_GO_PAY.toString())
                         notifyDataSetChanged()
                     }
                 }
@@ -261,7 +253,7 @@ class CardTypeAdapterUIKIT(
         (holder as SingleViewHolder)
         if (!isShaking) {
             holder.itemView.setOnClickListener {
-                onCardSelectedActionListener?.onCardSelectedAction(true)
+                onCardSelectedActionListener?.onCardSelectedAction(true, arrayListRedirect.toString())
                 selectedPosition = position
                 notifyDataSetChanged()
             }

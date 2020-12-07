@@ -15,7 +15,6 @@ import company.tap.tapuilibrary.uikit.model.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
-import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
