@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
+import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
@@ -204,7 +205,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.setMargins(0, 30, 0, 30)
         params.weight = 0.8f
         val image = TapImageView(context, null)
-        image.setImageDrawable(item.selectedImage)
+        Glide.with(this)
+            .load(item.selectedImageURL)
+            .into(image)
+//        image.setImageDrawable(item.selectedImage)
         image.layoutParams = params
         item.imageView = image
         item.indicator = indicator
@@ -224,7 +228,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.setMargins(0, 0, 0, 0)
         params.weight = 0.9f
         val image = TapImageView(context, null)
-        image.setImageDrawable(item.selectedImage)
+//        image.setImageDrawable(item.selectedImage)
+        Glide.with(this)
+            .load(item.selectedImageURL)
+            .into(image)
         image.layoutParams = params
         item.imageView = image
         item.indicator = indicator
@@ -353,10 +360,22 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun selectValidType(type: CardBrand) {
         tabItems.forEach {
             if (it.type != type) {
-                it.imageView?.setImageDrawable(it.unSelectedImage)
+//                it.imageView?.setImageDrawable(it.unSelectedImage)
+
+                it.imageView?.let { it1 ->
+                    Glide.with(this)
+                        .load(it.unSelectedImage)
+                        .into(it1)
+                }
+
                 it.indicator?.visibility = View.INVISIBLE
             } else {
-                it.imageView?.setImageDrawable(it.selectedImage)
+//                it.imageView?.setImageDrawable(it.selectedImage)
+                it.imageView?.let { it1 ->
+                    Glide.with(this)
+                        .load(it.selectedImageURL)
+                        .into(it1)
+                }
                 it.indicator?.visibility = View.VISIBLE
 //                it.indicator?.setBackgroundColor(indicatorColor)
                 it.indicator?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.vibrantGreen")))
@@ -372,7 +391,13 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
-            it.imageView?.setImageDrawable(it.selectedImage)
+
+            it.imageView?.let { it1 ->
+                Glide.with(this)
+                    .load(it.selectedImageURL)
+                    .into(it1)
+            }
+//            it.imageView?.setImageDrawable(it.selectedImageURL)
             it.indicator?.visibility = View.INVISIBLE
         }
     }
