@@ -47,9 +47,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_basic_6dp"
+                android:layout_marginEnd="@dimen/margin_basic_6dp"
                 android:fontFamily="sans-serif-light"
                 android:textColor="#1381f9"
                 android:textSize="12sp"
+                android:textDirection="ltr"
                 tools:text="mmmmmm"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -84,13 +86,14 @@
         android:windowSoftInputMode="adjustPan"
         android:layout_gravity="center"
         android:gravity="center"
+        android:paddingEnd="@dimen/margin_basic_20dp"
+        android:paddingStart="@dimen/margin_basic_20dp"
+        android:background="@drawable/blur_background"
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_basic_20dp"
-            android:layout_marginEnd="@dimen/margin_basic_20dp">
+            android:layout_height="wrap_content">
 
 
             <company.tap.tapuilibrary.uikit.views.TapOTPView
@@ -159,7 +162,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="22dp"
+            android:layout_marginTop="@dimen/margin_basic_20dp"
+            android:layout_marginBottom="@dimen/margin_basic_20dp"
             android:orientation="horizontal">
 
 
@@ -231,11 +235,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.35"
-                android:gravity="end"
                 android:textColor="#007aff"
                 android:textSize="16sp"
+                android:textDirection="ltr"
                 android:textStyle="normal"
                 android:layout_marginEnd="4dp"
+                android:layout_marginStart="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -247,7 +252,8 @@
             android:id="@+id/otpViewActionButton"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_margin="20dp"
+            android:layout_marginTop="@dimen/margin_basic_20dp"
+            android:layout_marginBottom="@dimen/margin_basic_20dp"
             android:text="click" />
     </LinearLayout>
 </LinearLayout>

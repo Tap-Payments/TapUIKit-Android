@@ -181,11 +181,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 TapFont.RobotoLight
             )
         )
-        timerText.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
-            )
-        )
+
 
         if (LocalizationManager.getLocale(context).language == "en") {
 
@@ -205,6 +201,11 @@ class OTPView : LinearLayout, OpenOTPInterface {
                     TapFont.RobotoRegular
                 )
             )
+//            timerText.typeface = Typeface.createFromAsset(
+//                context?.assets, TapFont.tapFontType(
+//                    TapFont.RobotoLight
+//                )
+//            )
         } else {
 
 
@@ -223,6 +224,11 @@ class OTPView : LinearLayout, OpenOTPInterface {
                     TapFont.TajawalRegular
                 )
             )
+//            timerText.typeface = Typeface.createFromAsset(
+//                context?.assets, TapFont.tapFontType(
+//                    TapFont.RobotoLight
+//                )
+//            )
         }
     }
 
@@ -274,6 +280,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
     private fun prepareTextViews() {
         otpSentText.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
         otpSentTextNormalPay.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
+        changePhone.text = LocalizationManager.getValue("change", "Common")
     }
 
     @SuppressLint("SetTextI18n")
