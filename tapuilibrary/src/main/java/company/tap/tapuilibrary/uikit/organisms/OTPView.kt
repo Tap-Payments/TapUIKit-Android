@@ -182,10 +182,14 @@ class OTPView : LinearLayout, OpenOTPInterface {
             )
         )
 
+        timerText.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                    TapFont.RobotoLight
+                )
+            )
+
 
         if (LocalizationManager.getLocale(context).language == "en") {
-
-
             otpSentText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
                     TapFont.RobotoLight
@@ -201,14 +205,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
                     TapFont.RobotoRegular
                 )
             )
-//            timerText.typeface = Typeface.createFromAsset(
-//                context?.assets, TapFont.tapFontType(
-//                    TapFont.RobotoLight
-//                )
-//            )
+
         } else {
-
-
             otpSentText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
                     TapFont.TajawalLight
@@ -224,11 +222,6 @@ class OTPView : LinearLayout, OpenOTPInterface {
                     TapFont.TajawalRegular
                 )
             )
-//            timerText.typeface = Typeface.createFromAsset(
-//                context?.assets, TapFont.tapFontType(
-//                    TapFont.RobotoLight
-//                )
-//            )
         }
     }
 
@@ -296,7 +289,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
     private fun initOTPConfirmationButton() {
         otpViewActionButton.setButtonDataSource(
             false, context?.let { LocalizationManager.getLocale(it).language },
-            "Confirm",
+            LocalizationManager.getValue(
+                "confirm",
+                "ActionButton"
+            ),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
         )
@@ -345,7 +341,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
                     otpViewActionButton.isEnabled = false
                     otpViewActionButton.setButtonDataSource(
                         false, context?.let { LocalizationManager.getLocale(it).language },
-                        "Confirm",
+                        LocalizationManager.getValue(
+                            "confirm",
+                            "ActionButton"
+                        ),
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                     )
@@ -353,24 +352,23 @@ class OTPView : LinearLayout, OpenOTPInterface {
                     otpViewActionButton.isEnabled = true
                     otpViewActionButton.setButtonDataSource(
                         true, context?.let { LocalizationManager.getLocale(it).language },
-                        "Confirm",
+                        LocalizationManager.getValue(
+                            "confirm",
+                            "ActionButton"
+                        ),
                         Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
                         Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
                     )
                 }
             }
-
             override fun afterTextChanged(editable: Editable) {
             }
         })
 
 
-
         otpViewActionButton.setOnClickListener {
             if (otpViewActionButton.isEnabled) {
-                isValidOTP =
-                    otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString() + otpViewInput2.text.toString()) == true
-
+                isValidOTP = otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString() + otpViewInput2.text.toString()) ?: false
                 if (!isValidOTP) {
                     otpHintText.visibility = View.VISIBLE
                     otpHintText.text = (LocalizationManager.getValue(

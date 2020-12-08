@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
+import android.view.View
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
 import androidx.core.graphics.drawable.DrawableCompat
@@ -21,6 +22,8 @@ import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.atoms.TextInputEditText
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
+import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
+import company.tap.tapuilibrary.uikit.interfaces.PasswordConfirmationInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
@@ -42,6 +45,10 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     val passwordEmailText by lazy { findViewById<TapTextView>(R.id.passwordEmailText) }
     val rootView by lazy { findViewById<LinearLayout>(R.id.root_view) }
     val changeEmailCardView by lazy { findViewById<CardView>(R.id.changeEmailCardView) }
+    private var passwordConfirmationInterface: PasswordConfirmationInterface? = null
+    var isValidPassword: Boolean = false
+
+
 
     private var loginInterface: GoPayLoginInterface? = null
 
@@ -60,8 +67,10 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         } else {
             rootView.setBackgroundResource(R.drawable.ic_blurbackground)
         }
+    }
 
-
+    fun setOtpButtonConfirmationInterface(passwordConfirmationInterface: PasswordConfirmationInterface) {
+        this.passwordConfirmationInterface = passwordConfirmationInterface
     }
 
     fun setPasswordValidation() {
@@ -89,7 +98,14 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     private fun initButton() {
         changeButtonStatus(false)
         signInButton.setOnClickListener {
-            textInputLayout.error = "Incorrect Password"
+            if (isEnabled) {
+                isValidPassword =  passwordConfirmationInterface?.onOtpButtonConfirmationClick(passwordTextInput.text.toString()) ?: false
+                if (!isValidPassword) textInputLayout.error = (LocalizationManager.getValue(
+                    "GoPayLogin",
+                    "Hints",
+                    "password"
+                ))
+            }
         }
     }
 
@@ -114,16 +130,14 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
                 context?.let { LocalizationManager.getLocale(it).language },
                 LocalizationManager.getValue("signin", "ActionButton"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-            )
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
         } else {
             signInButton.setButtonDataSource(
                 false,
                 context?.let { LocalizationManager.getLocale(it).language },
                 LocalizationManager.getValue("signin", "ActionButton"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
-            )
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
         }
     }
 
@@ -170,21 +184,18 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
 
-    fun initTheme() {
+    private fun initTheme() {
         passwordTextInput.setErrorColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         passwordTextInput.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.textColor")))
         passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.placeHolderColor")))
         passwordTextInput.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
         textInputLayout.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
-//        changeEmail.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         changeEmailCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
-
         val passwordEmailTextTextTheme = TextViewTheme()
         passwordEmailTextTextTheme.textColor = Color.parseColor(ThemeManager.getValue("goPay.passwordField.emailTextColor"))
         passwordEmailTextTextTheme.textSize = ThemeManager.getFontSize("goPay.passwordField.emailTextFont")
         passwordEmailText.setTheme(passwordEmailTextTextTheme)
         passwordEmailText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.emailTextColor")))
-
         val changeEmailTextTextTheme = TextViewTheme()
         changeEmailTextTextTheme.textColor = (Color.parseColor(ThemeManager.getValue("goPay.passwordField.changeTextColor")))
         changeEmailTextTextTheme.textSize = ThemeManager.getFontSize("goPay.passwordField.changeTextFont")
