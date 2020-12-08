@@ -2,7 +2,6 @@ package company.tap.tapuilibrary.uikit.adapters
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Color.parseColor
 import android.os.Build
@@ -11,10 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.webkit.URLUtil
 import android.widget.ImageView
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import company.tap.checkout.internal.dummygener.GoPaySavedCards
 import company.tap.tapuilibrary.R
 
@@ -199,14 +198,11 @@ class goPayCardAdapterUIKIT(
                 notifyDataSetChanged()
             }
         }
-        for (i in 2 until arrayListCards.size) {
+        for (i in 0 until arrayListCards.size) {
             val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_amex)
-            val url = URL(arrayListCards[i])
-            if ( URLUtil.isValidUrl(url.toString()) ) {
-                val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
-
-                imageViewCard.setImageBitmap(bmp)
-            }
+            Glide.with(holder.itemView.context)
+                    .load(arrayListRedirect[i])
+                    .into(imageViewCard)
         }
 
     }
@@ -258,13 +254,12 @@ class goPayCardAdapterUIKIT(
                 notifyDataSetChanged()
             }
         }
-        for (i in 2 until arrayListRedirect.size) {
+        for (i in 0 until arrayListRedirect.size) {
             val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_knet)
-            val url = URL(arrayListRedirect[i])
-            if ( URLUtil.isValidUrl(url.toString()) ) {
-                val bmp = BitmapFactory.decodeStream(url.openConnection().getInputStream())
-                imageViewCard.setImageBitmap(bmp)
-            }
+            Glide.with(holder.itemView.context)
+                    .load(arrayListRedirect[i])
+                    .into(imageViewCard)
+
         }
 
 

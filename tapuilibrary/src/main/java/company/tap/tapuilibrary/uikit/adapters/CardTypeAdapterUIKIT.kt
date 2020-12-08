@@ -263,7 +263,7 @@ class CardTypeAdapterUIKIT(
                 notifyDataSetChanged()
             }
         }
-        for (i in 2 until arrayListRedirect.size) {
+        for (i in 2 until arrayListRedirect.size-1) {
             val imageViewCard = holder.itemView.findViewById<ImageView>(R.id.imageView_knet)
            /* val url = URL(arrayListRedirect[i])
             if ( URLUtil.isValidUrl(url.toString()) ) {
