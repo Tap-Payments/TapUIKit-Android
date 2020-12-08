@@ -88,23 +88,9 @@ class MainActivity : BaseActivity(),
 
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
-
-//        Log.d("LocalizationManager" , ""+ LocalizationManager.getLocale(context))
-//        if (LocalizationManager.getLocale(context) == Locale("en")) {
-//            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.robotoRegular))
-//            fontChanger.replaceFonts((findViewById(android.R.id.content)))
-//        }else{
-//            fontChanger = FontChanger(this.assets, TapFont.tapFontType(TapFont.tajawalMedium))
-//            fontChanger.replaceFonts((findViewById(android.R.id.content)))
-//        }
-       // Blurry.with(context).radius(25).sampling(2).onto()
     }
 
     fun openBottomSheet(view: View) {
-//        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
-//        val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
-//        linearMain.background = BitmapDrawable(resources, blurredBitmap)
-
         val modalBottomSheet = BottomSheetDialog()
         modalBottomSheet.arguments = getArguments()
         modalBottomSheet.show(supportFragmentManager, BottomSheetDialog.TAG)

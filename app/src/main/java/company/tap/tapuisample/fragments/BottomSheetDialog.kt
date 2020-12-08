@@ -65,13 +65,6 @@ import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
-import java.net.URL
-
-//    private var tapPaymentShowHideClearImage : TapPaymentShowHideClearImage? = null
-
-
-// change otp current underline color
-// change undeline color for input from green to blue
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -81,8 +74,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     TapSelectionTabLayoutInterface, GoPayLoginInterface, OpenOTPInterface,
     OnCardSelectedActionListener, TapActionButtonInterface, TapPaymentShowHideClearImage,
     WebViewContract, OtpButtonConfirmationInterface {
-
-//    val outerLayout by lazy { view?.findViewById<ConstraintLayout>(R.id.outer_layout) }
 
     private lateinit var selectedCurrency: TapTextView
     private lateinit var currentCurrency: TapTextView
@@ -98,24 +89,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private lateinit var amountSectionView: TapAmountSectionView
     private lateinit var businessIcon: TapImageView
     private lateinit var businessPlaceholder: TapTextView
-    private lateinit var tabLayout: TapSelectionTabLayout
-    private var imageUrl: String? = null
-
-    //    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
     var fontChanger: FontChanger? = null
     private var selectedTab = 0
+
+    private lateinit var tabLayout: TapSelectionTabLayout
     private lateinit var tapCardInputView: InlineCardInput
     private lateinit var tapMobileInputView: TapMobilePaymentView
+
     private lateinit var paymentLayout: LinearLayout
     private lateinit var nfcScanBtn: TapButton
     private lateinit var switchDemo: TapCardSwitch
     private lateinit var mainSwitch: MainSwitch
     private lateinit var payButton: TabAnimatedActionButton
-
-
     private var switch_save_mobile: TapSwitch? = null
-
-
     private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
     private var switchMerchantCheckout: TapSwitch? = null
@@ -137,7 +123,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var tapSeparatorViewLinear: LinearLayout? = null
     private val cardFragment = CardScannerFragment()
     private val nfcFragment = NFCSampleFragment()
-    private val exampleFragment = ExampleFragment()
     private var cardFragmentadded: Boolean = false
     private var delImageView1: ImageView? = null
     private var delImageView2: ImageView? = null
@@ -162,11 +147,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         otpView?.setOtpButtonConfirmationInterface(this)
         initGoPay(view)
         activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-
-
         return view.rootView
     }
-
 
     fun initGoPay(view: View) {
         goPayLoginInput = view.findViewById(R.id.goPayLoginInput)
@@ -175,8 +157,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         goPayLoginInput?.setLoginInterface(this)
         goPayLoginInput?.setOpenOTPInterface(this)
         goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
-//        goPayPasswordInput?.rootView?.setBackgroundColor(Color.parseColor("#c7f9f9f9"))
-
     }
 
     override fun onAttach(context: Context) {
@@ -320,46 +300,31 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
         tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
-        tapCardInputView?.clearFocus()
-
+        tapCardInputView.clearFocus()
         clearView?.setOnClickListener {
-            tabLayout?.resetBehaviour()
+            tabLayout.resetBehaviour()
             tapMobileInputView.clearNumber()
-            /* tapCardInputView.setCardNumber("")
-             tapCardInputView.setCvcCode("")*/
             tapCardInputView.clear()
             alert_text.visibility = View.GONE
-//            nfcButton?.visibility = View.VISIBLE
-//            cardScannerBtn?.visibility = View.VISIBLE
             clearView?.visibility = View.GONE
-
             switchSaveDemo?.visibility = View.GONE
             switchLayout?.visibility = View.GONE
             switchMerchantCheckout?.visibility = View.GONE
-            //  switchMerchantCheckout?.isChecked = false
-            //  switchgoPayCheckout?.isChecked = false
             switchgoPayCheckout?.visibility = View.GONE
             savegoPay?.visibility = View.GONE
             alertgoPay?.visibility = View.GONE
             separatorView?.visibility = View.GONE
-
-
         }
-        // alertMessage?.visibility = View.GONE
-//        nfcButton?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         nfcButton?.setOnClickListener {
             tabLayout?.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
             mainChipGroup?.visibility = View.GONE
-            // nfcScanBtn.visibility= View.GONE
             mainChipGroup?.visibility = View.GONE
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE
             mainSwitch.visibility = View.GONE
-//            cardSwitch.visibility = View.GONE
             switch_pay_demo.payButton.visibility = View.GONE
-//            actionButton.visibility = View.GONE
             itemCount.text = "CLOSE"
             childFragmentManager
                 .beginTransaction()
@@ -427,13 +392,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     private fun tabLayoutInit(view: View) {
         tabLayout = view.findViewById(R.id.sections_tablayout)
-//        tabLayout.visibility =View.GONE
-        //    nfcScanBtn = view.findViewById(R.id.nfc_scan)
-        val nfcFragment = NFCFragment()
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(context, null)
-
-
         if (context != null) {
             tapCardInputView = context?.let { InlineCardInput(it) }!!
             println("mobile view $tapCardInputView")
@@ -447,7 +407,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 .commit()
             cardFragmentadded = true
         }
-
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
     }
@@ -587,12 +546,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 separatorــ.setBackgroundColor(Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor")))
                 paymentLayout.removeAllViews()
                 paymentLayout.addView(tapCardInputView)
-//                switch_pay_demo.payButton.visibility = View.VISIBLE
-//                dialog?.window?.attributes?.windowAnimations = R.anim.fade_in
-//                switch_pay_demo.payButton.visibility =View.VISIBLE
-//                switchLayout?.visibility = View.VISIBLE
-//                mainSwitch.visibility = View.VISIBLE
-//                switch_pay_demo.visibility = View.VISIBLE
                 selectedCurrency.text = "SR1000,000.000"
                 itemCount.text = getString(R.string.items)
 
@@ -664,7 +617,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     override fun onTabSelected(position: Int?) {
         position?.let {
             selectedTab = it
-//            AnimationEngine.applyTransition(paymentLayout)
             paymentLayout.removeAllViews()
             if (position == 0) {
                 paymentLayout.addView(tapCardInputView)
@@ -686,15 +638,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         before: Int,
                         count: Int
                     ) {
-//                        showHideClearImage(true)
-//                        tapMobileInputView.
-
                     }
 
                     override fun afterTextChanged(mobileText: Editable) {
                         if (mobileText.length > 2) {
                             clearView?.visibility = View.VISIBLE
-//                            showHideClearImage(true)
                         }
                         if (mobileText.length == 12) {
                             mobileNumberEditText?.text = mobileText
@@ -721,53 +669,30 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tabLayout.changeTabItemAlphaValue(0.9f)
 
         val items = ArrayList<SectionTabItem>()
-        items.add(
-            SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
-            )
-        )
-        items.add(
-            SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
-            )
-        )
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.amex
-//                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
-//            )
-//        )
 
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.visa
-//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-//            )
-//        )
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.visa
-//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-//            )
-//        )
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.visa
-//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-//            )
-//        )
-//
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.mastercard
-//                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
-//            )
-//        )
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
+            )
+        )
+
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
+            )
+        )
+
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
+            )
+        )
 
         tabLayout.addSection(items)
     }
@@ -791,69 +716,43 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         items.add(
             SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
+            )
+        )
+
+
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
             )
         )
         items.add(
             SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
             )
         )
-
-//        val thread = Thread {
-//            try {
-//                //Your code goes here
-//
-//                val url = URL("https://img.icons8.com/color/2x/visa.png")
-//                items.add(
-//                    SectionTabItem(
-//                        "https://img.icons8.com/color/2x/visa.png", "https://img.icons8.com/color/2x/visa.png" , CardBrand.ooredoo
-//                    )
-//                )
-//
-//                print("errorrrr" + "Doneee")
-//
-//            } catch (e: java.lang.Exception) {
-//                print("errorrrr" + e.printStackTrace())
-//            }
-//        }
-//
-//        thread.start()
-
-
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.ooredoo
-//                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
-//            )
-//        )
-//
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.zain_gray
-//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-//            )
-//        )
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.zain_gray
-//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-//            )
-//        )
-//        items.add(
-//            SectionTabItem(
-//                resources.getDrawable(
-//                    R.drawable.zain_gray
-//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-//            )
-//        )
-
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
+            )
+        )
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
+            )
+        )
         tabLayout.addSection(items) //
 
-        Log.d("itemssize", items.size.toString())
     }
 
     private fun setupBrandDetection() {
@@ -864,7 +763,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     tabLayout.resetBehaviour()
                 val card = CardValidator.validate(s.toString())
                 if (card.cardBrand != null) {
-                    //linearLayoutPay?.visibility = View.GONE
                     activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
                     clearView?.visibility = View.VISIBLE
                     tabLayout.selectTab(
@@ -886,21 +784,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_save_text)))
                         mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.mobile_save_text)))
                         alertMessage?.visibility = View.VISIBLE
-//                        alertMessage?.setText("Card number is invalid")
                         alertMessage?.text = (LocalizationManager.getValue(
                             "Error",
                             "Hints",
                             "wrongCardNumber"
                         ))
-
-//                        "HorizontalHeaders": {
-//                            "GatewayHeader":{
-//                            "leftTitle": "SELECT",
-//                            "rightTitle": "EDIT"
-//                        }
                         alert_text.visibility = View.VISIBLE
-//                        alert_text.setBackgroundColor(Color.parseColor("#19e12131"))
-//                        alertMessage?.setTextColor(Color.parseColor("#e12131"))
                     }
                     if (s?.trim()?.length == 19 && card.validationState == CardValidationState.valid) {
                         /**
@@ -908,30 +797,29 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                          */
                         switch_pay_demo.payButton.isActivated
                         switchSaveDemo?.visibility = View.VISIBLE
-//                        switchLayout?.visibility = View.VISIBLE
                         switchMerchantCheckout?.visibility = View.VISIBLE
-//                        switchMerchantCheckout?.isChecked = true
-//                        switchgoPayCheckout?.isChecked = true
-//                        switchSaveDemo?.isChecked = true
                         cardSwitch.visibility = View.VISIBLE
                         mainSwitch.visibility = View.VISIBLE
-//                        switchgoPayCheckout?.visibility = View.VISIBLE
-//                        savegoPay?.visibility = View.VISIBLE
                         alertgoPay?.visibility = View.VISIBLE
                         separatorView?.visibility = View.VISIBLE
                         switchDemo.setSwitchDataSource(getSwitchDataSource(getString(R.string.savecard_text)))
                         mainSwitch.setSwitchDataSource(getSwitchDataSource(getString(R.string.savecard_text)))
                         alertMessage?.visibility = View.VISIBLE
                         if (card.validationState == CardValidationState.invalid) {
-                            alertMessage?.setText("Card number is invalid")
+                            alertMessage?.text = (LocalizationManager.getValue(
+                                "Error",
+                                "Hints",
+                                "wrongCardNumber"
+                            ))
                             alert_text.visibility = View.VISIBLE
-//                            alert_text.setBackgroundColor(Color.parseColor("#19e12131"))
-//                            alertMessage?.setTextColor(Color.parseColor("#e12131"))
                         } else {
-                            alertMessage?.setText("Expiry date & CVV number are missing.")
+                            alertMessage?.text = (LocalizationManager.getValue(
+                                "Warning",
+                                "Hints",
+                                "missingExpiryCVV"
+                            ))
+//                            alertMessage?.setText("Expiry date & CVV number are missing.")
                             alert_text.visibility = View.VISIBLE
-//                            alert_text.setBackgroundColor(Color.parseColor("#4cffbe60"))
-//                            alertMessage?.setTextColor(Color.parseColor("#ffffff"))
                         }
                     }
                 }
@@ -964,6 +852,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     tabLayout.resetBehaviour()
                 } else {
                     alertMessage?.setText("CVV number are missing.")
+                    alertMessage?.text = (LocalizationManager.getValue(
+                        "Warning",
+                        "Hints",
+                        "missingCVV"
+                    ))
                     alert_text.visibility = View.VISIBLE
                     alert_text.setBackgroundColor(Color.parseColor("#4cffbe60"))
                     alertMessage?.setTextColor(Color.parseColor("#ea611c"))

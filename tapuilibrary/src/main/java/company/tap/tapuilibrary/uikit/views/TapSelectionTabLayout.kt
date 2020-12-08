@@ -137,7 +137,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             sectionLayout.addView(getSectionItem(item))
             editExistItemsSize()
         }
-
         if (tabsView.size != 0)
             sectionLayout.alpha = unselectedAlphaLevel
         tabsView.add(sectionLayout)
@@ -205,30 +204,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.setMargins(0, 30, 0, 30)
         params.weight = 0.8f
         val image = TapImageView(context, null)
-        Glide.with(this)
-            .load(item.selectedImageURL)
-            .into(image)
-//        image.setImageDrawable(item.selectedImage)
-        image.layoutParams = params
-        item.imageView = image
-        item.indicator = indicator
-        tabItems.add(item)
-        layout.addView(image)
-        layout.addView(indicator)
-        return layout
-    }
-
-
-    private fun getSectionItem_(item: SectionTabItem): LinearLayout {
-        val layout = getSectionItemLayout()
-        val indicator = getTabSelectionIndicator()
-        val params = LayoutParams(
-            getItemWidth(), 0
-        )
-        params.setMargins(0, 0, 0, 0)
-        params.weight = 0.9f
-        val image = TapImageView(context, null)
-//        image.setImageDrawable(item.selectedImage)
         Glide.with(this)
             .load(item.selectedImageURL)
             .into(image)
@@ -360,8 +335,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun selectValidType(type: CardBrand) {
         tabItems.forEach {
             if (it.type != type) {
-//                it.imageView?.setImageDrawable(it.unSelectedImage)
-
                 it.imageView?.let { it1 ->
                     Glide.with(this)
                         .load(it.unSelectedImage)
@@ -370,14 +343,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 
                 it.indicator?.visibility = View.INVISIBLE
             } else {
-//                it.imageView?.setImageDrawable(it.selectedImage)
                 it.imageView?.let { it1 ->
                     Glide.with(this)
                         .load(it.selectedImageURL)
                         .into(it1)
                 }
                 it.indicator?.visibility = View.VISIBLE
-//                it.indicator?.setBackgroundColor(indicatorColor)
                 it.indicator?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.vibrantGreen")))
             }
         }

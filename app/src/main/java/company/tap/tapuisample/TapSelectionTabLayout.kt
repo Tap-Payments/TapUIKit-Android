@@ -49,6 +49,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var touchableList = ArrayList<View>()
     private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null
     private var tabItemAlphaValue = 0.7f
+    private var tabItemMarginTopValue = 30
+    private var tabItemMarginBottomValue = 20
 
     /**
      * Initiating the tablayout with default theme and behaviour
@@ -64,6 +66,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 
     fun changeTabItemAlphaValue(tabItemAlphaValue : Float){
         this.tabItemAlphaValue = tabItemAlphaValue
+    }
+    fun changeTabItemMarginTopValue(tabItemMarginTopValue : Int){
+        this.tabItemMarginTopValue = tabItemMarginTopValue
+    }
+    fun changeTabItemMarginBottomValue(tabItemMarginBottomValue : Int){
+        this.tabItemMarginBottomValue = tabItemMarginBottomValue
     }
     /**
      * Setter fot the callback interface
@@ -173,7 +181,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.weight = tabItemAlphaValue
         for (item in tabItems) {
             params.setMargins(
-                0, 40, 0,
+                0, 30, 0,
                 20
             )
             item.imageView?.layoutParams = params
@@ -214,7 +222,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         Glide.with(this)
             .load(item.selectedImageURL)
             .into(image)
-//        image.setImageDrawable(item.selectedImage)
         image.layoutParams = params
         item.imageView = image
         item.indicator = indicator
@@ -225,27 +232,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     }
 
 
-    private fun getSectionItem_(item: SectionTabItem): LinearLayout {
-        val layout = getSectionItemLayout()
-        val indicator = getTabSelectionIndicator()
-        val params = LayoutParams(
-            getItemWidth(), 0
-        )
-        params.setMargins(0, 0, 0, 0)
-        params.weight = 0.9f
-        val image = TapImageView(context, null)
-//        image.setImageDrawable(item.selectedImage)
-        Glide.with(this)
-            .load(item.selectedImageURL)
-            .into(image)
-        image.layoutParams = params
-        item.imageView = image
-        item.indicator = indicator
-        tabItems.add(item)
-        layout.addView(image)
-        layout.addView(indicator)
-        return layout
-    }
 
     /**
      * private function to generate parent layout for the newly added item

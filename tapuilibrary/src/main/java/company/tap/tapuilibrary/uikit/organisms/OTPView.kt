@@ -117,18 +117,18 @@ class OTPView : LinearLayout, OpenOTPInterface {
         setFonts()
 
 
-        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2, context))
+//        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2, context))
 
         /**
          * GenericKeyEvent here works for deleting the element and to switch back to previous EditText
          * first parameter is the current EditText and second parameter is previous EditText
          */
-        otpViewInput2.setOnKeyListener(GenericKeyEvent(otpViewInput2, otpViewInput1, context))
+//        otpViewInput2.setOnKeyListener(GenericKeyEvent(otpViewInput2, otpViewInput1, context))
 
     }
 
 
-    fun initTheme() {
+    private fun initTheme() {
 //        otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
         changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
 
@@ -158,7 +158,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         }
     }
 
-    fun setFonts() {
+    private fun setFonts() {
 
         otpViewInput1.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
@@ -255,16 +255,16 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     private fun startCountdown() {
         object : CountDownTimer(60 * 1000, 1000) {
+            @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
                 val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
                 timerText.text = ("$minutes:$second")
-                timerText.text =
-                    (String.format("%02d", minutes)) + ":" + (String.format("%02d", second))
+                timerText.text = (String.format("%02d", minutes)) + ":" + (String.format("%02d", second))
             }
 
             override fun onFinish() {
-                timerText.text = ("RESEND")
+                timerText.text = LocalizationManager.getValue("resend", "ActionButton")
                 setHintExpiredTheme()
             }
         }.start()
@@ -278,8 +278,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     @SuppressLint("SetTextI18n")
     override fun getPhoneNumber(phoneNumber: String, countryCode: String, maskedValue: String) {
-        mobileNumberText.text = "${countryCode} $maskedValue"
-        mobileNumberTextNormalPay.text = "${countryCode} $maskedValue"
+        mobileNumberText.text = "$countryCode $maskedValue"
+        mobileNumberTextNormalPay.text = "$countryCode $maskedValue"
     }
 
     override fun onChangePhoneClicked() {
@@ -315,12 +315,6 @@ class OTPView : LinearLayout, OpenOTPInterface {
                             context
                         )
                     )
-//                    otpViewActionButton.isEnabled = true
-//                    otpViewActionButton.setButtonDataSource(
-//                        true, context?.let { LocalizationManager.getLocale(it).language },
-//                        "Confirm",
-//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
                 }
             }
 
@@ -372,7 +366,11 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
                 if (!isValidOTP) {
                     otpHintText.visibility = View.VISIBLE
-                    otpHintText.text = "Invalid OTP number! "
+                    otpHintText.text = (LocalizationManager.getValue(
+                        "Message",
+                        "TapOtpView",
+                        "Invalid"
+                    ))
                     setHintInValidOtp()
                 }
                 Log.d("isValidOTP", isValidOTP.toString())
