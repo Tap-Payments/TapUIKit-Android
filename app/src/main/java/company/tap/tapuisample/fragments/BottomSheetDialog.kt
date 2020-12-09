@@ -682,15 +682,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             SectionTabItem(
                 "https://img.icons8.com/color/2x/visa.png",
                 "https://img.icons8.com/color/2x/visa.png",
-                CardBrand.ooredoo
-            )
-        )
-
-        items.add(
-            SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png",
-                "https://img.icons8.com/color/2x/visa.png",
-                CardBrand.ooredoo
+                CardBrand.visa
             )
         )
 
@@ -721,29 +713,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 CardBrand.ooredoo
             )
         )
-
-
-        items.add(
-            SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png",
-                "https://img.icons8.com/color/2x/visa.png",
-                CardBrand.ooredoo
-            )
-        )
-        items.add(
-            SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png",
-                "https://img.icons8.com/color/2x/visa.png",
-                CardBrand.ooredoo
-            )
-        )
-        items.add(
-            SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png",
-                "https://img.icons8.com/color/2x/visa.png",
-                CardBrand.ooredoo
-            )
-        )
         items.add(
             SectionTabItem(
                 "https://img.icons8.com/color/2x/visa.png",
@@ -757,6 +726,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     private fun setupBrandDetection() {
         tapCardInputView.setCardNumberTextWatcher(object : TextWatcher {
+            @RequiresApi(Build.VERSION_CODES.N)
             @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s.isNullOrEmpty())

@@ -43,6 +43,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var touchableList = ArrayList<View>()
     private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null
     private var tabItemAlphaValue = 0.7f
+    private var tabItemMarginTopValue = 30
+    private var tabItemMarginBottomValue = 20
 
     /**
      * Initiating the tablayout with default theme and behaviour
@@ -58,6 +60,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 
     fun changeTabItemAlphaValue(tabItemAlphaValue : Float){
         this.tabItemAlphaValue = tabItemAlphaValue
+    }
+    fun changeTabItemMarginTopValue(tabItemMarginTopValue : Int){
+        this.tabItemMarginTopValue = tabItemMarginTopValue
+    }
+    fun changeTabItemMarginBottomValue(tabItemMarginBottomValue : Int){
+        this.tabItemMarginBottomValue = tabItemMarginBottomValue
     }
     /**
      * Setter fot the callback interface
@@ -137,6 +145,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             sectionLayout.addView(getSectionItem(item))
             editExistItemsSize()
         }
+
         if (tabsView.size != 0)
             sectionLayout.alpha = unselectedAlphaLevel
         tabsView.add(sectionLayout)
@@ -166,7 +175,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.weight = tabItemAlphaValue
         for (item in tabItems) {
             params.setMargins(
-                0, 40, 0,
+                0, 30, 0,
                 20
             )
             item.imageView?.layoutParams = params
@@ -215,6 +224,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         layout.addView(indicator)
         return layout
     }
+
+
 
     /**
      * private function to generate parent layout for the newly added item
@@ -302,10 +313,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         resetBehaviour()
         changeClickableState(!valid)
         tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
-        if (valid)
-            selectValidType(type)
-        else
-            selectUnValidType(type)
+        if (valid) selectValidType(type)
+        else selectUnValidType(type)
     }
 
     private fun selectUnValidType(type: CardBrand) {
@@ -340,7 +349,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .load(it.unSelectedImage)
                         .into(it1)
                 }
-
                 it.indicator?.visibility = View.INVISIBLE
             } else {
                 it.imageView?.let { it1 ->
@@ -349,6 +357,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .into(it1)
                 }
                 it.indicator?.visibility = View.VISIBLE
+                it.indicator?.setBackgroundColor(indicatorColor)
                 it.indicator?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.vibrantGreen")))
             }
         }
@@ -368,7 +377,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     .load(it.selectedImageURL)
                     .into(it1)
             }
-//            it.imageView?.setImageDrawable(it.selectedImageURL)
             it.indicator?.visibility = View.INVISIBLE
         }
     }
@@ -393,16 +401,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     companion object {
         const val SCREEN_MARGINS = 140
         const val INDICATOR_HEIGHT = 2f
-
         //        const val INDICATOR_COLOR = "#2ace00"
-        val INDICATOR_COLOR =
-            Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.selected.backgroundColor"))
-
+        val INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.selected.backgroundColor"))
         //        const val INVALID_INDICATOR_COLOR = "#a8a8a8"
-        val INVALID_INDICATOR_COLOR =
-            Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
-        val UNSELECTED_ALPHA =
-            (ThemeManager.getValue("cardPhoneList.icon.otherSegmentSelected.alpha") as Double).toFloat()
+        val INVALID_INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
+        val UNSELECTED_ALPHA = (ThemeManager.getValue("cardPhoneList.icon.otherSegmentSelected.alpha") as Double).toFloat()
         val MAX_ITEM_WIDTH = (ThemeManager.getValue("cardPhoneList.maxWidth") as Int).toFloat()
     }
 
