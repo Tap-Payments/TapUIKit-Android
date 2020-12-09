@@ -103,13 +103,13 @@ class CardTypeAdapter(
             /**
              * Saved Cards Type
              */
-            getItemViewType(position) === TYPE_SAVED_CARD -> {
+            getItemViewType(position) == TYPE_SAVED_CARD -> {
                 typeSavedCard(holder, position)
             }
             /**
              * Knet Type
              */
-            getItemViewType(position) === TYPE_REDIRECT -> {
+            getItemViewType(position) == TYPE_REDIRECT -> {
                 if (isShaking) {
                     holder.itemView.alpha = 0.4f
                 }
