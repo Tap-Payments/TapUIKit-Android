@@ -91,12 +91,14 @@ class TapCardSwitch : LinearLayout {
         payButton.setOnClickListener { actionButtonInterface?.onClickActionButton() }
     }
 
-    private fun initActionButton(){
-        payButton.setButtonDataSource(false,
+    private fun initActionButton() {
+        payButton.setButtonDataSource(
+            false,
             context?.let { LocalizationManager.getLocale(it).language },
-            LocalizationManager.getValue("pay","ActionButton"),
+            LocalizationManager.getValue("pay", "ActionButton"),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+        )
     }
 
 
@@ -127,15 +129,6 @@ class TapCardSwitch : LinearLayout {
     fun setTheme() {
         tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
 
-
-//        saveSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-//        saveSwitchChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-//        switchesLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-//        Blurry.with(context).radius(5).sampling(1).onto(switchesLayout)
-
-//        switchSaveMerchant.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-//        switchGoPayCheckout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.backgroundColor")))
-
         // Main switch
         switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -147,18 +140,19 @@ class TapCardSwitch : LinearLayout {
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
                 switchSaveMobile.setTheme(switchSaveMobileSwitchThemeEnable)
 
-                payButton.setButtonDataSource(true,
+                payButton.setButtonDataSource(
+                    true,
                     context?.let { LocalizationManager.getLocale(it).language },
-                    LocalizationManager.getValue("pay","ActionButton"),
+                    LocalizationManager.getValue("pay", "ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
-                if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
-                } else {
-                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackground)
-                }
-//                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+                )
 
+                if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background_dark)
+                } else {
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background)
+                }
 
             } else {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
@@ -171,11 +165,13 @@ class TapCardSwitch : LinearLayout {
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchSaveMobile.setTheme(switchSaveMobileSwitchThemeDisable)
 
-                payButton.setButtonDataSource(false,
+                payButton.setButtonDataSource(
+                    false,
                     context?.let { LocalizationManager.getLocale(it).language },
-                    LocalizationManager.getValue("pay","ActionButton"),
+                    LocalizationManager.getValue("pay", "ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
+                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+                )
             }
         }
 
@@ -189,15 +185,18 @@ class TapCardSwitch : LinearLayout {
                 switchSaveMerchantSwitchThemeEnable.trackTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
                 switchSaveMobile.setTheme(switchSaveMerchantSwitchThemeEnable)
-                payButton.setButtonDataSource(true,
+                payButton.setButtonDataSource(
+                    true,
                     context?.let { LocalizationManager.getLocale(it).language },
-                    LocalizationManager.getValue("pay","ActionButton"),
+                    LocalizationManager.getValue("pay", "ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+                )
+
                 if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background_dark)
                 } else {
-                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackground)
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background)
                 }
 
             } else {
@@ -210,15 +209,13 @@ class TapCardSwitch : LinearLayout {
                 switchSaveMerchantSwitchThemeDisable.trackTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchSaveMobile.setTheme(switchSaveMerchantSwitchThemeDisable)
-
-
-                payButton.setButtonDataSource(false,
+                payButton.setButtonDataSource(
+                    false,
                     context?.let { LocalizationManager.getLocale(it).language },
-                    LocalizationManager.getValue("pay","ActionButton"),
+                    LocalizationManager.getValue("pay", "ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
-
-
+                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+                )
             }
         }
 
@@ -236,9 +233,9 @@ class TapCardSwitch : LinearLayout {
 
                 activateButton(true)
                 if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background_dark)
                 } else {
-                    tapCardSwitchLinear.setBackgroundResource(R.drawable.ic_blurbackground)
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background)
                 }
 
             } else {
@@ -293,20 +290,23 @@ class TapCardSwitch : LinearLayout {
     }
 
 
-    fun activateButton(isActive: Boolean){
-        if (isActive){
-            payButton.setButtonDataSource(true,
+    private fun activateButton(isActive: Boolean) {
+        if (isActive) {
+            payButton.setButtonDataSource(
+                true,
                 context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("pay","ActionButton"),
+                LocalizationManager.getValue("pay", "ActionButton"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")))
-        }else{
-            payButton.setButtonDataSource(false,
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+            )
+        } else {
+            payButton.setButtonDataSource(
+                false,
                 context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("pay","ActionButton"),
+                LocalizationManager.getValue("pay", "ActionButton"),
                 Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")))
-
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+            )
         }
     }
 

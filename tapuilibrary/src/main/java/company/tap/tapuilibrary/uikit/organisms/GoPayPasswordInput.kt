@@ -63,9 +63,9 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            rootView.setBackgroundResource(R.drawable.ic_blurbackgroundblack)
+            rootView.setBackgroundResource(R.drawable.blur_background_dark)
         } else {
-            rootView.setBackgroundResource(R.drawable.ic_blurbackground)
+            rootView.setBackgroundResource(R.drawable.blur_background)
         }
     }
 
@@ -73,14 +73,14 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         this.passwordConfirmationInterface = passwordConfirmationInterface
     }
 
-    fun setPasswordValidation() {
+    private fun setPasswordValidation() {
         initTheme()
-        if (passwordTextInput.text?.length!! > 7) {
+        if (passwordTextInput.text?.length?:0 > 7) {
             changeButtonStatus(true)
         } else {
             changeButtonStatus(false)
         }
-        signInButton.isEnabled = passwordTextInput.text?.length!! > 7
+        signInButton.isEnabled = passwordTextInput.text?.length?:0 > 7
     }
 
 
