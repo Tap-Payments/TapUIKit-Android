@@ -39,6 +39,7 @@ class TapHeaderSectionView : LinearLayout {
     val businessPlaceholder by lazy { findViewById<TapTextView>(R.id.placeholderText) }
     val tapChipIcon by lazy { findViewById<TapChip>(R.id.tapChipIcon) }
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
+    val topLinear by lazy { findViewById<LinearLayout>(R.id.topLinear) }
     private var headerDataSource: HeaderDataSource? = null
 
     /**
