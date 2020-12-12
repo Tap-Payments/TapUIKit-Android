@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -40,6 +41,7 @@ class TapHeaderSectionView : LinearLayout {
     val tapChipIcon by lazy { findViewById<TapChip>(R.id.tapChipIcon) }
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
     val topLinear by lazy { findViewById<LinearLayout>(R.id.topLinear) }
+    val constraint by lazy { findViewById<ConstraintLayout>(R.id.constraint) }
     private var headerDataSource: HeaderDataSource? = null
 
     /**
@@ -77,6 +79,16 @@ class TapHeaderSectionView : LinearLayout {
         setTheme()
         setSeparatorTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+    }
+
+    fun showOnlyTopLinear(){
+        topLinear.visibility = View.VISIBLE
+        constraint.visibility = View.GONE
+    }
+
+    fun resetViews(){
+        topLinear.visibility = View.VISIBLE
+        constraint.visibility = View.VISIBLE
     }
 
     /**
