@@ -1163,7 +1163,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                        R.drawable.loader,
 //                        1
 //                    ) { replaceBetweenFragments() })
-
 //        }
     }
 
