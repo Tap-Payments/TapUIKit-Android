@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.StateListDrawable
 import android.util.AttributeSet
 import android.util.Log
+import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.widget.SwitchCompat
 import company.tap.taplocalizationkit.LocalizationManager
@@ -99,6 +100,11 @@ class TapCardSwitch : LinearLayout {
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
         )
+    }
+
+    fun showOnlyPayButton(){
+        switchesLayout.visibility = View.GONE
+        payButton.visibility = View.VISIBLE
     }
 
 
