@@ -22,6 +22,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import jp.wasabeef.blurry.Blurry
 
@@ -89,7 +90,10 @@ class TapCardSwitch : LinearLayout {
         setTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initActionButton()
-        payButton.setOnClickListener { actionButtonInterface?.onClickActionButton() }
+        payButton.setOnClickListener { actionButtonInterface?.onClickActionButton(false) }
+    }
+    fun setSwitchInterface(actionButtonInterface: TapActionButtonInterface) {
+        this.actionButtonInterface = actionButtonInterface
     }
 
     private fun initActionButton() {
@@ -105,6 +109,7 @@ class TapCardSwitch : LinearLayout {
     fun showOnlyPayButton(){
         switchesLayout.visibility = View.GONE
         payButton.visibility = View.VISIBLE
+        payButton.setOnClickListener { actionButtonInterface?.onClickActionButton(true) }
     }
 
 
