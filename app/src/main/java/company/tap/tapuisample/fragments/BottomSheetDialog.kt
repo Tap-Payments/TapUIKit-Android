@@ -40,6 +40,7 @@ import company.tap.tapuilibrary.fontskit.enums.TapFont.Companion.tapFontType
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
+import company.tap.tapuilibrary.uikit.animation.AnimationEngine
 import company.tap.tapuilibrary.uikit.atoms.*
 import company.tap.tapuilibrary.uikit.datasource.*
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
@@ -1182,7 +1183,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     override fun onEmailValidated() {
-//        AnimationEngine.applyTransition(bottomSheet, SLIDE)
+        AnimationEngine.applyTransition(bottomSheet, SLIDE)
         goPayLoginInput?.visibility = View.GONE
         otpView?.visibility = View.GONE
         otpView?.changePhoneCardView?.visibility = View.GONE
