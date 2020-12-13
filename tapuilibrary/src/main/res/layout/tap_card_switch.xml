@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/CustomCardViewStyle"
     android:elevation="8dp"
-    android:layout_gravity="center"
-    android:gravity="center"
     android:layout_marginTop="-25dp"
     android:paddingTop="20dp"
     android:id="@+id/tapCardSwitchLinear"
