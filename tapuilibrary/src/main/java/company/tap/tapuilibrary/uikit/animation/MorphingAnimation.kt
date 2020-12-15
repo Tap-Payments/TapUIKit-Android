@@ -8,7 +8,6 @@ import company.tap.tapuilibrary.uikit.animation.MorphingAnimation.AnimationTarge
 import company.tap.tapuilibrary.uikit.datasource.AnimationDataSource
 
 /**
- * Created by Mario Gamal on 6/24/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  */
 class MorphingAnimation(private val animatedView: View) {

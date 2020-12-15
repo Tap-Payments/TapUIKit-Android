@@ -126,7 +126,11 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 startStateAnimation()
                 addChildView(getImageView(R.drawable.loader,0) {})
             }
-            else -> init()
+            else ->{
+                morphingAnimation.setAnimationEndListener(this)
+                init()
+            }
+
         }
     }
 

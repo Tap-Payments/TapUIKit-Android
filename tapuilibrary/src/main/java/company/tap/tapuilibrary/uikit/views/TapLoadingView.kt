@@ -11,7 +11,6 @@ import company.tap.tapuilibrary.uikit.ktx.setImage
 
 /**
  *
- * Created by Mario Gamal on 6/30/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
