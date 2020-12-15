@@ -9,5 +9,7 @@ import company.tap.tapuilibrary.uikit.enums.ActionButtonState
  */
 interface TapActionButtonInterface {
     fun onStateChanged(state: ActionButtonState)
-    fun onClickActionButton(redirectAction : Boolean)
+    fun onSelectPaymentOptionActionListener()
+    fun onEnterValidPhoneNumberActionListener()
+    fun onEnterValidCardNumberActionListener()
 }

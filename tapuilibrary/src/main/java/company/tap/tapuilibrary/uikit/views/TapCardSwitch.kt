@@ -79,21 +79,28 @@ class TapCardSwitch : LinearLayout {
      * attribute values serve as default values for the button. Set this parameter
      * to 0 to avoid use of default values.
      */
-    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(
-        context,
-        attrs,
-        defStyleAttr
-    )
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     init {
         inflate(context, R.layout.tap_card_switch, this)
         setTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initActionButton()
-        payButton.setOnClickListener { actionButtonInterface?.onClickActionButton(false) }
+
     }
+
     fun setSwitchInterface(actionButtonInterface: TapActionButtonInterface) {
         this.actionButtonInterface = actionButtonInterface
+    }
+
+    fun onEnterValidCardNumberActionListener(){
+        payButton.setOnClickListener { actionButtonInterface?.onEnterValidCardNumberActionListener() }
+    }
+    fun onEnterValidPhoneNumberActionListener(){
+        payButton.setOnClickListener { actionButtonInterface?.onEnterValidPhoneNumberActionListener() }
+    }
+    fun onSelectPaymentOptionActionListener(){
+        payButton.setOnClickListener { actionButtonInterface?.onSelectPaymentOptionActionListener() }
     }
 
     private fun initActionButton() {
@@ -109,7 +116,6 @@ class TapCardSwitch : LinearLayout {
     fun showOnlyPayButton(){
         switchesLayout.visibility = View.GONE
         payButton.visibility = View.VISIBLE
-        payButton.setOnClickListener { actionButtonInterface?.onClickActionButton(true) }
     }
 
 
