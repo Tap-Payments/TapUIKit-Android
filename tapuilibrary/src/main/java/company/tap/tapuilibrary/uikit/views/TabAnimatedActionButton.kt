@@ -23,8 +23,7 @@ import company.tap.tapuilibrary.uikit.animation.MorphingAnimation.AnimationTarge
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.AnimationDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
-import company.tap.tapuilibrary.uikit.enums.ActionButtonState.ERROR
-import company.tap.tapuilibrary.uikit.enums.ActionButtonState.SUCCESS
+import company.tap.tapuilibrary.uikit.enums.ActionButtonState.*
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
 
@@ -115,12 +114,17 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             SUCCESS -> {
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.success,1) {})
+                addChildView(getImageView(R.drawable.success,0) {})
             }
             ERROR -> {
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.error_gif,1) {})
+                addChildView(getImageView(R.drawable.error_gif,0) {})
+            }
+            LOADING ->{
+                addTapLoadingView()
+                startStateAnimation()
+                addChildView(getImageView(R.drawable.loader,0) {})
             }
             else -> init()
         }
