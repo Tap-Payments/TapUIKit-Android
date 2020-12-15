@@ -111,16 +111,18 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     fun changeButtonState(state: ActionButtonState) {
         this.state = state
-        addTapLoadingView()
-        startStateAnimation()
         when (state) {
             SUCCESS -> {
+                addTapLoadingView()
+                startStateAnimation()
                 addChildView(getImageView(R.drawable.success,1) {})
             }
             ERROR -> {
+                addTapLoadingView()
+                startStateAnimation()
                 addChildView(getImageView(R.drawable.error_gif,1) {})
             }
-
+            else -> init()
         }
     }
 
@@ -169,7 +171,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return textView
     }
 
-    fun setFontEnglish(textView:TextView ){
+    private fun setFontEnglish(textView:TextView ){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -177,7 +179,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         )
     }
 
-    fun setFontArabic(textView:TextView){
+    private fun setFontArabic(textView:TextView){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
