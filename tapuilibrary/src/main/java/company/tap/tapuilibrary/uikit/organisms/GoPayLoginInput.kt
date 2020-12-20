@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
@@ -60,7 +61,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val goPayLinear by lazy { findViewById<LinearLayout>(R.id.goPayLinear) }
     val goPayTabSeparator by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator) }
     val goPayTabSeparator_ by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator_) }
-    val loginInputLayout by lazy { findViewById<LinearLayout>(R.id.login_input_layout) }
+    val loginInputLayout by lazy { findViewById<ConstraintLayout>(R.id.login_input_layout) }
     val container by lazy { findViewById<ScrollView>(R.id.container) }
 //    val countryCodeTxt by lazy { findViewById<TapTextView>(R.id.countryCodeTxt) }
 

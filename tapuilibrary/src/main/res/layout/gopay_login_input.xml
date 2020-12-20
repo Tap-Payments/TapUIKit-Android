@@ -47,7 +47,7 @@
                 android:background="#dfdfdf"
                 android:id="@+id/goPayTabSeparator"/>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/login_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
@@ -60,6 +60,9 @@
                     android:id="@+id/login_method_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_marginStart="25dp"
                     android:layout_marginEnd="@dimen/margin_basic_16dp"
                     android:src="@drawable/ic_mail" />
@@ -69,11 +72,15 @@
                     android:id="@+id/countryCodePicker"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/login_method_icon"
+                    app:layout_constraintEnd_toStartOf="@+id/text_input_layout"
                     android:clickable="true"
                     android:gravity="center"
                     android:focusable="true"
                     app:ccp_showArrow="false"
-                    android:paddingStart="-17dp"
+                    android:paddingLeft="-17dp"
                     android:layout_marginStart="@dimen/margin_basic_10dp"
                     app:ccp_textSize="16sp"
                     app:ccp_rememberLastSelection="true"
@@ -95,6 +102,9 @@
                     android:id="@+id/countryCodeTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/countryCodePicker"
                     tools:text="+965"
                     android:visibility="gone"
                     android:layout_gravity="center"
@@ -103,8 +113,11 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/countryCodePicker"
                     android:cursorVisible="true"
                     android:paddingEnd="@dimen/margin_basic_16dp"
                     android:isScrollContainer="true"
@@ -134,13 +147,13 @@
                         android:inputType="textEmailAddress" />
 
                 </com.google.android.material.textfield.TextInputLayout>
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_below="@+id/et"
-                    android:id="@+id/view"/>
+<!--                <ListView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:layout_below="@+id/et"-->
+<!--                    android:id="@+id/view"/>-->
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
