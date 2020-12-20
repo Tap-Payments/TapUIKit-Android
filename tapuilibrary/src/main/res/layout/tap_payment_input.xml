@@ -33,7 +33,7 @@
             android:layout_weight="4"
             android:orientation="horizontal"
             android:paddingStart="@dimen/margin_basic_16dp"
-            android:paddingEnd="18dp" />
+            android:paddingEnd="@dimen/margin_basic_16dp" />
 
         <LinearLayout
             android:id="@+id/linear_paylayout"

@@ -175,8 +175,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.weight = tabItemAlphaValue
         for (item in tabItems) {
             params.setMargins(
-                0, 30, 0,
-                20
+                0, tabItemMarginTopValue, 0,
+                tabItemMarginBottomValue
             )
             item.imageView?.layoutParams = params
         }
