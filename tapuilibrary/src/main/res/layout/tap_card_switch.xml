@@ -55,7 +55,7 @@ save your mobile number." />
                 android:layout_weight="0.2"
                 android:checked="false"
                 android:theme="@style/SwitchPrimary"
-                android:visibility="visible" />
+                android:visibility="gone" />
         </LinearLayout>
     </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
@@ -66,7 +66,7 @@ save your mobile number." />
         android:alpha="0.8"
         android:paddingTop="20dp"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switch_merchant_checkout"
@@ -135,7 +135,7 @@ save your mobile number." />
             android:layout_marginEnd="@dimen/margin_basic_16dp"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.02"
-            android:textColor="#7e7e7e"
+            android:textColor="#4b4847"
             android:textSize="14sp"
             android:textStyle="normal"
             android:checked="true"
@@ -147,10 +147,11 @@ save your mobile number." />
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_basic_16dp"
-            android:layout_marginEnd="@dimen/margin_basic_16dp"
+            android:layout_marginEnd="100dp"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.01"
             android:lineSpacingExtra="1sp"
+            android:textColor="#a7a7a7"
             android:textSize="10sp"
             android:textStyle="normal"
             app:switchPadding="40dp"

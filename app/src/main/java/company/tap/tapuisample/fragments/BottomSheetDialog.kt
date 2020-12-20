@@ -1164,11 +1164,23 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapMobileInputView.mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
     }
 
+    override fun onEnterValidCardNumberActionListener() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onEnterValidPhoneNumberActionListener() {
+        TODO("Not yet implemented")
+    }
+
+    override fun onSelectPaymentOptionActionListener() {
+        TODO("Not yet implemented")
+    }
+
     override fun onStateChanged(state: ActionButtonState) {
 
     }
 
-    override fun onClickActionButton() {
+//    override fun onClickActionButton() {
 //        if (actionButton.isActivated) {
 //            changeBottomSheetTransition()
 //            hideAllViews()
@@ -1189,7 +1201,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                        1
 //                    ) { replaceBetweenFragments() })
 //        }
-    }
+//    }
 
     override fun showHideClearImage(show: Boolean) {
         if (show) {
