@@ -678,6 +678,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 CardBrand.ooredoo
             )
         )
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
+            )
+        )
 
         items.add(
             SectionTabItem(
@@ -690,6 +697,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tabLayout.addSection(items)
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("UseCompatLoadingForDrawables")
     private fun addMobileTab() {
         /**
@@ -707,6 +715,22 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         val items = ArrayList<SectionTabItem>()
 
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
+            )
+        )
+
+
+        items.add(
+            SectionTabItem(
+                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/visa.png",
+                CardBrand.ooredoo
+            )
+        )
         items.add(
             SectionTabItem(
                 "https://img.icons8.com/color/2x/visa.png",
