@@ -132,13 +132,13 @@ class TapCardSwitch : LinearLayout {
             switchSaveMerchant.text = it
         }
         tapSwitchDataSource.switchSavegoPayCheckout?.let {
-            switchGoPayCheckout.text = it
+            saveGoPay.text = it
         }
         tapSwitchDataSource.alertgoPaySignup?.let {
             alertGoPaySignUp.text = it
         }
         tapSwitchDataSource.savegoPayText?.let {
-            saveGoPay.text = it
+            switchGoPayCheckout.text = it
         }
     }
 

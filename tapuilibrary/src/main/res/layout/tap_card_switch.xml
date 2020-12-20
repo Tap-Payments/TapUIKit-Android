@@ -66,7 +66,7 @@ save your mobile number." />
         android:alpha="0.8"
         android:paddingTop="20dp"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switch_merchant_checkout"
@@ -91,8 +91,43 @@ save your mobile number." />
             android:layout_marginEnd="21dp"
             android:background="@color/white" />
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
-            android:id="@+id/save_goPay"
+<!--        <company.tap.tapuilibrary.uikit.atoms.TapTextView-->
+<!--            android:id="@+id/save_goPay"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/margin_basic_16dp"-->
+<!--            android:layout_marginTop="@dimen/margin_basic_16dp"-->
+<!--            android:layout_marginEnd="@dimen/margin_basic_16dp"-->
+<!--            android:fontFamily="sans-serif-light"-->
+<!--            android:letterSpacing="-0.02"-->
+<!--            android:textColor="#4b4847"-->
+<!--            android:textSize="14sp"-->
+<!--            android:textStyle="normal"-->
+<!--            tools:text="Save for goPay Checkouts" />-->
+
+<!--        <company.tap.tapuilibrary.uikit.atoms.TapSwitch-->
+<!--            android:id="@+id/switch_gopay_checkout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/margin_basic_16dp"-->
+<!--            android:layout_marginEnd="@dimen/margin_basic_16dp"-->
+<!--            android:checked="true"-->
+<!--            android:fontFamily="sans-serif-light"-->
+<!--            android:letterSpacing="-0.01"-->
+<!--            android:lineSpacingExtra="1sp"-->
+<!--            android:textColor="#7e7e7e"-->
+<!--            android:textSize="10sp"-->
+<!--            android:textStyle="normal"-->
+<!--            android:theme="@style/SwitchSecondary"-->
+<!--            app:switchPadding="40dp"-->
+<!--            tools:text="By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites." />-->
+
+
+
+
+
+        <company.tap.tapuilibrary.uikit.atoms.TapSwitch
+            android:id="@+id/switch_gopay_checkout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_basic_16dp"
@@ -100,27 +135,30 @@ save your mobile number." />
             android:layout_marginEnd="@dimen/margin_basic_16dp"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.02"
-            android:textColor="#4b4847"
+            android:textColor="#7e7e7e"
             android:textSize="14sp"
             android:textStyle="normal"
+            android:checked="true"
+            android:theme="@style/SwitchSecondary"
             tools:text="Save for goPay Checkouts" />
 
-        <company.tap.tapuilibrary.uikit.atoms.TapSwitch
-            android:id="@+id/switch_gopay_checkout"
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            android:id="@+id/save_goPay"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_basic_16dp"
             android:layout_marginEnd="@dimen/margin_basic_16dp"
-            android:checked="true"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.01"
             android:lineSpacingExtra="1sp"
-            android:textColor="#7e7e7e"
             android:textSize="10sp"
             android:textStyle="normal"
-            android:theme="@style/SwitchSecondary"
             app:switchPadding="40dp"
             tools:text="By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites." />
+
+
+
+
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/alert_gopay_signup"
