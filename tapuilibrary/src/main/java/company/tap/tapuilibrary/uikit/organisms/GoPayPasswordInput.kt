@@ -110,12 +110,20 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun initChange() {
+        changeEmail.text = LocalizationManager.getValue(
+            "password",
+            "Common"
+        )
         changeEmail.setOnClickListener {
             loginInterface?.onChangeClicked()
         }
     }
 
     private fun initPasswordInput() {
+        passwordTextInput.hint = LocalizationManager.getValue(
+            "change",
+            "Common"
+        )
         passwordTextInput.doAfterTextChanged {
             changeButtonStatus(it.toString().length > 7)
             initTheme()
@@ -158,6 +166,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
 
     fun setFontsEnglish() {
+
         passwordTextInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight

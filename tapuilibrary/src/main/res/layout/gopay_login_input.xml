@@ -24,7 +24,7 @@
         <LinearLayout
             android:id="@+id/goPayLinear"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -52,6 +52,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:isScrollContainer="true"
+                android:layout_gravity="start"
+                android:layoutDirection="locale"
                 android:windowSoftInputMode="adjustPan|adjustResize"
                 android:background="@color/white"
                 android:orientation="horizontal">
@@ -63,6 +65,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/countryCodePicker"
                     android:layout_marginStart="25dp"
                     android:layout_marginEnd="@dimen/margin_basic_16dp"
                     android:src="@drawable/ic_mail" />
@@ -88,7 +91,7 @@
                     app:ccp_defaultPhoneCode="965"
                     app:ccp_contentColor="@color/gray"
                     android:fontFamily="sans-serif-light"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:ccpDialog_showCloseIcon="true"
                     app:ccpDialog_showNameCode="false"
                     app:ccp_customMasterCountries="KW,QA,BH,SA,UAE"
@@ -98,17 +101,17 @@
                     app:ccp_showNameCode="false"/>
 
 
-                <company.tap.tapuilibrary.uikit.atoms.TapTextView
-                    android:id="@+id/countryCodeTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/countryCodePicker"
-                    tools:text="+965"
-                    android:visibility="gone"
-                    android:layout_gravity="center"
-                    android:textColor="@color/dark_gray" />
+<!--                <company.tap.tapuilibrary.uikit.atoms.TapTextView-->
+<!--                    android:id="@+id/countryCodeTxt"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/countryCodePicker"-->
+<!--                    tools:text="+965"-->
+<!--                    android:visibility="gone"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:textColor="@color/dark_gray" />-->
 
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -117,18 +120,20 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/countryCodePicker"
                     android:cursorVisible="true"
+                    android:accessibilityLiveRegion="polite"
                     android:paddingEnd="@dimen/margin_basic_16dp"
                     android:isScrollContainer="true"
                     android:fitsSystemWindows="true"
                     android:gravity="center_vertical|start"
-                    android:layout_gravity="center"
+                    android:layout_gravity="center_vertical|start"
                     android:focusable="true"
-                    android:windowSoftInputMode="adjustPan|adjustResize"
                     app:endIconDrawable="@drawable/ic_close"
                     android:layout_marginStart="2dp"
                     app:endIconMode="clear_text"
+                    android:labelFor="@id/gopay_text_input"
                     app:endIconTint="@null"
                     app:hintEnabled="false">
 
@@ -139,7 +144,11 @@
                         android:textCursorDrawable="@color/blue"
                         android:textFontWeight="300"
                         android:textSize="@dimen/font_size_17sp"
+                        android:textDirection="locale"
                         android:fitsSystemWindows="true"
+                        android:layoutDirection="locale"
+                        android:layout_gravity="start|center_vertical"
+                        android:gravity="start|center_vertical"
                         android:windowSoftInputMode="adjustPan|adjustResize"
                         android:background="@android:color/transparent"
                         android:fontFamily="sans-serif-light"

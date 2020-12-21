@@ -376,7 +376,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 countryCodePicker.contentColor =
                     Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
-
             }
 
             override fun afterTextChanged(mobileText: Editable) {
