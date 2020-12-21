@@ -111,7 +111,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initChange() {
         changeEmail.text = LocalizationManager.getValue(
-            "password",
+            "change",
             "Common"
         )
         changeEmail.setOnClickListener {
@@ -121,7 +121,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
 
     private fun initPasswordInput() {
         passwordTextInput.hint = LocalizationManager.getValue(
-            "change",
+            "password",
             "Common"
         )
         passwordTextInput.doAfterTextChanged {
