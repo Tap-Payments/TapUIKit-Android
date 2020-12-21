@@ -63,7 +63,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val goPayTabSeparator_ by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator_) }
     val loginInputLayout by lazy { findViewById<ConstraintLayout>(R.id.login_input_layout) }
     val container by lazy { findViewById<ScrollView>(R.id.container) }
-//    val countryCodeTxt by lazy { findViewById<TapTextView>(R.id.countryCodeTxt) }
 
     var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
@@ -77,12 +76,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         initTheme()
         setSeparatorTheme()
         setupKeyboardListener(container) // call in OnCreate or similar
-
+        goPayHint.text =  LocalizationManager.getValue("HintLabel", "GoPay")
     }
-
-
-
-
 
 
     private fun setupKeyboardListener(view: View) {
@@ -199,16 +194,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             }
         }
     }
-
-//    private fun getButtonDataSource(color: Int): ActionButtonDataSource {
-//        return ActionButtonDataSource(
-//            text = "Next",
-//            textSize = 16f,
-//            textColor = Color.WHITE,
-//            cornerRadius = 100f,
-//            backgroundColor = color
-//        )
-//    }
 
     private fun initTextInput() {
         textInput.doAfterTextChanged {

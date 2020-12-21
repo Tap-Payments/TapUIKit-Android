@@ -175,6 +175,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/bg_gray"
                 android:padding="15dp"
+                android:layout_gravity="start"
+                android:gravity="start"
                 android:text="@string/you_can_access_your_saved_cards_from_anywhere_with_gopay"
                 android:textColor="@color/dark_gray"
                 android:textSize="10sp" />
