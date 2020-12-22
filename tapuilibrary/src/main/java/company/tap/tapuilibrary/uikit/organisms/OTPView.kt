@@ -129,17 +129,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
 
     private fun initTheme() {
-//        otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
         changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
-
         val timerTextTheme = TextViewTheme()
         timerTextTheme.textColor =
             (Color.parseColor(ThemeManager.getValue("TapOtpView.Timer.textColor")))
         timerTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.Timer.textFont")
         timerText.setTheme(timerTextTheme)
         mobileNumberTextNormalPay.setTheme(timerTextTheme)
-
-
         val mobileNumberTextTextTheme = TextViewTheme()
         mobileNumberTextTextTheme.textColor = (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
         mobileNumberTextTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
@@ -258,8 +254,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
             override fun onTick(millisUntilFinished: Long) {
                 val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
-                timerText.text = ("$minutes:$second")
-                timerText.text = (String.format("%02d", minutes)) + ":" + (String.format("%02d", second))
+                timerText.text = ("$minutes : $second")
+//                timerText.text = (String.format("%02d", minutes)) + ":" + (String.format("%02d", second))
             }
 
             override fun onFinish() {
