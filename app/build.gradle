@@ -76,8 +76,8 @@ dependencies {
     implementation 'jp.wasabeef:recyclerview-animators:4.0.1'
 
 
-    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.217'
-    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.217'
+    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.218'
+    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.218'
 
 //    implementation 'com.github.Tap-Payments:TapFontsKit-Android:1.0.4'
 //    api 'com.github.Tap-Payments:TapThemeManger-Android:0.1.0.2'
