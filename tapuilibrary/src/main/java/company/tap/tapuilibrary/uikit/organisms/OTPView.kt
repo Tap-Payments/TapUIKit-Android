@@ -8,6 +8,7 @@ import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
+import android.util.Half.trunc
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -27,6 +28,7 @@ import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuilibrary.uikit.views.TapOTPView
+import java.util.*
 
 
 /**
@@ -252,10 +254,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
         object : CountDownTimer(60 * 1000, 1000) {
             @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
-                val second = millisUntilFinished / 1000 % 60
+                val second = millisUntilFinished / (1000 % 60) / 10
                 val minutes = millisUntilFinished / (1000 * 60) % 60
-                timerText.text = ("$minutes : $second")
-//                timerText.text = (String.format("%02d", minutes)) + ":" + (String.format("%02d", second))
+//                timerText.text = ("$minutes : $second")
+                timerText.text = (String.format("%02d", minutes).format(this, Locale.ENGLISH).toDouble()).toString()+ ":" + (String.format("%02d", second).format(this, Locale.ENGLISH).toDouble()).toString()
             }
 
             override fun onFinish() {
