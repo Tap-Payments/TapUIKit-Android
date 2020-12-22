@@ -256,8 +256,16 @@ class OTPView : LinearLayout, OpenOTPInterface {
             override fun onTick(millisUntilFinished: Long) {
                 val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
-                timerText.text = ("$minutes : $second")
+               val secondStr = (second < 9)?: "0$second"
+               val minutesStr = (second < 9)?: "0$minutes"
+                if(second>9)
+                timerText.text = ("$minutesStr : $secondStr")
 //                timerText.text = (String.format("%02d", minutes).format(this, Locale.ENGLISH))+ ":" + (String.format("%02d", second).format(this, Locale.ENGLISH))
+//                timerText.typeface = Typeface.createFromAsset(
+//                    context?.assets, TapFont.tapFontType(
+//                        TapFont.RobotoLight
+//                    )
+//                )
             }
 
             override fun onFinish() {
