@@ -258,7 +258,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 val minutes = millisUntilFinished / (1000 * 60) % 60
                val secondStr = if(second < 9) "0$second" else "$second"
                val minutesStr = if(minutes < 9) "0$minutes" else "$minutes"
-                timerText.text = "$minutesStr : $secondStr"
+                if (LocalizationManager.getLocale(context).language == "en")  timerText.text = "$minutesStr : $secondStr"
+                else timerText.text = "$secondStr : $minutesStr"
 //                timerText.text = (String.format("%02d", minutes).format(this, Locale.ENGLISH))+ ":" + (String.format("%02d", second).format(this, Locale.ENGLISH))
 //                timerText.typeface = Typeface.createFromAsset(
 //                    context?.assets, TapFont.tapFontType(
