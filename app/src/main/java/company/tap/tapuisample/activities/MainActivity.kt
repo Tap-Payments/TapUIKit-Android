@@ -337,10 +337,10 @@ class MainActivity : BaseActivity(),
         }
         R.id.change_language -> {
             if (LocalizationManager.getLocale(context).language == "en") {
-                LocalizationManager.setLocale(this, Locale("ar", "KU"))
+                LocalizationManager.setLocale(this, Locale("ar"))
                 setLocale(this, "ar")
             } else if (LocalizationManager.getLocale(context).language == "ar") {
-                LocalizationManager.setLocale(this, Locale("en", "KU"))
+                LocalizationManager.setLocale(this, Locale("en"))
                 setLocale(this, "en")
             }
             recreate()
@@ -356,7 +356,7 @@ class MainActivity : BaseActivity(),
 
 
     fun setLocale(activity: Activity, languageCode: String?) {
-        val locale = Locale(languageCode, "KU")
+        val locale = Locale(languageCode)
         Locale.setDefault(locale)
         val resources: Resources = activity.resources
         val config: Configuration = resources.configuration

@@ -254,7 +254,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         object : CountDownTimer(60 * 1000, 1000) {
             @SuppressLint("SetTextI18n")
             override fun onTick(millisUntilFinished: Long) {
-                val second = millisUntilFinished / (1000 % 60)
+                val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
                 timerText.text = ("$minutes : $second")
 //                timerText.text = (String.format("%02d", minutes).format(this, Locale.ENGLISH))+ ":" + (String.format("%02d", second).format(this, Locale.ENGLISH))
