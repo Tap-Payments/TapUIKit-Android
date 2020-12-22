@@ -29,13 +29,15 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    dataBinding {
-        enabled = false
-    }
+//    dataBinding {
+//        enabled = false
+//    }
 }
 
 
 dependencies {
+//    kapt 'com.android.databinding:compiler:3.0.0'
+
 //    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.cardview:cardview:1.0.0'
@@ -53,7 +55,7 @@ dependencies {
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    annotationProcessor 'com.android.databinding:compiler:3.1.4'
+//    annotationProcessor 'com.android.databinding:compiler:3.1.4'
     implementation 'com.google.android.material:material:1.2.1'
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     implementation 'com.google.firebase:firebase-analytics:17.6.0'
@@ -76,8 +78,8 @@ dependencies {
     implementation 'jp.wasabeef:recyclerview-animators:4.0.1'
 
 
-    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.223'
-    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.223'
+    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.224'
+    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.224'
 
 //    implementation 'com.github.Tap-Payments:TapFontsKit-Android:1.0.4'
 //    api 'com.github.Tap-Payments:TapThemeManger-Android:0.1.0.2'
