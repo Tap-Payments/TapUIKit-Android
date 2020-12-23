@@ -230,9 +230,24 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         initializeViews(view)
 
 
+
         switch_pay_demo.payButton.setOnClickListener {
             if (switch_pay_demo.payButton.isActivated) {
                 changeBottomSheetTransition()
+
+                /**
+                 * check if there is saving options or not if not we will set visibility for switches layout in TapCardSwitch Gone
+                 * if user want to check main switch
+                 */
+                switch_pay_demo.showOnlyPayButton()
+                mainSwitchUncheckedAction()
+                switch_pay_demo.payButton.changeButtonState(ActionButtonState.LOADING)
+                switch_pay_demo.payButton.addChildView(
+                    switch_pay_demo.payButton.getImageView(
+                        R.drawable.loader,
+                        1
+                    ) {  })
+
 //                if (paymentsList[2] == 3) {
 //                    goPayLoginInput?.visibility = View.VISIBLE
 ////                    goPayPasswordInput?.visibility = View.VISIBLE
@@ -270,18 +285,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                    changeBottomSheetTransition()
 //                } else
 
-                /**
-                 * check if there is saving options or not if not we will set visibility dor switches layout in TapCardSwitch Gone
-                 * if user ant to check main switch
-                 */
-                switch_pay_demo.showOnlyPayButton()
-                mainSwitchUncheckedAction()
-                switch_pay_demo.payButton.changeButtonState(ActionButtonState.LOADING)
-                switch_pay_demo.payButton.addChildView(
-                    switch_pay_demo.payButton.getImageView(
-                        R.drawable.loader,
-                        1
-                    ) {  })
+
 
             }
         }
@@ -906,7 +910,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         )//
         switchSaveDemo?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-
                 switch_pay_demo.payButton.isActivated
                 payButton.setButtonDataSource(
                     true,

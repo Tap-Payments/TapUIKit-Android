@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/card"
-        android:paddingBottom="@dimen/margin_basic_8dp"
         android:background="@drawable/corner_radius_bottom">
         <company.tap.tapuilibrary.uikit.atoms.TapChip
             style="@style/CustomCardViewStyle"
@@ -30,9 +29,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/mainSwitchLinear"
+                android:paddingBottom="@dimen/margin_basic_20dp"
                 android:orientation="horizontal"
                 android:paddingTop="16dp"
-                android:paddingBottom="@dimen/margin_basic_6dp"
                 android:weightSum="0.5">
 
                 <company.tap.tapuilibrary.uikit.atoms.TapTextView
