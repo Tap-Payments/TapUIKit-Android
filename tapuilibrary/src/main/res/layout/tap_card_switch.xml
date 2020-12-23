@@ -78,10 +78,6 @@
             app:switchPadding="40dp"
             tools:text="By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites." />
 
-
-
-
-
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/alert_gopay_signup"
             android:layout_width="wrap_content"
