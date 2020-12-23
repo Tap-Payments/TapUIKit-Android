@@ -56,9 +56,10 @@ import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.organisms.OTPView
 import company.tap.tapuilibrary.uikit.views.*
-import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuisample.*
 import company.tap.tapuisample.MainSwitch
+import company.tap.tapuisample.TabAnimatedActionButton
+import company.tap.tapuisample.TapCardSwitch
 import company.tap.tapuisample.TapHeaderSectionView
 import company.tap.tapuisample.TapSelectionTabLayout
 import company.tap.tapuisample.adapters.CardTypeAdapter
@@ -66,6 +67,9 @@ import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
+import kotlinx.android.synthetic.main.custom_bottom_sheet.switch_pay_demo
+import kotlinx.android.synthetic.main.custom_sheet_switch.*
+import kotlinx.android.synthetic.main.tap_card_switch.view.*
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -229,19 +233,19 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switch_pay_demo.payButton.setOnClickListener {
             if (switch_pay_demo.payButton.isActivated) {
                 changeBottomSheetTransition()
-                if (paymentsList[2] == 3) {
-                    goPayLoginInput?.visibility = View.VISIBLE
-//                    goPayPasswordInput?.visibility = View.VISIBLE
-                    mainChipgroup?.visibility = View.GONE
-                    tapSeparatorViewLinear?.visibility = View.GONE
-                    separatorــLayout?.visibility = View.GONE
-                    hideAllViews()
-                    tapHeaderSectionView.visibility = View.VISIBLE
-                    amountSectionView.visibility = View.VISIBLE
-                    businessPlaceholder.visibility = View.VISIBLE
-                    topSeparator.visibility = View.VISIBLE
-                    separator.visibility = View.VISIBLE
-                    businessIcon.visibility = View.VISIBLE
+//                if (paymentsList[2] == 3) {
+//                    goPayLoginInput?.visibility = View.VISIBLE
+////                    goPayPasswordInput?.visibility = View.VISIBLE
+//                    mainChipgroup?.visibility = View.GONE
+//                    tapSeparatorViewLinear?.visibility = View.GONE
+//                    separatorــLayout?.visibility = View.GONE
+//                    hideAllViews()
+//                    tapHeaderSectionView.visibility = View.VISIBLE
+//                    amountSectionView.visibility = View.VISIBLE
+//                    businessPlaceholder.visibility = View.VISIBLE
+//                    topSeparator.visibility = View.VISIBLE
+//                    separator.visibility = View.VISIBLE
+//                    businessIcon.visibility = View.VISIBLE
 
 
 //                    Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
@@ -264,19 +268,27 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                            .commit()
 //                        dialog?.hide()
 //                    changeBottomSheetTransition()
-                }
-//                else
-//                    switch_pay_demo.payButton.addChildView(
-//                        switch_pay_demo.payButton.getImageView(
-//                            R.drawable.loader,
-//                            1
-//                        ) { replaceBetweenFragments() })
+//                } else
+
+                /**
+                 * check if there is saving options or not if not we will set visibility dor switches layout in TapCardSwitch Gone
+                 * if user ant to check main switch
+                 */
+                switch_pay_demo.showOnlyPayButton()
+                mainSwitchUncheckedAction()
+                switch_pay_demo.payButton.changeButtonState(ActionButtonState.LOADING)
+                switch_pay_demo.payButton.addChildView(
+                    switch_pay_demo.payButton.getImageView(
+                        R.drawable.loader,
+                        1
+                    ) {  })
 
             }
         }
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     private fun initializeViews(view: View) {
         headerViewInit(view)
@@ -772,6 +784,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         switchMerchantCheckout?.visibility = View.GONE
                         switchMerchantCheckout?.isChecked = true
                         switchgoPayCheckout?.isChecked = true
+                        switch_pay_demo.payButton.isActivated = true
                         switchgoPayCheckout?.visibility = View.GONE
                         savegoPay?.visibility = View.GONE
                         alertgoPay?.visibility = View.GONE
@@ -828,6 +841,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         })
 
         tapCardInputView.setCvcNumberTextWatcher(object : TextWatcher {
+            @RequiresApi(Build.VERSION_CODES.N)
             @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s.isNullOrEmpty()) {
@@ -841,12 +855,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         })
 
         tapCardInputView.setExpiryDateTextWatcher(object : TextWatcher {
+            @RequiresApi(Build.VERSION_CODES.N)
             @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s.isNullOrEmpty()) {
                     tabLayout.resetBehaviour()
                 } else {
-                    alertMessage?.setText("CVV number are missing.")
+                    alertMessage?.text = "CVV number are missing."
                     alertMessage?.text = (LocalizationManager.getValue(
                         "Warning",
                         "Hints",
@@ -891,127 +906,127 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         )//
         switchSaveDemo?.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
-                if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-                    switch_pay_demo.tapCardSwitchLinear.setBackgroundResource(company.tap.tapuilibrary.R.drawable.ic_blurbackgroundblack)
-                } else {
-                    switch_pay_demo.tapCardSwitchLinear.setBackgroundResource(company.tap.tapuilibrary.R.drawable.ic_blurbackground)
-                }
-                cardSwitch.cardElevation = 2.5f
 
-                setBorderedView(
-                    mainSwitch.card,
-                    40f,// corner raduis
-                    0.0f,
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// stroke color
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-                )//
-
-//                setBottomBorders(
-//                    mainSwitch.card,
-//                    30f,// corner raduis
-//                    0.0f,
-//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")),// stroke color
-//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")),// tint color
-//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
-//                )//
-//                setBorderedView(
-//                    mainSwitch,
-//                    30f,// corner raduis
-//                    0.0f,
-//                    Color.parseColor("#ffffff"),// stroke color
-//                    Color.parseColor("#ffffff"),// tint color
-//                    Color.parseColor("#ffffff")
-//                )//
-
-//                outer_layout?.setBackgroundColor(Color.WHITE)
-//                backgroundColor =
-//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-                switch_pay_demo.payButton.stateListAnimator = null
                 switch_pay_demo.payButton.isActivated
-                switch_pay_demo.payButton.setButtonDataSource(
+                payButton.setButtonDataSource(
                     true,
-                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+                    context?.let { LocalizationManager.getLocale(it).language },
                     LocalizationManager.getValue("pay", "ActionButton"),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
                 )
-                switchLayout?.visibility = View.VISIBLE
-                switchMerchantCheckout?.visibility = View.VISIBLE
-                switchMerchantCheckout?.isChecked = true
-                switchgoPayCheckout?.isChecked = true
-                switchgoPayCheckout?.visibility = View.VISIBLE
-                savegoPay?.visibility = View.VISIBLE
-                alertgoPay?.visibility = View.VISIBLE
-                separatorView?.visibility = View.VISIBLE
-            } else {
-                setBorderedView(
-                    mainSwitch.card,
-                    0f,// corner raduis
-                    0.0f,
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// stroke color
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-                )//
-                switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(
-                    Color.parseColor(
-                        ThemeManager.getValue(
-                            "TapSwitchView.main.backgroundColor"
-                        )
-                    )
-                )
-                cardSwitch.cardElevation = 0f
+                /**
+                 * Here we will check if there is saving options if NOT ----> We will just activate action button
+                 * switch_pay_demo.payButton.isActivated
+                 * if YES -----> we will set Logic of function mainSwitchCheckedAction()
+                 */
 
-                switch_pay_demo.payButton.stateListAnimator = null
-                switch_pay_demo.payButton.setButtonDataSource(
-                    false,
-                    company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
-                    LocalizationManager.getValue("pay", "ActionButton"),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
-                )
+            } else mainSwitchUncheckedAction()
+        }
+        switchMerchantCheckout?.setOnCheckedChangeListener { _, _ -> switchMerchantCheckoutChangeCheckedAction() }
+        switchgoPayCheckout?.setOnCheckedChangeListener { _, _ -> switchGoPayCheckoutChangeCheckedAction() }
+    }
 
-//                backgroundColor =
-//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor"))
-//                outer_layout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.backgroundColor")))
-                switchLayout?.visibility = View.GONE
-                switchMerchantCheckout?.visibility = View.GONE
-                switchMerchantCheckout?.isChecked = false
-                switchgoPayCheckout?.isChecked = false
-                switchgoPayCheckout?.visibility = View.GONE
-                savegoPay?.visibility = View.GONE
-                alertgoPay?.visibility = View.GONE
-                separatorView?.visibility = View.GONE
-            }
-        }
-        switchMerchantCheckout?.setOnCheckedChangeListener { _, _ ->
-            if (!switchMerchantCheckout?.isChecked!! && !switchgoPayCheckout?.isChecked!!) {
-                switchSaveDemo?.isChecked = false
-                switchLayout?.visibility = View.GONE
-                switchMerchantCheckout?.visibility = View.GONE
-                switchMerchantCheckout?.isChecked = false
-                switchgoPayCheckout?.isChecked = false
-                switchgoPayCheckout?.visibility = View.GONE
-                savegoPay?.visibility = View.GONE
-                alertgoPay?.visibility = View.GONE
-                separatorView?.visibility = View.GONE
-            }
-        }
-        switchgoPayCheckout?.setOnCheckedChangeListener { _, _ ->
-            if (!switchMerchantCheckout?.isChecked!! && !switchgoPayCheckout?.isChecked!!) {
-                switchSaveDemo?.isChecked = false
-                switchLayout?.visibility = View.GONE
-                switchMerchantCheckout?.visibility = View.GONE
-                switchMerchantCheckout?.isChecked = false
-                switchgoPayCheckout?.isChecked = false
-                switchgoPayCheckout?.visibility = View.GONE
-                savegoPay?.visibility = View.GONE
-                alertgoPay?.visibility = View.GONE
-                separatorView?.visibility = View.GONE
-            }
+    private fun switchMerchantCheckoutChangeCheckedAction(){
+        if (!switchMerchantCheckout?.isChecked!! && !switchgoPayCheckout?.isChecked!!) {
+            switchSaveDemo?.isChecked = false
+            switchLayout?.visibility = View.GONE
+            switchMerchantCheckout?.visibility = View.GONE
+            switchMerchantCheckout?.isChecked = false
+            switchgoPayCheckout?.isChecked = false
+            switchgoPayCheckout?.visibility = View.GONE
+            savegoPay?.visibility = View.GONE
+            alertgoPay?.visibility = View.GONE
+            separatorView?.visibility = View.GONE
         }
     }
 
+    private fun switchGoPayCheckoutChangeCheckedAction(){
+        if (!switchMerchantCheckout?.isChecked!! && !switchgoPayCheckout?.isChecked!!) {
+            switchSaveDemo?.isChecked = false
+            switchLayout?.visibility = View.GONE
+            switchMerchantCheckout?.visibility = View.GONE
+            switchMerchantCheckout?.isChecked = false
+            switchgoPayCheckout?.isChecked = false
+            switchgoPayCheckout?.visibility = View.GONE
+            savegoPay?.visibility = View.GONE
+            alertgoPay?.visibility = View.GONE
+            separatorView?.visibility = View.GONE
+        }
+    }
+
+
+    fun mainSwitchCheckedAction() {
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            switch_pay_demo.tapCardSwitchLinear.setBackgroundResource(company.tap.tapuilibrary.R.drawable.ic_blurbackgroundblack)
+        } else {
+            switch_pay_demo.tapCardSwitchLinear.setBackgroundResource(company.tap.tapuilibrary.R.drawable.ic_blurbackground)
+        }
+        cardSwitch.cardElevation = 2.5f
+
+        setBorderedView(
+            mainSwitch.card,
+            40f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// stroke color
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+        )//
+        switch_pay_demo.payButton.stateListAnimator = null
+        switch_pay_demo.payButton.isActivated
+        switch_pay_demo.payButton.setButtonDataSource(
+            true,
+            company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue("pay", "ActionButton"),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+        )
+        switchLayout?.visibility = View.VISIBLE
+        switchMerchantCheckout?.visibility = View.VISIBLE
+        switchMerchantCheckout?.isChecked = true
+        switchgoPayCheckout?.isChecked = true
+        switchgoPayCheckout?.visibility = View.VISIBLE
+        savegoPay?.visibility = View.VISIBLE
+        alertgoPay?.visibility = View.VISIBLE
+        separatorView?.visibility = View.VISIBLE
+    }
+
+    private fun mainSwitchUncheckedAction() {
+        setBorderedView(
+            mainSwitch.card,
+            0f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// stroke color
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+        )//
+        switch_pay_demo.tapCardSwitchLinear.setBackgroundColor(
+            Color.parseColor(
+                ThemeManager.getValue(
+                    "TapSwitchView.main.backgroundColor"
+                )
+            )
+        )
+        cardSwitch.cardElevation = 0f
+
+//        switch_pay_demo.payButton.stateListAnimator = null
+//        switch_pay_demo.payButton.setButtonDataSource(
+//            false,
+//            company.tap.tapuisample.adapters.context?.let { LocalizationManager.getLocale(it).language },
+//            LocalizationManager.getValue("pay", "ActionButton"),
+//            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+//            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+//        )
+//        switchLayout?.visibility = View.GONE
+//        switchMerchantCheckout?.visibility = View.GONE
+//        switchMerchantCheckout?.isChecked = false
+//        switchgoPayCheckout?.isChecked = false
+//        switchgoPayCheckout?.visibility = View.GONE
+//        savegoPay?.visibility = View.GONE
+//        alertgoPay?.visibility = View.GONE
+//        separatorView?.visibility = View.GONE
+
+    }
 
     private fun getSuccessDataSource(text: String): ActionButtonDataSource {
         switch_pay_demo.payButton.stateListAnimator = null

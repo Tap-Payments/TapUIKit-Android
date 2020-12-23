@@ -1,9 +1,10 @@
-package company.tap.tapuilibrary.uikit.views
+package company.tap.tapuisample
 
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import company.tap.taplocalizationkit.LocalizationManager
@@ -18,6 +19,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
+
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -34,7 +36,6 @@ class TapCardSwitch : LinearLayout {
     val switchSaveMerchant by lazy { findViewById<TapSwitch>(R.id.switch_merchant_checkout) }
     val switchGoPayCheckout by lazy { findViewById<TapSwitch>(R.id.switch_gopay_checkout) }
     val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
-    val saveSwitchLinear by lazy { findViewById<LinearLayout>(R.id.save_switch_linear) }
     val switchesLayout by lazy { findViewById<LinearLayout>(R.id.switches_layout) }
     val switchSeparator by lazy { findViewById<TapSeparatorView>(R.id.switch_separator) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
@@ -81,6 +82,7 @@ class TapCardSwitch : LinearLayout {
     fun setSwitchInterface(actionButtonInterface: TapActionButtonInterface) {
         this.actionButtonInterface = actionButtonInterface
     }
+
     fun onEnterValidCardNumberActionListener(){
         payButton.setOnClickListener { actionButtonInterface?.onEnterValidCardNumberActionListener() }
     }
@@ -130,9 +132,58 @@ class TapCardSwitch : LinearLayout {
 
 
     fun setTheme() {
+        tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+
+        // Main switch
+//        switchSaveMobile.setOnCheckedChangeListener { _, isChecked ->
+//            if (isChecked) {
+//                Log.d("true", "true")
+//                var switchSaveMobileSwitchThemeEnable = SwitchTheme()
+//                switchSaveMobileSwitchThemeEnable.thumbTint =
+//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+//                switchSaveMobileSwitchThemeEnable.trackTint =
+//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
+//                switchSaveMobile.setTheme(switchSaveMobileSwitchThemeEnable)
+//
+//                payButton.setButtonDataSource(
+//                    true,
+//                    context?.let { LocalizationManager.getLocale(it).language },
+//                    LocalizationManager.getValue("pay", "ActionButton"),
+//                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
+//                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+//                )
+//
+//                if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+//                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background_dark)
+//                } else {
+//                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background)
+//                }
+//
+//            } else {
+//                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+//
+//                Log.d("false", "false")
+//                var switchSaveMobileSwitchThemeDisable = SwitchTheme()
+//                switchSaveMobileSwitchThemeDisable.thumbTint =
+//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+//                switchSaveMobileSwitchThemeDisable.trackTint =
+//                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+//                switchSaveMobile.setTheme(switchSaveMobileSwitchThemeDisable)
+//
+//                payButton.setButtonDataSource(
+//                    false,
+//                    context?.let { LocalizationManager.getLocale(it).language },
+//                    LocalizationManager.getValue("pay", "ActionButton"),
+//                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+//                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+//                )
+//            }
+//        }
+
         // Merchant
         switchSaveMerchant.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
+                Log.d("true", "true")
                 var switchSaveMerchantSwitchThemeEnable = SwitchTheme()
                 switchSaveMerchantSwitchThemeEnable.thumbTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
@@ -155,6 +206,8 @@ class TapCardSwitch : LinearLayout {
 
             } else {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+
+                Log.d("false", "false")
                 var switchSaveMerchantSwitchThemeDisable = SwitchTheme()
                 switchSaveMerchantSwitchThemeDisable.thumbTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
@@ -175,6 +228,7 @@ class TapCardSwitch : LinearLayout {
         // Go Pay
         switchGoPayCheckout.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
+                Log.d("true", "true")
                 var switchGoPayCheckoutSwitchThemeEnable = SwitchTheme()
                 switchGoPayCheckoutSwitchThemeEnable.thumbTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
@@ -191,6 +245,8 @@ class TapCardSwitch : LinearLayout {
 
             } else {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+
+                Log.d("false", "false")
                 var switchGoPayCheckoutSwitchThemeDisable = SwitchTheme()
                 switchGoPayCheckoutSwitchThemeDisable.thumbTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
@@ -198,10 +254,22 @@ class TapCardSwitch : LinearLayout {
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchGoPayCheckout.setTheme(switchGoPayCheckoutSwitchThemeDisable)
                 activateButton(false)
+
             }
         }
 
-        // Go Pay TextTheme
+
+        // main save
+//        var saveTextViewTextViewTheme = TextViewTheme()
+//        saveTextViewTextViewTheme.textColor =
+//            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.title.textColor"))
+//        saveTextViewTextViewTheme.textSize =
+//            ThemeManager.getFontSize("TapSwitchView.main.title.textFont")
+//        saveTextViewTextViewTheme.font =
+//            ThemeManager.getFontName("TapSwitchView.main.title.textFont")
+//        saveTextView.setTheme(saveTextViewTextViewTheme)
+
+        // Go Pay Text
         var saveGoPayTextViewTheme = TextViewTheme()
         saveGoPayTextViewTheme.textColor =
             Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.title.textColor"))
@@ -249,6 +317,12 @@ class TapCardSwitch : LinearLayout {
 
 
     fun setFontsEnglish() {
+//        saveTextView?.typeface = Typeface.createFromAsset(
+//            context?.assets, TapFont.tapFontType(
+//                TapFont.RobotoLight
+//            )
+//        )
+
         saveGoPay?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -264,6 +338,12 @@ class TapCardSwitch : LinearLayout {
     }
 
     fun setFontsArabic() {
+//        saveTextView?.typeface = Typeface.createFromAsset(
+//            context?.assets, TapFont.tapFontType(
+//                TapFont.TajawalLight
+//            )
+//        )
+
         saveGoPay?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight

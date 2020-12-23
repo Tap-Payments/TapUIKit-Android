@@ -199,7 +199,7 @@
                 android:layout_height="wrap_content"/>
         </androidx.cardview.widget.CardView>
 
-        <company.tap.tapuilibrary.uikit.views.TapCardSwitch
+        <company.tap.tapuisample.TapCardSwitch
             android:id="@+id/switch_pay_demo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
