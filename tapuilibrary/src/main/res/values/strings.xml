@@ -4,6 +4,8 @@
     <string name="msg_ok">ok</string>
     <string name="msg_dismiss">dismiss</string>
     <string name="gopay">goPay</string>
+    <string name="item_price">%1$s %2$s</string>
+
 
     <string-array name="countries_list">
 

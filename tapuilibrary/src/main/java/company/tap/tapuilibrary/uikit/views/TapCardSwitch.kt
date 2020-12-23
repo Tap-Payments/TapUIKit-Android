@@ -130,6 +130,8 @@ class TapCardSwitch : LinearLayout {
 
 
     fun setTheme() {
+        tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+
         // Merchant
         switchSaveMerchant.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {

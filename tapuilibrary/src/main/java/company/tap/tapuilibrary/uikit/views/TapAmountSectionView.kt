@@ -25,9 +25,11 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
 class TapAmountSectionView : LinearLayout {
-    val selectedCurrency by lazy { findViewById<TapTextView>(R.id.textview_selectedcurrency) }
-    val currentCurrency by lazy { findViewById<TapTextView>(R.id.textView_currentcurrency) }
-    val itemCount by lazy { findViewById<TapButton>(R.id.textView_itemcount) }
+    val selectedAmountValue by lazy { findViewById<TapTextView>(R.id.selectedAmountValue) }
+    val currency by lazy { findViewById<TapTextView>(R.id.currency) }
+    val mainKDAmountValue by lazy { findViewById<TapTextView>(R.id.mainKDAmountValue) }
+    val mainKDCurrency by lazy { findViewById<TapTextView>(R.id.mainKDCurrency) }
+    val itemCountButton by lazy { findViewById<TapButton>(R.id.itemCountButton) }
     private var amountViewDataSource: AmountViewDataSource? = null
 
     /**
@@ -62,7 +64,7 @@ class TapAmountSectionView : LinearLayout {
 
     init {
         inflate(context, R.layout.tap_main_amount, this)
-        itemCount.elevation = 0F
+        itemCountButton.elevation = 0F
         setTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
 
@@ -78,10 +80,10 @@ class TapAmountSectionView : LinearLayout {
             Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
         buttonTheme.cornerRadius =
             ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")
-        itemCount.setTheme(buttonTheme)
+        itemCountButton.setTheme(buttonTheme)
 
         setBorderedView(
-            itemCount,
+            itemCountButton,
             (ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner") as Int).toFloat(),
             (ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.width")as Int).toFloat(), Color.parseColor( ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color")),
             Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")),
@@ -95,7 +97,8 @@ class TapAmountSectionView : LinearLayout {
             ThemeManager.getFontSize("amountSectionView.originalAmountLabelFont")
         currentCurrencyTextViewTheme.font =
             ThemeManager.getFontName("amountSectionView.originalAmountLabelFont")
-        selectedCurrency.setTheme(currentCurrencyTextViewTheme)
+        selectedAmountValue.setTheme(currentCurrencyTextViewTheme)
+        currency.setTheme(currentCurrencyTextViewTheme)
 
         val selectedCurrencyTextViewTheme = TextViewTheme()
         selectedCurrencyTextViewTheme.textColor =
@@ -104,7 +107,8 @@ class TapAmountSectionView : LinearLayout {
             ThemeManager.getFontSize("amountSectionView.convertedAmountLabelFont")
         selectedCurrencyTextViewTheme.font =
             ThemeManager.getFontName("amountSectionView.convertedAmountLabelFont")
-        currentCurrency.setTheme(selectedCurrencyTextViewTheme)
+        mainKDAmountValue.setTheme(selectedCurrencyTextViewTheme)
+        mainKDCurrency.setTheme(selectedCurrencyTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
 
@@ -116,31 +120,51 @@ class TapAmountSectionView : LinearLayout {
      **/
     fun setAmountViewDataSource(amountViewDataSource: AmountViewDataSource) {
         this.amountViewDataSource = amountViewDataSource
+
         amountViewDataSource.selectedCurr?.let {
-            selectedCurrency.text = it
+            selectedAmountValue.text = it
         }
-        amountViewDataSource.currentCurr?.let {
-            currentCurrency.text = it
-        }
-        amountViewDataSource.itemCount?.let {
-            itemCount.text = it
+        amountViewDataSource.selectedCurrText?.let {
+            currency.text = it
         }
 
-        itemCount.elevation = 0F
+        amountViewDataSource.currentCurr?.let {
+            mainKDAmountValue.text = it
+        }
+        amountViewDataSource.currentCurrText?.let {
+            mainKDCurrency.text = it
+        }
+        amountViewDataSource.itemCount?.let {
+            itemCountButton.text = it
+        }
+
+        itemCountButton.elevation = 0F
     }
 
     fun setFontsEnglish() {
-        selectedCurrency?.typeface = Typeface.createFromAsset(
+
+        selectedAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoRegular
             )
         )
-        currentCurrency?.typeface = Typeface.createFromAsset(
+        currency?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
+
+        mainKDAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
-        itemCount?.typeface = Typeface.createFromAsset(
+        mainKDCurrency?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        itemCountButton?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
@@ -148,17 +172,30 @@ class TapAmountSectionView : LinearLayout {
     }
 
     fun setFontsArabic() {
-        selectedCurrency?.typeface = Typeface.createFromAsset(
+
+
+        selectedAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalRegular
             )
         )
-        currentCurrency?.typeface = Typeface.createFromAsset(
+        currency?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalRegular
+            )
+        )
+
+        mainKDAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
-        itemCount?.typeface = Typeface.createFromAsset(
+        mainKDCurrency?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        itemCountButton?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )

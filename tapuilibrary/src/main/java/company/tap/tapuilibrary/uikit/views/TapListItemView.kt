@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.graphics.Typeface
+import android.provider.Settings.Global.getString
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -64,6 +65,10 @@ class TapListItemView : LinearLayout {
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
+    //             buttonPrice.setPrice(String.format(getString(R.string.item_price), GUIUtils.formatPrice(price),
+    //             LocalCacheManager.getSelectedCountry().getCur(Preferences.getInstance(getApplicationContext()).getLanguage())));
+
+
     /**
      * @param itemViewDataSource is set via the consumer app for itemTitle,
      * itemAmount , totalAmount and totalQuantity .
@@ -76,6 +81,9 @@ class TapListItemView : LinearLayout {
         itemViewDataSource.itemAmount?.let {
             itemAmount.text = it
         }
+
+        itemAmount.text = String.format(context.getString(R.string.item_price),itemViewDataSource.itemAmount, itemViewDataSource.itemAmountCurr )
+
         itemViewDataSource.totalAmount?.let {
             totalAmount.text = it
         }
