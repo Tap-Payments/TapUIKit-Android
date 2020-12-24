@@ -152,7 +152,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             otpLinearLayout.setBackgroundResource(R.drawable.blur_background_dark)
         } else {
-            otpLinearLayout.setBackgroundResource(R.drawable.blur_background)
+            otpLinearLayout.setBackgroundResource(R.drawable.blurbackground)
         }
     }
 
@@ -260,12 +260,6 @@ class OTPView : LinearLayout, OpenOTPInterface {
                val minutesStr = if(minutes < 9) "0$minutes" else "$minutes"
                 if (LocalizationManager.getLocale(context).language == "en")  timerText.text = "$minutesStr : $secondStr"
                 else timerText.text = "$secondStr : $minutesStr"
-//                timerText.text = (String.format("%02d", minutes).format(this, Locale.ENGLISH))+ ":" + (String.format("%02d", second).format(this, Locale.ENGLISH))
-//                timerText.typeface = Typeface.createFromAsset(
-//                    context?.assets, TapFont.tapFontType(
-//                        TapFont.RobotoLight
-//                    )
-//                )
             }
 
             override fun onFinish() {
