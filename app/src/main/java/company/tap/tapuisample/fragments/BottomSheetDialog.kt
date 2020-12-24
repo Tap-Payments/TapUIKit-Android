@@ -239,28 +239,28 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                  * check if there is saving options or not if not we will set visibility for switches layout in TapCardSwitch Gone
                  * if user want to check main switch
                  */
-                switch_pay_demo.showOnlyPayButton()
-                mainSwitchUncheckedAction()
-                switch_pay_demo.payButton.changeButtonState(ActionButtonState.LOADING)
-                switch_pay_demo.payButton.addChildView(
-                    switch_pay_demo.payButton.getImageView(
-                        R.drawable.loader,
-                        1
-                    ) {  })
+//                switch_pay_demo.showOnlyPayButton()
+//                mainSwitchUncheckedAction()
+//                switch_pay_demo.payButton.changeButtonState(ActionButtonState.LOADING)
+//                switch_pay_demo.payButton.addChildView(
+//                    switch_pay_demo.payButton.getImageView(
+//                        R.drawable.loader,
+//                        1
+//                    ) {  })
 
-//                if (paymentsList[2] == 3) {
-//                    goPayLoginInput?.visibility = View.VISIBLE
-////                    goPayPasswordInput?.visibility = View.VISIBLE
-//                    mainChipgroup?.visibility = View.GONE
-//                    tapSeparatorViewLinear?.visibility = View.GONE
-//                    separatorــLayout?.visibility = View.GONE
-//                    hideAllViews()
-//                    tapHeaderSectionView.visibility = View.VISIBLE
-//                    amountSectionView.visibility = View.VISIBLE
-//                    businessPlaceholder.visibility = View.VISIBLE
-//                    topSeparator.visibility = View.VISIBLE
-//                    separator.visibility = View.VISIBLE
-//                    businessIcon.visibility = View.VISIBLE
+                if (paymentsList[2] == 3) {
+                    goPayLoginInput?.visibility = View.VISIBLE
+//                    goPayPasswordInput?.visibility = View.VISIBLE
+                    mainChipgroup?.visibility = View.GONE
+                    tapSeparatorViewLinear?.visibility = View.GONE
+                    separatorــLayout?.visibility = View.GONE
+                    hideAllViews()
+                    tapHeaderSectionView.visibility = View.VISIBLE
+                    amountSectionView.visibility = View.VISIBLE
+                    businessPlaceholder.visibility = View.VISIBLE
+                    topSeparator.visibility = View.VISIBLE
+                    separator.visibility = View.VISIBLE
+                    businessIcon.visibility = View.VISIBLE
 
 
 //                    Toast.makeText(context, "goPay is clicked", Toast.LENGTH_SHORT).show()
@@ -268,8 +268,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                        ExampleFragment()
 //                            .show(it1, null)
 //                    }
-
-
+//
+//
 //                    childFragmentManager
 //                        .beginTransaction()
 //                        .add(R.id.fragment_container_nfc, exampleFragment)
@@ -283,7 +283,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                            .commit()
 //                        dialog?.hide()
 //                    changeBottomSheetTransition()
-//                } else
+                }
+//                else
 
 
 

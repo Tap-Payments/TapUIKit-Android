@@ -26,6 +26,7 @@ import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
 import company.tap.tapuilibrary.uikit.interfaces.PasswordConfirmationInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+import kotlinx.android.synthetic.main.gopay_password_input.view.*
 
 
 /**
@@ -63,9 +64,9 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            rootView.setBackgroundResource(R.drawable.blur_background_dark)
+            passwordLinearLayout.setBackgroundResource(R.drawable.blur_background_dark)
         } else {
-            rootView.setBackgroundResource(R.drawable.blur_background)
+            passwordLinearLayout.setBackgroundResource(R.drawable.blurbackground)
         }
     }
 

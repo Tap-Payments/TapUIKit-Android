@@ -80,9 +80,10 @@
     <LinearLayout
         android:id="@+id/otpLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:layout_marginTop="-8dp"
         android:paddingTop="-5dp"
+        android:alpha="0.9"
         android:windowSoftInputMode="adjustPan"
         android:layout_gravity="center"
         android:gravity="center"
