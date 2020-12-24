@@ -18,33 +18,12 @@
         android:textColor="#4b4847"
         android:textSize="20sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/mainCurrencyConstraint"
+        app:layout_constraintBottom_toTopOf="@+id/mainKDAmountValue"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/currency"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1000,000.000" />
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
-        android:id="@+id/currency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:textColor="#4b4847"
-        android:textSize="20sp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/mainCurrencyConstraint"
-        app:layout_constraintLeft_toRightOf="@+id/selectedAmountValue"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:text="SR" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="visible"
-        app:layout_constraintTop_toBottomOf="@+id/selectedAmountValue"
-        android:id="@+id/mainCurrencyConstraint">
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/mainKDAmountValue"
@@ -54,27 +33,12 @@
         android:textColor="#a8a8a8"
         android:textSize="14sp"
         android:textStyle="normal"
-        android:visibility="visible"
-        app:layout_constraintRight_toLeftOf="@+id/mainKDCurrency"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@+id/selectedAmountValue"
         app:layout_constraintStart_toStartOf="parent"
         tools:text="1000,000.000" />
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
-        android:id="@+id/mainKDCurrency"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-light"
-        android:textColor="#a8a8a8"
-        android:textSize="14sp"
-        android:textStyle="normal"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/mainKDAmountValue"
-        tools:text="KD" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <company.tap.tapuilibrary.uikit.atoms.TapButton
         android:id="@+id/itemCountButton"

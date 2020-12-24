@@ -78,15 +78,9 @@ class TapListItemView : LinearLayout {
         itemViewDataSource.itemTitle?.let {
             itemTitle.text = it
         }
-        itemViewDataSource.itemAmount?.let {
-            itemAmount.text = it
-        }
-
         itemAmount.text = String.format(context.getString(R.string.item_price),itemViewDataSource.itemAmount, itemViewDataSource.itemAmountCurr )
+        totalAmount.text = String.format(context.getString(R.string.item_price),itemViewDataSource.totalAmount, itemViewDataSource.totalAmountCurr )
 
-        itemViewDataSource.totalAmount?.let {
-            totalAmount.text = it
-        }
         itemViewDataSource.totalQuantity?.let {
             totalQuantity.text = it
         }

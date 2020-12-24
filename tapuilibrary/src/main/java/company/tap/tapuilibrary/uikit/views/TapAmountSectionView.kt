@@ -26,9 +26,7 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 class TapAmountSectionView : LinearLayout {
     val selectedAmountValue by lazy { findViewById<TapTextView>(R.id.selectedAmountValue) }
-    val currency by lazy { findViewById<TapTextView>(R.id.currency) }
     val mainKDAmountValue by lazy { findViewById<TapTextView>(R.id.mainKDAmountValue) }
-    val mainKDCurrency by lazy { findViewById<TapTextView>(R.id.mainKDCurrency) }
     val itemCountButton by lazy { findViewById<TapButton>(R.id.itemCountButton) }
     private var amountViewDataSource: AmountViewDataSource? = null
 
@@ -98,7 +96,6 @@ class TapAmountSectionView : LinearLayout {
         currentCurrencyTextViewTheme.font =
             ThemeManager.getFontName("amountSectionView.originalAmountLabelFont")
         selectedAmountValue.setTheme(currentCurrencyTextViewTheme)
-        currency.setTheme(currentCurrencyTextViewTheme)
 
         val selectedCurrencyTextViewTheme = TextViewTheme()
         selectedCurrencyTextViewTheme.textColor =
@@ -108,7 +105,6 @@ class TapAmountSectionView : LinearLayout {
         selectedCurrencyTextViewTheme.font =
             ThemeManager.getFontName("amountSectionView.convertedAmountLabelFont")
         mainKDAmountValue.setTheme(selectedCurrencyTextViewTheme)
-        mainKDCurrency.setTheme(selectedCurrencyTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
 
@@ -120,20 +116,8 @@ class TapAmountSectionView : LinearLayout {
      **/
     fun setAmountViewDataSource(amountViewDataSource: AmountViewDataSource) {
         this.amountViewDataSource = amountViewDataSource
-
-        amountViewDataSource.selectedCurr?.let {
-            selectedAmountValue.text = it
-        }
-        amountViewDataSource.selectedCurrText?.let {
-            currency.text = it
-        }
-
-        amountViewDataSource.currentCurr?.let {
-            mainKDAmountValue.text = it
-        }
-        amountViewDataSource.currentCurrText?.let {
-            mainKDCurrency.text = it
-        }
+        selectedAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.selectedCurr, amountViewDataSource.selectedCurrText )
+        mainKDAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.currentCurr, amountViewDataSource.currentCurrText )
         amountViewDataSource.itemCount?.let {
             itemCountButton.text = it
         }
@@ -148,22 +132,13 @@ class TapAmountSectionView : LinearLayout {
                 TapFont.RobotoRegular
             )
         )
-        currency?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
-            )
-        )
 
         mainKDAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
-        mainKDCurrency?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
-            )
-        )
+
         itemCountButton?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -179,22 +154,13 @@ class TapAmountSectionView : LinearLayout {
                 TapFont.TajawalRegular
             )
         )
-        currency?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
-            )
-        )
 
         mainKDAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
-        mainKDCurrency?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
-            )
-        )
+
         itemCountButton?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
