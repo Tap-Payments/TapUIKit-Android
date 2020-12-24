@@ -65,10 +65,6 @@ class TapListItemView : LinearLayout {
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
-    //             buttonPrice.setPrice(String.format(getString(R.string.item_price), GUIUtils.formatPrice(price),
-    //             LocalCacheManager.getSelectedCountry().getCur(Preferences.getInstance(getApplicationContext()).getLanguage())));
-
-
     /**
      * @param itemViewDataSource is set via the consumer app for itemTitle,
      * itemAmount , totalAmount and totalQuantity .
