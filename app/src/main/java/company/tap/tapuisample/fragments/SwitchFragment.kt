@@ -31,13 +31,13 @@ open class SwitchFragment : TapBottomSheetDialog() {
     private lateinit var switchDemo: TapCardSwitch
     private lateinit var demoText: TapTextView
     private var tapSwitchInterface: TapSwitchInterface? = null
-    private var switchSaveDemo: TapSwitch? = null
+//    private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
     private var switchMerchantCheckout: TapSwitch? = null
     private var switchgoPayCheckout: TapSwitch? = null
     private var savegoPay: TapTextView? = null
     private var alertgoPay: TapTextView? = null
-    private var saveCardorMobile: TapTextView? = null
+//    private var saveCardorMobile: TapTextView? = null
     private var separatorView: TapSeparatorView? = null
     private var radioGroup: RadioGroup? = null
     private lateinit var radio: RadioButton
@@ -75,12 +75,12 @@ open class SwitchFragment : TapBottomSheetDialog() {
         switchDemo = view.findViewById(R.id.switch_pay_demo)
         demoText = view.findViewById(R.id.demo_text)
         switchDemo.setSwitchDataSource(getSwitchDataSource())
-        switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
+//        switchSaveDemo = switchDemo.findViewById(R.id.switch_save_mobile)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         separatorView = switchDemo.findViewById(R.id.switch_separator)
         switchMerchantCheckout = switchDemo.findViewById(R.id.switch_merchant_checkout)
         switchgoPayCheckout = switchDemo.findViewById(R.id.switch_gopay_checkout)
-        saveCardorMobile = switchDemo.findViewById(R.id.text_save)
+//        saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
         radioGroup = view.findViewById(R.id.radio_group)
@@ -136,29 +136,29 @@ open class SwitchFragment : TapBottomSheetDialog() {
     // Configuring switch states and listening to switch states.
     private fun configureSwitch() {
 
-        switchSaveDemo?.setOnCheckedChangeListener { buttonView, isChecked ->
-            println("isChecked Save value $isChecked")
-            tapSwitchInterface?.enableSaveMobile(isChecked)
-            if (isChecked) {
-                switchLayout?.visibility = View.VISIBLE
-                switchMerchantCheckout?.visibility = View.VISIBLE
-                switchMerchantCheckout?.isChecked = true
-                switchgoPayCheckout?.isChecked = true
-                switchgoPayCheckout?.visibility = View.VISIBLE
-                savegoPay?.visibility = View.VISIBLE
-                alertgoPay?.visibility = View.VISIBLE
-                separatorView?.visibility = View.VISIBLE
-            } else {
-                switchLayout?.visibility = View.GONE
-                switchMerchantCheckout?.visibility = View.GONE
-                switchMerchantCheckout?.isChecked = false
-                switchgoPayCheckout?.isChecked = false
-                switchgoPayCheckout?.visibility = View.GONE
-                savegoPay?.visibility = View.GONE
-                alertgoPay?.visibility = View.GONE
-                separatorView?.visibility = View.GONE
-            }
-        }
+//        switchSaveDemo?.setOnCheckedChangeListener { buttonView, isChecked ->
+//            println("isChecked Save value $isChecked")
+//            tapSwitchInterface?.enableSaveMobile(isChecked)
+//            if (isChecked) {
+//                switchLayout?.visibility = View.VISIBLE
+//                switchMerchantCheckout?.visibility = View.VISIBLE
+//                switchMerchantCheckout?.isChecked = true
+//                switchgoPayCheckout?.isChecked = true
+//                switchgoPayCheckout?.visibility = View.VISIBLE
+//                savegoPay?.visibility = View.VISIBLE
+//                alertgoPay?.visibility = View.VISIBLE
+//                separatorView?.visibility = View.VISIBLE
+//            } else {
+//                switchLayout?.visibility = View.GONE
+//                switchMerchantCheckout?.visibility = View.GONE
+//                switchMerchantCheckout?.isChecked = false
+//                switchgoPayCheckout?.isChecked = false
+//                switchgoPayCheckout?.visibility = View.GONE
+//                savegoPay?.visibility = View.GONE
+//                alertgoPay?.visibility = View.GONE
+//                separatorView?.visibility = View.GONE
+//            }
+//        }
         switchMerchantCheckout?.setOnCheckedChangeListener { buttonView, isChecked ->
             tapSwitchInterface?.enableSaveMerchantCheckout(isChecked)
         }

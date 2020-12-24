@@ -6,12 +6,10 @@
     android:elevation="8dp"
     android:layout_marginTop="-25dp"
     android:paddingTop="20dp"
-    android:layout_gravity="center"
-    android:gravity="center"
     android:id="@+id/tapCardSwitchLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="@color/chip_background"
+    tools:background="@color/blue"
     android:layoutDirection="locale"
     android:orientation="vertical">
 
@@ -78,6 +76,10 @@
             app:switchPadding="40dp"
             tools:text="By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites." />
 
+
+
+
+
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/alert_gopay_signup"
             android:layout_width="wrap_content"
@@ -98,8 +100,9 @@
         android:id="@+id/payButton"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_gravity="center"
         android:layout_marginTop="22dp"
+        android:visibility="visible"
+        android:layout_gravity="center"
         android:layout_marginBottom="22dp"
         android:layout_marginStart="@dimen/margin_basic_20dp"
         android:layout_marginEnd="@dimen/margin_basic_20dp" />

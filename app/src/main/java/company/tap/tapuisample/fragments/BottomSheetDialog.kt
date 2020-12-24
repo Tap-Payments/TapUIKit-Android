@@ -378,13 +378,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switchDemo = view.findViewById(R.id.switch_pay_demo)
         mainSwitch = view.findViewById(R.id.mainSwitch)
         switchSaveDemo = mainSwitch.findViewById(R.id.switchSaveMobile)
-        switch_save_mobile = switchDemo.findViewById(R.id.switch_save_mobile)
+//        switch_save_mobile = switchDemo.findViewById(R.id.switch_save_mobile)
         payButton = switchDemo.findViewById(R.id.payButton)
         switchLayout = switchDemo.findViewById(R.id.switches_layout)
         separatorView = switchDemo.findViewById(R.id.switch_separator)
         switchMerchantCheckout = switchDemo.findViewById(R.id.switch_merchant_checkout)
         switchgoPayCheckout = switchDemo.findViewById(R.id.switch_gopay_checkout)
-        saveCardorMobile = switchDemo.findViewById(R.id.text_save)
+//        saveCardorMobile = switchDemo.findViewById(R.id.text_save)
         savegoPay = switchDemo.findViewById(R.id.save_goPay)
         alertgoPay = switchDemo.findViewById(R.id.alert_gopay_signup)
         mainSwitch.mainSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
@@ -529,9 +529,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private fun amountViewInit(view: View) {
         amountSectionView = view.findViewById(R.id.amount_section)
         amountSectionView.setAmountViewDataSource(getAmountViewDataSOurce())
-        currentCurrency = view.findViewById(R.id.textView_currentcurrency)
-        selectedCurrency = view.findViewById(R.id.textview_selectedcurrency)
-        itemCount = view.findViewById(R.id.textView_itemcount)
+        currentCurrency = view.findViewById(R.id.mainKDAmountValue)
+        selectedCurrency = view.findViewById(R.id.selectedAmountValue)
+        itemCount = view.findViewById(R.id.itemCountButton)
 
         if (isFragmentAdded) {
             currentCurrency.visibility = View.VISIBLE
