@@ -85,10 +85,6 @@ class NFCSampleFragment : Fragment() {
         } else {
             Toast.makeText(context, "NFC is not supported!!!", Toast.LENGTH_SHORT).show()
         }
-
-        //  or since com.google.android.material:material:1.1.0-beta01
-        /// (dialog as? BottomSheetDialog)?.behavior?.state = BottomSheetBehavior.STATE_EXPANDED
-
     }
 
     fun enableNFC() {
@@ -136,7 +132,6 @@ class NFCSampleFragment : Fragment() {
 
         val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
         fragmentTransaction?.remove(this)?.commit()
-        Log.e("showCardInfo:", text)
 
 
     }

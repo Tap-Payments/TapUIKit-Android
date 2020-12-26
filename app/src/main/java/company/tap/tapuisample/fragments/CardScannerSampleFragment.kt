@@ -69,25 +69,6 @@ class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallB
 
     }
 
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-       // view.post(Runnable {
-           // Blurry.with(context).radius(20).sampling(8).onto(cardscan_view)
-           *//* view.post(Runnable {
-                Blurry.with(context)
-                    .radius(10)
-                    .sampling(8)
-                    .color(Color.argb(66, 255, 255, 0))
-                    .async()
-                    .animate(500)
-                    .onto(cardscan_view)
-            })*//*
-       // })
-    }
-*/
-
-
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         textRecognitionML = TapTextRecognitionML(this)

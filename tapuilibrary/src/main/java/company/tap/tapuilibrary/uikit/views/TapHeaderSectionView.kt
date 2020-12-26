@@ -239,19 +239,19 @@ class TapHeaderSectionView : LinearLayout {
     fun setFontsArabic() {
         businessName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
+                TapFont.TajawalMedium
             )
         )
 
         paymentFor?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
+                TapFont.TajawalMedium
             )
         )
 
         businessPlaceholder?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
+                TapFont.TajawalMedium
             )
         )
 

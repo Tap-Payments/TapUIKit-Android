@@ -188,7 +188,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         )
         changeEmail?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
+                TapFont.TajawalMedium
             )
         )
     }

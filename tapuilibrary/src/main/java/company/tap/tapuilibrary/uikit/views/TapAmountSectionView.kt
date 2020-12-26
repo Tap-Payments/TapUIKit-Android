@@ -151,7 +151,7 @@ class TapAmountSectionView : LinearLayout {
 
         selectedAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
+                TapFont.TajawalMedium
             )
         )
 

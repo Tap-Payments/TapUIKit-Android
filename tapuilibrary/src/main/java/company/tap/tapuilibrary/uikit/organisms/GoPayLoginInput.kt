@@ -286,7 +286,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 } else {
                     tabText.typeface = Typeface.createFromAsset(
                         context?.assets, TapFont.tapFontType(
-                            TapFont.TajawalRegular
+                            TapFont.TajawalMedium
                         )
                     )
                 }
@@ -305,7 +305,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 } else {
                     tabText.typeface = Typeface.createFromAsset(
                         context?.assets, TapFont.tapFontType(
-                            TapFont.TajawalRegular
+                            TapFont.TajawalMedium
                         )
                     )
                 }
@@ -388,7 +388,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         } else {
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
-                    TapFont.TajawalRegular
+                    TapFont.TajawalMedium
                 )
             )
         }

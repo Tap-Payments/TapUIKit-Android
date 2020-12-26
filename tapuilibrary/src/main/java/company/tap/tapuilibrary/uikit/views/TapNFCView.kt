@@ -1,10 +1,15 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
+import android.graphics.Color
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -62,11 +67,40 @@ class TapNFCView : LinearLayout {
         inflate(context, R.layout.tap_nfc_view, this)
         gifNFC = findViewById(R.id.gif_nfc)
         Glide.with(context).load(R.drawable.nfcgif).into(gifNFC)
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
 
     }
 
-    fun setTheme(){
+    fun setFontsEnglish(){
+        scanNfc.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        aboutNFC.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+    }
 
+    fun setFontsArabic(){
+        scanNfc.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        aboutNFC.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+    }
+    fun setTheme(){
+        topLinearNFC.setBackgroundColor(Color.parseColor(ThemeManager.getValue("Nfc.topTextBackgroundColor")))
+        scanNfc.setTextColor(Color.parseColor(ThemeManager.getValue("Nfc.topTextColor")))
+        aboutNFC.setTextColor(Color.parseColor(ThemeManager.getValue("Nfc.bottomTextColor")))
     }
 
 
