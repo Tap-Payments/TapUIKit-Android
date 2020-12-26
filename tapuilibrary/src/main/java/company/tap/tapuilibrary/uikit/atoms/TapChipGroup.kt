@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.tap_chip_group.view.*
  *  access the current theme, resources, etc.
  *  @param attrs The attributes of the XML Button tag being used to inflate the view.
  **/
-open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     val groupName by lazy { findViewById<TapTextView>(R.id.group_name) }
     val groupAction by lazy { findViewById<TapTextView>(R.id.group_action) }
     val chipsRecycler by lazy { findViewById<RecyclerView>(R.id.chip_recycler) }
@@ -40,16 +40,12 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
         groupNameTextViewTheme.textColor =
             Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.leftButton.labelTextColor"))
         groupNameTextViewTheme.textSize =  ThemeManager.getFontSize("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
-//        groupNameTextViewTheme.font =
-//            ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
         groupName?.setTheme(groupNameTextViewTheme)
 
         val groupActionTextViewTheme = TextViewTheme()
         groupActionTextViewTheme.textColor =
             Color.parseColor(ThemeManager.getValue("horizontalList.headers.gatewayHeader.rightButton.labelTextColor"))
         groupActionTextViewTheme.textSize =  ThemeManager.getFontSize("horizontalList.headers.gatewayHeader.rightButton.labelTextFont")
-//        groupActionTextViewTheme.font =
-//            ThemeManager.getFontName("horizontalList.headers.gatewayHeader.leftButton.labelTextFont")
         groupAction?.setTheme(groupActionTextViewTheme)
 
         linearMainView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
