@@ -73,7 +73,7 @@ open class TapChipGroup(context: Context?, attrs: AttributeSet?) : LinearLayout(
     private fun setFontsArabic() {
         groupName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
+                TapFont.TajawalMedium
             )
         )
         groupAction?.typeface = Typeface.createFromAsset(
