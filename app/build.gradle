@@ -79,8 +79,8 @@ dependencies {
 
 
 
-    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.236'
-    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.236'
+    implementation 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.237'
+    api 'com.github.Tap-Payments:TapUIKit-Android:1.1.1.237'
 
 //    implementation 'com.github.Tap-Payments:TapFontsKit-Android:1.0.4'
 //    api 'com.github.Tap-Payments:TapThemeManger-Android:0.1.0.2'
