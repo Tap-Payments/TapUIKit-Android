@@ -13,6 +13,7 @@ import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import kotlinx.android.synthetic.main.gopay_password_input.view.*
 
 /**
  * Created  on 8/10/20.
@@ -73,7 +74,13 @@ class TapAlertView : LinearLayout {
     }
 
     fun initTheme(){
-        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapAlertMessage.backgroundColor")))
+//        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapAlertMessage.backgroundColor")))
+
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            tapAlertLinear.setBackgroundResource(R.drawable.blur_background_dark)
+        } else {
+            tapAlertLinear.setBackgroundResource(R.drawable.blurbackground)
+        }
 
         var textTheme = TextViewTheme()
         textTheme.textColor = Color.parseColor(ThemeManager.getValue("TapAlertMessage.textField.textColor"))
