@@ -31,19 +31,13 @@ All rights reserved.
 
 var selectedPosition = 0
 var context: Context? = null
-//var viewType :ViewGroup? = null
-//val tapCard_Chip by lazy {  viewType?.findViewById<TapChip>(R.id.tapcard_Chip) }
-
 
 class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
     RecyclerView.Adapter<CurrencyAdapter.CurrencyHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CurrencyHolder {
-        val v =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_currency_row, parent, false)
+        val v = LayoutInflater.from(parent.context).inflate(R.layout.item_currency_row, parent, false)
         context = parent.context
-        return CurrencyHolder(
-            v
-        )
+        return CurrencyHolder(v)
     }
 
     override fun getItemCount() = photos.size
@@ -70,14 +64,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             totalQuantityTextViewTheme.textSize = ThemeManager.getFontSize("horizontalList.chips.currencyChip.labelTextFont")
             totalQuantityTextViewTheme.font = ThemeManager.getFontName("horizontalList.chips.currencyChip.labelTextFont")
             view.textView_currency.setTheme(totalQuantityTextViewTheme)
-
-//            val chipTheme = ChipTheme()
-//            chipTheme.backgroundColor= Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor"))
-//            chipTheme.outlineSpotShadowColor=  Color.parseColor( ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
-//            view.tapcard_Chip.setTheme(chipTheme)
             view.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-//            tapCard_Chip?.setTheme(chipTheme)
-
             setBorderedView(itemView.CurrencyChipLinear,
                 20.0f,
                 0.0f,
@@ -115,9 +102,6 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.backgroundColor")),
                 Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
             )
-//            holder.itemView.outlineSpotShadowColor =
-//                Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.selected.shadow.color"))
-
 
         } else{
 
@@ -126,9 +110,6 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
             }else{
                 holder.itemView.setBackgroundResource(company.tap.tapuisample.R.drawable.border_unclick)
             }
-
-//            holder.itemView.setBackgroundResource(R.drawable.border_unclick)
-
             setBorderedView(
                 holder.itemView.CurrencyChipLinear,
                 (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
