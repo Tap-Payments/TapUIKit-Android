@@ -198,6 +198,7 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
         passwordTextInput.setErrorColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.filled.backgroundColor")))
         passwordTextInput.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.textColor")))
         passwordTextInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.placeHolderColor")))
+        passwordTextInput.textSize = ThemeManager.getValue("goPay.passwordField.textFont")
         passwordTextInput.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
         textInputLayout.backgroundTintList = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.passwordField.underline.empty.backgroundColor")))
         changeEmailCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))

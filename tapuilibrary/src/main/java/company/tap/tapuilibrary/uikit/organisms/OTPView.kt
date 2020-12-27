@@ -44,7 +44,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
     lateinit var attrs: AttributeSet
 
     val otpMainView by lazy { findViewById<LinearLayout>(R.id.otpMainView) }
-    val otpLinearLayout by lazy { findViewById<RelativeLayout>(R.id.otpLinearLayout) }
+    val otpLinearLayout by lazy { findViewById<LinearLayout>(R.id.otpLinearLayout) }
     val otpViewInput1 by lazy { findViewById<TapOTPView>(R.id.otpViewInput1) }
     val otpViewInput2 by lazy { findViewById<TapOTPView>(R.id.otpViewInput2) }
     val otpSentText by lazy { findViewById<TapTextView>(R.id.otpSentText) }

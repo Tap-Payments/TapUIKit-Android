@@ -78,7 +78,7 @@
     </androidx.cardview.widget.CardView>
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/otpLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="250dp"
@@ -257,6 +257,6 @@
             android:layout_marginTop="@dimen/margin_basic_20dp"
             android:layout_marginBottom="@dimen/margin_basic_20dp"
             android:text="click" />
-    </RelativeLayout>
+    </LinearLayout>
 
 </LinearLayout>
