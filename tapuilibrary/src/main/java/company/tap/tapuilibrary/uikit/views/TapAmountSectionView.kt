@@ -116,8 +116,8 @@ class TapAmountSectionView : LinearLayout {
      **/
     fun setAmountViewDataSource(amountViewDataSource: AmountViewDataSource) {
         this.amountViewDataSource = amountViewDataSource
-        selectedAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.selectedCurr, amountViewDataSource.selectedCurrText )
-        mainKDAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.currentCurr, amountViewDataSource.currentCurrText )
+        selectedAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.selectedCurrText , amountViewDataSource.selectedCurr)
+        mainKDAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.currentCurrText , amountViewDataSource.currentCurr)
         amountViewDataSource.itemCount?.let {
             itemCountButton.text = it
         }
