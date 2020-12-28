@@ -152,7 +152,7 @@ class TapCardSwitch : LinearLayout {
                 if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                     tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background_dark)
                 } else {
-                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background)
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blurbackground)
                 }
 
             } else {

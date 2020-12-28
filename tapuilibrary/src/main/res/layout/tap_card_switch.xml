@@ -8,7 +8,7 @@
     android:paddingTop="20dp"
     android:id="@+id/tapCardSwitchLinear"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="200dp"
     tools:background="@color/blue"
     android:layoutDirection="locale"
     android:orientation="vertical">
@@ -16,7 +16,7 @@
     <LinearLayout
         android:id="@+id/switches_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:alpha="0.8"
         android:paddingTop="20dp"
         android:orientation="vertical"

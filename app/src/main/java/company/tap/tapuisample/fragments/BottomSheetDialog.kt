@@ -353,6 +353,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         }
         cardScannerBtn?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         cardScannerBtn?.setOnClickListener {
+            bottomSheetDialog.behavior.isFitToContents = false
             // val cardFragment = CardScannerFragment()
             tabLayout?.visibility = View.GONE
             paymentLayout.visibility = View.GONE
@@ -367,11 +368,12 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             switch_pay_demo.payButton.visibility = View.GONE
 //            outer_layout.visibility = View.GONE
             itemCount.text = "CLOSE"
+
             childFragmentManager
                 .beginTransaction()
-                .add(R.id.fragment_container_nfc, cardFragment)
+                .replace(R.id.fragment_container_nfc, cardFragment)
                 .commit()
-            cardFragmentadded = true
+//            cardFragmentadded = true
         }
     }
 
@@ -417,14 +419,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             println("mobile view $tapCardInputView")
         }
         bottomSheetDialog.behavior.state = STATE_EXPANDED
-        cardScannerBtn?.setOnClickListener {
-            val cardScannerFragment = CardScannerFragment()
-            childFragmentManager
-                .beginTransaction()
-                .add(R.id.fragment_container_nfc, cardScannerFragment)
-                .commit()
-            cardFragmentadded = true
-        }
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
     }
@@ -924,6 +918,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                  * switch_pay_demo.payButton.isActivated
                  * if YES -----> we will set Logic of function mainSwitchCheckedAction()
                  */
+                mainSwitchCheckedAction()
 
             } else mainSwitchUncheckedAction()
         }
@@ -964,7 +959,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             switch_pay_demo.tapCardSwitchLinear.setBackgroundResource(company.tap.tapuilibrary.R.drawable.ic_blurbackgroundblack)
         } else {
-            switch_pay_demo.tapCardSwitchLinear.setBackgroundResource(company.tap.tapuilibrary.R.drawable.ic_blurbackground)
+            switch_pay_demo.tapCardSwitchLinear.setBackgroundResource(company.tap.tapuilibrary.R.drawable.blurbackground)
         }
         cardSwitch.cardElevation = 2.5f
 

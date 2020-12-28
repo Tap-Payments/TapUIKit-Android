@@ -33,65 +33,22 @@ All rights reserved.
 class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCallback{
     private var textRecognitionML: TapTextRecognitionML? = null
     private var cardScanText: TapTextView? = null
-    private lateinit var tapHeaderSectionView: TapHeaderSectionView
-    private var imageUrl: String = "https://avatars3.githubusercontent.com/u/19837565?s=200&v=4"
-    private var businessName: String? = null
-    private var businessInitial: String? = null
-    private lateinit var businessIcon: TapImageView
-    private lateinit var businessPlaceholder: TapTextView
-    private lateinit var amountSectionView: TapAmountSectionView
-    private lateinit var selectedCurrency: TapTextView
-    private lateinit var currentCurrency: TapTextView
-    private lateinit var itemCount: TapButton
-    // var blurLayout: BlurLayout? = null
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_card_view, container, false)
-        val rootView = (activity?.window?.decorView as ViewGroup?)
-
-        //  Blurry.with(context).radius(25).sampling(2).onto(rootView)
-
         childFragmentManager
             .beginTransaction()
             .add(R.id.inline_container, InlineViewFragment())
             .commit()
-        //  bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default","Hints","scan")
-        //headerViewInit(view)
-        // amountViewInit(view)
-        FrameManager.getInstance().setFrameColor(Color.WHITE)
-        // blurLayout = view.findViewById(R.id.blurLayout)
-
+        FrameManager.getInstance().frameColor = Color.WHITE
         return view
-
     }
-
-    /*override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-       // view.post(Runnable {
-           // Blurry.with(context).radius(20).sampling(8).onto(cardscan_view)
-           *//* view.post(Runnable {
-                Blurry.with(context)
-                    .radius(10)
-                    .sampling(8)
-                    .color(Color.argb(66, 255, 255, 0))
-                    .async()
-                    .animate(500)
-                    .onto(cardscan_view)
-            })*//*
-       // })
-    }
-*/
-
-
-
-
-
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
