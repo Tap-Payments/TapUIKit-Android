@@ -5,15 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="NFC DEMO"
-        android:visibility="gone" />
-
-
     <company.tap.tapuilibrary.uikit.views.TapNFCView
         android:id="@+id/custom_nfc"
         android:layout_width="match_parent"

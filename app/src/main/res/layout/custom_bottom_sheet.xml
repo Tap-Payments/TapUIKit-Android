@@ -148,14 +148,12 @@
             android:id="@+id/separatorــLayout"
             android:layout_height="8dp">
 
-
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                 android:id="@+id/separatorــ"
                 android:layout_width="match_parent"
                 android:layout_height="0.5dp"
                 android:background="@color/separator_color"
                 android:visibility="visible" />
-
 
         </LinearLayout>
 
@@ -168,20 +166,6 @@
             android:id="@+id/fragment_container_nfc"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-
-
-<!--        <com.google.android.material.card.MaterialCardView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content">-->
-
-<!--            <company.tap.cardinputwidget.widget.inline.InlineCardInput-->
-<!--                android:layout_marginStart="10dp"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:shouldShowHolderName="false" />-->
-
-<!--        </com.google.android.material.card.MaterialCardView>-->
-
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -206,51 +190,6 @@
             android:layout_marginTop="-9dp"
             android:layout_gravity="start"
             android:layoutDirection="locale" />
-
-<!--        <company.tap.tapuisample.MainSwitch-->
-<!--            android:id="@+id/mainSwitch"-->
-<!--            android:layout_above="@+id/switch_pay_demo"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"/>-->
-
-<!--        <company.tap.tapuilibrary.uikit.views.TapCardSwitch-->
-<!--            android:id="@+id/switch_pay_demo"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="start"-->
-<!--            android:layoutDirection="locale" />-->
-
-
-
-
-
-
-
-
-
-    <!--            <androidx.constraintlayout.widget.ConstraintLayout-->
-    <!--                android:id="@+id/outer_layout"-->
-    <!--                android:visibility="gone"-->
-    <!--                android:layout_width="match_parent"-->
-    <!--                android:layout_height="wrap_content">-->
-
-    <!--        <company.tap.tapuisample.TabAnimatedActionButton-->
-    <!--            android:id="@+id/actionButton"-->
-    <!--            style="?android:attr/borderlessButtonStyle"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="40dp"-->
-    <!--            android:layout_gravity="center"-->
-    <!--            android:layout_marginStart="@dimen/margin_basic_20dp"-->
-    <!--            android:layout_marginEnd="@dimen/margin_basic_20dp"-->
-    <!--            android:layout_marginBottom="@dimen/margin_basic_20dp"-->
-    <!--            android:layout_marginTop="@dimen/margin_basic_10dp"-->
-    <!--            android:elevation="0dp"-->
-    <!--            android:stateListAnimator="@null"-->
-    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--            app:layout_constraintLeft_toLeftOf="parent"-->
-    <!--            app:layout_constraintRight_toRightOf="parent"-->
-    <!--            app:layout_constraintTop_toTopOf="parent" />-->
-    <!--            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
         <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
             android:id="@+id/goPayLoginInput"

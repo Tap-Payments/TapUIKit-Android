@@ -8,8 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/topLinearNFC"
-        tools:background="#f4f4f4">
+        android:id="@+id/topLinearNFC">
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/scan_nfc"
@@ -27,8 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/mainLinearNFC"
-        android:alpha="0.45"
-        android:background="#80000000"
+        android:background="@drawable/blurbackground"
         android:orientation="vertical">
 
         <company.tap.tapuilibrary.uikit.atoms.TapImageView

@@ -68,8 +68,6 @@ import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.switch_pay_demo
-import kotlinx.android.synthetic.main.custom_sheet_switch.*
-import kotlinx.android.synthetic.main.tap_card_switch.view.*
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -342,6 +340,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE
             mainSwitch.visibility = View.GONE
+            separatorــLayout.visibility = View.GONE
+            alert_text.visibility = View.GONE
+            separatorــ.visibility = View.GONE
+            tapSeparatorViewLinear?.visibility = View.GONE
             switch_pay_demo.payButton.visibility = View.GONE
             itemCount.text = "CLOSE"
             childFragmentManager
