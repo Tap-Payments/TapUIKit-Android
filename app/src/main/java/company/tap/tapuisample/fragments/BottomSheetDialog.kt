@@ -354,12 +354,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         cardScannerBtn?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         cardScannerBtn?.setOnClickListener {
             bottomSheetDialog.behavior.isFitToContents = false
-            // val cardFragment = CardScannerFragment()
+             val cardFragment = CardScannerFragment()
             tabLayout?.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
             mainChipGroup?.visibility = View.GONE
             // nfcScanBtn.visibility= View.GONE
+            cardSwitch.visibility = View.GONE
+            switch_pay_demo.visibility = View.GONE
             mainChipGroup?.visibility = View.GONE
             tap_payment_input0.visibility = View.GONE
             switchDemo.visibility = View.GONE

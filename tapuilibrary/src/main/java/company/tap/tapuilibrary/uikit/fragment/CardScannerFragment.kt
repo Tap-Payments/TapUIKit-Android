@@ -42,7 +42,7 @@ class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCa
         val view: View = inflater.inflate(R.layout.custom_card_view, container, false)
         childFragmentManager
             .beginTransaction()
-            .add(R.id.inline_container, InlineViewFragment())
+            .replace(R.id.inline_container, InlineViewFragment())
             .commit()
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default","Hints","scan")

@@ -68,8 +68,7 @@ class TapNFCView : LinearLayout {
         gifNFC = findViewById(R.id.gif_nfc)
         Glide.with(context).load(R.drawable.nfcgif).into(gifNFC)
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
-
-
+        setTheme()
     }
 
     fun setFontsEnglish(){
