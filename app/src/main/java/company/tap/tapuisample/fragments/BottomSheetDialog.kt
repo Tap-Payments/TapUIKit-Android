@@ -127,7 +127,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var linearLayoutPay: LinearLayout? = null
     private var tapSeparatorViewLinear: LinearLayout? = null
     private val cardFragment = CardScannerFragment()
-    private val nfcFragment = NFCSampleFragment()
+    private val nfcFragment = NFCFragment()
     private var cardFragmentadded: Boolean = false
     private var delImageView1: ImageView? = null
     private var delImageView2: ImageView? = null
