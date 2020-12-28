@@ -5,10 +5,6 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
-import androidx.core.view.ViewCompat
-import com.google.android.material.shape.CornerFamily
-import com.google.android.material.shape.MaterialShapeDrawable
-import com.google.android.material.shape.ShapeAppearanceModel
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -19,10 +15,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapButton
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
-import kotlinx.android.synthetic.main.tap_main_amount.view.*
 import kotlinx.android.synthetic.main.tap_main_amount.view.constraint
-import kotlinx.android.synthetic.main.tap_main_header.view.*
-
 
 class TapAmountSectionView : LinearLayout {
     val selectedAmountValue by lazy { findViewById<TapTextView>(R.id.selectedAmountValue) }
@@ -65,7 +58,6 @@ class TapAmountSectionView : LinearLayout {
         itemCountButton.elevation = 0F
         setTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
-
     }
 
     fun setTheme() {
@@ -118,27 +110,21 @@ class TapAmountSectionView : LinearLayout {
         this.amountViewDataSource = amountViewDataSource
         selectedAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.selectedCurrText , amountViewDataSource.selectedCurr)
         mainKDAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.currentCurrText , amountViewDataSource.currentCurr)
-        amountViewDataSource.itemCount?.let {
-            itemCountButton.text = it
-        }
-
+        amountViewDataSource.itemCount?.let { itemCountButton.text = it }
         itemCountButton.elevation = 0F
     }
 
     fun setFontsEnglish() {
-
         selectedAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoRegular
             )
         )
-
         mainKDAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
-
         itemCountButton?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -147,26 +133,20 @@ class TapAmountSectionView : LinearLayout {
     }
 
     fun setFontsArabic() {
-
-
         selectedAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalMedium
             )
         )
-
         mainKDAmountValue?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
-
         itemCountButton?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
         )
     }
-
-
 }

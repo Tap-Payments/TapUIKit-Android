@@ -28,7 +28,6 @@ class TapAlertView : LinearLayout {
     val topSeparator by lazy { findViewById<TapSeparatorView>(R.id.topSeparator) }
     val bottomSeparator by lazy { findViewById<TapSeparatorView>(R.id.bottomSeparator) }
 
-
     /**
      * Simple constructor to use when creating a TapAlertView from code.
      *  @param context The Context the view is running in, through which it can
@@ -60,27 +59,19 @@ class TapAlertView : LinearLayout {
     )
 
     init {
-        inflate(
-            context,
-            R.layout.tap_alert_view, this
-        )
+        inflate(context, R.layout.tap_alert_view, this)
         initTheme()
-        if (context?.let { LocalizationManager.getLocale(it).language } == "en") {
-            setFontsEnglish()
-        } else {
-            setFontsArabic()
-        }
-
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en")  setFontsEnglish()  else setFontsArabic()
     }
 
-    fun initTheme(){
-//        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapAlertMessage.backgroundColor")))
+    private fun initTheme(){
+        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapAlertMessage.backgroundColor")))
 
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            tapAlertLinear.setBackgroundResource(R.drawable.blur_background_dark)
-        } else {
-            tapAlertLinear.setBackgroundResource(R.drawable.blurbackground)
-        }
+//        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+//            tapAlertLinear.setBackgroundResource(R.drawable.blur_background_dark)
+//        } else {
+//            tapAlertLinear.setBackgroundResource(R.drawable.blurbackground)
+//        }
 
         var textTheme = TextViewTheme()
         textTheme.textColor = Color.parseColor(ThemeManager.getValue("TapAlertMessage.textField.textColor"))
