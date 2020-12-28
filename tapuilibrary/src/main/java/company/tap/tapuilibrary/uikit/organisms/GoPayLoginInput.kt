@@ -451,7 +451,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     override fun onCountrySelected() {
         countryCode = countryCodePicker.selectedCountryCode
-//        countryCodeTxt.text = countryCodePicker.selectedCountryCode
     }
 
 

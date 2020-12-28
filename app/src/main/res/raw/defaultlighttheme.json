@@ -697,7 +697,7 @@
     },
     "TapAlertMessage": {
         "backgroundColor": "#f8e5c8",
-        "separatorColor" : "#33ea6724",
+        "separatorColor" : "#eac6a3",
         "separatorHeight" : 1,
         "textField": {
             "textFont": "Roboto-Light,12",
