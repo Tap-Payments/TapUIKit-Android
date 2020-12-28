@@ -850,7 +850,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s.isNullOrEmpty()) {
-                    tabLayout.resetBehaviour()
+//                    tabLayout.resetBehaviour()
                 } else
                     alert_text.visibility = View.GONE
             }
@@ -864,7 +864,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             @SuppressLint("ResourceAsColor")
             override fun afterTextChanged(s: Editable?) {
                 if (s.isNullOrEmpty()) {
-                    tabLayout.resetBehaviour()
+//                    tabLayout.resetBehaviour()
                 } else {
                     alertMessage?.text = "CVV number are missing."
                     alertMessage?.text = (LocalizationManager.getValue(
