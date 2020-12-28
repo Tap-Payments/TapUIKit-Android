@@ -175,8 +175,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.weight = tabItemAlphaValue
         for (item in tabItems) {
             params.setMargins(
-                0, tabItemMarginTopValue, 0,
-                tabItemMarginBottomValue
+                0, 30, 0,
+                20
             )
             item.imageView?.layoutParams = params
         }
@@ -330,7 +330,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             } else {
                 it.imageView?.alpha = 1f
                 it.indicator?.visibility = View.VISIBLE
-                it.indicator?.setBackgroundColor(invalidIndicatorColor)
+                it.indicator?.setBackgroundColor(indicatorColor)
+
             }
         }
     }
@@ -357,7 +358,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .into(it1)
                 }
                 it.indicator?.visibility = View.VISIBLE
-                it.indicator?.setBackgroundColor(indicatorColor)
                 it.indicator?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.vibrantGreen")))
             }
         }
