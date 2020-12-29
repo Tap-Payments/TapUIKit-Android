@@ -83,7 +83,6 @@
                     android:gravity="center"
                     android:focusable="true"
                     app:ccp_showArrow="false"
-                    android:paddingLeft="-17dp"
                     android:layout_marginStart="@dimen/margin_basic_10dp"
                     app:ccp_textSize="16sp"
                     app:ccp_rememberLastSelection="true"

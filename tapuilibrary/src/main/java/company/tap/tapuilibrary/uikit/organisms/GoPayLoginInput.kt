@@ -150,12 +150,13 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         countryCode = countryCodePicker.defaultCountryCodeAsInt.toString()
         countryCodePicker.ccpDialogShowFlag = false
         countryCodePicker.showArrow(false)
+        countryCodePicker.visibility = View.VISIBLE
+
         countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.launchCountrySelectionDialog()
-        countryCode = countryCodePicker.selectedCountryCodeAsInt.toString()
-//        countryCode = countryCodePicker.selectedCountryCode.replace("+"," ")
         countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
     }
+
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {
         this.dataSource = dataSource
@@ -311,9 +312,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 }
                 tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
                 inputType = if (tab.position == 0) EMAIL else PHONE
-                if (tab.position == 0) {
-                    countryCodePicker.visibility = View.GONE
-                } else countryCodePicker.visibility = View.VISIBLE
+//                if (tab.position == 0) countryCodePicker.visibility = View.GONE
+//                 else countryCodePicker.visibility = View.VISIBLE
 
                 changeInputType()
             }
@@ -345,6 +345,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)
                 loginMethodImage.setOnClickListener { initCountryCodePicker() }
+                countryCodePicker.visibility = View.GONE
                 setListenerForPhone()
 
             }
@@ -385,12 +386,16 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                     TapFont.RobotoRegular
                 )
             )
+            countryCodePicker.visibility = View.VISIBLE
+
         } else {
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
                     TapFont.TajawalMedium
                 )
             )
+            countryCodePicker.visibility = View.VISIBLE
+
         }
 
         return tabText
