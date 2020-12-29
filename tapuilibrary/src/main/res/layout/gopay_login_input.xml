@@ -47,13 +47,11 @@
                 android:background="#dfdfdf"
                 android:id="@+id/goPayTabSeparator"/>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:id="@+id/login_input_layout"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
-                android:isScrollContainer="true"
                 android:layout_gravity="start"
-                android:layoutDirection="locale"
                 android:windowSoftInputMode="adjustPan|adjustResize"
                 android:background="@color/white"
                 android:orientation="horizontal">
@@ -70,6 +68,15 @@
                     android:layout_marginEnd="@dimen/margin_basic_16dp"
                     android:src="@drawable/ic_mail" />
 
+<!--                <TextView-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="965"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintStart_toEndOf="@+id/login_method_icon"-->
+<!--                    app:layout_constraintEnd_toStartOf="@+id/text_input_layout"/>-->
+
 
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/countryCodePicker"
@@ -79,6 +86,8 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/login_method_icon"
                     app:layout_constraintEnd_toStartOf="@+id/text_input_layout"
+                    app:ccp_textGravity="LEFT"
+                    android:textDirection="ltr"
                     android:clickable="true"
                     android:gravity="center"
                     android:focusable="true"
@@ -103,7 +112,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -149,7 +158,7 @@
 <!--                    android:layout_below="@+id/et"-->
 <!--                    android:id="@+id/view"/>-->
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"

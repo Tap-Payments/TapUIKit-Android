@@ -61,7 +61,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val goPayLinear by lazy { findViewById<LinearLayout>(R.id.goPayLinear) }
     val goPayTabSeparator by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator) }
     val goPayTabSeparator_ by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator_) }
-    val loginInputLayout by lazy { findViewById<ConstraintLayout>(R.id.login_input_layout) }
+    val loginInputLayout by lazy { findViewById<LinearLayout>(R.id.login_input_layout) }
     val container by lazy { findViewById<ScrollView>(R.id.container) }
 
     var dataSource: GoPayLoginDataSource? = null
