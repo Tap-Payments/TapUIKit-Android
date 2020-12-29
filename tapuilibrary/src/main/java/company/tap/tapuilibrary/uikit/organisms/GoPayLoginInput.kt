@@ -75,6 +75,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initTheme()
         setSeparatorTheme()
+        initCountryCodePicker()
         setupKeyboardListener(container) // call in OnCreate or similar
         goPayHint.text =  LocalizationManager.getValue("HintLabel", "GoPay")
     }
