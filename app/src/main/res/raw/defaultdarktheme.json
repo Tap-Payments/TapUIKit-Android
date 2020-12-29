@@ -540,6 +540,7 @@
         "loginBar" :{
             "backgroundColor" : "whiteTwo",
             "inputFieldBackground" : "black",
+            "selectedTabIndicatorColor": "#a8a8a8",
             "underline": {
                 "selected": {
                     "backgroundColor" : "deepSkyBlue"

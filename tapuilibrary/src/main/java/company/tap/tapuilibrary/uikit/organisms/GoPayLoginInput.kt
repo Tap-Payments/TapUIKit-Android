@@ -9,13 +9,11 @@ import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
@@ -39,6 +37,7 @@ import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.utils.FakeThemeManager
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+import kotlin.math.abs
 
 /**
  *
@@ -49,7 +48,6 @@ import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs), CountryCodePicker.OnCountryChangeListener,
     TapView<EditTextTheme> {
-
 
     val textInput by lazy { findViewById<TextInputEditText>(R.id.gopay_text_input) }
     val loginTabLayout by lazy { findViewById<TabLayout>(R.id.login_type) }
@@ -64,64 +62,30 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val loginInputLayout by lazy { findViewById<LinearLayout>(R.id.login_input_layout) }
     val container by lazy { findViewById<ScrollView>(R.id.container) }
 
-    var dataSource: GoPayLoginDataSource? = null
     private var loginInterface: GoPayLoginInterface? = null
     private var openOTPInterface: OpenOTPInterface? = null
-    var inputType = EMAIL
     private var countryCode: String? = null
+
+    var dataSource: GoPayLoginDataSource? = null
+    var inputType = EMAIL
+
 
     init {
         inflate(context, R.layout.gopay_login_input, this)
-        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initTheme()
-        setSeparatorTheme()
+        setFonts()
+        initGoPayHint()
         initCountryCodePicker()
         setupKeyboardListener(container) // call in OnCreate or similar
-        goPayHint.text =  LocalizationManager.getValue("HintLabel", "GoPay")
     }
 
+    private fun initGoPayHint() {
+        goPayHint.text = LocalizationManager.getValue("HintLabel", "GoPay")
 
-    private fun setupKeyboardListener(view: View) {
-        view.viewTreeObserver.addOnGlobalLayoutListener {
-            val r = Rect()
-            view.getWindowVisibleDisplayFrame(r)
-            if (Math.abs(view.rootView.height - (r.bottom - r.top)) > 100) { // if more than 100 pixels, its probably a keyboard...
-                onKeyboardShow()
-            }
-        }
     }
 
-    private fun onKeyboardShow() {
-        container.scrollToBottomWithoutFocusChange()
-    }
-
-    fun ScrollView.scrollToBottomWithoutFocusChange() { // Kotlin extension to scrollView
-        val lastChild = getChildAt(childCount - 1)
-        val bottom = lastChild.bottom + paddingBottom
-        val delta = bottom - (scrollY + height)
-        smoothScrollBy(0, delta)
-    }
-
-    private fun initTheme() {
-        goPayLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
-        loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor("#a8a8a8"))
-        loginTabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
-        loginTabLayout.tabTextColors =
-            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
-        var textThem = TextViewTheme()
-        textThem.textColor =
-            Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor"))
-        textThem.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont")
-        goPayHint.setTheme(textThem)
-        goPayHint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
-        textInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
-        textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
-        textInput.textSize = ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
-        loginInputLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.inputFieldBackground")))
-        countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
-
-
-
+    private fun setFonts() {
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -132,8 +96,48 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 TapFont.RobotoLight
             )
         )
+    }
 
 
+    private fun setupKeyboardListener(view: View) {
+        view.viewTreeObserver.addOnGlobalLayoutListener {
+            val r = Rect()
+            view.getWindowVisibleDisplayFrame(r)
+            if (abs(view.rootView.height - (r.bottom - r.top)) > 100) { // if more than 100 pixels, its probably a keyboard...
+                onKeyboardShow()
+            }
+        }
+    }
+
+    private fun onKeyboardShow() {
+        container.scrollToBottomWithoutFocusChange()
+    }
+
+    private fun ScrollView.scrollToBottomWithoutFocusChange() { // Kotlin extension to scrollView
+        val lastChild = getChildAt(childCount - 1)
+        val bottom = lastChild.bottom + paddingBottom
+        val delta = bottom - (scrollY + height)
+        smoothScrollBy(0, delta)
+    }
+
+    private fun initTheme() {
+        setSeparatorTheme()
+        val textThem = TextViewTheme()
+        textThem.textColor =
+            Color.parseColor(ThemeManager.getValue("goPay.loginBar.hintLabel.textColor"))
+        textThem.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont")
+        goPayHint.setTheme(textThem)
+        goPayLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
+        loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.selectedTabIndicatorColor")))
+        loginTabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
+        loginTabLayout.tabTextColors =
+            ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
+        goPayHint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
+        textInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
+        textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
+        textInput.textSize = ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
+        loginInputLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.inputFieldBackground")))
+        countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
     }
 
     private fun setSeparatorTheme() {
@@ -148,11 +152,11 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun initCountryCodePicker() {
         countryCodePicker.visibility = View.VISIBLE
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
-//        countryCode = countryCodePicker.defaultCountryCode.replace("+"," ")
         countryCode = countryCodePicker.defaultCountryCodeAsInt.toString()
         countryCodePicker.ccpDialogShowFlag = false
         countryCodePicker.showArrow(false)
-        countryCodePicker.contentColor = Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+        countryCodePicker.contentColor =
+            Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
     }
 
@@ -162,7 +166,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         initTabLayout()
         initTextInput()
         changeInputType()
-        initButton()
+        initPayButton()
     }
 
     fun setLoginInterface(loginInterface: GoPayLoginInterface) {
@@ -173,7 +177,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         this.openOTPInterface = openOTPInterface
     }
 
-    private fun initButton() {
+    private fun initPayButton() {
         actionButton.isEnabled = false
         actionButton.setButtonDataSource(
             false,
@@ -182,7 +186,10 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
         )
+        setPayButtonAction()
+    }
 
+    private fun setPayButtonAction() {
         actionButton.setOnClickListener {
             when (inputType) {
                 EMAIL -> loginInterface?.onEmailValidated()
@@ -201,7 +208,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         }
     }
 
-    fun sendPhoneNumber() {
+    private fun sendPhoneNumber() {
         var replaced = ""
         var countryCodeReplaced = ""
         if (textInput.text.toString().length > 7)
@@ -236,16 +243,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayUnValidatedColor())
     }
 
-    private fun isValidEmail(email: String): Boolean {
-        return Patterns.EMAIL_ADDRESS
-            .matcher(email)
-            .matches()
-    }
-
-    private fun isValidPhone(phone: String): Boolean {
-        return phone.length > 7
-    }
-
     private fun enableNext() {
         loginTabLayout.setSelectedTabIndicatorColor(FakeThemeManager.getGoPayValidatedColor())
         actionButton.isEnabled = true
@@ -256,80 +253,111 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
         )
-
     }
 
-    fun initTabLayout() {
+    private fun isValidEmail(email: String): Boolean {
+        return Patterns.EMAIL_ADDRESS
+            .matcher(email)
+            .matches()
+    }
+
+    private fun isValidPhone(phone: String): Boolean {
+        return phone.length > 7
+    }
+
+    private fun initTabLayout() {
         loginTabLayout.removeAllTabs()
         loginTabLayout.addTab(
             loginTabLayout.newTab().setCustomView(
-                getThemedTabText(dataSource?.emailTabText ?: LocalizationManager.getValue("email", "Common"), true)
+                getThemedTabText(
+                    dataSource?.emailTabText ?: LocalizationManager.getValue(
+                        "email",
+                        "Common"
+                    ), true
+                )
             )
         )
 
         loginTabLayout.addTab(
             loginTabLayout.newTab().setCustomView(
-                getThemedTabText(dataSource?.phoneTabText ?: LocalizationManager.getValue("phone", "Common"), false)
+                getThemedTabText(
+                    dataSource?.phoneTabText ?: LocalizationManager.getValue(
+                        "phone",
+                        "Common"
+                    ), false
+                )
             )
         )
+        onTabSelectionListener()
+    }
 
+    private fun onTabSelectionListener() {
         loginTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-                val tabText = tab?.customView as TapTextView
-                if (LocalizationManager.getLocale(context).language == "en") {
-                    tabText.typeface = Typeface.createFromAsset(
-                        context?.assets, TapFont.tapFontType(
-                            TapFont.RobotoRegular
-                        )
-                    )
-                } else {
-                    tabText.typeface = Typeface.createFromAsset(
-                        context?.assets, TapFont.tapFontType(
-                            TapFont.TajawalMedium
-                        )
-                    )
-                }
-                tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.otherSegmentSelected.textColor")))
-
+                setOnTabUnselected(tab)
             }
-
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                val tabText = tab?.customView as TapTextView
-                if (LocalizationManager.getLocale(context).language == "en") {
-                    tabText.typeface = Typeface.createFromAsset(
-                        context?.assets, TapFont.tapFontType(
-                            TapFont.RobotoRegular
-                        )
-                    )
-                } else {
-                    tabText.typeface = Typeface.createFromAsset(
-                        context?.assets, TapFont.tapFontType(
-                            TapFont.TajawalMedium
-                        )
-                    )
-                }
-                tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
-                inputType = if (tab.position == 0) EMAIL else PHONE
-//                if (tab.position == 0) countryCodePicker.visibility = View.GONE
-//                 else countryCodePicker.visibility = View.VISIBLE
-
-                changeInputType()
+                setOnTabSelected(tab)
             }
         })
+    }
+
+    private fun setOnTabUnselected(tab: TabLayout.Tab?) {
+        val tabText = tab?.customView as TapTextView
+        setTabUnSelectedTextFont(tabText)
+        tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.otherSegmentSelected.textColor")))
+    }
+
+    private fun setTabUnSelectedTextFont(tabText :TapTextView){
+        if (LocalizationManager.getLocale(context).language == "en") {
+            tabText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.RobotoRegular
+                )
+            )
+        } else {
+            tabText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.TajawalMedium
+                )
+            )
+        }
+    }
+
+    private fun setOnTabSelected(tab: TabLayout.Tab?) {
+        val tabText = tab?.customView as TapTextView
+        setTabSelectedTextFont(tabText)
+        tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
+        inputType = if (tab.position == 0) EMAIL else PHONE
+        changeInputType()
+    }
+
+    private  fun setTabSelectedTextFont(tabText :TapTextView){
+        if (LocalizationManager.getLocale(context).language == "en") {
+            tabText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.RobotoRegular
+                )
+            )
+        } else {
+            tabText.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.TajawalMedium
+                )
+            )
+        }
     }
 
     private fun changeInputType() {
         textInput.text = null
         loginMethodImage.visibility = View.VISIBLE
-
         textInputLayout.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
         when (inputType) {
-
             EMAIL -> {
                 textInput.hint = dataSource?.emailInputHint ?: "mail@mail.com"
                 textInput.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
@@ -356,28 +384,27 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 countryCodePicker.contentColor =
                     Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
             }
-
             override fun afterTextChanged(mobileText: Editable) {
-                if (mobileText.length > 1) {
-                    countryCodePicker.contentColor =
-                        Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
-                } else {
-                    countryCodePicker.contentColor =
-                        Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
-                }
-
+                phoneInputAfterTextChange(mobileText)
             }
-
-            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
-            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         })
+    }
+
+    private  fun phoneInputAfterTextChange(mobileText: Editable){
+        if (mobileText.length > 1) {
+            countryCodePicker.contentColor =
+                Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+        } else {
+            countryCodePicker.contentColor =
+                Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+        }
     }
 
     private fun getThemedTabText(text: String, isSelected: Boolean): TapTextView {
         val tabText = TapTextView(context, null)
         tabText.setTheme(FakeThemeManager.getGoPayTabLayoutTextTheme(isSelected))
         tabText.text = text
-
         if (LocalizationManager.getLocale(context).language == "en") {
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
