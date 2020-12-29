@@ -2,12 +2,14 @@ package company.tap.tapuilibrary.uikit.organisms
 
 import android.content.Context
 import android.graphics.Color
+import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.annotation.RequiresApi
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
@@ -42,13 +44,16 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         clearView.setOnClickListener {
             rootView.invalidate()
         }
-
         tapMobileInputView = TapMobilePaymentView(context, null)
+        tapMobileInputViewTextWatcher()
+        tapMobileInputView.setTapPaymentShowHideClearImage(this)
 
+    }
+
+    private fun tapMobileInputViewTextWatcher(){
         tapMobileInputView.mobileNumber?.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 showHideClearImage(true)
-
             }
             override fun afterTextChanged(mobileText: Editable) {
                 if (mobileText.length > 2){
@@ -60,11 +65,9 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
         })
-
-        tapMobileInputView.setTapPaymentShowHideClearImage(this)
-
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     fun addTabLayoutSection(vararg sections: TabSection) {
         sections.forEach {
             tabLayout.addSection(it.items)

@@ -90,7 +90,7 @@
                     app:ccp_defaultPhoneCode="965"
                     app:ccp_contentColor="@color/gray"
                     android:fontFamily="sans-serif-light"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:ccpDialog_showCloseIcon="true"
                     app:ccpDialog_showNameCode="false"
                     app:ccp_customMasterCountries="KW,QA,BH,SA,UAE"
@@ -98,7 +98,6 @@
                     app:ccp_hintExampleNumber="true"
                     app:ccp_showFlag="false"
                     app:ccp_showNameCode="false"/>
-
 
 <!--                <company.tap.tapuilibrary.uikit.atoms.TapTextView-->
 <!--                    android:id="@+id/countryCodeTxt"-->

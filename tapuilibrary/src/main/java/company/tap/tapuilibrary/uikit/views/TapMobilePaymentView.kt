@@ -71,7 +71,6 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
             )
         )
         mobileImage.setOnClickListener {
-//            mobileImage.visibility = View.GONE
             countryCodePicker.launchCountrySelectionDialog()
             countryCodePicker.visibility = View.VISIBLE
             countryCodePicker.setDefaultCountryUsingNameCode("KW")
@@ -89,7 +88,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         mobileNumber.text = null
     }
 
-    fun initTheme() {
+    private fun initTheme() {
         mobileImage.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
         mobilePaymentMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
         mobileNumber.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))

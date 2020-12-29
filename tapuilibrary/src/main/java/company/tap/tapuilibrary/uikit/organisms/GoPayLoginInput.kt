@@ -145,6 +145,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun initCountryCodePicker() {
+        countryCodePicker.visibility = View.VISIBLE
+
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
 //        countryCode = countryCodePicker.defaultCountryCode.replace("+"," ")
         countryCode = countryCodePicker.defaultCountryCodeAsInt.toString()
@@ -345,7 +347,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)
                 loginMethodImage.setOnClickListener { initCountryCodePicker() }
-                countryCodePicker.visibility = View.GONE
+                countryCodePicker.visibility = View.VISIBLE
                 setListenerForPhone()
 
             }
@@ -416,7 +418,6 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 TapFont.RobotoLight
             )
         )
-
 
         goPayHint?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
