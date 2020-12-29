@@ -68,19 +68,9 @@
                     android:layout_marginEnd="@dimen/margin_basic_16dp"
                     android:src="@drawable/ic_mail" />
 
-<!--                <TextView-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="965"-->
-<!--                    app:layout_constraintTop_toTopOf="parent"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintStart_toEndOf="@+id/login_method_icon"-->
-<!--                    app:layout_constraintEnd_toStartOf="@+id/text_input_layout"/>-->
-
-
                 <com.hbb20.CountryCodePicker
                     android:id="@+id/countryCodePicker"
-                    android:layout_width="wrap_content"
+                    android:layout_width="40dp"
                     android:layout_height="match_parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -91,15 +81,17 @@
                     android:clickable="true"
                     android:gravity="center"
                     android:focusable="true"
+                    android:paddingLeft="-20dp"
                     app:ccp_showArrow="false"
                     android:layout_marginStart="@dimen/margin_basic_10dp"
+                    android:layout_marginEnd="@dimen/margin_basic_6dp"
                     app:ccp_textSize="16sp"
                     app:ccp_rememberLastSelection="true"
                     android:layout_gravity="center"
                     app:ccp_defaultPhoneCode="965"
                     app:ccp_contentColor="@color/gray"
                     android:fontFamily="sans-serif-light"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:ccpDialog_showCloseIcon="true"
                     app:ccpDialog_showNameCode="false"
                     app:ccp_customMasterCountries="KW,QA,BH,SA,UAE"
@@ -112,7 +104,7 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/text_input_layout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -127,7 +119,7 @@
                     android:layout_gravity="center_vertical|start"
                     android:focusable="true"
                     app:endIconDrawable="@drawable/ic_close"
-                    android:layout_marginStart="2dp"
+                    android:layout_marginStart="4dp"
                     app:endIconMode="clear_text"
                     android:labelFor="@id/gopay_text_input"
                     app:endIconTint="@null"
