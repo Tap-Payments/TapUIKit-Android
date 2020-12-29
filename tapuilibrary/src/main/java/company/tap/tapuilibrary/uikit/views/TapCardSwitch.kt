@@ -34,7 +34,6 @@ class TapCardSwitch : LinearLayout {
     val switchSaveMerchant by lazy { findViewById<TapSwitch>(R.id.switch_merchant_checkout) }
     val switchGoPayCheckout by lazy { findViewById<TapSwitch>(R.id.switch_gopay_checkout) }
     val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
-    val saveSwitchLinear by lazy { findViewById<LinearLayout>(R.id.save_switch_linear) }
     val switchesLayout by lazy { findViewById<LinearLayout>(R.id.switches_layout) }
     val switchSeparator by lazy { findViewById<TapSeparatorView>(R.id.switch_separator) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
@@ -188,7 +187,7 @@ class TapCardSwitch : LinearLayout {
                 if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                     tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background_dark)
                 } else {
-                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blur_background)
+                    tapCardSwitchLinear.setBackgroundResource(R.drawable.blurbackground)
                 }
 
             } else {
