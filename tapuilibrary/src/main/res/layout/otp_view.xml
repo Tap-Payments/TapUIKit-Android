@@ -94,16 +94,16 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
 
             <company.tap.tapuilibrary.uikit.views.TapOTPView
                 android:id="@+id/otpViewInput1"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
+                android:lineSpacingExtra="@dimen/margin_basic_6dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/otpViewInput2"
                 android:accessibilityTraversalBefore="@+id/otpViewInput2"
                 android:layout_gravity="center"
                 android:gravity="center"
@@ -112,13 +112,12 @@
                 android:fitsSystemWindows="true"
                 android:focusable="true"
                 android:textFontWeight="200"
+                android:layout_marginTop="@dimen/margin_basic_20dp"
                 android:fontFamily="sans-serif-light"
                 android:focusableInTouchMode="true"
                 android:inputType="number"
                 android:textColor="#4b4847"
                 android:textSize="25sp"
-                android:layout_marginTop="@dimen/margin_basic_20dp"
-                android:layout_marginEnd="@dimen/margin_basic_20dp"
                 app:itemCount="3"
                 android:focusedByDefault="true"
                 android:lineHeight="0.2dp"
@@ -127,11 +126,10 @@
 
             <company.tap.tapuilibrary.uikit.views.TapOTPView
                 android:id="@+id/otpViewInput2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintLeft_toRightOf="@+id/otpViewInput1"
                 android:accessibilityTraversalAfter="@+id/otpViewInput1"
                 android:imeOptions="actionDone"
                 android:layout_gravity="center"
@@ -158,18 +156,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_basic_20dp"
-            android:layout_marginBottom="@dimen/margin_basic_20dp"
-            android:orientation="horizontal">
+            android:layout_marginBottom="@dimen/margin_basic_20dp">
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:orientation="horizontal"
@@ -218,11 +213,10 @@
                 android:id="@+id/otpHintText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="start"
+                android:layout_gravity="center"
                 android:fontFamily="sans-serif-light"
                 tools:text="OTP Hint"
                 android:cursorVisible="false"
-                android:layout_marginStart="3dp"
                 android:textColor="#4b4847"
                 android:textSize="12sp"
                 android:textStyle="normal"
@@ -239,12 +233,10 @@
                 android:textColor="#007aff"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:gravity="left"
+                android:gravity="start"
                 android:textAlignment="gravity"
-                android:layout_marginEnd="4dp"
-                android:layout_marginStart="4dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="00:09" />
 

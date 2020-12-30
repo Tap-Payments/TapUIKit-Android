@@ -118,8 +118,6 @@ class OTPView : LinearLayout, OpenOTPInterface {
         initChange()
         initTheme()
         setFonts()
-
-
 //        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2, context))
 
         /**
@@ -143,13 +141,14 @@ class OTPView : LinearLayout, OpenOTPInterface {
         mobileNumberTextTextTheme.textColor = (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
         mobileNumberTextTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
         mobileNumberText.setTheme(mobileNumberTextTextTheme)
-
         otpSentText.setTheme(mobileNumberTextTextTheme)
         otpSentTextNormalPay.setTheme(mobileNumberTextTextTheme)
-
         otpViewInput1.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
         otpViewInput2.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
+        setBackground()
+    }
 
+    private fun setBackground(){
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             otpLinearLayout.setBackgroundResource(R.drawable.blur_background_dark)
         } else {

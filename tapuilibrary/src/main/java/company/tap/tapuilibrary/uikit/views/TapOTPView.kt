@@ -307,77 +307,6 @@ class TapOTPView @JvmOverloads constructor(
         println(mOtpItemCount.toString())
 
 
-//        for (i in 0 until 6) {
-//            when (i) {
-//                0 ->{ mOtpItemSpacing = 10
-//                    itemSpacing = 10
-//                    mOtpItemSpacing = a.getDimensionPixelSize(
-//                        R.styleable.CustomOtpView_itemSpacing,
-//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-//                    )}
-//                1 -> { mOtpItemSpacing = 10
-//                    itemSpacing = 10
-//                    mOtpItemSpacing = a.getDimensionPixelSize(
-//                        R.styleable.CustomOtpView_itemSpacing,
-//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-//                    )}
-//                2 -> { mOtpItemSpacing = 20
-//                    itemSpacing = 20
-//                    mOtpItemSpacing = a.getDimensionPixelSize(
-//                        R.styleable.CustomOtpView_itemSpacing,
-//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
-//                    )}
-//                3 -> { mOtpItemSpacing = 10
-//                    itemSpacing = 10
-//                    mOtpItemSpacing = a.getDimensionPixelSize(
-//                        R.styleable.CustomOtpView_itemSpacing,
-//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-//                    )}
-//                4 -> { mOtpItemSpacing = 10
-//                    itemSpacing = 10
-//                    mOtpItemSpacing = a.getDimensionPixelSize(
-//                        R.styleable.CustomOtpView_itemSpacing,
-//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-//                    )}
-//                5 -> { mOtpItemSpacing = 10
-//                    itemSpacing = 10
-//                    mOtpItemSpacing = a.getDimensionPixelSize(
-//                        R.styleable.CustomOtpView_itemSpacing,
-//                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-//                    )}
-//            }
-//        }
-//             if (x == 2) {
-
-//                val divider = DividerItemDecoration(
-//                    context,
-//                    DividerItemDecoration.HORIZONTAL
-//                )
-//                divider.setDrawable(ShapeDrawable().apply {
-//                    intrinsicWidth = 10
-//                    paint.color = Color.TRANSPARENT
-//                }) // note: currently (support version 28.0.0), we can not use tranparent color here, if we use transparent, we still see a small divider line. So if we want to display transparent space, we can set color = background color or we can create a custom ItemDecoration instead of DividerItemDecoration.
-//                chipRecycler.addItemDecoration(divider)
-
-//                Log.d("mOtpItemCount", x.toString())
-//                 println(x.toString())
-//                itemSpacing = 20
-//                 mOtpItemSpacing = 20
-//                 mOtpItemSpacing = a.getDimensionPixelSize(
-//                        R.styleable.CustomOtpView_itemSpacing,
-//                 res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_extra_spacing)
-//                 )
-//            } else {
-//                 itemSpacing = 10
-//                 mOtpItemSpacing = 10
-//                 mOtpItemSpacing = a.getDimensionPixelSize(
-//                    R.styleable.CustomOtpView_itemSpacing,
-//                    res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
-//                )
-//            }
-//        }
-
-
         mOtpItemRadius = a.getDimension(R.styleable.CustomOtpView_itemRadius, 0f).toInt()
         mLineWidth = a.getDimension(
             R.styleable.CustomOtpView_lineWidth,
@@ -411,11 +340,10 @@ class TapOTPView @JvmOverloads constructor(
     }
 
     private fun setMaxLength(maxLength: Int) {
-        if (maxLength >= 0) {
-            filters = arrayOf<InputFilter>(InputFilter.LengthFilter(maxLength))
+        filters = if (maxLength >= 0) {
+            arrayOf<InputFilter>(InputFilter.LengthFilter(maxLength))
         } else {
-            filters =
-                NO_FILTERS
+            NO_FILTERS
         }
     }
 

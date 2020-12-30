@@ -6,20 +6,16 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Color.parseColor
 import android.os.Build
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import android.widget.LinearLayout
 import androidx.annotation.RequiresApi
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
-import company.tap.tapuilibrary.uikit.model.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import kotlinx.android.synthetic.main.item_knet.view.*
@@ -156,7 +152,7 @@ class CardTypeAdapter(
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_shadow_black)
             } else {
-                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_shadow_)
+                holder.itemView.tapCardChip2.setBackgroundResource(R.drawable.border_shadow)
             }
             setBorderedView(
                 holder.itemView.tapCardChip2Constraints,
@@ -201,7 +197,7 @@ class CardTypeAdapter(
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
             } else {
-                holder.itemView.setBackgroundResource(R.drawable.border_shadow_)
+                holder.itemView.setBackgroundResource(R.drawable.border_shadow)
             }
 
 
