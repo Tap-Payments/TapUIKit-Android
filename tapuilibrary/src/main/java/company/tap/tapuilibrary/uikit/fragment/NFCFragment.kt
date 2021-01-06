@@ -20,13 +20,15 @@ import company.tap.nfcreader.open.reader.TapEmvCard
 import company.tap.nfcreader.open.reader.TapNfcCardReader
 import company.tap.nfcreader.open.utils.TapCardUtils
 import company.tap.nfcreader.open.utils.TapNfcUtils
-
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.views.TapNFCView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.Disposables
+import kotlinx.android.synthetic.main.gopay_password_input.view.*
 
 
 /**
@@ -48,7 +50,6 @@ class NFCFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_sheet_nfc, container, false)
-       // bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         initView(view)
         return view
@@ -60,8 +61,6 @@ class NFCFragment : Fragment() {
         customNFC = view.findViewById(R.id.custom_nfc)
         scanNFC = customNFC.scanNfc.findViewById(R.id.scan_nfc)
         aboutNFC = customNFC.aboutNFC.findViewById(R.id.aboutNFC)
-        scanNFC.text = "Ready to scan, add the card under the device to scan it."
-        aboutNFC.text = "Near-field communication is a set of communication protocols for communication between two electronic devices over a distance of 4 cm or less."
     }
 
     override fun onAttach(context: Context) {
@@ -80,28 +79,27 @@ class NFCFragment : Fragment() {
                 enableNFC()
             }
         } else {
-            Toast.makeText(context, "NFC is not supported!!!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,LocalizationManager.getValue("nfcUnsupported", "NFC") as String , Toast.LENGTH_SHORT).show()
         }
 
 
 
     }
 
-    fun enableNFC() {
+    private fun enableNFC() {
 
         val alertDialog = AlertDialog.Builder(context)
-        alertDialog.setTitle("Please enable NFC")
-        alertDialog.setMessage("NFC not enabled")
+        alertDialog.setTitle(LocalizationManager.getValue("enableNFC", "NFC") as String)
+        alertDialog.setMessage(LocalizationManager.getValue("disabledNFC", "NFC") as String)
         alertDialog.setPositiveButton(
             getString(R.string.msg_ok)
-        ) { dialog: DialogInterface, which: Int ->
-
+        ) { dialog: DialogInterface, _: Int ->
             dialog.dismiss()
             startActivity(Intent(Settings.ACTION_NFC_SETTINGS))
         }
         alertDialog.setNegativeButton(
             getString(R.string.msg_dismiss)
-        ) { dialog: DialogInterface, which: Int ->
+        ) { dialog: DialogInterface, _: Int ->
             dialog.dismiss()
             val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
             fragmentTransaction?.remove(this)?.commit()
@@ -111,7 +109,7 @@ class NFCFragment : Fragment() {
         alertDialog.show()
     }
 
-    fun displayError(message: String) {
+    private fun displayError(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 
@@ -128,7 +126,7 @@ class NFCFragment : Fragment() {
             )
         )
       //  Toast.makeText(context, text, Toast.LENGTH_LONG).show()
-        Toast.makeText(context, "Scanned Successful!!!\n $text", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, LocalizationManager.getValue("scanSuccess", "NFC") as String, Toast.LENGTH_LONG).show()
 
         val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
         fragmentTransaction?.remove(this)?.commit()

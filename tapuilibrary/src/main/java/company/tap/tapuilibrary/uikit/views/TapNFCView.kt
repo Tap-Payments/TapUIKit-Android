@@ -69,6 +69,18 @@ class TapNFCView : LinearLayout {
         Glide.with(context).load(R.drawable.nfcgif).into(gifNFC)
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         setTheme()
+        setTextData()
+    }
+
+    private fun setTextData(){
+        scanNfc.text = LocalizationManager.getValue(
+                    "scan",
+                    "NFC"
+                )
+        aboutNFC.text = LocalizationManager.getValue(
+                    "nfcDescription",
+                    "NFC"
+                )
     }
 
     fun setFontsEnglish(){
@@ -97,6 +109,12 @@ class TapNFCView : LinearLayout {
         )
     }
     fun setTheme(){
+
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            mainLinearNFC.setBackgroundResource(R.drawable.blur_background_dark)
+        } else {
+            mainLinearNFC.setBackgroundResource(R.drawable.blurbackground)
+        }
         topLinearNFC.setBackgroundColor(Color.parseColor(ThemeManager.getValue("Nfc.topTextBackgroundColor")))
         scanNfc.setTextColor(Color.parseColor(ThemeManager.getValue("Nfc.topTextColor")))
         aboutNFC.setTextColor(Color.parseColor(ThemeManager.getValue("Nfc.bottomTextColor")))
