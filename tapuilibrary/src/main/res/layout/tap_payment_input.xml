@@ -55,7 +55,7 @@
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:visibility="gone"
-                android:src="@drawable/ic_cardscanner" />
+                android:src="@drawable/cardscan_button_select" />
 
             <ImageView
                 android:id="@+id/nfc_button"
