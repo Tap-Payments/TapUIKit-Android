@@ -5,13 +5,13 @@
     android:viewportHeight="19">
   <path
       android:pathData="M-329,-13L46,-13 46,31 -329,31z"
-      android:strokeWidth=".7"
-      android:fillColor="#FFF"
+      android:strokeWidth=".5"
+      android:fillColor="#00E0E0E0"
       android:strokeColor="#E0E0E0"
       android:fillType="evenOdd"/>
   <path
       android:pathData="M-13,-13L31,-13L31,31L-13,31z"
-      android:fillColor="#FFF"
+      android:fillColor="#00E0E0E0"
       android:fillAlpha="0.3"
       android:fillType="evenOdd"/>
   <path
