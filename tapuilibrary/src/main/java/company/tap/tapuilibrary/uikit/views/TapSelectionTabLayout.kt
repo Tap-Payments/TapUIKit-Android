@@ -160,6 +160,34 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         } else tabLayout.visibility = View.VISIBLE
     }
 
+    /**
+     * Removing  section when refresh  the tablayout
+     *
+     * @param items list of the items inside the section
+     */
+    fun removeSection(items: ArrayList<SectionTabItem>) {
+        itemsCount.remove(items.size)
+
+        val sectionLayout = getSectionLayout()
+        for (item in items) {
+            sectionLayout.removeView(getSectionItem(item))
+            editExistItemsSize()
+        }
+
+        if (tabsView.size != 0)
+            sectionLayout.alpha = unselectedAlphaLevel
+        tabsView.remove(sectionLayout)
+        val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
+        tabLayout.removeTab(sectionTab)
+        if (tabsView.size == 1) {
+            if (items.size == 1) {
+                tabLayout.visibility = View.GONE
+            } else {
+                tabLayout.visibility = View.VISIBLE
+            }
+        } else tabLayout.visibility = View.VISIBLE
+    }
+
     fun selectSection(index: Int) {
         val tab = tabLayout.getTabAt(index)
         tab?.select()
