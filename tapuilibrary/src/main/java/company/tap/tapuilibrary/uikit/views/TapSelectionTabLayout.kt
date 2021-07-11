@@ -170,7 +170,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 
         val sectionLayout = getSectionLayout()
         for (item in items) {
-            sectionLayout.removeView(getSectionItems(item))
+            sectionLayout.removeView(getSectionItem(item))
            // editExistItemsSize()
         }
 
