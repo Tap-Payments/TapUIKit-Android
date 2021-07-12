@@ -182,8 +182,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             sectionLayout.alpha = unselectedAlphaLevel
         tabsView.remove(sectionLayout)
         tabsView.clear()
-        val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
-        tabLayout.removeTab(sectionTab)
+    //    val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
+        tabLayout?.getTabAt(0)?.let { tabLayout.removeTab(it) }
         if (tabsView.size == 1) {
             if (items.size == 1) {
                 tabLayout.visibility = View.GONE
