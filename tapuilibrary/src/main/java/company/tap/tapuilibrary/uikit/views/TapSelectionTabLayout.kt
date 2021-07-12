@@ -167,7 +167,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      */
     fun removeSection(items: ArrayList<SectionTabItem>) {
         itemsCount.clear()
-        items.clear()
+       // items.clear()
        // itemsCount.remove(items.size)
 
 
