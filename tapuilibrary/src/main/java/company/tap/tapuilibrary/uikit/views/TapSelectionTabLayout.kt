@@ -173,6 +173,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             sectionLayout.removeView(getSectionItem(item))
            // editExistItemsSize()
         }
+        tabItems.clear()
 
         if (tabsView.size != 0)
             sectionLayout.alpha = unselectedAlphaLevel
