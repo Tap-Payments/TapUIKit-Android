@@ -166,7 +166,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      * @param items list of the items inside the section
      */
     fun removeSection(items: ArrayList<SectionTabItem>) {
-        itemsCount.remove(items.size)
+        itemsCount.clear()
+        items.clear()
+       // itemsCount.remove(items.size)
+
 
         val sectionLayout = getSectionLayout()
        /* for (item in items) {
@@ -178,6 +181,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         if (tabsView.size != 0)
             sectionLayout.alpha = unselectedAlphaLevel
         tabsView.remove(sectionLayout)
+        tabsView.clear()
         val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)
         tabLayout.removeTab(sectionTab)
         if (tabsView.size == 1) {
