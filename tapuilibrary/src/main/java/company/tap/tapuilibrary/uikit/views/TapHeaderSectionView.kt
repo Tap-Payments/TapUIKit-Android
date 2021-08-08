@@ -25,6 +25,7 @@ import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.ktx.setTopBorders
 import company.tap.tapuilibrary.uikit.views.TextDrawable
+import gotap.com.tapglkitandroid.gl.Views.TapLoadingView
 import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
@@ -42,6 +43,12 @@ class TapHeaderSectionView : LinearLayout {
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
     val topLinear by lazy { findViewById<LinearLayout>(R.id.topLinear) }
     val constraint by lazy { findViewById<ConstraintLayout>(R.id.constraint) }
+
+    val loadingLinear by lazy { findViewById<LinearLayout>(R.id.loadingLinear) }
+    val loadingView by lazy { findViewById<TapLoadingView>(R.id.loadingView) }
+
+
+
     private var headerDataSource: HeaderDataSource? = null
 
     /**
@@ -79,6 +86,19 @@ class TapHeaderSectionView : LinearLayout {
         setTheme()
         setSeparatorTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+    }
+
+    fun showHideLoading( showLoading : Boolean){
+        if(showLoading) {
+            loadingLinear.visibility = View.VISIBLE
+            loadingLinear.visibility = View.VISIBLE
+            constraint.visibility = View.GONE
+            loadingView.start()
+        }else{
+            loadingLinear.visibility = View.GONE
+            loadingLinear.visibility = View.GONE
+            constraint.visibility = View.VISIBLE
+        }
     }
 
     fun showOnlyTopLinear(){

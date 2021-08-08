@@ -44,10 +44,33 @@
         </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>
 
     </LinearLayout>
+
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:id="@+id/loadingLinear"
+        android:gravity="center"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:background="@color/white">
+        <gotap.com.tapglkitandroid.gl.Views.TapLoadingView
+            android:id="@+id/loadingView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            app:customColor="@color/black_50"
+            app:useCustomColor="true" />
+    </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/constraint"
+        android:visibility="gone"
         android:paddingTop="@dimen/margin_basic_6dp"
         android:paddingBottom="@dimen/margin_basic_10dp"
         app:layout_constraintBottom_toBottomOf="parent"
