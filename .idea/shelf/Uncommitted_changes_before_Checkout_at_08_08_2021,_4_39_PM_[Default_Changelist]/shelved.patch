@@ -1,0 +1,369 @@
+Index: tapuilibrary/src/main/res/layout/tap_main_header.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"wrap_content\"\n    android:layout_gravity=\"start\">\n\n    <LinearLayout\n        android:id=\"@+id/topLinear\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        app:layout_constraintTop_toTopOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        android:layout_gravity=\"center\"\n        android:gravity=\"center\"\n        android:background=\"@drawable/corner_radius_top\"\n        android:visibility=\"visible\"\n        android:paddingTop=\"@dimen/margin_basic_10dp\">\n\n        <View\n            android:id=\"@+id/draggerView\"\n            android:layout_width=\"75dp\"\n            android:layout_height=\"4dp\"\n            android:layout_gravity=\"center\" />\n        <company.tap.tapuilibrary.uikit.atoms.TapDragIndicator\n            android:layout_width=\"75dp\"\n            android:layout_height=\"4dp\"\n            android:visibility=\"gone\"\n            android:layout_marginStart=\"150dp\"\n            android:layout_marginEnd=\"150dp\"\n            android:background=\"@drawable/corner_radius\"\n            app:cardElevation=\"@dimen/margin_basic_0dp\">\n\n            <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView\n                android:id=\"@+id/indicatorSeparator\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:layout_gravity=\"center_horizontal\"\n                android:background=\"@color/gray\" />\n\n        </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>\n\n    </LinearLayout>\n    <androidx.constraintlayout.widget.ConstraintLayout\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        android:id=\"@+id/constraint\"\n        android:paddingTop=\"@dimen/margin_basic_6dp\"\n        android:paddingBottom=\"@dimen/margin_basic_10dp\"\n        app:layout_constraintBottom_toBottomOf=\"parent\"\n        app:layout_constraintStart_toStartOf=\"parent\"\n        app:layout_constraintEnd_toEndOf=\"parent\"\n        app:layout_constraintTop_toBottomOf=\"@+id/topLinear\">\n\n        <company.tap.tapuilibrary.uikit.atoms.TapChip\n            android:id=\"@+id/tapChipIcon\"\n            android:layout_width=\"45dp\"\n            android:layout_height=\"45dp\"\n            android:layout_marginStart=\"@dimen/margin_basic_16dp\"\n            android:layoutDirection=\"locale\"\n            android:visibility=\"visible\"\n            app:cardCornerRadius=\"8dp\"\n            app:cardElevation=\"@dimen/margin_basic_0dp\"\n            app:layout_constraintTop_toTopOf=\"parent\"\n            app:layout_constraintBottom_toBottomOf=\"parent\"\n            app:layout_constraintEnd_toStartOf=\"@+id/businessName\"\n            app:layout_constraintStart_toStartOf=\"parent\">\n\n            <company.tap.tapuilibrary.uikit.atoms.TapImageView\n                android:id=\"@+id/businessIcon\"\n                android:layout_width=\"50dp\"\n                android:layout_height=\"match_parent\"\n                android:layout_gravity=\"center\" />\n\n            <company.tap.tapuilibrary.uikit.atoms.TapTextView\n                android:id=\"@+id/placeholderText\"\n                android:layout_width=\"45dp\"\n                android:layout_height=\"45dp\"\n                android:gravity=\"center\"\n                android:textColor=\"#ffffff\"\n                android:visibility=\"visible\"\n                tools:text=\"@android:string/autofill\" />\n        </company.tap.tapuilibrary.uikit.atoms.TapChip>\n\n        <company.tap.tapuilibrary.uikit.atoms.TapTextView\n            android:id=\"@+id/paymentFor\"\n            style=\"@style/TextStyle\"\n            android:layout_width=\"0dp\"\n            android:layout_height=\"wrap_content\"\n            app:layout_constraintTop_toTopOf=\"parent\"\n            android:layout_marginStart=\"@dimen/action_bar_back_button_width\"\n            android:layout_marginTop=\"@dimen/margin_basic_3dp\"\n            android:gravity=\"center_vertical\"\n            android:shadowColor=\"#00a8a8a8\"\n            android:textAllCaps=\"true\"\n            android:textSize=\"12sp\"\n            app:layout_constraintBottom_toTopOf=\"@+id/businessName\"\n            app:layout_constraintEnd_toEndOf=\"parent\"\n            app:layout_constraintStart_toEndOf=\"@+id/tapChipIcon\"\n            tools:text=\"Payment for \" />\n\n        <company.tap.tapuilibrary.uikit.atoms.TapTextView\n            android:id=\"@+id/businessName\"\n            android:layout_width=\"0dp\"\n            android:layout_height=\"wrap_content\"\n            android:layout_marginStart=\"@dimen/action_bar_back_button_width\"\n            android:layout_marginBottom=\"8dp\"\n            android:fontFamily=\"sans-serif\"\n            android:gravity=\"top\"\n            android:textColor=\"#4b4847\"\n            android:textSize=\"16sp\"\n            android:textStyle=\"normal\"\n            app:layout_constraintBottom_toBottomOf=\"parent\"\n            app:layout_constraintEnd_toEndOf=\"parent\"\n            app:layout_constraintStart_toEndOf=\"@+id/tapChipIcon\"\n            app:layout_constraintTop_toBottomOf=\"@+id/paymentFor\"\n            tools:text=\"Business Name\" />\n    </androidx.constraintlayout.widget.ConstraintLayout>\n\n</androidx.constraintlayout.widget.ConstraintLayout>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/res/layout/tap_main_header.xml b/tapuilibrary/src/main/res/layout/tap_main_header.xml
+--- a/tapuilibrary/src/main/res/layout/tap_main_header.xml	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
++++ b/tapuilibrary/src/main/res/layout/tap_main_header.xml	(date 1628429929972)
+@@ -44,6 +44,10 @@
+         </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>
+ 
+     </LinearLayout>
++
++
++
++
+     <androidx.constraintlayout.widget.ConstraintLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+Index: tapuilibrary/src/main/res/layout/modal_bottom_sheet.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\n    android:gravity=\"center\"\n    android:orientation=\"vertical\">\n    <LinearLayout\n        android:id=\"@+id/topLinear\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\"\n        android:layout_gravity=\"center\"\n        android:gravity=\"center\"\n        android:paddingTop=\"@dimen/margin_basic_10dp\">\n\n        <company.tap.tapuilibrary.uikit.atoms.TapDragIndicator\n            android:layout_width=\"75dp\"\n            android:layout_height=\"4dp\"\n            android:layout_marginStart=\"150dp\"\n            android:layout_marginEnd=\"150dp\"\n            android:background=\"@drawable/corner_radius\"\n            app:cardElevation=\"@dimen/margin_basic_0dp\">\n\n            <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView\n                android:id=\"@+id/indicatorSeparator\"\n                android:layout_width=\"match_parent\"\n                android:layout_height=\"wrap_content\"\n                android:layout_gravity=\"center_horizontal\" />\n\n        </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>\n\n    </LinearLayout>\n\n<!--    <ImageView-->\n<!--        android:layout_width=\"200dp\"-->\n<!--        android:layout_height=\"200dp\"-->\n<!--        android:src=\"@drawable/tap_logo\" />-->\n\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/res/layout/modal_bottom_sheet.xml b/tapuilibrary/src/main/res/layout/modal_bottom_sheet.xml
+--- a/tapuilibrary/src/main/res/layout/modal_bottom_sheet.xml	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
++++ b/tapuilibrary/src/main/res/layout/modal_bottom_sheet.xml	(date 1628180910354)
+@@ -5,6 +5,10 @@
+     xmlns:app="http://schemas.android.com/apk/res-auto"
+     android:gravity="center"
+     android:orientation="vertical">
++
++
++
++
+     <LinearLayout
+         android:id="@+id/topLinear"
+         android:layout_width="match_parent"
+@@ -29,6 +33,7 @@
+ 
+         </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>
+ 
++
+     </LinearLayout>
+ 
+ <!--    <ImageView-->
+Index: .idea/runConfigurations.xml
+===================================================================
+diff --git a/.idea/runConfigurations.xml b/.idea/runConfigurations.xml
+deleted file mode 100644
+--- a/.idea/runConfigurations.xml	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
++++ /dev/null	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
+@@ -1,12 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="RunConfigurationProducerService">
+-    <option name="ignoredProducers">
+-      <set>
+-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.AllInPackageGradleConfigurationProducer" />
+-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestClassGradleConfigurationProducer" />
+-        <option value="org.jetbrains.plugins.gradle.execution.test.runner.TestMethodGradleConfigurationProducer" />
+-      </set>
+-    </option>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\n  <component name=\"GradleSettings\">\n    <option name=\"linkedExternalProjectsSettings\">\n      <GradleProjectSettings>\n        <option name=\"delegatedBuild\" value=\"true\" />\n        <option name=\"testRunner\" value=\"PLATFORM\" />\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"modules\">\n          <set>\n            <option value=\"$PROJECT_DIR$\" />\n            <option value=\"$PROJECT_DIR$/app\" />\n            <option value=\"$PROJECT_DIR$/tapuilibrary\" />\n          </set>\n        </option>\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\n      </GradleProjectSettings>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/gradle.xml b/.idea/gradle.xml
+--- a/.idea/gradle.xml	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
++++ b/.idea/gradle.xml	(date 1628420155562)
+@@ -5,7 +5,7 @@
+     <option name="linkedExternalProjectsSettings">
+       <GradleProjectSettings>
+         <option name="delegatedBuild" value="true" />
+-        <option name="testRunner" value="PLATFORM" />
++        <option name="testRunner" value="GRADLE" />
+         <option name="distributionType" value="DEFAULT_WRAPPED" />
+         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+         <option name="modules">
+Index: tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapNFCView.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package company.tap.tapuilibrary.uikit.views\n\nimport android.content.Context\nimport android.graphics.Color\nimport android.graphics.Typeface\nimport android.util.AttributeSet\nimport android.widget.LinearLayout\nimport com.bumptech.glide.Glide\nimport company.tap.taplocalizationkit.LocalizationManager\nimport company.tap.tapuilibrary.R\nimport company.tap.tapuilibrary.fontskit.enums.TapFont\nimport company.tap.tapuilibrary.themekit.ThemeManager\nimport company.tap.tapuilibrary.uikit.atoms.TapImageView\nimport company.tap.tapuilibrary.uikit.atoms.TapSwitch\nimport company.tap.tapuilibrary.uikit.atoms.TapTextView\n\n/**\n * Created by AhlaamK on 7/1/20.\n\nCopyright (c) 2020    Tap Payments.\nAll rights reserved.\n **/\n\n/**\n * TapNFCView is a molecule UI element for showing user till NFC scanning\n * is running .\n **/\nclass TapNFCView : LinearLayout {\n    private var gifNFC: TapImageView\n    val topLinearNFC by lazy { findViewById<LinearLayout>(R.id.topLinearNFC) }\n    val scanNfc by lazy { findViewById<TapTextView>(R.id.scan_nfc) }\n    val mainLinearNFC by lazy { findViewById<LinearLayout>(R.id.mainLinearNFC) }\n    val aboutNFC by lazy { findViewById<TapTextView>(R.id.aboutNFC) }\n\n\n    /**\n     * Simple constructor to use when creating a TapNFCView from code.\n     *  @param context The Context the view is running in, through which it can\n     *  access the current theme, resources, etc.\n     **/\n    constructor(context: Context) : super(context)\n\n    /**\n     *  @param context The Context the view is running in, through which it can\n     *  access the current theme, resources, etc.\n     *  @param attrs The attributes of the XML Button tag being used to inflate the view.\n     *\n     */\n    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)\n\n    /**\n     *  @param context The Context the view is running in, through which it can\n     *  access the current theme, resources, etc.\n     *  @param attrs The attributes of the XML Button tag being used to inflate the view.\n     * @param defStyleAttr The resource identifier of an attribute in the current theme\n     * whose value is the the resource id of a style. The specified style’s\n     * attribute values serve as default values for the button. Set this parameter\n     * to 0 to avoid use of default values.\n     */\n    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(\n        context,\n        attrs,\n        defStyleAttr\n    )\n\n    init {\n        inflate(context, R.layout.tap_nfc_view, this)\n        gifNFC = findViewById(R.id.gif_nfc)\n        Glide.with(context).load(R.drawable.nfcgif).into(gifNFC)\n        if (context?.let { LocalizationManager.getLocale(it).language } == \"en\") setFontsEnglish() else setFontsArabic()\n        setTheme()\n        setTextData()\n    }\n\n    private fun setTextData(){\n        scanNfc.text = LocalizationManager.getValue(\n                    \"scan\",\n                    \"NFC\"\n                )\n        aboutNFC.text = LocalizationManager.getValue(\n                    \"nfcDescription\",\n                    \"NFC\"\n                )\n    }\n\n    fun setFontsEnglish(){\n        scanNfc.typeface = Typeface.createFromAsset(\n            context?.assets, TapFont.tapFontType(\n                TapFont.RobotoLight\n            )\n        )\n        aboutNFC.typeface = Typeface.createFromAsset(\n            context?.assets, TapFont.tapFontType(\n                TapFont.RobotoLight\n            )\n        )\n    }\n\n    fun setFontsArabic(){\n        scanNfc.typeface = Typeface.createFromAsset(\n            context?.assets, TapFont.tapFontType(\n                TapFont.TajawalLight\n            )\n        )\n        aboutNFC.typeface = Typeface.createFromAsset(\n            context?.assets, TapFont.tapFontType(\n                TapFont.TajawalLight\n            )\n        )\n    }\n    fun setTheme(){\n        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains(\"dark\")) {\n            mainLinearNFC.setBackgroundResource(R.drawable.blur_background_dark)\n        } else {\n            mainLinearNFC.setBackgroundResource(R.drawable.blurbackground)\n        }\n        topLinearNFC.setBackgroundColor(Color.parseColor(ThemeManager.getValue(\"Nfc.topTextBackgroundColor\")))\n        scanNfc.setTextColor(Color.parseColor(ThemeManager.getValue(\"Nfc.topTextColor\")))\n        aboutNFC.setTextColor(Color.parseColor(ThemeManager.getValue(\"Nfc.bottomTextColor\")))\n    }\n\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapNFCView.kt b/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapNFCView.kt
+--- a/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapNFCView.kt	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
++++ b/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapNFCView.kt	(date 1628174456182)
+@@ -11,7 +11,6 @@
+ import company.tap.tapuilibrary.fontskit.enums.TapFont
+ import company.tap.tapuilibrary.themekit.ThemeManager
+ import company.tap.tapuilibrary.uikit.atoms.TapImageView
+-import company.tap.tapuilibrary.uikit.atoms.TapSwitch
+ import company.tap.tapuilibrary.uikit.atoms.TapTextView
+ 
+ /**
+@@ -66,7 +65,7 @@
+     init {
+         inflate(context, R.layout.tap_nfc_view, this)
+         gifNFC = findViewById(R.id.gif_nfc)
+-        Glide.with(context).load(R.drawable.nfcgif).into(gifNFC)
++        setNFCGif()
+         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+         setTheme()
+         setTextData()
+@@ -118,6 +117,14 @@
+         scanNfc.setTextColor(Color.parseColor(ThemeManager.getValue("Nfc.topTextColor")))
+         aboutNFC.setTextColor(Color.parseColor(ThemeManager.getValue("Nfc.bottomTextColor")))
+     }
++    private fun setNFCGif(){
++        println("ThemeManager.currentTheme are"+ThemeManager.currentTheme)
++        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
++            Glide.with(context).load(R.drawable.nfcgif_dark).into(gifNFC)
++        } else {
++            Glide.with(context).load(R.drawable.nfcgif_light).into(gifNFC)
++        }
++    }
+ 
+ 
+ }
+\ No newline at end of file
+Index: tapuilibrary/src/main/res/layout/tap_payment_input.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\n    xmlns:tools=\"http://schemas.android.com/tools\"\n    android:layout_width=\"match_parent\"\n    android:layout_height=\"match_parent\"\n    android:orientation=\"vertical\">\n\n    <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout\n        android:id=\"@+id/sections_tablayout\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"wrap_content\" />\n\n    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView\n        android:id=\"@+id/separator\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"0.5dp\"\n        android:visibility=\"gone\" />\n\n    <LinearLayout\n        android:id=\"@+id/tabLinear\"\n        android:layout_width=\"match_parent\"\n        android:layout_height=\"44dp\"\n        android:background=\"@color/header_gray\"\n        android:orientation=\"horizontal\"\n        android:weightSum=\"4\">\n\n        <LinearLayout\n            android:id=\"@+id/payment_input_layout\"\n            android:layout_width=\"0dp\"\n            android:layout_height=\"44dp\"\n            android:layout_gravity=\"start\"\n            android:layout_weight=\"4\"\n            android:orientation=\"horizontal\"\n            android:paddingStart=\"@dimen/margin_basic_16dp\"\n            android:paddingEnd=\"@dimen/margin_basic_16dp\" />\n\n        <LinearLayout\n            android:id=\"@+id/linear_paylayout\"\n            android:layout_width=\"wrap_content\"\n            android:layout_height=\"wrap_content\"\n            android:layout_gravity=\"center\">\n\n            <ImageView\n                android:id=\"@+id/clear_text\"\n                android:layout_width=\"44dp\"\n                android:layout_height=\"match_parent\"\n                android:layout_marginEnd=\"@dimen/margin_basic_16dp\"\n                android:src=\"@drawable/ic_close\"\n                android:visibility=\"gone\" />\n\n            <ImageView\n                android:id=\"@+id/card_scanner_button\"\n                android:layout_width=\"44dp\"\n                android:layout_height=\"match_parent\"\n                android:padding=\"10dp\"\n                android:src=\"@drawable/ic_cardscanner\"\n                android:visibility=\"gone\" />\n\n            <ImageView\n                android:id=\"@+id/nfc_button\"\n                android:layout_width=\"44dp\"\n                android:layout_height=\"match_parent\"\n                android:layout_marginEnd=\"@dimen/margin_basic_16dp\"\n                android:padding=\"10dp\"\n                android:src=\"@drawable/ic_nfc\"\n                android:visibility=\"gone\" />\n\n        </LinearLayout>\n\n\n    </LinearLayout>\n\n\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/res/layout/tap_payment_input.xml b/tapuilibrary/src/main/res/layout/tap_payment_input.xml
+--- a/tapuilibrary/src/main/res/layout/tap_payment_input.xml	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
++++ b/tapuilibrary/src/main/res/layout/tap_payment_input.xml	(date 1628174671897)
+@@ -5,6 +5,7 @@
+     android:layout_height="match_parent"
+     android:orientation="vertical">
+ 
++
+     <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
+         android:id="@+id/sections_tablayout"
+         android:layout_width="match_parent"
+@@ -17,9 +18,9 @@
+         android:visibility="gone" />
+ 
+     <LinearLayout
+-        android:id="@+id/tabLinear"
+         android:layout_width="match_parent"
+         android:layout_height="44dp"
++        android:id="@+id/tabLinear"
+         android:background="@color/header_gray"
+         android:orientation="horizontal"
+         android:weightSum="4">
+@@ -36,9 +37,9 @@
+ 
+         <LinearLayout
+             android:id="@+id/linear_paylayout"
++            android:layout_gravity="center"
+             android:layout_width="wrap_content"
+-            android:layout_height="wrap_content"
+-            android:layout_gravity="center">
++            android:layout_height="wrap_content">
+ 
+             <ImageView
+                 android:id="@+id/clear_text"
+@@ -53,17 +54,17 @@
+                 android:layout_width="44dp"
+                 android:layout_height="match_parent"
+                 android:padding="10dp"
+-                android:src="@drawable/ic_cardscanner"
+-                android:visibility="gone" />
++                android:visibility="gone"
++                android:src="@drawable/cardscan_button_select" />
+ 
+             <ImageView
+                 android:id="@+id/nfc_button"
+                 android:layout_width="44dp"
+                 android:layout_height="match_parent"
+-                android:layout_marginEnd="@dimen/margin_basic_16dp"
+                 android:padding="10dp"
+-                android:src="@drawable/ic_nfc"
+-                android:visibility="gone" />
++                android:layout_marginEnd="@dimen/margin_basic_16dp"
++                android:visibility="gone"
++                android:src="@drawable/nfc_button_select" />
+ 
+         </LinearLayout>
+ 
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"ProjectInspectionProfilesVisibleTreeState\">\n    <entry key=\"Project Default\">\n      <profile-state>\n        <expanded-state>\n          <State />\n          <State>\n            <id>Android</id>\n          </State>\n          <State>\n            <id>CorrectnessLintAndroid</id>\n          </State>\n          <State>\n            <id>General</id>\n          </State>\n          <State>\n            <id>Java</id>\n          </State>\n          <State>\n            <id>Kotlin</id>\n          </State>\n          <State>\n            <id>LintAndroid</id>\n          </State>\n          <State>\n            <id>MessagesCorrectnessLintAndroid</id>\n          </State>\n          <State>\n            <id>Numeric issuesJava</id>\n          </State>\n          <State>\n            <id>PerformanceLintAndroid</id>\n          </State>\n          <State>\n            <id>Plugin DevKit</id>\n          </State>\n        </expanded-state>\n        <selected-state>\n          <State>\n            <id>Android</id>\n          </State>\n        </selected-state>\n      </profile-state>\n    </entry>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\n  </component>\n  <component name=\"ProjectType\">\n    <option name=\"id\" value=\"Android\" />\n  </component>\n  <component name=\"masterDetails\">\n    <states>\n      <state key=\"Copyright.UI\">\n        <settings>\n          <splitter-proportions>\n            <option name=\"proportions\">\n              <list>\n                <option value=\"0.2\" />\n              </list>\n            </option>\n          </splitter-proportions>\n        </settings>\n      </state>\n      <state key=\"ScopeChooserConfigurable.UI\">\n        <settings>\n          <splitter-proportions>\n            <option name=\"proportions\">\n              <list>\n                <option value=\"0.2\" />\n              </list>\n            </option>\n          </splitter-proportions>\n        </settings>\n      </state>\n    </states>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
++++ b/.idea/misc.xml	(date 1628422599787)
+@@ -1,5 +1,18 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
++  <component name="DesignSurface">
++    <option name="filePathToZoomLevelMap">
++      <map>
++        <entry key="../../../../../layout/custom_preview.xml" value="0.16296296296296298" />
++        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1105072463768116" />
++        <entry key="app/src/main/res/layout/fragment_example.xml" value="0.16032608695652173" />
++        <entry key="tapuilibrary/src/main/res/drawable/cardscan_button_select.xml" value="0.13518518518518519" />
++        <entry key="tapuilibrary/src/main/res/layout/modal_bottom_sheet.xml" value="0.1" />
++        <entry key="tapuilibrary/src/main/res/layout/tap_loading_view.xml" value="0.1" />
++        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.1" />
++      </map>
++    </option>
++  </component>
+   <component name="ProjectInspectionProfilesVisibleTreeState">
+     <entry key="Project Default">
+       <profile-state>
+@@ -44,7 +57,7 @@
+       </profile-state>
+     </entry>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapBottomSheetDialog.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package company.tap.tapuilibrary.uikit.views\n\nimport android.animation.Animator\nimport android.animation.AnimatorListenerAdapter\nimport android.app.Dialog\nimport android.content.DialogInterface\nimport android.content.Intent\nimport android.graphics.Color\nimport android.graphics.drawable.Drawable\nimport android.graphics.drawable.ShapeDrawable\nimport android.graphics.drawable.shapes.RoundRectShape\nimport android.os.Bundle\nimport android.os.Handler\nimport android.view.LayoutInflater\nimport android.view.View\nimport android.view.ViewGroup\nimport android.widget.FrameLayout\nimport com.google.android.material.bottomsheet.BottomSheetBehavior\nimport com.google.android.material.bottomsheet.BottomSheetDialog\nimport com.google.android.material.bottomsheet.BottomSheetDialogFragment\nimport company.tap.tapuilibrary.R\nimport company.tap.tapuilibrary.themekit.ThemeManager\nimport company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme\nimport company.tap.tapuilibrary.uikit.interfaces.TapBottomDialogInterface\nimport company.tap.tapuilibrary.uikit.models.DialogConfigurations\nimport kotlinx.android.synthetic.main.modal_bottom_sheet.*\n\n\n/**\n *\n * Created on 6/3/20\n * Copyright © 2020 Tap Payments. All rights reserved.\n *\n */\nopen class TapBottomSheetDialog : BottomSheetDialogFragment() {\n\n    private var topLeftCorner = 16f\n    private var topRightCorner = 16f\n    private var bottomRightCorner = 0f\n    private var bottomLeftCorner = 0f\n    var backgroundColor = Color.TRANSPARENT\n    var bottomSheetLayout: FrameLayout? = null\n    lateinit var bottomSheetDialog: BottomSheetDialog\n    private var tapBottomDialogInterface: TapBottomDialogInterface? = null\n\n    override fun onCreateView(\n        inflater: LayoutInflater,\n        container: ViewGroup?,\n        savedInstanceState: Bundle?\n    ): View? = inflater.inflate(R.layout.modal_bottom_sheet, container, false)\n\n    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {\n        bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog\n        bottomSheetDialog.setOnShowListener {\n            val dialog = it as BottomSheetDialog\n            val bottomSheetLayout =\n                dialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)\n            val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)\n            bottomSheetBehavior.isDraggable\n            bottomSheetDialog.behavior.isFitToContents\n            backgroundColor =\n                Color.parseColor(ThemeManager.getValue(\"merchantHeaderView.backgroundColor\"))\n            view?.alpha = 0.0f;\n            view?.animate()\n                ?.alpha(1.0f)\n                ?.setListener(null);\n            bottomSheetBehavior.addBottomSheetCallback(object :\n                BottomSheetBehavior.BottomSheetCallback() {\n                override fun onSlide(bottomSheet: View, slideOffset: Float) {\n                    tapBottomDialogInterface?.onSlide(slideOffset)\n                }\n\n                override fun onStateChanged(bottomSheet: View, newState: Int) {\n                    tapBottomDialogInterface?.onStateChanged(newState)\n                }\n            })\n            setSeparatorTheme()\n        }\n        return bottomSheetDialog\n    }\n\n    fun setBottomSheetInterface(tapBottomDialogInterface: TapBottomDialogInterface) {\n        this.tapBottomDialogInterface = tapBottomDialogInterface\n    }\n\n    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {\n        super.onViewCreated(view, savedInstanceState)\n        setDialogConfigurations()\n        changeBackground()\n    }\n\n    private fun changeBackground() {\n        bottomSheetDialog.setOnShowListener {\n            bottomSheetLayout =\n                bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)\n            bottomSheetLayout?.background = getBackgroundDrawable()\n            tapBottomDialogInterface?.onShow()\n        }\n    }\n\n    private fun setDialogConfigurations() {\n        arguments?.let {\n            dialog?.setCanceledOnTouchOutside(it.getBoolean(DialogConfigurations.Cancelable, true))\n            dialog?.window?.setDimAmount(it.getFloat(DialogConfigurations.Dim, 0.5f))\n            backgroundColor = it.getInt(DialogConfigurations.Color, Color.parseColor(ThemeManager.getValue(\"merchantHeaderView.backgroundColor\")))\n            val corners = it.getFloatArray(DialogConfigurations.Corners)\n            corners?.let { array ->\n                topLeftCorner = array[0]\n                topRightCorner = array[1]\n                bottomRightCorner = array[2]\n                bottomLeftCorner = array[3]\n            }\n        }\n    }\n\n    private fun getBackgroundDrawable(): Drawable {\n        val shape = ShapeDrawable(\n            RoundRectShape(\n                floatArrayOf(\n                    topLeftCorner, topLeftCorner,\n                    topRightCorner, topRightCorner,\n                    bottomRightCorner, bottomRightCorner,\n                    bottomLeftCorner, bottomLeftCorner\n                ),\n                null, null\n            )\n        )\n        shape.paint.color = backgroundColor\n        return shape\n    }\n\n    override fun onDismiss(dialog: DialogInterface) {\n        super.onDismiss(dialog)\n        view?.animate()\n            ?.translationY(0F)\n            ?.alpha(0.0f)\n            ?.setListener(object : AnimatorListenerAdapter() {\n                override fun onAnimationEnd(animation: Animator?) {\n                    super.onAnimationEnd(animation)\n                    view!!.visibility = View.GONE\n                }\n            })\n        tapBottomDialogInterface?.onDismiss()\n    }\n\n    companion object {\n        const val TAG = \"ModalBottomSheet\"\n    }\n\n    open fun onNewIntent(intent: Intent?) {}\n\n\n    fun setTheme() {\n\n    }\n\n\n    fun setSeparatorTheme() {\n        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue(\"merchantHeaderView.backgroundColor\")))\n        val separatorViewTheme = SeparatorViewTheme()\n        separatorViewTheme.strokeColor =\n            Color.parseColor(ThemeManager.getValue(\"tapSeparationLine.backgroundColor\"))\n        separatorViewTheme.strokeHeight = ThemeManager.getValue(\"tapSeparationLine.height\")\n        indicatorSeparator.setTheme(separatorViewTheme)\n    }\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapBottomSheetDialog.kt b/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapBottomSheetDialog.kt
+--- a/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapBottomSheetDialog.kt	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
++++ b/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapBottomSheetDialog.kt	(date 1628182756507)
+@@ -39,6 +39,7 @@
+     private var bottomRightCorner = 0f
+     private var bottomLeftCorner = 0f
+     var backgroundColor = Color.TRANSPARENT
++
+     var bottomSheetLayout: FrameLayout? = null
+     lateinit var bottomSheetDialog: BottomSheetDialog
+     private var tapBottomDialogInterface: TapBottomDialogInterface? = null
+Index: tapuilibrary/src/main/res/drawable/ic_scan_green.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/res/drawable/ic_scan_green.xml b/tapuilibrary/src/main/res/drawable/ic_scan_green.xml
+new file mode 100644
+--- /dev/null	(date 1628174456162)
++++ b/tapuilibrary/src/main/res/drawable/ic_scan_green.xml	(date 1628174456162)
+@@ -0,0 +1,24 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="23dp"
++    android:height="20dp"
++    android:viewportWidth="23"
++    android:viewportHeight="20">
++  <path
++      android:pathData="M6.674,5.304h9.348c1.312,0 2.375,1.063 2.375,2.375v5.866c0,1.312 -1.063,2.375 -2.375,2.375H6.674c-1.312,0 -2.375,-1.063 -2.375,-2.375V7.68c0,-1.312 1.063,-2.375 2.375,-2.375z"
++      android:strokeWidth=".45"
++      android:fillColor="#00000000"
++      android:fillType="evenOdd"
++      android:strokeColor="#E0E0E0"/>
++  <path
++      android:pathData="M4.674,9.536L18.022,9.536 18.022,11.386 4.674,11.386z"
++      android:strokeWidth=".75"
++      android:fillColor="#cacacb"
++      android:fillType="evenOdd"
++      android:strokeColor="#cacacb"/>
++  <path
++      android:pathData="M1.46,1.448L5.219,1.448 5.219,0.857 0.86,0.857 0.86,5.154 1.46,5.154zM17.477,0.857L17.477,1.448 21.236,1.448 21.236,5.154 21.836,5.154 21.836,0.857zM1.46,15.139L0.86,15.139 0.86,19.435 5.219,19.435 5.219,18.844 1.46,18.844zM21.236,18.844L17.477,18.844 17.477,19.435 21.836,19.435 21.836,15.139 21.236,15.139z"
++      android:strokeWidth=".5"
++      android:fillColor="#2ACE00"
++      android:strokeColor="#2ACE00"
++      android:fillType="evenOdd"/>
++</vector>
+Index: tapuilibrary/src/main/res/drawable/cardscan_button_select.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/res/drawable/cardscan_button_select.xml b/tapuilibrary/src/main/res/drawable/cardscan_button_select.xml
+new file mode 100644
+--- /dev/null	(date 1628174456161)
++++ b/tapuilibrary/src/main/res/drawable/cardscan_button_select.xml	(date 1628174456161)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<selector xmlns:android="http://schemas.android.com/apk/res/android">
++    <item android:state_pressed="true"
++        android:drawable="@drawable/ic_scan_green" /> <!-- pressed -->
++    <item android:drawable="@drawable/ic_cardscanner" /> <!-- default -->
++</selector>
+\ No newline at end of file
+Index: tapuilibrary/src/main/res/drawable/ic_nfc_green.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/res/drawable/ic_nfc_green.xml b/tapuilibrary/src/main/res/drawable/ic_nfc_green.xml
+new file mode 100644
+--- /dev/null	(date 1628174456162)
++++ b/tapuilibrary/src/main/res/drawable/ic_nfc_green.xml	(date 1628174456162)
+@@ -0,0 +1,21 @@
++<vector xmlns:android="http://schemas.android.com/apk/res/android"
++    android:width="19dp"
++    android:height="19dp"
++    android:viewportWidth="19"
++    android:viewportHeight="19">
++  <path
++      android:pathData="M-329,-13L46,-13 46,31 -329,31z"
++      android:strokeWidth=".5"
++      android:fillColor="#00E0E0E0"
++      android:strokeColor="#E0E0E0"
++      android:fillType="evenOdd"/>
++  <path
++      android:pathData="M-13,-13L31,-13L31,31L-13,31z"
++      android:fillColor="#00E0E0E0"
++      android:fillAlpha="0.3"
++      android:fillType="evenOdd"/>
++  <path
++      android:pathData="M17.178,12.435c-0.04,0 -0.081,-0.003 -0.122,-0.01 -0.385,-0.068 -0.643,-0.439 -0.576,-0.828 0.137,-0.802 0.211,-1.622 0.22,-2.436 -0.03,-2.876 -0.859,-5.661 -2.398,-8.055 -0.213,-0.331 -0.12,-0.775 0.207,-0.99 0.328,-0.216 0.766,-0.122 0.98,0.21 1.687,2.624 2.595,5.677 2.626,8.828v0.014c-0.009,0.894 -0.09,1.794 -0.24,2.674 -0.06,0.348 -0.36,0.593 -0.697,0.593zM15.488,17.995c0.548,-0.85 1.019,-1.759 1.401,-2.698 0.149,-0.366 -0.024,-0.784 -0.385,-0.934 -0.362,-0.15 -0.775,0.024 -0.924,0.39 -0.348,0.857 -0.779,1.686 -1.278,2.462 -0.213,0.332 -0.12,0.775 0.207,0.99 0.12,0.079 0.253,0.116 0.385,0.116 0.232,0 0.459,-0.114 0.595,-0.325zM12.05,16.13c1.366,-2.061 2.105,-4.468 2.138,-6.96v-0.019c-0.033,-2.492 -0.772,-4.899 -2.138,-6.96 -0.217,-0.328 -0.657,-0.416 -0.981,-0.196 -0.325,0.22 -0.412,0.664 -0.194,0.993 1.21,1.828 1.867,3.962 1.897,6.173 -0.03,2.21 -0.686,4.345 -1.897,6.173 -0.218,0.328 -0.131,0.773 0.194,0.993 0.12,0.082 0.257,0.12 0.393,0.12 0.228,0 0.452,-0.11 0.588,-0.317zM8.934,13.144c0.37,-0.108 0.672,-0.39 0.806,-0.756 0.39,-1.059 0.577,-2.15 0.556,-3.241 -0.034,-1.743 -0.584,-3.436 -1.59,-4.896 -0.224,-0.324 -0.665,-0.403 -0.986,-0.177 -0.32,0.226 -0.399,0.672 -0.175,0.997 0.846,1.226 1.308,2.645 1.336,4.104 0.016,0.824 -0.11,1.65 -0.378,2.458l-6.49,-5.048c-0.283,-0.22 -0.655,-0.284 -0.994,-0.172 -0.338,0.112 -0.6,0.385 -0.7,0.73 -0.145,0.504 -0.319,1.307 -0.319,2.268 0,1.694 0.958,3.208 0.998,3.271 0.213,0.332 0.65,0.426 0.977,0.212 0.328,-0.214 0.423,-0.657 0.212,-0.989 -0.008,-0.012 -0.772,-1.23 -0.772,-2.494 0,-0.528 0.064,-0.998 0.141,-1.375l6.302,4.9c0.217,0.169 0.474,0.256 0.737,0.256 0.113,0 0.227,-0.016 0.339,-0.048z"
++      android:fillColor="#2ACE00"
++      android:fillType="evenOdd"/>
++</vector>
+Index: tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapSelectionTabLayout.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package company.tap.tapuilibrary.uikit.views\n\nimport android.content.Context\nimport android.content.res.ColorStateList\nimport android.content.res.Resources\nimport android.graphics.Color\nimport android.os.Build\nimport android.util.AttributeSet\nimport android.view.View\nimport android.widget.LinearLayout\nimport androidx.annotation.ColorInt\nimport androidx.annotation.ColorRes\nimport androidx.annotation.RequiresApi\nimport com.bumptech.glide.Glide\nimport com.google.android.material.tabs.TabLayout\nimport company.tap.tapcardvalidator_android.CardBrand\nimport company.tap.tapuilibrary.R\nimport company.tap.tapuilibrary.themekit.ThemeManager\nimport company.tap.tapuilibrary.uikit.atoms.TapImageView\nimport company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface\nimport company.tap.tapuilibrary.uikit.models.SectionTabItem\nimport company.tap.tapuilibrary.uikit.utils.MetricsUtil\n\n/**\n *\n * Created on 6/17/20\n * Copyright © 2020 Tap Payments. All rights reserved.\n *\n */\n@RequiresApi(Build.VERSION_CODES.N)\nclass TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :\n    LinearLayout(context, attrs) {\n\n    private var indicatorColor = INDICATOR_COLOR\n    private var invalidIndicatorColor = INVALID_INDICATOR_COLOR\n    private var indicatorHeight = MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()\n    private var unselectedAlphaLevel = UNSELECTED_ALPHA\n    private var maxItemWidth = MetricsUtil.convertDpToPixel(MAX_ITEM_WIDTH, context).toInt()\n    private var tabLayout: TabLayout\n    private val itemsCount = ArrayList<Int>()\n    private val tabsView = ArrayList<LinearLayout>()\n    private val tabItems = ArrayList<SectionTabItem>()\n    private var touchableList = ArrayList<View>()\n    private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null\n    private var tabItemAlphaValue = 0.7f\n    private var tabItemMarginTopValue = 30\n    private var tabItemMarginBottomValue = 20\n\n    /**\n     * Initiating the tablayout with default theme and behaviour\n     */\n    init {\n        inflate(context, R.layout.tap_selection_tablayout, this)\n        tabLayout = findViewById(R.id.tab_layout)\n        tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)\n        tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)\n        tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue(\"horizontalList.backgroundColor\")))\n        setSelectionBehaviour()\n    }\n\n    fun changeTabItemAlphaValue(tabItemAlphaValue : Float){\n        this.tabItemAlphaValue = tabItemAlphaValue\n    }\n    fun changeTabItemMarginTopValue(tabItemMarginTopValue : Int){\n        this.tabItemMarginTopValue = tabItemMarginTopValue\n    }\n    fun changeTabItemMarginBottomValue(tabItemMarginBottomValue : Int){\n        this.tabItemMarginBottomValue = tabItemMarginBottomValue\n    }\n    /**\n     * Setter fot the callback interface\n     *\n     * @param tabInterface refrence for class implementing the interface\n     */\n    fun setTabLayoutInterface(tabInterface: TapSelectionTabLayoutInterface) {\n        this.tabLayoutInterface = tabInterface\n    }\n\n    /**\n     * Setter for the indicator color\n     *\n     * @param color integer color value\n     */\n    fun setTabIndicatorColor(@ColorInt color: Int) {\n        indicatorColor = color\n        tabLayout.setSelectedTabIndicatorColor(color)\n    }\n\n    /**\n     * Setter for the indicator height\n     *\n     * @param height integer height value\n     */\n    fun setTabIndicatorHeight(height: Int) {\n        indicatorHeight = height\n        tabLayout.setSelectedTabIndicatorHeight(height)\n    }\n\n    /**\n     * setter for the ripple color\n     *\n     * @param color integer color value\n     */\n    fun setTabRippleColor(@ColorInt color: Int) {\n        tabLayout.tabRippleColor = ColorStateList.valueOf(color)\n    }\n\n    /**\n     * Setter for the ripple color\n     *\n     * @param tabRippleColorResourceId integer color resource id\n     */\n    fun setTabRippleColorResource(@ColorRes tabRippleColorResourceId: Int) {\n        tabLayout.setTabRippleColorResource(tabRippleColorResourceId)\n    }\n\n    /**\n     * Setter for the unselected tab alpha level\n     *\n     * @param level float level value\n     */\n    fun setUnselectedAlphaLevel(level: Float) {\n        unselectedAlphaLevel = level\n    }\n\n    /**\n     * Setter for tab item max width\n     *\n     * @param maxItemWidth integer width value\n     */\n    fun setMaxItemWidth(maxItemWidth: Int) {\n        this.maxItemWidth = maxItemWidth\n    }\n\n    /**\n     * Adding new section to the tablayout\n     *\n     * @param items list of the items inside the section\n     */\n    fun addSection(items: ArrayList<SectionTabItem>) {\n        itemsCount.add(items.size)\n\n        val sectionLayout = getSectionLayout()\n        for (item in items) {\n            sectionLayout.addView(getSectionItem(item))\n            editExistItemsSize()\n        }\n\n        if (tabsView.size != 0)\n            sectionLayout.alpha = unselectedAlphaLevel\n        tabsView.add(sectionLayout)\n        val sectionTab = tabLayout.newTab().setCustomView(sectionLayout)\n        tabLayout.addTab(sectionTab)\n        if (tabsView.size == 1) {\n            if (items.size == 1) {\n                tabLayout.visibility = View.GONE\n            } else {\n                tabLayout.visibility = View.VISIBLE\n            }\n        } else tabLayout.visibility = View.VISIBLE\n    }\n\n    fun selectSection(index: Int) {\n        val tab = tabLayout.getTabAt(index)\n        tab?.select()\n    }\n\n    /**\n     * private function to modify the items size based on the screen width after adding new section\n     */\n    private fun editExistItemsSize() {\n        var params = LayoutParams(\n            getItemWidth(), 0\n        )\n        params.weight = tabItemAlphaValue\n        for (item in tabItems) {\n            params.setMargins(\n                0, 30, 0,\n                20\n            )\n            item.imageView?.layoutParams = params\n        }\n    }\n\n    /**\n     * private function to generate parent layout for the newly added section\n     *\n     * @return the generated container layout\n     */\n    private fun getSectionLayout(): LinearLayout {\n        val linearLayout = LinearLayout(context)\n        val params = LayoutParams(\n            LayoutParams.WRAP_CONTENT,\n            LayoutParams.MATCH_PARENT\n        )\n        linearLayout.layoutParams = params\n        linearLayout.orientation = HORIZONTAL\n        return linearLayout\n    }\n\n    /**\n     * private function for generating the required view for the section item\n     *\n     * @param item containing the type, image and indicator for that item\n     * @return the generated item with passed values\n     */\n    private fun getSectionItem(item: SectionTabItem): LinearLayout {\n        val layout = getSectionItemLayout()\n        val indicator = getTabSelectionIndicator()\n        val params = LayoutParams(\n            getItemWidth(), 0\n        )\n        params.setMargins(0, 30, 0, 30)\n        params.weight = 0.8f\n        val image = TapImageView(context, null)\n        Glide.with(this)\n            .load(item.selectedImageURL)\n            .into(image)\n        image.layoutParams = params\n        item.imageView = image\n        item.indicator = indicator\n        tabItems.add(item)\n        layout.addView(image)\n        layout.addView(indicator)\n        return layout\n    }\n\n\n\n    /**\n     * private function to generate parent layout for the newly added item\n     *\n     * @return generated item container layout\n     */\n    private fun getSectionItemLayout(): LinearLayout {\n        val linearLayout = LinearLayout(context)\n        val params = LayoutParams(\n            LayoutParams.MATCH_PARENT,\n            LayoutParams.MATCH_PARENT\n        )\n        linearLayout.layoutParams = params\n        linearLayout.orientation = VERTICAL\n        linearLayout.weightSum = 1f\n        return linearLayout\n    }\n\n    /**\n     * private function to generate single tab indicator\n     *\n     * @return view represent the tab indicator\n     */\n    private fun getTabSelectionIndicator(): View {\n        val view = View(context)\n        val params = LayoutParams(\n            LayoutParams.MATCH_PARENT,\n            indicatorHeight\n        )\n        view.setBackgroundColor(indicatorColor)\n        view.layoutParams = params\n        view.visibility = View.INVISIBLE\n        return view\n    }\n\n    /**\n     * private function to calculate the item size based on the screen width and number of items\n     *\n     * @return integer value represent the item width\n     */\n    private fun getItemWidth(): Int {\n        var totalItemsCount = 0\n        for (items in itemsCount) {\n            totalItemsCount += items\n        }\n        val itemSize = (Resources.getSystem().displayMetrics.widthPixels - 0) / totalItemsCount\n        return if (itemSize > maxItemWidth) maxItemWidth else itemSize\n    }\n\n    /**\n     * Handle the logic of fading unselected tab and notify the callback with tab selection change listener\n     */\n    private fun setSelectionBehaviour() {\n        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {\n            override fun onTabReselected(tab: TabLayout.Tab?) {}\n            override fun onTabUnselected(tab: TabLayout.Tab?) {}\n            override fun onTabSelected(tab: TabLayout.Tab?) {\n                resetBehaviour()\n                fadeOtherTabs(tab?.position)\n                tabLayoutInterface?.onTabSelected(tab?.position)\n            }\n        })\n    }\n\n    /**\n     * private function to fade the unselected view and display the selected tab with full opacity\n     *\n     * @param position the selected index\n     */\n    private fun fadeOtherTabs(position: Int?) {\n        tabsView.forEachIndexed { index, view ->\n            if (index == position)\n                view.alpha = 1f\n            else\n                view.alpha = unselectedAlphaLevel\n        }\n    }\n\n    /**\n     * public function that select the tab based on the required brand\n     *\n     * @param type the required brand type to be selected\n     */\n    fun selectTab(type: CardBrand, valid: Boolean) {\n        resetBehaviour()\n        changeClickableState(!valid)\n        tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)\n        if (valid) selectValidType(type)\n        else selectUnValidType(type)\n    }\n\n    private fun selectUnValidType(type: CardBrand) {\n        resetTabsAlpha()\n        tabsView.forEach { view ->\n            if (view.alpha != 1f)\n                view.alpha = 1f\n        }\n        tabItems.forEach {\n            if (it.type != type) {\n                it.imageView?.alpha = unselectedAlphaLevel\n                it.indicator?.visibility = View.INVISIBLE\n            } else {\n                it.imageView?.alpha = 1f\n                it.indicator?.visibility = View.VISIBLE\n                it.indicator?.setBackgroundColor(indicatorColor)\n\n            }\n        }\n    }\n\n    private fun resetTabsAlpha() {\n        tabItems.forEach {\n            it.imageView?.alpha = 1f\n        }\n    }\n\n    private fun selectValidType(type: CardBrand) {\n        tabItems.forEach {\n            if (it.type != type) {\n                it.imageView?.let { it1 ->\n                    Glide.with(this)\n                        .load(it.unSelectedImage)\n                        .into(it1)\n                }\n                it.indicator?.visibility = View.INVISIBLE\n            } else {\n                it.imageView?.let { it1 ->\n                    Glide.with(this)\n                        .load(it.selectedImageURL)\n                        .into(it1)\n                }\n                it.indicator?.visibility = View.VISIBLE\n                it.indicator?.setBackgroundColor(Color.parseColor(ThemeManager.getValue(\"GlobalValues.Colors.vibrantGreen\")))\n            }\n        }\n    }\n\n    /**\n     * public function to reset the behaviour of the tabs after selected tab being released\n     */\n    fun resetBehaviour() {\n        resetTabsAlpha()\n        changeClickableState(true)\n        tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)\n        tabItems.forEach {\n\n            it.imageView?.let { it1 ->\n                Glide.with(this)\n                    .load(it.selectedImageURL)\n                    .into(it1)\n            }\n            it.indicator?.visibility = View.INVISIBLE\n        }\n    }\n\n    /**\n     * private function to change clickable state based on single tab selection\n     *\n     * @param isClickable the state of click ability\n     */\n    private fun changeClickableState(isClickable: Boolean) {\n        if (isClickable) {\n            touchableList.forEach { it.isEnabled = isClickable }\n        } else {\n            touchableList = tabLayout.touchables\n            touchableList.forEach { it.isEnabled = isClickable }\n        }\n    }\n\n    /**\n     * class fot holding the constant values used in the tablayout\n     */\n    companion object {\n        const val SCREEN_MARGINS = 140\n        const val INDICATOR_HEIGHT = 2f\n        //        const val INDICATOR_COLOR = \"#2ace00\"\n        val INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue(\"cardPhoneList.underline.selected.backgroundColor\"))\n        //        const val INVALID_INDICATOR_COLOR = \"#a8a8a8\"\n        val INVALID_INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue(\"cardPhoneList.underline.unselected.backgroundColor\"))\n        val UNSELECTED_ALPHA = (ThemeManager.getValue(\"cardPhoneList.icon.otherSegmentSelected.alpha\") as Double).toFloat()\n        val MAX_ITEM_WIDTH = (ThemeManager.getValue(\"cardPhoneList.maxWidth\") as Int).toFloat()\n    }\n\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapSelectionTabLayout.kt b/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapSelectionTabLayout.kt
+--- a/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapSelectionTabLayout.kt	(revision 7f62da828e14a9ac41ba627c7ce1909aa92edda3)
++++ b/tapuilibrary/src/main/java/company/tap/tapuilibrary/uikit/views/TapSelectionTabLayout.kt	(date 1628174456161)
+@@ -159,6 +159,7 @@
+             }
+         } else tabLayout.visibility = View.VISIBLE
+     }
++    
+ 
+     fun selectSection(index: Int) {
+         val tab = tabLayout.getTabAt(index)
+Index: tapuilibrary/src/main/res/drawable/nfc_button_select.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/tapuilibrary/src/main/res/drawable/nfc_button_select.xml b/tapuilibrary/src/main/res/drawable/nfc_button_select.xml
+new file mode 100644
+--- /dev/null	(date 1628174456162)
++++ b/tapuilibrary/src/main/res/drawable/nfc_button_select.xml	(date 1628174456162)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="utf-8"?>
++<selector xmlns:android="http://schemas.android.com/apk/res/android">
++    <item android:state_pressed="true"
++        android:drawable="@drawable/ic_nfc_green" /> <!-- pressed -->
++    <item android:drawable="@drawable/ic_nfc" /> <!-- default -->
++</selector>
+\ No newline at end of file
