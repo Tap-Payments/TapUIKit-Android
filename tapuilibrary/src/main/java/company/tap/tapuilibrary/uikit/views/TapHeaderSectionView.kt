@@ -96,7 +96,7 @@ class TapHeaderSectionView : LinearLayout {
             loadingView.start()
         }else{
             loadingLinear.visibility = View.GONE
-            loadingLinear.visibility = View.GONE
+            loadingView.visibility = View.GONE
             constraint.visibility = View.VISIBLE
         }
     }
