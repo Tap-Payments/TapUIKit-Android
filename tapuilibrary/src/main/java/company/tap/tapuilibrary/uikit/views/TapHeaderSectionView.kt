@@ -91,7 +91,7 @@ class TapHeaderSectionView : LinearLayout {
     fun showHideLoading( showLoading : Boolean){
         if(showLoading) {
             loadingLinear.visibility = View.VISIBLE
-            loadingLinear.visibility = View.VISIBLE
+            loadingView.visibility = View.VISIBLE
             constraint.visibility = View.GONE
             loadingView.start()
         }else{
