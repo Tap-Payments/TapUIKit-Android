@@ -123,6 +123,8 @@ class TapHeaderSectionView : LinearLayout {
             businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
             businessPlaceholder.text = headerDataSource.businessName?.get(0).toString()
         } else {
+            businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
             Glide.with(this)
                 .load(headerDataSource.businessImageResources)
                 .placeholder(
