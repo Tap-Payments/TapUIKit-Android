@@ -39,6 +39,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private var bottomRightCorner = 0f
     private var bottomLeftCorner = 0f
     var backgroundColor = Color.TRANSPARENT
+    var windowRatio = 0.5f
 
     var bottomSheetLayout: FrameLayout? = null
     lateinit var bottomSheetDialog: BottomSheetDialog
@@ -103,7 +104,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private fun setDialogConfigurations() {
         arguments?.let {
             dialog?.setCanceledOnTouchOutside(it.getBoolean(DialogConfigurations.Cancelable, true))
-            dialog?.window?.setDimAmount(it.getFloat(DialogConfigurations.Dim, 0.5f))
+            dialog?.window?.setDimAmount(it.getFloat(DialogConfigurations.Dim, 1.5f))
             backgroundColor = it.getInt(DialogConfigurations.Color, Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
             val corners = it.getFloatArray(DialogConfigurations.Corners)
             corners?.let { array ->
