@@ -18,12 +18,16 @@ import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.uikit.interfaces.TapBottomDialogInterface
 import company.tap.tapuilibrary.uikit.models.DialogConfigurations
 import kotlinx.android.synthetic.main.modal_bottom_sheet.*
+import android.app.Activity
+
+import android.util.DisplayMetrics
+import android.view.WindowManager
+import company.tap.tapuilibrary.R
 
 
 /**
@@ -57,6 +61,11 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
             val dialog = it as BottomSheetDialog
             val bottomSheetLayout =
                 dialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
+            bottomSheetLayout?.let { it ->
+                val behaviour = BottomSheetBehavior.from(it)
+                setupFullHeight(it)
+                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
+            }
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
             bottomSheetBehavior.isDraggable
             bottomSheetDialog.behavior.isFitToContents
@@ -77,9 +86,23 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
                     tapBottomDialogInterface?.onStateChanged(newState)
                 }
             })
+
             setSeparatorTheme()
         }
         return bottomSheetDialog
+    }
+
+    private fun setupFullHeight(bottomSheet: View) {
+        val layoutParams = bottomSheet.layoutParams
+        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
+        bottomSheet.layoutParams = layoutParams
+    }
+
+     fun getWindowHeight(): Int {
+        // Calculate window height for fullscreen use
+        val displayMetrics = DisplayMetrics()
+        (context as Activity?)!!.windowManager.defaultDisplay.getMetrics(displayMetrics)
+        return displayMetrics.heightPixels
     }
 
     fun setBottomSheetInterface(tapBottomDialogInterface: TapBottomDialogInterface) {
