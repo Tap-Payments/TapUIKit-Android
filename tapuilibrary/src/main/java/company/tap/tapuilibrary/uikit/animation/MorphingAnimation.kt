@@ -98,7 +98,7 @@ class MorphingAnimation(private val animatedView: View) {
             val animatedValue = valueAnimator.animatedValue as Int
             val layoutParams = animatedView.layoutParams
             when (dimension) {
-//                HEIGHT -> layoutParams.height = animatedValue
+                HEIGHT -> layoutParams.height = animatedValue
                 WIDTH -> layoutParams.width = animatedValue
                 else -> return@addUpdateListener
             }
