@@ -42,16 +42,16 @@ class MorphingAnimation(private val animatedView: View) {
                             )
                         )
                 }
-                HEIGHT -> {
-                    if (dataSource.fromHeight != null && dataSource.toHeight != null)
-                        animators.add(
-                            getDimensionAnimation(
-                                HEIGHT,
-                                dataSource.fromHeight,
-                                dataSource.toHeight
-                            )
-                        )
-                }
+//                HEIGHT -> {
+//                    if (dataSource.fromHeight != null && dataSource.toHeight != null)
+//                        animators.add(
+//                            getDimensionAnimation(
+//                                HEIGHT,
+//                                dataSource.fromHeight,
+//                                dataSource.toHeight
+//                            )
+//                        )
+//                }
                 WIDTH -> {
                     if (dataSource.fromWidth != null && dataSource.toWidth != null)
                         animators.add(
@@ -98,7 +98,7 @@ class MorphingAnimation(private val animatedView: View) {
             val animatedValue = valueAnimator.animatedValue as Int
             val layoutParams = animatedView.layoutParams
             when (dimension) {
-                HEIGHT -> layoutParams.height = animatedValue
+//                HEIGHT -> layoutParams.height = animatedValue
                 WIDTH -> layoutParams.width = animatedValue
                 else -> return@addUpdateListener
             }

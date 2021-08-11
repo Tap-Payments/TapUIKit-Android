@@ -10,7 +10,6 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
 import android.os.Bundle
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,10 +22,6 @@ import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.uikit.interfaces.TapBottomDialogInterface
 import company.tap.tapuilibrary.uikit.models.DialogConfigurations
 import kotlinx.android.synthetic.main.modal_bottom_sheet.*
-import android.app.Activity
-
-import android.util.DisplayMetrics
-import android.view.WindowManager
 import company.tap.tapuilibrary.R
 
 
@@ -60,22 +55,18 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         bottomSheetDialog.setOnShowListener {
             val dialog = it as BottomSheetDialog
             val bottomSheetLayout =
-                dialog.findViewById<FrameLayout>(com.google.android.material.R.id.design_bottom_sheet)
-            bottomSheetLayout?.let { it ->
-                val behaviour = BottomSheetBehavior.from(it)
-                setupFullHeight(it)
-                behaviour.state = BottomSheetBehavior.STATE_EXPANDED
-            }
+                dialog.findViewById<FrameLayout>(R.id.design_bottom_sheet)
+
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
             bottomSheetBehavior.isDraggable
             bottomSheetDialog.behavior.peekHeight
             backgroundColor =
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
 
-            view?.alpha = 0.0f;
+            view?.alpha = 0.0f
             view?.animate()
                 ?.alpha(1.0f)
-                ?.setListener(null);
+                ?.setListener(null)
             bottomSheetBehavior.addBottomSheetCallback(object :
                 BottomSheetBehavior.BottomSheetCallback() {
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
@@ -92,18 +83,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         return bottomSheetDialog
     }
 
-    private fun setupFullHeight(bottomSheet: View) {
-        val layoutParams = bottomSheet.layoutParams
-        layoutParams.height = WindowManager.LayoutParams.MATCH_PARENT
-        bottomSheet.layoutParams = layoutParams
-    }
 
-     fun getWindowHeight(): Int {
-        // Calculate window height for fullscreen use
-        val displayMetrics = DisplayMetrics()
-        (context as Activity?)!!.windowManager.defaultDisplay.getMetrics(displayMetrics)
-        return displayMetrics.heightPixels
-    }
 
     fun setBottomSheetInterface(tapBottomDialogInterface: TapBottomDialogInterface) {
         this.tapBottomDialogInterface = tapBottomDialogInterface
@@ -118,7 +98,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     private fun changeBackground() {
         bottomSheetDialog.setOnShowListener {
             bottomSheetLayout =
-                bottomSheetDialog.findViewById(com.google.android.material.R.id.design_bottom_sheet)
+                bottomSheetDialog.findViewById(R.id.design_bottom_sheet)
             bottomSheetLayout?.background = getBackgroundDrawable()
             tapBottomDialogInterface?.onShow()
         }
@@ -174,11 +154,6 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     }
 
     open fun onNewIntent(intent: Intent?) {}
-
-
-    fun setTheme() {
-
-    }
 
 
     fun setSeparatorTheme() {
