@@ -143,7 +143,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val sectionLayout = getSectionLayout()
         for (item in items) {
             sectionLayout.addView(getSectionItem(item))
-            editExistItemsSize()
+//            editExistItemsSize()
         }
 
         if (tabsView.size != 0)
@@ -191,7 +191,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun getSectionLayout(): LinearLayout {
         val linearLayout = LinearLayout(context)
         val params = LayoutParams(
-            LayoutParams.WRAP_CONTENT,
+            LayoutParams.MATCH_PARENT,
             LayoutParams.MATCH_PARENT
         )
         linearLayout.layoutParams = params
