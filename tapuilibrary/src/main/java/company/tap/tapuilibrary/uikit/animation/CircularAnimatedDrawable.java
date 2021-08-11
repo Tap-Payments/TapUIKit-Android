@@ -16,10 +16,6 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.Interpolator;
 import android.view.animation.LinearInterpolator;
 
-/**
- * Created by Mario Gamal on 6/30/20
- * Copyright © 2020 Tap Payments. All rights reserved.
- */
 public class CircularAnimatedDrawable extends Drawable implements Animatable {
     private ValueAnimator mValueAnimatorAngle;
     private ValueAnimator mValueAnimatorSweep;
