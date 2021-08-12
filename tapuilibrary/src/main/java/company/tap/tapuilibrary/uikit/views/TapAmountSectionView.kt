@@ -110,7 +110,10 @@ class TapAmountSectionView : LinearLayout {
         this.amountViewDataSource = amountViewDataSource
         selectedAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.selectedCurrText , amountViewDataSource.selectedCurr)
         mainKDAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.currentCurrText , amountViewDataSource.currentCurr)
-        amountViewDataSource.itemCount?.let { itemCountButton.text = it }
+        itemCountButton.text =  amountViewDataSource.itemCount
+        itemCountButton.tag =  amountViewDataSource.itemCount
+
+//        amountViewDataSource.itemCount?.let { itemCountButton.text = it }
         itemCountButton.elevation = 0F
     }
 
