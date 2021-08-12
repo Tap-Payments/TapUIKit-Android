@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="52dp"
         app:tabGravity="fill"
-        app:tabMode="auto"
+        app:tabMode="scrollable"
         android:layout_gravity="fill"
         app:tabIndicatorGravity="bottom"
         android:fitsSystemWindows="true"
