@@ -118,7 +118,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         initChange()
         initTheme()
         setFonts()
-        showKeyboard()
+//        showKeyboard()
 //        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2, context))
 
         /**
@@ -312,6 +312,20 @@ class OTPView : LinearLayout, OpenOTPInterface {
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                     )
                 } else if (charSequence.length == otpViewInput1.itemCount) {
+
+
+                    otpViewActionButton.isEnabled = true
+                    otpViewActionButton.setButtonDataSource(
+                        true, context?.let { LocalizationManager.getLocale(it).language },
+                        LocalizationManager.getValue(
+                            "confirm",
+                            "ActionButton"
+                        ),
+                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+                    )
+
+
 //                    otpViewInput1.addTextChangedListener(
 //                        GenericTextWatcher(
 //                            otpViewInput1,
