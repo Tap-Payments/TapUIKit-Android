@@ -104,7 +104,6 @@
                 android:lineSpacingExtra="@dimen/margin_basic_6dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:accessibilityTraversalBefore="@+id/otpViewInput2"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:foregroundGravity="center"
@@ -118,41 +117,43 @@
                 android:inputType="number"
                 android:textColor="#4b4847"
                 android:textSize="25sp"
-                app:itemCount="3"
+                app:itemCount="6"
                 android:focusedByDefault="true"
                 android:lineHeight="0.2dp"
                 app:lineColor="@color/blue"
                 app:viewType="line" />
 
-            <company.tap.tapuilibrary.uikit.views.TapOTPView
-                android:id="@+id/otpViewInput2"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:accessibilityTraversalAfter="@+id/otpViewInput1"
-                android:imeOptions="actionDone"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:foregroundGravity="center"
-                android:cursorVisible="true"
-                android:fitsSystemWindows="true"
-                android:focusable="true"
-                android:textFontWeight="200"
-                android:fontFamily="sans-serif-light"
-                android:focusableInTouchMode="true"
-                android:inputType="number"
-                android:textColor="#4b4847"
-                android:textSize="25sp"
-                android:visibility="visible"
-                android:layout_marginTop="@dimen/margin_basic_20dp"
-                android:nextFocusLeft="@id/otpViewInput1"
-                android:nextFocusUp="@id/otpViewInput1"
-                app:itemCount="3"
-                android:focusedByDefault="true"
-                android:lineHeight="0.2dp"
-                app:lineColor="@color/blue"
-                app:viewType="line" />
+<!--            android:accessibilityTraversalBefore="@+id/otpViewInput2"-->
+
+            <!--            <company.tap.tapuilibrary.uikit.views.TapOTPView-->
+<!--                android:id="@+id/otpViewInput2"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                app:layout_constraintRight_toRightOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                android:accessibilityTraversalAfter="@+id/otpViewInput1"-->
+<!--                android:imeOptions="actionDone"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:gravity="center"-->
+<!--                android:foregroundGravity="center"-->
+<!--                android:cursorVisible="true"-->
+<!--                android:fitsSystemWindows="true"-->
+<!--                android:focusable="true"-->
+<!--                android:textFontWeight="200"-->
+<!--                android:fontFamily="sans-serif-light"-->
+<!--                android:focusableInTouchMode="true"-->
+<!--                android:inputType="number"-->
+<!--                android:textColor="#4b4847"-->
+<!--                android:textSize="25sp"-->
+<!--                android:visibility="visible"-->
+<!--                android:layout_marginTop="@dimen/margin_basic_20dp"-->
+<!--                android:nextFocusLeft="@id/otpViewInput1"-->
+<!--                android:nextFocusUp="@id/otpViewInput1"-->
+<!--                app:itemCount="3"-->
+<!--                android:focusedByDefault="true"-->
+<!--                android:lineHeight="0.2dp"-->
+<!--                app:lineColor="@color/blue"-->
+<!--                app:viewType="line" />-->
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

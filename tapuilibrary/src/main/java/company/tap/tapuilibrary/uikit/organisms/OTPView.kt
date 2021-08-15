@@ -46,7 +46,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
     val otpMainView by lazy { findViewById<LinearLayout>(R.id.otpMainView) }
     val otpLinearLayout by lazy { findViewById<LinearLayout>(R.id.otpLinearLayout) }
     val otpViewInput1 by lazy { findViewById<TapOTPView>(R.id.otpViewInput1) }
-    val otpViewInput2 by lazy { findViewById<TapOTPView>(R.id.otpViewInput2) }
+//    val otpViewInput2 by lazy { findViewById<TapOTPView>(R.id.otpViewInput2) }
     val otpSentText by lazy { findViewById<TapTextView>(R.id.otpSentText) }
     val mobileNumberText by lazy { findViewById<TapTextView>(R.id.mobileNumberText) }
     val otpHintText by lazy { findViewById<TapTextView>(R.id.otpHintText) }
@@ -145,7 +145,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpSentText.setTheme(mobileNumberTextTextTheme)
         otpSentTextNormalPay.setTheme(mobileNumberTextTextTheme)
         otpViewInput1.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
-        otpViewInput2.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
+//        otpViewInput2.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
         setBackground()
     }
 
@@ -164,11 +164,11 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 TapFont.RobotoLight
             )
         )
-        otpViewInput2.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
-            )
-        )
+//        otpViewInput2.typeface = Typeface.createFromAsset(
+//            context?.assets, TapFont.tapFontType(
+//                TapFont.RobotoLight
+//            )
+//        )
 
         mobileNumberText.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
@@ -312,64 +312,65 @@ class OTPView : LinearLayout, OpenOTPInterface {
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                     )
                 } else if (charSequence.length == otpViewInput1.itemCount) {
-                    otpViewInput1.addTextChangedListener(
-                        GenericTextWatcher(
-                            otpViewInput1,
-                            otpViewInput2,
-                            context
-                        )
-                    )
+//                    otpViewInput1.addTextChangedListener(
+//                        GenericTextWatcher(
+//                            otpViewInput1,
+//                            otpViewInput2,
+//                            context
+//                        )
+//                    )
                 }
             }
 
             override fun afterTextChanged(editable: Editable) {
-                otpViewInput1.addTextChangedListener(
-                    GenericTextWatcher(
-                        otpViewInput1,
-                        otpViewInput2,
-                        context
-                    )
-                )
+//                otpViewInput1.addTextChangedListener(
+//                    GenericTextWatcher(
+//                        otpViewInput1,
+//                        otpViewInput2,
+//                        context
+//                    )
+//                )
             }
         })
 
-        otpViewInput2.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
-
-            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
-
-                if (charSequence.length != otpViewInput2.itemCount) {
-                    otpViewActionButton.isEnabled = false
-                    otpViewActionButton.setButtonDataSource(
-                        false, context?.let { LocalizationManager.getLocale(it).language },
-                        LocalizationManager.getValue(
-                            "confirm",
-                            "ActionButton"
-                        ),
-                        Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
-                        Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
-                    )
-                } else {
-                    otpViewActionButton.isEnabled = true
-                    otpViewActionButton.setButtonDataSource(
-                        true, context?.let { LocalizationManager.getLocale(it).language },
-                        LocalizationManager.getValue(
-                            "confirm",
-                            "ActionButton"
-                        ),
-                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
-                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-                    )
-                }
-            }
-            override fun afterTextChanged(editable: Editable) {
-            }
-        })
+//        otpViewInput2.addTextChangedListener(object : TextWatcher {
+//            override fun beforeTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {}
+//
+//            override fun onTextChanged(charSequence: CharSequence, i: Int, i1: Int, i2: Int) {
+//
+//                if (charSequence.length != otpViewInput2.itemCount) {
+//                    otpViewActionButton.isEnabled = false
+//                    otpViewActionButton.setButtonDataSource(
+//                        false, context?.let { LocalizationManager.getLocale(it).language },
+//                        LocalizationManager.getValue(
+//                            "confirm",
+//                            "ActionButton"
+//                        ),
+//                        Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
+//                        Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+//                    )
+//                } else {
+//                    otpViewActionButton.isEnabled = true
+//                    otpViewActionButton.setButtonDataSource(
+//                        true, context?.let { LocalizationManager.getLocale(it).language },
+//                        LocalizationManager.getValue(
+//                            "confirm",
+//                            "ActionButton"
+//                        ),
+//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+//                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+//                    )
+//                }
+//            }
+//            override fun afterTextChanged(editable: Editable) {
+//            }
+//        })
 
 
         otpViewActionButton.setOnClickListener {
             if (otpViewActionButton.isEnabled) {
-                isValidOTP = otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString() + otpViewInput2.text.toString()) ?: false
+//                isValidOTP = otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString() + otpViewInput2.text.toString()) ?: false
+                isValidOTP = otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString() ) ?: false
                 if (!isValidOTP) {
                     otpHintText.visibility = View.VISIBLE
                     otpHintText.text = (LocalizationManager.getValue(
