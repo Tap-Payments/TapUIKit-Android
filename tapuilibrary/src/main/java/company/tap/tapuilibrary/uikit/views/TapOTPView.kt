@@ -457,7 +457,7 @@ class TapOTPView @JvmOverloads constructor(
             moveSelectionToEnd()
             makeBlink()
         } else {
-            hideKeyboard()
+//            hideKeyboard()
         }
     }
 

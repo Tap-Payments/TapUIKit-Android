@@ -118,6 +118,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         initChange()
         initTheme()
         setFonts()
+        showKeyboard()
 //        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2, context))
 
         /**
@@ -381,6 +382,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 Log.d("isValidOTP", isValidOTP.toString())
             }
         }
+    }
+
+
+    private fun showKeyboard() {
+        val inputMethodManager: InputMethodManager =
+            context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputMethodManager.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
     }
 
 }

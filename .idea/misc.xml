@@ -11,8 +11,11 @@
         <entry key="app/src/main/res/layout/fragment_example.xml" value="0.16032608695652173" />
         <entry key="app/src/main/res/layout/tap_selection_tablayout.xml" value="0.1" />
         <entry key="tapuilibrary/src/main/res/drawable/cardscan_button_select.xml" value="0.13518518518518519" />
+        <entry key="tapuilibrary/src/main/res/layout/main_switch_layout.xml" value="0.16109422492401215" />
         <entry key="tapuilibrary/src/main/res/layout/modal_bottom_sheet.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/layout/otp_view.xml" value="0.16109422492401215" />
         <entry key="tapuilibrary/src/main/res/layout/tap_loading_view.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_main_amount.xml" value="0.16109422492401215" />
         <entry key="tapuilibrary/src/main/res/layout/tap_main_header.xml" value="0.19579139981701738" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.1" />
         <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.1" />
