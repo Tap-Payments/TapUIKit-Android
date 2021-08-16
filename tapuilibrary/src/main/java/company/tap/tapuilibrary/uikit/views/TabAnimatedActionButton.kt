@@ -134,8 +134,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 params.setMargins(20)
                 this.layoutParams = params
 
-                addChildView(this)
-                init()
                 setButtonDataSource(
                 false,
                 context?.let { LocalizationManager.getLocale(it).language },
