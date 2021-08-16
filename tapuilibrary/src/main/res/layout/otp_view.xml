@@ -99,10 +99,13 @@
 
             <company.tap.tapuilibrary.uikit.views.TapOTPView
                 android:id="@+id/otpViewInput1"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginStart="15dp"
                 android:lineSpacingExtra="@dimen/margin_basic_6dp"
+                android:textAlignment="center"
                 app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_gravity="center"
                 android:gravity="center"

@@ -261,6 +261,7 @@ class TapOTPView @JvmOverloads constructor(
         val res = resources
 
         mPaint = Paint(Paint.ANTI_ALIAS_FLAG)
+
         mPaint.style = Paint.Style.STROKE
 
         mTextPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
@@ -271,7 +272,7 @@ class TapOTPView @JvmOverloads constructor(
         mAnimatorTextPaint = TextPaint(mTextPaint)
 
         mTextPaint.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
+            context.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
         )
@@ -379,12 +380,9 @@ class TapOTPView @JvmOverloads constructor(
         val heightMode = View.MeasureSpec.getMode(heightMeasureSpec)
         val widthSize = View.MeasureSpec.getSize(widthMeasureSpec)
         val heightSize = View.MeasureSpec.getSize(heightMeasureSpec)
-
         var width: Int
         val height: Int
-
         val boxHeight = mOtpItemHeight
-
         if (widthMode == View.MeasureSpec.EXACTLY) {
             // Parent has told us how big to be. So be it.
             width = widthSize
@@ -586,18 +584,23 @@ class TapOTPView @JvmOverloads constructor(
         r = true
         l = r
         if (mOtpItemSpacing == 0 && mOtpItemCount > 1) {
-            if (i == 0) {
-                // draw only left round
-                r = false
-            } else if (i == mOtpItemCount - 1) {
-                // draw only right round
-                l = false
-            }else if(i == 2){
-                r = true
-            } else {
-                // draw rect
-                r = false
-                l = r
+            when (i) {
+                0 -> {
+                    // draw only left round
+                    r = false
+                }
+                mOtpItemCount - 1 -> {
+                    // draw only right round
+                    l = false
+                }
+                2 -> {
+                    r = true
+                }
+                else -> {
+                    // draw rect
+                    r = false
+                    l = r
+                }
             }
         }
         mPaint.style = Paint.Style.FILL
@@ -744,11 +747,11 @@ class TapOTPView @JvmOverloads constructor(
     }
 
     private fun getPaintByIndex(i: Int): Paint {
-        if (isAnimationEnable && i == text?.length?.minus(1) ?: 1) {
+        return if (isAnimationEnable && i == text?.length?.minus(1) ?: 1) {
             mAnimatorTextPaint.color = mTextPaint.color
-            return mAnimatorTextPaint
+            mAnimatorTextPaint
         } else {
-            return mTextPaint
+            mTextPaint
         }
     }
 
@@ -781,10 +784,10 @@ class TapOTPView @JvmOverloads constructor(
         var inval = false
 
         val color: Int
-        if (lineColors != null) {
-            color = lineColors!!.getColorForState(drawableState, 0)
+        color = if (lineColors != null) {
+            lineColors!!.getColorForState(drawableState, 0)
         } else {
-            color = currentTextColor
+            currentTextColor
         }
 
 //        if (color != currentLineColor) {
