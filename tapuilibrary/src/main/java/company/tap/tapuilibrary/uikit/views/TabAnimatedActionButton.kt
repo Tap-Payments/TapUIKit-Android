@@ -126,7 +126,15 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 startStateAnimation()
                 addChildView(getImageView(R.drawable.loader,0) {})
             }
-            IDLE -> { setButtonDataSource(
+            IDLE -> {
+                val params = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    40
+                )
+                params.setMargins(20)
+                this.layoutParams = params
+
+                setButtonDataSource(
                 false,
                 context?.let { LocalizationManager.getLocale(it).language },
                 LocalizationManager.getValue("pay", "ActionButton"),
