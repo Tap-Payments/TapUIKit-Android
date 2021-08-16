@@ -127,6 +127,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 addChildView(getImageView(R.drawable.loader,0) {})
             }
             IDLE -> {
+                removeAllViews()
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     80
@@ -134,6 +135,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 params.setMargins(20)
                 this.layoutParams = params
 
+//                addChildView(this)
+                init()
                 setButtonDataSource(
                 false,
                 context?.let { LocalizationManager.getLocale(it).language },
