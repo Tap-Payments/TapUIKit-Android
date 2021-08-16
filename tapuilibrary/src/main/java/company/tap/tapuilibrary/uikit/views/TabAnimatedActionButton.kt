@@ -130,20 +130,12 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 removeAllViews()
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
-                    80
+                    100
                 )
-                params.setMargins(20)
+                params.setMargins(40)
                 this.layoutParams = params
-
-//                addChildView(this)
                 init()
-                setButtonDataSource(
-                false,
-                context?.let { LocalizationManager.getLocale(it).language },
-                LocalizationManager.getValue("pay", "ActionButton"),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
-                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
-            )}
+            }
             else ->{
                 morphingAnimation.setAnimationEndListener(this)
                 init()
