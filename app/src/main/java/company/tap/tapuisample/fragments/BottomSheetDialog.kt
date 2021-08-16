@@ -184,6 +184,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
         )
 
+
         /**
          * Calling this class for adjust view up when keyboard is opened
          */

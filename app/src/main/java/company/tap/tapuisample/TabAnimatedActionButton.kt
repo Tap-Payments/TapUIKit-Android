@@ -1,12 +1,14 @@
 package company.tap.tapuisample
 
+import company.tap.tapuilibrary.uikit.views.TapLoadingView
+
+
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -24,11 +26,9 @@ import company.tap.tapuilibrary.uikit.animation.MorphingAnimation.AnimationTarge
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.AnimationDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
-import company.tap.tapuilibrary.uikit.enums.ActionButtonState.ERROR
-import company.tap.tapuilibrary.uikit.enums.ActionButtonState.SUCCESS
+import company.tap.tapuilibrary.uikit.enums.ActionButtonState.*
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
-import company.tap.tapuilibrary.uikit.views.TapLoadingView
 
 
 /**
@@ -74,7 +74,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     private fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
         dataSource = ActionButtonDataSource(
-            text = buttonText ?: "Pay",
+            text = buttonText ?: LocalizationManager.getValue("pay", "ActionButton"),
             textSize = 18f,
             textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
             cornerRadius = 100f,
@@ -113,14 +113,25 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     fun changeButtonState(state: ActionButtonState) {
         this.state = state
-        addTapLoadingView()
-        startStateAnimation()
         when (state) {
             SUCCESS -> {
-                addChildView(getImageView(R.drawable.success,1) {})
+                addTapLoadingView()
+                startStateAnimation()
+                addChildView(getImageView(R.drawable.success,0) {})
             }
             ERROR -> {
-                addChildView(getImageView(R.drawable.error_gif,1) {})
+                addTapLoadingView()
+                startStateAnimation()
+                addChildView(getImageView(R.drawable.error_gif,0) {})
+            }
+            LOADING ->{
+                addTapLoadingView()
+                startStateAnimation()
+                addChildView(getImageView(R.drawable.loader,0) {})
+            }
+            else ->{
+                morphingAnimation.setAnimationEndListener(this)
+                init()
             }
 
         }
@@ -171,7 +182,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return textView
     }
 
-    fun setFontEnglish(textView:TextView ){
+    private fun setFontEnglish(textView:TextView ){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -179,7 +190,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         )
     }
 
-    fun setFontArabic(textView:TextView){
+    private fun setFontArabic(textView:TextView){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
@@ -204,7 +215,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 fromHeight = height,
                 toHeight = MAX_RADIUS,
                 fromWidth = width,
-                toWidth = MAX_RADIUS,
+                toWidth = MAX_RADIUS+40,
                 fromCorners = dataSource?.cornerRadius,
                 toCorners = MAX_CORNERS,
                 fromColor = dataSource?.backgroundColor,
@@ -214,6 +225,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             )
         morphingAnimation.start(animationDataSource, WIDTH, HEIGHT, CORNERS)
     }
+
 
 
     /**
@@ -245,6 +257,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             SUCCESS -> dataSource?.successImageResources?.let {
                 addChildView(getImageView(it,1) {})
             }
+
+            else -> init()
         }
     }
     /**

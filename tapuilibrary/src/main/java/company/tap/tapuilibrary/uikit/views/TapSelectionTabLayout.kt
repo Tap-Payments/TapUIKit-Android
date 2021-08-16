@@ -282,7 +282,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun setSelectionBehaviour() {
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {}
-            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+            }
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 resetBehaviour()
                 fadeOtherTabs(tab?.position)
@@ -301,7 +303,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             if (index == position)
                 view.alpha = 1f
             else
-                view.alpha = unselectedAlphaLevel
+                view.alpha = 0.5f
         }
     }
 

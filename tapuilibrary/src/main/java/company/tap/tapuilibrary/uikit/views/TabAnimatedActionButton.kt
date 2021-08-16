@@ -126,6 +126,13 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 startStateAnimation()
                 addChildView(getImageView(R.drawable.loader,0) {})
             }
+            IDLE -> { setButtonDataSource(
+                false,
+                context?.let { LocalizationManager.getLocale(it).language },
+                LocalizationManager.getValue("pay", "ActionButton"),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+            )}
             else ->{
                 morphingAnimation.setAnimationEndListener(this)
                 init()
@@ -255,6 +262,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 addChildView(getImageView(it,1) {})
             }
 
+            else -> init()
         }
     }
     /**
