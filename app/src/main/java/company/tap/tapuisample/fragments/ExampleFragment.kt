@@ -26,7 +26,9 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
 
     var goPayLoginInput: GoPayLoginInput?= null
      var goPayPasswordInput: GoPayPasswordInput? = null
-
+    companion object {
+        const val TAG = "ModalBottomSheet"
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

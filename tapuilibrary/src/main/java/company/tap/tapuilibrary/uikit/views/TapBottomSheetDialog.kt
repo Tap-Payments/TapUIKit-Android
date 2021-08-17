@@ -23,6 +23,8 @@ import company.tap.tapuilibrary.uikit.interfaces.TapBottomDialogInterface
 import company.tap.tapuilibrary.uikit.models.DialogConfigurations
 import kotlinx.android.synthetic.main.modal_bottom_sheet.*
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
 
 
 /**
@@ -40,6 +42,8 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     var backgroundColor = Color.TRANSPARENT
     var windowRatio = 0.5f
 
+    val closeIcon by lazy { view?.findViewById<TapImageView>(R.id.closeIcon) }
+
     var bottomSheetLayout: FrameLayout? = null
     lateinit var bottomSheetDialog: BottomSheetDialog
     private var tapBottomDialogInterface: TapBottomDialogInterface? = null
@@ -54,8 +58,8 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         bottomSheetDialog.setOnShowListener {
             val dialog = it as BottomSheetDialog
-            val bottomSheetLayout =
-                dialog.findViewById<FrameLayout>(R.id.design_bottom_sheet)
+            val bottomSheetLayout = dialog.findViewById<FrameLayout>(R.id.design_bottom_sheet)
+            closeIcon?.setOnClickListener { bottomSheetDialog.dismiss() }
 
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
             bottomSheetBehavior.isDraggable

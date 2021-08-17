@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
+import android.util.LayoutDirection
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -130,10 +131,11 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 removeAllViews()
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
-                    100
+                    140
                 )
-                params.setMargins(40)
+                params.setMargins(80)
                 this.layoutParams = params
+                this.textAlignment = TEXT_ALIGNMENT_CENTER
                 init()
             }
             else ->{

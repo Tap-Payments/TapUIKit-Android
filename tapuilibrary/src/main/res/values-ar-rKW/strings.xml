@@ -4,4 +4,14 @@
     <string name="msg_ok">تم</string>
     <string name="msg_dismiss">اغلاق</string>
     <string name="gopay">goPay</string>
+
+
+    <string name="titleText"> Payment in Progress.</string>
+    <string name="descText">With your Fawry Pay Reference.</string>
+    <string name="orderCodeText">Order Code.</string>
+    <string name="codeExpireText">Code Expires on.</string>
+    <string name="linkDescText">Please visit a Fawry Cash Location using the link below to complete your payment.</string>
+
+
+
 </resources>

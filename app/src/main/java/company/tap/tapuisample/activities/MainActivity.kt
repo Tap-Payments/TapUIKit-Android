@@ -93,7 +93,7 @@ class MainActivity : BaseActivity(),
     fun openBottomSheet(view: View) {
         val modalBottomSheet = BottomSheetDialog()
         modalBottomSheet.arguments = getArguments()
-        modalBottomSheet.show(supportFragmentManager, BottomSheetDialog.TAG)
+        modalBottomSheet.show(supportFragmentManager, ExampleFragment.TAG)
     }
 
     private fun getArguments(): Bundle {

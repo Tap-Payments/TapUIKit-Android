@@ -415,6 +415,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     private fun tabLayoutInit(view: View) {
         tabLayout = view.findViewById(R.id.sections_tablayout)
         tabLayout.setTabLayoutInterface(this)
