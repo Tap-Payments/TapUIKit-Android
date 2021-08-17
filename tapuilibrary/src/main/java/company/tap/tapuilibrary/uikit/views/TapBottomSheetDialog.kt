@@ -42,7 +42,6 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     var backgroundColor = Color.TRANSPARENT
     var windowRatio = 0.5f
 
-    val closeIcon by lazy { view?.findViewById<TapImageView>(R.id.closeIcon) }
 
     var bottomSheetLayout: FrameLayout? = null
     lateinit var bottomSheetDialog: BottomSheetDialog
@@ -59,7 +58,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         bottomSheetDialog.setOnShowListener {
             val dialog = it as BottomSheetDialog
             val bottomSheetLayout = dialog.findViewById<FrameLayout>(R.id.design_bottom_sheet)
-            closeIcon?.setOnClickListener { bottomSheetDialog.dismiss() }
+
 
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
             bottomSheetBehavior.isDraggable

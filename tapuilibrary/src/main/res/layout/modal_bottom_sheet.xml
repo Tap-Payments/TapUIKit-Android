@@ -30,20 +30,6 @@
         </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>
 
     </LinearLayout>
-<androidx.cardview.widget.CardView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-    <company.tap.tapuilibrary.uikit.atoms.TapImageView
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:id="@+id/closeIcon"
-        android:src="@drawable/ic_close"
-        android:layout_gravity="start"/>
-
-</androidx.cardview.widget.CardView>
-
-
 
 
 </LinearLayout>
