@@ -55,7 +55,9 @@ open class SwitchFragment : TapBottomSheetDialog() {
         return view
 
     }
-
+    companion object {
+        const val TAG = "ModalBottomSheet"
+    }
     override fun onAttach(context: Context) {
         super.onAttach(context)
         // This makes sure that the container activity has implemented
