@@ -29,6 +29,7 @@ import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuilibrary.uikit.views.TapOTPView
+import kotlinx.android.synthetic.main.otp_view.view.*
 import java.util.*
 
 
@@ -129,6 +130,11 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     }
 
+    fun showOnlyButton(){
+        changePhoneCardView.visibility =View.GONE
+        otpViewInput1.visibility =View.GONE
+        timerConstraints.visibility =View.GONE
+    }
 
     private fun initTheme() {
         changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))

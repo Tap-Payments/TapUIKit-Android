@@ -62,6 +62,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
             val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetLayout!!)
             bottomSheetBehavior.isDraggable
+            bottomSheetBehavior.isHideable = true
             bottomSheetDialog.behavior.peekHeight
             backgroundColor =
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
