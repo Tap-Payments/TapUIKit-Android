@@ -11,6 +11,7 @@ import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
 
 class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
@@ -26,12 +27,26 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
         val codeExpireValue by lazy { findViewById<TapTextView>(R.id.codeExpireValue) }
         val linkDescText by lazy { findViewById<TapTextView>(R.id.linkDescText) }
         val linkValue by lazy { findViewById<TapTextView>(R.id.linkValue) }
+        val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
 
         init {
         inflate(context, R.layout.fawry_payment_view, this)
             setTheme()
+            initButton()
             if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         }
+
+
+    fun initButton(){
+        payButton.isEnabled = true
+        payButton.setButtonDataSource(
+            true,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue("close", "Common"),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+        )
+    }
 
     fun initViews(orderCode:String,codeExpire : String , link:String ){
         orderCodeValue.text = orderCode
