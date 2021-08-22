@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.Color
+import android.graphics.ColorMatrix
+import android.graphics.ColorMatrixColorFilter
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
@@ -356,6 +358,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     Glide.with(this)
                         .load(it.unSelectedImage)
                         .into(it1)
+                    val colorMatrix =  ColorMatrix()
+                    colorMatrix.setSaturation(0.0f)
+                    val filter =  ColorMatrixColorFilter(colorMatrix)
+                    it1.colorFilter = filter
                 }
                 it.indicator?.visibility = View.INVISIBLE
             } else {
