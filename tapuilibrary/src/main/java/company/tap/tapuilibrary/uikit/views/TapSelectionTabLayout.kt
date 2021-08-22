@@ -390,14 +390,14 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
-            it.imageView?.let { it1 ->
+            it.imageView?.let { it2 ->
                 Glide.with(this)
                     .load(it.unSelectedImage)
-                    .into(it1)
+                    .into(it2)
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(1.0f)
                 val filter =  ColorMatrixColorFilter(colorMatrix)
-                it1.colorFilter = filter
+                it2.colorFilter = filter
             }
 
             it.imageView?.let { it1 ->
