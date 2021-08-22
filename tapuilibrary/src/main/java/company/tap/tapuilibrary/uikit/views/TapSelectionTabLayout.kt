@@ -394,6 +394,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 Glide.with(this)
                     .load(it.unSelectedImage)
                     .into(it1)
+            }
 
             it.imageView?.let { it1 ->
                 Glide.with(this)
