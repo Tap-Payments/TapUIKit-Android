@@ -47,6 +47,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var tabItemAlphaValue = 0.7f
     private var tabItemMarginTopValue = 30
     private var tabItemMarginBottomValue = 20
+    private var imageSaturationValue = 1f
+
 
     /**
      * Initiating the tablayout with default theme and behaviour
@@ -388,6 +390,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
+            it.imageView?.let { it1 ->
+                Glide.with(this)
+                    .load(it.unSelectedImage)
+                    .into(it1)
 
             it.imageView?.let { it1 ->
                 Glide.with(this)
