@@ -58,6 +58,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         setSelectionBehaviour()
     }
 
+
+    fun clearInvalidIndicatorColor(){
+        this.invalidIndicatorColor = Color.TRANSPARENT
+    }
     fun changeTabItemAlphaValue(tabItemAlphaValue : Float){
         this.tabItemAlphaValue = tabItemAlphaValue
     }
