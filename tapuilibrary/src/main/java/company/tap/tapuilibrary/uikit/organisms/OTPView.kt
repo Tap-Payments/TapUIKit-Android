@@ -313,7 +313,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
                     otpViewActionButton.isEnabled = false
                     otpViewActionButton.setButtonDataSource(
                         false, context?.let { LocalizationManager.getLocale(it).language },
-                        "Confirm",
+                        LocalizationManager.getValue(
+                            "confirm",
+                            "ActionButton"
+                        ),
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                     )
