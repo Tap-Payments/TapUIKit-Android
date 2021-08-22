@@ -144,6 +144,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      * @param items list of the items inside the section
      */
     fun addSection(items: ArrayList<SectionTabItem>) {
+        itemsCount.clear()
         itemsCount.add(items.size)
 
         val sectionLayout = getSectionLayout()
