@@ -335,6 +335,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabItems.forEach {
             if (it.type != type) {
                 it.imageView?.alpha = unselectedAlphaLevel
+                val colorMatrix =  ColorMatrix()
+                colorMatrix.setSaturation(0.0f)
+                val filter =  ColorMatrixColorFilter(colorMatrix)
+                it.imageView?.colorFilter = filter
                 it.indicator?.visibility = View.INVISIBLE
             } else {
                 it.imageView?.alpha = 1f
