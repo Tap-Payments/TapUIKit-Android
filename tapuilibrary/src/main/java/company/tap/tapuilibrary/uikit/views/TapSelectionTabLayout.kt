@@ -61,9 +61,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     }
 
 
-    fun clearInvalidIndicatorColor(){
-        this.invalidIndicatorColor = Color.TRANSPARENT
-    }
+//    fun clearInvalidIndicatorColor(){
+//        indicatorHeight= MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
+//    }
     fun changeTabItemAlphaValue(tabItemAlphaValue : Float){
         this.tabItemAlphaValue = tabItemAlphaValue
     }
@@ -146,6 +146,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     fun addSection(items: ArrayList<SectionTabItem>) {
         itemsCount.clear()
         itemsCount.add(items.size)
+        if(itemsCount.size == 1)
+            tabLayout.setSelectedTabIndicatorHeight(0)
+        else  tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)
 
         val sectionLayout = getSectionLayout()
         for (item in items) {
