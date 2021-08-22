@@ -76,8 +76,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/constraint"
         android:visibility="visible"
-        android:layoutDirection="locale"
-        android:textDirection="locale"
+
         android:paddingTop="@dimen/margin_basic_6dp"
         android:paddingBottom="@dimen/margin_basic_10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -148,7 +147,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
             app:layout_constraintTop_toBottomOf="@+id/paymentFor"
-            tools:text="Business Name" />
+            tools:text="علا منير" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
