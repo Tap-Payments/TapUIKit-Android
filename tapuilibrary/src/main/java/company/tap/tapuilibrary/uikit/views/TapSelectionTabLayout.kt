@@ -394,6 +394,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 Glide.with(this)
                     .load(it.unSelectedImage)
                     .into(it1)
+                val colorMatrix =  ColorMatrix()
+                colorMatrix.setSaturation(1.0f)
+                val filter =  ColorMatrixColorFilter(colorMatrix)
+                it1.colorFilter = filter
             }
 
             it.imageView?.let { it1 ->
