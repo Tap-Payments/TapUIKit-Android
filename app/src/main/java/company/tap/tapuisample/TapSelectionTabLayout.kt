@@ -180,7 +180,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         var params = LayoutParams(
             getItemWidth(), 0
         )
-        params.weight = tabItemAlphaValue
+        params.weight = 0.8f
         for (item in tabItems) {
             params.setMargins(
                 0, tabItemMarginTopValue, 0,
@@ -379,6 +379,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
+            it.imageView?.alpha= 1f
 
             it.imageView?.let { it1 ->
                 Glide.with(this)
