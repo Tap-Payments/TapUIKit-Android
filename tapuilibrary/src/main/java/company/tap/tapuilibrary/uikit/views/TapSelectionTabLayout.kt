@@ -44,7 +44,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private val tabItems = ArrayList<SectionTabItem>()
     private var touchableList = ArrayList<View>()
     private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null
-    private var tabItemAlphaValue = 0.7f
+    private var tabItemAlphaValue = 0.9f
     private var tabItemMarginTopValue = 30
     private var tabItemMarginBottomValue = 20
     private var imageSaturationValue = 1f
@@ -147,6 +147,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      */
     fun addSection(items: ArrayList<SectionTabItem>) {
         itemsCount.clear()
+        tabsView.clear()
         itemsCount.add(items.size)
         if(itemsCount.size == 1)
             tabLayout.setSelectedTabIndicatorHeight(0)
@@ -185,11 +186,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         var params = LayoutParams(
             getItemWidth(), 0
         )
-        params.weight = tabItemAlphaValue
+        params.weight = 0.8f
         for (item in tabItems) {
             params.setMargins(
-                0, 30, 0,
-                20
+                0, tabItemMarginTopValue, 0,
+                tabItemMarginBottomValue
             )
             item.imageView?.layoutParams = params
         }
@@ -223,7 +224,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, 30, 0, 30)
+        params.setMargins(0, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
         params.weight = 0.8f
         val image = TapImageView(context, null)
         Glide.with(this)

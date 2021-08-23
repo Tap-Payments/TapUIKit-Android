@@ -219,7 +219,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             getItemWidth(), 0
         )
         params.setMargins(0, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
-        params.weight = 0.8f
+        params.weight = 0.9f
         val image = TapImageView(context, null)
         Glide.with(this)
             .load(item.selectedImageURL)
