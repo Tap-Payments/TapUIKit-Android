@@ -48,9 +48,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private val tabItems = ArrayList<SectionTabItem>()
     private var touchableList = ArrayList<View>()
     private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null
-    private var tabItemAlphaValue = 0.7f
-    private var tabItemMarginTopValue = 30
-    private var tabItemMarginBottomValue = 20
+    private var tabItemAlphaValue = 1f
+    private var tabItemMarginTopValue = 25
+    private var tabItemMarginBottomValue = 25
 
     /**
      * Initiating the tablayout with default theme and behaviour
@@ -182,8 +182,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.weight = tabItemAlphaValue
         for (item in tabItems) {
             params.setMargins(
-                0, 30, 0,
-                20
+                0, tabItemMarginTopValue, 0,
+                tabItemMarginBottomValue
             )
             item.imageView?.layoutParams = params
         }
@@ -217,7 +217,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, 30, 0, 30)
+        params.setMargins(0, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
         params.weight = 0.8f
         val image = TapImageView(context, null)
         Glide.with(this)
