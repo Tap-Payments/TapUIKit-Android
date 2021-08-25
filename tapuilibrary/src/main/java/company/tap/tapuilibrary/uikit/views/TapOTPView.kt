@@ -309,7 +309,7 @@ class TapOTPView @JvmOverloads constructor(
                 if(i ==( (mOtpItemCount/2) -1 )) {
                     mOtpItemSpacing = (a.getDimensionPixelSize(
                         R.styleable.CustomOtpView_itemSpacing,
-                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing) + 4))
+                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing) + 2))
                 }
             }
 
