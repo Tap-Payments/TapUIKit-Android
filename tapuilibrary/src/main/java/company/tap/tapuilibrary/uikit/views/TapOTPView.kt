@@ -295,10 +295,23 @@ class TapOTPView @JvmOverloads constructor(
             R.styleable.CustomOtpView_itemWidth,
             res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_size).toFloat()
         ).toInt()
+
         mOtpItemSpacing = a.getDimensionPixelSize(
             R.styleable.CustomOtpView_itemSpacing,
             res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing)
         )
+
+
+
+
+        if (mOtpItemCount /2 == 0)
+            for (i in 0 until mOtpItemCount ){
+                if(i ==( (mOtpItemCount/2) -1 )) {
+                    mOtpItemSpacing = (a.getDimensionPixelSize(
+                        R.styleable.CustomOtpView_itemSpacing,
+                        res.getDimensionPixelSize(R.dimen.otp_customotp_view_item_spacing) + 4))
+                }
+            }
 
 
         /// set space between
@@ -506,6 +519,7 @@ class TapOTPView @JvmOverloads constructor(
             for (i in 0 until mOtpItemCount ){
                 if(i ==( (mOtpItemCount/2) -1 )) {
                     mOtpItemSpacing = (lineSpacingExtra + 4).toInt()
+
                 }
             }
 
