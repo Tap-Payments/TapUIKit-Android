@@ -47,7 +47,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
     val otpMainView by lazy { findViewById<LinearLayout>(R.id.otpMainView) }
     val otpLinearLayout by lazy { findViewById<LinearLayout>(R.id.otpLinearLayout) }
     val otpViewInput1 by lazy { findViewById<TapOTPView>(R.id.otpViewInput1) }
-//    val otpViewInput2 by lazy { findViewById<TapOTPView>(R.id.otpViewInput2) }
+
+    //    val otpViewInput2 by lazy { findViewById<TapOTPView>(R.id.otpViewInput2) }
     val otpSentText by lazy { findViewById<TapTextView>(R.id.otpSentText) }
     val mobileNumberText by lazy { findViewById<TapTextView>(R.id.mobileNumberText) }
     val otpHintText by lazy { findViewById<TapTextView>(R.id.otpHintText) }
@@ -130,10 +131,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     }
 
-    fun showOnlyButton(){
-        changePhoneCardView.visibility =View.GONE
-        otpViewInput1.visibility =View.GONE
-        timerConstraints.visibility =View.GONE
+    fun showOnlyButton() {
+        changePhoneCardView.visibility = View.GONE
+        otpViewInput1.visibility = View.GONE
+        timerConstraints.visibility = View.GONE
     }
 
     private fun initTheme() {
@@ -145,8 +146,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
         timerText.setTheme(timerTextTheme)
         mobileNumberTextNormalPay.setTheme(timerTextTheme)
         val mobileNumberTextTextTheme = TextViewTheme()
-        mobileNumberTextTextTheme.textColor = (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
-        mobileNumberTextTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
+        mobileNumberTextTextTheme.textColor =
+            (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
+        mobileNumberTextTextTheme.textSize =
+            ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
         mobileNumberText.setTheme(mobileNumberTextTextTheme)
         otpSentText.setTheme(mobileNumberTextTextTheme)
         otpSentTextNormalPay.setTheme(mobileNumberTextTextTheme)
@@ -155,7 +158,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
         setBackground()
     }
 
-    private fun setBackground(){
+    private fun setBackground() {
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             otpLinearLayout.setBackgroundResource(R.drawable.blur_background_dark)
         } else {
@@ -189,9 +192,9 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
         timerText.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                    TapFont.RobotoLight
-                )
+                TapFont.RobotoLight
             )
+        )
 
 
         if (LocalizationManager.getLocale(context).language == "en") {
@@ -256,6 +259,9 @@ class OTPView : LinearLayout, OpenOTPInterface {
         }
     }
 
+    fun restartTimer() {
+        startCountdown()
+    }
 
     private fun startCountdown() {
         object : CountDownTimer(60 * 1000, 1000) {
@@ -263,9 +269,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
             override fun onTick(millisUntilFinished: Long) {
                 val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
-               val secondStr = if(second < 9) "0$second" else "$second"
-               val minutesStr = if(minutes < 9) "0$minutes" else "$minutes"
-                if (LocalizationManager.getLocale(context).language == "en")  timerText.text = "$minutesStr : $secondStr"
+                val secondStr = if (second < 9) "0$second" else "$second"
+                val minutesStr = if (minutes < 9) "0$minutes" else "$minutes"
+                if (LocalizationManager.getLocale(context).language == "en") timerText.text =
+                    "$minutesStr : $secondStr"
                 else timerText.text = "$secondStr : $minutesStr"
             }
 
@@ -393,7 +400,9 @@ class OTPView : LinearLayout, OpenOTPInterface {
         otpViewActionButton.setOnClickListener {
             if (otpViewActionButton.isEnabled) {
 //                isValidOTP = otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString() + otpViewInput2.text.toString()) ?: false
-                isValidOTP = otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString() ) ?: false
+                isValidOTP =
+                    otpButtonConfirmationInterface?.onOtpButtonConfirmationClick(otpNumber = otpViewInput1.text.toString())
+                        ?: false
                 if (!isValidOTP) {
                     otpHintText.visibility = View.VISIBLE
                     otpHintText.text = (LocalizationManager.getValue(

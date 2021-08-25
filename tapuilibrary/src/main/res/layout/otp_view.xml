@@ -99,6 +99,7 @@
                 android:id="@+id/otpViewInput1"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:layout_marginStart="20dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/margin_basic_20dp"
                 android:cursorVisible="true"
@@ -250,8 +251,7 @@
             android:id="@+id/otpViewActionButton"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginTop="@dimen/margin_basic_20dp"
-            android:layout_marginBottom="@dimen/margin_basic_20dp"
+            android:layout_margin="@dimen/margin_basic_20dp"
             android:text="click" />
     </LinearLayout>
 
