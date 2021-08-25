@@ -16,13 +16,11 @@ import android.text.TextUtils
 import android.text.method.MovementMethod
 import android.util.AttributeSet
 import android.util.Log
-import android.view.ActionMode
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
 import androidx.annotation.Nullable
@@ -376,6 +374,7 @@ class TapOTPView @JvmOverloads constructor(
 
     @SuppressLint("RestrictedApi")
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
+
         val widthMode = View.MeasureSpec.getMode(widthMeasureSpec)
         val heightMode = View.MeasureSpec.getMode(heightMeasureSpec)
         val widthSize = View.MeasureSpec.getSize(widthMeasureSpec)
@@ -392,6 +391,13 @@ class TapOTPView @JvmOverloads constructor(
             if (mOtpItemSpacing == 0) {
                 width -= (mOtpItemCount - 1) * mLineWidth
             }
+            if (mOtpItemCount /2 == 0)
+                for (i in 0 until mOtpItemCount ){
+                    if(i ==( (mOtpItemCount/2) -1 )) {
+                        mOtpItemSpacing = (lineSpacingExtra + 4).toInt()
+                    }
+                }
+
         }
 
         height = if (heightMode == View.MeasureSpec.UNSPECIFIED) {
@@ -495,7 +501,17 @@ class TapOTPView @JvmOverloads constructor(
     }
 
     private fun drawPinView(canvas: Canvas) {
+
+        if (mOtpItemCount /2 == 0)
+            for (i in 0 until mOtpItemCount ){
+                if(i ==( (mOtpItemCount/2) -1 )) {
+                    mOtpItemSpacing = (lineSpacingExtra + 4).toInt()
+                }
+            }
+
+
         for (i in 0 until mOtpItemCount) {
+
             updateItemRectF(i)
             updateCenterPoint()
 
