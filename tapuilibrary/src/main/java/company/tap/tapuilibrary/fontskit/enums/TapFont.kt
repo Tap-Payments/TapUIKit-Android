@@ -8,11 +8,11 @@ All rights
 reserved.
  **/
 enum class TapFont {
-    helveticaNeueThin,
-    HelveticaNeueLight,
-    HelveticaNeueMedium,
-    HelveticaNeueRegular,
-    HelveticaNeueBold,
+    latoThin,
+    latoLight,
+    latoMedium,
+    latoRegular,
+    latoBold,
 
     RobotoThin,
     RobotoLight,
@@ -32,9 +32,10 @@ enum class TapFont {
     CirceRegular,
     CirceBold,
 
-    ArabicHelveticaNeueLight,
-    ArabicHelveticaNeueRegular,
-    ArabicHelveticaNeueBold,
+
+    ArabicTajawalRegular,
+    ArabicTajawalMedium,
+    ArabicTajawalBold,
 
     SystemDefault;
 
@@ -49,9 +50,9 @@ enum class TapFont {
                 RobotoMedium->"fonts/Roboto-Medium.ttf"
                 RobotoBold->"fonts/Roboto-Bold.ttf"
 
-                TajawalRegular -> "fonts/Tajawal-Bold.ttf"
+                TajawalRegular -> "fonts/Tajawal-Medium.ttf"
                 TajawalThin ->"fonts/Tajawal-Thin.ttf"
-                TajawalLight->"fonts/Tajawal-Light.ttf"
+                TajawalLight->"fonts/Tajawal-Regular.ttf"
                 TajawalMedium->"fonts/Tajawal-Medium.ttf"
                 TajawalBold->"fonts/Tajawal-Bold.ttf"
 
@@ -59,10 +60,18 @@ enum class TapFont {
                 CirceLight->"fonts/Circe-Light.ttf"
                 CirceRegular->"fonts/Circe-Regular.ttf"
                 CirceBold->"fonts/Circe-Bold.ttf"
-                HelveticaNeueBold->"fonts/HelveticaNeueLTW20-Bold.ttf"
-                HelveticaNeueLight->"fonts/HelveticaNeueLTW20-Light.ttf"
-                HelveticaNeueRegular->"fonts/HelveticaNeueLTW20-Roman.ttf"
-               else->"fonts/Roboto-Regular.ttf"
+
+                latoBold->"fonts/Lato-Bold.ttf"
+                latoLight->"fonts/Lato-Light.ttf"
+                latoRegular->"fonts/Lato-Regular.ttf"
+                latoThin->"fonts/Lato-Light.ttf"
+                latoMedium ->"fonts/Lato-Medium.ttf"
+
+                ArabicTajawalRegular->"fonts/Tajawal-Medium.ttf"
+                ArabicTajawalMedium->"fonts/Tajawal-Medium.ttf"
+                ArabicTajawalBold ->"fonts/Tajawal-Bold.ttf"
+
+                else->"fonts/Roboto-Regular.ttf"
             }
         }
     }
