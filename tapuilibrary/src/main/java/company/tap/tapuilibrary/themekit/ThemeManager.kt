@@ -57,6 +57,7 @@ object ThemeManager {
                 if (e != null) {
                     Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                 } else {
+                    themeString = result.toString()
                     theme = JSONObject(result.toString())
                     Toast.makeText(context, "Theme switched", Toast.LENGTH_SHORT).show()
                 }
