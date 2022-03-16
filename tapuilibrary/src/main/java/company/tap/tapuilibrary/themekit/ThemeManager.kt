@@ -57,6 +57,8 @@ object ThemeManager {
                 if (e != null) {
                     Toast.makeText(context, e.message, Toast.LENGTH_SHORT).show()
                 } else {
+                    themeString = result.toString()
+
                     theme = JSONObject(result.toString())
                     Toast.makeText(context, "Theme switched", Toast.LENGTH_SHORT).show()
                 }
@@ -75,6 +77,8 @@ object ThemeManager {
                 if(result.toString().contains("#")){ return result as T
                 }
                 else {
+                    Log.d("themeStringthemeString", themeString.toString())
+
                     if (result.toString() in (themeString.split("}")[0])) {
                         return  valueFromJson("GlobalValues.Colors.${result}") as T
                     }

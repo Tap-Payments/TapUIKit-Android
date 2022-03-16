@@ -76,8 +76,9 @@ class MainActivity : BaseActivity(),
 
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
 //        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
-        ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme, "defaultlighttheme")
-        setTheme(R.style.AppThemeBlack)
+//        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))
+            ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/976650c60952b525d51b739254cd417c/raw/172c4660b5dfe423356ac5feae4dca18448b250a/defaultlighttheme1.json")
+//        else   ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/9862436dff3b3ca222243dad3705ec6a/raw/76f9bd9d4e12e7d9dccf5f4969baf09c15a1ea47/lighttheme")
 
 
         supportActionBar?.setBackgroundDrawable( ColorDrawable(Color.parseColor("#005959")))
@@ -366,6 +367,4 @@ class MainActivity : BaseActivity(),
 
 
 }
-
-
 
