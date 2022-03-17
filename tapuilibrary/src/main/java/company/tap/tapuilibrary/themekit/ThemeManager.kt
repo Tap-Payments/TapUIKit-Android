@@ -50,7 +50,6 @@ object ThemeManager {
     }
 
     fun loadTapTheme(context: Context, url: String) {
-        currentTheme = url
         Ion.with(context)
             .load(url)
             .asJsonObject()
@@ -60,6 +59,7 @@ object ThemeManager {
                 } else {
                     themeString = result.toString()
                     theme = JSONObject(result.toString())
+                    currentTheme = url
                     Toast.makeText(context, "Theme switched", Toast.LENGTH_SHORT).show()
                 }
             }
