@@ -77,7 +77,7 @@ object ThemeManager {
                 if(result.toString().contains("#")){ return result as T
                 }
                 else {
-                    Log.d("themeStringthemeString", themeString.toString())
+                  //  Log.d("themeStringthemeString", themeString.toString())
 
                     if (result.toString() in (themeString.split("}")[0])) {
                         return  valueFromJson("GlobalValues.Colors.${result}") as T
