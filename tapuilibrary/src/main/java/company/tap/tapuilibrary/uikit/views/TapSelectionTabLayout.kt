@@ -367,9 +367,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabItems.forEach {
             if (it.type != type) {
                 it.imageView?.let { it1 ->
-                    Glide.with(this)
+                  /*  Glide.with(this)
                         .load(it.unSelectedImage)
-                        .into(it1)
+                        .into(it1)*/
+                    it.unSelectedImage.let { it1.loadSvg(it) }
                     val colorMatrix =  ColorMatrix()
                     colorMatrix.setSaturation(0.0f)
                     val filter =  ColorMatrixColorFilter(colorMatrix)
@@ -397,9 +398,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
             it.imageView?.let { it2 ->
-                Glide.with(this)
+              /*  Glide.with(this)
                     .load(it.unSelectedImage)
-                    .into(it2)
+                    .into(it2)*/
+                it.unSelectedImage.let { it2.loadSvg(it) }
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(1.0f)
                 val filter =  ColorMatrixColorFilter(colorMatrix)
@@ -407,10 +409,13 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             }
 
             it.imageView?.let { it1 ->
-                Glide.with(this)
+               /* Glide.with(this)
                     .load(it.selectedImageURL)
-                    .into(it1)
+                    .into(it1)*/
+                it.selectedImageURL.let { it1.loadSvg(it) }
             }
+
+
             it.indicator?.visibility = View.INVISIBLE
         }
     }
