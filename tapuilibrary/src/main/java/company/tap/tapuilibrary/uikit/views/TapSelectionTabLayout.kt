@@ -14,10 +14,12 @@ import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
+import androidx.core.net.toUri
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.bumptech.glide.Glide
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
@@ -231,10 +233,13 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.setMargins(0, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
         params.weight = 0.8f
         val image = TapImageView(context, null)
-        /*Glide.with(this)
-            .load(item.selectedImageURL)
-            .into(image)*/
-        item.selectedImageURL.let { image.loadSvg(it) }
+      //  Glide.with(this)
+        //    .load(item.selectedImageURL)
+        //    .into(image)
+        GlideToVectorYou
+            .init()
+            .with(context)
+            .load(item.selectedImageURL.toUri(), image)
         image.layoutParams = params
         item.imageView = image
         item.indicator = indicator
@@ -370,7 +375,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                   /*  Glide.with(this)
                         .load(it.unSelectedImage)
                         .into(it1)*/
-                    it.unSelectedImage.let { it1.loadSvg(it) }
+                    GlideToVectorYou
+                        .init()
+                        .with(context)
+                        .load(it.unSelectedImage.toUri(), it1)
                     val colorMatrix =  ColorMatrix()
                     colorMatrix.setSaturation(0.0f)
                     val filter =  ColorMatrixColorFilter(colorMatrix)
@@ -398,10 +406,13 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
             it.imageView?.let { it2 ->
-              /*  Glide.with(this)
+                /*Glide.with(this)
                     .load(it.unSelectedImage)
                     .into(it2)*/
-                it.unSelectedImage.let { it2.loadSvg(it) }
+                GlideToVectorYou
+                    .init()
+                    .with(context)
+                    .load(it.unSelectedImage.toUri(), it2)
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(1.0f)
                 val filter =  ColorMatrixColorFilter(colorMatrix)
@@ -409,13 +420,15 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             }
 
             it.imageView?.let { it1 ->
-               /* Glide.with(this)
+                /*Glide.with(this)
                     .load(it.selectedImageURL)
                     .into(it1)*/
-                it.selectedImageURL.let { it1.loadSvg(it) }
+
+                GlideToVectorYou
+                    .init()
+                    .with(context)
+                    .load(it.selectedImageURL.toUri(), it1)
             }
-
-
             it.indicator?.visibility = View.INVISIBLE
         }
     }
