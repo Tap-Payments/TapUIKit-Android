@@ -80,6 +80,7 @@ dependencies {
 
     implementation 'com.github.Tap-Payments:CheckoutSDK-Android:0.0.0.1'
     implementation "com.github.Tap-Payments:TapGLKit-Android:1.18"
-
+    implementation("io.coil-kt:coil:1.2.0")
+    implementation("io.coil-kt:coil-svg:1.2.0")
 }
 

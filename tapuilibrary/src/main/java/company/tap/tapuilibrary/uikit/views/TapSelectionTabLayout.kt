@@ -9,10 +9,14 @@ import android.graphics.ColorMatrixColorFilter
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.request.ImageRequest
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
@@ -227,9 +231,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.setMargins(0, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
         params.weight = 0.8f
         val image = TapImageView(context, null)
-        Glide.with(this)
+        /*Glide.with(this)
             .load(item.selectedImageURL)
-            .into(image)
+            .into(image)*/
+        item.selectedImageURL.let { image.loadSvg(it) }
         image.layoutParams = params
         item.imageView = image
         item.indicator = indicator
@@ -437,5 +442,17 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val UNSELECTED_ALPHA = (ThemeManager.getValue("cardPhoneList.icon.otherSegmentSelected.alpha") as Double).toFloat()
         val MAX_ITEM_WIDTH = (ThemeManager.getValue("cardPhoneList.maxWidth") as Int).toFloat()
     }
+    private fun ImageView.loadSvg(url: String) {
 
+        val imageLoader = ImageLoader.Builder(this.context)
+            .componentRegistry { add(SvgDecoder(this@loadSvg.context)) }
+            .build()
+
+        val request = ImageRequest.Builder(this.context)
+            .data(url)
+            .target(this)
+            .build()
+
+        imageLoader.enqueue(request)
+    }
 }
