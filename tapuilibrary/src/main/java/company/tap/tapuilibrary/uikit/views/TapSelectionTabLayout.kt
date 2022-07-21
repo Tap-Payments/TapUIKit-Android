@@ -233,13 +233,13 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.setMargins(0, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
         params.weight = 0.8f
         val image = TapImageView(context, null)
-      //  Glide.with(this)
-        //    .load(item.selectedImageURL)
-        //    .into(image)
-        GlideToVectorYou
+        Glide.with(this)
+            .load(item.selectedImageURL)
+            .into(image)
+      /*  GlideToVectorYou
             .init()
             .with(context)
-            .load(item.selectedImageURL.toUri(), image)
+            .load(item.selectedImageURL.toUri(), image)*/
         image.layoutParams = params
         item.imageView = image
         item.indicator = indicator
@@ -372,13 +372,13 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabItems.forEach {
             if (it.type != type) {
                 it.imageView?.let { it1 ->
-                  /*  Glide.with(this)
+                   Glide.with(this)
                         .load(it.unSelectedImage)
-                        .into(it1)*/
-                    GlideToVectorYou
+                        .into(it1)
+                  /*  GlideToVectorYou
                         .init()
                         .with(context)
-                        .load(it.unSelectedImage.toUri(), it1)
+                        .load(it.unSelectedImage.toUri(), it1)*/
                     val colorMatrix =  ColorMatrix()
                     colorMatrix.setSaturation(0.0f)
                     val filter =  ColorMatrixColorFilter(colorMatrix)
@@ -391,6 +391,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .load(it.selectedImageURL)
                         .into(it1)
                 }
+                val matrix = ColorMatrix()
+                matrix.setSaturation(0f)
+                val filter = ColorMatrixColorFilter(matrix)
+                it.imageView?.colorFilter = filter
                 it.indicator?.visibility = View.VISIBLE
                 it.indicator?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.vibrantGreen")))
             }
