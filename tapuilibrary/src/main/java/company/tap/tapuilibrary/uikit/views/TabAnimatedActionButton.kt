@@ -131,7 +131,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 removeAllViews()
                 val params = LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT,
-                    120
+                    40
                 )
                 params.setMargins(60, 40,60,60)
                 params.gravity = Gravity.CENTER
