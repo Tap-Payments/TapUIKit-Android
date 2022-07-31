@@ -8,6 +8,7 @@ package company.tap.tapuilibrary.uikit.enums
  */
 enum class ActionButtonState {
     IDLE,
+    RESET,
     LOADING,
     SUCCESS,
     ERROR
