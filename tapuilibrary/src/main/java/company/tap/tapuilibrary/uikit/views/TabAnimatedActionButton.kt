@@ -286,7 +286,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
      */
     companion object {
         const val MAX_CORNERS = 100f
-        const val MAX_RADIUS = 200
+        const val MAX_RADIUS = 50
         const val MAX_DURATION = 2000
     }
 }
