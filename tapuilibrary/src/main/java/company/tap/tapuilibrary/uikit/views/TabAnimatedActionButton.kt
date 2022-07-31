@@ -144,7 +144,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     LinearLayout.LayoutParams.MATCH_PARENT,
                     80
                 )
-                params.setMargins(60, 40,60,40)
+                params.setMargins(50, 40,50,40)
                 params.gravity = Gravity.CENTER
                 this.layoutParams = params
                 init()
