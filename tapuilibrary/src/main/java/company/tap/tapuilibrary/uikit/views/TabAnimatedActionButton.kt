@@ -235,7 +235,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 fromHeight = height,
                 toHeight = MAX_RADIUS,
                 fromWidth = width,
-                toWidth = MAX_RADIUS+80,
+                toWidth = MAX_RADIUS+40,
                 fromCorners = dataSource?.cornerRadius,
                 toCorners = MAX_CORNERS,
                 fromColor = dataSource?.backgroundColor,
@@ -287,6 +287,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     companion object {
         const val MAX_CORNERS = 100f
         const val MAX_RADIUS = 100
-        const val MAX_DURATION = 2000
+        const val MAX_DURATION = 1000
     }
 }
