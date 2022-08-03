@@ -144,25 +144,26 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
              }
             RESET -> {
                 removeAllViews()
-                if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics!! == DisplayMetrics.DENSITY_420 ||displayMetrics!! <= DisplayMetrics.DENSITY_400||displayMetrics!! == DisplayMetrics.DENSITY_440||displayMetrics!! == DisplayMetrics.DENSITY_XXHIGH)
+                if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH)
                 {
-                    val params = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        120
-                    )
-                    params.setMargins(60, 40,60,60)
-                    params.gravity = Gravity.CENTER
-                    this.layoutParams = params
-                    init()
 
-
-
-                }else {
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         80
                     )
                     params.setMargins(50, 40,50,40)
+                    params.gravity = Gravity.CENTER
+                    this.layoutParams = params
+                    init()
+
+
+                }else if (displayMetrics == DisplayMetrics.DENSITY_300||displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340||displayMetrics == DisplayMetrics.DENSITY_360){
+
+                    val params = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        120
+                    )
+                    params.setMargins(60, 40,60,60)
                     params.gravity = Gravity.CENTER
                     this.layoutParams = params
                     init()
@@ -251,7 +252,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     private fun startStateAnimation() {
         val animationDataSource :AnimationDataSource
-        if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics!! == DisplayMetrics.DENSITY_420 ||displayMetrics!! <= DisplayMetrics.DENSITY_400||displayMetrics!! == DisplayMetrics.DENSITY_440||displayMetrics!! == DisplayMetrics.DENSITY_XXHIGH){
+        if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH){
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,
@@ -265,13 +266,13 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     duration = MAX_DURATION,
                     background = backgroundDrawable
                 )
-        }else{
+        }else if (displayMetrics == DisplayMetrics.DENSITY_300||displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340||displayMetrics == DisplayMetrics.DENSITY_360){
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,
-                    toHeight = MAX_RADIUS,
+                    toHeight = 40,
                     fromWidth = width,
-                    toWidth = MAX_RADIUS+40,
+                    toWidth = 40+40,
                     fromCorners = dataSource?.cornerRadius,
                     toCorners = MAX_CORNERS,
                     fromColor = dataSource?.backgroundColor,
