@@ -144,7 +144,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
              }
             RESET -> {
                 removeAllViews()
-                if(displayMetrics!! <= DisplayMetrics.DENSITY_450 ||displayMetrics!! <= DisplayMetrics.DENSITY_420 ||displayMetrics!! <= DisplayMetrics.DENSITY_400||displayMetrics!! <= DisplayMetrics.DENSITY_440||displayMetrics!! <= DisplayMetrics.DENSITY_XXHIGH)
+                if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics!! == DisplayMetrics.DENSITY_420 ||displayMetrics!! <= DisplayMetrics.DENSITY_400||displayMetrics!! == DisplayMetrics.DENSITY_440||displayMetrics!! == DisplayMetrics.DENSITY_XXHIGH)
                 {
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
@@ -249,19 +249,38 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     }
 
     private fun startStateAnimation() {
-        val animationDataSource =
-            AnimationDataSource(
-                fromHeight = height,
-                toHeight = MAX_RADIUS,
-                fromWidth = width,
-                toWidth = MAX_RADIUS+40,
-                fromCorners = dataSource?.cornerRadius,
-                toCorners = MAX_CORNERS,
-                fromColor = dataSource?.backgroundColor,
-                toColor = dataSource?.errorColor,
-                duration = MAX_DURATION,
-                background = backgroundDrawable
-            )
+        val animationDataSource :AnimationDataSource
+        if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics!! == DisplayMetrics.DENSITY_420 ||displayMetrics!! <= DisplayMetrics.DENSITY_400||displayMetrics!! == DisplayMetrics.DENSITY_440||displayMetrics!! == DisplayMetrics.DENSITY_XXHIGH){
+            animationDataSource =
+                AnimationDataSource(
+                    fromHeight = height,
+                    toHeight = 100,
+                    fromWidth = width,
+                    toWidth = 100+40,
+                    fromCorners = dataSource?.cornerRadius,
+                    toCorners = MAX_CORNERS,
+                    fromColor = dataSource?.backgroundColor,
+                    toColor = dataSource?.errorColor,
+                    duration = MAX_DURATION,
+                    background = backgroundDrawable
+                )
+        }else{
+            animationDataSource =
+                AnimationDataSource(
+                    fromHeight = height,
+                    toHeight = MAX_RADIUS,
+                    fromWidth = width,
+                    toWidth = MAX_RADIUS+40,
+                    fromCorners = dataSource?.cornerRadius,
+                    toCorners = MAX_CORNERS,
+                    fromColor = dataSource?.backgroundColor,
+                    toColor = dataSource?.errorColor,
+                    duration = MAX_DURATION,
+                    background = backgroundDrawable
+                )
+        }
+
+
         morphingAnimation.start(animationDataSource, WIDTH, HEIGHT, CORNERS)
     }
 
