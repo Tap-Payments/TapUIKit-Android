@@ -149,6 +149,17 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
+                        100
+                    )
+                    params.setMargins(60, 40,60,60)
+                    params.gravity = Gravity.CENTER
+                    this.layoutParams = params
+                    init()
+
+
+                }else if (displayMetrics == DisplayMetrics.DENSITY_300||displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340||displayMetrics == DisplayMetrics.DENSITY_360){
+                    val params = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
                         80
                     )
                     params.setMargins(50, 40,50,40)
@@ -157,16 +168,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     init()
 
 
-                }else if (displayMetrics == DisplayMetrics.DENSITY_300||displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340||displayMetrics == DisplayMetrics.DENSITY_360){
-
-                    val params = LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        120
-                    )
-                    params.setMargins(60, 40,60,60)
-                    params.gravity = Gravity.CENTER
-                    this.layoutParams = params
-                    init()
                 }
 
             }
@@ -256,9 +257,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,
-                    toHeight = 80,
+                    toHeight = 70,
                     fromWidth = width,
-                    toWidth = 80+40,
+                    toWidth = 70+40,
                     fromCorners = dataSource?.cornerRadius,
                     toCorners = MAX_CORNERS,
                     fromColor = dataSource?.backgroundColor,
