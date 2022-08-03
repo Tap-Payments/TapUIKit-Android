@@ -148,20 +148,21 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 {
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
-                        80
+                        120
                     )
-                    params.setMargins(50, 40,50,40)
+                    params.setMargins(60, 40,60,60)
                     params.gravity = Gravity.CENTER
                     this.layoutParams = params
                     init()
 
 
+
                 }else {
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
-                        120
+                        80
                     )
-                    params.setMargins(60, 40,60,60)
+                    params.setMargins(50, 40,50,40)
                     params.gravity = Gravity.CENTER
                     this.layoutParams = params
                     init()
@@ -254,9 +255,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,
-                    toHeight = 100,
+                    toHeight = 80,
                     fromWidth = width,
-                    toWidth = 100+40,
+                    toWidth = 80+40,
                     fromCorners = dataSource?.cornerRadius,
                     toCorners = MAX_CORNERS,
                     fromColor = dataSource?.backgroundColor,
