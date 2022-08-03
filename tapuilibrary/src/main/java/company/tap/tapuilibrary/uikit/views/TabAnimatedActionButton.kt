@@ -48,7 +48,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private var tapLoadingView: TapLoadingView? = null
     private val textView by lazy {TextView(context)  }
 
-
+   private lateinit var animationDataSource :AnimationDataSource
     constructor(context: Context) : super(context) {
         init()
     }
@@ -251,7 +251,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     }
 
     private fun startStateAnimation() {
-        val animationDataSource :AnimationDataSource
+
         if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH){
             animationDataSource =
                 AnimationDataSource(
