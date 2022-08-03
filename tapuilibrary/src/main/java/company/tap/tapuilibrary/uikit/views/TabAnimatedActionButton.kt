@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
+import android.util.DisplayMetrics
 import android.util.LayoutDirection
 import android.view.Gravity
 import android.view.View
@@ -43,6 +44,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private var dataSource: ActionButtonDataSource? = null
     private var backgroundDrawable: GradientDrawable = GradientDrawable()
     private var actionButtonInterface: TapActionButtonInterface? = null
+    private var displayMetrics: Int? = null
     private var tapLoadingView: TapLoadingView? = null
     private val textView by lazy {TextView(context)  }
 
@@ -89,7 +91,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun setButtonInterface(actionButtonInterface: TapActionButtonInterface) {
         this.actionButtonInterface = actionButtonInterface
     }
-
+    fun setDisplayMetrics(displayMetrics: Int) {
+        this.displayMetrics = displayMetrics
+    }
     fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null, backgroundColor: Int, textColor:Int? = null) {
         if (isValid)
         {
@@ -140,14 +144,29 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
              }
             RESET -> {
                 removeAllViews()
-                val params = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    80
-                )
-                params.setMargins(50, 40,50,40)
-                params.gravity = Gravity.CENTER
-                this.layoutParams = params
-                init()
+                if(displayMetrics!! <= DisplayMetrics.DENSITY_450 ||displayMetrics!! <= DisplayMetrics.DENSITY_420 ||displayMetrics!! <= DisplayMetrics.DENSITY_400||displayMetrics!! <= DisplayMetrics.DENSITY_440||displayMetrics!! <= DisplayMetrics.DENSITY_XXHIGH)
+                {
+                    val params = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        80
+                    )
+                    params.setMargins(50, 40,50,40)
+                    params.gravity = Gravity.CENTER
+                    this.layoutParams = params
+                    init()
+
+
+                }else {
+                    val params = LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        120
+                    )
+                    params.setMargins(60, 40,60,60)
+                    params.gravity = Gravity.CENTER
+                    this.layoutParams = params
+                    init()
+                }
+
             }
             else ->{
                 morphingAnimation.setAnimationEndListener(this)
