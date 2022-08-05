@@ -399,10 +399,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .with(context)
                         .load(it.selectedImageURL.toUri(), it1)*/
                 }
-                val matrix = ColorMatrix()
+                //stopped gray for selected url
+    /*            val matrix = ColorMatrix()
                 matrix.setSaturation(0f)
                 val filter = ColorMatrixColorFilter(matrix)
-                it.imageView?.colorFilter = filter
+                it.imageView?.colorFilter = filter*/
                 it.indicator?.visibility = View.VISIBLE
                 it.indicator?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.vibrantGreen")))
             }
