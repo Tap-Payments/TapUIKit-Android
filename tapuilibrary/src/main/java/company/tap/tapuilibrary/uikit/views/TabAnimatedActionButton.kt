@@ -281,7 +281,35 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     duration = MAX_DURATION,
                     background = backgroundDrawable
                 )
-        }
+        }else if (displayMetrics == DisplayMetrics.DENSITY_300||displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340||displayMetrics == DisplayMetrics.DENSITY_360) {
+            animationDataSource =
+                AnimationDataSource(
+                    fromHeight = height,
+                    toHeight = 40,
+                    fromWidth = width,
+                    toWidth = 40 + 40,
+                    fromCorners = dataSource?.cornerRadius,
+                    toCorners = MAX_CORNERS,
+                    fromColor = dataSource?.backgroundColor,
+                    toColor = dataSource?.errorColor,
+                    duration = MAX_DURATION,
+                    background = backgroundDrawable
+                )
+        }else
+            animationDataSource =
+                AnimationDataSource(
+                    fromHeight = height,
+                    toHeight = 40,
+                    fromWidth = width,
+                    toWidth = 40+40,
+                    fromCorners = dataSource?.cornerRadius,
+                    toCorners = MAX_CORNERS,
+                    fromColor = dataSource?.backgroundColor,
+                    toColor = dataSource?.errorColor,
+                    duration = MAX_DURATION,
+                    background = backgroundDrawable
+                )
+
 
 
         morphingAnimation.start(animationDataSource, WIDTH, HEIGHT, CORNERS)
