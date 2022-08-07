@@ -36,7 +36,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
     private  var tapMobileInputView: TapMobilePaymentView
-
+    private var displayMetrics: Int? = null
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
@@ -49,7 +49,9 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
 
     }
-
+    fun setDisplayMetrics(displayMetrics: Int) {
+        this.displayMetrics = displayMetrics
+    }
     private fun tapMobileInputViewTextWatcher(){
         tapMobileInputView.mobileNumber?.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
