@@ -264,9 +264,9 @@ open class TapTextInput  @JvmOverloads constructor(
     }
 
     override fun setTheme(theme: TextInputTheme) {
-        theme.textColor?.let { setTextColor(it) }
+       /* theme.textColor?.let { setTextColor(it) }
         theme.textSize?.let { textSize = it.toFloat() }
         theme.letterSpacing?.let { letterSpacing = it.toFloat() }
-        invalidate()
+        invalidate()*/
     }
 }
