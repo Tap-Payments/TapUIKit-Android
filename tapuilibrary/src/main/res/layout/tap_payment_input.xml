@@ -45,7 +45,7 @@
                 android:id="@+id/clear_text"
                 android:layout_width="44dp"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_basic_16dp"
+                android:layout_marginEnd="@dimen/margin_basic_10dp"
                 android:src="@drawable/ic_close"
                 android:visibility="visible" />
 
@@ -62,7 +62,7 @@
                 android:layout_width="44dp"
                 android:layout_height="match_parent"
                 android:padding="10dp"
-                android:layout_marginEnd="@dimen/margin_basic_16dp"
+                android:layout_marginEnd="@dimen/margin_basic_10dp"
                 android:visibility="gone"
                 android:src="@drawable/nfc_button_select" />
 
