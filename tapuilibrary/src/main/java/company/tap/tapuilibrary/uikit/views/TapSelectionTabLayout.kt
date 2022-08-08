@@ -268,7 +268,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         linearLayout.layoutParams = params
         linearLayout.orientation = VERTICAL
-        linearLayout.weightSum = 0.7f
+        linearLayout.weightSum = 0.9f
         return linearLayout
     }
 
