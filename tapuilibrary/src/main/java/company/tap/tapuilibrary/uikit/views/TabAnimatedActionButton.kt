@@ -267,7 +267,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     duration = MAX_DURATION,
                     background = backgroundDrawable
                 )
-        }else if (displayMetrics == DisplayMetrics.DENSITY_300||displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340||displayMetrics == DisplayMetrics.DENSITY_360){
+        }else if (displayMetrics == DisplayMetrics.DENSITY_260||displayMetrics == DisplayMetrics.DENSITY_280||displayMetrics == DisplayMetrics.DENSITY_300||displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340||displayMetrics == DisplayMetrics.DENSITY_360){
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,
