@@ -53,6 +53,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var tabItemAlphaValue = 0.9f
     private var tabItemMarginTopValue = 30
     private var tabItemMarginBottomValue = 20
+    private var tabItemMarginLeftValue = 0
     private var imageSaturationValue = 1f
 
 
@@ -80,6 +81,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     }
     fun changeTabItemMarginBottomValue(tabItemMarginBottomValue : Int){
         this.tabItemMarginBottomValue = tabItemMarginBottomValue
+    }
+    fun changeTabItemMargintabItemMarginLeftValue(tabItemMarginLeftValue : Int){
+        this.tabItemMarginLeftValue = tabItemMarginLeftValue
     }
     /**
      * Setter fot the callback interface
@@ -195,7 +199,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.weight = 0.8f
         for (item in tabItems) {
             params.setMargins(
-                0, tabItemMarginTopValue, 0,
+                tabItemMarginLeftValue, tabItemMarginTopValue, 0,
                 tabItemMarginBottomValue
             )
             item.imageView?.layoutParams = params
@@ -230,7 +234,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
+        params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
         params.weight = 0.8f
         val image = TapImageView(context, null)
         Glide.with(this)
