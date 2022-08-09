@@ -389,7 +389,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 it.imageView?.let { it1 ->
                    Glide.with(this)
                         .load(it.unSelectedImage)
-                        .override(2,2)
                         .into(it1)
                     /*GlideToVectorYou
                         .init()
@@ -405,7 +404,6 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 it.imageView?.let { it1 ->
                     Glide.with(this)
                         .load(it.selectedImageURL)
-                        .override(2,2)
                         .into(it1)
                    /* GlideToVectorYou
                         .init()
