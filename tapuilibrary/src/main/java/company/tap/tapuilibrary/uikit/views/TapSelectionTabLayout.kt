@@ -371,7 +371,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             } else {
                 it.imageView?.alpha = 1f
                 it.indicator?.visibility = View.VISIBLE
-                it.indicator?.setBackgroundColor(indicatorColor)
+                it.indicator?.setBackgroundColor(INVALID_INDICATOR_COLOR)
 
             }
         }
