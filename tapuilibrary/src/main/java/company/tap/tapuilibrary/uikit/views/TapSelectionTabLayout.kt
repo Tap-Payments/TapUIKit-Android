@@ -82,7 +82,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     fun changeTabItemMarginBottomValue(tabItemMarginBottomValue : Int){
         this.tabItemMarginBottomValue = tabItemMarginBottomValue
     }
-    fun changeTabItemMargintabItemMarginLeftValue(tabItemMarginLeftValue : Int){
+    fun changeTabItemMarginLeftValue(tabItemMarginLeftValue : Int){
         this.tabItemMarginLeftValue = tabItemMarginLeftValue
     }
     /**
