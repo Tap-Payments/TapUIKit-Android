@@ -200,7 +200,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         var params = LayoutParams(
             getItemWidth(), 0
         )
-        params.weight = 0.5f
+        params.weight = 0.6f
         for (item in tabItems) {
             params.setMargins(
                 tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue,
@@ -222,6 +222,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             LayoutParams.MATCH_PARENT
         )
         linearLayout.layoutParams = params
+        linearLayout.setPadding(-10,0,0,0)
+        linearLayout.setPaddingRelative(-10,0,0,0)
         linearLayout.orientation = HORIZONTAL
         return linearLayout
     }
@@ -239,11 +241,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             getItemWidth(), 0
         )
         params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
-        params.weight = 0.5f
+        params.weight = 0.6f
         val image = TapImageView(context, null)
         Glide.with(this)
             .load(item.selectedImageURL)
-            .override(15 , 15)
+            .override(2 , 2)
             .into(image)
       /*  GlideToVectorYou
             .init()
@@ -277,7 +279,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         linearLayout.layoutParams = params
         linearLayout.orientation = VERTICAL
-        linearLayout.weightSum = 0.5f
+        linearLayout.weightSum = 0.6f
         return linearLayout
     }
 
@@ -339,7 +341,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             if (index == position)
                 view.alpha = 1f
             else
-                view.alpha = 0.5f
+                view.alpha = 0.6f
         }
     }
 
@@ -387,7 +389,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 it.imageView?.let { it1 ->
                    Glide.with(this)
                         .load(it.unSelectedImage)
-                        .override(15,15)
+                        .override(2,2)
                         .into(it1)
                     /*GlideToVectorYou
                         .init()
@@ -403,7 +405,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 it.imageView?.let { it1 ->
                     Glide.with(this)
                         .load(it.selectedImageURL)
-                        .override(15,15)
+                        .override(2,2)
                         .into(it1)
                    /* GlideToVectorYou
                         .init()
