@@ -53,8 +53,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var tabItemAlphaValue = 0.9f
     private var tabItemMarginTopValue = 30
     private var tabItemMarginBottomValue = 20
-    private var tabItemMarginLeftValue = 0
     private var imageSaturationValue = 1f
+    private var tabItemMarginLeftValue = 0
+    private var tabItemMarginRightValue = 0
 
 
     /**
@@ -149,6 +150,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     fun setMaxItemWidth(maxItemWidth: Int) {
         this.maxItemWidth = maxItemWidth
     }
+   fun changeTabItemMarginRightValue(tabItemMarginRightValue : Int){
+        this.tabItemMarginRightValue = tabItemMarginRightValue
+    }
 
     /**
      * Adding new section to the tablayout
@@ -199,7 +203,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         params.weight = 0.5f
         for (item in tabItems) {
             params.setMargins(
-                tabItemMarginLeftValue, tabItemMarginTopValue, 0,
+                tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue,
                 tabItemMarginBottomValue
             )
             item.imageView?.layoutParams = params
@@ -234,12 +238,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
+        params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
         params.weight = 0.5f
         val image = TapImageView(context, null)
         Glide.with(this)
             .load(item.selectedImageURL)
-            .override(50 , 50)
+            .override(25 , 25)
             .into(image)
       /*  GlideToVectorYou
             .init()
@@ -347,7 +351,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     fun selectTab(type: CardBrand, valid: Boolean) {
         resetBehaviour()
         changeClickableState(!valid)
-        tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
+        tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         if (valid) selectValidType(type)
         else selectUnValidType(type)
     }
@@ -383,6 +387,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 it.imageView?.let { it1 ->
                    Glide.with(this)
                         .load(it.unSelectedImage)
+                        .override(25,25)
                         .into(it1)
                     /*GlideToVectorYou
                         .init()
@@ -398,6 +403,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 it.imageView?.let { it1 ->
                     Glide.with(this)
                         .load(it.selectedImageURL)
+                        .override(25,25)
                         .into(it1)
                    /* GlideToVectorYou
                         .init()

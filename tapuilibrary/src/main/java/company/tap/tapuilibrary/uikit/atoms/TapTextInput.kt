@@ -99,7 +99,7 @@ open class TapTextInput  @JvmOverloads constructor(
         listenForTextChanges()
         listenForDeleteEmpty()
         determineDefaultErrorColor()
-        cachedColorStateList = textColors
+       // cachedColorStateList = textColors
     }
 
     protected open val accessibilityText: String? = null
@@ -200,7 +200,7 @@ open class TapTextInput  @JvmOverloads constructor(
     }
 
     private fun determineDefaultErrorColor() {
-        cachedColorStateList = textColors
+        //cachedColorStateList = textColors
         defaultErrorColor = ContextCompat.getColor(
             context,
             if (TapColorUtils.isColorDark(
