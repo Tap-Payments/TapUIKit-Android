@@ -298,9 +298,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,
-                    toHeight = 50,
+                    toHeight = 100,
                     fromWidth = width,
-                    toWidth = 50 + 40,
+                    toWidth = 100 + 40,
                     fromCorners = dataSource?.cornerRadius,
                     toCorners = MAX_CORNERS,
                     fromColor = dataSource?.backgroundColor,
