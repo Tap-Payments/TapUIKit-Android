@@ -348,6 +348,8 @@ class TapOTPView @JvmOverloads constructor(
         setupAnimator()
 
         super.setCursorVisible(true)
+        mCursorColor =  Color.parseColor("#007aff")
+        cursorColor =  Color.parseColor("#007aff")
         setTextIsSelectable(false)
     }
 
@@ -1007,7 +1009,7 @@ class TapOTPView @JvmOverloads constructor(
 
         private val DBG = false
 
-        private val BLINK = 5000
+        private val BLINK = 6000
 
         private val DEFAULT_COUNT = 4
 
