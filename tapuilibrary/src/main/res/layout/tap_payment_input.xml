@@ -23,48 +23,51 @@
         android:id="@+id/tabLinear"
         android:background="@color/header_gray"
         android:orientation="horizontal"
-        android:weightSum="4">
+        android:weightSum="5">
 
         <LinearLayout
             android:id="@+id/payment_input_layout"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
-            android:layout_weight="4"
+            android:layout_weight="4.7"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/margin_basic_15dp"
-            android:paddingStart="@dimen/margin_basic_16dp"
-            android:paddingEnd="@dimen/margin_basic_16dp" />
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
         <LinearLayout
             android:id="@+id/linear_paylayout"
             android:layout_width="wrap_content"
             android:layout_marginTop="2dp"
-            android:layout_marginEnd="@dimen/margin_basic_16dp"
+            android:layout_weight="0.3"
             android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/clear_text"
-                android:layout_width="70dp"
-                android:layout_height="match_parent"
-
+                android:layout_width="44dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_basic_16dp"
                 android:src="@drawable/ic_close"
+
                 android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/card_scanner_button"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
                 android:padding="10dp"
                 android:visibility="visible"
+
                 android:src="@drawable/cardscan_button_select" />
 
             <ImageView
                 android:id="@+id/nfc_button"
-                android:layout_width="70dp"
+                android:layout_width="44dp"
                 android:layout_height="match_parent"
                 android:padding="10dp"
 
+                android:layout_marginEnd="@dimen/margin_basic_16dp"
                 android:visibility="gone"
                 android:src="@drawable/nfc_button_select" />
 
