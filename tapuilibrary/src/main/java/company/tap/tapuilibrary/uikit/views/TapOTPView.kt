@@ -348,6 +348,8 @@ class TapOTPView @JvmOverloads constructor(
         setupAnimator()
 
         super.setCursorVisible(true)
+        mCursorColor =  Color.parseColor("#007aff")
+        cursorColor =  Color.parseColor("#007aff")
         setTextIsSelectable(false)
     }
 
