@@ -45,15 +45,15 @@
 
             <ImageView
                 android:id="@+id/clear_text"
-                android:layout_width="60dp"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
-                android:layout_marginEnd="@dimen/margin_basic_16dp"
+
                 android:src="@drawable/ic_close"
                 android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/card_scanner_button"
-                android:layout_width="60dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:padding="10dp"
                 android:visibility="visible"
@@ -61,10 +61,10 @@
 
             <ImageView
                 android:id="@+id/nfc_button"
-                android:layout_width="60dp"
+                android:layout_width="70dp"
                 android:layout_height="match_parent"
                 android:padding="10dp"
-                android:layout_marginEnd="@dimen/margin_basic_16dp"
+
                 android:visibility="gone"
                 android:src="@drawable/nfc_button_select" />
 
