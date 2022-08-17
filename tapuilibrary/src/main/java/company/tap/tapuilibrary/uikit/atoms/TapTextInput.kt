@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.uikit.atoms
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Build
 import android.os.Handler
 import android.text.Editable
@@ -16,6 +17,7 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.google.android.material.textfield.TextInputEditText
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextInputTheme
 import company.tap.tapuilibrary.uikit.utils.TapColorUtils
 import company.tap.tapuilibrary.uikit.utils.TapTextWatcher
@@ -57,7 +59,7 @@ open class TapTextInput  @JvmOverloads constructor(
                 if (shouldShowError) {
                     setTextColor(errorColor ?: defaultErrorColor)
                 } else {
-                    setTextColor(cachedColorStateList)
+                    setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
                 }
                 refreshDrawableState()
             }
@@ -97,7 +99,7 @@ open class TapTextInput  @JvmOverloads constructor(
         listenForTextChanges()
         listenForDeleteEmpty()
         determineDefaultErrorColor()
-        cachedColorStateList = textColors
+       // cachedColorStateList = textColors
     }
 
     protected open val accessibilityText: String? = null
@@ -198,7 +200,7 @@ open class TapTextInput  @JvmOverloads constructor(
     }
 
     private fun determineDefaultErrorColor() {
-        cachedColorStateList = textColors
+        //cachedColorStateList = textColors
         defaultErrorColor = ContextCompat.getColor(
             context,
             if (TapColorUtils.isColorDark(
@@ -264,7 +266,7 @@ open class TapTextInput  @JvmOverloads constructor(
     }
 
     override fun setTheme(theme: TextInputTheme) {
-        theme.textColor?.let { setTextColor(it) }
+        theme.textColor?.let { setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor"))) }
         theme.textSize?.let { textSize = it.toFloat() }
         theme.letterSpacing?.let { letterSpacing = it.toFloat() }
         invalidate()

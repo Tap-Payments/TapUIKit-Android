@@ -144,7 +144,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
              }
             RESET -> {
                 removeAllViews()
-                if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH)
+                if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH||displayMetrics == DisplayMetrics.DENSITY_560)
                 {
 
                     val params = LinearLayout.LayoutParams(
@@ -157,7 +157,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     init()
 
 
+
                 }else if (displayMetrics == DisplayMetrics.DENSITY_280||displayMetrics == DisplayMetrics.DENSITY_260||displayMetrics == DisplayMetrics.DENSITY_300||displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340||displayMetrics == DisplayMetrics.DENSITY_360){
+
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
                         80
@@ -266,7 +268,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     private fun startStateAnimation() {
 
-        if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH){
+        if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH||displayMetrics == DisplayMetrics.DENSITY_560){
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,

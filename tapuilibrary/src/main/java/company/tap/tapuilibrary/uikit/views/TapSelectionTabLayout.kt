@@ -54,6 +54,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var tabItemMarginTopValue = 30
     private var tabItemMarginBottomValue = 20
     private var imageSaturationValue = 1f
+    private var tabItemMarginLeftValue = 0
+    private var tabItemMarginRightValue = 0
 
 
     /**
@@ -80,6 +82,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     }
     fun changeTabItemMarginBottomValue(tabItemMarginBottomValue : Int){
         this.tabItemMarginBottomValue = tabItemMarginBottomValue
+    }
+    fun changeTabItemMarginLeftValue(tabItemMarginLeftValue : Int){
+        this.tabItemMarginLeftValue = tabItemMarginLeftValue
     }
     /**
      * Setter fot the callback interface
@@ -145,6 +150,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     fun setMaxItemWidth(maxItemWidth: Int) {
         this.maxItemWidth = maxItemWidth
     }
+   fun changeTabItemMarginRightValue(tabItemMarginRightValue : Int){
+        this.tabItemMarginRightValue = tabItemMarginRightValue
+    }
 
     /**
      * Adding new section to the tablayout
@@ -192,10 +200,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         var params = LayoutParams(
             getItemWidth(), 0
         )
-        params.weight = 0.8f
+        params.weight = 0.6f
         for (item in tabItems) {
             params.setMargins(
-                0, tabItemMarginTopValue, 0,
+                tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue,
                 tabItemMarginBottomValue
             )
             item.imageView?.layoutParams = params
@@ -214,6 +222,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             LayoutParams.MATCH_PARENT
         )
         linearLayout.layoutParams = params
+        linearLayout.setPadding(-10,0,0,0)
+        linearLayout.setPaddingRelative(-10,0,0,0)
         linearLayout.orientation = HORIZONTAL
         return linearLayout
     }
@@ -230,11 +240,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             getItemWidth(), 0
         )
-        params.setMargins(0, tabItemMarginTopValue, 0, tabItemMarginBottomValue)
-        params.weight = 0.8f
+        params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
+        params.weight = 0.6f
         val image = TapImageView(context, null)
         Glide.with(this)
             .load(item.selectedImageURL)
+            .override(2 , 2)
             .into(image)
       /*  GlideToVectorYou
             .init()
@@ -268,7 +279,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         linearLayout.layoutParams = params
         linearLayout.orientation = VERTICAL
-        linearLayout.weightSum = 1f
+        linearLayout.weightSum = 0.6f
         return linearLayout
     }
 
@@ -330,7 +341,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             if (index == position)
                 view.alpha = 1f
             else
-                view.alpha = 0.5f
+                view.alpha = 0.6f
         }
     }
 
@@ -342,7 +353,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     fun selectTab(type: CardBrand, valid: Boolean) {
         resetBehaviour()
         changeClickableState(!valid)
-        tabLayout.setSelectedTabIndicatorColor(Color.TRANSPARENT)
+        tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         if (valid) selectValidType(type)
         else selectUnValidType(type)
     }
@@ -360,7 +371,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             } else {
                 it.imageView?.alpha = 1f
                 it.indicator?.visibility = View.VISIBLE
-                it.indicator?.setBackgroundColor(indicatorColor)
+                it.indicator?.setBackgroundColor(INVALID_INDICATOR_COLOR)
 
             }
         }
