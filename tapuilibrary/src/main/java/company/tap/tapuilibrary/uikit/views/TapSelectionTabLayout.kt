@@ -26,6 +26,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
+import android.graphics.ColorMatrixColorFilter as ColorMatrixColorFilter1
 
 /**
  *
@@ -395,8 +396,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                    // val colorMatrix =  ColorMatrix()
                   //  colorMatrix.setSaturation(1.0f)
                   //  val filter =  ColorMatrixColorFilter(colorMatrix)
-                   val  greyFilter:PorterDuffColorFilter =  PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-                    it1.colorFilter = greyFilter
+                    val colorMatrix = ColorMatrix()
+                    colorMatrix.setSaturation(0F)
+                    val filter = ColorMatrixColorFilter1(colorMatrix)
+                    it1.colorFilter=filter
+
                 }
                 it.indicator?.visibility = View.INVISIBLE
             } else {
@@ -437,15 +441,17 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     .with(context)
                     .load(it.unSelectedImage.toUri(), it2)
                 val colorMatrix =  ColorMatrix()
-                colorMatrix.setSaturation(1.0f)
-                val filter =  ColorMatrixColorFilter(colorMatrix)
+                colorMatrix.setSaturation(0.0f)
+                val filter = ColorMatrixColorFilter1(colorMatrix)
                 it2.colorFilter = filter
             }
 
             it.imageView?.let { it1 ->
-                Glide.with(this)
-                    .load(it.selectedImageURL)
-                    .into(it1)
+                GlideToVectorYou
+                    .init()
+                    .with(context)
+                    .load(it.selectedImageURL.toUri(), it1)
+                   // .into(it1)
 
               /*  GlideToVectorYou
                     .init()
