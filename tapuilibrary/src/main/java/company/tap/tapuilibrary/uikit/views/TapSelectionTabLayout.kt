@@ -3,9 +3,7 @@ package company.tap.tapuilibrary.uikit.views
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Resources
-import android.graphics.Color
-import android.graphics.ColorMatrix
-import android.graphics.ColorMatrixColorFilter
+import android.graphics.*
 import android.os.Build
 import android.util.AttributeSet
 import android.view.View
@@ -394,10 +392,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .init()
                         .with(context)
                         .load(it.unSelectedImage.toUri(), it1)*/
-                    val colorMatrix =  ColorMatrix()
-                    colorMatrix.setSaturation(1.0f)
-                    val filter =  ColorMatrixColorFilter(colorMatrix)
-                    it1.colorFilter = filter
+                   // val colorMatrix =  ColorMatrix()
+                  //  colorMatrix.setSaturation(1.0f)
+                  //  val filter =  ColorMatrixColorFilter(colorMatrix)
+                   val  greyFilter:PorterDuffColorFilter =  PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+                    it1.colorFilter = greyFilter
                 }
                 it.indicator?.visibility = View.INVISIBLE
             } else {
