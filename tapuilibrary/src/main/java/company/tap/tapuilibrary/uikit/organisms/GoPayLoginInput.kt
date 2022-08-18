@@ -473,7 +473,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             textSize = 18f,
             textColor = textColor,
             cornerRadius = 100f,
-            successImageResources = company.tap.checkout.R.drawable.checkmark,
+            successImageResources = R.drawable.checkmark,
             backgroundColor = backgroundColor
         )
     }
