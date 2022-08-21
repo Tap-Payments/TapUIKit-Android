@@ -399,7 +399,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     val colorMatrix = ColorMatrix()
                     colorMatrix.setSaturation(1.0f)
                     val filter = ColorMatrixColorFilter1(colorMatrix)
-                    it1.colorFilter=filter
+                    it.imageView?.colorFilter=filter
 
                 }
                 it.indicator?.visibility = View.INVISIBLE
