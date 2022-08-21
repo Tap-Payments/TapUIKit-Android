@@ -351,7 +351,7 @@ class TapOTPView @JvmOverloads constructor(
         mCursorColor =  Color.parseColor("#007aff")
         cursorColor =  Color.parseColor("#007aff")
         setTextIsSelectable(false)
-        setSelection(0)
+
     }
 
     private fun setMaxLength(maxLength: Int) {
