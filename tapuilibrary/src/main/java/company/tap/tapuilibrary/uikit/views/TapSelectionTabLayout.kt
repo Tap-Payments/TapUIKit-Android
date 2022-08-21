@@ -386,18 +386,18 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabItems.forEach {
             if (it.type != type) {
                 it.imageView?.let { it1 ->
-                   Glide.with(this)
+                  /* Glide.with(this)
                         .load(it.unSelectedImage)
-                        .into(it1)
-                    /*GlideToVectorYou
+                        .into(it1)*/
+                    GlideToVectorYou
                         .init()
                         .with(context)
-                        .load(it.unSelectedImage.toUri(), it1)*/
+                        .load(it.unSelectedImage.toUri(), it1)
                    // val colorMatrix =  ColorMatrix()
                   //  colorMatrix.setSaturation(1.0f)
                   //  val filter =  ColorMatrixColorFilter(colorMatrix)
                     val colorMatrix = ColorMatrix()
-                    colorMatrix.setSaturation(0F)
+                    colorMatrix.setSaturation(1.0f)
                     val filter = ColorMatrixColorFilter1(colorMatrix)
                     it1.colorFilter=filter
 
@@ -405,14 +405,15 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 it.indicator?.visibility = View.INVISIBLE
             } else {
                 it.imageView?.let { it1 ->
-                    Glide.with(this)
+                  /*  Glide.with(this)
                         .load(it.selectedImageURL)
-                        .into(it1)
-                   /* GlideToVectorYou
+                        .into(it1)*/
+                   GlideToVectorYou
                         .init()
                         .with(context)
-                        .load(it.selectedImageURL.toUri(), it1)*/
+                        .load(it.selectedImageURL.toUri(), it1)
                 }
+
                 //stopped gray for selected url
     /*            val matrix = ColorMatrix()
                 matrix.setSaturation(0f)
@@ -432,32 +433,32 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
-            it.imageView?.let { it2 ->
+
                 /*Glide.with(this)
                     .load(it.unSelectedImage)
                     .into(it2)*/
                 GlideToVectorYou
                     .init()
                     .with(context)
-                    .load(it.unSelectedImage.toUri(), it2)
+                    .load(it.unSelectedImage.toUri(), it.imageView)
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(0.0f)
                 val filter = ColorMatrixColorFilter1(colorMatrix)
-                it2.colorFilter = filter
-            }
+            it.imageView?.colorFilter = filter
 
-            it.imageView?.let { it1 ->
+
+
                 GlideToVectorYou
                     .init()
                     .with(context)
-                    .load(it.selectedImageURL.toUri(), it1)
+                    .load(it.selectedImageURL.toUri(), it.imageView)
                    // .into(it1)
 
               /*  GlideToVectorYou
                     .init()
                     .with(context)
                     .load(it.selectedImageURL.toUri(), it1)*/
-            }
+
             it.indicator?.visibility = View.INVISIBLE
         }
     }
