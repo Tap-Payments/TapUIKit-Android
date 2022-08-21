@@ -346,6 +346,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 //                    AnimationEngine.applyTransition(this)
                     backgroundDrawable.color = ColorStateList.valueOf(it)
                 }
+                initActionButtonDataSource()
             }
             SUCCESS -> dataSource?.successImageResources?.let {
                 addChildView(getImageView(it,1) {})

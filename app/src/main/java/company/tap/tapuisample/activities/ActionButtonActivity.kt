@@ -2,6 +2,7 @@ package company.tap.tapuisample.activities
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.DisplayMetrics
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.taplocalizationkit.LocalizationManager
@@ -26,9 +27,13 @@ class ActionButtonActivity : AppCompatActivity() {
 //            Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor")),
 //            "Pay" )
 
-//        actionButton.setButtonDataSource(false, LocalizationManager.getLocale(this).language,
-//            "Pay")
-
+        actionButton.setButtonDataSource(false, "en",
+            "Pay",Color.parseColor("#00FF00"),Color.parseColor("#FFC0CB"))
+        val metrics = DisplayMetrics()
+        this.windowManager.defaultDisplay.getMetrics(metrics)
+        val density = metrics.densityDpi
+        println("density is"+density)
+        actionButton.setDisplayMetrics(density)
         actionButton.setOnClickListener {
             pickStatus()
         }

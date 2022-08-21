@@ -4,6 +4,7 @@ import android.animation.*
 import android.graphics.drawable.GradientDrawable
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.core.animation.doOnEnd
 import company.tap.tapuilibrary.uikit.animation.MorphingAnimation.AnimationTarget.*
 import company.tap.tapuilibrary.uikit.datasource.AnimationDataSource
 
@@ -70,11 +71,18 @@ class MorphingAnimation(private val animatedView: View) {
             animatorSet.duration = it.toLong()
         }
         animatorSet.playTogether(animators)
-        animatorSet.addListener(object : AnimatorListenerAdapter() {
+      /*  animatorSet.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationEnd(animation: Animator) {
                 animationEndListener?.onMorphAnimationEnd()
             }
-        })
+        })*/
+
+        animatorSet.doOnEnd {
+            animatorSet.reverse()
+            animationEndListener?.onMorphAnimationEnd()
+            animatorSet.removeAllListeners()
+
+        }
         animatorSet.start()
     }
 
