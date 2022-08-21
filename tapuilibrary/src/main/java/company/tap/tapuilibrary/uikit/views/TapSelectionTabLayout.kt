@@ -350,7 +350,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      * @param type the required brand type to be selected
      */
     fun selectTab(type: CardBrand, valid: Boolean) {
-        resetBehaviour()
+        //resetBehaviour()
         changeClickableState(!valid)
         tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         if (valid) selectValidType(type)
