@@ -1010,7 +1010,7 @@ class TapOTPView @JvmOverloads constructor(
 
         private val DBG = false
 
-        private val BLINK = 6000
+        private val BLINK = 5000
 
         private val DEFAULT_COUNT = 4
 

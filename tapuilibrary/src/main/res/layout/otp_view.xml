@@ -99,7 +99,6 @@
             <company.tap.tapuilibrary.uikit.views.TapOTPView
                 android:id="@+id/otpViewInput1"
                 android:layout_width="match_parent"
-
                 android:layout_height="40dp"
                 android:layout_marginStart="30dp"
                 android:layout_gravity="center"
@@ -107,7 +106,7 @@
                 android:cursorVisible="true"
                 android:fitsSystemWindows="true"
                 android:focusable="true"
-               android:defaultFocusHighlightEnabled="true"
+               android:focusableInTouchMode="true"
                 android:focusedByDefault="true"
                 android:fontFamily="sans-serif-light"
                 android:foregroundGravity="center"
@@ -120,7 +119,7 @@
                 android:textFontWeight="200"
                 android:textSize="25sp"
                 app:itemCount="6"
-                android:textCursorDrawable="@null"
+
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
