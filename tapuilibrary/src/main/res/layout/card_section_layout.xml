@@ -10,7 +10,7 @@
         android:layout_height="35dp"
         android:layout_weight="33"
         android:padding="7dp"
-        android:src="@drawable/visa" />
+        android:src="@drawable/bt_ic_visa" />
 
     <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/master"

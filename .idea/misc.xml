@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/layout/item_saved_card.xml" value="0.1" />
         <entry key="app/src/main/res/layout/tap_selection_tablayout.xml" value="0.1" />
         <entry key="tapuilibrary/src/main/res/drawable/cardscan_button_select.xml" value="0.13518518518518519" />
+        <entry key="tapuilibrary/src/main/res/layout/card_section_layout.xml" value="0.1" />
         <entry key="tapuilibrary/src/main/res/layout/fawry_payment_view.xml" value="0.1" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_layout.xml" value="0.11296859169199595" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_login_input.xml" value="0.11296859169199595" />
