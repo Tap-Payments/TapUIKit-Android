@@ -465,8 +465,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     colorMatrix.setSaturation(0.0f)
                     val filter = ColorMatrixColorFilter(colorMatrix)
                  //  it1.colorFilter = filter
-                  // val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
-                 //  it1?.setColorFilter(greyFilter)
+                   val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
+                    it1.setColorFilter(null)
 
                 }
             }else if (it.unSelectedImage.contains(".svg")){
@@ -484,7 +484,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                // val paint = Paint()
               //  val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
               //  paint.colorFilter = colorFilter
-              //  it.imageView?.setLayerPaint(paint)
+                it.imageView?.setLayerPaint(null)
 
             }
 
