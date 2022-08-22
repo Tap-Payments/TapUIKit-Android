@@ -394,7 +394,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .with(context)
                         .load(it.unSelectedImage.toUri(), it1)
                     val matrix = ColorMatrix()
-                    matrix.setSaturation(0f)
+                    matrix.setSaturation(1f)
 
                     val filter = ColorMatrixColorFilter(matrix)
                     it.imageView?.colorFilter = filter
