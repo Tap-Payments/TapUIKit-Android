@@ -406,7 +406,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     val filter = ColorMatrixColorFilter(matrix)
                    // it1.colorFilter = filter
                     val paint = Paint()
-                    val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
+                    val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
                     paint.colorFilter = colorFilter
                     it1.setLayerPaint(paint)
                   //  it1.setColorFilter(R.color.gray, PorterDuff.Mode.MULTIPLY)
@@ -465,9 +465,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 //    val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
                 //    it1?.setColorFilter(greyFilter)
                     val paint = Paint()
-                    val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
+                   // val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
                     paint.colorFilter = null
-                    it.imageView?.setLayerPaint(paint)
+                    it1.setLayerPaint(paint)
                 }
             }else if (it.unSelectedImage.contains(".svg")){
                 GlideToVectorYou
@@ -482,7 +482,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
               //  val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
              //   it.imageView?.setColorFilter(greyFilter)
                 val paint = Paint()
-                val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
+                // val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
                 paint.colorFilter = null
                 it.imageView?.setLayerPaint(paint)
             }
