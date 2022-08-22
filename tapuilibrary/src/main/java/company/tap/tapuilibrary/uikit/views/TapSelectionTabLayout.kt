@@ -26,7 +26,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
-import android.graphics.ColorMatrixColorFilter as ColorMatrixColorFilter1
+import android.graphics.ColorMatrixColorFilter
 
 /**
  *
@@ -393,9 +393,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .init()
                         .with(context)
                         .load(it.unSelectedImage.toUri(), it1)
-                    val colorMatrix =  ColorMatrix()
-                    colorMatrix.setSaturation(0.0f)
-                    val filter =  ColorMatrixColorFilter1(colorMatrix)
+                    val matrix = ColorMatrix()
+                    matrix.setSaturation(0f)
+
+                    val filter = ColorMatrixColorFilter(matrix)
                     it.imageView?.colorFilter = filter
 
 
@@ -441,7 +442,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     .load(it.unSelectedImage.toUri(), it.imageView)
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(1.0f)
-                val filter = ColorMatrixColorFilter1(colorMatrix)
+                val filter = ColorMatrixColorFilter(colorMatrix)
             it.imageView?.colorFilter = filter
 
 
