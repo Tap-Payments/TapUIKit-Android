@@ -402,10 +402,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .with(context)
                         .load(it.unSelectedImage.toUri(), it1)*/
                     val matrix = ColorMatrix()
-                    matrix.setSaturation(1f)
+                    matrix.setSaturation(0.0f)
 
                     val filter = ColorMatrixColorFilter(matrix)
-                    it.imageView?.colorFilter = filter
+                    it1.colorFilter = filter
 
 
                 }
@@ -455,17 +455,23 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     Glide.with(this)
                         .load(it.unSelectedImage)
                         .into(it1)
+                    val colorMatrix =  ColorMatrix()
+                    colorMatrix.setSaturation(0.0f)
+                    val filter = ColorMatrixColorFilter(colorMatrix)
+                   it1?.colorFilter = filter
                 }
             }else if (it.unSelectedImage.contains(".svg")){
                 GlideToVectorYou
                     .init()
                     .with(context)
                     .load(it.unSelectedImage.toUri(), it.imageView)
+
                 val colorMatrix =  ColorMatrix()
-                colorMatrix.setSaturation(1.0f)
+                colorMatrix.setSaturation(0.0f)
                 val filter = ColorMatrixColorFilter(colorMatrix)
                 it.imageView?.colorFilter = filter
             }
+
 
 
             if(it.selectedImageURL.contains(".png")){
