@@ -1,5 +1,6 @@
 package company.tap.tapuilibrary.uikit.views
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
 import android.content.res.Resources
@@ -395,10 +396,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                       //  it1.setLayerPaint(paint)
                         it1.setColorFilter(R.color.gray, PorterDuff.Mode.MULTIPLY)
                     }else if(it.unSelectedImage.contains(".svg")){
-                        GlideToVectorYou
-                            .init()
-                            .with(context)
-                            .load(it.unSelectedImage.toUri(), it1)
+                        GlideToVectorYou.justLoadImage(context as Activity, it.unSelectedImage.toUri(), it1)
+//                        GlideToVectorYou
+//                            .init()
+//                            .with(context)
+//                            .load(it.unSelectedImage.toUri(), it1)
                         val paint = Paint()
                         val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
                         paint.colorFilter = colorFilter
@@ -424,10 +426,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                             .load(it.selectedImageURL)
                             .into(it1)
                     }else {
-                        GlideToVectorYou
-                            .init()
+                        GlideToVectorYou.justLoadImage(context as Activity, it.selectedImageURL.toUri(), it1)
+                           /* .init()
                             .with(context)
-                            .load(it.selectedImageURL.toUri(), it1)
+                            .load(it.selectedImageURL.toUri(), it1)*/
+
                     }
                     /*Glide.with(this)
                         .load(it.selectedImageURL)
@@ -480,10 +483,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 paint.colorFilter = colorFilter
                 it.imageView?.setLayerPaint(paint)
 
-                GlideToVectorYou
-                    .init()
+                GlideToVectorYou.justLoadImage(context as Activity, it.unSelectedImage.toUri(), it.imageView)
+                 /*   .init()
                     .with(context)
-                    .load(it.unSelectedImage.toUri(), it.imageView)
+                    .load(it.unSelectedImage.toUri(), it.imageView)*/
 
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(0.0f)
@@ -503,10 +506,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .into(it1)
                 }
             }else{
-                GlideToVectorYou
-                    .init()
+
+                GlideToVectorYou.justLoadImage(context as Activity, it.selectedImageURL.toUri(), it.imageView)
+                    /*.init()
                     .with(context)
-                    .load(it.selectedImageURL.toUri(), it.imageView)
+                    .load(it.selectedImageURL.toUri(), it.imageView)*/
             }
 
                    // .into(it1)
