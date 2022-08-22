@@ -454,7 +454,14 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
             if(it.unSelectedImage.contains(".png")){
-                it.imageView?.let { it1 ->
+
+                it.imageView?.let {
+                        it1 ->
+                    val paint = Paint()
+                    val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
+                    paint.colorFilter = colorFilter
+                    it1.setLayerPaint(paint)
+
                     Glide.with(this)
                         .load(it.unSelectedImage)
                         .into(it1)
@@ -464,12 +471,14 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                  //  it1.colorFilter = filter
                 //    val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
                 //    it1?.setColorFilter(greyFilter)
-                    val paint = Paint()
-                   // val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
-                    paint.colorFilter = null
-                    it1.setLayerPaint(paint)
+
                 }
             }else if (it.unSelectedImage.contains(".svg")){
+                val paint = Paint()
+                val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
+                paint.colorFilter = colorFilter
+                it.imageView?.setLayerPaint(paint)
+
                 GlideToVectorYou
                     .init()
                     .with(context)
@@ -481,10 +490,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
               //  it.imageView?.colorFilter = filter
               //  val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
              //   it.imageView?.setColorFilter(greyFilter)
-                val paint = Paint()
-                // val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
-                paint.colorFilter = null
-                it.imageView?.setLayerPaint(paint)
+
             }
 
 
