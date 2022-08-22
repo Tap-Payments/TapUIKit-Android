@@ -350,7 +350,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      * @param type the required brand type to be selected
      */
     fun selectTab(type: CardBrand, valid: Boolean) {
-        //resetBehaviour()
+        resetBehaviour()
         changeClickableState(!valid)
         tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         if (valid) selectValidType(type)
@@ -394,7 +394,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
                         paint.colorFilter = colorFilter
                       //  it1.setLayerPaint(paint)
-                        it1.setColorFilter(R.color.gray, PorterDuff.Mode.MULTIPLY)
+                        it1.setColorFilter(colorFilter)
                     }else if(it.unSelectedImage.contains(".svg")){
                         GlideToVectorYou.justLoadImage(context as Activity, it.unSelectedImage.toUri(), it1)
 //                        GlideToVectorYou
@@ -473,15 +473,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     colorMatrix.setSaturation(0.0f)
                     val filter = ColorMatrixColorFilter(colorMatrix)
                  //  it1.colorFilter = filter
-                   val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
+                   val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
                    it1?.setColorFilter(greyFilter)
 
                 }
             }else if (it.unSelectedImage.contains(".svg")){
-                val paint = Paint()
-                val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
-                paint.colorFilter = colorFilter
-                it.imageView?.setLayerPaint(paint)
+
 
                 GlideToVectorYou.justLoadImage(context as Activity, it.unSelectedImage.toUri(), it.imageView)
                  /*   .init()
@@ -492,8 +489,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 colorMatrix.setSaturation(0.0f)
                 val filter = ColorMatrixColorFilter(colorMatrix)
               //  it.imageView?.colorFilter = filter
-                val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
-               it.imageView?.setColorFilter(greyFilter)
+                val paint = Paint()
+                val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
+                paint.colorFilter = colorFilter
+                it.imageView?.setLayerPaint(paint)
 
             }
 
