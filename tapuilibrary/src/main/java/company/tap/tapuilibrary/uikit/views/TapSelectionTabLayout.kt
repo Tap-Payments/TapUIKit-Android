@@ -396,11 +396,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                       //  it1.setLayerPaint(paint)
                         it1.setColorFilter(colorFilter)
                     }else if(it.unSelectedImage.contains(".svg")){
-                        GlideToVectorYou.justLoadImage(context as Activity, it.unSelectedImage.toUri(), it1)
-//                        GlideToVectorYou
-//                            .init()
-//                            .with(context)
-//                            .load(it.unSelectedImage.toUri(), it1)
+                       // GlideToVectorYou.justLoadImage(context as Activity, it.unSelectedImage.toUri(), it1)
+                        GlideToVectorYou
+                            .init()
+                            .with(context)
+                            .load(it.unSelectedImage.toUri(), it1)
                         val paint = Paint()
                         val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
                         paint.colorFilter = colorFilter
@@ -411,11 +411,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .init()
                         .with(context)
                         .load(it.unSelectedImage.toUri(), it1)*/
-                    val matrix = ColorMatrix()
+                  /*  val matrix = ColorMatrix()
                     matrix.setSaturation(0.0f)
-
                     val filter = ColorMatrixColorFilter(matrix)
-                   // it1.colorFilter = filter
+                    it1.colorFilter = filter*/
 
                 }
                 it.indicator?.visibility = View.INVISIBLE
@@ -426,19 +425,12 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                             .load(it.selectedImageURL)
                             .into(it1)
                     }else {
-                        GlideToVectorYou.justLoadImage(context as Activity, it.selectedImageURL.toUri(), it1)
-                           /* .init()
+                        GlideToVectorYou
+                            .init()
                             .with(context)
-                            .load(it.selectedImageURL.toUri(), it1)*/
+                            .load(it.selectedImageURL.toUri(), it1)
 
                     }
-                    /*Glide.with(this)
-                        .load(it.selectedImageURL)
-                        .into(it1)*/
-                   /*GlideToVectorYou
-                        .init()
-                        .with(context)
-                        .load(it.selectedImageURL.toUri(), it1)*/
                 }
 
                 //stopped gray for selected url
@@ -473,8 +465,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     colorMatrix.setSaturation(0.0f)
                     val filter = ColorMatrixColorFilter(colorMatrix)
                  //  it1.colorFilter = filter
-                   val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
-                   it1?.setColorFilter(greyFilter)
+                  // val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
+                 //  it1?.setColorFilter(greyFilter)
 
                 }
             }else if (it.unSelectedImage.contains(".svg")){
@@ -489,10 +481,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 colorMatrix.setSaturation(0.0f)
                 val filter = ColorMatrixColorFilter(colorMatrix)
               //  it.imageView?.colorFilter = filter
-                val paint = Paint()
-                val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
-                paint.colorFilter = colorFilter
-                it.imageView?.setLayerPaint(paint)
+               // val paint = Paint()
+              //  val colorFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.SRC_ATOP)
+              //  paint.colorFilter = colorFilter
+              //  it.imageView?.setLayerPaint(paint)
 
             }
 
