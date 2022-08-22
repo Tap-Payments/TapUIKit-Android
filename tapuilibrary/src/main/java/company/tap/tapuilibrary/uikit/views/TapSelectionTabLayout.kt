@@ -26,7 +26,6 @@ import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
-import android.graphics.ColorMatrixColorFilter
 
 /**
  *
@@ -458,8 +457,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     val colorMatrix =  ColorMatrix()
                     colorMatrix.setSaturation(0.0f)
                     val filter = ColorMatrixColorFilter(colorMatrix)
-                //   it1?.colorFilter = filter
-                    it1.setColorFilter(R.color.gray, PorterDuff.Mode.MULTIPLY)
+                   it1.colorFilter = filter
+                //    val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
+                //    it1?.setColorFilter(greyFilter)
                 }
             }else if (it.unSelectedImage.contains(".svg")){
                 GlideToVectorYou
@@ -470,8 +470,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(0.0f)
                 val filter = ColorMatrixColorFilter(colorMatrix)
-              //  it.imageView?.colorFilter = filter
-                it.imageView?.setColorFilter(R.color.gray, PorterDuff.Mode.MULTIPLY)
+                it.imageView?.colorFilter = filter
+              //  val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
+             //   it.imageView?.setColorFilter(greyFilter)
             }
 
 
