@@ -394,10 +394,10 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         .with(context)
                         .load(it.unSelectedImage.toUri(), it1)
                     val colorMatrix =  ColorMatrix()
-                    colorMatrix.setSaturation(1.0f)
-                    val filter =  android.graphics.ColorMatrixColorFilter(colorMatrix)
+                    colorMatrix.setSaturation(0.0f)
+                    val filter =  ColorMatrixColorFilter1(colorMatrix)
+                    it.imageView?.colorFilter = filter
 
-                    it.imageView?.colorFilter=filter
 
                 }
                 it.indicator?.visibility = View.INVISIBLE
