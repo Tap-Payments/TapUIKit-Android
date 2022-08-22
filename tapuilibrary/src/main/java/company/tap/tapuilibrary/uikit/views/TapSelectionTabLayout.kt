@@ -405,8 +405,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     matrix.setSaturation(0.0f)
 
                     val filter = ColorMatrixColorFilter(matrix)
-                    it1.colorFilter = filter
-
+                   // it1.colorFilter = filter
+                    it1.setColorFilter(R.color.gray, PorterDuff.Mode.MULTIPLY)
 
                 }
                 it.indicator?.visibility = View.INVISIBLE
@@ -458,7 +458,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     val colorMatrix =  ColorMatrix()
                     colorMatrix.setSaturation(0.0f)
                     val filter = ColorMatrixColorFilter(colorMatrix)
-                   it1?.colorFilter = filter
+                //   it1?.colorFilter = filter
+                    it1.setColorFilter(R.color.gray, PorterDuff.Mode.MULTIPLY)
                 }
             }else if (it.unSelectedImage.contains(".svg")){
                 GlideToVectorYou
@@ -469,7 +470,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(0.0f)
                 val filter = ColorMatrixColorFilter(colorMatrix)
-                it.imageView?.colorFilter = filter
+              //  it.imageView?.colorFilter = filter
+                it.imageView?.setColorFilter(R.color.gray, PorterDuff.Mode.MULTIPLY)
             }
 
 
