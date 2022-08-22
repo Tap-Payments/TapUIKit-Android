@@ -457,7 +457,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                     val colorMatrix =  ColorMatrix()
                     colorMatrix.setSaturation(0.0f)
                     val filter = ColorMatrixColorFilter(colorMatrix)
-                   it1.colorFilter = filter
+                 //  it1.colorFilter = filter
                 //    val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
                 //    it1?.setColorFilter(greyFilter)
                 }
@@ -470,7 +470,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(0.0f)
                 val filter = ColorMatrixColorFilter(colorMatrix)
-                it.imageView?.colorFilter = filter
+              //  it.imageView?.colorFilter = filter
               //  val greyFilter = PorterDuffColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY)
              //   it.imageView?.setColorFilter(greyFilter)
             }
