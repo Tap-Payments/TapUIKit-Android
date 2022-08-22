@@ -386,9 +386,17 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabItems.forEach {
             if (it.type != type) {
                 it.imageView?.let { it1 ->
-                   Glide.with(this)
-                        .load(it.unSelectedImage)
-                        .into(it1)
+                    if(it.unSelectedImage.contains(".png")){
+                        Glide.with(this)
+                            .load(it.unSelectedImage)
+                            .into(it1)
+                    }else if(it.unSelectedImage.contains(".svg")){
+                        GlideToVectorYou
+                            .init()
+                            .with(context)
+                            .load(it.unSelectedImage.toUri(), it1)
+                    }
+
                    /* GlideToVectorYou
                         .init()
                         .with(context)
@@ -404,9 +412,19 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 it.indicator?.visibility = View.INVISIBLE
             } else {
                 it.imageView?.let { it1 ->
-                    Glide.with(this)
+                    if(it.selectedImageURL.contains(".png")){
+                        Glide.with(this)
+                            .load(it.selectedImageURL)
+                            .into(it1)
+                    }else {
+                        GlideToVectorYou
+                            .init()
+                            .with(context)
+                            .load(it.selectedImageURL.toUri(), it1)
+                    }
+                    /*Glide.with(this)
                         .load(it.selectedImageURL)
-                        .into(it1)
+                        .into(it1)*/
                    /*GlideToVectorYou
                         .init()
                         .with(context)
@@ -432,10 +450,13 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         changeClickableState(true)
         tabLayout.setSelectedTabIndicatorColor(INDICATOR_COLOR)
         tabItems.forEach {
-
-                /*Glide.with(this)
-                    .load(it.unSelectedImage)
-                    .into(it2)*/
+            if(it.unSelectedImage.contains(".png")){
+                it.imageView?.let { it1 ->
+                    Glide.with(this)
+                        .load(it.unSelectedImage)
+                        .into(it1)
+                }
+            }else if (it.unSelectedImage.contains(".svg")){
                 GlideToVectorYou
                     .init()
                     .with(context)
@@ -443,14 +464,23 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 val colorMatrix =  ColorMatrix()
                 colorMatrix.setSaturation(1.0f)
                 val filter = ColorMatrixColorFilter(colorMatrix)
-            it.imageView?.colorFilter = filter
+                it.imageView?.colorFilter = filter
+            }
 
 
-
+            if(it.selectedImageURL.contains(".png")){
+                it.imageView?.let { it1 ->
+                    Glide.with(this)
+                        .load(it.selectedImageURL)
+                        .into(it1)
+                }
+            }else{
                 GlideToVectorYou
                     .init()
                     .with(context)
                     .load(it.selectedImageURL.toUri(), it.imageView)
+            }
+
                    // .into(it1)
 
               /*  GlideToVectorYou
