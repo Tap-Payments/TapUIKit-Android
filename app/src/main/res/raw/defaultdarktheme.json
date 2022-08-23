@@ -618,8 +618,8 @@
     "TapOtpView": {
         "backgroundColor": "transperant",
         "OtpController": {
-            "bottomLineColor": "deepSkyBlue",
-            "activeBottomColor": "brownGreyFour",
+            "bottomLineColor": "brownGreyFour",
+            "activeBottomColor": "deepSkyBlue",
             "textColor": "white",
             "textFont": "Roboto-Light,14"
         },
