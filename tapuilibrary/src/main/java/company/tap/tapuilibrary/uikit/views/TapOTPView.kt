@@ -512,7 +512,7 @@ class TapOTPView @JvmOverloads constructor(
     }
 
     private fun updatePaints() {
-        mPaint.color = currentLineColor
+        mPaint.color = inactiveLineColor
         mPaint.style = Paint.Style.STROKE
         mPaint.strokeWidth = mLineWidth.toFloat()
         mTextPaint.color = currentTextColor
