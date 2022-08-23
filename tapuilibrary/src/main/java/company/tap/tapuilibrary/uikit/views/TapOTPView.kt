@@ -80,9 +80,11 @@ class TapOTPView @JvmOverloads constructor(
     @get:ColorInt
     var currentLineColor =
         Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.activeBottomColor"))
-        private set
+        //private set
     private var mLineWidth: Int = 0
-
+    @get:ColorInt
+    var inactiveLineColor =
+        Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.bottomLineColor"))
     private val mTextRect = Rect()
     private val mItemBorderRect = RectF()
     private val mItemLineRect = RectF()
@@ -564,7 +566,8 @@ class TapOTPView @JvmOverloads constructor(
             }
             updateCenterPoint()
 
-            mPaint.color = getLineColorForState(android.R.attr.state_selected)
+           // mPaint.color = getLineColorForState(android.R.attr.state_selected)
+            mPaint.color =currentLineColor
 
             drawCursor(canvas)
 
@@ -854,11 +857,16 @@ class TapOTPView @JvmOverloads constructor(
      * @see .setLineColor
      * @see .getLineColors
      */
-    fun setLineColor(@ColorInt color: Int) {
+    fun setLineColorInactive(@ColorInt color: Int) {
         lineColors = ColorStateList.valueOf(color)
-        updateColors()
+       // updateColors()
+        inactiveLineColor =color
     }
-
+    fun setLineColorActive(@ColorInt color: Int) {
+        lineColors = ColorStateList.valueOf(color)
+        // updateColors()
+        currentLineColor =color
+    }
     /**
      * Sets the line color.
      *
