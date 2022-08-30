@@ -70,6 +70,8 @@ private var counter=0
             MorphingAnimation(this)
         morphingAnimation.setAnimationEndListener(this)
         initActionButtonDataSource()
+        this@TabAnimatedActionButton.isClickable = true
+        this@TabAnimatedActionButton.isEnabled = true
     }
 
     private fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
