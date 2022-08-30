@@ -131,7 +131,10 @@ private var counter=0
             LOADING ->{
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.loader,1) {})
+                addChildView(getImageView(R.drawable.loader,1) {
+                    morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
+
+                })
             }
             IDLE -> {
                 removeAllViews()
@@ -145,7 +148,9 @@ private var counter=0
                 init()
              }
             RESET -> {
-                removeAllViews()
+                removeView(getImageView(R.drawable.success,0) {})
+                removeView(getImageView(R.drawable.error_gif,0) {})
+                addChildView(getTextView(LocalizationManager.getLocale(context).language))
                 if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH||displayMetrics == DisplayMetrics.DENSITY_560)
                 {
 
@@ -186,6 +191,7 @@ private var counter=0
 
 
                 }
+                morphingAnimation.setAnimationEndListener(this)
                 this.isClickable = true
                 this.isEnabled = true
             }
@@ -342,7 +348,7 @@ private var counter=0
     override fun onMorphAnimationReverted() {
         println("onMorphAnimationReverted is called"+counter)
         counter += 1
-        if(counter<=1) {
+      //  if(counter<=1) {
             when (state) {
                 ERROR -> {
                     /* dataSource?.errorImageResources?.let {
@@ -368,13 +374,20 @@ private var counter=0
                     addChildView(getImageView(it, 1) {})
                 }*/
 
-                else -> init()
+                else -> {
+                    morphingAnimation.setAnimationEndListener(this)
+                    this@TabAnimatedActionButton.isEnabled = true
+                    this@TabAnimatedActionButton.isClickable = true
+                    changeButtonState(RESET)
+                }
+
             }
-        } else {
+       /* } else {
             morphingAnimation.setAnimationEndListener(this)
             this@TabAnimatedActionButton.isEnabled = true
-            init()
-        }
+            changeButtonState(RESET)
+           // init()
+        }*/
     }
 
     override fun onProgressCompleted() {

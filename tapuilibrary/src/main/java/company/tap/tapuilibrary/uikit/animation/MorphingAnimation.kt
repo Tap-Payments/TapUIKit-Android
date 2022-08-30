@@ -138,7 +138,7 @@ class MorphingAnimation(private val animatedView: View) {
 
         val animatorSet = AnimatorSet()
         dataSource.duration?.let {
-            animatorSet.duration = 3000L
+            animatorSet.duration = it.toLong()
         }
         animatorSet.playSequentially(animators)
         animatorSet.addListener(object : AnimatorListenerAdapter() {
