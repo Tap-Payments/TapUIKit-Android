@@ -98,6 +98,8 @@ class TapCardSwitch : LinearLayout {
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
         )
+        payButton.isEnabled = true
+        payButton.isClickable = true
     }
 
     fun showOnlyPayButton(){

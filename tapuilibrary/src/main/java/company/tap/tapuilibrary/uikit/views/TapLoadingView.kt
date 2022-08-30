@@ -32,10 +32,10 @@ class TapLoadingView(context: Context?, attrs: AttributeSet?) :
     }
 
     fun completeProgress() {
-        onProgressEnd()
-       /* tapLoadingImage.setImage(tapLoadingImage,R.drawable.loader,1) {
+     //   onProgressEnd()
+        tapLoadingImage.setImage(tapLoadingImage,R.drawable.loader,1) {
             onProgressEnd()
-        }*/
+        }
     }
     override fun onProgressEnd() {
         onProgressCompletedListener?.onProgressCompleted()

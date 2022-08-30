@@ -47,7 +47,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private var displayMetrics: Int? = null
     private var tapLoadingView: TapLoadingView? = null
     private val textView by lazy {TextView(context)  }
-private var counter=0
+    private var counter=0
    private lateinit var animationDataSource :AnimationDataSource
     constructor(context: Context) : super(context) {
         init()
@@ -83,7 +83,10 @@ private var counter=0
             successImageResources = R.drawable.checkmark,
             backgroundColor = backgroundColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
         )
+
     }
+
+
 
     /**
      * public setter for action button interface
@@ -408,7 +411,7 @@ private var counter=0
                 morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
             }
 
-            else -> init()
+            else ->  morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
         }
     }
     /**
