@@ -47,7 +47,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private var displayMetrics: Int? = null
     private var tapLoadingView: TapLoadingView? = null
     private val textView by lazy {TextView(context)  }
-
+private var counter=0
    private lateinit var animationDataSource :AnimationDataSource
     constructor(context: Context) : super(context) {
         init()
@@ -184,7 +184,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
 
                 }
-
+                this.isClickable = true
+                this.isEnabled = true
             }
             else ->{
                 morphingAnimation.setAnimationEndListener(this)
@@ -336,6 +337,44 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         tapLoadingView?.completeProgress()
     }
 
+    override fun onMorphAnimationReverted() {
+        println("onMorphAnimationReverted is called"+counter)
+        counter += 1
+        if(counter<=1) {
+            when (state) {
+                ERROR -> {
+                    /* dataSource?.errorImageResources?.let {
+                    addChildView(getImageView(it,1) {})
+                }
+                dataSource?.errorColor?.let {
+//                    AnimationEngine.applyTransition(this)
+                    backgroundDrawable.color = ColorStateList.valueOf(it)
+                }*/
+                    morphingAnimation.setAnimationEndListener(this)
+                    this@TabAnimatedActionButton.isEnabled = true
+                    this@TabAnimatedActionButton.isClickable = true
+                    changeButtonState(RESET)
+                    //   morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
+                }
+                SUCCESS ->{
+                    morphingAnimation.setAnimationEndListener(this)
+                    this@TabAnimatedActionButton.isEnabled = true
+                    this@TabAnimatedActionButton.isClickable = true
+                    changeButtonState(RESET)
+                } /*dataSource?.successImageResources?.let {
+
+                    addChildView(getImageView(it, 1) {})
+                }*/
+
+                else -> init()
+            }
+        } else {
+            morphingAnimation.setAnimationEndListener(this)
+            this@TabAnimatedActionButton.isEnabled = true
+            init()
+        }
+    }
+
     override fun onProgressCompleted() {
         when (state) {
             ERROR -> {
@@ -346,10 +385,12 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 //                    AnimationEngine.applyTransition(this)
                     backgroundDrawable.color = ColorStateList.valueOf(it)
                 }
-                initActionButtonDataSource()
+               // initActionButtonDataSource()
+                morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
             }
             SUCCESS -> dataSource?.successImageResources?.let {
                 addChildView(getImageView(it,1) {})
+                morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
             }
 
             else -> init()

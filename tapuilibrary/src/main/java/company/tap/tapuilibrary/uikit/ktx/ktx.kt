@@ -34,6 +34,7 @@ All rights reserved.
                     override fun onAnimationEnd(drawable: Drawable) {
                         //do whatever after specified number of loops complete
                         actionAfterAnimationDone()
+
                     }
                 })
             }
