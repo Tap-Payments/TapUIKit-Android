@@ -15,6 +15,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
+import androidx.core.view.get
 import androidx.core.view.setMargins
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -382,6 +383,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     this@TabAnimatedActionButton.isEnabled = true
                     this@TabAnimatedActionButton.isClickable = true
                     changeButtonState(RESET)
+
                 }
 
             }
@@ -391,6 +393,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             changeButtonState(RESET)
            // init()
         }*/
+        getImageView(R.drawable.error_gif,0) {}.clearAnimation();//This Line Added
+        getImageView(R.drawable.success,0) {}.clearAnimation();//This Line Added
+        getTextView(LocalizationManager.getLocale(context).language).clearAnimation();//This Line Added
     }
 
     override fun onProgressCompleted() {
