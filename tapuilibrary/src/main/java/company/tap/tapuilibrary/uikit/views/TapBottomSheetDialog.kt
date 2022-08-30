@@ -6,6 +6,7 @@ import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
@@ -35,8 +36,8 @@ import company.tap.tapuilibrary.uikit.atoms.TapTextView
  */
 open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
-    private var topLeftCorner = 16f
-    private var topRightCorner = 16f
+    private var topLeftCorner = 8f
+    private var topRightCorner = 8f
     private var bottomRightCorner = 0f
     private var bottomLeftCorner = 0f
     var backgroundColor = Color.TRANSPARENT
@@ -55,6 +56,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        bottomSheetDialog.window?.setBackgroundDrawable(ColorDrawable(android.graphics.Color.TRANSPARENT));
         bottomSheetDialog.setOnShowListener {
             val dialog = it as BottomSheetDialog
             val bottomSheetLayout = dialog.findViewById<FrameLayout>(R.id.design_bottom_sheet)
