@@ -365,13 +365,16 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     morphingAnimation.setAnimationEndListener(this)
                     this@TabAnimatedActionButton.isEnabled = true
                     this@TabAnimatedActionButton.isClickable = true
+                    clearAnimation()
                     changeButtonState(RESET)
+
                     //   morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
                 }
                 SUCCESS ->{
                     morphingAnimation.setAnimationEndListener(this)
                     this@TabAnimatedActionButton.isEnabled = true
                     this@TabAnimatedActionButton.isClickable = true
+                    clearAnimation()
                     changeButtonState(RESET)
                 } /*dataSource?.successImageResources?.let {
 
@@ -382,6 +385,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     morphingAnimation.setAnimationEndListener(this)
                     this@TabAnimatedActionButton.isEnabled = true
                     this@TabAnimatedActionButton.isClickable = true
+                    clearAnimation()
                     changeButtonState(RESET)
 
                 }
@@ -393,6 +397,12 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             changeButtonState(RESET)
            // init()
         }*/
+        clearAnimation()
+        clearFocus()
+        cleanupLayoutState( getImageView(R.drawable.error_gif,0){})
+        cleanupLayoutState(  getTextView(LocalizationManager.getLocale(context).language))
+        cleanupLayoutState( getImageView(R.drawable.success,0) {})
+
         getImageView(R.drawable.error_gif,0) {}.clearAnimation();//This Line Added
         getImageView(R.drawable.success,0) {}.clearAnimation();//This Line Added
         getTextView(LocalizationManager.getLocale(context).language).clearAnimation();//This Line Added
