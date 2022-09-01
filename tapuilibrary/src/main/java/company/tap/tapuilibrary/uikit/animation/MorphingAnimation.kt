@@ -20,6 +20,7 @@ class MorphingAnimation(private val animatedView: View) {
 
     fun setAnimationEndListener(animationEndListener: OnAnimationEndListener) {
         this.animationEndListener = animationEndListener
+        animatedView.clearAnimation()
     }
 
     fun start(dataSource: AnimationDataSource, vararg targets: AnimationTarget) {
