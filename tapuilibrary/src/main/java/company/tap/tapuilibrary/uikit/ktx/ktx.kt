@@ -24,6 +24,7 @@ All rights reserved.
  **/
 
  fun ImageView.setImage(image: ImageView, imageRes:Int, gifLoopCount: Int, actionAfterAnimationDone: ()-> Unit): ImageView {
+    if(this.isAttachedToWindow)
     Glide.with(this).asGif().load(imageRes).useAnimationPool(true) .listener(object :
         RequestListener<GifDrawable> {
         override fun onResourceReady(resource: GifDrawable?, model: Any?, target: com.bumptech.glide.request.target.Target<GifDrawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
