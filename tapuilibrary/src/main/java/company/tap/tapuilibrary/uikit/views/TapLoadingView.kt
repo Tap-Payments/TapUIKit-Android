@@ -24,7 +24,9 @@ class TapLoadingView(context: Context?, attrs: AttributeSet?) :
     init {
         inflate(context, R.layout.tap_loading_view, this)
         tapLoadingImage = findViewById(R.id.tapLoadingImage)
-        tapLoadingImage.setImage(tapLoadingImage,R.drawable.loader,1) {onProgressEnd()}
+        if (context != null) {
+            tapLoadingImage.setImage(context,tapLoadingImage,R.drawable.loader,1) {onProgressEnd()}
+        }
     }
 
     fun setOnProgressCompleteListener(onProgressCompletedListener: OnProgressCompletedListener) {
@@ -33,7 +35,7 @@ class TapLoadingView(context: Context?, attrs: AttributeSet?) :
 
     fun completeProgress() {
      //   onProgressEnd()
-        tapLoadingImage.setImage(tapLoadingImage,R.drawable.loader,1) {
+        tapLoadingImage.setImage(context,tapLoadingImage,R.drawable.loader,1) {
             onProgressEnd()
         }
     }

@@ -1,5 +1,6 @@
 package company.tap.tapuilibrary.uikit.views
 
+import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -277,7 +278,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         )
         params.setMargins(20)
         image.layoutParams = params
-        return image.setImage(image,imageRes,gifLoopCount, actionAfterAnimationDone)
+
+        return image.setImage(context,image,imageRes,gifLoopCount, actionAfterAnimationDone)
     }
 
     private fun startStateAnimation() {

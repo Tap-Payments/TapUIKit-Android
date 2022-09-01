@@ -206,7 +206,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         )
         params.setMargins(20)
         image.layoutParams = params
-        return image.setImage(image,imageRes,gifLoopCount, actionAfterAnimationDone)
+        return image.setImage(context,image,imageRes,gifLoopCount, actionAfterAnimationDone)
     }
 
     private fun startStateAnimation() {

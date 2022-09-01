@@ -1,6 +1,8 @@
 package company.tap.tapuilibrary.uikit.ktx
 
 import android.R.attr.radius
+import android.app.Activity
+import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
@@ -23,8 +25,8 @@ Copyright (c) 2020  Tap Payments.
 All rights reserved.
  **/
 
- fun ImageView.setImage(image: ImageView, imageRes:Int, gifLoopCount: Int, actionAfterAnimationDone: ()-> Unit): ImageView {
-    if(this.isAttachedToWindow)
+ fun ImageView.setImage(context:Context,image: ImageView, imageRes:Int, gifLoopCount: Int, actionAfterAnimationDone: ()-> Unit): ImageView {
+    if (!(context as Activity).isDestroyed)
     Glide.with(this).asGif().load(imageRes).useAnimationPool(true) .listener(object :
         RequestListener<GifDrawable> {
         override fun onResourceReady(resource: GifDrawable?, model: Any?, target: com.bumptech.glide.request.target.Target<GifDrawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
