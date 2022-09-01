@@ -73,6 +73,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         initActionButtonDataSource()
         this@TabAnimatedActionButton.isClickable = true
         this@TabAnimatedActionButton.isEnabled = true
+        morphingAnimation.setAnimationEndListener()
     }
 
     private fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
