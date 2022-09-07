@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/corner_radius.xml" value="0.1715" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/custom_bottom_sheet.xml" value="0.29393115942028986" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
       </map>
