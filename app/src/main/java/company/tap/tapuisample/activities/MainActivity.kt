@@ -77,7 +77,7 @@ class MainActivity : BaseActivity(),
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
 //        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
 //        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))
-            ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/976650c60952b525d51b739254cd417c/raw/172c4660b5dfe423356ac5feae4dca18448b250a/defaultlighttheme1.json")
+            ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/976650c60952b525d51b739254cd417c/raw/61ad3605ddb661234abb35e9fdde49b4c9d2a4a8/defaultlighttheme1.json")
 //        else   ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/9862436dff3b3ca222243dad3705ec6a/raw/76f9bd9d4e12e7d9dccf5f4969baf09c15a1ea47/lighttheme")
 
 
@@ -363,6 +363,11 @@ class MainActivity : BaseActivity(),
         val config: Configuration = resources.configuration
         config.setLocale(locale)
         resources.updateConfiguration(config, resources.displayMetrics)
+    }
+
+    fun showLoyaltyView(view: View) {
+
+        startActivity(Intent(this, LoyaltyViewActivity::class.java))
     }
 
 

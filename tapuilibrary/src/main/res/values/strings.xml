@@ -18,7 +18,7 @@
 
 
     <string-array name="countries_list">
-
+    <string name="label_one"> Redeem ADCB TouchPoints</string>
         <item>Kuwait    +965</item>
         <item>UAE </item>
         <item>RVs</item>

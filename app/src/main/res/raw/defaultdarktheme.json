@@ -713,5 +713,14 @@
         "topTextFont": "Roboto-Light,12",
         "bottomTextColor": "#a7a7a7",
         "bottomTextFont": "Roboto-Light,14"
+    },
+    "loyaltyView" : {
+        "cardView": {
+            "backgroundColor" : "white",
+            "radius": 8,
+            "shadowColor":"#00000027",
+            "shadowRadius":26,
+            "shadowOpacity":1
+        }
     }
 }
