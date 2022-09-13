@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.uikit.organisms
 
 import android.content.Context
 import android.graphics.Color
+import android.text.method.LinkMovementMethod
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
@@ -49,7 +50,11 @@ LinearLayout(context, attrs){
             Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")),// tint color
             Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor"))
         )
-        textViewClickable.setText("Balance: AED 520.00 (81,500 TouchPoints)  T&amp;C")
+
+    }
+
+    fun setLinkClickable(){
+        textViewClickable.movementMethod = LinkMovementMethod.getInstance()
     }
 
 

@@ -18,7 +18,7 @@ class LoyaltyViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_loyalty_view)
         loyaltyView = findViewById(R.id.loyaltyView)
         textViewClickable = loyaltyView?.findViewById(R.id.textViewClickable)!!
-        textViewClickable?.setMovementMethod(LinkMovementMethod.getInstance());
+        textViewClickable?.linksClickable
 
         loyaltyView?.setLoyaltyHeaderDataSource(LoyaltyHeaderDataSource("ADCB","https://is4-ssl.mzstatic.com/image/thumb/Purple112/v4/05/33/67/05336718-a6f6-8ca1-1ea0-0644f5071ce9/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x600wa.png"))
     }
