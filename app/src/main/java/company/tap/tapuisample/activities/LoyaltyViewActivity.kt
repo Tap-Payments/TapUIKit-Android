@@ -1,10 +1,9 @@
 package company.tap.tapuisample.activities
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.TextPaint
-import android.text.style.ClickableSpan
+import android.provider.Browser
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -46,6 +45,10 @@ class LoyaltyViewActivity : AppCompatActivity() {
 
       loyaltyView?.textViewClickable?.makeLinks(
           Pair("(T&C)", View.OnClickListener {
+              val url = "https://www.adcb.com/en/tools-resources/adcb-privacy-policy/"
+              val intent = Intent(Intent.ACTION_VIEW)
+              intent.data = Uri.parse(url)
+              startActivity(intent)
               Toast.makeText(this, "Terms of Service Clicked", Toast.LENGTH_SHORT).show()
           }))
 
