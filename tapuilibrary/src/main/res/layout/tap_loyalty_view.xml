@@ -134,6 +134,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_gravity="center"
 
+
                             />
                         <company.tap.tapuilibrary.uikit.atoms.TapTextView
                             android:id="@+id/textViewCurrency"
@@ -153,7 +154,9 @@
                             android:layout_height="wrap_content"
                             android:hint="350.00"
                            android:digits="01234567890."
-                            android:paddingLeft="45dp" />
+                            android:paddingLeft="45dp"
+                            android:backgroundTint="@color/light_gray"
+                            android:textCursorDrawable="@color/blue"/>
 
                         <company.tap.tapuilibrary.uikit.atoms.TapTextView
                             android:id="@+id/textViewTouchPoints"

@@ -13,6 +13,8 @@
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius_bottom.xml" value="0.191" />
         <entry key="tapuilibrary/src/main/res/drawable/icon_adcb.xml" value="0.2655" />
+        <entry key="tapuilibrary/src/main/res/layout/gopay_login_input.xml" value="0.17477477477477477" />
+        <entry key="tapuilibrary/src/main/res/layout/gopay_password_input.xml" value="0.17477477477477477" />
         <entry key="tapuilibrary/src/main/res/layout/main_switch_layout.xml" value="0.11283961437335671" />
         <entry key="tapuilibrary/src/main/res/layout/otp_view.xml" value="0.11283961437335671" />
         <entry key="tapuilibrary/src/main/res/layout/tap_card_switch.xml" value="0.10270270270270271" />

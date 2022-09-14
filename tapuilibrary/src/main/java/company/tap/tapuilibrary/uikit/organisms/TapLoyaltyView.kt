@@ -102,9 +102,9 @@ LinearLayout(context, attrs){
     private fun enableSwitchTheme(){
         val switchEnableTheme = SwitchTheme()
         switchEnableTheme.thumbTint =
-            Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.switchOnTintColor"))
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
         switchEnableTheme.trackTint =
-            Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+            Color.parseColor(ThemeManager.getValue("TapSwitchView.goPay.SwitchOnColor"))
         switchLoyalty.setTheme(switchEnableTheme)
     }
 
