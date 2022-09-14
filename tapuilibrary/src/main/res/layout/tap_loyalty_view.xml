@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:chainUseRtl="true"
-    tools:ignore="MissingDefaultResource">
+   >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewOut"
@@ -19,7 +19,6 @@
 
         <company.tap.tapuilibrary.uikit.atoms.TapChip
             android:id="@+id/mainChip"
-            style="@style/CustomCardViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="0dp"
