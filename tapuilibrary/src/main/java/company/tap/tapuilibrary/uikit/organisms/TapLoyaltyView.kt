@@ -77,10 +77,6 @@ LinearLayout(context, attrs){
        }else {
        disableSwitchTheme()
     }
-   /* switchLoyalty?.setOnCheckedChangeListener { buttonView, isChecked ->
-    if(isChecked){ enableSwitchTheme() }
-    else { disableSwitchTheme() }
-        }*/
 
     }
 
