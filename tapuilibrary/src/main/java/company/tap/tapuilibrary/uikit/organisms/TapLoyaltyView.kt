@@ -85,6 +85,8 @@ LinearLayout(context, attrs){
         textViewTouchPoints.textSize =ThemeManager.getFontSize("loyaltyView.amountView.pointsFont").toFloat()
 
         linearLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
+        linearLayout2.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
+        linearLayout3.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
         switchTheme()
 
     }
