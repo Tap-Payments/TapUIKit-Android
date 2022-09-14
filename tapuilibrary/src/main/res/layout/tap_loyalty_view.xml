@@ -33,6 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:layout_marginBottom="@dimen/margin_basic_15dp"
               >
 
                 <LinearLayout
@@ -91,7 +92,7 @@
                                 android:autoLink="all"
                                 android:linksClickable="true"
                                 android:singleLine="false"
-                                android:text="Balance: AED 520.00 (81,500 TouchPoints)  T&amp;C" />
+                                android:text="Balance: AED 520.00 (81,500 TouchPoints) T&amp;C" />
 
 
                         </RelativeLayout>
@@ -108,7 +109,8 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_margin="5dp"
-                    android:background="@color/light_gray"
+                    android:visibility="gone"
+
                     >
                     <company.tap.tapuilibrary.uikit.atoms.TapTextView
                         android:id="@+id/textViewSubTitle"
@@ -160,8 +162,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="2dp"
-                    android:layout_marginBottom="@dimen/margin_basic_15dp"
-                    android:background="@color/button_green"
+                    android:visibility="gone"
                     android:orientation="vertical">
 
 

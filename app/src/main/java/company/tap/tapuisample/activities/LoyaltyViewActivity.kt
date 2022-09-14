@@ -23,23 +23,22 @@ class LoyaltyViewActivity : AppCompatActivity() {
         loyaltyView = findViewById(R.id.loyaltyView)
         textViewClickable = loyaltyView?.findViewById(R.id.textViewClickable)!!
         textViewClickable?.linksClickable
+     loyaltyView?.linearLayout2?.visibility = View.GONE
+        loyaltyView?.linearLayout3?.visibility = View.GONE
+
 
         loyaltyView?.switchLoyalty?.setOnCheckedChangeListener { buttonView, isChecked ->
             loyaltyView?.switchTheme()
-            if(isChecked){
 
-              /*  loyaltyView?.editTextAmount?.visibility = View.VISIBLE
-                loyaltyView?.textViewSubTitle?.visibility = View.VISIBLE
-                loyaltyView?.textViewRemainPoints?.visibility = View.VISIBLE
-                loyaltyView?.textViewRemainAmount?.visibility = View.VISIBLE
-                loyaltyView?.textViewInner?.visibility = View.VISIBLE*/
+            if(isChecked){
+               loyaltyView?.linearLayout2?.visibility = View.VISIBLE
+               loyaltyView?.linearLayout3?.visibility = View.VISIBLE
+
             }else {
 
-             /*   loyaltyView?.editTextAmount?.visibility = View.GONE
-                loyaltyView?.textViewSubTitle?.visibility = View.GONE
-                loyaltyView?.textViewRemainPoints?.visibility = View.GONE
-                loyaltyView?.textViewRemainAmount?.visibility = View.GONE
-                loyaltyView?.textViewInner?.visibility = View.GONE*/
+                loyaltyView?.linearLayout2?.visibility = View.GONE
+                loyaltyView?.linearLayout3?.visibility = View.GONE
+
             }
         }
 
