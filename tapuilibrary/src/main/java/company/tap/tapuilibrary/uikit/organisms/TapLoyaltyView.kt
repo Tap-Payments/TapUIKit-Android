@@ -70,7 +70,7 @@ LinearLayout(context, attrs){
         textViewClickable.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.subTitleTextColor")))
         textViewClickable.textSize = ThemeManager.getFontSize("loyaltyView.headerView.subTitleFont").toFloat()
 
-        linearLayout1.setBackgroundColor( Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
+       // linearLayout1.setBackgroundColor( Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
         switchTheme()
 
     }
