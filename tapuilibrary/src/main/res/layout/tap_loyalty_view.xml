@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:visibility="visible">
+              >
 
                 <LinearLayout
                     android:id="@+id/linearLayout1"
@@ -67,22 +67,20 @@
                                 android:id="@+id/textViewTitle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_alignParentStart="true"
                                 android:layout_alignParentTop="true"
-                              android:layout_alignParentStart="true"
-                                android:text="Redeem ADCB TouchPoints"
-                                />
+                                android:text="Redeem ADCB TouchPoints" />
 
 
-
-                            <androidx.appcompat.widget.SwitchCompat
+                            <company.tap.tapuilibrary.uikit.atoms.TapSwitch
                                 android:id="@+id/switchLoyalty"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_alignParentEnd="true"
                                 android:layout_alignParentStart="true"
                                 android:layout_alignParentLeft="true"
-                                android:layout_marginRight="28dp" />
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="30dp" />
 
                             <company.tap.tapuilibrary.uikit.atoms.TapTextView
                                 android:id="@+id/textViewClickable"
@@ -110,19 +108,22 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layout_margin="5dp"
+                    android:background="@color/light_gray"
                     >
                     <company.tap.tapuilibrary.uikit.atoms.TapTextView
                         android:id="@+id/textViewSubTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="2dp"
-                        android:text="Amount to redeem" />
+                        android:text="Amount to redeem"
+                       />
 
                     <RelativeLayout
 
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                      >
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/textInputLine"
@@ -133,7 +134,7 @@
 
                             />
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <company.tap.tapuilibrary.uikit.atoms.TextInputEditText
                             android:id="@+id/editTextAmount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -158,8 +159,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginBottom="@dimen/margin_basic_15dp"
+                    android:background="@color/button_green"
                     android:orientation="vertical">
 
 
@@ -168,14 +170,16 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="Remaining TouchPoints: 19,000"
-                        android:text="Remaining TouchPoints: 19,000" />
+                        android:text="Remaining TouchPoints: 19,000"
+                       />
 
                     <company.tap.tapuilibrary.uikit.atoms.TapTextView
                         android:id="@+id/textViewRemainAmount"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         tools:text="Remaining amount to pay: AED 0.00"
-                        android:text="Remaining amount to pay: AED 0.00" />
+                        android:text="Remaining amount to pay: AED 0.00"
+                       />
                 </LinearLayout>
 
             </LinearLayout>
