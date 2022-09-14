@@ -31,7 +31,7 @@ class LoyaltyViewActivity : AppCompatActivity() {
 
             if(isChecked){
                loyaltyView?.linearLayout2?.visibility = View.VISIBLE
-               loyaltyView?.linearLayout3?.visibility = View.VISIBLE
+             //  loyaltyView?.linearLayout3?.visibility = View.VISIBLE
 
             }else {
 

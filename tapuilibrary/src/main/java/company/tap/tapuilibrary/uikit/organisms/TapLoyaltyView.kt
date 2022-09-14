@@ -39,7 +39,8 @@ LinearLayout(context, attrs){
     val switchLoyalty by lazy { findViewById<TapSwitch>(R.id.switchLoyalty) }
     val textViewSubTitle by lazy { findViewById<TapTextView>(R.id.textViewSubTitle) }
     val editTextAmount by lazy { findViewById<TextInputEditText>(R.id.editTextAmount) }
-    val textViewInner by lazy { findViewById<TapTextView>(R.id.textViewInner) }
+    val textViewTouchPoints by lazy { findViewById<TapTextView>(R.id.textViewTouchPoints) }
+    val textViewCurrency by lazy { findViewById<TapTextView>(R.id.textViewCurrency) }
     val textViewRemainPoints by lazy { findViewById<TapTextView>(R.id.textViewRemainPoints) }
     val textViewRemainAmount by lazy { findViewById<TapTextView>(R.id.textViewRemainAmount) }
 
@@ -71,7 +72,19 @@ LinearLayout(context, attrs){
         textViewClickable.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.subTitleTextColor")))
         textViewClickable.textSize = ThemeManager.getFontSize("loyaltyView.headerView.subTitleFont").toFloat()
 
-        linearLayout1.setBackgroundColor( Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
+        editTextAmount.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.amountView.amountTextColor")))
+        textViewCurrency.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.amountView.amountTextColor")))
+        editTextAmount.textSize= ThemeManager.getFontSize("loyaltyView.amountView.amountFont").toFloat()
+        textViewSubTitle.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.amountView.titleTextColor")))
+        textViewSubTitle.textSize =ThemeManager.getFontSize("loyaltyView.amountView.titleFont").toFloat()
+
+        textViewCurrency.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.amountView.currencyTextColor")))
+        textViewCurrency.textSize =ThemeManager.getFontSize("loyaltyView.amountView.currencyFont").toFloat()
+
+        textViewTouchPoints.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.amountView.pointsTextColor")))
+        textViewTouchPoints.textSize =ThemeManager.getFontSize("loyaltyView.amountView.pointsFont").toFloat()
+
+        linearLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
         switchTheme()
 
     }
