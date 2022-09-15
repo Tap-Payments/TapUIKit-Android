@@ -71,13 +71,17 @@ LinearLayout(context, attrs){
 
        textViewsThemeing()
 
+        layoutThemes()
+        switchTheme()
+
+    }
+
+    private fun layoutThemes() {
         linearLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
 
         linearLayout2.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
 
         linearLayout3.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
-        switchTheme()
-
     }
 
     private fun textViewsThemeing() {
