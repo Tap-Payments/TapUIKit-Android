@@ -22,6 +22,7 @@ import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.datasource.LoyaltyHeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.makeLinks
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
+import company.tap.tapuilibrary.uikit.views.TapAlertView
 import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TextDrawable
 
@@ -41,6 +42,7 @@ LinearLayout(context, attrs){
     val editTextAmount by lazy { findViewById<TextInputEditText>(R.id.editTextAmount) }
     val textViewTouchPoints by lazy { findViewById<TapTextView>(R.id.textViewTouchPoints) }
     val textViewCurrency by lazy { findViewById<TapTextView>(R.id.textViewCurrency) }
+    val loyaltyAlertView by lazy { findViewById<TapAlertView>(R.id.loyalty_alertView) }
     val textViewRemainPoints by lazy { findViewById<TapTextView>(R.id.textViewRemainPoints) }
     val textViewRemainAmount by lazy { findViewById<TapTextView>(R.id.textViewRemainAmount) }
 

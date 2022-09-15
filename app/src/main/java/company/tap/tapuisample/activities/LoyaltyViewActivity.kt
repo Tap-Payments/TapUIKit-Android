@@ -7,6 +7,7 @@ import android.provider.Browser
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.LoyaltyHeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.makeLinks
@@ -52,8 +53,19 @@ class LoyaltyViewActivity : AppCompatActivity() {
               Toast.makeText(this, "Terms of Service Clicked", Toast.LENGTH_SHORT).show()
           }))
 
+        loyaltyView?.editTextAmount?.doOnTextChanged { text, start, count, after ->
+            // action which will be invoked when the text is changing
+            if(text.toString()=="340"){
+                loyaltyView?.loyaltyAlertView?.alertMessage?.text = "Minimum redemption is AED 20.00 "
+                loyaltyView?.loyaltyAlertView?.visibility =View.VISIBLE
+            }else{
+                loyaltyView?.loyaltyAlertView?.visibility =View.GONE
+            }
+        }
 
     }
+
+
 
 
 }
