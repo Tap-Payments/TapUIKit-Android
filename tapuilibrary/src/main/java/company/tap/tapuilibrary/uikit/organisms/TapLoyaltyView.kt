@@ -56,6 +56,7 @@ LinearLayout(context, attrs){
     }
     private fun applyTheme() {
         cardViewOut.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")))
+        mainChip.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")))
         constraintLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")))
         cardViewOut.radius = ThemeManager.getValue("loyaltyView.cardView.radius")
        // mainChip.outlineSpotShadowColor = (Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.shadowColor")))
@@ -68,6 +69,18 @@ LinearLayout(context, attrs){
             Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor"))//shadow color
         )
 
+       textViewsThemeing()
+
+        linearLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
+
+        linearLayout2.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
+
+        linearLayout3.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
+        switchTheme()
+
+    }
+
+    private fun textViewsThemeing() {
         textViewTitle.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.titleTextColor")))
         textViewTitle.textSize = ThemeManager.getFontSize("loyaltyView.headerView.titleFont").toFloat()
 
@@ -91,15 +104,9 @@ LinearLayout(context, attrs){
 
         textViewRemainAmount.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.footerView.amountTextColor")))
         textViewRemainAmount.textSize =ThemeManager.getFontSize("loyaltyView.footerView.amountFont").toFloat()
-
-        linearLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
-        linearLayout2.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
-        linearLayout3.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
-        switchTheme()
-
     }
 
-     fun switchTheme() {
+    fun switchTheme() {
        if (switchLoyalty?.isChecked == true) {
          enableSwitchTheme()
 
