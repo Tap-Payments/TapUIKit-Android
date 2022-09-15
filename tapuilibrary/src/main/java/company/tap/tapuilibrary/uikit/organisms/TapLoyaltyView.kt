@@ -60,6 +60,17 @@ LinearLayout(context, attrs){
         constraintLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")))
         cardViewOut.radius = ThemeManager.getValue("loyaltyView.cardView.radius")
        // mainChip.outlineSpotShadowColor = (Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.shadowColor")))
+       setBorderTheme()
+
+       textViewsThemeing()
+
+        layoutThemes()
+        switchTheme()
+
+
+    }
+
+    private fun setBorderTheme() {
         setBorderedView(
             mainChip,
             23f,// corner raduis
@@ -68,12 +79,6 @@ LinearLayout(context, attrs){
             Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")),// tint color
             Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor"))//shadow color
         )
-
-       textViewsThemeing()
-
-        layoutThemes()
-        switchTheme()
-
     }
 
     private fun layoutThemes() {
