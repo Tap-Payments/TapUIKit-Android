@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardViewOut"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:chainUseRtl="true"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     android:layoutDirection="locale"
-    android:textDirection="locale"
    >
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardViewOut"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layoutDirection="locale"
-       >
+
 
         <company.tap.tapuilibrary.uikit.atoms.TapChip
             android:id="@+id/mainChip"
@@ -237,4 +231,3 @@
         </company.tap.tapuilibrary.uikit.atoms.TapChip>
     </androidx.cardview.widget.CardView>
 
-</LinearLayout>
