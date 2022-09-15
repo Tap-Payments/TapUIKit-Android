@@ -29,7 +29,7 @@ import kotlinx.android.synthetic.main.tap_main_amount.view.*
 
 class TapLoyaltyView (context: Context?, attrs: AttributeSet?) :
 LinearLayout(context, attrs){
-    val taplinearlayout by lazy { findViewById<LinearLayout>(R.id.taplinearlayout) }
+
     val constraintLayout by lazy { findViewById<LinearLayout>(R.id.constraintLayout) }
     val linearLayout1 by lazy { findViewById<LinearLayout>(R.id.linearLayout1) }
     val linearLayout2 by lazy { findViewById<LinearLayout>(R.id.linearLayout2) }
@@ -92,7 +92,6 @@ LinearLayout(context, attrs){
         linearLayout2.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
         linearLayout3.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
 
-        taplinearlayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
         switchTheme()
 
     }
