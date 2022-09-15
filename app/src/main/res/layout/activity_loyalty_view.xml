@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.LoyaltyViewActivity"
-    android:background="@color/colorPrimaryDark">
+    android:id="@+id/constraintt"
+    android:background="@color/header_gray">
 
     <company.tap.tapuilibrary.uikit.organisms.TapLoyaltyView
         android:id="@+id/loyaltyView"

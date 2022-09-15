@@ -25,11 +25,9 @@ import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.views.TapAlertView
 import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TextDrawable
-import kotlinx.android.synthetic.main.tap_main_amount.view.*
 
 class TapLoyaltyView (context: Context?, attrs: AttributeSet?) :
 LinearLayout(context, attrs){
-
     val constraintLayout by lazy { findViewById<LinearLayout>(R.id.constraintLayout) }
     val linearLayout1 by lazy { findViewById<LinearLayout>(R.id.linearLayout1) }
     val linearLayout2 by lazy { findViewById<LinearLayout>(R.id.linearLayout2) }
@@ -57,8 +55,8 @@ LinearLayout(context, attrs){
 
     }
     private fun applyTheme() {
-      //  cardViewOut.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")))
-       // constraintLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")))
+        cardViewOut.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")))
+        constraintLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")))
         cardViewOut.radius = ThemeManager.getValue("loyaltyView.cardView.radius")
        // mainChip.outlineSpotShadowColor = (Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.shadowColor")))
         setBorderedView(
@@ -91,7 +89,6 @@ LinearLayout(context, attrs){
         linearLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
         linearLayout2.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
         linearLayout3.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
-        cardViewOut.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         switchTheme()
 
     }

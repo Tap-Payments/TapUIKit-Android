@@ -1,13 +1,16 @@
 package company.tap.tapuisample.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Browser
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doOnTextChanged
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.LoyaltyHeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.makeLinks
@@ -16,6 +19,7 @@ import company.tap.tapuisample.R
 
 class LoyaltyViewActivity : AppCompatActivity() {
     var loyaltyView: TapLoyaltyView?=null
+    var constraintt: ConstraintLayout?=null
     var textViewClickable: TapTextView ?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +30,7 @@ class LoyaltyViewActivity : AppCompatActivity() {
         loyaltyView?.linearLayout2?.visibility = View.GONE
         loyaltyView?.linearLayout3?.visibility = View.GONE
 
-
+        constraintt = findViewById(R.id.constraintt)
         loyaltyView?.switchLoyalty?.setOnCheckedChangeListener { buttonView, isChecked ->
             loyaltyView?.switchTheme()
 
@@ -41,7 +45,7 @@ class LoyaltyViewActivity : AppCompatActivity() {
 
             }
         }
-
+        constraintt?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
         loyaltyView?.setLoyaltyHeaderDataSource(LoyaltyHeaderDataSource("ADCB","https://is4-ssl.mzstatic.com/image/thumb/Purple112/v4/05/33/67/05336718-a6f6-8ca1-1ea0-0644f5071ce9/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x600wa.png"))
 
       loyaltyView?.textViewClickable?.makeLinks(
