@@ -62,7 +62,7 @@ LinearLayout(context, attrs){
        // mainChip.outlineSpotShadowColor = (Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.shadowColor")))
         setBorderedView(
             mainChip,
-            20f,// corner raduis
+            23f,// corner raduis
             0.0f,
             Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.shadowColor")),// stroke color
             Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")),// tint color
