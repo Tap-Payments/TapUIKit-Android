@@ -25,6 +25,7 @@ import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.views.TapAlertView
 import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TextDrawable
+import kotlinx.android.synthetic.main.tap_main_amount.view.*
 
 class TapLoyaltyView (context: Context?, attrs: AttributeSet?) :
 LinearLayout(context, attrs){
@@ -91,11 +92,7 @@ LinearLayout(context, attrs){
         linearLayout2.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
         linearLayout3.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
 
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            taplinearlayout.setBackgroundResource(R.drawable.blur_background_dark)
-        } else {
-            taplinearlayout.setBackgroundResource(R.drawable.blurbackground)
-        }
+        taplinearlayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
         switchTheme()
 
     }

@@ -8,6 +8,7 @@
     android:id="@+id/taplinearlayout"
     android:layoutDirection="locale"
     android:textDirection="locale"
+
    >
 
     <androidx.cardview.widget.CardView
