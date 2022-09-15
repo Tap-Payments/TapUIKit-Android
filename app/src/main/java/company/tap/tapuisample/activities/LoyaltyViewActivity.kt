@@ -67,6 +67,9 @@ class LoyaltyViewActivity : AppCompatActivity() {
             }
         }
 
+        loyaltyView?.textViewRemainAmount?.text = "Remain amount "
+        loyaltyView?.textViewRemainPoints?.text = "Remain points "
+
     }
 
 
