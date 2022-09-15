@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:chainUseRtl="true"
+    android:id="@+id/taplinearlayout"
     android:layoutDirection="locale"
     android:textDirection="locale"
    >
