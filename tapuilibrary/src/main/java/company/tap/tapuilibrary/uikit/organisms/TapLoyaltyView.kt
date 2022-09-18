@@ -60,34 +60,36 @@ LinearLayout(context, attrs){
         constraintLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")))
         cardViewOut.radius = ThemeManager.getValue("loyaltyView.cardView.radius")
        // mainChip.outlineSpotShadowColor = (Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.shadowColor")))
-       setBorderTheme()
+        setBorderedView(
+            mainChip,
+            25f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.shadowColor")),// stroke color
+            Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor"))//shadow color
+        )
+        setLayoutTheme()
 
-       textViewsThemeing()
+        textViewsThemeIng()
+
+        switchTheme()
+
+
+    }
+
+    fun setLayoutTheme(){
 
         linearLayout1.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
 
         linearLayout2.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
 
         linearLayout3.setBackgroundColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.backgroundColor")))
-        switchTheme()
-
-
-    }
-
-    private fun setBorderTheme() {
-        setBorderedView(
-            mainChip,
-            23f,// corner raduis
-            0.0f,
-            Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.shadowColor")),// stroke color
-            Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor")),// tint color
-            Color.parseColor(ThemeManager.getValue("loyaltyView.cardView.backgroundColor"))//shadow color
-        )
     }
 
 
 
-    private fun textViewsThemeing() {
+
+    private fun textViewsThemeIng() {
         textViewTitle.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.titleTextColor")))
         textViewTitle.textSize = ThemeManager.getFontSize("loyaltyView.headerView.titleFont").toFloat()
 
