@@ -30,7 +30,7 @@
         <LinearLayout
             android:id="@+id/payment_input_layout"
             android:layout_width="0dp"
-            android:layout_height="44dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_weight="4.7"
             android:orientation="horizontal"
@@ -63,7 +63,7 @@
                 android:padding="10dp"
                 android:visibility="visible"
 
-                android:src="@drawable/cardscan_button_select" />
+                android:src="@drawable/scan_light" />
 
             <ImageView
                 android:id="@+id/nfc_button"
