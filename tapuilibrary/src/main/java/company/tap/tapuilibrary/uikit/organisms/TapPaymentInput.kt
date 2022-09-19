@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.annotation.RequiresApi
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -32,7 +33,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
     val paymentInputContainer by lazy { findViewById<LinearLayout>(R.id.payment_input_layout) }
-    val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
+    val tabLinear by lazy { findViewById<RelativeLayout>(R.id.tabLinear) }
     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
     private  var tapMobileInputView: TapMobilePaymentView
