@@ -30,7 +30,7 @@
         <LinearLayout
             android:id="@+id/payment_input_layout"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
             android:layout_gravity="start"
             android:layout_weight="4.7"
             android:orientation="horizontal"
