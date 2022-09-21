@@ -113,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layoutDirection="locale"
-                    android:visibility="gone"
+                    android:visibility="visible"
 
                     >
                     <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -132,6 +132,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:layout_marginTop="-5dp"
                       >
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -162,14 +163,14 @@
                             android:id="@+id/editTextAmount"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:backgroundTint="@color/light_gray"
+                            android:digits="01234567890."
                             android:hint="350.00"
-                           android:digits="01234567890."
+                            android:layoutDirection="locale"
                             android:paddingLeft="45dp"
                             android:paddingRight="45dp"
-                            android:layoutDirection="locale"
-                            android:backgroundTint="@color/light_gray"
-                            android:textDirection="locale"
-                            android:textCursorDrawable="@color/blue"/>
+                            android:textCursorDrawable="@color/blue"
+                            android:textDirection="locale" />
 
                         <company.tap.tapuilibrary.uikit.atoms.TapTextView
                             android:id="@+id/textViewTouchPoints"
@@ -181,7 +182,6 @@
                             android:textSize="18sp"
                             android:textDirection="locale"
                             android:layout_marginRight="10dp"
-                            android:textColor="#808080"
                             android:layoutDirection="locale"
                             />
 
