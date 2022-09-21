@@ -182,6 +182,7 @@
                             android:textSize="18sp"
                             android:textDirection="locale"
                             android:layout_marginRight="10dp"
+                          
                             android:layoutDirection="locale"
                             />
 

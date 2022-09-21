@@ -29,6 +29,8 @@ class LoyaltyViewActivity : AppCompatActivity() {
         textViewClickable?.linksClickable
         loyaltyView?.linearLayout2?.visibility = View.GONE
         loyaltyView?.linearLayout3?.visibility = View.GONE
+        loyaltyView?.textViewSubTitle?.text = "Amount to Redeem "
+        loyaltyView?.textViewTouchPoints?.text = "= TouchPoints "
 
         constraintt = findViewById(R.id.constraintt)
         loyaltyView?.switchLoyalty?.setOnCheckedChangeListener { buttonView, isChecked ->
