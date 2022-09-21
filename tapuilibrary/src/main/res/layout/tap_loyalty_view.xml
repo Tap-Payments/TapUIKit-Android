@@ -152,10 +152,9 @@
                             android:layout_alignParentLeft="true"
                             android:layout_centerVertical="true"
                             android:text="AED"
-                            android:textSize="18sp"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:textColor="#808080"
+
                             android:textDirection="locale"
                             />
 
@@ -178,13 +177,11 @@
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
-                            tools:text="= Touch Points"
-                            android:textSize="18sp"
-                            android:textDirection="locale"
                             android:layout_marginRight="10dp"
-                          
                             android:layoutDirection="locale"
-                            />
+                            android:textDirection="locale"
+
+                            tools:text="= Touch Points" />
 
                     </RelativeLayout>
                     <company.tap.tapuilibrary.uikit.views.TapAlertView

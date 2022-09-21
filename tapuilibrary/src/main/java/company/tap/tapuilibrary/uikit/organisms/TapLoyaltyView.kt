@@ -99,6 +99,7 @@ LinearLayout(context, attrs){
         editTextAmount.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.amountView.amountTextColor")))
         textViewCurrency.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.amountView.amountTextColor")))
         editTextAmount.textSize= ThemeManager.getFontSize("loyaltyView.amountView.amountFont").toFloat()
+
         textViewSubTitle.setTextColor(Color.parseColor(ThemeManager.getValue("loyaltyView.amountView.titleTextColor")))
         textViewSubTitle.textSize =ThemeManager.getFontSize("loyaltyView.amountView.titleFont").toFloat()
 
