@@ -391,9 +391,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                             .load(it.unSelectedImage)
                             .into(it1)
                         val paint = Paint()
-                        val colorFilter = PorterDuffColorFilter(Color.DKGRAY, PorterDuff.Mode.DARKEN)
+                        val colorFilter = PorterDuffColorFilter(Color.DKGRAY, PorterDuff.Mode.SRC_ATOP)
                         paint.colorFilter = colorFilter
-                      //   it1.setLayerPaint(paint)
+                      //  it1.setLayerPaint(paint)
                         it1.setColorFilter(colorFilter)
                     }else if(it.unSelectedImage.contains(".svg")){
                        // GlideToVectorYou.justLoadImage(context as Activity, it.unSelectedImage.toUri(), it1)
@@ -402,9 +402,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                             .with(context)
                             .load(it.unSelectedImage.toUri(), it1)
                         val paint = Paint()
-                        val colorFilter = PorterDuffColorFilter(Color.parseColor("#d3d3d3"), PorterDuff.Mode.DARKEN)
+                        val colorFilter = PorterDuffColorFilter(Color.parseColor("#d3d3d3"), PorterDuff.Mode.SRC_ATOP)
                         paint.colorFilter = colorFilter
-                         it1.setLayerPaint(paint)
+                        it1.setLayerPaint(paint)
                     }
 
                    /* GlideToVectorYou
