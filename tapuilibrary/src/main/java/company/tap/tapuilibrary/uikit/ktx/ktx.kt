@@ -3,6 +3,7 @@ package company.tap.tapuilibrary.uikit.ktx
 import android.R.attr.radius
 import android.app.Activity
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.text.*
 import android.text.method.LinkMovementMethod
@@ -20,6 +21,7 @@ import com.bumptech.glide.request.RequestListener
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
+import company.tap.tapuilibrary.themekit.ThemeManager
 
 
 /**
@@ -112,7 +114,7 @@ fun TextView.makeLinks(vararg links: Pair<String, View.OnClickListener>) {
         val clickableSpan = object : ClickableSpan() {
             override fun updateDrawState(textPaint: TextPaint) {
                 // use this to change the link color
-                textPaint.color = textPaint.linkColor
+                textPaint.color = Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.subTitleTextColor"))
                 // toggle below value to enable/disable
                 // the underline shown below the clickable text
                 textPaint.isUnderlineText = true
