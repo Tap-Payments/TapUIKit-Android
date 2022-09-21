@@ -728,7 +728,7 @@
             "titleTextColor" : "greyishBrown",
             "subTitleTextColor" : "brownGreySeven",
             "titleFont" : "Roboto-Regular,12",
-            "subTitleFont" : "Roboto-Regular,10"
+            "subTitleFont" : "Roboto-Regular,11"
         },
         "amountView": {
             "titleTextColor" : "#9F9F9F",

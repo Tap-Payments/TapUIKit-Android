@@ -120,8 +120,8 @@
                         android:id="@+id/textViewSubTitle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
                         tools:text="Amount to redeem"
                         android:textDirection="locale"
                         android:layoutDirection="locale"
@@ -132,7 +132,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginTop="-5dp"
+                        android:layout_marginTop="-10dp"
                       >
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -197,7 +197,8 @@
                     android:id="@+id/linearLayout3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="2dp"
                     android:visibility="gone"
                     android:layoutDirection="locale"
