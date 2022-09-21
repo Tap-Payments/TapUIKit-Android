@@ -23,7 +23,7 @@
         <entry key="tapuilibrary/src/main/res/layout/tap_loyalty_view.xml" value="0.375" />
         <entry key="tapuilibrary/src/main/res/layout/tap_main_amount.xml" value="0.165" />
         <entry key="tapuilibrary/src/main/res/layout/tap_main_header.xml" value="0.25" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.12522522522522522" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.25" />
       </map>
     </option>
   </component>
