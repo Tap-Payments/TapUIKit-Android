@@ -82,7 +82,7 @@
                                 android:layout_alignParentLeft="true"
                                 android:layout_alignParentEnd="true"
                                 android:layout_alignParentRight="true"
-                                android:layout_marginRight="30dp" />
+                                android:layout_marginRight="32dp" />
 
                             <company.tap.tapuilibrary.uikit.atoms.TapTextView
                                 android:id="@+id/textViewClickable"
