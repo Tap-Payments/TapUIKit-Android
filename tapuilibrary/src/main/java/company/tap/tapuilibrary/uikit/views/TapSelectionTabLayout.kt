@@ -402,7 +402,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                             .with(context)
                             .load(it.unSelectedImage.toUri(), it1)
                         val paint = Paint()
-                        val colorFilter = PorterDuffColorFilter(Color.parseColor("#e0e0e0"), PorterDuff.Mode.SRC_ATOP)
+                        val colorFilter = PorterDuffColorFilter(Color.DKGRAY, PorterDuff.Mode.SRC_ATOP)
                         paint.colorFilter = colorFilter
                         it1.setLayerPaint(paint)
                     }
