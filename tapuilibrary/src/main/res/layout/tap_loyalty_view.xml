@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:layoutDirection="locale"
-                    android:visibility="visible"
+                    android:visibility="gone"
 
                     >
                     <company.tap.tapuilibrary.uikit.atoms.TapTextView
