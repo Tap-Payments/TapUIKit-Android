@@ -48,7 +48,7 @@ class LoyaltyViewActivity : AppCompatActivity() {
             }
         }
         constraintt?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
-        loyaltyView?.setLoyaltyHeaderDataSource(LoyaltyHeaderDataSource("ADCB","https://is4-ssl.mzstatic.com/image/thumb/Purple112/v4/05/33/67/05336718-a6f6-8ca1-1ea0-0644f5071ce9/AppIcon-0-0-1x_U007emarketing-0-0-0-5-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/1200x600wa.png"))
+        loyaltyView?.setLoyaltyHeaderDataSource(LoyaltyHeaderDataSource("ADCB","https://user-images.githubusercontent.com/57221514/191747750-544516b5-94d1-4b00-86d5-916f3da9f55a.png"))
 
       loyaltyView?.textViewClickable?.makeLinks(
           Pair("(T&C)", View.OnClickListener {
