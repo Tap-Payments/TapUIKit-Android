@@ -402,9 +402,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                             .with(context)
                             .load(it.unSelectedImage.toUri(), it1)
                         val paint = Paint()
-                        val colorFilter = PorterDuffColorFilter(Color.parseColor("#d3d3d3"), PorterDuff.Mode.SRC_ATOP)
-                      //  paint.colorFilter = colorFilter
-                        it1.colorFilter= colorFilter
+                        val colorFilter = PorterDuffColorFilter(Color.parseColor("#e0e0e0"), PorterDuff.Mode.SRC_ATOP)
+                        paint.colorFilter = colorFilter
+                        it1.setLayerPaint(paint)
                     }
 
                    /* GlideToVectorYou
