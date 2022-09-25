@@ -16,4 +16,10 @@
     <string name="amount_kd"> 1000,000.000د.ك </string>
     <string name="pay">دفع</string>
     <string name="nfc_text">للدفع بشكل أسرع وأسهل ، \ n استخدم الماسح الضوئي للبطاقة أو NFC.</string>
+    <string name="savecard_text">لإجراء عملية دفع أسرع وأسهل ، \ n
+احفظ البطاقة في وقت لاحق.</string>
+    <string name="mobile_text">لإجراء عملية دفع أسرع وأسهل ، \ n
+استخدم رقم هاتفك المحمول.</string>
+    <string name="mobile_save_text">لسداد الرسوم بشكل أسرع وأسهل ، \ n
+حفظ رقم هاتفك المحمول.</string>
 </resources>

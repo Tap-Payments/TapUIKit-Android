@@ -9,4 +9,5 @@ All rights reserved.
 
 interface OnCardSelectedActionListener {
     fun onCardSelectedAction(isSelected:Boolean)
+    fun onDeleteIconClicked(stopAnimation:Boolean, itemId : Int)
 }

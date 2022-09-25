@@ -4,33 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".activities.AmountItemActivity"
-    android:orientation="vertical">
-    <company.tap.tapuilibrary.views.TapListItemView
+    android:orientation="vertical"
+    tools:context=".activities.AmountItemActivity">
+
+    <company.tap.tapuilibrary.uikit.views.TapListItemView
         android:id="@+id/amount_items"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-    <company.tap.tapuilibrary.atoms.TapSwitch
+        android:layout_height="wrap_content" />
+
+    <company.tap.tapuilibrary.uikit.atoms.TapSwitch
         android:id="@+id/switch_discount"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Apply Discount"
-        android:layout_marginEnd="7dp"
         android:layout_marginStart="7dp"
-       />
-    <company.tap.tapuilibrary.views.TapCardSwitch
+        android:layout_marginEnd="7dp"
+        android:layout_weight="1"
+        android:text="Apply Discount" />
+
+    <company.tap.tapuilibrary.uikit.views.TapCardSwitch
         android:id="@+id/pay_card_switch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="2dp"/>
-    <company.tap.tapuilibrary.views.TapOTPView
+        android:layout_margin="2dp" />
+
+    <company.tap.tapuilibrary.uikit.views.TapOTPView
         android:id="@+id/otp_view_demo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        android:layout_marginEnd="19dp"
         android:layout_marginStart="19dp"
+        android:layout_marginEnd="19dp"
         android:cursorVisible="true"
         android:inputType="number"
         android:textColor="#4b4847"
@@ -40,6 +43,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:lineColor="@color/colorAccent"
         app:viewType="line"
-        tools:layout_editor_absoluteY="308dp"/>
+        tools:layout_editor_absoluteY="308dp" />
 
 </LinearLayout>

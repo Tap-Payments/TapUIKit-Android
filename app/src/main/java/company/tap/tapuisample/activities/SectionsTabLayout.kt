@@ -4,20 +4,22 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
 import company.tap.tapcardvalidator_android.CardValidator
-import company.tap.tapuilibrary.animation.AnimationEngine
-import company.tap.tapuilibrary.enums.TabSectionType
-import company.tap.tapuilibrary.models.SectionTabItem
-import company.tap.tapuilibrary.interfaces.TapSelectionTabLayoutInterface
-import company.tap.tapuilibrary.models.TabSection
-import company.tap.tapuilibrary.organisms.TapPaymentInput
-import company.tap.tapuilibrary.views.TapMobilePaymentView
-import company.tap.tapuilibrary.views.TapSelectionTabLayout
+import company.tap.tapuilibrary.uikit.animation.AnimationEngine
+import company.tap.tapuilibrary.uikit.enums.TabSectionType
+import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
+import company.tap.tapuilibrary.uikit.models.SectionTabItem
+import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
+import company.tap.tapuilibrary.uikit.models.TabSection
+import company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
+import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
+import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
 
@@ -25,10 +27,13 @@ import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
  * Sample Activity to show how TableLayout functions .
  *
  * **/
-class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
+class SectionsTabLayout : AppCompatActivity(),
+    TapSelectionTabLayoutInterface , TapPaymentShowHideClearImage {
 
     lateinit var tabLayout: TapSelectionTabLayout
     lateinit var paymentInput: TapPaymentInput
+
+    private var mobileNumberEditText: EditText? = null
 
     private var selectedTab = 0
     private lateinit var tapCardInputView: InlineCardInput
@@ -43,13 +48,24 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         tabLayout = findViewById(R.id.sections_tablayout)
         tabLayout.setTabLayoutInterface(this)
         tapMobileInputView = TapMobilePaymentView(this, null)
+        tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tapCardInputView = InlineCardInput(this)
         tapCardInputView.holderNameEnabled = false
         tabLayout.addSection(getCardList())
         tabLayout.addSection(getMobileList())
         setupBrandDetection()
 
-        paymentInput.addTabLayoutSection(TabSection(TabSectionType.CARD, getCardList()), TabSection(TabSectionType.MOBILE, getMobileList()))
+
+        paymentInput.addTabLayoutSection(
+            TabSection(
+                TabSectionType.CARD,
+                getCardList()
+            ),
+            TabSection(
+                TabSectionType.MOBILE,
+                getMobileList()
+            )
+        )
     }
 
     private fun setupBrandDetection() {
@@ -69,46 +85,46 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
 
     private fun getCardList(): ArrayList<SectionTabItem>{
         val items = ArrayList<SectionTabItem>()
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.ic_visa
-                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.mastercard
-                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.amex
-                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
-            )
-        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.ic_visa
+//                ), resources.getDrawable(R.drawable.ic_visa_black), CardBrand.visa
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.mastercard
+//                ), resources.getDrawable(R.drawable.mastercard_gray), CardBrand.masterCard
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.amex
+//                ), resources.getDrawable(R.drawable.amex_gray), CardBrand.americanExpress
+//            )
+//        )
         return items
     }
 
     private fun getMobileList(): ArrayList<SectionTabItem>{
         val items = ArrayList<SectionTabItem>()
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.zain_gray
-                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
-            )
-        )
-        items.add(
-            SectionTabItem(
-                resources.getDrawable(
-                    R.drawable.ooredoo
-                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
-            )
-        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.zain_gray
+//                ), resources.getDrawable(R.drawable.zain_dark), CardBrand.zain
+//            )
+//        )
+//        items.add(
+//            SectionTabItem(
+//                resources.getDrawable(
+//                    R.drawable.ooredoo
+//                ), resources.getDrawable(R.drawable.ooredoo_gray), CardBrand.ooredoo
+//            )
+//        )
         return items
     }
 
@@ -120,26 +136,26 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(true)
         builder.setTitle("Select Item")
-        builder.setItems(items) { _, position ->
-            tabLayout.selectTab(CardBrand.fromString(items[position]), true)
-            alert?.hide()
-        }
+//        builder.setItems(items) { _, position ->
+//            tabLayout.selectTab(CardBrand.fromString(items[position]), true)
+//            alert?.hide()
+//        }
         alert = builder.create()
         alert.show()
     }
 
     fun resetSelection(view: View) {
-        tabLayout.resetBehaviour()
+//        tabLayout.resetBehaviour()
+
     }
 
     override fun onTabSelected(position: Int?) {
         position?.let {
             selectedTab = it
-            AnimationEngine.applyTransition(payment_input_layout)
+//            AnimationEngine.applyTransition(payment_input_layout)
             payment_input_layout.removeAllViews()
             if (position == 0)
                 payment_input_layout.addView(tapCardInputView)
-
             else
                 payment_input_layout.addView(tapMobileInputView)
         }
@@ -151,12 +167,22 @@ class SectionsTabLayout : AppCompatActivity(), TapSelectionTabLayoutInterface {
         val builder = AlertDialog.Builder(this)
         builder.setCancelable(true)
         builder.setTitle("Select Section")
-        builder.setItems(items) { _, position ->
-            tabLayout.selectSection(position)
-            alert?.hide()
-        }
+//        builder.setItems(items) { _, position ->
+//            tabLayout.selectSection(position)
+//            alert?.hide()
+//        }
         alert = builder.create()
         alert.show()
+    }
+
+    override fun showHideClearImage(show: Boolean) {
+        if (show){
+            paymentInput.clearView.visibility = View.VISIBLE
+
+        }else{
+            paymentInput.clearView.visibility = View.GONE
+
+        }
     }
 
 }

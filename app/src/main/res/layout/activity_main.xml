@@ -2,16 +2,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/linearMain"
+    android:layoutDirection="locale"
     android:orientation="vertical"
+    android:background="@drawable/backgr"
     tools:context=".activities.MainActivity">
 
     <Button
-       android:onClick="openTapChip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="@dimen/margin_basic_10dp"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:layout_gravity="center_horizontal"
-       android:text="Show Tap Chips"/>
+        android:onClick="swapTheme"
+        android:text="Swap Theme" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:onClick="openTapChip"
+        android:visibility="gone"
+        android:text="Show Tap Chips" />
 
     <Button
         android:layout_width="wrap_content"
@@ -22,74 +34,91 @@
         android:text="Show Bottom Sheet Dialog" />
 
     <Button
-        android:onClick="openAmountDiscountRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:visibility="gone"
+        android:onClick="openAmountDiscountRow"
         android:text="Show Amount Discount Items" />
 
     <Button
-        android:onClick="openSectionsTabLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:visibility="gone"
+        android:onClick="openSectionsTabLayout"
         android:text="Show Sections TabLayout" />
 
     <Button
-        android:onClick="openActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:onClick="openActionButton"
+        android:visibility="gone"
         android:text="Show Animated Action Button" />
 
     <Button
-        android:onClick="openSwitchView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
-
+        android:onClick="openSwitchView"
+        android:visibility="gone"
         android:text="Show Switch view" />
 
     <Button
-        android:onClick="openNFCView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
-
+        android:onClick="openNFCView"
+        android:visibility="gone"
         android:text="Show NFC view" />
 
     <Button
-        android:onClick="openCardScannerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:visibility="gone"
+        android:onClick="openCardScannerView"
         android:text="Show Scanner view" />
 
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
         android:onClick="openFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_basic_10dp"
-        android:text="Show Fragment" />
+        android:visibility="gone"
+        android:text="Go Pay" />
+
     <Button
-        android:onClick="otpFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:onClick="otpFragment"
+        android:visibility="gone"
         android:text="OTP Fragment" />
 
     <Button
-        android:onClick="openBiometrics"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:onClick="openBiometrics"
         android:text="Biometrics" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/margin_basic_10dp"
+        android:onClick="showLoyaltyView"
+        android:text="Show Loyalty" />
 </LinearLayout>
 

@@ -17,5 +17,9 @@
     <string name="amount">" SR1000,000.000"</string>
     <string name="amount_kd">KD1000,000.000</string>
     <string name="pay">Pay</string>
-    <string name="nfc_text">For faster and easier checkout,\n use card scanner or NFC.</string>
+    <string name="nfc_text">For faster and easier checkout,\nuse card scanner or NFC.</string>
+    <string name="savecard_text">For faster and easier checkout,\nsave the card for later.</string>
+    <string name="mobile_text">For faster and easier checkout,\nuse your mobile number.</string>
+    <string name="mobile_save_text">For faster and easier checkout,\n
+save your mobile number.</string>
 </resources>

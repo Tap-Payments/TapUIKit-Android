@@ -8,6 +8,7 @@ import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
 import android.view.View
+import kotlin.math.roundToInt
 
 
 /**
@@ -16,18 +17,18 @@ import android.view.View
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-open class BlurBuilder {
-    private val BITMAP_SCALE = 0.4f
-    private val BLUR_RADIUS = 7.5f
+object  BlurBuilder {
+    private const val BITMAP_SCALE = 1.4f
+    private const val BLUR_RADIUS = 20.5f
 
     fun blur(v: View): Bitmap? {
         return getScreenshot(v)?.let { blur(v.context, it) }
     }
 
     fun blur(ctx: Context?, image: Bitmap): Bitmap? {
-        val width = Math.round(image.width * BITMAP_SCALE)
-        val height = Math.round(image.height * BITMAP_SCALE)
-        val inputBitmap = Bitmap.createScaledBitmap(image, width, height, false)
+        val width = (image.width * BITMAP_SCALE).roundToInt()
+        val height = (image.height * BITMAP_SCALE).roundToInt()
+        val inputBitmap = Bitmap.createScaledBitmap(image, width, height, true)
         val outputBitmap = Bitmap.createBitmap(inputBitmap)
         val rs = RenderScript.create(ctx)
         val theIntrinsic = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs))
@@ -40,7 +41,7 @@ open class BlurBuilder {
         return outputBitmap
     }
     private fun getScreenshot(v: View): Bitmap? {
-        val b = Bitmap.createBitmap(v.width, v.height, Bitmap.Config.ARGB_8888)
+        val b = Bitmap.createBitmap(400, 400, Bitmap.Config.ARGB_8888)
         val c = Canvas(b)
         v.draw(c)
         return b

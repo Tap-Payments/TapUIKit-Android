@@ -7,12 +7,24 @@
     android:orientation="vertical"
     tools:context=".activities.ActionButtonActivity">
 
-    <company.tap.tapuilibrary.views.TabAnimatedActionButton
+    <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
         android:id="@+id/action_button"
         android:layout_width="match_parent"
-        android:elevation="0dp"
         android:layout_height="40dp"
         android:layout_margin="20dp"
-       />
+        android:elevation="0dp" />
+<company.tap.tapuilibrary.uikit.views.TapActionButton
+    android:id="@+id/morphbutton"
+    android:layout_width="match_parent"
+    android:layout_height="40dp"/>
+
+    <company.tap.tapuilibrary.uikit.views.TapMorphingButton
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/tapMorphingButton"/>
+    <company.tap.tapuilibrary.uikit.atoms.IndeterminateProgressButton
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/tapButton"/>
 
 </LinearLayout>

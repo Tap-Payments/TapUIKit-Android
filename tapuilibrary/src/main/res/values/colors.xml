@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="header_color">#F7F7F7</color>
     <color name="error_text_light_theme">#ffeb1c26</color>
     <color name="error_text_dark_theme">#ffe85746</color>
@@ -21,9 +22,9 @@
     <color name="red_error">#e12131</color>
 
 
-        <color name="colorPrimary">#6200EE</color>
-        <color name="colorPrimaryDark">#3700B3</color>
-        <color name="colorAccent">#007aff</color>
+        <color name="colorPrimary">#a8a8a8</color>
+        <color name="colorPrimaryDark">#a8a8a8</color>
+        <color name="colorAccent">#a8a8a8</color>
         <color name="shadowcolor">#14000000</color>
         <color name="glowingShadow">#2ACE00</color>
         <color name="borderColor">#0066FF</color>
@@ -34,6 +35,8 @@
         <color name="black_color">#000000</color>
 
         <color name="text_color">#4b4847</color>
+        <color name="text_color_light">#adacac</color>
+        <color name="text_color_light_">#b1b0b0</color>
         <color name="selection_tab_color">#f4f4f4</color>
         <color name="button_gray">#cccccc</color>
 
@@ -41,9 +44,14 @@
         <color name="card_input">#ffffff</color>
         <color name="chip_back">#ccffffff</color>
         <color name="item_list">#FFFFFF</color>
+        <color name="header_gray">#FFFFFF</color>
 
         <color name="colorBackground">#FFFFFF</color>
         <color name="colorText">#000000</color>
+    <color name="warningAlertText">#ea611c</color>
+    <color name="warningBackground">#4cffbe60</color>
+    <color name="errorAlertText">#e12131</color>
+    <color name="errorBackground">#19e12131</color>
 
 
 

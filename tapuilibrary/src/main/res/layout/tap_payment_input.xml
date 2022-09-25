@@ -1,63 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <company.tap.tapuilibrary.views.TapSelectionTabLayout
+
+    <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
         android:id="@+id/sections_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout
-        android:paddingStart="30dp"
-        android:paddingEnd="15dp"
-        android:background="@color/white"
+    <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+        android:id="@+id/separator"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:orientation="horizontal" >
+        android:layout_height="0.5dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:id="@+id/tabLinear"
+        android:background="@color/header_gray"
+        android:orientation="horizontal"
+        android:weightSum="5">
 
         <LinearLayout
             android:id="@+id/payment_input_layout"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="44dp"
-            android:orientation="horizontal" />
+            android:layout_gravity="start"
+            android:layout_weight="4.7"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/margin_basic_15dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp" />
 
-        <RelativeLayout
+        <LinearLayout
+            android:id="@+id/linear_paylayout"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+
+            android:layout_marginTop="2dp"
+            android:layout_weight="0.3"
+
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/clear_text"
-                android:src="@drawable/delete_text"
                 android:layout_width="44dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_basic_16dp"
+                android:src="@drawable/ic_close"
+                android:visibility="visible" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/card_scanner_button"
+                android:layout_width="44dp"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:padding="10dp"
+                android:visibility="visible"
+                android:src="@drawable/cardscan_button_select" />
 
-                <ImageView
-                    android:id="@+id/card_scanner_button"
-                    android:padding="10dp"
-                    android:src="@drawable/scan_gray"
-                    android:layout_width="44dp"
-                    android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/nfc_button"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:layout_marginEnd="@dimen/margin_basic_16dp"
+                android:visibility="gone"
+                android:src="@drawable/nfc_button_select" />
 
-                <ImageView
-                    android:id="@+id/nfc_button"
-                    android:padding="10dp"
-                    android:src="@drawable/nfc_gray"
-                    android:layout_width="44dp"
-                    android:layout_height="match_parent"/>
+        </LinearLayout>
 
-            </LinearLayout>
-
-        </RelativeLayout>
 
     </LinearLayout>
-
 
 
 </LinearLayout>

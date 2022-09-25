@@ -3,46 +3,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:layout_marginTop="60dp"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".fragments.ExampleFragment">
 
     <LinearLayout
         android:id="@+id/buttons_layout"
-        android:gravity="center"
+        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <Button
             android:id="@+id/knet"
-            android:text="KNET"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="KNET" />
 
         <Button
             android:id="@+id/otp"
-            android:text="OTP"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="OTP" />
 
         <Button
             android:id="@+id/gopay"
-            android:text="goPay"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="goPay" />
 
     </LinearLayout>
 
-    <company.tap.tapuilibrary.views.TabAnimatedActionButton
+    <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
         android:id="@+id/action_button"
+        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_margin="20dp" />
+    <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
+        android:id="@+id/gopay_login_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
+        android:visibility="gone"
+        android:id="@+id/goPay_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <FrameLayout
         android:id="@+id/fragment_container"
-        android:visibility="gone"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </LinearLayout>

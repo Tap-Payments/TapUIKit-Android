@@ -1,55 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<company.tap.tapuilibrary.atoms.TapChip
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<company.tap.tapuilibrary.uikit.atoms.TapChip xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:id="@+id/tapCardChip1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/glowingShadow"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
-    app:cardUseCompatPadding="true"
-    app:cardPreventCornerOverlap="false"
-    app:contentPadding="5dp"
-    android:id="@+id/tapcard_Chip"
-    app:cardBackgroundColor="@color/glowingShadow">
+    android:layout_gravity="center">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:layout_height="40dp">
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical">
 
-        <company.tap.tapuilibrary.atoms.TapImageView
+        <company.tap.tapuilibrary.uikit.atoms.TapImageView
             android:id="@+id/imageView_goPay"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/goPayText"
-            android:layout_width="@dimen/margin_basic_20dp"
-            android:layout_height="@dimen/margin_basic_20dp"
-            android:layout_marginStart="@dimen/margin_basic_20dp"
-            android:layout_marginEnd="@dimen/activity_total_margin"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="@dimen/margin_basic_20dp"
             android:layout_marginTop="@dimen/margin_basic_10dp"
             android:layout_marginBottom="@dimen/margin_basic_10dp"
-            android:src="@drawable/tap" />
+            android:src="@drawable/tap"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/goPayText"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <company.tap.tapuilibrary.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            android:id="@+id/goPayText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView_goPay"
-            android:id="@+id/goPayText"
-            android:textSize="12sp"
-            android:fontFamily="sans-serif"
-            android:textStyle="normal"
-            android:textColor="#ffffff"
-            android:gravity="center_vertical"
-            tools:text="goPay"
-            android:text="goPay"
+            android:layout_marginRight="@dimen/margin_basic_20dp"
+            android:paddingLeft="8dp"
+            android:paddingBottom="2dp"
             android:layout_marginTop="@dimen/margin_basic_10dp"
             android:layout_marginBottom="@dimen/margin_basic_10dp"
-            android:layout_marginEnd="@dimen/margin_basic_20dp"
-            android:layout_marginStart="@dimen/activity_total_margin" />
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="goPay"
+            android:textColor="#ffffff"
+            android:textSize="12sp"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/imageView_goPay"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="goPay" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-</company.tap.tapuilibrary.atoms.TapChip>
+</company.tap.tapuilibrary.uikit.atoms.TapChip>

@@ -14,17 +14,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.nfcreader.open.reader.TapEmvCard
 import company.tap.nfcreader.open.reader.TapNfcCardReader
 import company.tap.nfcreader.open.utils.TapCardUtils
 import company.tap.nfcreader.open.utils.TapNfcUtils
-import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.views.TapBottomSheetDialog
-import company.tap.tapuilibrary.views.TapNFCView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
+import company.tap.tapuilibrary.uikit.views.TapNFCView
 import company.tap.tapuisample.R
-import io.alterac.blurkit.BlurLayout
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.Disposables
@@ -36,7 +36,7 @@ import io.reactivex.disposables.Disposables
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class NFCSampleFragment : TapBottomSheetDialog() {
+class NFCSampleFragment : Fragment() {
     private lateinit var customNFC: TapNFCView
     private lateinit var scanNFC: TapTextView
     private lateinit var aboutNFC: TapTextView
@@ -49,7 +49,7 @@ class NFCSampleFragment : TapBottomSheetDialog() {
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_nfc_example, container, false)
-        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+//        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
 
         initView(view)
         return view.rootView
@@ -60,7 +60,7 @@ class NFCSampleFragment : TapBottomSheetDialog() {
     private fun initView(view: View) {
         customNFC = view.findViewById(R.id.custom_nfc)
         scanNFC = customNFC.findViewById(R.id.scan_nfc)
-        aboutNFC = customNFC.findViewById(R.id.about_nfc)
+        aboutNFC = customNFC.findViewById(R.id.aboutNFC)
         scanNFC.text = "Ready to scan, add the card under the device to scan it."
         aboutNFC.text =
             "Near-field communication is a set of communication protocols for communication between two electronic devices over a distance of 4 cm or less."
@@ -85,10 +85,6 @@ class NFCSampleFragment : TapBottomSheetDialog() {
         } else {
             Toast.makeText(context, "NFC is not supported!!!", Toast.LENGTH_SHORT).show()
         }
-
-        //  or since com.google.android.material:material:1.1.0-beta01
-        /// (dialog as? BottomSheetDialog)?.behavior?.state = BottomSheetBehavior.STATE_EXPANDED
-
     }
 
     fun enableNFC() {
@@ -136,7 +132,6 @@ class NFCSampleFragment : TapBottomSheetDialog() {
 
         val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
         fragmentTransaction?.remove(this)?.commit()
-        Log.e("showCardInfo:", text)
 
 
     }

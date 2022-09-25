@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:ignore="MissingDefaultResource">
 
 
-   <company.tap.tapuilibrary.atoms.TapTextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:gravity="center_horizontal"
-       android:text="NFC DEMO"
-       />
-
-    <company.tap.tapuilibrary.views.TapNFCView
-        android:id="@+id/custom_nfc"
+    <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        />
+        android:gravity="center_horizontal"
+        android:text="NFC DEMO" />
+
+    <company.tap.tapuilibrary.uikit.views.TapNFCView
+        android:id="@+id/custom_nfc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

@@ -8,34 +8,33 @@ import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.atoms.TapTextView
-import company.tap.tapuilibrary.views.TapOTPView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
+import company.tap.tapuilibrary.uikit.views.TapOTPView
 import company.tap.tapuisample.R
-import jp.wasabeef.blurry.Blurry
-import kotlinx.android.synthetic.main.fragment_otpscreen.*
 
 
 /**
- * Created by AhlaamK on 7/12/20.
+ * Created on 7/12/20.
 
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class OTPFragment: DialogFragment() {
-    private lateinit var otpView:TapOTPView
-    private lateinit var otpSent:TapTextView
+class OTPFragment: TapBottomSheetDialog() {
+    private lateinit var otpView: TapOTPView
+    private lateinit var otpSent: TapTextView
     private lateinit var otpMobile:TapTextView
     private lateinit var timerText:TapTextView
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(
-            STYLE_NO_FRAME,
-            R.style.Theme_MaterialComponents_Light_NoActionBar_Bridge
-        )
-    }
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setStyle(
+//            STYLE_NO_FRAME,
+//            R.style.Theme_MaterialComponents_Light_NoActionBar_Bridge
+//        )
+//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,22 +42,24 @@ class OTPFragment: DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         super.onCreateView(inflater, container, savedInstanceState)
-        val view: View =
-            inflater.inflate(R.layout.fragment_otpscreen, container, true)
+        val view: View = inflater.inflate(R.layout.fragment_otpscreen, container, true)
         val insertPoint: ViewGroup = activity?.findViewById(android.R.id.content) as ViewGroup
+        bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        bottomSheetDialog.behavior.skipCollapsed = true
         prepareTextViews(view)
         startCountdown(view)
-        otpView = view.findViewById(R.id.otp_view)
+        otpView = view.findViewById(R.id.otp_view_input)
+        backgroundColor = Color.WHITE
 
         val rootView = (activity?.window?.decorView as ViewGroup?)
 
         view.post(Runnable {
 
             // Configure background
-            Blurry.with(context)
-                .radius(15)
-                .color(Color.argb(20, 255, 255, 255))
-                .onto(otp_linearlayout)
+//            Blurry.with(context)
+//                .radius(15)
+//                .color(Color.argb(20, 255, 255, 255))
+//                .onto(otp_linearlayout)
            // insertPoint.removeView(otp_linearlayout)
            /* insertPoint.addView(
                 otp_linearlayout,
@@ -82,7 +83,6 @@ class OTPFragment: DialogFragment() {
                 val minutes = millisUntilFinished / (1000 * 60) % 60
                 timerText.text=("$minutes:$second")
             }
-
             override fun onFinish() {
                 timerText.text=("00:00")
             }
@@ -96,7 +96,6 @@ class OTPFragment: DialogFragment() {
         otpMobile = view.findViewById(R.id.mobile_textview)
         otpMobile.text= "+965 6••••111"
         timerText = view.findViewById(R.id.timer_textview)
-
     }
 
 

@@ -1,74 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<company.tap.tapuilibrary.atoms.TapChip xmlns:android="http://schemas.android.com/apk/res/android"
+<company.tap.tapuilibrary.uikit.atoms.TapChip xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:id="@+id/tapcard_Chip"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_margin="3dp"
+    android:orientation="horizontal"
     app:cardCornerRadius="8dp"
     app:cardElevation="5dp"
-    app:contentPadding="3dp"
-    app:cardUseCompatPadding="true"
     app:cardPreventCornerOverlap="false"
-    android:layout_margin="3dp"
-    android:id="@+id/tapcard_Chip"
+    app:cardUseCompatPadding="true"
+    app:contentPadding="3dp">
 
-    >
-
-  <LinearLayout
-      android:layout_width="wrap_content"
-      android:layout_height="40dp"
-      android:orientation="horizontal">
-
-    <company.tap.tapuilibrary.atoms.TapImageView
-        android:id="@+id/imageView_visa"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/knet"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/margin_basic_8dp"
-        android:layout_marginEnd="@dimen/margin_basic_8dp"
-        android:scaleType="center" />
+        android:layout_height="40dp"
+        android:orientation="horizontal">
+
+        <company.tap.tapuilibrary.uikit.atoms.TapImageView
+            android:id="@+id/imageView_visa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_basic_8dp"
+            android:layout_marginEnd="@dimen/margin_basic_8dp"
+            android:background="@drawable/knet"
+            android:scaleType="center" />
 
 
-    <company.tap.tapuilibrary.atoms.TapTextView
-        android:id="@+id/textView_card"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:fontFamily="sans-serif"
-        android:textStyle="normal"
-        android:textColor="#4b4847"
-        android:gravity="end"
-        android:text="•••• XXXX"
-        android:layout_marginTop="@dimen/margin_basic_14dp"
-        android:layout_marginEnd="@dimen/margin_basic_8dp"
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            android:id="@+id/textView_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_basic_14dp"
+            android:layout_marginEnd="@dimen/margin_basic_8dp"
+            android:fontFamily="sans-serif"
+            android:gravity="end"
+            android:text="•••• XXXX"
+            android:textColor="#4b4847"
+            android:textSize="12sp"
+            android:textStyle="normal" />
 
-        />
-    <company.tap.tapuilibrary.atoms.TapImageView
-        android:id="@+id/imageView_amex"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/amex"
-        android:scaleType="centerCrop"
-        android:visibility="gone"
-        android:layout_gravity="center"
-        android:layout_marginTop="@dimen/margin_basic_14dp"
-        android:layout_marginBottom="@dimen/margin_basic_14dp"
-        android:layout_marginEnd="@dimen/margin_basic_8dp"
+        <company.tap.tapuilibrary.uikit.atoms.TapImageView
+            android:id="@+id/imageView_amex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_basic_14dp"
+            android:layout_marginEnd="@dimen/margin_basic_8dp"
+            android:layout_marginBottom="@dimen/margin_basic_14dp"
+            android:background="@drawable/amex"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
 
-       />
+        <company.tap.tapuilibrary.uikit.atoms.TapImageView
+            android:id="@+id/imageView_master"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_basic_8dp"
+            android:layout_marginEnd="@dimen/margin_basic_8dp"
+            android:background="@drawable/mastercard"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
 
-    <company.tap.tapuilibrary.atoms.TapImageView
-        android:id="@+id/imageView_master"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/mastercard"
-        android:scaleType="centerCrop"
-        android:visibility="gone"
-        android:layout_gravity="center"
-        android:layout_marginStart="@dimen/margin_basic_8dp"
-        android:layout_marginEnd="@dimen/margin_basic_8dp"/>
-
-  </LinearLayout>
-</company.tap.tapuilibrary.atoms.TapChip>
+    </LinearLayout>
+</company.tap.tapuilibrary.uikit.atoms.TapChip>
