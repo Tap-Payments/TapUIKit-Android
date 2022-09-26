@@ -61,13 +61,13 @@ import company.tap.tapuisample.MainSwitch
 import company.tap.tapuisample.TabAnimatedActionButton
 import company.tap.tapuisample.TapCardSwitch
 import company.tap.tapuisample.TapHeaderSectionView
-import company.tap.tapuisample.TapSelectionTabLayout
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener
 import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.switch_pay_demo
+import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -318,6 +318,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
         tapCardInputView.clearFocus()
+        tapCardInputView.holderNameEnabled = true
         clearView?.setOnClickListener {
             tabLayout.resetBehaviour()
             tapMobileInputView.clearNumber()
@@ -783,7 +784,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     )
                     nfcButton?.visibility = View.GONE
                     cardScannerBtn?.visibility = View.GONE
-                    tapCardInputView.holderNameEnabled = false
+                    tapCardInputView.holderNameEnabled = true
                     if (card.validationState == CardValidationState.incomplete) {
                         switchLayout?.visibility = View.GONE
                         switchMerchantCheckout?.visibility = View.GONE

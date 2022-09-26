@@ -33,14 +33,14 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
     val paymentInputContainer by lazy { findViewById<LinearLayout>(R.id.payment_input_layout) }
-    val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
+    val tabLinear by lazy { findViewById<RelativeLayout>(R.id.tabLinear) }
     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
     private  var tapMobileInputView: TapMobilePaymentView
     private var displayMetrics: Int? = null
 
     init {
-        inflate(context, R.layout.tap_payment_input, this)
+        inflate(context, R.layout.tap_payment_input2, this)
         applyTheme()
         clearView.setOnClickListener {
             rootView.invalidate()

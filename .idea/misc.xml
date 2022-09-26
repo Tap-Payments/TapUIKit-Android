@@ -7,9 +7,11 @@
         <entry key="app/src/main/res/drawable/corner_radius.xml" value="0.1715" />
         <entry key="app/src/main/res/layout/activity_loyalty_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_sections_tab_layout.xml" value="0.140990990990991" />
         <entry key="app/src/main/res/layout/custom_bottom_sheet.xml" value="0.29393115942028986" />
         <entry key="app/src/main/res/layout/main_switch_layout.xml" value="0.1436936936936937" />
         <entry key="app/src/main/res/layout/tap_card_switch.xml" value="0.1783783783783784" />
+        <entry key="app/src/main/res/layout/tap_payment_input.xml" value="0.17567567567567569" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius_bottom.xml" value="0.191" />
         <entry key="tapuilibrary/src/main/res/drawable/icon_adcb.xml" value="0.2655" />
@@ -24,6 +26,7 @@
         <entry key="tapuilibrary/src/main/res/layout/tap_main_amount.xml" value="0.165" />
         <entry key="tapuilibrary/src/main/res/layout/tap_main_header.xml" value="0.25" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.25" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.1875" />
       </map>
     </option>
   </component>
