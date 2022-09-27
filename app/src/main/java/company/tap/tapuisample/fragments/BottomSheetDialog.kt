@@ -96,7 +96,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     var fontChanger: FontChanger? = null
     private var selectedTab = 0
 
-    private lateinit var tabLayout: TapSelectionTabLayout
+    private lateinit var tabLayout: company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
     private lateinit var tapCardInputView: InlineCardInput
     private lateinit var tapMobileInputView: TapMobilePaymentView
 
@@ -421,6 +421,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private fun tabLayoutInit(view: View) {
         tabLayout = view.findViewById(R.id.sections_tablayout)
         tabLayout.setTabLayoutInterface(this)
+        tabLayout.visibility = View.VISIBLE
         tapMobileInputView = TapMobilePaymentView(context, null)
         if (context != null) {
             tapCardInputView = context?.let { InlineCardInput(it) }!!
