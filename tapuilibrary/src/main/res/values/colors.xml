@@ -53,6 +53,6 @@
     <color name="errorAlertText">#e12131</color>
     <color name="errorBackground">#19e12131</color>
 
-
+    <color name="brown_grey_background">#4B4847</color>
 
 </resources>

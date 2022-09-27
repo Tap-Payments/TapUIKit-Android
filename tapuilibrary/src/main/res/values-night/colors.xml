@@ -26,4 +26,5 @@
     <color name="button_gray">#1c1c1e</color>
     <color name="button_green">#2ace00</color>
     <color name="header_gray">#00ffffff</color>
+    <color name="brown_grey_background">#CACACB</color>
 </resources>

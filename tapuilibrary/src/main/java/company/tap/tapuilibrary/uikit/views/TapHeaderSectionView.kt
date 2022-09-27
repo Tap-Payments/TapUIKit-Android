@@ -43,6 +43,7 @@ class TapHeaderSectionView : LinearLayout {
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
     val topLinear by lazy { findViewById<LinearLayout>(R.id.topLinear) }
     val constraint by lazy { findViewById<ConstraintLayout>(R.id.constraint) }
+    val tapCloseIcon by lazy { findViewById<TapImageView>(R.id.tapCloseIcon) }
 
     val loadingLinear by lazy { findViewById<LinearLayout>(R.id.loadingLinear) }
     val loadingView by lazy { findViewById<TapLoadingView>(R.id.loadingView) }
@@ -182,6 +183,8 @@ class TapHeaderSectionView : LinearLayout {
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 //        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+
+        tapCloseIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.cancelButton.backgroundColor")))
 
         setTopBorders(
             topLinear,

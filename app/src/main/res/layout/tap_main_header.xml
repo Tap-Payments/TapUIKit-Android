@@ -65,7 +65,7 @@
         app:cardCornerRadius="100dp"
         android:innerRadius="0dp"
         android:shape="ring"
-        app:cardElevation="8dp"
+        app:cardElevation="10dp"
         android:foregroundGravity = "center"
         android:layout_centerInParent = "true"
         app:layout_constraintTop_toTopOf="parent"
@@ -124,6 +124,18 @@
         app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
         app:layout_constraintTop_toBottomOf="@+id/paymentFor"
         tools:text="Business Name" />
+        <company.tap.tapuilibrary.uikit.atoms.TapImageView
+            android:id="@+id/tapCloseIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/margin_basic_16dp"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/close_background"
+            android:src="@drawable/ic_close"
+            />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

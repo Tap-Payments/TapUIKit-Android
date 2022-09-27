@@ -15,6 +15,8 @@
         <entry key="app/src/main/res/layout/tap_payment_input.xml" value="0.17567567567567569" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius_bottom.xml" value="0.191" />
+        <entry key="tapuilibrary/src/main/res/drawable/close_background.xml" value="0.11" />
+        <entry key="tapuilibrary/src/main/res/drawable/ic_close.xml" value="0.1265" />
         <entry key="tapuilibrary/src/main/res/drawable/icon_adcb.xml" value="0.2655" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_login_input.xml" value="0.17477477477477477" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_password_input.xml" value="0.17477477477477477" />
