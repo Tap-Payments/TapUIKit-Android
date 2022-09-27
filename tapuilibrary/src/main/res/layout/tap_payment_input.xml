@@ -16,6 +16,7 @@
         android:elevation="@dimen/margin_basic_8dp"
         android:layout_gravity="center"
         android:layout_marginLeft="@dimen/margin_basic_16dp"
+        android:layout_marginTop="2dp"
         android:layout_marginRight="@dimen/margin_basic_16dp">
 
 
@@ -64,21 +65,25 @@
                 android:visibility="visible" />
 
             <ImageView
+                android:id="@+id/nfc_button"
+                android:layout_width="44dp"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:src="@drawable/icon_nfc"
+
+                android:visibility="gone"
+                />
+            <ImageView
                 android:id="@+id/card_scanner_button"
                 android:layout_width="44dp"
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:visibility="visible"
-                android:src="@drawable/cardscan_button_select" />
-
-            <ImageView
-                android:id="@+id/nfc_button"
-                android:layout_width="44dp"
-                android:layout_height="match_parent"
-                android:padding="10dp"
                 android:layout_marginEnd="@dimen/margin_basic_16dp"
-                android:visibility="gone"
-                android:src="@drawable/nfc_button_select" />
+
+                android:src="@drawable/icon_scan" />
+
+
 
         </LinearLayout>
 
@@ -89,7 +94,6 @@
         android:id="@+id/sections_tablayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_basic_16dp"
-        android:layout_marginRight="@dimen/margin_basic_16dp"/>
+      />
 
 </LinearLayout>

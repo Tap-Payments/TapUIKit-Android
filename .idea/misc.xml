@@ -16,7 +16,9 @@
         <entry key="app/src/main/res/layout/tap_selection_tablayout.xml" value="0.24682971014492755" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius_bottom.xml" value="0.191" />
+        <entry key="tapuilibrary/src/main/res/drawable/cardscan_button_select.xml" value="0.211" />
         <entry key="tapuilibrary/src/main/res/drawable/close_background.xml" value="0.11" />
+        <entry key="tapuilibrary/src/main/res/drawable/ic_cardscanner.xml" value="0.233" />
         <entry key="tapuilibrary/src/main/res/drawable/ic_close.xml" value="0.1265" />
         <entry key="tapuilibrary/src/main/res/drawable/icon_adcb.xml" value="0.2655" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_login_input.xml" value="0.17477477477477477" />
@@ -25,12 +27,14 @@
         <entry key="tapuilibrary/src/main/res/layout/otp_view.xml" value="0.11283961437335671" />
         <entry key="tapuilibrary/src/main/res/layout/tap_card_switch.xml" value="0.10270270270270271" />
         <entry key="tapuilibrary/src/main/res/layout/tap_chip_group.xml" value="0.22567567567567567" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_horizontal_list_view.xml" value="0.19774774774774775" />
         <entry key="tapuilibrary/src/main/res/layout/tap_items_view_.xml" value="0.23198198198198197" />
         <entry key="tapuilibrary/src/main/res/layout/tap_loyalty_view.xml" value="0.375" />
         <entry key="tapuilibrary/src/main/res/layout/tap_main_amount.xml" value="0.165" />
         <entry key="tapuilibrary/src/main/res/layout/tap_main_header.xml" value="0.25" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.25" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.1875" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.1875" />
       </map>
     </option>
   </component>
