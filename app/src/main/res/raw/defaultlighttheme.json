@@ -266,14 +266,17 @@
     },
     "merchantHeaderView": {
         "titleLabelFont" : "Roboto-Regular,12",
-        "titleLabelColor" : "brownGrey",
+        "titleLabelColor" : "lightPeach",
         "subTitleLabelFont" : "Roboto-Regular,16",
         "subTitleLabelColor" : "greyishBrown",
         "merchantLogoCorner" : 8,
+        "merchantLogoShadowRadius":12,
+        "merchantLogoShadowColor":"#0000004C",
         "merchantLogoPlaceHolderColor" : "black",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
         "merchantLogoPlaceHolderLabelColor" : "white",
-        "backgroundColor" : "white"
+        "backgroundColor" : "white",
+        "closeCheckoutIcon": "closeCheckoutIcon"
     },
     "amountSectionView": {
         "originalAmountLabelFont" : "Roboto-Regular,20",

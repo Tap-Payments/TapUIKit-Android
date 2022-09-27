@@ -62,8 +62,12 @@
         android:layout_marginStart="@dimen/margin_basic_16dp"
         android:layoutDirection="locale"
         android:visibility="visible"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="@dimen/margin_basic_0dp"
+        app:cardCornerRadius="100dp"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        app:cardElevation="8dp"
+        android:foregroundGravity = "center"
+        android:layout_centerInParent = "true"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/businessName"
@@ -73,7 +77,9 @@
             android:id="@+id/businessIcon"
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+
+           />
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/placeholderText"

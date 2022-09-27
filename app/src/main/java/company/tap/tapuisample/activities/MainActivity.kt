@@ -77,7 +77,7 @@ class MainActivity : BaseActivity(),
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
 //        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
 //        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))
-            ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/976650c60952b525d51b739254cd417c/raw/575a99cc7e7c78f3523a1c8e29850cd09333c198/defaultlighttheme1.json")
+            ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/976650c60952b525d51b739254cd417c/raw/64f93e6f8e5cc0d752b051677604fb21737f73a5/defaultlighttheme1.json")
          //  ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/2ca0cbeaf430c6d40baa4d0700024848/raw/246e213d715b1d28e6b7adf633df17224d108c4d/darktheme.json")
 //        else   ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/9862436dff3b3ca222243dad3705ec6a/raw/76f9bd9d4e12e7d9dccf5f4969baf09c15a1ea47/lighttheme")
 

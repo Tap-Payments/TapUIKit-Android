@@ -222,7 +222,7 @@ class TapHeaderSectionView : LinearLayout {
                 0.0f,
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
             )//
         }else{
             setBorderedView(
@@ -231,7 +231,7 @@ class TapHeaderSectionView : LinearLayout {
                 0.0f,
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
             )//
         }
     }
