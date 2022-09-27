@@ -24,6 +24,7 @@ import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
@@ -221,8 +222,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             LayoutParams.MATCH_PARENT
         )
         linearLayout.layoutParams = params
-        linearLayout.setPadding(-10,0,0,0)
-        linearLayout.setPaddingRelative(-10,0,0,0)
+        linearLayout.setPadding(-15,0,0,0)
+        linearLayout.setPaddingRelative(-15,0,0,0)
         linearLayout.orientation = HORIZONTAL
         return linearLayout
     }

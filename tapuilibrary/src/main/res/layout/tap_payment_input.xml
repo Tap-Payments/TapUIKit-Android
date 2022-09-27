@@ -3,13 +3,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/paymentInputMainLinear"
     android:orientation="vertical">
 
 
-    <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
-        android:id="@+id/sections_tablayout"
+
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/margin_basic_10dp"
+        android:elevation="@dimen/margin_basic_8dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/margin_basic_16dp"
+        android:layout_marginRight="@dimen/margin_basic_16dp">
+
 
     <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
         android:id="@+id/separator"
@@ -76,6 +84,12 @@
 
 
     </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
+    <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
+        android:id="@+id/sections_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_basic_16dp"
+        android:layout_marginRight="@dimen/margin_basic_16dp"/>
 
 </LinearLayout>

@@ -67,7 +67,6 @@ import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.switch_pay_demo
-import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -137,6 +136,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var goPayLoginInput: GoPayLoginInput? = null
     private var otpButtonConfirmationInterface: OtpButtonConfirmationInterface? = null
     private var otpView: OTPView? = null
+    private var acceptedCardText: TapTextView? = null
+    private var mainLinear: LinearLayout? = null
 
 
     override fun onCreateView(
@@ -315,11 +316,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         alertMessage = view.findViewById(R.id.textViewAlertMessage)
         clearView = view.findViewById(R.id.clear_text)
         linearLayoutPay = view.findViewById(R.id.linear_paylayout)
+        mainLinear = view.findViewById(R.id.mainLinear)
         tapSeparatorViewLinear = view.findViewById(R.id.tapSeparatorViewLinear)
         tapSeparatorViewLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        mainLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
         tapCardInputView.clearFocus()
-        tapCardInputView.holderNameEnabled = true
+        tapCardInputView.holderNameEnabled = false
         clearView?.setOnClickListener {
             tabLayout.resetBehaviour()
             tapMobileInputView.clearNumber()
@@ -427,6 +430,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             tapCardInputView = context?.let { InlineCardInput(it) }!!
             println("mobile view $tapCardInputView")
         }
+        acceptedCardText= view.findViewById(R.id.acceptedCardText)
+        acceptedCardText?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
         bottomSheetDialog.behavior.state = STATE_EXPANDED
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
@@ -695,15 +700,15 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         items.add(
             SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png",
-                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/mastercard.png",
+                "https://img.icons8.com/color/2x/mastercard.png",
                 CardBrand.ooredoo
             )
         )
         items.add(
             SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png",
-                "https://img.icons8.com/color/2x/visa.png",
+                "https://img.icons8.com/color/2x/amex.png",
+                "https://img.icons8.com/color/2x/amex.png",
                 CardBrand.ooredoo
             )
         )
@@ -788,7 +793,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     )
                     nfcButton?.visibility = View.GONE
                     cardScannerBtn?.visibility = View.GONE
-                    tapCardInputView.holderNameEnabled = true
+                    tapCardInputView.holderNameEnabled = false
                     if (card.validationState == CardValidationState.incomplete) {
                         switchLayout?.visibility = View.GONE
                         switchMerchantCheckout?.visibility = View.GONE
