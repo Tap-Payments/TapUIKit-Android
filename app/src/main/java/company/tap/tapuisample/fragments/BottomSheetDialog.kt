@@ -91,6 +91,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private lateinit var tapHeaderSectionView: TapHeaderSectionView
     private lateinit var amountSectionView: TapAmountSectionView
     private lateinit var businessIcon: TapImageView
+    private lateinit var tapCloseIcon: TapImageView
     private lateinit var businessPlaceholder: TapTextView
     var fontChanger: FontChanger? = null
     private var selectedTab = 0
@@ -515,7 +516,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         paymentFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection")
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
         businessIcon = view.findViewById(R.id.businessIcon)
+        tapCloseIcon = view.findViewById(R.id.tapCloseIcon)
         businessPlaceholder = view.findViewById(R.id.placeholderText)
+        tapCloseIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.cancelButton.backgroundColor")))
 
     }
 
