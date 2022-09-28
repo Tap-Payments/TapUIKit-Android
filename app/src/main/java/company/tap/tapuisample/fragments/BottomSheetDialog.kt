@@ -323,7 +323,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         mainLinear?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
 
         tapCardInputView.clearFocus()
-        tapCardInputView.holderNameEnabled = false
+        tapCardInputView.holderNameEnabled = true
         clearView?.setOnClickListener {
             tabLayout.resetBehaviour()
             tapMobileInputView.clearNumber()
@@ -338,6 +338,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             alertgoPay?.visibility = View.GONE
             separatorView?.visibility = View.GONE
             tabLayout.visibility = View.VISIBLE
+            tapCardInputView.holderNameEnabled = false
         }
         nfcButton?.setOnClickListener {
             tabLayout?.visibility = View.GONE
@@ -800,7 +801,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                     )
                     nfcButton?.visibility = View.GONE
                     cardScannerBtn?.visibility = View.GONE
-                    tapCardInputView.holderNameEnabled = false
+                    tapCardInputView.holderNameEnabled = true
                     if (card.validationState == CardValidationState.incomplete) {
                         switchLayout?.visibility = View.GONE
                         switchMerchantCheckout?.visibility = View.GONE
