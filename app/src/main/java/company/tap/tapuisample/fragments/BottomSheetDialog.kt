@@ -29,6 +29,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.transition.TransitionManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+import company.tap.cardinputwidget.CardBrandSingle
 import company.tap.cardinputwidget.widget.inline.InlineCardInput
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
@@ -304,7 +305,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         switchViewInit(view)
         initializeCardForm(view)
         addCardsTab()
-        addMobileTab()
+      //  addMobileTab() // commented for now 28sep22
         setupBrandDetection()
         configureSwitch()
     }
@@ -336,6 +337,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             savegoPay?.visibility = View.GONE
             alertgoPay?.visibility = View.GONE
             separatorView?.visibility = View.GONE
+            tabLayout.visibility = View.VISIBLE
         }
         nfcButton?.setOnClickListener {
             tabLayout?.visibility = View.GONE
@@ -525,6 +527,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapCloseIcon = view.findViewById(R.id.tapCloseIcon)
         businessPlaceholder = view.findViewById(R.id.placeholderText)
         tapCloseIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.cancelButton.backgroundColor")))
+        tapCloseIcon.setOnClickListener {
+            this.dismiss()
+        }
 
     }
 
@@ -630,8 +635,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
-            selectedCurr = "SR1000,000.000",
-            currentCurr = "KD1000,000.000",
+            selectedCurr = "1000,000.000",
+            selectedCurrText = "SR",
+            currentCurr = "1000,000.000",
+            currentCurrText = "KD",
             itemCount = if (context?.let { LocalizationManager.getLocale(it).language } == "en") getString(
                 R.string.items
             ) else "22 عنصر"
@@ -702,14 +709,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             SectionTabItem(
                 "https://img.icons8.com/color/2x/mastercard.png",
                 "https://img.icons8.com/color/2x/mastercard.png",
-                CardBrand.ooredoo
+                CardBrand.masterCard
             )
         )
         items.add(
             SectionTabItem(
                 "https://img.icons8.com/color/2x/amex.png",
                 "https://img.icons8.com/color/2x/amex.png",
-                CardBrand.ooredoo
+                CardBrand.americanExpress
             )
         )
 
@@ -844,6 +851,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //                            alertMessage?.setText("Expiry date & CVV number are missing.")
                             alert_text.visibility = View.VISIBLE
                         }
+                        tapCardInputView.setSingleCardInput(CardBrandSingle.fromCode(card.cardBrand.name))
+                        tabLayout.visibility = View.GONE
                     }
                 }
             }

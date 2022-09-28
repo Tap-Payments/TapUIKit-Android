@@ -118,7 +118,11 @@
             <LinearLayout
                 android:id="@+id/tapSeparatorViewLinear"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+
+
+
+                >
 
                 <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                     android:id="@+id/separator_"
@@ -126,12 +130,24 @@
                     android:layout_height="1dp"
                     android:layout_marginStart="@dimen/default_padding"
                     android:layout_marginEnd="@dimen/default_padding"
-                    android:background="@color/separator_color" />
+                    android:background="@color/separator_color"
+                    android:visibility="gone"
+                   />
+
+                <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_padding"
+                    android:layout_marginEnd="@dimen/default_padding"
+                    android:textAllCaps="true"
+                    android:textColor="#9F9F9F"
+                    android:text="Card InFormation"/>
 
             </LinearLayout>
 
 
             <company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
+
                 android:id="@+id/tap_payment_input0"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

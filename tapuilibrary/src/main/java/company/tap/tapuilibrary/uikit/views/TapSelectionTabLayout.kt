@@ -56,7 +56,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var imageSaturationValue = 1f
     private var tabItemMarginLeftValue = 0
     private var tabItemMarginRightValue = 0
-
+    val acceptedCardText by lazy { findViewById<TapTextView>(R.id.acceptedCardText) }
 
     /**
      * Initiating the tablayout with default theme and behaviour
@@ -67,6 +67,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        acceptedCardText?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        acceptedCardText?.setTextColor(Color.parseColor("#9F9F9F"))
         setSelectionBehaviour()
     }
 
