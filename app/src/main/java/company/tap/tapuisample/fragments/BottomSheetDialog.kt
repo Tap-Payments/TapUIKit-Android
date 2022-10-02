@@ -21,6 +21,7 @@ import android.view.WindowManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
@@ -123,7 +124,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var mobileNumberEditText: EditText? = null
     private var alertMessage: TapTextView? = null
     private var clearView: ImageView? = null
-    private var linearLayoutPay: LinearLayout? = null
+    private var linearLayoutPay: RelativeLayout? = null
     private var tapSeparatorViewLinear: LinearLayout? = null
     private val cardFragment = CardScannerFragment()
     private val nfcFragment = NFCFragment()

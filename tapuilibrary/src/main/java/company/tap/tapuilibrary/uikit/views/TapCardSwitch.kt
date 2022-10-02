@@ -37,6 +37,8 @@ class TapCardSwitch : LinearLayout {
     val switchesLayout by lazy { findViewById<LinearLayout>(R.id.switches_layout) }
     val switchSeparator by lazy { findViewById<TapSeparatorView>(R.id.switch_separator) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
+    val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
+    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
     private var actionButtonInterface: TapActionButtonInterface? = null
 
 
@@ -227,6 +229,14 @@ class TapCardSwitch : LinearLayout {
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("TapSwitchView.CurvedSeparator.BackgroundColor"))
         switchSeparator.setTheme(separatorViewTheme)
+
+        var poweredByTextViewTheme = TextViewTheme()
+        poweredByTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("poweredBYBranding.poweredByTextColor"))
+        poweredByTextViewTheme.textSize =
+            ThemeManager.getFontSize("poweredBYBranding.poweredByFont")
+        poweredByTextViewTheme.font = ThemeManager.getFontName("poweredBYBranding.poweredByFont")
+        textViewPowered.setTheme(poweredByTextViewTheme)
     }
 
 
