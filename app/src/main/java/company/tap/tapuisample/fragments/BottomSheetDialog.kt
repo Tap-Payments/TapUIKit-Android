@@ -103,9 +103,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     private lateinit var paymentLayout: LinearLayout
     private lateinit var nfcScanBtn: TapButton
-    private lateinit var switchDemo: TapCardSwitch
+    private lateinit var switchDemo: TapInlineCardSwitch
     private lateinit var mainSwitch: MainSwitch
-    private lateinit var payButton: TabAnimatedActionButton
+    private lateinit var payButton:  company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
     private var switch_save_mobile: TapSwitch? = null
     private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
@@ -417,7 +417,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private fun getSwitchDataSource(switchText: String): TapSwitchDataSource {
         return TapSwitchDataSource(
             switchSave = switchText,
-            switchSaveMerchantCheckout = "Save for [merchant_name] Checkouts",
+            switchSaveMerchantCheckout = "Save for Later",
             switchSavegoPayCheckout = "By enabling goPay, your mobile number will be saved with Tap Payments to get faster and more secure checkouts in multiple apps and websites.",
             savegoPayText = "Save for goPay Checkouts",
             alertgoPaySignup = "Please check your email or SMS’s in order to complete the goPay Checkout signup process."

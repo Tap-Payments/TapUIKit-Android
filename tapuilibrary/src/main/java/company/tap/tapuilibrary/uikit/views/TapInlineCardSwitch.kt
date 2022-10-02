@@ -1,0 +1,212 @@
+package company.tap.tapuilibrary.uikit.views
+
+import android.content.Context
+import android.graphics.Color
+import android.util.AttributeSet
+import android.view.View
+import android.view.View.OnLongClickListener
+import android.widget.LinearLayout
+import androidx.appcompat.widget.TooltipCompat
+import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.SwitchTheme
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.atoms.TapSwitch
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
+import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
+
+/**
+Copyright (c) 2020    Tap Payments.
+All rights reserved.
+ **/
+
+/**
+ * TapCardSwitch is a molecule element for setting saveMobile ,saveMerchantCheckout and
+ *  saveGoPayCheckout for Merchant
+ **/
+class TapInlineCardSwitch : LinearLayout {
+
+    val switchSaveCard by lazy { findViewById<TapSwitch>(R.id.switchSaveCard) }
+
+
+    val switchesLayout by lazy { findViewById<LinearLayout>(R.id.switchesLayout) }
+    val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
+    val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
+    val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
+    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
+    val toolsTipImageView by lazy { findViewById<TapImageView>(R.id.toolsTipImageView) }
+    private var actionButtonInterface: TapActionButtonInterface? = null
+
+
+    lateinit var attrs: AttributeSet
+    private var tapSwitchDataSource: TapSwitchDataSource? = null
+
+
+    /**
+     * Simple constructor to use when creating a TapPayCardSwitch from code.
+     *  @param context The Context the view is running in, through which it can
+     *  access the current theme, resources, etc.
+     **/
+    constructor(context: Context) : super(context)
+
+    /**
+     *  @param context The Context the view is running in, through which it can
+     *  access the current theme, resources, etc.
+     *  @param attrs The attributes of the XML Button tag being used to inflate the view.
+     *
+     */
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
+
+    /**
+     *  @param context The Context the view is running in, through which it can
+     *  access the current theme, resources, etc.
+     *  @param attrs The attributes of the XML Button tag being used to inflate the view.
+     * @param defStyleAttr The resource identifier of an attribute in the current theme
+     * whose value is the the resource id of a style. The specified style’s
+     * attribute values serve as default values for the button. Set this parameter
+     * to 0 to avoid use of default values.
+     */
+    constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
+
+    init {
+        inflate(context, R.layout.tap_inline_card_switch, this)
+        setTheme()
+      //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+        initActionButton()
+        initViews()
+
+    }
+
+    private fun initViews() {
+        toolsTipImageView.setOnClickListener {
+            TooltipCompat.setTooltipText(toolsTipImageView, "Checkout everywhere in just one click. Tap is a better and secure way to pay locally across 100k+ stores. Your details are encrypted and can only be accessed by you. You’ll receive an email to get started and manage your details.")
+
+        }
+        TooltipCompat.setTooltipText(toolsTipImageView, "Checkout everywhere in just one click. Tap is a better and secure way to pay locally across 100k+ stores. Your details are encrypted and can only be accessed by you. You’ll receive an email to get started and manage your details.")
+
+    }
+
+    fun setSwitchInterface(actionButtonInterface: TapActionButtonInterface) {
+        this.actionButtonInterface = actionButtonInterface
+    }
+    fun onEnterValidCardNumberActionListener(){
+        payButton.setOnClickListener { actionButtonInterface?.onEnterValidCardNumberActionListener() }
+    }
+    fun onEnterValidPhoneNumberActionListener(){
+        payButton.setOnClickListener { actionButtonInterface?.onEnterValidPhoneNumberActionListener() }
+    }
+    fun onSelectPaymentOptionActionListener(){
+        payButton.setOnClickListener { actionButtonInterface?.onSelectPaymentOptionActionListener() }
+    }
+
+    private fun initActionButton() {
+        payButton.setButtonDataSource(
+            false,
+            context?.let { LocalizationManager.getLocale(it).language },
+            LocalizationManager.getValue("pay", "ActionButton"),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+        )
+        payButton.isEnabled = true
+        payButton.isClickable = true
+    }
+
+    fun showOnlyPayButton(){
+        switchesLayout.visibility = View.GONE
+        payButton.visibility = View.VISIBLE
+    }
+
+
+    /**
+     * @param tapSwitchDataSource is set via the consumer app for saveMobile,
+     * saveMerchantCheckout and savegoPayCheckout.
+     **/
+    fun setSwitchDataSource(tapSwitchDataSource: TapSwitchDataSource) {
+        this.tapSwitchDataSource = tapSwitchDataSource
+        tapSwitchDataSource.switchSaveMerchantCheckout?.let {
+            switchSaveCard.text = it
+        }
+
+    }
+
+
+    fun setTheme() {
+
+        // Merchant
+        switchSaveCard.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                var switchSaveMerchantSwitchThemeEnable = SwitchTheme()
+                switchSaveMerchantSwitchThemeEnable.thumbTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+                switchSaveMerchantSwitchThemeEnable.trackTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+                switchSaveCard.setTheme(switchSaveMerchantSwitchThemeEnable)
+                payButton.setButtonDataSource(
+                    true,
+                    context?.let { LocalizationManager.getLocale(it).language },
+                    LocalizationManager.getValue("pay", "ActionButton"),
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+                )
+
+
+            } else {
+                tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
+                var switchSaveMerchantSwitchThemeDisable = SwitchTheme()
+                switchSaveMerchantSwitchThemeDisable.thumbTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                switchSaveMerchantSwitchThemeDisable.trackTint =
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+               // switchSaveMerchant.setTheme(switchSaveMerchantSwitchThemeDisable)
+                payButton.setButtonDataSource(
+                    false,
+                    context?.let { LocalizationManager.getLocale(it).language },
+                    LocalizationManager.getValue("pay", "ActionButton"),
+                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                    Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+                )
+            }
+        }
+
+
+
+
+
+        var poweredByTextViewTheme = TextViewTheme()
+        poweredByTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("poweredBYBranding.poweredByTextColor"))
+        poweredByTextViewTheme.textSize =
+            ThemeManager.getFontSize("poweredBYBranding.poweredByFont")
+        poweredByTextViewTheme.font = ThemeManager.getFontName("poweredBYBranding.poweredByFont")
+        textViewPowered.setTheme(poweredByTextViewTheme)
+    }
+
+
+    private fun activateButton(isActive: Boolean) {
+        if (isActive) {
+            payButton.setButtonDataSource(
+                true,
+                context?.let { LocalizationManager.getLocale(it).language },
+                LocalizationManager.getValue("pay", "ActionButton"),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+            )
+        } else {
+            payButton.setButtonDataSource(
+                false,
+                context?.let { LocalizationManager.getLocale(it).language },
+                LocalizationManager.getValue("pay", "ActionButton"),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
+                Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+            )
+        }
+    }
+
+
+
+
+
+}
