@@ -1,4 +1,4 @@
-package company.tap.cardinputwidget.views
+package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.graphics.Color
@@ -17,7 +17,6 @@ import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
-import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
 /**
 Copyright (c) 2020    Tap Payments.
