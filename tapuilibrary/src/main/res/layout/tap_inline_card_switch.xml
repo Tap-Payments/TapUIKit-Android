@@ -30,6 +30,8 @@
             android:textColor="#4b4847"
             android:textSize="14sp"
             android:textStyle="normal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:theme="@style/SwitchSecondary"
             tools:text="Save for Later" />
 
@@ -38,7 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:visibility="gone"
+            android:visibility="visible"
+           android:layout_marginTop="-7dp"
             android:layout_below="@+id/switchSaveCard">
 
             <CheckBox
