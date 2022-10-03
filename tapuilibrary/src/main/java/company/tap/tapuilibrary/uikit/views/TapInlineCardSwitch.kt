@@ -89,6 +89,8 @@ class TapInlineCardSwitch : LinearLayout {
 
         }
         TooltipCompat.setTooltipText(toolsTipImageView, "Checkout everywhere in just one click. Tap is a better and secure way to pay locally across 100k+ stores. Your details are encrypted and can only be accessed by you. You’ll receive an email to get started and manage your details.")
+        saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
+        switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.greyishBrown")))
 
     }
 
