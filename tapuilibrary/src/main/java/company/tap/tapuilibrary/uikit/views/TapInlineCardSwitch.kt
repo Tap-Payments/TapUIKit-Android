@@ -1,11 +1,11 @@
-package company.tap.tapuilibrary.uikit.views
+package company.tap.cardinputwidget.views
 
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
-import android.view.View.OnLongClickListener
 import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.appcompat.widget.TooltipCompat
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -17,6 +17,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
+import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -32,12 +33,13 @@ class TapInlineCardSwitch : LinearLayout {
     val switchSaveCard by lazy { findViewById<TapSwitch>(R.id.switchSaveCard) }
 
 
-    val switchesLayout by lazy { findViewById<LinearLayout>(R.id.switchesLayout) }
+    val switchesLayout by lazy { findViewById<RelativeLayout>(R.id.switchesLayout) }
     val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
     val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
     val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
     val toolsTipImageView by lazy { findViewById<TapImageView>(R.id.toolsTipImageView) }
+    val secondaryLayout by lazy { findViewById<LinearLayout>(R.id.secondary_Layout) }
     private var actionButtonInterface: TapActionButtonInterface? = null
 
 
@@ -74,7 +76,7 @@ class TapInlineCardSwitch : LinearLayout {
     init {
         inflate(context, R.layout.tap_inline_card_switch, this)
         setTheme()
-      //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+        //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initActionButton()
         initViews()
 
@@ -116,7 +118,7 @@ class TapInlineCardSwitch : LinearLayout {
 
     fun showOnlyPayButton(){
         switchesLayout.visibility = View.GONE
-        payButton.visibility = View.VISIBLE
+        // payButton.visibility = View.VISIBLE
     }
 
 
@@ -141,8 +143,8 @@ class TapInlineCardSwitch : LinearLayout {
                 var switchSaveMerchantSwitchThemeEnable = SwitchTheme()
                 switchSaveMerchantSwitchThemeEnable.thumbTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
-               // switchSaveMerchantSwitchThemeEnable.trackTint =
-               //     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+                // switchSaveMerchantSwitchThemeEnable.trackTint =
+                //     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeEnable)
                 payButton.setButtonDataSource(
                     true,
@@ -152,14 +154,16 @@ class TapInlineCardSwitch : LinearLayout {
                     Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
                 )
 
+                secondaryLayout.visibility = View.VISIBLE
+
 
             } else {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
                 val switchSaveMerchantSwitchThemeDisable = SwitchTheme()
                 switchSaveMerchantSwitchThemeDisable.thumbTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-              //  switchSaveMerchantSwitchThemeDisable.trackTint =
-              //      Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                //  switchSaveMerchantSwitchThemeDisable.trackTint =
+                //      Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeDisable)
                 payButton.setButtonDataSource(
                     false,
@@ -168,6 +172,8 @@ class TapInlineCardSwitch : LinearLayout {
                     Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
                     Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                 )
+                secondaryLayout.visibility = View.GONE
+
             }
         }
 
