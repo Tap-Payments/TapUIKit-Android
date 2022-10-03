@@ -141,8 +141,8 @@ class TapInlineCardSwitch : LinearLayout {
                 var switchSaveMerchantSwitchThemeEnable = SwitchTheme()
                 switchSaveMerchantSwitchThemeEnable.thumbTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
-                switchSaveMerchantSwitchThemeEnable.trackTint =
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+               // switchSaveMerchantSwitchThemeEnable.trackTint =
+               //     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeEnable)
                 payButton.setButtonDataSource(
                     true,
@@ -155,12 +155,12 @@ class TapInlineCardSwitch : LinearLayout {
 
             } else {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
-                var switchSaveMerchantSwitchThemeDisable = SwitchTheme()
+                val switchSaveMerchantSwitchThemeDisable = SwitchTheme()
                 switchSaveMerchantSwitchThemeDisable.thumbTint =
                     Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-                switchSaveMerchantSwitchThemeDisable.trackTint =
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
-               // switchSaveMerchant.setTheme(switchSaveMerchantSwitchThemeDisable)
+              //  switchSaveMerchantSwitchThemeDisable.trackTint =
+              //      Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                switchSaveCard.setTheme(switchSaveMerchantSwitchThemeDisable)
                 payButton.setButtonDataSource(
                     false,
                     context?.let { LocalizationManager.getLocale(it).language },
