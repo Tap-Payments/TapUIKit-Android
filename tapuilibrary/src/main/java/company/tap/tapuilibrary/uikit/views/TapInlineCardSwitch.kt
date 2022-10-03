@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
+import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.TooltipCompat
@@ -39,6 +40,7 @@ class TapInlineCardSwitch : LinearLayout {
     val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
     val toolsTipImageView by lazy { findViewById<TapImageView>(R.id.toolsTipImageView) }
     val secondaryLayout by lazy { findViewById<LinearLayout>(R.id.secondary_Layout) }
+    val saveForOtherCheckBox by lazy { findViewById<CheckBox>(R.id.saveForOtherCheckBox) }
     private var actionButtonInterface: TapActionButtonInterface? = null
 
 
