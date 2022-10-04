@@ -21,6 +21,8 @@
         android:textSize="@dimen/font_size_11sp"
         android:textColor="#9F9F9F"
         android:textAllCaps="true"
+        android:paddingStart="10dp"
+        android:paddingEnd="@dimen/margin_basic_10dp"
         android:gravity="center" />
 
     <com.google.android.material.tabs.TabLayout
