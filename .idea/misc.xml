@@ -22,6 +22,8 @@
         <entry key="tapuilibrary/src/main/res/drawable/ic_cardscanner.xml" value="0.233" />
         <entry key="tapuilibrary/src/main/res/drawable/ic_close.xml" value="0.1265" />
         <entry key="tapuilibrary/src/main/res/drawable/icon_adcb.xml" value="0.2655" />
+        <entry key="tapuilibrary/src/main/res/layout/card_section_layout.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/layout/gopay_layout.xml" value="0.1" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_login_input.xml" value="0.17477477477477477" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_password_input.xml" value="0.17477477477477477" />
         <entry key="tapuilibrary/src/main/res/layout/main_switch_layout.xml" value="0.11283961437335671" />
@@ -34,6 +36,9 @@
         <entry key="tapuilibrary/src/main/res/layout/tap_loyalty_view.xml" value="0.375" />
         <entry key="tapuilibrary/src/main/res/layout/tap_main_amount.xml" value="0.165" />
         <entry key="tapuilibrary/src/main/res/layout/tap_main_header.xml" value="0.25" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_mobile_payment_view.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_nfc_view.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_otp_view.xml" value="0.1" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.25" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.1875" />
         <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.1875" />
