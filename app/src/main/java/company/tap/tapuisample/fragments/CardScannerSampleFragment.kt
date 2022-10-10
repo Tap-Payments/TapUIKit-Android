@@ -6,10 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import cards.pay.paycardsrecognizer.sdk.Card
-import cards.pay.paycardsrecognizer.sdk.FrameManager
-import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
-import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
+
 import company.tap.cardscanner.TapCard
 import company.tap.cardscanner.TapTextRecognitionCallBack
 import company.tap.cardscanner.TapTextRecognitionML
@@ -32,7 +29,7 @@ import jp.wasabeef.blurry.Blurry
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack , InlineViewCallback{
+class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallBack {
     private var textRecognitionML: TapTextRecognitionML? = null
     private var cardScanText: TapTextView? = null
     private lateinit var tapHeaderSectionView: TapHeaderSectionView
@@ -56,10 +53,10 @@ class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallB
 
         //  Blurry.with(context).radius(25).sampling(2).onto(rootView)
 
-        childFragmentManager
+       /* childFragmentManager
             .beginTransaction()
             .add(R.id.inline_container, InlineViewFragment())
-            .commit()
+            .commit()*/
         //  bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default","Hints","scan")
@@ -81,7 +78,7 @@ class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallB
     override fun onRecognitionFailure(error: String?) {
 
     }
-
+/*
     override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
         FrameManager.getInstance().frameColor = Color.GREEN
 
@@ -97,7 +94,7 @@ class CardScannerSampleFragment : TapBottomSheetDialog(),TapTextRecognitionCallB
         childFragmentManager.beginTransaction()
             .remove(this)
             .commit()
-    }
+    }*/
 
 
 }

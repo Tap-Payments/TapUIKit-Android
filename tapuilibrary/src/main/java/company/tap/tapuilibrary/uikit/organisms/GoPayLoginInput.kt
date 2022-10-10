@@ -18,7 +18,7 @@ import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.hbb20.CountryCodePicker
+//import com.hbb20.CountryCodePicker
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -46,7 +46,8 @@ import kotlin.math.abs
  *
  */
 class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs), CountryCodePicker.OnCountryChangeListener,
+    LinearLayout(context, attrs),
+    //CountryCodePicker.OnCountryChangeListener,
     TapView<EditTextTheme> {
 
     val textInput by lazy { findViewById<TextInputEditText>(R.id.gopay_text_input) }
@@ -55,7 +56,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val loginMethodImage by lazy { findViewById<ImageView>(R.id.login_method_icon) }
     val actionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.gopay_button) }
     val goPayHint by lazy { findViewById<TapTextView>(R.id.gopay_hint) }
-    val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
+  //  val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
     val goPayLinear by lazy { findViewById<LinearLayout>(R.id.goPayLinear) }
     val goPayTabSeparator by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator) }
     val goPayTabSeparator_ by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator_) }
@@ -75,7 +76,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         initTheme()
         setFonts()
         initGoPayHint()
-        initCountryCodePicker()
+       // initCountryCodePicker()
         setupKeyboardListener(container) // call in OnCreate or similar
     }
 
@@ -86,11 +87,11 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
 
     private fun setFonts() {
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
-        countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
+      /*  countryCodePicker.textView_selectedCountry?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
             )
-        )
+        )*/
         textInput?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoLight
@@ -137,7 +138,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
         textInput.textSize = ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
         loginInputLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.inputFieldBackground")))
-        countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
+       // countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
     }
 
     private fun setSeparatorTheme() {
@@ -149,7 +150,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         goPayTabSeparator_.setTheme(separatorViewTheme)
     }
 
-    private fun initCountryCodePicker() {
+  /*  private fun initCountryCodePicker() {
         countryCodePicker.visibility = View.VISIBLE
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
         countryCode = countryCodePicker.defaultCountryCodeAsInt.toString()
@@ -158,7 +159,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         countryCodePicker.contentColor =
             Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
-    }
+    }*/
 
 
     fun changeDataSource(dataSource: GoPayLoginDataSource) {
@@ -214,7 +215,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         if (textInput.text.toString().length > 7)
             replaced = (textInput.text.toString()).replaceRange(1, 6, "....")
 
-        countryCodeReplaced = (countryCodePicker.selectedCountryCode).replace("+", " ")
+      //  countryCodeReplaced = (countryCodePicker.selectedCountryCode).replace("+", " ")
         countryCodeReplaced.let {
             openOTPInterface?.getPhoneNumber(
                 textInput.text.toString(),
@@ -363,15 +364,15 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                 textInput.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mail)
-                countryCodePicker.visibility = View.GONE
+               // countryCodePicker.visibility = View.GONE
             }
             PHONE -> {
-                initCountryCodePicker()
+             //   initCountryCodePicker()
                 textInput.hint = dataSource?.phoneInputHint ?: "00000000"
                 textInput.inputType = InputType.TYPE_CLASS_PHONE
                 textInput.setTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor")))
                 loginMethodImage.setImageResource(R.drawable.ic_mobile)
-                loginMethodImage.setOnClickListener { countryCodePicker.launchCountrySelectionDialog() }
+                //loginMethodImage.setOnClickListener { countryCodePicker.launchCountrySelectionDialog() }
                 setListenerForPhone()
 
             }
@@ -381,17 +382,17 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     private fun setListenerForPhone() {
         textInput.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-                countryCodePicker.contentColor =
-                    Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+              //  countryCodePicker.contentColor =
+              //      Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
             }
             override fun afterTextChanged(mobileText: Editable) {
-                phoneInputAfterTextChange(mobileText)
+                //phoneInputAfterTextChange(mobileText)
             }
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         })
     }
 
-    private  fun phoneInputAfterTextChange(mobileText: Editable){
+  /*  private  fun phoneInputAfterTextChange(mobileText: Editable){
         if (mobileText.length > 1) {
             countryCodePicker.contentColor =
                 Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
@@ -399,7 +400,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
             countryCodePicker.contentColor =
                 Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
         }
-    }
+    }*/
 
     private fun getThemedTabText(text: String, isSelected: Boolean): TapTextView {
         val tabText = TapTextView(context, null)
@@ -411,7 +412,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                     TapFont.RobotoRegular
                 )
             )
-            countryCodePicker.visibility = View.VISIBLE
+        //    countryCodePicker.visibility = View.VISIBLE
 
         } else {
             tabText.typeface = Typeface.createFromAsset(
@@ -419,7 +420,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
                     TapFont.TajawalMedium
                 )
             )
-            countryCodePicker.visibility = View.VISIBLE
+         //   countryCodePicker.visibility = View.VISIBLE
 
         }
 
@@ -478,9 +479,9 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         )
     }
 
-    override fun onCountrySelected() {
+ /*   override fun onCountrySelected() {
 //        countryCode = countryCodePicker.selectedCountryCode
-    }
+    }*/
 
 
 }

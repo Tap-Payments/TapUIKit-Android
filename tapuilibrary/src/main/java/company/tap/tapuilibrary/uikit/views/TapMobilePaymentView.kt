@@ -9,7 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
-import com.hbb20.CountryCodePicker
+//import com.hbb20.CountryCodePicker
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -24,12 +24,13 @@ import company.tap.tapuilibrary.uikit.interfaces.TapView
  *
  */
 class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
-    LinearLayout(context, attrs), CountryCodePicker.OnCountryChangeListener,
+    LinearLayout(context, attrs),
+    //CountryCodePicker.OnCountryChangeListener,
     TapView<EditTextTheme> {
     val mobileNumber by lazy { findViewById<EditText>(R.id.mobileNumber) }
     val mobileImage by lazy { findViewById<TapImageView>(R.id.mobileImage) }
     val mobilePaymentMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
-    val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
+  //  val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
     private var tapPaymentShowHideClearImage: TapPaymentShowHideClearImage? = null
 
     init {
@@ -38,16 +39,16 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         mobileNumber.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 tapPaymentShowHideClearImage?.showHideClearImage(true)
-                countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+             //   countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
             }
             override fun afterTextChanged(mobileText: Editable) {
                 if (mobileText.length > 1){
                     tapPaymentShowHideClearImage?.showHideClearImage(true)
-                    countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
+                   // countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.textColor"))
 
                 }else{
                     tapPaymentShowHideClearImage?.showHideClearImage(false)
-                    countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
+                    //countryCodePicker.contentColor =Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
                 }
 
             }
@@ -56,11 +57,12 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         })
 
         initTheme()
-        initCountryCodePicker()
+        //initCountryCodePicker()
     }
 
 
 
+/*
     private fun initCountryCodePicker() {
         countryCodePicker.setDefaultCountryUsingNameCode("KW")
         countryCodePicker.showArrow(false)
@@ -79,6 +81,7 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("phoneCard.commonAttributes.backgroundColor")))
 
     }
+*/
 
 
     fun setTapPaymentShowHideClearImage(tapPaymentShowHideClearImage: TapPaymentShowHideClearImage) {
@@ -111,12 +114,12 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
         theme.textSize?.let { mobileNumber.textSize = it.toFloat() }
     }
 
-    override fun onCountrySelected() {
+/*    override fun onCountrySelected() {
 //        countryCodeText.text = countryCodePicker!!.selectedCountryCode
 //        countryCode = countryCodePicker!!.selectedCountryCode
 //        countryName = countryCodePicker!!.selectedCountryName
 
-    }
+    }*/
 
 }
 

@@ -8,10 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import cards.pay.paycardsrecognizer.sdk.Card
-import cards.pay.paycardsrecognizer.sdk.FrameManager
-import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
-import cards.pay.paycardsrecognizer.sdk.ui.InlineViewFragment
+
 import company.tap.cardscanner.TapCard
 import company.tap.cardscanner.TapTextRecognitionCallBack
 import company.tap.cardscanner.TapTextRecognitionML
@@ -30,7 +27,7 @@ import kotlinx.android.synthetic.main.custom_card_view.*
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCallback{
+class CardScannerFragment : Fragment(),TapTextRecognitionCallBack {
     private var textRecognitionML: TapTextRecognitionML? = null
     private var cardScanText: TapTextView? = null
 
@@ -40,13 +37,9 @@ class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCa
         savedInstanceState: Bundle?
     ): View? {
         val view: View = inflater.inflate(R.layout.custom_card_view, container, false)
-        childFragmentManager
-            .beginTransaction()
-            .replace(R.id.inline_container, InlineViewFragment())
-            .commit()
+
         cardScanText = view.findViewById(R.id.cardscan_ready)
         cardScanText?.text = LocalizationManager.getValue("Default","Hints","scan")
-        FrameManager.getInstance().frameColor = Color.WHITE
         return view
     }
 
@@ -63,22 +56,9 @@ class CardScannerFragment : Fragment(),TapTextRecognitionCallBack , InlineViewCa
 
     }
 
-    override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
-        FrameManager.getInstance().frameColor = Color.GREEN
 
-        if (childFragmentManager.findFragmentById(R.id.inline_container) != null)
-            childFragmentManager
-                .beginTransaction()
-                .replace(R.id.inline_container,this)
-                .commit()
 
-    }
 
-    override fun onScanCardFailed(e: Exception?) {
-        childFragmentManager.beginTransaction()
-            .remove(this)
-            .commit()
-    }
 
 
 }
