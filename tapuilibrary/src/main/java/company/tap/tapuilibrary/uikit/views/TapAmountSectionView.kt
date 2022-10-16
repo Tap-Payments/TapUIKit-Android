@@ -12,6 +12,7 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ButtonTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapButton
+import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
@@ -21,6 +22,10 @@ class TapAmountSectionView : LinearLayout {
     val selectedAmountValue by lazy { findViewById<TapTextView>(R.id.selectedAmountValue) }
     val mainKDAmountValue by lazy { findViewById<TapTextView>(R.id.mainKDAmountValue) }
     val itemCountButton by lazy { findViewById<TapButton>(R.id.itemCountButton) }
+    val itemCountText by lazy { findViewById<TapTextView>(R.id.itemCountText) }
+    val itemAmountText by lazy { findViewById<TapTextView>(R.id.itemAmountText) }
+    val amountImageView by lazy { findViewById<TapImageView>(R.id.amountImageView) }
+
     private var amountViewDataSource: AmountViewDataSource? = null
 
     /**
@@ -80,6 +85,24 @@ class TapAmountSectionView : LinearLayout {
             Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor"))
         )
 
+        val itemCountTextViewTheme = TextViewTheme()
+        itemCountTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsLabelColor"))
+        itemCountTextViewTheme.textSize =
+            ThemeManager.getFontSize("amountSectionView.itemsLabelFont")
+        itemCountTextViewTheme.font =
+            ThemeManager.getFontName("amountSectionView.itemsLabelFont")
+        itemCountText.setTheme(itemCountTextViewTheme)
+
+        val itemAmountTextViewTheme = TextViewTheme()
+        itemAmountTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsLabelColor"))
+        itemAmountTextViewTheme.textSize =
+            ThemeManager.getFontSize("amountSectionView.itemsLabelFont")
+        itemAmountTextViewTheme.font =
+            ThemeManager.getFontName("amountSectionView.itemsLabelFont")
+        itemAmountText.setTheme(itemAmountTextViewTheme)
+
         val currentCurrencyTextViewTheme = TextViewTheme()
         currentCurrencyTextViewTheme.textColor =
             Color.parseColor(ThemeManager.getValue("amountSectionView.originalAmountLabelColor"))
@@ -110,8 +133,12 @@ class TapAmountSectionView : LinearLayout {
         this.amountViewDataSource = amountViewDataSource
         selectedAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.selectedCurrText , amountViewDataSource.selectedCurr)
         mainKDAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.currentCurrText , amountViewDataSource.currentCurr)
-        itemCountButton.text =  amountViewDataSource.itemCount
+       // itemCountButton.text =  amountViewDataSource.itemCount
         itemCountButton.tag =  amountViewDataSource.itemCount
+        itemCountText.text =  amountViewDataSource.itemCount
+        itemAmountText.text =  amountViewDataSource.currentCurrText
+        itemCountButton.tag =  amountViewDataSource.itemCount
+
 
 //        amountViewDataSource.itemCount?.let { itemCountButton.text = it }
         itemCountButton.elevation = 0F
