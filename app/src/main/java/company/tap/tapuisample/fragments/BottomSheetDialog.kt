@@ -810,6 +810,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                         switchMerchantCheckout?.isChecked = true
                         switchgoPayCheckout?.isChecked = true
                         switch_pay_demo.payButton.isActivated = true
+                        switch_pay_demo.payButton.visibility = View.VISIBLE
                         switchgoPayCheckout?.visibility = View.GONE
                         savegoPay?.visibility = View.GONE
                         alertgoPay?.visibility = View.GONE
