@@ -136,7 +136,7 @@ class TapAmountSectionView : LinearLayout {
        // itemCountButton.text =  amountViewDataSource.itemCount
         itemCountButton.tag =  amountViewDataSource.itemCount
         itemCountText.text =  amountViewDataSource.itemCount
-        itemAmountText.text =  amountViewDataSource.currentCurrText
+        itemAmountText.text =  amountViewDataSource.selectedCurrText
         itemCountButton.tag =  amountViewDataSource.itemCount
 
 
