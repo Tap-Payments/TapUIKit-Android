@@ -10,7 +10,7 @@
         <entry key="app/src/main/res/layout/activity_sections_tab_layout.xml" value="0.140990990990991" />
         <entry key="app/src/main/res/layout/custom_bottom_sheet.xml" value="0.6" />
         <entry key="app/src/main/res/layout/custom_sheet_switch.xml" value="0.19234234234234235" />
-        <entry key="app/src/main/res/layout/main_switch_layout.xml" value="0.1436936936936937" />
+        <entry key="app/src/main/res/layout/main_switch_layout.xml" value="0.8936997972093187" />
         <entry key="app/src/main/res/layout/tap_card_switch.xml" value="0.375" />
         <entry key="app/src/main/res/layout/tap_main_header.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/tap_payment_input.xml" value="0.3" />
@@ -25,7 +25,7 @@
         <entry key="tapuilibrary/src/main/res/layout/gopay_login_input.xml" value="0.17477477477477477" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_password_input.xml" value="0.17477477477477477" />
         <entry key="tapuilibrary/src/main/res/layout/item_view_adapter.xml" value="0.17162162162162162" />
-        <entry key="tapuilibrary/src/main/res/layout/main_switch_layout.xml" value="0.11283961437335671" />
+        <entry key="tapuilibrary/src/main/res/layout/main_switch_layout.xml" value="0.6912896265803881" />
         <entry key="tapuilibrary/src/main/res/layout/otp_view.xml" value="0.11283961437335671" />
         <entry key="tapuilibrary/src/main/res/layout/tap_card_detail_view.xml" value="0.5455504546294342" />
         <entry key="tapuilibrary/src/main/res/layout/tap_card_switch.xml" value="0.30241051862673485" />
@@ -37,7 +37,7 @@
         <entry key="tapuilibrary/src/main/res/layout/tap_main_amount.xml" value="0.165" />
         <entry key="tapuilibrary/src/main/res/layout/tap_main_header.xml" value="0.25" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.25" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.1875" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.5415390014648438" />
         <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.1875" />
       </map>
     </option>

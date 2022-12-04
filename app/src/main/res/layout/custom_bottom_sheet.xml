@@ -162,7 +162,8 @@
         <company.tap.tapuilibrary.uikit.views.TapCardDetailView
             android:layout_margin="@dimen/margin_basic_10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
 
 
         <LinearLayout
@@ -202,7 +203,8 @@
                 android:layout_gravity="start"
                 android:layoutDirection="locale"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
         </androidx.cardview.widget.CardView>
 
         <company.tap.tapuilibrary.uikit.views.TapInlineCardSwitch
