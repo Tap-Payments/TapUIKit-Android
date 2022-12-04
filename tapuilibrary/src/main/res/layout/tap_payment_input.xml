@@ -86,9 +86,15 @@
 
             </RelativeLayout>
 
-
+            <company.tap.tapuilibrary.uikit.views.TapAlertView
+                android:id="@+id/alertView"
+                android:visibility="visible"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_paylayout"/>
 
         </RelativeLayout>
+
     </androidx.cardview.widget.CardView>
     <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
         android:id="@+id/sections_tablayout"
