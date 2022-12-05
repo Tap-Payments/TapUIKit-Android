@@ -232,10 +232,10 @@ class TapCardSwitch : LinearLayout {
 
         var poweredByTextViewTheme = TextViewTheme()
         poweredByTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("poweredBYBranding.poweredByTextColor"))
+            Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
         poweredByTextViewTheme.textSize =
-            ThemeManager.getFontSize("poweredBYBranding.poweredByFont")
-        poweredByTextViewTheme.font = ThemeManager.getFontName("poweredBYBranding.poweredByFont")
+            ThemeManager.getFontSize("poweredByTap.powerLabel.font")
+        poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
         textViewPowered.setTheme(poweredByTextViewTheme)
     }
 
