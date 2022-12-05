@@ -50,6 +50,7 @@
                 android:id="@+id/saveForOtherCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:buttonTint="#006ADB"
                 android:text="Save for other stores powered by Tap"/>
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
