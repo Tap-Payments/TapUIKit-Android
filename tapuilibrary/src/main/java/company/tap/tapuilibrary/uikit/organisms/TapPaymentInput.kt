@@ -36,6 +36,8 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val tabLinear by lazy { findViewById<RelativeLayout>(R.id.tabLinear) }
     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
+    var cardScannerButton :ImageView
+    var nfcButton :ImageView
     private  var tapMobileInputView: TapMobilePaymentView
     private var displayMetrics: Int? = null
 
@@ -48,6 +50,18 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         tapMobileInputView = TapMobilePaymentView(context, null)
         tapMobileInputViewTextWatcher()
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
+        cardScannerButton = findViewById(R.id.card_scanner_button)
+        nfcButton = findViewById(R.id.nfc_button)
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            cardScannerButton.setImageResource(R.drawable.icon_scan_light)
+        }else{
+            cardScannerButton.setImageResource(R.drawable.icon_scan)
+        }
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            nfcButton.setImageResource(R.drawable.icon_nfc_light)
+        }else{
+            nfcButton.setImageResource(R.drawable.icon_nfc)
+        }
 
     }
     fun setDisplayMetrics(displayMetrics: Int) {

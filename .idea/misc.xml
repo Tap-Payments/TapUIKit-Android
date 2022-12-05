@@ -21,7 +21,10 @@
         <entry key="tapuilibrary/src/main/res/drawable/close_background.xml" value="0.11" />
         <entry key="tapuilibrary/src/main/res/drawable/ic_cardscanner.xml" value="0.233" />
         <entry key="tapuilibrary/src/main/res/drawable/ic_close.xml" value="0.1265" />
+        <entry key="tapuilibrary/src/main/res/drawable/ic_nfc_green.xml" value="0.227" />
+        <entry key="tapuilibrary/src/main/res/drawable/ic_scan_green.xml" value="0.227" />
         <entry key="tapuilibrary/src/main/res/drawable/icon_adcb.xml" value="0.2655" />
+        <entry key="tapuilibrary/src/main/res/drawable/nfc_button_select.xml" value="0.227" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_login_input.xml" value="0.17477477477477477" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_password_input.xml" value="0.17477477477477477" />
         <entry key="tapuilibrary/src/main/res/layout/item_view_adapter.xml" value="0.17162162162162162" />
