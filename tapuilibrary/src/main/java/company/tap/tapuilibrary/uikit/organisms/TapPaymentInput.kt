@@ -47,6 +47,9 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     @DrawableRes
     val nfcIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.icon_nfc_light else R.drawable.icon_nfc
+    @DrawableRes
+    val closeIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.icon_close_dark else R.drawable.icon_close2
 
 
     init {
@@ -61,6 +64,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         cardScannerButton = findViewById(R.id.card_scanner_button)
         nfcButton = findViewById(R.id.nfc_button)
         cardScannerButton.setImageResource(scannerIcon)
+        clearView.setImageResource(closeIcon)
         nfcButton.setImageResource(nfcIcon)
     }
     fun setDisplayMetrics(displayMetrics: Int) {
