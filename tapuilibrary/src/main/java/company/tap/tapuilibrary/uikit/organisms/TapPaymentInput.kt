@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -40,6 +41,13 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     var nfcButton :ImageView
     private  var tapMobileInputView: TapMobilePaymentView
     private var displayMetrics: Int? = null
+    @DrawableRes
+    val scannerIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.icon_scan_light else R.drawable.icon_scan
+    @DrawableRes
+    val nfcIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.icon_nfc_light else R.drawable.icon_nfc
+
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
@@ -52,17 +60,8 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
         cardScannerButton = findViewById(R.id.card_scanner_button)
         nfcButton = findViewById(R.id.nfc_button)
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            cardScannerButton.setImageResource(R.drawable.icon_scan_light)
-        }else{
-            cardScannerButton.setImageResource(R.drawable.icon_scan)
-        }
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            nfcButton.setImageResource(R.drawable.icon_nfc_light)
-        }else{
-            nfcButton.setImageResource(R.drawable.icon_nfc)
-        }
-
+        cardScannerButton.setImageResource(scannerIcon)
+        nfcButton.setImageResource(nfcIcon)
     }
     fun setDisplayMetrics(displayMetrics: Int) {
         this.displayMetrics = displayMetrics
