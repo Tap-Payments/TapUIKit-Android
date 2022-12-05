@@ -94,12 +94,7 @@
                 android:layout_below="@+id/linear_paylayout"/>
 
 
-        <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
-            android:id="@+id/sections_tablayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/alertView"
-            />
+
         <company.tap.tapuilibrary.uikit.views.TapInlineCardSwitch
             android:id="@+id/switch_Inline_card"
             android:layout_width="match_parent"
@@ -110,6 +105,13 @@
             android:layout_below="@+id/linear_paylayout"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+    <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
+        android:id="@+id/sections_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_basic_10dp"
+        android:layout_marginEnd="@dimen/margin_basic_10dp"
 
+        />
 
 </LinearLayout>
