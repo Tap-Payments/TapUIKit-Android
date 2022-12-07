@@ -9,6 +9,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
@@ -37,6 +38,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val tabLinear by lazy { findViewById<RelativeLayout>(R.id.tabLinear) }
     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
+    val inlineProgressBar by lazy { findViewById<ProgressBar>(R.id.inlineProgressbar) }
     var cardScannerButton :ImageView
     var nfcButton :ImageView
     private  var tapMobileInputView: TapMobilePaymentView
