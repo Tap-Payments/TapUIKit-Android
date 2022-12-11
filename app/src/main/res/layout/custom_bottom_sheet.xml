@@ -244,7 +244,13 @@
 <!--            layout="@layout/fragment_otpscreen"/>-->
 
 
+<company.tap.tapuilibrary.uikit.views.TapCardDetailView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"/>
 
+        <company.tap.tapuilibrary.uikit.views.TapContactDetailsView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
 
         <FrameLayout
                 android:id="@+id/webViewContainer"
