@@ -55,11 +55,11 @@ class TapShippingDetailView : LinearLayout {
     fun setTheme(){
         val shippingTitleTextViewTheme = TextViewTheme()
         shippingTitleTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color"))
         shippingTitleTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("customerDataCollection.textfields.font")
         shippingTitleTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("customerDataCollection.textfields.font")
 
         shippingDetailTitle.setTheme(shippingTitleTextViewTheme)
     }

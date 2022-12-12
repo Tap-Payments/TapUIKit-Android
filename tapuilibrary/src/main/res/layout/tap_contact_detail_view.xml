@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/cardDet_mainLL">
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/cardDetails_Title"
@@ -88,7 +89,7 @@
                     app:ccp_showNameCode="false"/>
 
 
-                <EditText
+                <company.tap.tapuilibrary.uikit.atoms.TapEditText
                     android:id="@+id/contact_mobileNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"

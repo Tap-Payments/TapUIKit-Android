@@ -24,6 +24,7 @@ class TapContactDetailsView : LinearLayout {
     val contactCountryPicker by lazy { findViewById<CountryCodePicker>(R.id.contact_countryCodePicker) }
     val contactMobileNumber by lazy { findViewById<TapEditText>(R.id.contact_mobileNumber) }
     val contactSeparator by lazy { findViewById<TapSeparatorView>(R.id.contactSeparator) }
+    val cardDetailMainLL by lazy { findViewById<LinearLayout>(R.id.cardDet_mainLL) }
     private var countryCode: String? = null
 
     /**
@@ -53,13 +54,21 @@ class TapContactDetailsView : LinearLayout {
     fun setTheme(){
         val contactTitleTextViewTheme = TextViewTheme()
         contactTitleTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color"))
         contactTitleTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("customerDataCollection.textfields.font")
         contactTitleTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("customerDataCollection.textfields.font")
         cardDetailTitle.setTheme(contactTitleTextViewTheme)
 
+        cardDetailMainLL.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
+        contactEmailET.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
+        contactEmailET.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
+
+        contactMobileNumber.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
+        contactMobileNumber.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
+
+        mobileMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryTable.backgroundColor")))
     }
 
 
