@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_basic_10dp"
-        android:text="Card Details"/>
+        android:text="Contact Details"/>
 
     <androidx.cardview.widget.CardView
         android:layout_margin="@dimen/margin_basic_10dp"
@@ -57,7 +57,7 @@
                     android:layout_marginBottom="10dp"
                     android:layout_marginEnd="@dimen/margin_basic_10dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/mobile"
+                    android:src="@drawable/ic_add"
                     android:visibility="visible" />
 
 
@@ -102,7 +102,8 @@
                     android:lineHeight="0.5dp"
                     android:maxLength="10"
                     android:textSize="@dimen/font_size_17sp"
-                    tools:background="@android:color/transparent" />
+                    android:background="@null"
+                    tools:background="@null" />
 
 
             </LinearLayout>

@@ -102,7 +102,7 @@ class TapContactDetailsView : LinearLayout {
         contactCountryPicker.visibility = View.VISIBLE
         contactCountryPicker.setDefaultCountryUsingNameCode("KW")
         countryCode = contactCountryPicker.defaultCountryCodeAsInt.toString()
-        contactCountryPicker.ccpDialogShowFlag = true
+        contactCountryPicker.ccpDialogShowFlag = false
         contactCountryPicker.showArrow(false)
         contactCountryPicker.contentColor =
             Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryCell.titleLabelColor"))
