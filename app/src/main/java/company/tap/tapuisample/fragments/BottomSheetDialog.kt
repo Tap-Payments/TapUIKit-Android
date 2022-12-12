@@ -140,6 +140,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var otpView: OTPView? = null
     private var acceptedCardText: TapTextView? = null
     private var mainLinear: LinearLayout? = null
+    private var contactDetailView: TapContactDetailsView? = null
+    private var shippingDetailView: TapShippingDetailView? = null
+    private var mobileMainLinear: LinearLayout? = null
 
 
     override fun onCreateView(
@@ -309,6 +312,38 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
       //  addMobileTab() // commented for now 28sep22
         setupBrandDetection()
         configureSwitch()
+        initCustomerDetailView(view)
+    }
+
+    private fun initCustomerDetailView(view: View) {
+        contactDetailView = view.findViewById(R.id.contactDetailView)
+        shippingDetailView = view.findViewById(R.id.shipDetailView)
+        mobileMainLinear = contactDetailView?.findViewById(R.id.mobilePaymentMainLinear)
+        mobileMainLinear?.visibility = View.GONE
+        shippingDetailView?.visibility = View.GONE
+
+       contactDetailView?.contactEmailET?.addTextChangedListener(object : TextWatcher {
+           override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+           }
+           override fun afterTextChanged(arg0: Editable) {
+             if(arg0.contains("tap")){
+                 contactDetailView?.mobileMainLinear?.visibility =View.VISIBLE
+             }
+           }
+           override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+       })
+
+        contactDetailView?.contactMobileNumber?.addTextChangedListener(object : TextWatcher {
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+            }
+            override fun afterTextChanged(arg0: Editable) {
+                if(arg0.contains("55567")){
+                    shippingDetailView?.visibility =View.VISIBLE
+                }
+            }
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+        })
+
     }
 
     private fun initializeCardForm(view: View) {

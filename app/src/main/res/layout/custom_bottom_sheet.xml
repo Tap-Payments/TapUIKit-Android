@@ -250,10 +250,12 @@
     android:visibility="gone"/>
 
         <company.tap.tapuilibrary.uikit.views.TapContactDetailsView
+            android:id="@+id/contactDetailView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
         <company.tap.tapuilibrary.uikit.views.TapShippingDetailView
+            android:id="@+id/shipDetailView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
