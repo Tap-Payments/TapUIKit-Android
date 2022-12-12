@@ -4,7 +4,6 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
-import android.view.View
 import android.widget.LinearLayout
 import com.hbb20.CountryCodePicker
 import company.tap.taplocalizationkit.LocalizationManager
@@ -13,17 +12,20 @@ import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
-import company.tap.tapuilibrary.uikit.atoms.*
+import company.tap.tapuilibrary.uikit.atoms.TapEditText
+import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
 
+class TapShippingDetailView : LinearLayout {
 
-class TapContactDetailsView : LinearLayout {
-
-    val cardDetailTitle by lazy { findViewById<TapTextView>(R.id.cardDetails_Title) }
-    val contactEmailET by lazy { findViewById<TapEditText>(R.id.emailId_EditText) }
-    val mobileMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
-    val contactCountryPicker by lazy { findViewById<CountryCodePicker>(R.id.contact_countryCodePicker) }
-    val contactMobileNumber by lazy { findViewById<TapEditText>(R.id.contact_mobileNumber) }
-    val contactSeparator by lazy { findViewById<TapSeparatorView>(R.id.contactSeparator) }
+    val shippingDetailTitle by lazy { findViewById<TapTextView>(R.id.cardShipping_Title) }
+    val flatEditText by lazy { findViewById<TapTextView>(R.id.flat_EditText) }
+    val additionalLineEditText by lazy { findViewById<TapEditText>(R.id.additionalLine_EditText) }
+    val cityEditText by lazy { findViewById<LinearLayout>(R.id.city_EditText) }
+    val shippingCountryPicker by lazy { findViewById<CountryCodePicker>(R.id.shipping_countryCodePicker) }
+    val shippingSeparator0 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator0) }
+    val shippingSeparator1 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator1) }
+    val shippingSeparator2 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator2) }
     private var countryCode: String? = null
 
     /**
@@ -42,24 +44,24 @@ class TapContactDetailsView : LinearLayout {
     constructor(context: Context, attrs: AttributeSet?) : super(context, attrs)
 
     init {
-        inflate(context, R.layout.tap_contact_detail_view, this)
+        inflate(context, R.layout.tap_shipping_detail_view, this)
         setTheme()
         setSeparatorTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
 
-        initCountryCodePicker()
+
     }
 
     fun setTheme(){
-        val contactTitleTextViewTheme = TextViewTheme()
-        contactTitleTextViewTheme.textColor =
+        val shippingTitleTextViewTheme = TextViewTheme()
+        shippingTitleTextViewTheme.textColor =
             Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
-        contactTitleTextViewTheme.textSize =
+        shippingTitleTextViewTheme.textSize =
             ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
-        contactTitleTextViewTheme.font =
+        shippingTitleTextViewTheme.font =
             ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
-        cardDetailTitle.setTheme(contactTitleTextViewTheme)
 
+        shippingDetailTitle.setTheme(shippingTitleTextViewTheme)
     }
 
 
@@ -68,11 +70,14 @@ class TapContactDetailsView : LinearLayout {
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
-        contactSeparator.setTheme(separatorViewTheme)
+        shippingSeparator0.setTheme(separatorViewTheme)
+        shippingSeparator1.setTheme(separatorViewTheme)
+        shippingSeparator2.setTheme(separatorViewTheme)
     }
 
+
     fun setFontsEnglish() {
-        cardDetailTitle?.typeface = Typeface.createFromAsset(
+        shippingDetailTitle?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoRegular
             )
@@ -81,7 +86,7 @@ class TapContactDetailsView : LinearLayout {
     }
 
     fun setFontsArabic() {
-        cardDetailTitle?.typeface = Typeface.createFromAsset(
+        shippingDetailTitle?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalMedium
             )
@@ -89,14 +94,4 @@ class TapContactDetailsView : LinearLayout {
 
     }
 
-    private fun initCountryCodePicker() {
-        contactCountryPicker.visibility = View.VISIBLE
-        contactCountryPicker.setDefaultCountryUsingNameCode("KW")
-        countryCode = contactCountryPicker.defaultCountryCodeAsInt.toString()
-        contactCountryPicker.ccpDialogShowFlag = true
-        contactCountryPicker.showArrow(false)
-        contactCountryPicker.contentColor =
-            Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
-        contactCountryPicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
-    }
 }
