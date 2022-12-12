@@ -105,7 +105,7 @@ class TapContactDetailsView : LinearLayout {
         contactCountryPicker.ccpDialogShowFlag = true
         contactCountryPicker.showArrow(false)
         contactCountryPicker.contentColor =
-            Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor"))
-        contactCountryPicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
+            Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryCell.titleLabelColor"))
+        contactCountryPicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryTable.backgroundColor")))
     }
 }

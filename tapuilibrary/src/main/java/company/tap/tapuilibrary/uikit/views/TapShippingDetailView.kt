@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.view.View
 import android.widget.LinearLayout
 import com.hbb20.CountryCodePicker
 import company.tap.taplocalizationkit.LocalizationManager
@@ -49,7 +50,7 @@ class TapShippingDetailView : LinearLayout {
         setTheme()
         setSeparatorTheme()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
-
+        initCountryCodePicker()
 
     }
 
@@ -105,5 +106,14 @@ class TapShippingDetailView : LinearLayout {
         )
 
     }
-
+    private fun initCountryCodePicker() {
+        shippingCountryPicker.visibility = View.VISIBLE
+        shippingCountryPicker.setDefaultCountryUsingNameCode("KW")
+       // countryCode = shippingCountryPicker.defaultCountryCodeAsInt.toString()
+        shippingCountryPicker.ccpDialogShowFlag = true
+        shippingCountryPicker.showArrow(false)
+        shippingCountryPicker.contentColor =
+            Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryCell.titleLabelColor"))
+        shippingCountryPicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryTable.backgroundColor")))
+    }
 }

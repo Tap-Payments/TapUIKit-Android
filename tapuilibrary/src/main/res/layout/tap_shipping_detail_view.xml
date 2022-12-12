@@ -67,6 +67,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="1dp"
                 android:background="@color/view_color" />
+        <LinearLayout
+            android:id="@+id/mobilePaymentMainLinear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/margin_basic_16dp">
+
+
             <com.hbb20.CountryCodePicker
                 android:id="@+id/shipping_countryCodePicker"
                 android:layout_width="match_parent"
@@ -78,6 +87,7 @@
                 android:layout_marginEnd="@dimen/margin_basic_6dp"
                 app:ccp_textGravity="LEFT"
                 android:textDirection="ltr"
+                app:ccp_showPhoneCode="false"
 
                 app:ccp_defaultPhoneCode="965"
                 app:ccp_contentColor="@color/gray"
@@ -93,6 +103,17 @@
                 app:ccp_hintExampleNumber="false"
                 app:ccp_showFlag="true"
                 app:ccp_showNameCode="true"/>
+            <company.tap.tapuilibrary.uikit.atoms.TapImageView
+                android:id="@+id/mobileImage"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="-45dp"
+                android:src="@drawable/ic_arrow_down"
+                android:visibility="visible" />
+
+        </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
