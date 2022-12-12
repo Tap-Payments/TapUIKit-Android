@@ -50,7 +50,7 @@
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.25" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.5415390014648438" />
         <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.1875" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_shipping_detail_view.xml" value="0.24774774774774774" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_shipping_detail_view.xml" value="0.625" />
       </map>
     </option>
   </component>

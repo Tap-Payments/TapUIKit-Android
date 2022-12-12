@@ -19,8 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/margin_basic_15dp"
-        app:cardElevation="@dimen/margin_basic_15dp"
-        android:elevation="@dimen/margin_basic_15dp">
+        app:cardElevation="@dimen/margin_basic_10dp"
+        android:elevation="@dimen/margin_basic_10dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                 android:gravity="center"
                 app:ccpDialog_showCloseIcon="true"
                 app:ccpDialog_showNameCode="false"
-                app:ccp_customMasterCountries="KW,QA,BH,SA,UAE"
+                app:ccp_customMasterCountries="KW,QA,BH,SA,UAE,JO"
                 app:ccpDialog_textColor="@color/gray"
                 app:ccp_hintExampleNumber="false"
                 app:ccp_showFlag="true"
