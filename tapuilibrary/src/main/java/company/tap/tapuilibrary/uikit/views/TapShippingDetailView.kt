@@ -19,13 +19,14 @@ import company.tap.tapuilibrary.uikit.atoms.TapTextView
 class TapShippingDetailView : LinearLayout {
 
     val shippingDetailTitle by lazy { findViewById<TapTextView>(R.id.cardShipping_Title) }
-    val flatEditText by lazy { findViewById<TapTextView>(R.id.flat_EditText) }
+    val flatEditText by lazy { findViewById<TapEditText>(R.id.flat_EditText) }
     val additionalLineEditText by lazy { findViewById<TapEditText>(R.id.additionalLine_EditText) }
-    val cityEditText by lazy { findViewById<LinearLayout>(R.id.city_EditText) }
+    val cityEditText by lazy { findViewById<TapEditText>(R.id.cityName_EditText) }
     val shippingCountryPicker by lazy { findViewById<CountryCodePicker>(R.id.shipping_countryCodePicker) }
     val shippingSeparator0 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator0) }
     val shippingSeparator1 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator1) }
     val shippingSeparator2 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator2) }
+    val cardShippingMainLL by lazy { findViewById<LinearLayout>(R.id.cardShipping_mainLL) }
     private var countryCode: String? = null
 
     /**
@@ -62,6 +63,17 @@ class TapShippingDetailView : LinearLayout {
             ThemeManager.getFontName("customerDataCollection.textfields.font")
 
         shippingDetailTitle.setTheme(shippingTitleTextViewTheme)
+
+        cardShippingMainLL.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
+        flatEditText.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
+        flatEditText.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
+
+        additionalLineEditText.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
+        additionalLineEditText.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
+
+        cityEditText.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
+        cityEditText.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
+
     }
 
 

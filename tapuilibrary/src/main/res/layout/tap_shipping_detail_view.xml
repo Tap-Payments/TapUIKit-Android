@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/cardShipping_mainLL">
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/cardShipping_Title"
@@ -60,7 +61,7 @@
                 android:imeOptions="actionNext"
                 android:background="@null"
                 android:layout_margin="8dp"
-                android:id="@+id/city_EditText"/>
+                android:id="@+id/cityName_EditText"/>
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                 android:id="@+id/shippingSeparator2"
                 android:layout_width="wrap_content"

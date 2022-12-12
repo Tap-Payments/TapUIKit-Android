@@ -78,7 +78,7 @@ class MainActivity : BaseActivity(),
 //        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
 //        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))
             ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/976650c60952b525d51b739254cd417c/raw/4ca48d48f3cd5dc8a0d4ab49b788bb3e2e9bdc0c/defaultlighttheme1.json")
-       //    ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/2ca0cbeaf430c6d40baa4d0700024848/raw/aba506185d267ee9d379b5c84d71c8cbed1cbbf2/darktheme.json")
+         //  ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/2ca0cbeaf430c6d40baa4d0700024848/raw/aba506185d267ee9d379b5c84d71c8cbed1cbbf2/darktheme.json")
 //        else   ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/9862436dff3b3ca222243dad3705ec6a/raw/76f9bd9d4e12e7d9dccf5f4969baf09c15a1ea47/lighttheme")
 
 
