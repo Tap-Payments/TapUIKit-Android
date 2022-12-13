@@ -93,7 +93,13 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/linear_paylayout"/>
 
-
+            <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+                android:id="@+id/separator4"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                tools:background="@color/black_27"
+                android:visibility="gone"
+                android:layout_below="@+id/linear_paylayout"/>
 
         <company.tap.tapuilibrary.uikit.views.TapInlineCardSwitch
             android:id="@+id/switch_Inline_card"
