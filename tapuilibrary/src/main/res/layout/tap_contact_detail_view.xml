@@ -11,8 +11,9 @@
         android:id="@+id/cardDetails_Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textAllCaps="true"
         android:layout_margin="@dimen/margin_basic_10dp"
-        android:text="Contact Details"/>
+        tools:text="Contact Details"/>
 
     <androidx.cardview.widget.CardView
         android:layout_margin="@dimen/margin_basic_10dp"
