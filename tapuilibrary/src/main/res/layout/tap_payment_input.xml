@@ -88,9 +88,9 @@
 
             <company.tap.tapuilibrary.uikit.views.TapAlertView
                 android:id="@+id/alertView"
-                android:visibility="visible"
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="35dp"
                 android:layout_below="@+id/linear_paylayout"/>
 
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
