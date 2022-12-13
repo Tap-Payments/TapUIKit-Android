@@ -108,7 +108,7 @@
 
             android:layout_gravity="start"
             android:layoutDirection="locale"
-            android:layout_below="@+id/linear_paylayout"/>
+            android:layout_below="@+id/alertView"/>
         </RelativeLayout>
         <ProgressBar
             android:id="@+id/inlineProgressbar"
