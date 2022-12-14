@@ -82,7 +82,7 @@
             android:id="@+id/itemCountText"
             android:textColor="#626262"
             android:textSize="@dimen/font_size_10sp"
-            android:layout_margin="2dp"
+            android:layout_margin="7dp"
             android:textStyle="normal"
             android:text="10 ITEMS"/>
         <View
