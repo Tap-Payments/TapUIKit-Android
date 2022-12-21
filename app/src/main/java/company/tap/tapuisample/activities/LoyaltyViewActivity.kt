@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
-import android.provider.Browser
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -18,9 +17,9 @@ import company.tap.tapuilibrary.uikit.organisms.TapLoyaltyView
 import company.tap.tapuisample.R
 
 class LoyaltyViewActivity : AppCompatActivity() {
-    var loyaltyView: TapLoyaltyView?=null
-    var constraintt: ConstraintLayout?=null
-    var textViewClickable: TapTextView ?=null
+    var loyaltyView: TapLoyaltyView? = null
+    var constraintt: ConstraintLayout? = null
+    var textViewClickable: TapTextView? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loyalty_view)
@@ -36,11 +35,11 @@ class LoyaltyViewActivity : AppCompatActivity() {
         loyaltyView?.switchLoyalty?.setOnCheckedChangeListener { buttonView, isChecked ->
             loyaltyView?.switchTheme()
 
-            if(isChecked){
-               loyaltyView?.linearLayout2?.visibility = View.VISIBLE
-               loyaltyView?.linearLayout3?.visibility = View.VISIBLE
+            if (isChecked) {
+                loyaltyView?.linearLayout2?.visibility = View.VISIBLE
+                loyaltyView?.linearLayout3?.visibility = View.VISIBLE
 
-            }else {
+            } else {
 
                 loyaltyView?.linearLayout2?.visibility = View.GONE
                 loyaltyView?.linearLayout3?.visibility = View.GONE
@@ -48,24 +47,31 @@ class LoyaltyViewActivity : AppCompatActivity() {
             }
         }
         constraintt?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
-        loyaltyView?.setLoyaltyHeaderDataSource(LoyaltyHeaderDataSource("ADCB","https://user-images.githubusercontent.com/57221514/191747750-544516b5-94d1-4b00-86d5-916f3da9f55a.png"))
+        loyaltyView?.setLoyaltyHeaderDataSource(
+            LoyaltyHeaderDataSource(
+                "ADCB",
+                "https://user-images.githubusercontent.com/57221514/191747750-544516b5-94d1-4b00-86d5-916f3da9f55a.png"
+            )
+        )
 
-      loyaltyView?.textViewClickable?.makeLinks(
-          Pair("(T&C)", View.OnClickListener {
-              val url = "https://www.adcb.com/en/tools-resources/adcb-privacy-policy/"
-              val intent = Intent(Intent.ACTION_VIEW)
-              intent.data = Uri.parse(url)
-              startActivity(intent)
-              Toast.makeText(this, "Terms of Service Clicked", Toast.LENGTH_SHORT).show()
-          }))
+        loyaltyView?.textViewClickable?.makeLinks(
+            Pair("(T&C)", View.OnClickListener {
+                val url = "https://www.adcb.com/en/tools-resources/adcb-privacy-policy/"
+                val intent = Intent(Intent.ACTION_VIEW)
+                intent.data = Uri.parse(url)
+                startActivity(intent)
+                Toast.makeText(this, "Terms of Service Clicked", Toast.LENGTH_SHORT).show()
+            })
+        )
 
         loyaltyView?.editTextAmount?.doOnTextChanged { text, start, count, after ->
             // action which will be invoked when the text is changing
-            if(text.toString()=="340"){
-                loyaltyView?.loyaltyAlertView?.alertMessage?.text = "Minimum redemption is AED 20.00 "
-                loyaltyView?.loyaltyAlertView?.visibility =View.VISIBLE
-            }else{
-                loyaltyView?.loyaltyAlertView?.visibility =View.GONE
+            if (text.toString() == "340") {
+                loyaltyView?.loyaltyAlertView?.alertMessage?.text =
+                    "Minimum redemption is AED 20.00 "
+                loyaltyView?.loyaltyAlertView?.visibility = View.VISIBLE
+            } else {
+                loyaltyView?.loyaltyAlertView?.visibility = View.GONE
             }
         }
 
@@ -73,8 +79,6 @@ class LoyaltyViewActivity : AppCompatActivity() {
         loyaltyView?.textViewRemainPoints?.text = "Remain points "
 
     }
-
-
 
 
 }

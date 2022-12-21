@@ -219,9 +219,9 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         /**
          * set bottom sheet background
          */
-        backgroundColor =
-            (Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.main_switch_background")))
-        backgroundColor = (Color.parseColor("#00000000"))
+     //   backgroundColor =
+     //       (Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.main_switch_background")))
+      //  backgroundColor = (Color.parseColor("#00000000"))
         setTopBorders(
             topLinear,
             40f,// corner raduis
