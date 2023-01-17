@@ -25,6 +25,7 @@ class TapAmountSectionView : LinearLayout {
     val itemCountText by lazy { findViewById<TapTextView>(R.id.itemCountText) }
     val itemAmountText by lazy { findViewById<TapTextView>(R.id.itemAmountText) }
     val amountImageView by lazy { findViewById<TapImageView>(R.id.amountImageView) }
+    val itemAmountLayout by lazy { findViewById<LinearLayout>(R.id.item_amount_Layout) }
 
     private var amountViewDataSource: AmountViewDataSource? = null
 
