@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
-        android:elevation="2dp"
+        android:elevation="8dp"
         android:layout_margin="8dp"
         >
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
