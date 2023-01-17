@@ -144,7 +144,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             LOADING ->{
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.loader,1) {
+                addChildView(getImageView(R.drawable.loader,2) {
                     morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
 
                 })
