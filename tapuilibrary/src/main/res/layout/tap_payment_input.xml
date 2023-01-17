@@ -10,10 +10,11 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardInput_cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
-        android:elevation="@dimen/margin_basic_10dp"
+        android:elevation="2dp"
         android:layout_margin="8dp"
         >
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
