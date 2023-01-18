@@ -44,8 +44,8 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val separator4 by lazy { findViewById<TapSeparatorView>(R.id.separator4) }
     val inlineProgressBar by lazy { findViewById<ProgressBar>(R.id.inlineProgressbar) }
     val cardInputCardView by lazy { findViewById<CardView>(R.id.cardInput_cardView) }
-    var cardScannerButton :ImageView
-    var nfcButton :ImageView
+    //var cardScannerButton :ImageView
+   // var nfcButton :ImageView
     private  var tapMobileInputView: TapMobilePaymentView
     private var displayMetrics: Int? = null
     @DrawableRes
@@ -68,11 +68,11 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         tapMobileInputView = TapMobilePaymentView(context, null)
         tapMobileInputViewTextWatcher()
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
-        cardScannerButton = findViewById(R.id.card_scanner_button)
-        nfcButton = findViewById(R.id.nfc_button)
-        cardScannerButton.setImageResource(scannerIcon)
+      // cardScannerButton = findViewById(R.id.card_scanner_button)
+       // nfcButton = findViewById(R.id.nfc_button)
+      //  cardScannerButton.setImageResource(scannerIcon)
         clearView.setImageResource(closeIcon)
-        nfcButton.setImageResource(nfcIcon)
+      //  nfcButton.setImageResource(nfcIcon)
        /* if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))cardInputCardView.setBackgroundResource(
             R.drawable.border_unclick_black
         )

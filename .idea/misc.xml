@@ -29,6 +29,7 @@
         <entry key="tapuilibrary/src/main/res/drawable/nfc_button_select.xml" value="0.227" />
         <entry key="tapuilibrary/src/main/res/drawable/rounded_rectangle.xml" value="0.165" />
         <entry key="tapuilibrary/src/main/res/layout/card_section_layout.xml" value="0.17074275362318841" />
+        <entry key="tapuilibrary/src/main/res/layout/fawry_payment_view.xml" value="0.23063063063063063" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_layout.xml" value="0.23063063063063063" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_login_input.xml" value="0.17477477477477477" />
         <entry key="tapuilibrary/src/main/res/layout/gopay_password_input.xml" value="0.17477477477477477" />
