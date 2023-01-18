@@ -95,7 +95,7 @@
             app:cardCornerRadius="100dp"
             android:innerRadius="0dp"
             android:shape="ring"
-            app:cardElevation="5dp"
+            app:cardElevation="2dp"
             android:foregroundGravity = "center"
             android:layout_centerInParent = "true">
 
