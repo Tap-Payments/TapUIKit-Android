@@ -61,7 +61,7 @@ class TapContactDetailsView : LinearLayout {
             ThemeManager.getFontName("customerDataCollection.textfields.font")
         cardDetailTitle.setTheme(contactTitleTextViewTheme)
 
-        cardDetailMainLL.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
+     //   cardDetailMainLL.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
         contactEmailET.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
         contactEmailET.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
 
