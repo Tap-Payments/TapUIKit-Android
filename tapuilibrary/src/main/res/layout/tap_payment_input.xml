@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainLinear"
-
     android:orientation="vertical">
 
 
@@ -14,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
-        android:elevation="10dp"
         android:layout_margin="8dp"
         >
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
@@ -81,7 +79,7 @@
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
-                    android:layout_toEndOf="@+id/nfc_button"
+
                     android:padding="10dp"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/icon_close2"
