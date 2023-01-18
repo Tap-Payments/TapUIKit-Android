@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="true"
+        android:textColor="#9F9F9F"
         android:layout_margin="@dimen/margin_basic_10dp"
         tools:text="Contact Details"/>
 
@@ -27,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:id="@+id/field_LinearLayout"
           >
 
             <company.tap.tapuilibrary.uikit.atoms.TapEditText

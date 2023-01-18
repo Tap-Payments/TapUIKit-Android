@@ -25,6 +25,7 @@ class TapContactDetailsView : LinearLayout {
     val contactMobileNumber by lazy { findViewById<TapEditText>(R.id.contact_mobileNumber) }
     val contactSeparator by lazy { findViewById<TapSeparatorView>(R.id.contactSeparator) }
     val cardDetailMainLL by lazy { findViewById<LinearLayout>(R.id.cardDet_mainLL) }
+    val fieldLinearLayout by lazy { findViewById<LinearLayout>(R.id.field_LinearLayout) }
     private var countryCode: String? = null
 
     /**
@@ -65,6 +66,7 @@ class TapContactDetailsView : LinearLayout {
         contactEmailET.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
         contactEmailET.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
         contactEmailET.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
+        fieldLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
 
         contactMobileNumber.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
         contactMobileNumber.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
