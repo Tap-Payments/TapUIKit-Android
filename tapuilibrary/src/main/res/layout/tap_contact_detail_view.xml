@@ -25,13 +25,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white">
 
             <company.tap.tapuilibrary.uikit.atoms.TapEditText
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:hint="Email"
                 android:imeOptions="actionNext"
+                android:background="@null"
                 android:layout_margin="8dp"
                 android:id="@+id/emailId_EditText"/>
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
