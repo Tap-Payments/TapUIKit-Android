@@ -32,7 +32,6 @@
                 android:layout_height="30dp"
                 android:hint="Email"
                 android:imeOptions="actionNext"
-                android:background="@null"
                 android:layout_margin="8dp"
                 android:id="@+id/emailId_EditText"/>
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
