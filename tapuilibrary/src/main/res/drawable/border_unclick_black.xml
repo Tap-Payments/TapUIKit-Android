@@ -27,21 +27,21 @@
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#2b2c2f" />
+           <!-- <solid android:color="#2b2c2f" />-->
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#2b2c2f" />
+          <!--  <solid android:color="#2b2c2f" />-->
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
             <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#2b2c2f" />
+           <!-- <solid android:color="#2b2c2f" />-->
             <corners android:radius="8dp" />
         </shape>
     </item>
