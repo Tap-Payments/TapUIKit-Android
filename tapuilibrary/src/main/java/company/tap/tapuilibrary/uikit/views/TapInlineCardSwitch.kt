@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.TooltipCompat
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -42,6 +43,17 @@ class TapInlineCardSwitch : LinearLayout {
     val secondaryLayout by lazy { findViewById<LinearLayout>(R.id.secondary_Layout) }
     val saveForOtherCheckBox by lazy { findViewById<CheckBox>(R.id.saveForOtherCheckBox) }
     private var actionButtonInterface: TapActionButtonInterface? = null
+    val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
+    val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
+
+    @DrawableRes
+    val logoIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.tap_logo_black
+        } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
+            R.drawable.tap_logo_white
+        }else R.drawable.tap_logo_white
+
 
 
     lateinit var attrs: AttributeSet
@@ -93,7 +105,7 @@ class TapInlineCardSwitch : LinearLayout {
         saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
         switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.greyishBrown")))
         saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
-
+        tapLogoImage.setImageResource(logoIcon)
     }
 
     fun setSwitchInterface(actionButtonInterface: TapActionButtonInterface) {
@@ -192,6 +204,14 @@ class TapInlineCardSwitch : LinearLayout {
             ThemeManager.getFontSize("poweredByTap.powerLabel.font")
         poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
         textViewPowered.setTheme(poweredByTextViewTheme)
+
+
+        var tapTextViewTheme = TextViewTheme()
+        tapTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
+        tapTextViewTheme.textSize =
+            ThemeManager.getFontSize("poweredByTap.powerLabel.font")
+        tapTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
+        tapTextView.setTheme(tapTextViewTheme)
     }
 
 

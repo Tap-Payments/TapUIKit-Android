@@ -128,9 +128,18 @@
             android:layout_height="34dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:src="@drawable/taplogohorizontal"
+           android:id="@+id/tapLogoImage"
             />
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            android:id="@+id/textTap_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#626262"
+            android:textSize="@dimen/font_size_10sp"
+            android:text="tap"
 
+            />
     </LinearLayout>
 
 </LinearLayout>
