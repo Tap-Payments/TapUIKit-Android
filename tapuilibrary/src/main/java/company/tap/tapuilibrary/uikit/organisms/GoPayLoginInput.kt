@@ -128,7 +128,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textThem.textSize = ThemeManager.getFontSize("goPay.loginBar.hintLabel.textFont")
         goPayHint.setTheme(textThem)
         goPayLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
-        loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.selectedTabIndicatorColor")))
+        loginTabLayout.setSelectedTabIndicatorColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.underline.selected.backgroundColor")))
         loginTabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
         loginTabLayout.tabTextColors =
             ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
@@ -136,7 +136,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         textInput.setHintTextColor(Color.parseColor(ThemeManager.getValue("phoneCard.textFields.placeHolderColor")))
         textInput.setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
         textInput.textSize = ThemeManager.getFontSize("emailCard.textFields.font").toFloat()
-        loginInputLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.inputFieldBackground")))
+        loginInputLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.passwordField.backgroundColor")))
         countryCodePicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.backgroundColor")))
     }
 

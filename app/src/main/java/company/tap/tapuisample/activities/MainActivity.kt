@@ -72,9 +72,9 @@ class MainActivity : BaseActivity(),
         setLocale(this, LocalizationManager.getLocale(context).language)
 
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
-//        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
+       ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme2, "defaultdarktheme")
 //        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))
-            ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/976650c60952b525d51b739254cd417c/raw/4ca48d48f3cd5dc8a0d4ab49b788bb3e2e9bdc0c/defaultlighttheme1.json","lighttheme")
+          //  ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/976650c60952b525d51b739254cd417c/raw/4ca48d48f3cd5dc8a0d4ab49b788bb3e2e9bdc0c/defaultlighttheme1.json","lighttheme")
          //  ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/2ca0cbeaf430c6d40baa4d0700024848/raw/aba506185d267ee9d379b5c84d71c8cbed1cbbf2/darktheme.json","darktheme")
 //        else   ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/9862436dff3b3ca222243dad3705ec6a/raw/76f9bd9d4e12e7d9dccf5f4969baf09c15a1ea47/lighttheme","lighttheme")
 
@@ -216,9 +216,9 @@ class MainActivity : BaseActivity(),
 //        startActivity(Intent(this, ThemeTestActivity::class.java))
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme, "defaultlighttheme")
+            ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme1, "defaultlighttheme")
         }else{
-            ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
+            ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme1, "defaultdarktheme")
         }
 
         }

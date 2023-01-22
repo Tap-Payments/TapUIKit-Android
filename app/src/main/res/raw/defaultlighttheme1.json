@@ -782,5 +782,12 @@
             }
         },
         "cornerRadius":8
+    },
+    "poweredByTap": {
+        "powerLabel": {
+            "textColor": "lightGrey",
+            "font" : "Roboto-Light,10"
+        },
+        "tapLogo":"poweredByTapLogo"
     }
 }

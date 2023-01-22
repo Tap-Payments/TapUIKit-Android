@@ -18,10 +18,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
+import android.widget.*
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
@@ -146,6 +143,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var mobileMainLinear: LinearLayout? = null
     lateinit var cardInputCardView: TapChip
     lateinit var tapPaymentInput: TapPaymentInput
+    lateinit var saveForLaterCheckBox: CheckBox
 
 
     override fun onCreateView(
