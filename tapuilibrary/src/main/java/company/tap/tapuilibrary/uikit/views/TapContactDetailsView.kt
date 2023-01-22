@@ -107,7 +107,7 @@ class TapContactDetailsView : LinearLayout {
         countryCode = contactCountryPicker.defaultCountryCodeAsInt.toString()
         contactCountryPicker.ccpDialogShowFlag = false
         contactCountryPicker.showArrow(false)
-        contactCountryPicker.contentColor =
+        contactCountryPicker?.contentColor =
             Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryCell.titleLabelColor"))
         contactCountryPicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryTable.backgroundColor")))
     }

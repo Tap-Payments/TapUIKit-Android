@@ -102,8 +102,8 @@
             android:textSize="@dimen/font_size_10sp"
             />
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
             android:layout_gravity="center"
             android:layout_margin="5dp"
             android:id="@+id/tapLogoImage"
