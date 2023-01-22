@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import company.tap.taplocalizationkit.LocalizationManager
@@ -48,6 +49,10 @@ class TapHeaderSectionView : LinearLayout {
     val loadingLinear by lazy { findViewById<LinearLayout>(R.id.loadingLinear) }
     val loadingView by lazy { findViewById<TapLoadingView>(R.id.loadingView) }
 
+
+    @DrawableRes
+    val closeIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.icon_light_header_close else R.drawable.icon_dark_header_close
 
 
     private var headerDataSource: HeaderDataSource? = null
@@ -184,8 +189,8 @@ class TapHeaderSectionView : LinearLayout {
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 //        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
-        tapCloseIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.cancelButton.backgroundColor")))
-
+       // tapCloseIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.cancelButton.backgroundColor")))
+        tapCloseIcon.setImageResource(closeIcon)
         setTopBorders(
             topLinear,
             40f,// corner raduis
