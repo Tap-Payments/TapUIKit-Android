@@ -18,6 +18,7 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TabSelectTheme
+import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
@@ -43,7 +44,8 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
     val separator4 by lazy { findViewById<TapSeparatorView>(R.id.separator4) }
     val inlineProgressBar by lazy { findViewById<ProgressBar>(R.id.inlineProgressbar) }
-    val cardInputCardView by lazy { findViewById<CardView>(R.id.cardInput_cardView) }
+  //  val cardInputCardView by lazy { findViewById<CardView>(R.id.cardInput_cardView) }
+    val cardInputChipView by lazy { findViewById<TapChip>(R.id.cardInput_cardView) }
     //var cardScannerButton :ImageView
    // var nfcButton :ImageView
     private  var tapMobileInputView: TapMobilePaymentView
@@ -73,12 +75,12 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
       //  cardScannerButton.setImageResource(scannerIcon)
         clearView.setImageResource(closeIcon)
       //  nfcButton.setImageResource(nfcIcon)
-       /* if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))cardInputCardView.setBackgroundResource(
+     /*   if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))cardInputChipView.setBackgroundResource(
             R.drawable.border_unclick_black
         )
-        else  cardInputCardView.setBackgroundResource(R.drawable.border_unclick)
-
-        setBorderedView(
+        else  cardInputChipView.setBackgroundResource(R.drawable.border_unclick)
+*/
+       /* setBorderedView(
           cardInputCardView,
             (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
             0.0f,
@@ -86,6 +88,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
             Color.parseColor(ThemeManager.getValue("horizontalList.chips.gatewayChip.backgroundColor")),// tint color
             Color.parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
         )// shadow color*/
+
     }
     fun setDisplayMetrics(displayMetrics: Int) {
         this.displayMetrics = displayMetrics
