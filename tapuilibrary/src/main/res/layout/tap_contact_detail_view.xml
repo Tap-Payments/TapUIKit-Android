@@ -16,7 +16,8 @@
         android:layout_margin="@dimen/margin_basic_10dp"
         tools:text="Contact Details"/>
 
-    <androidx.cardview.widget.CardView
+    <company.tap.tapuilibrary.uikit.atoms.TapChip
+        android:id="@+id/mainContactCardView"
         android:layout_margin="@dimen/margin_basic_10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -114,6 +115,6 @@
 
             </LinearLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
 </LinearLayout>

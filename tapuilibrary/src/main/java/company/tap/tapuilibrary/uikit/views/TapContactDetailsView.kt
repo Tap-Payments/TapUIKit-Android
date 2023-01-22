@@ -26,6 +26,7 @@ class TapContactDetailsView : LinearLayout {
     val contactSeparator by lazy { findViewById<TapSeparatorView>(R.id.contactSeparator) }
     val cardDetailMainLL by lazy { findViewById<LinearLayout>(R.id.cardDet_mainLL) }
     val fieldLinearLayout by lazy { findViewById<LinearLayout>(R.id.field_LinearLayout) }
+    val mainContactCardView by lazy { findViewById<TapChip>(R.id.mainContactCardView) }
     private var countryCode: String? = null
 
     /**
@@ -65,13 +66,14 @@ class TapContactDetailsView : LinearLayout {
      //   cardDetailMainLL.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
         contactEmailET.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
         contactEmailET.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
-        contactEmailET.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
+     //   contactEmailET.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
         fieldLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
 
         contactMobileNumber.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
         contactMobileNumber.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
 
-        mobileMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryTable.backgroundColor")))
+       // mobileMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryTable.backgroundColor")))
+        mobileMainLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
     }
 
 

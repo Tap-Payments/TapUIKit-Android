@@ -125,7 +125,7 @@
                 "titleLabelColor":"greyishBrown"
             },
             "countryTable":{
-                "backgroundColor":"black"
+                "backgroundColor":"white"
             }
         },
         "cornerRadius":8
