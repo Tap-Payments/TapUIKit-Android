@@ -57,6 +57,7 @@ import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.organisms.OTPView
+import company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
 import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuisample.*
 import company.tap.tapuisample.MainSwitch
@@ -143,6 +144,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var contactDetailView: TapContactDetailsView? = null
     private var shippingDetailView: TapShippingDetailView? = null
     private var mobileMainLinear: LinearLayout? = null
+    lateinit var cardInputCardView: TapChip
+    lateinit var tapPaymentInput: TapPaymentInput
 
 
     override fun onCreateView(
@@ -319,7 +322,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         contactDetailView = view.findViewById(R.id.contactDetailView)
         shippingDetailView = view.findViewById(R.id.shipDetailView)
         mobileMainLinear = contactDetailView?.findViewById(R.id.mobilePaymentMainLinear)
-        mobileMainLinear?.visibility = View.GONE
+        mobileMainLinear?.visibility = View.VISIBLE
         shippingDetailView?.visibility = View.GONE
 
        contactDetailView?.contactEmailET?.addTextChangedListener(object : TextWatcher {
@@ -496,6 +499,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     @SuppressLint("ResourceAsColor")
     private fun setupChip(view: View) {
         mainChipGroup = view.findViewById(R.id.mainChipgroup)
+        tapPaymentInput = view.findViewById(R.id.tap_payment_input0)
+
+
+        cardInputCardView = tapPaymentInput.findViewById(R.id.cardInput_cardView)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         groupName = view.findViewById<TapTextView>(R.id.group_name)
         groupName?.text = LocalizationManager.getValue(

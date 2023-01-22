@@ -75,19 +75,19 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
       //  cardScannerButton.setImageResource(scannerIcon)
         clearView.setImageResource(closeIcon)
       //  nfcButton.setImageResource(nfcIcon)
-     /*   if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))cardInputChipView.setBackgroundResource(
+       if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))cardInputChipView.setBackgroundResource(
             R.drawable.border_unclick_black
         )
         else  cardInputChipView.setBackgroundResource(R.drawable.border_unclick)
-*/
-       /* setBorderedView(
-          cardInputCardView,
+
+        setBorderedView(
+            cardInputChipView,
             (ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
             0.0f,
             Color.parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
             Color.parseColor(ThemeManager.getValue("horizontalList.chips.gatewayChip.backgroundColor")),// tint color
             Color.parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
-        )// shadow color*/
+        )// shadow color
 
     }
     fun setDisplayMetrics(displayMetrics: Int) {

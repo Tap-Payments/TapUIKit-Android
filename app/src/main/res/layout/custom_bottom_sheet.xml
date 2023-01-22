@@ -119,6 +119,7 @@ android:layout_marginTop="-25dp"
                 android:id="@+id/tapSeparatorViewLinear"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
 
 
 
@@ -143,22 +144,24 @@ android:layout_marginTop="-25dp"
                     android:textColor="#9F9F9F"
                     android:text="Card InFormation"/>
 
+                <company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
+
+                    android:id="@+id/tap_payment_input0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layoutDirection="locale" />
+
+
+                <company.tap.tapuilibrary.uikit.views.TapAlertView
+                    android:id="@+id/alert_text"
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
             </LinearLayout>
 
 
-            <company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
 
-                android:id="@+id/tap_payment_input0"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layoutDirection="locale" />
-
-
-        <company.tap.tapuilibrary.uikit.views.TapAlertView
-            android:id="@+id/alert_text"
-            android:visibility="gone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
         <company.tap.tapuilibrary.uikit.views.TapCardDetailView
             android:layout_margin="@dimen/margin_basic_10dp"
             android:layout_width="match_parent"
@@ -250,7 +253,7 @@ android:layout_marginTop="-25dp"
             android:id="@+id/contactDetailView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"/>
+            android:visibility="visible"/>
 
         <company.tap.tapuilibrary.uikit.views.TapShippingDetailView
             android:id="@+id/shipDetailView"
