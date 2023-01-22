@@ -22,7 +22,7 @@
     <color name="chip_back">#1c1c1e</color>
     <color name="item_list">#1c1c1e</color>
     <color name="item_textcolor">#ffffff</color>
-
+    <color name="chip_border">#404043</color>
     <color name="button_gray">#1c1c1e</color>
     <color name="button_green">#2ace00</color>
     <color name="header_gray">#00ffffff</color>
