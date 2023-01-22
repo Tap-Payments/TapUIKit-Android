@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/background_loyalty.xml" value="0.207" />
+        <entry key="app/src/main/res/drawable/border_shadow_.xml" value="0.2145" />
+        <entry key="app/src/main/res/drawable/border_unclick_black.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/corner_radius.xml" value="0.1715" />
         <entry key="app/src/main/res/layout/activity_loyalty_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
@@ -18,6 +20,8 @@
         <entry key="app/src/main/res/layout/tap_shipping_detail_view.xml" value="0.14684684684684685" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius_bottom.xml" value="0.191" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_unclick.xml" value="0.2145" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_unclick_black.xml" value="0.2145" />
         <entry key="tapuilibrary/src/main/res/drawable/cardscan_button_select.xml" value="0.211" />
         <entry key="tapuilibrary/src/main/res/drawable/close_background.xml" value="0.11" />
         <entry key="tapuilibrary/src/main/res/drawable/ic_arrow_down.xml" value="0.1415" />
