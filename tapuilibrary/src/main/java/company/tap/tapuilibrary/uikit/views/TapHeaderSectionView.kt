@@ -52,7 +52,11 @@ class TapHeaderSectionView : LinearLayout {
 
     @DrawableRes
     val closeIcon: Int =
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.icon_light_header_close else R.drawable.icon_dark_header_close
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.icon_dark_header_close
+        }  else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.icon_light_header_close
+        }else    R.drawable.icon_light_header_close
 
 
     private var headerDataSource: HeaderDataSource? = null
