@@ -121,7 +121,12 @@
         "countryPicker": {
             "countryCell":{
                 "backgroundColor":"clear",
-                "titleLabelFont":"Roboto,14",
+                "titleLabelFont":"Roboto,14","asyncView": {
+                    "labelsFont":"Roboto-Regular,20",
+                    "labelsColor":"greyishBrown",
+                    "codeLabelFont":"Roboto-Regular,30",
+                    "codeLabelColor":"greyishBrown"
+                },
                 "titleLabelColor":"greyishBrown"
             },
             "countryTable":{

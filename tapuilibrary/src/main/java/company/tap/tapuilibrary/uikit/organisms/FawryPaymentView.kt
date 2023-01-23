@@ -60,80 +60,80 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
     fun setTheme() {
         val titleTextViewTheme = TextViewTheme()
         titleTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("asyncView.labelsColor"))
         titleTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("asyncView.labelsFont")
         titleTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("asyncView.labelsFont")
         titleText.setTheme(titleTextViewTheme)
 
 
         val descTextViewTheme = TextViewTheme()
         descTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("asyncView.labelsColor"))
         descTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("asyncView.labelsFont")
         descTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("asyncView.labelsFont")
         descText.setTheme(descTextViewTheme)
 
 
         val orderCodeTextViewTheme = TextViewTheme()
         orderCodeTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("asyncView.labelsColor"))
         orderCodeTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("asyncView.labelsFont")
         orderCodeTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("asyncView.labelsFont")
         orderCodeText.setTheme(orderCodeTextViewTheme)
 
 
         val orderCodeValueViewTheme = TextViewTheme()
         orderCodeValueViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("asyncView.codeLabelColor"))
         orderCodeValueViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("asyncView.codeLabelFont")
         orderCodeValueViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("asyncView.codeLabelFont")
         orderCodeValue.setTheme(orderCodeValueViewTheme)
 
 
         val codeExpireTextViewTheme = TextViewTheme()
         codeExpireTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("asyncView.labelsColor"))
         codeExpireTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("asyncView.labelsFont")
         codeExpireTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("asyncView.labelsFont")
         codeExpireText.setTheme(codeExpireTextViewTheme)
 
 
         val codeExpireValueViewTheme = TextViewTheme()
         codeExpireValueViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("asyncView.codeLabelColor"))
         codeExpireValueViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("asyncView.labelsFont")
         codeExpireValueViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("asyncView.labelsFont")
         codeExpireValue.setTheme(codeExpireValueViewTheme)
 
         val linkDescTextViewTheme = TextViewTheme()
         linkDescTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("asyncView.labelsColor"))
         linkDescTextViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("asyncView.labelsFont")
         linkDescTextViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("asyncView.labelsFont")
         linkDescText.setTheme(linkDescTextViewTheme)
 
 
         val linkValueViewTheme = TextViewTheme()
         linkValueViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("merchantHeaderView.subTitleLabelColor"))
+            Color.parseColor(ThemeManager.getValue("asyncView.labelsColor"))
         linkValueViewTheme.textSize =
-            ThemeManager.getFontSize("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontSize("asyncView.labelsFont")
         linkValueViewTheme.font =
-            ThemeManager.getFontName("merchantHeaderView.subTitleLabelFont")
+            ThemeManager.getFontName("asyncView.labelsFont")
         linkValue.setTheme(linkValueViewTheme)
 
     }
