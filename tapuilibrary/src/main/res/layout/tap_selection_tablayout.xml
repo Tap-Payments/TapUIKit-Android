@@ -16,8 +16,8 @@
         android:layout_gravity="center"
         android:foregroundGravity="center"
         android:textSize="@dimen/font_size_11sp"
-        android:paddingStart="10dp"
-        android:paddingEnd="@dimen/margin_basic_10dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:textColor="#9F9F9F"
         android:textAllCaps="true"
         android:gravity="center" />
