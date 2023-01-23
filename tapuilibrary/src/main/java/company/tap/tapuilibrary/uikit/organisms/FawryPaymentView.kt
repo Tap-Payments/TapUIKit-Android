@@ -33,6 +33,7 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
     val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
     val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
+    val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
 
     @DrawableRes
     val logoIcon: Int =
