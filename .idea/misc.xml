@@ -18,6 +18,7 @@
         <entry key="app/src/main/res/layout/tap_payment_input.xml" value="0.2830188679245283" />
         <entry key="app/src/main/res/layout/tap_selection_tablayout.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/tap_shipping_detail_view.xml" value="0.14684684684684685" />
+        <entry key="tapuilibrary/src/main/res/drawable-hdpi/border_shadow_black.xml" value="0.1595" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius_bottom.xml" value="0.191" />
         <entry key="tapuilibrary/src/main/res/drawable/border_shadow.xml" value="0.1595" />
