@@ -5,11 +5,13 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
@@ -28,7 +30,17 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
         val linkDescText by lazy { findViewById<TapTextView>(R.id.linkDescText) }
         val linkValue by lazy { findViewById<TapTextView>(R.id.linkValue) }
         val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
+    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
+    val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
+    val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
 
+    @DrawableRes
+    val logoIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.tap_logo_black
+        } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
+            R.drawable.tap_logo_white
+        }else R.drawable.tap_logo_white
         init {
         inflate(context, R.layout.fawry_payment_view, this)
             setTheme()
@@ -46,6 +58,22 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
             Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")),
             Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
         )
+        tapLogoImage.setImageResource(logoIcon)
+
+        var poweredByTextViewTheme = TextViewTheme()
+        poweredByTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
+        poweredByTextViewTheme.textSize =
+            ThemeManager.getFontSize("poweredByTap.powerLabel.font")
+        poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
+        textViewPowered.setTheme(poweredByTextViewTheme)
+
+
+        var tapTextViewTheme = TextViewTheme()
+        tapTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
+        tapTextViewTheme.textSize =
+            ThemeManager.getFontSize("poweredByTap.powerLabel.font")
+        tapTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
+        tapTextView.setTheme(tapTextViewTheme)
     }
 
     fun initViews(orderCode:String,codeExpire : String , link:String ){
