@@ -134,6 +134,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:cardCornerRadius="30dp"
             android:elevation="@dimen/margin_basic_0dp"
+            app:cardElevation="@dimen/margin_basic_0dp"
+            app:cardMaxElevation="@dimen/margin_basic_0dp"
             android:id="@+id/icon">
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
             android:id="@+id/tapCloseIcon"
