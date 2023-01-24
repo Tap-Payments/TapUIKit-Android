@@ -126,8 +126,8 @@
             android:visibility="gone"
             />
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
-            android:layout_width="50dp"
-            android:layout_height="35dp"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_basic_20dp"
             android:layout_gravity="center"
 
            android:id="@+id/tapLogoImage"

@@ -105,30 +105,16 @@
         android:layout_marginBottom="22dp"
         android:layout_marginStart="@dimen/margin_basic_20dp"
         android:layout_marginEnd="@dimen/margin_basic_20dp" />
-    <LinearLayout
-        android:id="@+id/brandingLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:orientation="horizontal">
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
-            android:id="@+id/textViewPowered"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Powered by"
-            android:textColor="#626262"
-            android:textSize="@dimen/font_size_10sp"
-            />
+
+
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
             android:layout_gravity="center"
-            android:layout_margin="5dp"
-            android:src="@drawable/taplogohorizontal"
+
+            android:src="@drawable/powered_by_tap_dark"
             />
 
-    </LinearLayout>
+
 </LinearLayout>
