@@ -49,10 +49,10 @@ class TapInlineCardSwitch : LinearLayout {
     @DrawableRes
     val logoIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.tap_logo_black
+            R.drawable.powered_by_tap_dark
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
-            R.drawable.tap_logo_white
-        }else R.drawable.tap_logo_white
+            R.drawable.powered_by_tap_light
+        }else R.drawable.powered_by_tap_light
 
 
 

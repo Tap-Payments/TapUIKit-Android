@@ -99,13 +99,15 @@
             android:layout_gravity="center"
             android:text="Powered by"
             android:textColor="#626262"
+            android:visibility="gone"
             android:textSize="@dimen/font_size_10sp"
             />
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="5dp"
+
+
             android:id="@+id/tapLogoImage"
             />
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -116,6 +118,7 @@
             android:textColor="#626262"
             android:textSize="@dimen/font_size_10sp"
             android:text="tap"
+            android:visibility="gone"
 
             />
     </LinearLayout>

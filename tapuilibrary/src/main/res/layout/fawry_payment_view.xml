@@ -123,7 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         android:orientation="horizontal">
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -134,12 +134,13 @@
             android:text="Powered by"
             android:textColor="#626262"
             android:textSize="@dimen/font_size_10sp"
+            android:visibility="gone"
             />
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_margin="5dp"
+
             android:id="@+id/tapLogoImage"
             />
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -150,6 +151,7 @@
             android:textColor="#626262"
             android:textSize="@dimen/font_size_10sp"
             android:text="tap"
+            android:visibility="gone"
 
             />
     </LinearLayout>
