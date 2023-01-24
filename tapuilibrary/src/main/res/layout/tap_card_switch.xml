@@ -106,43 +106,12 @@
         android:layout_marginStart="@dimen/margin_basic_20dp"
         android:layout_marginEnd="@dimen/margin_basic_20dp" />
 
-    <LinearLayout
-        android:id="@+id/brandingLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <company.tap.tapuilibrary.uikit.atoms.TapImageView
+        android:layout_width="100dp"
+        android:layout_height="@dimen/margin_basic_20dp"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_marginBottom="@dimen/margin_basic_15dp"
-        android:orientation="horizontal">
+        android:layout_marginBottom="30dp"
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
-            android:id="@+id/textViewPowered"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Powered by"
-            android:textColor="#626262"
-            android:textSize="@dimen/font_size_10sp"
-            android:visibility="gone"
-            />
-        <company.tap.tapuilibrary.uikit.atoms.TapImageView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/margin_basic_20dp"
-            android:layout_gravity="center"
-
-           android:id="@+id/tapLogoImage"
-            />
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
-            android:id="@+id/textTap_label"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textColor="#626262"
-            android:textSize="@dimen/font_size_10sp"
-            android:text="tap"
-            android:visibility="gone"
-
-            />
-    </LinearLayout>
-
+        android:id="@+id/tapLogoImage"
+        />
 </LinearLayout>
