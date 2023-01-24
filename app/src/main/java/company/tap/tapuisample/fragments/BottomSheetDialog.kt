@@ -193,6 +193,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         )
 
 
+
         /**
          * Calling this class for adjust view up when keyboard is opened
          */
@@ -429,6 +430,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     private fun switchViewInit(view: View) {
         switchDemo = view.findViewById(R.id.switch_pay_demo)
+        switchDemo.brandingLayout.visibility =View.VISIBLE
+        switchDemo.tapLogoImage.visibility =View.VISIBLE
         mainSwitch = view.findViewById(R.id.mainSwitch)
         switchSaveDemo = mainSwitch.findViewById(R.id.switchSaveMobile)
 //        switch_save_mobile = switchDemo.findViewById(R.id.switch_save_mobile)

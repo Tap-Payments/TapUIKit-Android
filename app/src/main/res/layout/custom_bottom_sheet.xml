@@ -253,7 +253,7 @@ android:layout_marginTop="-25dp"
             android:id="@+id/contactDetailView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"/>
+            android:visibility="gone"/>
 
         <company.tap.tapuilibrary.uikit.views.TapShippingDetailView
             android:id="@+id/shipDetailView"

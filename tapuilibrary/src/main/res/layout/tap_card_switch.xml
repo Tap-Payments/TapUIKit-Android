@@ -112,6 +112,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:layout_marginBottom="@dimen/margin_basic_15dp"
         android:orientation="horizontal">
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -125,8 +126,8 @@
             android:visibility="gone"
             />
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="35dp"
             android:layout_gravity="center"
 
            android:id="@+id/tapLogoImage"
