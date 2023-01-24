@@ -59,23 +59,36 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="10 ITEMS"
-        android:drawableEnd="@drawable/dropdown"
+
         android:visibility="gone"/>
 
 
-    <LinearLayout
+
+    <company.tap.tapuilibrary.uikit.atoms.TapChip
+        android:id="@+id/tapChipAmount"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:layout_margin="8dp"
-        android:background="@drawable/rounded_rectangle"
-        android:id="@+id/item_amount_Layout"
+        android:layout_height="wrap_content"
+        app:cardElevation="@dimen/margin_basic_0dp"
+        android:elevation="@dimen/margin_basic_0dp"
+
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/item_amount_Layout"
+
+     >
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:layout_width="wrap_content"
@@ -83,19 +96,23 @@
             android:id="@+id/itemCountText"
             android:textColor="#626262"
             android:textSize="@dimen/font_size_10sp"
-            android:layout_margin="7dp"
+            android:layout_marginStart="2.5dp"
+            android:layout_marginEnd="2.5dp"
             android:textStyle="normal"
             android:text="10 ITEMS"/>
         <View
+            android:id="@+id/viewSeparator"
             android:layout_width="0.75dp"
-            android:layout_height="fill_parent"
-            android:layout_margin="3dp"
-            android:background="#9F9F9F" />
+            android:layout_height="match_parent"
+            android:layout_margin="2.5dp"
+             />
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#626262"
             android:id="@+id/itemAmountText"
+            android:layout_marginStart="2.5dp"
+            android:layout_marginEnd="2.5dp"
 
             android:textSize="@dimen/font_size_10sp"
             android:text="AED"/>
@@ -104,13 +121,13 @@
             android:layout_width="@dimen/margin_basic_10dp"
             android:layout_height="@dimen/margin_basic_20dp"
             android:src="@drawable/dropdown"
-            android:layout_margin="3dp"
+            android:layout_marginStart="8dp"
 
 
             />
 
     </LinearLayout>
-
+    </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

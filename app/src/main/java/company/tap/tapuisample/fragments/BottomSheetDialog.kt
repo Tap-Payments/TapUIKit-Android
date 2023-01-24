@@ -622,7 +622,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 separatorــ.setBackgroundColor(Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor")))
                 paymentLayout.removeAllViews()
                 paymentLayout.addView(tapCardInputView)
-                selectedCurrency.text = "SR1000,000.000"
+                selectedCurrency.text = "AED1000,000.000"
                 itemCount.text = getString(R.string.items)
 
             } else {
@@ -679,7 +679,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private fun getAmountViewDataSOurce(): AmountViewDataSource {
         return AmountViewDataSource(
             selectedCurr = "1000,000.000",
-            selectedCurrText = "SR",
+            selectedCurrText = "AED",
             currentCurr = "1000,000.000",
             currentCurrText = "KD",
             itemCount = if (context?.let { LocalizationManager.getLocale(it).language } == "en") getString(

@@ -4,7 +4,9 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.view.View
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -12,6 +14,7 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.ButtonTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapButton
+import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
@@ -26,9 +29,18 @@ class TapAmountSectionView : LinearLayout {
     val itemAmountText by lazy { findViewById<TapTextView>(R.id.itemAmountText) }
     val amountImageView by lazy { findViewById<TapImageView>(R.id.amountImageView) }
     val itemAmountLayout by lazy { findViewById<LinearLayout>(R.id.item_amount_Layout) }
+    val tapChipAmount by lazy { findViewById<TapChip>(R.id.tapChipAmount) }
+    val viewSeparator by lazy { findViewById<View>(R.id.viewSeparator) }
 
     private var amountViewDataSource: AmountViewDataSource? = null
 
+    @DrawableRes
+    val dropDownIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.drop_down_arrow_dark
+        } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
+            R.drawable.drop_down_arrow_light
+        }else R.drawable.drop_down_arrow_light
     /**
      * Simple constructor to use when creating a TapAmountSectionView from code.
      *  @param context The Context the view is running in, through which it can
@@ -124,6 +136,21 @@ class TapAmountSectionView : LinearLayout {
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
 
+        amountImageView.setImageResource(dropDownIcon)
+
+        tapChipAmount.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
+        tapChipAmount.radius = ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")
+      // tapChipAmount.ou(Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
+        setBorderedView(
+            tapChipAmount,
+             100.0f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color"))
+        )
+        viewSeparator.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.separatorColor")))
+
     }
 
     /**
@@ -158,7 +185,17 @@ class TapAmountSectionView : LinearLayout {
         )
         itemCountButton?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.latoLight
+            )
+        )
+        itemCountText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.latoRegular
+            )
+        )
+        itemAmountText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.latoRegular
             )
         )
     }
@@ -175,6 +212,16 @@ class TapAmountSectionView : LinearLayout {
             )
         )
         itemCountButton?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        itemCountText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        itemAmountText?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalLight
             )
