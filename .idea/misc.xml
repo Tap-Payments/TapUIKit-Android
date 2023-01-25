@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/border_shadow_.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/border_unclick_black.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/corner_radius.xml" value="0.1715" />
+        <entry key="app/src/main/res/layout/activity_amount_item.xml" value="0.13918918918918918" />
         <entry key="app/src/main/res/layout/activity_loyalty_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_sections_tab_layout.xml" value="0.140990990990991" />
@@ -49,7 +50,7 @@
         <entry key="tapuilibrary/src/main/res/layout/otp_view.xml" value="0.11283961437335671" />
         <entry key="tapuilibrary/src/main/res/layout/tap_alert_view.xml" value="0.6255157608169694" />
         <entry key="tapuilibrary/src/main/res/layout/tap_card_detail_view.xml" value="0.75" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_card_switch.xml" value="0.8562140929024175" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_card_switch.xml" value="0.8213507625272332" />
         <entry key="tapuilibrary/src/main/res/layout/tap_chip_group.xml" value="0.22567567567567567" />
         <entry key="tapuilibrary/src/main/res/layout/tap_contact_detail_view.xml" value="0.5769230769230769" />
         <entry key="tapuilibrary/src/main/res/layout/tap_horizontal_list_view.xml" value="0.19774774774774775" />

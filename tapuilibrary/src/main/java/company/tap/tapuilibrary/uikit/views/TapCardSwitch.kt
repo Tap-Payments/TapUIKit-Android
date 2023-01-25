@@ -39,18 +39,18 @@ class TapCardSwitch : LinearLayout {
     val switchesLayout by lazy { findViewById<LinearLayout>(R.id.switches_layout) }
     val switchSeparator by lazy { findViewById<TapSeparatorView>(R.id.switch_separator) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
-   // val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
-   // val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
+    val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
+    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
    // val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
     private var actionButtonInterface: TapActionButtonInterface? = null
     @DrawableRes
     val logoIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.powered_by_tap_dark
+            R.drawable.tap_logo_dark_horizontal
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
-            R.drawable.powered_by_tap_light
-        }else R.drawable.powered_by_tap_light
+            R.drawable.tap_logo_light_horizontal
+        }else R.drawable.tap_logo_light_horizontal
 
 
     lateinit var attrs: AttributeSet
@@ -249,7 +249,7 @@ class TapCardSwitch : LinearLayout {
         poweredByTextViewTheme.textSize =
             ThemeManager.getFontSize("poweredByTap.powerLabel.font")
         poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
-      //  textViewPowered.setTheme(poweredByTextViewTheme)
+        textViewPowered.setTheme(poweredByTextViewTheme)
 
         var tapTextViewTheme = TextViewTheme()
         tapTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
