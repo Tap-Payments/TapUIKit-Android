@@ -87,7 +87,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         }
         dataSource = ActionButtonDataSource(
             text = btnText ,
-            textSize = 18f,
+            textSize = 16f,
             textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
             cornerRadius = 100f,
             successImageResources = R.drawable.checkmark,
@@ -264,7 +264,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private fun setFontEnglish(textView:TextView ){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.latoRegular
+                TapFont.RobotoRegular
             )
         )
     }
@@ -272,7 +272,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private fun setFontArabic(textView:TextView){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
+                TapFont.TajawalMedium
             )
         )
     }
