@@ -37,8 +37,8 @@ class TapInlineCardSwitch : LinearLayout {
     val switchesLayout by lazy { findViewById<RelativeLayout>(R.id.switchesLayout) }
     val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
-   // val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
-  //  val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
+    val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
+    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
     val toolsTipImageView by lazy { findViewById<TapImageView>(R.id.toolsTipImageView) }
     val secondaryLayout by lazy { findViewById<LinearLayout>(R.id.secondary_Layout) }
     val saveForOtherCheckBox by lazy { findViewById<CheckBox>(R.id.saveForOtherCheckBox) }
@@ -203,7 +203,7 @@ class TapInlineCardSwitch : LinearLayout {
         poweredByTextViewTheme.textSize =
             ThemeManager.getFontSize("poweredByTap.powerLabel.font")
         poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
-      //  textViewPowered.setTheme(poweredByTextViewTheme)
+        textViewPowered.setTheme(poweredByTextViewTheme)
 
 
         var tapTextViewTheme = TextViewTheme()

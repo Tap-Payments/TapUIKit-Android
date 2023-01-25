@@ -109,11 +109,13 @@
     <LinearLayout
         android:id="@+id/brandingLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
         android:visibility="visible"
-        android:layout_marginBottom="@dimen/margin_basic_15dp"
+        android:layoutDirection="ltr"
+        android:textDirection="firstStrongLtr"
+        android:layout_marginBottom="30dp"
         android:orientation="horizontal">
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -130,6 +132,9 @@
             android:layout_width="36dp"
             android:layout_height="@dimen/margin_basic_20dp"
             android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_basic_4dp"
+            android:layout_marginEnd="@dimen/margin_basic_4dp"
+
 
             android:id="@+id/tapLogoImage"
             />

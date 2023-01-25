@@ -218,13 +218,6 @@ android:layout_marginTop="-25dp"
             android:layout_gravity="start"
             android:layoutDirection="locale" />
 
-        <company.tap.tapuilibrary.uikit.views.TapCardSwitch
-            android:id="@+id/pay_card_switch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="2dp" />
-
-
         <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
             android:id="@+id/goPayLoginInput"
             android:visibility="gone"
