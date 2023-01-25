@@ -88,10 +88,10 @@ class TapListItemView : LinearLayout {
         itemAmount.setTheme(itemAmountTextViewTheme)
 
         val totalQuantityTextViewTheme = TextViewTheme()
-        totalQuantityTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("itemsList.count.countLabelColor"))
+        totalQuantityTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("itemsList.item.count.countLabelColor"))
         totalQuantityTextViewTheme.textSize =
-            ThemeManager.getFontSize("itemsList.count.countLabelFont")
-        totalQuantityTextViewTheme.font = ThemeManager.getFontName("itemsList.count.countLabelFont")
+            ThemeManager.getFontSize("itemsList.item.count.countLabelFont")
+        totalQuantityTextViewTheme.font = ThemeManager.getFontName("itemsList.item.count.countLabelFont")
         totalQuantity.setTheme(totalQuantityTextViewTheme)
 
         val descrptionTextViewTheme = TextViewTheme()
