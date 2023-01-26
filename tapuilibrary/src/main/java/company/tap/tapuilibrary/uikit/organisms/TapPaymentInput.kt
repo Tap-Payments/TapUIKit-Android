@@ -40,7 +40,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
     val paymentInputContainer by lazy { findViewById<LinearLayout>(R.id.payment_input_layout) }
     val tabLinear by lazy { findViewById<RelativeLayout>(R.id.tabLinear) }
-    val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
+   // val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
     val separator4 by lazy { findViewById<TapSeparatorView>(R.id.separator4) }
     val inlineProgressBar by lazy { findViewById<ProgressBar>(R.id.inlineProgressbar) }
@@ -64,16 +64,16 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     init {
         inflate(context, R.layout.tap_payment_input, this)
         applyTheme()
-        clearView.setOnClickListener {
+       /* clearView.setOnClickListener {
             rootView.invalidate()
-        }
+        }*/
         tapMobileInputView = TapMobilePaymentView(context, null)
         tapMobileInputViewTextWatcher()
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
       // cardScannerButton = findViewById(R.id.card_scanner_button)
        // nfcButton = findViewById(R.id.nfc_button)
       //  cardScannerButton.setImageResource(scannerIcon)
-        clearView.setImageResource(closeIcon)
+      //  clearView.setImageResource(closeIcon)
       //  nfcButton.setImageResource(nfcIcon)
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             cardInputChipView.setBackgroundResource(R.drawable.border_unclick_black)
@@ -99,9 +99,9 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
             }
             override fun afterTextChanged(mobileText: Editable) {
                 if (mobileText.length > 2){
-                    clearView?.visibility = View.VISIBLE
+                    //clearView?.visibility = View.VISIBLE
                 }else{
-                    clearView?.visibility = View.GONE
+                   // clearView?.visibility = View.GONE
                 }
             }
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
@@ -128,7 +128,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     private fun applyTheme() {
         tabLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
-        clearView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
+        //clearView.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         setSeparatorTheme()
     }
 
@@ -143,9 +143,9 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     override fun showHideClearImage(show: Boolean) {
         if (show) {
-            clearView.visibility = View.VISIBLE
+            //clearView.visibility = View.VISIBLE
         } else {
-            clearView.visibility = View.GONE
+            //clearView.visibility = View.GONE
         }
     }
 
