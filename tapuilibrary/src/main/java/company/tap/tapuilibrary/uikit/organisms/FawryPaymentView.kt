@@ -32,8 +32,10 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
         val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
     val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
-    val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
+//    val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
     val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
+
+
 
     @DrawableRes
     val logoIcon: Int =
@@ -62,19 +64,18 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
         tapLogoImage.setImageResource(logoIcon)
 
         var poweredByTextViewTheme = TextViewTheme()
-        poweredByTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
+        poweredByTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
         poweredByTextViewTheme.textSize =
             ThemeManager.getFontSize("poweredByTap.powerLabel.font")
         poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
         textViewPowered.setTheme(poweredByTextViewTheme)
-
 
         var tapTextViewTheme = TextViewTheme()
         tapTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
         tapTextViewTheme.textSize =
             ThemeManager.getFontSize("poweredByTap.powerLabel.font")
         tapTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
-        tapTextView.setTheme(tapTextViewTheme)
     }
 
     fun initViews(orderCode:String,codeExpire : String , link:String ){

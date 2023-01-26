@@ -133,11 +133,8 @@
             android:layout_width="36dp"
             android:layout_height="@dimen/margin_basic_20dp"
             android:layout_gravity="center"
-
             android:layout_marginStart="@dimen/margin_basic_4dp"
             android:layout_marginEnd="@dimen/margin_basic_4dp"
-
-
             android:id="@+id/tapLogoImage"
             />
 
