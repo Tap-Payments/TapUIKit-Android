@@ -9,18 +9,24 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.RelativeLayout
+import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TabSelectTheme
+import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
+import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.models.TabSection
 import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
+import kotlinx.android.synthetic.main.item_knet.view.*
 
 /**
  *
@@ -33,11 +39,27 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
     val paymentInputContainer by lazy { findViewById<LinearLayout>(R.id.payment_input_layout) }
-    val tabLinear by lazy { findViewById<LinearLayout>(R.id.tabLinear) }
+    val tabLinear by lazy { findViewById<RelativeLayout>(R.id.tabLinear) }
     val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
+    val separator4 by lazy { findViewById<TapSeparatorView>(R.id.separator4) }
+    val inlineProgressBar by lazy { findViewById<ProgressBar>(R.id.inlineProgressbar) }
+  //  val cardInputCardView by lazy { findViewById<CardView>(R.id.cardInput_cardView) }
+    val cardInputChipView by lazy { findViewById<TapChip>(R.id.cardInput_cardView) }
+    //var cardScannerButton :ImageView
+   // var nfcButton :ImageView
     private  var tapMobileInputView: TapMobilePaymentView
     private var displayMetrics: Int? = null
+    @DrawableRes
+    val scannerIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.icon_scan_light else R.drawable.icon_scan
+    @DrawableRes
+    val nfcIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.icon_nfc_light else R.drawable.icon_nfc
+    @DrawableRes
+    val closeIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.icon_close_dark else R.drawable.icon_close2
+
 
     init {
         inflate(context, R.layout.tap_payment_input, this)
@@ -48,7 +70,24 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         tapMobileInputView = TapMobilePaymentView(context, null)
         tapMobileInputViewTextWatcher()
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
-
+      // cardScannerButton = findViewById(R.id.card_scanner_button)
+       // nfcButton = findViewById(R.id.nfc_button)
+      //  cardScannerButton.setImageResource(scannerIcon)
+        clearView.setImageResource(closeIcon)
+      //  nfcButton.setImageResource(nfcIcon)
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            cardInputChipView.setBackgroundResource(R.drawable.border_unclick_black)
+        } else {
+            cardInputChipView.setBackgroundResource(R.drawable.border_unclick)
+        }
+        setBorderedView(
+            cardInputChipView,
+            15.0f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color")),
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
+        )
     }
     fun setDisplayMetrics(displayMetrics: Int) {
         this.displayMetrics = displayMetrics

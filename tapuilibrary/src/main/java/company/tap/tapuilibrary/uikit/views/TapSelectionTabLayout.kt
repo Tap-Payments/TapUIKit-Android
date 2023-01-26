@@ -24,6 +24,7 @@ import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
@@ -55,7 +56,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var imageSaturationValue = 1f
     private var tabItemMarginLeftValue = 0
     private var tabItemMarginRightValue = 0
-
+    val acceptedCardText by lazy { findViewById<TapTextView>(R.id.acceptedCardText) }
 
     /**
      * Initiating the tablayout with default theme and behaviour
@@ -66,6 +67,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        acceptedCardText?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+        acceptedCardText?.setTextColor(Color.parseColor("#9F9F9F"))
         setSelectionBehaviour()
     }
 
@@ -221,8 +224,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             LayoutParams.MATCH_PARENT
         )
         linearLayout.layoutParams = params
-        linearLayout.setPadding(-10,0,0,0)
-        linearLayout.setPaddingRelative(-10,0,0,0)
+        linearLayout.setPadding(-15,0,0,0)
+        linearLayout.setPaddingRelative(-15,0,0,0)
         linearLayout.orientation = HORIZONTAL
         return linearLayout
     }

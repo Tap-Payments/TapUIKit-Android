@@ -12,6 +12,7 @@
     <color name="gray">#ababab</color>
     <color name="view_color">#dfdfdf</color>
     <color name="chip_background">#f4f4f4</color>
+    <color name="chip_border">#dfdfdf</color>
 
     <color name="bg_gray">#f4f4f4</color>
     <color name="dark_gray">#ababab</color>
@@ -53,6 +54,7 @@
     <color name="errorAlertText">#e12131</color>
     <color name="errorBackground">#19e12131</color>
 
-
+    <color name="brown_grey_background">#4B4847</color>
+    <color name="paleLilac">#e4e4e5</color>
 
 </resources>

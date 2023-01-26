@@ -49,7 +49,8 @@ object ThemeManager {
         }
     }
 
-    fun loadTapTheme(context: Context, url: String) {
+    fun loadTapTheme(context: Context, url: String,themeName : String) {
+       currentTheme = themeName
         Ion.with(context)
             .load(url)
             .asJsonObject()

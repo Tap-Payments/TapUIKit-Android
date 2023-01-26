@@ -266,21 +266,29 @@
     },
     "merchantHeaderView": {
         "titleLabelFont" : "Roboto-Regular,12",
-        "titleLabelColor" : "brownGrey",
+        "titleLabelColor" : "lightPeach",
         "subTitleLabelFont" : "Roboto-Regular,16",
         "subTitleLabelColor" : "greyishBrown",
         "merchantLogoCorner" : 8,
-        "merchantLogoPlaceHolderColor" : "white",
+        "merchantLogoShadowRadius":12,
+        "merchantLogoShadowColor":"#FFFFFF54",
+        "merchantLogoPlaceHolderColor" : "black",
         "merchantLogoPlaceHolderFont" : "Roboto-Regular,16",
-        "merchantLogoPlaceHolderLabelColor" : "black",
-        "backgroundColor" : "black"
+        "merchantLogoPlaceHolderLabelColor" : "white",
+        "backgroundColor" : "white",
+        "closeCheckoutIcon": "closeCheckoutDarkIcon",
+        "cancelButton": {
+            "titleLabelFont" : "Roboto-Light,13",
+            "titleLabelColor" : "greyishBrown",
+            "backgroundColor" : "whiteTwo"
+        }
     },
     "amountSectionView": {
         "originalAmountLabelFont" : "Roboto-Regular,20",
         "originalAmountLabelColor" : "greyishBrown",
         "convertedAmountLabelFont" : "Roboto-Light,14",
         "convertedAmountLabelColor" : "brownGrey",
-        "itemsLabelFont" : "Roboto-Light,9",
+        "itemsLabelFont" : "Roboto-Light,10",
         "itemsLabelColor" : "greyishBrown",
         "itemsNumberButtonBackgroundColor" : "whiteTwo",
         "itemsNumberButtonBorder" : {
@@ -772,5 +780,42 @@
                 "amountFont" : "Roboto-Regular,11"
             }
         }
+    },"poweredBYBranding": {
+    "poweredByTextColor" : "#626262",
+    "poweredByFont" : "Roboto-Regular,10"
+},
+    "customerDataCollection": {
+        "backgroundColor":"white",
+        "shadow":{
+            "color": "#FFFFFF26",
+            "radius": 8,
+            "offsetWidth": 0,
+            "offsetHeight": 0,
+            "opacity": 1
+        },
+        "textfields":{
+            "font":"Roboto-Light,14",
+            "countryCodeLabelFont":"Roboto,14",
+            "color":"greyishBrown",
+            "placeHolderColor":"#9F9F9F"
+        },
+        "countryPicker": {
+            "countryCell":{
+                "backgroundColor":"clear",
+                "titleLabelFont":"Roboto,14",
+                "titleLabelColor":"greyishBrown"
+            },
+            "countryTable":{
+                "backgroundColor":"white"
+            }
+        },
+        "cornerRadius":8
+    },
+    "poweredByTap": {
+        "powerLabel": {
+            "textColor": "greyishBrown",
+            "font" : "Roboto-Light,10"
+        },
+        "tapLogo":"poweredByTapLogo"
     }
 }

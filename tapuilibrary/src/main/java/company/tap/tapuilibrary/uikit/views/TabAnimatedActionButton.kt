@@ -78,9 +78,16 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     }
 
     private fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
+        val btnText:String
+        if(buttonText ==null){
+
+            btnText = LocalizationManager.getValue("pay", "ActionButton")
+        }else {
+            btnText =buttonText
+        }
         dataSource = ActionButtonDataSource(
-            text = buttonText ?: LocalizationManager.getValue("pay", "ActionButton"),
-            textSize = 18f,
+            text = btnText ,
+            textSize = 16f,
             textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
             cornerRadius = 100f,
             successImageResources = R.drawable.checkmark,
@@ -137,7 +144,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             LOADING ->{
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.loader,1) {
+                addChildView(getImageView(R.drawable.loader,3) {
                     morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
 
                 })
@@ -257,7 +264,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private fun setFontEnglish(textView:TextView ){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
     }
@@ -265,7 +272,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private fun setFontArabic(textView:TextView){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalMedium
             )
         )
     }

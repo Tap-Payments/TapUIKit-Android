@@ -1,10 +1,12 @@
 {
   "en": {
     "TapCardInputKit": {
-      "cardNumberPlaceHolder": "0000 0000 0000 0000",
+      "cardNumberPlaceHolder": "Card Number",
       "cardNamePlaceHolder": "Card Holder name",
       "cardCVVPlaceHolder": "CVV",
       "cardExpiryPlaceHolder": "MM/YY",
+      "cardSaveForTapLabel": "Save for other stores powered by Tap",
+      "cardSaveForTapInfo":"Checkout everywhere in just one click.\nTap is a better and secure way to pay locally across 100k+ stores. Your details are encrypted and can only be accessed by you. You’ll receive an email to get started and manage your details.",
       "cardSaveLabel": "For faster and more secure checkout,\nsave your card",
       "emailPlaceHolder": "email@email.com",
       "cardUseNFCLabel": "For faster and easier checkout,\nuse card scanner or NFC.",
@@ -20,7 +22,8 @@
     "HorizontalHeaders": {
       "GatewayHeader":{
         "leftTitle": "SELECT",
-        "rightTitle": "EDIT"
+        "rightTitle": "EDIT",
+        "webViewTitle": "APPROVE PAYMENT"
       }
     },
     "ItemList": {
@@ -130,11 +133,13 @@
   },
   "ar": {
     "TapCardInputKit": {
-      "cardNumberPlaceHolder": "0000 0000 0000 0000",
+      "cardNumberPlaceHolder": "رقم البطاقة",
       "cardNamePlaceHolder": "إسم صاحب البطاقة",
       "cardCVVPlaceHolder": "الرمز الأمني",
       "cardExpiryPlaceHolder": "شهر/سنة",
       "cardSaveLabel": "إحفظ البطاقة،\n لدفع أسرع وأسهل.",
+      "cardSaveForTapLabel": "إحفظ للإستعمال في كل متاجر Tap",
+      "cardSaveForTapInfo":"يمكنك الدفع في كل مكان بنقرة واحدة فقط\n.يعد النقر طريقة أفضل وآمنة للدفع محليًا عبر أكثر من 100 ألف متجر. يتم تشفير بياناتك ولا يمكن الوصول إليها إلا بواسطتك. ستتلقى بريدًا إلكترونيًا للبدء وإدارة التفاصيل الخاصة بك.",
       "emailPlaceHolder": "email@email.com",
       "cardUseNFCLabel":"لدفع أسرع وأسهل،\n إستخدم الماسح الضوئي للبطاقة أو خاصية الــ NFC. ",
       "cardSaveLater":"إحفظ البطاقة، \n لدفع أسرع وأسهل لاحقاً. "
@@ -149,7 +154,8 @@
     "HorizontalHeaders": {
       "GatewayHeader":{
         "leftTitle": "إختار",
-        "rightTitle": "تعديل"
+        "rightTitle": "تعديل",
+        "webViewTitle": "توثيق الدفع"
       }
     },
     "ItemList": {
