@@ -65,7 +65,7 @@ class TapAlertView : LinearLayout {
     }
 
     private fun initTheme(){
-        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("Hints.Warning.backgroundColor")))
+        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("Hints.Error.backgroundColor")))
 
 //        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
 //            tapAlertLinear.setBackgroundResource(R.drawable.blur_background_dark)

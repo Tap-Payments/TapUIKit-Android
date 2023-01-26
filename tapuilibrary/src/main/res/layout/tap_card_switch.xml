@@ -112,7 +112,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layoutDirection="ltr"
         android:textDirection="firstStrongLtr"
         android:layout_marginTop="@dimen/margin_basic_10dp"
@@ -136,7 +136,7 @@
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_basic_4dp"
             android:layout_marginEnd="@dimen/margin_basic_4dp"
-            android:src="@drawable/tap_logo_light_horizontal"
+
 
 
             android:id="@+id/tapLogoImage"
