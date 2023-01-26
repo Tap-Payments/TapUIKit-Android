@@ -166,9 +166,9 @@ android:layout_marginTop="-25dp"
 
                 <company.tap.tapuilibrary.uikit.views.TapAlertView
                     android:id="@+id/alert_text"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="25dp" />
 
             </LinearLayout>
 

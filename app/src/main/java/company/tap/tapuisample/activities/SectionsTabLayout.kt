@@ -177,10 +177,10 @@ class SectionsTabLayout : AppCompatActivity(),
 
     override fun showHideClearImage(show: Boolean) {
         if (show){
-            paymentInput.clearView.visibility = View.VISIBLE
+           // paymentInput.clearView.visibility = View.VISIBLE
 
         }else{
-            paymentInput.clearView.visibility = View.GONE
+          //  paymentInput.clearView.visibility = View.GONE
 
         }
     }

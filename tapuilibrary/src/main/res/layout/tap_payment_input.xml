@@ -44,7 +44,7 @@
             <company.tap.tapuilibrary.uikit.views.TapAlertView
                 android:id="@+id/alertView"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/payment_input_layout"
                 android:visibility="gone" />
 
