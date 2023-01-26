@@ -74,16 +74,16 @@ class TapAlertView : LinearLayout {
 //        }
 
         var textTheme = TextViewTheme()
-        textTheme.textColor = Color.parseColor(ThemeManager.getValue("Hints.Warning.textColor"))
-        textTheme.textSize = ThemeManager.getFontSize("Hints.Warning.textFont")
+        textTheme.textColor = Color.parseColor(ThemeManager.getValue("Hints.Error.textColor"))
+        textTheme.textSize = ThemeManager.getFontSize("Hints.Error.textFont")
         alertMessage.setTheme(textTheme)
-        alertMessage.setTextColor(Color.parseColor(ThemeManager.getValue("Hints.Warning.textColor")))
-        alertMessage.textSize = ThemeManager.getFontSize("Hints.Warning.textFont").toFloat()
+        alertMessage.setTextColor(Color.parseColor(ThemeManager.getValue("Hints.Error.textColor")))
+        alertMessage.textSize = ThemeManager.getFontSize("Hints.Error.textFont").toFloat()
 
 
         val separatorViewTheme = SeparatorViewTheme()
         separatorViewTheme.strokeColor =
-            Color.parseColor(ThemeManager.getValue("Hints.Warning.borderColor"))
+            Color.parseColor(ThemeManager.getValue("Hints.Error.borderColor"))
       //  separatorViewTheme.strokeHeight = ThemeManager.getValue("TapAlertMessage.separatorHeight")
         topSeparator.setTheme(separatorViewTheme)
         bottomSeparator.setTheme(separatorViewTheme)
@@ -92,7 +92,7 @@ class TapAlertView : LinearLayout {
     fun setFontsEnglish() {
         alertMessage?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
     }
@@ -100,7 +100,7 @@ class TapAlertView : LinearLayout {
     fun setFontsArabic() {
         alertMessage?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalMedium
             )
         )
     }
