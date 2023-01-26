@@ -48,6 +48,12 @@
             "password_hint_color": "#878787"
         }
     },
+    "asyncView": {
+        "labelsFont":"Roboto-Regular,20",
+        "labelsColor":"greyishBrown",
+        "codeLabelFont":"Roboto-Regular,30",
+        "codeLabelColor":"greyishBrown"
+    },
     "inlineCard": {
         "commonAttributes": {
             "backgroundColor": "white",

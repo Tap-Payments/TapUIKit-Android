@@ -44,6 +44,8 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
             R.drawable.powered_by_tap_light
         }else R.drawable.powered_by_tap_light
+
+
         init {
         inflate(context, R.layout.fawry_payment_view, this)
             setTheme()
@@ -71,11 +73,11 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
         poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
         textViewPowered.setTheme(poweredByTextViewTheme)
 
-        var tapTextViewTheme = TextViewTheme()
+      /*  var tapTextViewTheme = TextViewTheme()
         tapTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
         tapTextViewTheme.textSize =
             ThemeManager.getFontSize("poweredByTap.powerLabel.font")
-        tapTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
+        tapTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")*/
     }
 
     fun initViews(orderCode:String,codeExpire : String , link:String ){
