@@ -75,19 +75,19 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
       //  cardScannerButton.setImageResource(scannerIcon)
       //  clearView.setImageResource(closeIcon)
       //  nfcButton.setImageResource(nfcIcon)
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+       /* if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             cardInputChipView.setBackgroundResource(R.drawable.border_unclick_black)
         } else {
             cardInputChipView.setBackgroundResource(R.drawable.border_unclick)
-        }
-        setBorderedView(
+        }*/
+       /* setBorderedView(
             cardInputChipView,
             15.0f,// corner raduis
             0.0f,
-            Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color")),
-            Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.backgroundColor")),
-            Color.parseColor(ThemeManager.getValue("horizontalList.chips.currencyChip.unSelected.shadow.color"))
-        )
+            Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.borderColor")),
+            Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.borderColor")),
+            Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.borderColor"))
+        )*/
     }
     fun setDisplayMetrics(displayMetrics: Int) {
         this.displayMetrics = displayMetrics
