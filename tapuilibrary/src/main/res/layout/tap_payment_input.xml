@@ -4,7 +4,7 @@
     android:id="@+id/mainLinear"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
@@ -13,8 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cardInput_cardView"
-        app:cardCornerRadius="@dimen/margin_basic_10dp"
-        app:cardElevation="0dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="10dp"
         android:layout_margin="8dp"
         android:orientation="vertical">
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
@@ -26,14 +26,14 @@
 
         <RelativeLayout
             android:id="@+id/tabLinear"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
             android:orientation="horizontal">
 
             <LinearLayout
                 android:id="@+id/payment_input_layout"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
 
@@ -44,7 +44,8 @@
             <company.tap.tapuilibrary.uikit.views.TapAlertView
                 android:id="@+id/alertView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginTop="-4dp"
                 android:layout_below="@+id/payment_input_layout"
                 android:visibility="gone" />
 
@@ -60,6 +61,8 @@
                 android:id="@+id/switch_Inline_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
 
                 android:layout_below="@+id/alertView"
                 android:layout_gravity="start"
@@ -83,7 +86,9 @@
     <company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
         android:id="@+id/sections_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_basic_10dp"
+        android:layout_marginEnd="@dimen/margin_basic_10dp"
 
 
         />
