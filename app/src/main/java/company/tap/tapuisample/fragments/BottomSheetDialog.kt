@@ -21,6 +21,7 @@ import android.view.WindowManager
 import android.widget.*
 import androidx.annotation.Nullable
 import androidx.annotation.RequiresApi
+import androidx.cardview.widget.CardView
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -141,7 +142,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var contactDetailView: TapContactDetailsView? = null
     private var shippingDetailView: TapShippingDetailView? = null
     private var mobileMainLinear: LinearLayout? = null
-    lateinit var cardInputCardView: TapChip
+    lateinit var cardInputCardView: CardView
     lateinit var tapPaymentInput: TapPaymentInput
     lateinit var saveForLaterCheckBox: CheckBox
 
@@ -503,7 +504,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapPaymentInput = view.findViewById(R.id.tap_payment_input0)
 
 
-        cardInputCardView = tapPaymentInput.findViewById(R.id.cardInput_cardView)
+        cardInputCardView = tapPaymentInput.findViewById(R.id.inline_CardView)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         groupName = view.findViewById<TapTextView>(R.id.group_name)
         groupName?.text = LocalizationManager.getValue(

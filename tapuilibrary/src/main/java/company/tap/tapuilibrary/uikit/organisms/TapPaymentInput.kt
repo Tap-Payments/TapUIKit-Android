@@ -45,7 +45,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val separator4 by lazy { findViewById<TapSeparatorView>(R.id.separator4) }
     val inlineProgressBar by lazy { findViewById<ProgressBar>(R.id.inlineProgressbar) }
   //  val cardInputCardView by lazy { findViewById<CardView>(R.id.cardInput_cardView) }
-    val cardInputChipView by lazy { findViewById<CardView>(R.id.cardInput_cardView) }
+    val cardInputChipView by lazy { findViewById<CardView>(R.id.inline_CardView) }
     //var cardScannerButton :ImageView
    // var nfcButton :ImageView
     private  var tapMobileInputView: TapMobilePaymentView
