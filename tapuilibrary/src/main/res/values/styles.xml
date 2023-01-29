@@ -18,7 +18,8 @@
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
     <style name="SwitchPrimary" >
-        <item name="colorControlActivated">#4cd964</item>
+        <item name="colorControlActivated">@color/switchOnColor
+        </item>
     </style>
     <style name="SwitchSecondary" >
         <item name="colorControlActivated">#009aff</item>

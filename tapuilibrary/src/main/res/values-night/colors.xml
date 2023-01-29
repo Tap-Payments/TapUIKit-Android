@@ -29,4 +29,5 @@
     <color name="brown_grey_background">#CACACB</color>
     <color name="paleLilac">#211F1F</color>
     <color name="buttoncheckBox">#006ADB</color>
+    <color name="switchOnColor">#17B100</color>
 </resources>
