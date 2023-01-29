@@ -131,9 +131,12 @@ class TapInlineCardSwitch : LinearLayout {
         if(switchSaveCard.isChecked){
             switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor")))
 
+        }else{
+            switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
+
         }
         saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
-       
+
         tapLogoImage.setImageResource(logoIcon)
         toolsTipImageView.setImageResource(toolsTipIcon)
     }
@@ -189,7 +192,7 @@ class TapInlineCardSwitch : LinearLayout {
             if (isChecked) {
                 var switchSaveMerchantSwitchThemeEnable = SwitchTheme()
                 switchSaveMerchantSwitchThemeEnable.thumbTint =
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor"))
                 // switchSaveMerchantSwitchThemeEnable.trackTint =
                 //     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeEnable)
@@ -208,7 +211,7 @@ class TapInlineCardSwitch : LinearLayout {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
                 val switchSaveMerchantSwitchThemeDisable = SwitchTheme()
                 switchSaveMerchantSwitchThemeDisable.thumbTint =
-                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor"))
                 //  switchSaveMerchantSwitchThemeDisable.trackTint =
                 //      Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeDisable)
