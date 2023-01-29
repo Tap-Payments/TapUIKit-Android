@@ -79,19 +79,33 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     private fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
         val btnText:String
+        val _textColor:Int
+        val btnBackground:Int
         if(buttonText ==null){
 
             btnText = LocalizationManager.getValue("pay", "ActionButton")
         }else {
             btnText =buttonText
         }
+        if(textColor ==null){
+
+            _textColor = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+        }else {
+            _textColor =textColor
+        }
+        if(backgroundColor ==null){
+
+            btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")
+        }else {
+            btnBackground =backgroundColor
+        }
         dataSource = ActionButtonDataSource(
             text = btnText ,
             textSize = 16f,
-            textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
+            textColor = _textColor,
             cornerRadius = 100f,
             successImageResources = R.drawable.checkmark,
-            backgroundColor = backgroundColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
+            backgroundColor = btnBackground
         )
 
     }
