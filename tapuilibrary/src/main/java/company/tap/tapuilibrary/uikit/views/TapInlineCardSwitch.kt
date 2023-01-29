@@ -124,7 +124,7 @@ class TapInlineCardSwitch : LinearLayout {
 
         switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.labelTextColor")))
         switchSaveCard?.textSize=14.0f
-        switchSaveCard?.buttonTintList=ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
+       // switchSaveCard?.buttonTintList=ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
 
         switchSaveCard?.trackTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor")))
         switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
@@ -194,7 +194,7 @@ class TapInlineCardSwitch : LinearLayout {
                 switchSaveMerchantSwitchThemeEnable.thumbTint =
                     Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor"))
                  switchSaveMerchantSwitchThemeEnable.trackTint =
-                     Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor"))
+                     Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeEnable)
 
                 payButton.setButtonDataSource(
