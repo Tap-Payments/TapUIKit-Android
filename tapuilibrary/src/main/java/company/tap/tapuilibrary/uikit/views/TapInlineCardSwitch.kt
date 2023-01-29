@@ -196,6 +196,7 @@ class TapInlineCardSwitch : LinearLayout {
                  switchSaveMerchantSwitchThemeEnable.trackTint =
                      Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeEnable)
+
                 payButton.setButtonDataSource(
                     true,
                     context?.let { LocalizationManager.getLocale(it).language },
