@@ -95,7 +95,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         }
         if(backgroundColor ==null){
 
-            btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")
+            btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
         }else {
             btnBackground =backgroundColor
         }
