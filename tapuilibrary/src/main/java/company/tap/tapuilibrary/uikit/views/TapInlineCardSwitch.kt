@@ -1,7 +1,9 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.View
 import android.widget.CheckBox
@@ -11,6 +13,7 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.TooltipCompat
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
@@ -92,7 +95,7 @@ class TapInlineCardSwitch : LinearLayout {
         //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initActionButton()
         initViews()
-
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
     private fun initViews() {
@@ -102,8 +105,21 @@ class TapInlineCardSwitch : LinearLayout {
 
         }
         TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
-        saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
-        switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.greyishBrown")))
+
+        setThemeForView()
+
+    }
+
+    private fun setThemeForView() {
+
+        saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardForTapOption.labelTextColor")))
+        saveForOtherCheckBox?.textSize=ThemeManager.getValue("inlineCard.saveCardForTapOption.labelTextFont")
+        saveForOtherCheckBox.buttonTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardForTapOption.saveButtonActivatedTintColor")))
+
+        switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.labelTextColor")))
+        switchSaveCard?.textSize=ThemeManager.getValue("inlineCard.saveCardOption.labelTextFont")
+        switchSaveCard?.buttonTintList=ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
+
         saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
         tapLogoImage.setImageResource(logoIcon)
     }
@@ -236,7 +252,34 @@ class TapInlineCardSwitch : LinearLayout {
     }
 
 
+    fun setFontsEnglish() {
+        saveForOtherCheckBox?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
+        switchSaveCard?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
 
+    }
+
+    fun setFontsArabic() {
+        saveForOtherCheckBox?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalMedium
+            )
+        )
+
+        switchSaveCard?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalMedium
+            )
+        )
+
+    }
 
 
 }
