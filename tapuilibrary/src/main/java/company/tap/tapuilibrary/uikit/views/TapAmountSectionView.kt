@@ -185,17 +185,17 @@ class TapAmountSectionView : LinearLayout {
         )
         itemCountButton?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.latoLight
+                TapFont.RobotoLight
             )
         )
         itemCountText?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.latoRegular
+                TapFont.RobotoRegular
             )
         )
         itemAmountText?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.latoRegular
+                TapFont.RobotoRegular
             )
         )
     }
@@ -218,12 +218,12 @@ class TapAmountSectionView : LinearLayout {
         )
         itemCountText?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalMedium
             )
         )
         itemAmountText?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
+                TapFont.TajawalMedium
             )
         )
     }

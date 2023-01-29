@@ -92,7 +92,7 @@ class TapAlertView : LinearLayout {
     fun setFontsEnglish() {
         alertMessage?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
+                TapFont.RobotoLight
             )
         )
     }
@@ -100,7 +100,7 @@ class TapAlertView : LinearLayout {
     fun setFontsArabic() {
         alertMessage?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalMedium
+                TapFont.TajawalLight
             )
         )
     }
