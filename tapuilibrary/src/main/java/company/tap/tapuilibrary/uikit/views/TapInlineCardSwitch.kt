@@ -6,9 +6,7 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.View
-import android.widget.CheckBox
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
+import android.widget.*
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.TooltipCompat
 import company.tap.taplocalizationkit.LocalizationManager

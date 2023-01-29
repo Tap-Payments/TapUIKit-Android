@@ -32,7 +32,7 @@
             android:textStyle="normal"
             android:layout_marginLeft="@dimen/margin_basic_10dp"
             android:layout_marginRight="@dimen/margin_basic_10dp"
-            android:theme="@style/SwitchSecondary"
+            android:theme="@style/SwitchPrimary"
             tools:text="Save for Later" />
 
         <LinearLayout
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="visible"
-           android:layout_marginTop="-7dp"
+
             android:layout_marginRight="@dimen/margin_basic_10dp"
             android:layout_marginLeft="@dimen/margin_basic_10dp"
             android:layout_below="@+id/switchSaveCard">
@@ -58,9 +58,11 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_gravity="center"
-                android:padding="7dp"
+                android:padding="5dp"
                 android:clickable="true"
                 android:longClickable="true"
+                android:layout_marginStart="2dp"
+                android:layout_marginEnd="2dp"
 
                 android:focusable="true"
                 android:visibility="visible"/>
