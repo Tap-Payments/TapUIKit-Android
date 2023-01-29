@@ -57,6 +57,14 @@ class TapInlineCardSwitch : LinearLayout {
             R.drawable.tap_logo_light_horizontal
         }else R.drawable.tap_logo_light_horizontal
 
+    @DrawableRes
+    val toolsTipIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.toolstip_darkmode
+        } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
+            R.drawable.toolstip_lightmode
+        }else R.drawable.toolstip_lightmode
+
 
 
     lateinit var attrs: AttributeSet
@@ -113,15 +121,16 @@ class TapInlineCardSwitch : LinearLayout {
     private fun setThemeForView() {
 
         saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardForTapOption.labelTextColor")))
-        saveForOtherCheckBox?.textSize=ThemeManager.getValue("inlineCard.saveCardForTapOption.labelTextFont")
+        saveForOtherCheckBox?.textSize=12.0f
         saveForOtherCheckBox.buttonTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardForTapOption.saveButtonActivatedTintColor")))
 
         switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.labelTextColor")))
-        switchSaveCard?.textSize=ThemeManager.getValue("inlineCard.saveCardOption.labelTextFont")
+        switchSaveCard?.textSize=14.0f
         switchSaveCard?.buttonTintList=ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
 
         saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
         tapLogoImage.setImageResource(logoIcon)
+        toolsTipImageView.setImageResource(toolsTipIcon)
     }
 
     fun setSwitchInterface(actionButtonInterface: TapActionButtonInterface) {

@@ -50,7 +50,7 @@
                 android:id="@+id/saveForOtherCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#006ADB"
+                android:buttonTint="@color/buttoncheckBox"
                 tools:text="Save for other stores powered by Tap"/>
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
@@ -61,7 +61,7 @@
                 android:padding="7dp"
                 android:clickable="true"
                 android:longClickable="true"
-                android:src="@drawable/toolstip"
+
                 android:focusable="true"
                 android:visibility="visible"/>
 

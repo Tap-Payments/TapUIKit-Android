@@ -28,4 +28,5 @@
     <color name="header_gray">#00ffffff</color>
     <color name="brown_grey_background">#CACACB</color>
     <color name="paleLilac">#211F1F</color>
+    <color name="buttoncheckBox">#006ADB</color>
 </resources>

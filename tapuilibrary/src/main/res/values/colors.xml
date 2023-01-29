@@ -56,5 +56,6 @@
 
     <color name="brown_grey_background">#4B4847</color>
     <color name="paleLilac">#e4e4e5</color>
+    <color name="buttoncheckBox">#009AFF</color>
 
 </resources>
