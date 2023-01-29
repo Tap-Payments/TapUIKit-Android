@@ -128,13 +128,13 @@ class TapInlineCardSwitch : LinearLayout {
 
         switchSaveCard?.trackTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor")))
         switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
-        if(switchSaveCard.isChecked){
+       /* if(switchSaveCard.isChecked){
             switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor")))
 
         }else{
             switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
 
-        }
+        }*/
         saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
 
         tapLogoImage.setImageResource(logoIcon)
