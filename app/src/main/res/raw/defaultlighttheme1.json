@@ -91,11 +91,18 @@
             "placeHolderColor" : "brownGreyTwo"
         },
         "saveCardOption": {
-            "labelTextColor": "black",
-            "labelTextFont": "20",
+            "labelTextColor": "greyishBrown",
+            "labelTextFont": "Roboto-Light,14",
             "switchTintColor": "white",
             "switchThumbColor": "white",
             "switchOnThumbColor": "#2ACE00"
+        },
+        "saveCardForTapOption": {
+            "labelTextColor": "#7E7E7E",
+            "labelTextFont": "Roboto-Light,12",
+            "saveButtonActivatedTintColor": "azure",
+            "saveButtonDeactivatedTintColor": "lightGrey",
+            "infoButtonTintColor": "lightGrey"
         }
     },
     "phoneCard": {
@@ -494,7 +501,11 @@
                 "backgroundColor" : "clear",
                 "alpha": 1
             }
-        }
+        },
+        "weAcceptLabel":{
+        "textFont": "Roboto,10",
+        "textColor": "#9F9F9F"
+    }
     },
     "TapVerticalView":
     {
