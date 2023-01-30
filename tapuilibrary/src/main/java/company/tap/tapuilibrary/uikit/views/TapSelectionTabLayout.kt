@@ -21,8 +21,11 @@ import com.bumptech.glide.Glide
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
@@ -66,14 +69,31 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout = findViewById(R.id.tab_layout)
         tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)
-        tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-        acceptedCardText?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
-        acceptedCardText?.setTextColor(Color.parseColor("#9F9F9F"))
+
+        applyThemeView()
+
         setSelectionBehaviour()
     }
 
+    private fun applyThemeView() {
 
-//    fun clearInvalidIndicatorColor(){
+        val acceptedCardTextViewTheme = TextViewTheme()
+        acceptedCardTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("cardPhoneList.weAcceptLabel.textColor"))
+        acceptedCardTextViewTheme.textSize =
+            ThemeManager.getFontSize("cardPhoneList.weAcceptLabel.textFont")
+        acceptedCardTextViewTheme.font = ThemeManager.getFontName("cardPhoneList.weAcceptLabel.textFont")
+        acceptedCardText.setTheme(acceptedCardTextViewTheme)
+
+        tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor")))
+        acceptedCardText?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor")))
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+    }
+
+  
+
+
+    //    fun clearInvalidIndicatorColor(){
 //        indicatorHeight= MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
 //    }
     fun changeTabItemAlphaValue(tabItemAlphaValue : Float){
@@ -557,5 +577,21 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             .build()
 
         imageLoader.enqueue(request)
+    }
+
+    private fun setFontsArabic() {
+        acceptedCardText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalMedium
+            )
+        )
+    }
+
+    private fun setFontsEnglish() {
+        acceptedCardText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
     }
 }
