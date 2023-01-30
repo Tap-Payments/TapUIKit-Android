@@ -86,11 +86,25 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         acceptedCardText.setTheme(acceptedCardTextViewTheme)
 
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor")))
-        acceptedCardText?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor")))
+       // acceptedCardText?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor")))
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
-  
+    private fun setFontsArabic() {
+        acceptedCardText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalMedium
+            )
+        )
+    }
+
+    private fun setFontsEnglish() {
+        acceptedCardText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
+    }
 
 
     //    fun clearInvalidIndicatorColor(){
@@ -222,7 +236,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         var params = LayoutParams(
             getItemWidth(), 0
         )
-        params.weight = 0.6f
+        params.weight = 0.4f
         for (item in tabItems) {
             params.setMargins(
                 tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue,
@@ -263,7 +277,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             getItemWidth(), 0
         )
         params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
-        params.weight = 0.6f
+        params.weight = 0.4f
         val image = TapImageView(context, null)
         Glide.with(this)
             .load(item.selectedImageURL)
@@ -301,7 +315,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         linearLayout.layoutParams = params
         linearLayout.orientation = VERTICAL
-        linearLayout.weightSum = 0.6f
+        linearLayout.weightSum = 0.4f
         return linearLayout
     }
 
@@ -577,21 +591,5 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             .build()
 
         imageLoader.enqueue(request)
-    }
-
-    private fun setFontsArabic() {
-        acceptedCardText?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.TajawalMedium
-            )
-        )
-    }
-
-    private fun setFontsEnglish() {
-        acceptedCardText?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
-            )
-        )
     }
 }

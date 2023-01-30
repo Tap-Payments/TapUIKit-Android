@@ -18,7 +18,7 @@
         <entry key="app/src/main/res/layout/tap_card_switch.xml" value="0.37624750499001997" />
         <entry key="app/src/main/res/layout/tap_main_header.xml" value="0.24682971014492755" />
         <entry key="app/src/main/res/layout/tap_payment_input.xml" value="0.2830188679245283" />
-        <entry key="app/src/main/res/layout/tap_selection_tablayout.xml" value="0.24682971014492755" />
+        <entry key="app/src/main/res/layout/tap_selection_tablayout.xml" value="0.608641975308642" />
         <entry key="app/src/main/res/layout/tap_shipping_detail_view.xml" value="0.14684684684684685" />
         <entry key="tapuilibrary/src/main/res/drawable-hdpi/border_shadow_black.xml" value="1.8729796142578126" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
@@ -69,7 +69,7 @@
         <entry key="tapuilibrary/src/main/res/layout/tap_otp_view.xml" value="0.18018018018018017" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.3417951042611061" />
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.5415390014648438" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.6545138888888888" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.5544117647058824" />
         <entry key="tapuilibrary/src/main/res/layout/tap_shipping_detail_view.xml" value="0.55" />
       </map>
     </option>
