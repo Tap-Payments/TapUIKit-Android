@@ -192,7 +192,7 @@ class TapInlineCardSwitch : LinearLayout {
             if (isChecked) {
                 var switchSaveMerchantSwitchThemeEnable = SwitchTheme()
                 switchSaveMerchantSwitchThemeEnable.thumbTint =
-                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor"))
+                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor"))
                  switchSaveMerchantSwitchThemeEnable.trackTint =
                      Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeEnable)
