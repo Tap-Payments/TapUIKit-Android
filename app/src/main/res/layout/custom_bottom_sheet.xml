@@ -171,7 +171,10 @@ android:layout_marginTop="-25dp"
                     android:layout_height="25dp" />
 
             </LinearLayout>
-
+<company.tap.tapuilibrary.uikit.organisms.FawryPaymentView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"/>
 
 
         <company.tap.tapuilibrary.uikit.views.TapCardDetailView

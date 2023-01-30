@@ -126,8 +126,8 @@ class TapInlineCardSwitch : LinearLayout {
         switchSaveCard?.textSize=14.0f
        // switchSaveCard?.buttonTintList=ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
 
-        switchSaveCard?.trackTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor")))
-        switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
+       // switchSaveCard?.trackTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor")))
+      //  switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
        /* if(switchSaveCard.isChecked){
             switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor")))
 
@@ -192,7 +192,7 @@ class TapInlineCardSwitch : LinearLayout {
             if (isChecked) {
                 var switchSaveMerchantSwitchThemeEnable = SwitchTheme()
                 switchSaveMerchantSwitchThemeEnable.thumbTint =
-                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor"))
+                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor"))
                  switchSaveMerchantSwitchThemeEnable.trackTint =
                      Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeEnable)
@@ -212,9 +212,9 @@ class TapInlineCardSwitch : LinearLayout {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
                 val switchSaveMerchantSwitchThemeDisable = SwitchTheme()
                 switchSaveMerchantSwitchThemeDisable.thumbTint =
-                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor"))
+                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor"))
                   switchSaveMerchantSwitchThemeDisable.trackTint =
-                      Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor"))
+                      Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeDisable)
                 payButton.setButtonDataSource(
                     false,
