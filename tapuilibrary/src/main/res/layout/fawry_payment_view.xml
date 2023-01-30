@@ -10,10 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/titleText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
@@ -25,7 +23,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/descText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
@@ -37,7 +35,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="5dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/orderCodeText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
@@ -50,7 +48,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="0dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
 
@@ -62,7 +60,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="0dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/codeExpireText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
@@ -75,7 +73,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="0dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
 
@@ -88,7 +86,7 @@
         android:layout_marginBottom="5dp"
         android:gravity="center"
         android:lines="2"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/linkDescText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
