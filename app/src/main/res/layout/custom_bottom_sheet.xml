@@ -161,6 +161,8 @@ android:layout_marginTop="-25dp"
                     android:id="@+id/tap_payment_input0"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     android:layoutDirection="locale" />
 
 
@@ -250,7 +252,7 @@ android:layout_marginTop="-25dp"
         <company.tap.tapuilibrary.uikit.organisms.OTPView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="gone"
             android:windowSoftInputMode="adjustResize|adjustPan"
             android:gravity="center"
             android:layout_gravity="center"
