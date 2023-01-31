@@ -131,7 +131,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
         initOTPConfirmationButton()
         initChange()
         initTheme()
-        setFonts()
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
 //        showKeyboard()
 //        otpViewInput1.addTextChangedListener(GenericTextWatcher(otpViewInput1, otpViewInput2, context))
 
@@ -143,52 +144,22 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     }
 
-    fun showOnlyButton() {
-        changePhoneCardView.visibility = View.GONE
-        otpViewInput1.visibility = View.GONE
-        timerConstraints.visibility = View.GONE
-    }
-
-    private fun initTheme() {
-        changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
-        val timerTextTheme = TextViewTheme()
-        timerTextTheme.textColor =
-            (Color.parseColor(ThemeManager.getValue("TapOtpView.Timer.textColor")))
-        timerTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.Timer.textFont")
-        timerText.setTheme(timerTextTheme)
-        mobileNumberTextNormalPay.setTheme(timerTextTheme)
-        val mobileNumberTextTextTheme = TextViewTheme()
-        mobileNumberTextTextTheme.textColor =
-            (Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
-        mobileNumberTextTextTheme.textSize =
-            ThemeManager.getFontSize("TapOtpView.OtpController.textFont")
-        mobileNumberText.setTheme(mobileNumberTextTextTheme)
-        otpSentText.setTheme(mobileNumberTextTextTheme)
-
-        otpSentTextNormalPay.setTheme(mobileNumberTextTextTheme)
-        otpViewInput1.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
-//        otpViewInput2.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
-        setBackground()
-        val poweredByTextViewTheme = TextViewTheme()
-        poweredByTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
-        poweredByTextViewTheme.textSize =
-            ThemeManager.getFontSize("poweredByTap.powerLabel.font")
-        poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
-        textViewPowered.setTheme(poweredByTextViewTheme)
-
-        tapLogoImage.setImageResource(logoIcon)
-
-    }
-
-    private fun setBackground() {
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            otpLinearLayout.setBackgroundResource(R.drawable.blur_background_dark)
-        } else {
-            otpLinearLayout.setBackgroundResource(R.drawable.blurbackground)
-        }
-    }
-
-    private fun setFonts() {
+    private fun setFontsArabic() {
+        otpSentText.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        otpSentTextNormalPay.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        changePhone.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalMedium
+            )
+        )
 
         otpViewInput1.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
@@ -217,41 +188,123 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 TapFont.RobotoLight
             )
         )
+    }
+
+    private fun setFontsEnglish() {
+        otpSentText.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        otpSentTextNormalPay.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        changePhone.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
+
+        otpViewInput1.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+//        otpViewInput2.typeface = Typeface.createFromAsset(
+//            context?.assets, TapFont.tapFontType(
+//                TapFont.RobotoLight
+//            )
+//        )
+
+        mobileNumberText.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        mobileNumberTextNormalPay.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
+        timerText.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+    }
+
+    fun showOnlyButton() {
+        changePhoneCardView.visibility = View.GONE
+        otpViewInput1.visibility = View.GONE
+        timerConstraints.visibility = View.GONE
+    }
+
+    private fun initTheme() {
+       // changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
+       changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
+        val timerTextTheme = TextViewTheme()
+        timerTextTheme.textColor =
+            (Color.parseColor(ThemeManager.getValue("TapOtpView.Timer.textColor")))
+        timerTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.Timer.textFont")
+        timerText.setTheme(timerTextTheme)
+
+
+
+        val mobileNumberTextTextTheme = TextViewTheme()
+        mobileNumberTextTextTheme.textColor =
+            (Color.parseColor(ThemeManager.getValue("TapOtpView.Ready.Message.subtitle")))
+        mobileNumberTextTextTheme.textSize =
+            ThemeManager.getFontSize("TapOtpView.Ready.Message.textFont")
+        mobileNumberText.setTheme(mobileNumberTextTextTheme)
+        mobileNumberTextNormalPay.setTheme(mobileNumberTextTextTheme)
+
+        val otpSentTextTheme = TextViewTheme()
+        otpSentTextTheme.textColor =
+            (Color.parseColor(ThemeManager.getValue("TapOtpView.Ready.Message.title")))
+        otpSentTextTheme.textSize =
+            ThemeManager.getFontSize("TapOtpView.Ready.Message.textFont")
+        otpSentText.setTheme(otpSentTextTheme)
+
+        otpSentTextNormalPay.setTheme(mobileNumberTextTextTheme)
+        otpViewInput1.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
+//        otpViewInput2.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
+        setBackground()
+        val poweredByTextViewTheme = TextViewTheme()
+        poweredByTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
+        poweredByTextViewTheme.textSize =
+            ThemeManager.getFontSize("poweredByTap.powerLabel.font")
+        poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
+        textViewPowered.setTheme(poweredByTextViewTheme)
+
+        tapLogoImage.setImageResource(logoIcon)
+
+    }
+
+    private fun setBackground() {
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+            otpLinearLayout.setBackgroundResource(R.drawable.blur_background_dark)
+        } else {
+            otpLinearLayout.setBackgroundResource(R.drawable.blurbackground)
+        }
+    }
+
+    private fun setFonts() {
+        otpSentText.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+
 
 
         if (LocalizationManager.getLocale(context).language == "en") {
-            otpSentText.typeface = Typeface.createFromAsset(
-                context?.assets, TapFont.tapFontType(
-                    TapFont.RobotoLight
-                )
-            )
-            otpSentTextNormalPay.typeface = Typeface.createFromAsset(
-                context?.assets, TapFont.tapFontType(
-                    TapFont.RobotoLight
-                )
-            )
-            changePhone.typeface = Typeface.createFromAsset(
-                context?.assets, TapFont.tapFontType(
-                    TapFont.RobotoRegular
-                )
-            )
+
 
         } else {
-            otpSentText.typeface = Typeface.createFromAsset(
-                context?.assets, TapFont.tapFontType(
-                    TapFont.TajawalLight
-                )
-            )
-            otpSentTextNormalPay.typeface = Typeface.createFromAsset(
-                context?.assets, TapFont.tapFontType(
-                    TapFont.TajawalLight
-                )
-            )
-            changePhone.typeface = Typeface.createFromAsset(
-                context?.assets, TapFont.tapFontType(
-                    TapFont.TajawalMedium
-                )
-            )
+
         }
     }
 
