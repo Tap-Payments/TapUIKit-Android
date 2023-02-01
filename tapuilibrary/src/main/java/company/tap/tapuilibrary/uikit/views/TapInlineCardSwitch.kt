@@ -273,12 +273,12 @@ class TapInlineCardSwitch : LinearLayout {
     fun setFontsEnglish() {
         saveForOtherCheckBox?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
+                TapFont.RobotoLight
             )
         )
         switchSaveCard?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
+                TapFont.RobotoLight
             )
         )
 
@@ -287,13 +287,13 @@ class TapInlineCardSwitch : LinearLayout {
     fun setFontsArabic() {
         saveForOtherCheckBox?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalMedium
+                TapFont.TajawalLight
             )
         )
 
         switchSaveCard?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalMedium
+                TapFont.TajawalLight
             )
         )
 
