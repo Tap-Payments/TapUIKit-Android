@@ -41,8 +41,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:visibility="visible"
-           android:layout_marginTop="-7dp"
-            android:layout_marginRight="@dimen/margin_basic_10dp"
+            android:layout_marginTop="-10dp"
+            android:layout_marginRight="@dimen/margin_basic_15dp"
             android:layout_below="@+id/switchSaveCard">
 
             <CheckBox
@@ -57,7 +57,7 @@
                 android:id="@+id/saveForOtherTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/margin_basic_10dp"
+                android:layout_marginRight="@dimen/margin_basic_14dp"
                 android:text="Save for other stores powered by Tap"
                 android:textSize="@dimen/font_size_12sp"
                 />
@@ -71,7 +71,6 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:longClickable="true"
-
                 android:visibility="visible" />
 
 
