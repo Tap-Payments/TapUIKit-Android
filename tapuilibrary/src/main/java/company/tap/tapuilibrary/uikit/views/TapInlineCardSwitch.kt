@@ -139,6 +139,9 @@ class TapInlineCardSwitch : LinearLayout {
         }*/
         saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
 
+     //   saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
+        switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.greyishBrown")))
+     //   saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
         tapLogoImage.setImageResource(logoIcon)
         toolsTipImageView.setImageResource(toolsTipIcon)
     }

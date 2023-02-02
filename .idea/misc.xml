@@ -3,15 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="app/src/main/res/drawable-xhdpi/border_shadow_black.xml" value="0.9785249633789064" />
         <entry key="app/src/main/res/drawable/background_loyalty.xml" value="0.207" />
         <entry key="app/src/main/res/drawable/border_shadow_.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/border_unclick_black.xml" value="0.2145" />
         <entry key="app/src/main/res/drawable/checkbox_state.xml" value="0.1555" />
+=======
+        <entry key="../../../../layout/custom_preview.xml" value="0.10595358224016145" />
+>>>>>>> FT_010223_Feedback_Osama_Copy
         <entry key="app/src/main/res/drawable/corner_radius.xml" value="0.1715" />
-        <entry key="app/src/main/res/layout/activity_amount_item.xml" value="0.13918918918918918" />
-        <entry key="app/src/main/res/layout/activity_loyalty_view.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_sections_tab_layout.xml" value="0.140990990990991" />
         <entry key="app/src/main/res/layout/custom_bottom_sheet.xml" value="0.47764227642276424" />
         <entry key="app/src/main/res/layout/custom_sheet_switch.xml" value="0.19234234234234235" />
@@ -75,10 +78,26 @@
         <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.5415390014648438" />
         <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.5544117647058824" />
         <entry key="tapuilibrary/src/main/res/layout/tap_shipping_detail_view.xml" value="0.55" />
+=======
+        <entry key="app/src/main/res/layout/custom_bottom_sheet.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/tap_card_switch.xml" value="0.1646403242147923" />
+        <entry key="app/src/main/res/layout/tap_main_header.xml" value="0.1646403242147923" />
+        <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
+        <entry key="tapuilibrary/src/main/res/layout/card_section_layout.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/custom_card_view.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/fawry_payment_view.xml" value="0.335" />
+        <entry key="tapuilibrary/src/main/res/layout/item_saved_card.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_inline_card_switch.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_main_header.xml" value="0.1469098277608916" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_shipping_detail_view.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/textview_cell.xml" value="0.3385416666666667" />
+>>>>>>> FT_010223_Feedback_Osama_Copy
       </map>
     </option>
   </component>
-  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
@@ -128,13 +147,6 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.55" />
-      </ProjectState>
-    </option>
   </component>
   <component name="masterDetails">
     <states>
