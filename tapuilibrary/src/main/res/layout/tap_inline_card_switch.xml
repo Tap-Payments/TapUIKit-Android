@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
 
 
-
     android:id="@+id/tapCardSwitchLinear"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="@color/blue"
     android:layoutDirection="locale"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:background="@color/blue">
 
     <RelativeLayout
         android:id="@+id/switchesLayout"
@@ -24,14 +23,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/margin_basic_10dp"
+            android:layout_marginRight="@dimen/margin_basic_10dp"
             android:checked="true"
             android:fontFamily="sans-serif-light"
             android:letterSpacing="-0.02"
             android:textColor="#4b4847"
             android:textSize="14sp"
             android:textStyle="normal"
-            android:layout_marginLeft="@dimen/margin_basic_10dp"
-            android:layout_marginRight="@dimen/margin_basic_10dp"
             android:theme="@style/SwitchSecondary"
             tools:text="Save for Later" />
 
@@ -39,31 +38,40 @@
             android:id="@+id/secondary_Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/switchSaveCard"
+            android:layout_marginTop="-7dp"
             android:orientation="horizontal"
-            android:visibility="visible"
-           android:layout_marginTop="-7dp"
-            android:layout_marginRight="@dimen/margin_basic_10dp"
-            android:layout_marginLeft="@dimen/margin_basic_10dp"
-            android:layout_below="@+id/switchSaveCard">
+            android:visibility="visible">
 
             <CheckBox
                 android:id="@+id/saveForOtherCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#006ADB"
-                tools:text="Save for other stores powered by Tap"/>
+                android:buttonTint="#009AFF"
+                android:scaleX="0.7"
+                android:scaleY="0.7"
+                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save for other stores powered by Tap"
+                android:textSize="@dimen/font_size_12sp"
+                android:layout_marginRight="@dimen/margin_basic_10dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                />
+
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
                 android:id="@+id/toolsTipImageView"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
                 android:layout_gravity="center"
-                android:padding="7dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:longClickable="true"
                 android:src="@drawable/toolstip"
-                android:focusable="true"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
 
         </LinearLayout>
@@ -76,25 +84,25 @@
         android:id="@+id/payButton"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="22dp"
-        android:visibility="gone"
         android:layout_gravity="center"
-        android:layout_marginBottom="22dp"
         android:layout_marginStart="@dimen/margin_basic_20dp"
-        android:layout_marginEnd="@dimen/margin_basic_20dp" />
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="@dimen/margin_basic_20dp"
+        android:layout_marginBottom="22dp"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/brandingLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:gravity="center"
-        android:visibility="visible"
-        android:layoutDirection="ltr"
-        android:textDirection="firstStrongLtr"
         android:layout_marginTop="@dimen/margin_basic_10dp"
         android:layout_marginBottom="30dp"
-        android:orientation="horizontal">
+        android:gravity="center"
+        android:layoutDirection="ltr"
+        android:orientation="horizontal"
+        android:textDirection="firstStrongLtr"
+        android:visibility="visible">
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/textViewPowered"
@@ -103,18 +111,17 @@
             android:layout_gravity="center"
             android:text="Powered by"
             android:textColor="#626262"
-            android:visibility="visible"
             android:textSize="@dimen/font_size_10sp"
-            />
+            android:visibility="visible" />
+
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
+            android:id="@+id/tapLogoImage"
             android:layout_width="36dp"
             android:layout_height="@dimen/margin_basic_20dp"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_basic_4dp"
-            android:layout_marginEnd="@dimen/margin_basic_4dp"
 
-            android:id="@+id/tapLogoImage"
-            />
+            android:layout_marginEnd="@dimen/margin_basic_4dp" />
 
     </LinearLayout>
 
