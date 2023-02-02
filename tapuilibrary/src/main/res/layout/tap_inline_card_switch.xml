@@ -43,27 +43,36 @@
             android:visibility="visible"
            android:layout_marginTop="-7dp"
             android:layout_marginRight="@dimen/margin_basic_10dp"
-            android:layout_marginLeft="@dimen/margin_basic_10dp"
             android:layout_below="@+id/switchSaveCard">
 
             <CheckBox
                 android:id="@+id/saveForOtherCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="#006ADB"
-                tools:text="Save for other stores powered by Tap"/>
+                android:buttonTint="#009AFF"
+                android:scaleX="0.7"
+                android:scaleY="0.7" />
+
+            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                android:id="@+id/saveForOtherTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/margin_basic_10dp"
+                android:text="Save for other stores powered by Tap"
+                android:textSize="@dimen/font_size_12sp"
+                />
+
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
                 android:id="@+id/toolsTipImageView"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
                 android:layout_gravity="center"
-                android:padding="7dp"
                 android:clickable="true"
+                android:focusable="true"
                 android:longClickable="true"
                 android:src="@drawable/toolstip"
-                android:focusable="true"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
 
         </LinearLayout>
