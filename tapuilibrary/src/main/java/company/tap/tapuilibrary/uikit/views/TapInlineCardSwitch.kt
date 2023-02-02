@@ -1,18 +1,16 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.Typeface
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.View
-import android.widget.*
+import android.widget.CheckBox
+import android.widget.LinearLayout
+import android.widget.RelativeLayout
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.TooltipCompat
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
@@ -45,6 +43,7 @@ class TapInlineCardSwitch : LinearLayout {
     val secondaryLayout by lazy { findViewById<LinearLayout>(R.id.secondary_Layout) }
     val saveForOtherCheckBox by lazy { findViewById<CheckBox>(R.id.saveForOtherCheckBox) }
     val saveForOtherTextView by lazy { findViewById<TapTextView>(R.id.saveForOtherTextView) }
+
     private var actionButtonInterface: TapActionButtonInterface? = null
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
     //val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
@@ -56,14 +55,6 @@ class TapInlineCardSwitch : LinearLayout {
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
             R.drawable.tap_logo_light_horizontal
         }else R.drawable.tap_logo_light_horizontal
-
-    @DrawableRes
-    val toolsTipIcon: Int =
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.toolstip_darkmode
-        } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
-            R.drawable.toolstip_lightmode
-        }else R.drawable.toolstip_lightmode
 
 
 
@@ -103,53 +94,23 @@ class TapInlineCardSwitch : LinearLayout {
         //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initActionButton()
         initViews()
-        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
 
     }
 
     private fun initViews() {
         val tootlsTipTextVal:String= LocalizationManager.getValue("cardSaveForTapInfo","TapCardInputKit")
         toolsTipImageView.setOnClickListener {
-            toolsTipImageView.performLongClick()
             TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
 
         }
         TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
 
-        setThemeForView()
-
-    }
-
-    private fun setThemeForView() {
-
-        saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardForTapOption.labelTextColor")))
-        saveForOtherCheckBox?.textSize=12.0f
-        saveForOtherCheckBox.buttonTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardForTapOption.saveButtonActivatedTintColor")))
-
-        switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.labelTextColor")))
-        switchSaveCard?.textSize=14.0f
-       // switchSaveCard?.buttonTintList=ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
-
-       // switchSaveCard?.trackTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor")))
-      //  switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
-       /* if(switchSaveCard.isChecked){
-            switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor")))
-
-        }else{
-            switchSaveCard?.thumbTintList= ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor")))
-
-        }*/
-     //   saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
-
-
         saveForOtherTextView.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
         saveForOtherTextView.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
-
-     //   saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
+//   saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
         switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.greyishBrown")))
-     //   saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
+//   saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
         tapLogoImage.setImageResource(logoIcon)
-        toolsTipImageView.setImageResource(toolsTipIcon)
     }
 
     fun setSwitchInterface(actionButtonInterface: TapActionButtonInterface) {
@@ -203,11 +164,10 @@ class TapInlineCardSwitch : LinearLayout {
             if (isChecked) {
                 var switchSaveMerchantSwitchThemeEnable = SwitchTheme()
                 switchSaveMerchantSwitchThemeEnable.thumbTint =
-                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor"))
-                 switchSaveMerchantSwitchThemeEnable.trackTint =
-                     Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchOnThumbColor"))
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
+                // switchSaveMerchantSwitchThemeEnable.trackTint =
+                //     Color.parseColor(ThemeManager.getValue("TapSwitchView.merchant.SwitchOnColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeEnable)
-
                 payButton.setButtonDataSource(
                     true,
                     context?.let { LocalizationManager.getLocale(it).language },
@@ -223,9 +183,9 @@ class TapInlineCardSwitch : LinearLayout {
                 tapCardSwitchLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
                 val switchSaveMerchantSwitchThemeDisable = SwitchTheme()
                 switchSaveMerchantSwitchThemeDisable.thumbTint =
-                    Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchTintColor"))
-                  switchSaveMerchantSwitchThemeDisable.trackTint =
-                      Color.parseColor(ThemeManager.getValue("inlineCard.saveCardOption.switchThumbColor"))
+                    Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
+                //  switchSaveMerchantSwitchThemeDisable.trackTint =
+                //      Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor"))
                 switchSaveCard.setTheme(switchSaveMerchantSwitchThemeDisable)
                 payButton.setButtonDataSource(
                     false,
@@ -281,34 +241,7 @@ class TapInlineCardSwitch : LinearLayout {
     }
 
 
-    fun setFontsEnglish() {
-        saveForOtherCheckBox?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
-            )
-        )
-        switchSaveCard?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
-            )
-        )
 
-    }
-
-    fun setFontsArabic() {
-        saveForOtherCheckBox?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
-            )
-        )
-
-        switchSaveCard?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.TajawalLight
-            )
-        )
-
-    }
 
 
 }
