@@ -100,6 +100,7 @@ class TapInlineCardSwitch : LinearLayout {
     private fun initViews() {
         val tootlsTipTextVal:String= LocalizationManager.getValue("cardSaveForTapInfo","TapCardInputKit")
         toolsTipImageView.setOnClickListener {
+            toolsTipImageView.performLongClick()
             TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
 
         }
