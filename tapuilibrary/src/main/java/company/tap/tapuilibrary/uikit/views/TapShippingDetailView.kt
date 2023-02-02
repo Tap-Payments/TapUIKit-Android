@@ -28,6 +28,7 @@ class TapShippingDetailView : LinearLayout {
     val shippingSeparator1 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator1) }
     val shippingSeparator2 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator2) }
     val cardShippingMainLL by lazy { findViewById<LinearLayout>(R.id.cardShipping_mainLL) }
+    val mainShipLL by lazy { findViewById<LinearLayout>(R.id.mainShipLL) }
     private var countryCode: String? = null
 
     /**
@@ -74,6 +75,7 @@ class TapShippingDetailView : LinearLayout {
 
         cityEditText.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
         cityEditText.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
+        mainShipLL.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
 
     }
 
@@ -103,7 +105,7 @@ class TapShippingDetailView : LinearLayout {
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalMedium
             )
-        )
+        )cardShipping_mainLL
 
     }
     private fun initCountryCodePicker() {

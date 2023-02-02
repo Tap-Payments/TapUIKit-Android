@@ -23,8 +23,9 @@
         app:cardElevation="0dp"
         android:elevation="@dimen/margin_basic_10dp">
         <LinearLayout
+            android:id="@+id/mainShipLL"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <company.tap.tapuilibrary.uikit.atoms.TapEditText
