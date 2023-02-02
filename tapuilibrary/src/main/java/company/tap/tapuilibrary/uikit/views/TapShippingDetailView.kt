@@ -65,7 +65,7 @@ class TapShippingDetailView : LinearLayout {
 
         shippingDetailTitle.setTheme(shippingTitleTextViewTheme)
 
-        cardShippingMainLL.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
+      //  cardShippingMainLL.setBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.backgroundColor")))
         flatEditText.setHintTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.placeHolderColor")))
         flatEditText.setTextColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.textfields.color")))
 
