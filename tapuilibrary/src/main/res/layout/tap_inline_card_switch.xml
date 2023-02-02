@@ -31,13 +31,7 @@
             android:textColor="#4b4847"
             android:textSize="14sp"
             android:textStyle="normal"
-<<<<<<< HEAD
-            android:layout_marginLeft="@dimen/margin_basic_10dp"
-            android:layout_marginRight="@dimen/margin_basic_10dp"
             android:theme="@style/SwitchPrimary"
-=======
-            android:theme="@style/SwitchSecondary"
->>>>>>> FT_010223_Feedback_Osama_Copy
             tools:text="Save for Later" />
 
         <LinearLayout
@@ -47,24 +41,24 @@
             android:layout_below="@+id/switchSaveCard"
             android:layout_marginTop="-7dp"
             android:orientation="horizontal"
-<<<<<<< HEAD
+
             android:visibility="visible"
 
             android:layout_marginRight="6dp"
             android:layout_marginLeft="6dp"
-            android:layout_below="@+id/switchSaveCard">
-=======
+            >
+
             android:visibility="visible">
->>>>>>> FT_010223_Feedback_Osama_Copy
+
 
             <CheckBox
                 android:id="@+id/saveForOtherCheckBox"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
+
                 android:buttonTint="@color/buttoncheckBox"
                 tools:text="Save for other stores powered by Tap"/>
-=======
+
                 android:buttonTint="#009AFF"
                 android:scaleX="0.7"
                 android:scaleY="0.7"
@@ -79,30 +73,29 @@
                 android:gravity="center"
                 />
 
->>>>>>> FT_010223_Feedback_Osama_Copy
+
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
                 android:id="@+id/toolsTipImageView"
                 android:layout_width="14dp"
                 android:layout_height="14dp"
                 android:layout_gravity="center"
-<<<<<<< HEAD
+
                 android:padding="5dp"
-=======
->>>>>>> FT_010223_Feedback_Osama_Copy
+
                 android:clickable="true"
                 android:focusable="true"
                 android:longClickable="true"
-<<<<<<< HEAD
+
                 android:layout_marginStart="2dp"
                 android:layout_marginEnd="2dp"
 
-                android:focusable="true"
+
                 android:visibility="visible"/>
-=======
+
                 android:src="@drawable/toolstip"
                 android:visibility="visible" />
->>>>>>> FT_010223_Feedback_Osama_Copy
+
 
 
         </LinearLayout>
