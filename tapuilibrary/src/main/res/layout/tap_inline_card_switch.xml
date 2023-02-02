@@ -51,15 +51,16 @@
                 android:scaleX="0.7"
                 android:scaleY="0.7"
                  />
-            <TextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                android:id="@+id/saveForOtherTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Save for other stores powered by Tap"
                 android:textSize="@dimen/font_size_12sp"
                 android:layout_marginRight="@dimen/margin_basic_10dp"
                 android:textAlignment="center"
-                android:gravity="center"
-                />
+                android:gravity="center" />
+
 
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
