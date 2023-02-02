@@ -69,9 +69,11 @@ class MainActivity : BaseActivity(),
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         context = this
-        setLocale(this, LocalizationManager.getLocale(context).language)
+      //  setLocale(this, LocalizationManager.getLocale(context).language)
+        setLocale(this, "ar")
 
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
+
        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme2, "defaultdarktheme")
 //        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark"))
           //  ThemeManager.loadTapTheme(this,"https://gist.githubusercontent.com/AhlaamK-tap/976650c60952b525d51b739254cd417c/raw/4ca48d48f3cd5dc8a0d4ab49b788bb3e2e9bdc0c/defaultlighttheme1.json","lighttheme")
