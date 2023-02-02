@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/switchSaveCard"
-            android:layout_marginTop="-12dp"
+            android:layout_marginTop="-10dp"
             android:orientation="horizontal"
             android:visibility="visible">
 
@@ -49,15 +49,16 @@
                 android:layout_width="26dp"
                 android:layout_height="22dp"
                 android:buttonTint="@color/buttoncheckBox"
-
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
                 />
 
             <company.tap.tapuilibrary.uikit.atoms.TapTextView
                 android:id="@+id/saveForOtherTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="1dp"
-                android:layout_marginRight="1dp"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
                 android:gravity="center"
                 android:text="Save for other stores powered by Tap"
                 android:textSize="@dimen/font_size_12sp" />
@@ -65,11 +66,13 @@
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
                 android:id="@+id/toolsTipImageView"
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:focusable="true"
+                android:layout_marginStart="3dp"
+                android:layout_marginEnd="3dp"
                 android:longClickable="true"
                 android:visibility="visible" />
 
