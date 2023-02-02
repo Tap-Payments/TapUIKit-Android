@@ -39,28 +39,28 @@
             android:id="@+id/secondary_Layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/switchSaveCard"
+            android:layout_marginTop="-12dp"
             android:orientation="horizontal"
-            android:visibility="visible"
-            android:layout_marginTop="-15dp"
-            android:layout_below="@+id/switchSaveCard">
+            android:visibility="visible">
 
             <CheckBox
                 android:id="@+id/saveForOtherCheckBox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="26dp"
+                android:layout_height="22dp"
                 android:buttonTint="@color/buttoncheckBox"
-                android:scaleX="0.7"
-                android:scaleY="0.7" />
+
+                />
 
             <company.tap.tapuilibrary.uikit.atoms.TapTextView
                 android:id="@+id/saveForOtherTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="1dp"
                 android:layout_marginLeft="1dp"
+                android:layout_marginRight="1dp"
+                android:gravity="center"
                 android:text="Save for other stores powered by Tap"
-                android:textSize="@dimen/font_size_12sp"
-                />
+                android:textSize="@dimen/font_size_12sp" />
 
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
