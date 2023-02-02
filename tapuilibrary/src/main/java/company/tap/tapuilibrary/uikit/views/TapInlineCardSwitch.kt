@@ -5,6 +5,7 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import android.widget.*
 import androidx.annotation.DrawableRes
@@ -102,16 +103,17 @@ class TapInlineCardSwitch : LinearLayout {
         initActionButton()
         initViews()
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
     }
 
     private fun initViews() {
         val tootlsTipTextVal:String= LocalizationManager.getValue("cardSaveForTapInfo","TapCardInputKit")
         toolsTipImageView.setOnClickListener {
+            toolsTipImageView.performLongClick()
             TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
 
         }
         TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
-
         setThemeForView()
 
     }
