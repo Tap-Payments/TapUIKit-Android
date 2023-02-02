@@ -56,6 +56,13 @@ class TapInlineCardSwitch : LinearLayout {
             R.drawable.tap_logo_light_horizontal
         }else R.drawable.tap_logo_light_horizontal
 
+    @DrawableRes
+    val toolsTipIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.toolstip_darkmode
+        } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
+            R.drawable.toolstip_lightmode
+        }else R.drawable.toolstip_lightmode
 
 
     lateinit var attrs: AttributeSet
@@ -112,6 +119,7 @@ class TapInlineCardSwitch : LinearLayout {
         switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.greyishBrown")))
 //   saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
         tapLogoImage.setImageResource(logoIcon)
+        toolsTipImageView.setImageResource(toolsTipIcon)
     }
 
     fun setSwitchInterface(actionButtonInterface: TapActionButtonInterface) {
