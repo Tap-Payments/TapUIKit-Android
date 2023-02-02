@@ -44,6 +44,7 @@ class TapInlineCardSwitch : LinearLayout {
     val toolsTipImageView by lazy { findViewById<TapImageView>(R.id.toolsTipImageView) }
     val secondaryLayout by lazy { findViewById<LinearLayout>(R.id.secondary_Layout) }
     val saveForOtherCheckBox by lazy { findViewById<CheckBox>(R.id.saveForOtherCheckBox) }
+    val saveForOtherTextView by lazy { findViewById<TapTextView>(R.id.saveForOtherTextView) }
     private var actionButtonInterface: TapActionButtonInterface? = null
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
     //val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
@@ -114,6 +115,7 @@ class TapInlineCardSwitch : LinearLayout {
 
         }
         TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
+
         setThemeForView()
 
     }
@@ -138,6 +140,10 @@ class TapInlineCardSwitch : LinearLayout {
 
         }*/
         saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
+
+
+        saveForOtherTextView.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
+        saveForOtherTextView.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
 
      //   saveForOtherCheckBox?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
         switchSaveCard?.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.greyishBrown")))
