@@ -105,7 +105,7 @@ class TapShippingDetailView : LinearLayout {
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalMedium
             )
-        )cardShipping_mainLL
+        )
 
     }
     private fun initCountryCodePicker() {
