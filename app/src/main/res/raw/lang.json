@@ -232,7 +232,7 @@
     "ActionButton":{
       "pay": "إدفع",
       "confirm": "تأكيد",
-      "resend": " إعادة إرسال رمز الـ OTP",
+      "resend": "إعادة إرسال",
       "next": "التالي",
       "signin": "تسجيل الدخول",
       "savecard": "احفظ البطاقة"

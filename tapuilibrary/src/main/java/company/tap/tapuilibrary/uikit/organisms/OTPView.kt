@@ -185,7 +185,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
         timerText.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.TajawalLight
             )
         )
     }

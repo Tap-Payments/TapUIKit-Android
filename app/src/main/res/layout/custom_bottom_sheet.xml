@@ -252,7 +252,7 @@ android:layout_marginTop="-25dp"
         <company.tap.tapuilibrary.uikit.organisms.OTPView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
+            android:visibility="visible"
             android:windowSoftInputMode="adjustResize|adjustPan"
             android:gravity="center"
             android:layout_gravity="center"
