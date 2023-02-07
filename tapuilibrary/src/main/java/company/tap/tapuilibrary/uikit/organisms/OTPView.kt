@@ -341,6 +341,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 "ActionButton"
             )
         ) {
+            otpViewInput1.text?.clear()
+            otpHintText.visibility = View.INVISIBLE
             startCountdown()
         }
     }

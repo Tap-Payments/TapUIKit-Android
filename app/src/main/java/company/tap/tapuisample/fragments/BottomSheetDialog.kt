@@ -305,6 +305,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SetTextI18n")
     private fun initializeViews(view: View) {
+        OnCLick()
         headerViewInit(view)
         amountViewInit(view)
         tabLayoutInit(view)
@@ -347,6 +348,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
         })
 
+    }
+
+    private  fun OnCLick(){
+        otpView!!.timerText.setOnClickListener {
+
+            otpView!!.restartTimer()
+        }
     }
 
     private fun initializeCardForm(view: View) {
