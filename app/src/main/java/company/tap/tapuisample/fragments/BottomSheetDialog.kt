@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
 import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
@@ -237,7 +238,6 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         separatorــLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
         initializeViews(view)
-
 
 
         switch_pay_demo.payButton.setOnClickListener {
@@ -498,6 +498,11 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             fontChanger!!.replaceFonts((activity?.findViewById(android.R.id.content) as ViewGroup?)!!)
         }
     }
+
+
+
+
+
 
     @SuppressLint("ResourceAsColor")
     private fun setupChip(view: View) {
@@ -1101,6 +1106,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
     }
 
+
+
     private fun getSuccessDataSource(text: String): ActionButtonDataSource {
         switch_pay_demo.payButton.stateListAnimator = null
         return ActionButtonDataSource(
@@ -1300,6 +1307,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     }
 
     override fun onChangeClicked() {
+
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
         goPayLoginInput?.visibility = View.VISIBLE
         goPayPasswordInput?.visibility = View.GONE

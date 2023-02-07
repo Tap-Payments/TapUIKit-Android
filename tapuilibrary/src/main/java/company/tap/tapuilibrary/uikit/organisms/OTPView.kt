@@ -61,13 +61,14 @@ class OTPView : LinearLayout, OpenOTPInterface {
     val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
     val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
+
     @DrawableRes
     val logoIcon: Int =
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             R.drawable.tap_logo_dark_horizontal
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
             R.drawable.tap_logo_light_horizontal
-        }else R.drawable.tap_logo_light_horizontal
+        } else R.drawable.tap_logo_light_horizontal
 
     /**
      * Attributes for goPay OTP view which diffrent with otp
@@ -243,14 +244,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
     private fun initTheme() {
-       // changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
-       changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
+        // changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
+        changePhoneCardView.setCardBackgroundColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo")))
         val timerTextTheme = TextViewTheme()
         timerTextTheme.textColor =
             (Color.parseColor(ThemeManager.getValue("TapOtpView.Timer.textColor")))
         timerTextTheme.textSize = ThemeManager.getFontSize("TapOtpView.Timer.textFont")
         timerText.setTheme(timerTextTheme)
-
 
 
         val mobileNumberTextTextTheme = TextViewTheme()
@@ -273,7 +273,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
 //        otpViewInput2.setTextColor(Color.parseColor(ThemeManager.getValue("TapOtpView.OtpController.textColor")))
         setBackground()
         val poweredByTextViewTheme = TextViewTheme()
-        poweredByTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
+        poweredByTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
         poweredByTextViewTheme.textSize =
             ThemeManager.getFontSize("poweredByTap.powerLabel.font")
         poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
@@ -335,7 +336,13 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
     fun restartTimer() {
-        startCountdown()
+        if (timerText.text == LocalizationManager.getValue(
+                "resend",
+                "ActionButton"
+            )
+        ) {
+            startCountdown()
+        }
     }
 
     private fun startCountdown() {
@@ -356,6 +363,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
                 setHintExpiredTheme()
             }
         }.start()
+
 
     }
 
