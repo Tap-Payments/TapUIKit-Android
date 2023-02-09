@@ -14,12 +14,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
-        app:cardElevation="6dp"
+        app:cardElevation="3dp"
         android:clipToPadding="false"
         android:clipChildren="false"
         app:cardPreventCornerOverlap="false"
         app:cardUseCompatPadding="true"
-        android:layout_margin="6dp"
+        android:layout_margin="3dp"
 
         >
         <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView

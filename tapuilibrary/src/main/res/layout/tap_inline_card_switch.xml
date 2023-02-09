@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible">
+        android:visibility="visible"
+       >
 
         <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switchSaveCard"
@@ -32,7 +33,7 @@
             android:textStyle="normal"
             android:layout_marginLeft="@dimen/margin_basic_10dp"
             android:layout_marginRight="@dimen/margin_basic_10dp"
-            android:theme="@style/SwitchSecondary"
+            android:theme="@style/SwitchPrimary"
             tools:text="Save for Later" />
 
         <LinearLayout
@@ -42,15 +43,17 @@
             android:layout_below="@+id/switchSaveCard"
             android:layout_marginTop="-10dp"
             android:orientation="horizontal"
-            android:visibility="visible">
+            android:visibility="visible"
+            android:layout_marginBottom="20dp"
+            >
 
             <CheckBox
                 android:id="@+id/saveForOtherCheckBox"
                 android:layout_width="26dp"
                 android:layout_height="22dp"
                 android:buttonTint="@color/buttoncheckBox"
-                android:layout_marginStart="3dp"
-                android:layout_marginEnd="3dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
                 />
 
             <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -61,7 +64,8 @@
                 android:layout_marginRight="2dp"
                 android:gravity="center"
                 android:text="Save for other stores powered by Tap"
-                android:textSize="@dimen/font_size_12sp" />
+                android:textSize="@dimen/font_size_12sp"
+               />
 
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
