@@ -296,7 +296,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         item.indicator = indicator
         tabItems.add(item)
         layout.addView(image)
-        layout.addView(indicator)
+        //Commented adding indicator as per new design 12feb23
+      //  layout.addView(indicator)
         return layout
     }
 
