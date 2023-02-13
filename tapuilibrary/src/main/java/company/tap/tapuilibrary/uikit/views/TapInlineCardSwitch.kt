@@ -3,6 +3,7 @@ package company.tap.tapuilibrary.uikit.views
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.CheckBox
 import android.widget.LinearLayout
@@ -118,7 +119,7 @@ class TapInlineCardSwitch : LinearLayout , ToolTipsManager.TipListener {
            // TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
             val position= ToolTip.POSITION_ABOVE
             // define alignment
-            val align=ToolTip.ALIGN_CENTER;
+            val align=ToolTip.ALIGN_RIGHT;
             // create method
             displayToolTip(position,align,tootlsTipTextVal)
         }
@@ -264,8 +265,7 @@ class TapInlineCardSwitch : LinearLayout , ToolTipsManager.TipListener {
         textView?.visibility =View.GONE
     }
     private fun displayToolTip(position: Int, align: Int, tootlsTipTextVal: String) {
-        // get message from edit text
-       // val sMessage: String = etMessage.getText().toString().trim()
+        Log.e("TAG", "displayToolTip: " )
         // set tooltip on text view
         toolTipsManager?.findAndDismiss(textView)
         textView?.setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.textFields.textColor")))
