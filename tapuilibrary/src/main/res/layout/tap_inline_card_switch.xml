@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/switchSaveCard"
             android:layout_marginTop="17dp"
+            android:layout_marginBottom="17dp"
             android:orientation="horizontal"
             android:visibility="visible"
 
