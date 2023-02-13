@@ -36,6 +36,15 @@
             android:theme="@style/SwitchPrimary"
             tools:text="Save for Later" />
 
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="215dp"
+            android:layout_height="80dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="-55dp"
+            android:layout_marginEnd="35dp"
+            android:gravity="center"
+            android:visibility="visible" />
         <LinearLayout
             android:id="@+id/secondary_Layout"
             android:layout_width="match_parent"
@@ -69,20 +78,23 @@
                 android:textSize="@dimen/font_size_12sp" />
 
 
-            <company.tap.tapuilibrary.uikit.atoms.TapImageView
-                android:id="@+id/toolsTipImageView"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:longClickable="true"
-                android:visibility="visible" />
+
+                <company.tap.tapuilibrary.uikit.atoms.TapImageView
+                    android:id="@+id/toolsTipImageView"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_gravity="center"
+                    android:clickable="true"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:focusable="true"
+                    android:longClickable="true"
+                    android:visibility="visible" />
+            </LinearLayout>
 
 
-        </LinearLayout>
+
+
 
 
     </RelativeLayout>
