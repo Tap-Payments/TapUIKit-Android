@@ -52,23 +52,21 @@
                 android:id="@+id/saveForOtherCheckBox"
                 android:layout_width="26dp"
                 android:layout_height="22dp"
-                android:buttonTint="@color/buttoncheckBox"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
-                android:scaleY="0.7"
+                android:buttonTint="@color/buttoncheckBox"
                 android:scaleX="0.7"
-                />
+                android:scaleY="0.7" />
 
             <company.tap.tapuilibrary.uikit.atoms.TapTextView
                 android:id="@+id/saveForOtherTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:gravity="center"
                 android:text="Save for other stores powered by Tap"
-                android:textSize="@dimen/font_size_12sp"
-               />
+                android:textSize="@dimen/font_size_12sp" />
 
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
@@ -76,10 +74,10 @@
                 android:layout_width="16dp"
                 android:layout_height="16dp"
                 android:layout_gravity="center"
-                android:clickable="true"
-                android:focusable="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:clickable="true"
+                android:focusable="true"
                 android:longClickable="true"
                 android:visibility="visible" />
 
