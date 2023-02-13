@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:textDirection="locale"
+    android:layoutDirection="locale"
     android:id="@+id/cardDet_mainLL">
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -14,6 +16,7 @@
         android:textAllCaps="true"
         android:textColor="#9F9F9F"
         android:layout_margin="@dimen/margin_basic_10dp"
+        android:textDirection="locale"
         tools:text="Contact Details"/>
 
     <company.tap.tapuilibrary.uikit.atoms.TapChip
@@ -39,6 +42,7 @@
                 android:imeOptions="actionNext"
                 android:background="@null"
                 android:layout_margin="8dp"
+                android:textDirection="locale"
                 android:inputType="textEmailAddress"
                 android:id="@+id/emailId_EditText"/>
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
@@ -54,6 +58,8 @@
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
                 android:orientation="horizontal"
+                android:textDirection="locale"
+                android:layoutDirection="locale"
                 android:paddingStart="@dimen/margin_basic_16dp">
 
                 <company.tap.tapuilibrary.uikit.atoms.TapImageView

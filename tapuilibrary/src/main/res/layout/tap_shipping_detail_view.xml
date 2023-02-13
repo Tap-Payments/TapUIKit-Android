@@ -5,6 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:textDirection="locale"
+    android:layoutDirection="locale"
     android:id="@+id/cardShipping_mainLL">
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -13,6 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_basic_10dp"
         android:textAllCaps="true"
+        android:textDirection="locale"
+        android:layoutDirection="locale"
         tools:text="Shipping"/>
 
     <androidx.cardview.widget.CardView
@@ -21,6 +25,7 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/margin_basic_15dp"
         app:cardElevation="0dp"
+
         android:elevation="@dimen/margin_basic_10dp">
         <LinearLayout
             android:id="@+id/mainShipLL"
@@ -35,6 +40,8 @@
                 android:imeOptions="actionNext"
                 android:background="@null"
                 android:layout_margin="8dp"
+                android:textDirection="locale"
+                android:layoutDirection="locale"
                 android:id="@+id/flat_EditText"/>
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                 android:id="@+id/shippingSeparator0"
@@ -48,6 +55,8 @@
                 android:hint="Additional Line"
                 android:imeOptions="actionNext"
                 android:background="@null"
+                android:textDirection="locale"
+                android:layoutDirection="locale"
                 android:layout_margin="8dp"
                 android:id="@+id/additionalLine_EditText"/>
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
@@ -63,6 +72,8 @@
                 android:imeOptions="actionNext"
                 android:background="@null"
                 android:layout_margin="8dp"
+                android:textDirection="locale"
+                android:layoutDirection="locale"
                 android:id="@+id/cityName_EditText"/>
             <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
                 android:id="@+id/shippingSeparator2"
@@ -75,6 +86,8 @@
             android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             android:orientation="horizontal"
+            android:textDirection="locale"
+            android:layoutDirection="locale"
             android:paddingStart="@dimen/margin_basic_16dp">
 
 
