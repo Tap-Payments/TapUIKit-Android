@@ -20,6 +20,7 @@
         android:visibility="visible"
        >
 
+
         <company.tap.tapuilibrary.uikit.atoms.TapSwitch
             android:id="@+id/switchSaveCard"
             android:layout_width="match_parent"
@@ -86,16 +87,7 @@
 
 
 
-        <TextView
-            android:id="@+id/text_view"
-            android:layout_width="215dp"
-            android:layout_height="wrap_content"
-           android:layout_alignEnd="@+id/secondary_Layout"
-            android:gravity="top"
-            android:layout_marginEnd="10dp"
-            android:visibility="visible"
-            tools:text="Checkout everywhere in just one click. Tap is a better and secure way to pay locally across 100k+ stores. Your details are encrypted and can only be accessed by you. You\u00E2\u0080\u0099ll receive an email to get started and manage your details."
-            />
+
 
 
     </RelativeLayout>

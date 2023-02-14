@@ -1,16 +1,21 @@
 package company.tap.tapuilibrary.uikit.views
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.view.View.OnClickListener
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import androidx.appcompat.widget.TooltipCompat
+import com.skydoves.balloon.ArrowPositionRules
+import com.skydoves.balloon.Balloon
+import com.skydoves.balloon.BalloonSizeSpec
+import com.skydoves.balloon.showAlignTop
 import com.tomergoldst.tooltips.ToolTip
 import com.tomergoldst.tooltips.ToolTipsManager
 import company.tap.taplocalizationkit.LocalizationManager
@@ -34,7 +39,7 @@ All rights reserved.
  * TapCardSwitch is a molecule element for setting saveMobile ,saveMerchantCheckout and
  *  saveGoPayCheckout for Merchant
  **/
-class TapInlineCardSwitch : LinearLayout , ToolTipsManager.TipListener {
+class TapInlineCardSwitch : LinearLayout  {
 
     val switchSaveCard by lazy { findViewById<TapSwitch>(R.id.switchSaveCard) }
 
@@ -52,8 +57,8 @@ class TapInlineCardSwitch : LinearLayout , ToolTipsManager.TipListener {
     private var actionButtonInterface: TapActionButtonInterface? = null
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
     //val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
-    var toolTipsManager: ToolTipsManager? = null
-    var textView: TextView? = null
+
+
     @DrawableRes
     val logoIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
@@ -111,19 +116,11 @@ class TapInlineCardSwitch : LinearLayout , ToolTipsManager.TipListener {
     }
 
     private fun initViews() {
-        toolTipsManager=ToolTipsManager(this)
-        textView = findViewById<TextView>(R.id.text_view)
         val tootlsTipTextVal:String= LocalizationManager.getValue("cardSaveForTapInfo","TapCardInputKit")
         toolsTipImageView.setOnClickListener {
-           // toolsTipImageView.performLongClick()
-           // TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
-            val position= ToolTip.POSITION_ABOVE
-            // define alignment
-            val align=ToolTip.ALIGN_RIGHT;
-            // create method
-            displayToolTip(position,align,tootlsTipTextVal)
+
+            createBalloon(tootlsTipTextVal)
         }
-       // TooltipCompat.setTooltipText(toolsTipImageView, tootlsTipTextVal)
 
         saveForOtherTextView.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
         saveForOtherTextView.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
@@ -261,34 +258,24 @@ class TapInlineCardSwitch : LinearLayout , ToolTipsManager.TipListener {
         }
     }
 
-    override fun onTipDismissed(view: View?, anchorViewId: Int, byUser: Boolean) {
-        textView?.visibility =View.GONE
-    }
-    private fun displayToolTip(position: Int, align: Int, tootlsTipTextVal: String) {
-        Log.e("TAG", "displayToolTip: " )
-        // set tooltip on text view
-        toolTipsManager?.findAndDismiss(textView)
-        textView?.setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.textFields.textColor")))
-        // check condition
-        if (!tootlsTipTextVal.isEmpty()) {
-            textView?.visibility =View.VISIBLE
-            // when message is not equal to empty
-            // create tooltip
-            val builder = textView?.let {
-                ToolTip.Builder(context,
-                    it, switchesLayout, tootlsTipTextVal, position)
-            }
-            // set align
-            builder?.setAlign(align)
-            // set background color
-            builder?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
-            // show tooltip
-            toolTipsManager?.show(builder?.build())
-        } else {
-            // when message is empty
-            // display toast
 
-        }
+    @SuppressLint("ResourceType")
+    fun createBalloon(tootlsTipTextVal:String){
+        val balloon = Balloon.Builder(context)
+            //.setWidthRatio(1.0f)
+            .setWidth(250)
+            .setHeight(BalloonSizeSpec.WRAP)
+            .setText(tootlsTipTextVal)
+            .setTextColorResource(R.color.whiteTools)
+            .setTextSize(14f)
+            .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
+            .setArrowSize(10)
+            .setArrowPosition(0.5f)
+            .setPadding(12)
+            .setCornerRadius(8f)
+            .setBackgroundColorResource(R.color.toolsBackground)
+            .build()
+        toolsTipImageView.showAlignTop(balloon)
     }
 
 }
