@@ -12,10 +12,7 @@ import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
-import com.skydoves.balloon.ArrowPositionRules
-import com.skydoves.balloon.Balloon
-import com.skydoves.balloon.BalloonSizeSpec
-import com.skydoves.balloon.showAlignTop
+import com.skydoves.balloon.*
 import com.tomergoldst.tooltips.ToolTip
 import com.tomergoldst.tooltips.ToolTipsManager
 import company.tap.taplocalizationkit.LocalizationManager
@@ -262,17 +259,18 @@ class TapInlineCardSwitch : LinearLayout  {
     @SuppressLint("ResourceType")
     fun createBalloon(tootlsTipTextVal:String){
         val balloon = Balloon.Builder(context)
-            //.setWidthRatio(1.0f)
-            .setWidth(250)
+            .setWidthRatio(0.58f)
+            //.setWidth(220)
             .setHeight(BalloonSizeSpec.WRAP)
             .setText(tootlsTipTextVal)
             .setTextColorResource(R.color.whiteTools)
-            .setTextSize(14f)
+            .setTextSize(12f)
             .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
             .setArrowSize(10)
             .setArrowPosition(0.5f)
             .setPadding(12)
             .setCornerRadius(8f)
+            .setBalloonAnimation(BalloonAnimation.NONE)
             .setBackgroundColorResource(R.color.toolsBackground)
             .build()
         toolsTipImageView.showAlignTop(balloon)

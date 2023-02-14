@@ -182,7 +182,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             } catch (ignore: Exception) {
             }
         }
-        dialog?.window?.attributes?.windowAnimations = R.anim.slide_up
+       // dialog?.window?.attributes?.windowAnimations = R.anim.slide_up
     }
 
     override fun onViewCreated(view: View, @Nullable savedInstanceState: Bundle?) {
