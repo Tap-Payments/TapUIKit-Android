@@ -18,9 +18,11 @@ import com.tomergoldst.tooltips.ToolTipsManager
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
@@ -50,6 +52,7 @@ class TapInlineCardSwitch : LinearLayout  {
     val secondaryLayout by lazy { findViewById<LinearLayout>(R.id.secondary_Layout) }
     val saveForOtherCheckBox by lazy { findViewById<CheckBox>(R.id.saveForOtherCheckBox) }
     val saveForOtherTextView by lazy { findViewById<TapTextView>(R.id.saveForOtherTextView) }
+    val switchSeparator by lazy { findViewById<TapSeparatorView>(R.id.switch_Separator) }
 
     private var actionButtonInterface: TapActionButtonInterface? = null
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
@@ -126,6 +129,11 @@ class TapInlineCardSwitch : LinearLayout  {
 //   saveForOtherCheckBox.text =  LocalizationManager.getValue("cardSaveForTapLabel","TapCardInputKit")
         tapLogoImage.setImageResource(logoIcon)
         toolsTipImageView.setImageResource(toolsTipIcon)
+        val separatorViewTheme = SeparatorViewTheme()
+        separatorViewTheme.strokeColor =
+            Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
+        separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
+        switchSeparator.setTheme(separatorViewTheme)
     }
 
     fun setSwitchInterface(actionButtonInterface: TapActionButtonInterface) {
