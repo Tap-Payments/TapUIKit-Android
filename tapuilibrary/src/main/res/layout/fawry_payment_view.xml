@@ -133,7 +133,7 @@
             android:layout_gravity="center"
             android:text="Powered by"
             android:textColor="#626262"
-            android:visibility="visible"
+            android:visibility="gone"
             android:textSize="@dimen/font_size_10sp"
             />
         <company.tap.tapuilibrary.uikit.atoms.TapImageView

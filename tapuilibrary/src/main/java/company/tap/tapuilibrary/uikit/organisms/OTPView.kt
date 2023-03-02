@@ -65,10 +65,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
     @DrawableRes
     val logoIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            R.drawable.tap_logo_dark_horizontal
+            R.drawable.powered_by_tap_darkmode
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
-            R.drawable.tap_logo_light_horizontal
-        } else R.drawable.tap_logo_light_horizontal
+            R.drawable.powered_by_tap_lightmode
+        } else R.drawable.powered_by_tap_lightmode
 
     /**
      * Attributes for goPay OTP view which diffrent with otp

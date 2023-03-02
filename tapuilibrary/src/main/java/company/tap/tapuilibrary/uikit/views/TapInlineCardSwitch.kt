@@ -3,6 +3,7 @@ package company.tap.tapuilibrary.uikit.views
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.text.Html
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
@@ -62,10 +63,10 @@ class TapInlineCardSwitch : LinearLayout  {
     @DrawableRes
     val logoIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.tap_logo_dark_horizontal
+            R.drawable.powered_by_tap_darkmode
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
-            R.drawable.tap_logo_light_horizontal
-        }else R.drawable.tap_logo_light_horizontal
+            R.drawable.powered_by_tap_lightmode
+        }else R.drawable.powered_by_tap_lightmode
 
     @DrawableRes
     val toolsTipIcon: Int =
@@ -116,10 +117,11 @@ class TapInlineCardSwitch : LinearLayout  {
     }
 
     private fun initViews() {
-        val tootlsTipTextVal:String= LocalizationManager.getValue("cardSaveForTapInfo","TapCardInputKit")
+        val tootlsTipTextVal:String= LocalizationManager.getValue("cardSaveForTapInfoMessage","TapCardInputKit")
+        val tootlsTipTitleVal:String= LocalizationManager.getValue("cardSaveForTapInfoTitle","TapCardInputKit")
         toolsTipImageView.setOnClickListener {
 
-            createBalloon(tootlsTipTextVal)
+            createBalloon(tootlsTipTextVal,tootlsTipTitleVal)
         }
 
         saveForOtherTextView.setTextColor(Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.brownGreySeven")))
@@ -265,12 +267,14 @@ class TapInlineCardSwitch : LinearLayout  {
 
 
     @SuppressLint("ResourceType")
-    fun createBalloon(tootlsTipTextVal:String){
+    fun createBalloon(tootlsTipTextVal:String,toolsTittle:String){
+
+        val stringS:String = "<h1>" +toolsTittle +"</h1>" + "\n"+ tootlsTipTextVal
         val balloon = Balloon.Builder(context)
-            .setWidthRatio(0.58f)
+            .setWidthRatio(0.6f)
             //.setWidth(220)
             .setHeight(BalloonSizeSpec.WRAP)
-            .setText(tootlsTipTextVal)
+            .setText(Html.fromHtml(stringS ))
             .setTextColorResource(R.color.whiteTools)
             .setTextSize(12f)
             .setArrowPositionRules(ArrowPositionRules.ALIGN_ANCHOR)
