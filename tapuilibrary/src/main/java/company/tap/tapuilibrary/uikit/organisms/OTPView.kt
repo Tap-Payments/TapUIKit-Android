@@ -127,7 +127,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
     init {
         inflate(context, R.layout.otp_view, this)
-        startCountdown()
+
         prepareTextViews()
         initOTPConfirmationButton()
         initChange()
@@ -143,6 +143,10 @@ class OTPView : LinearLayout, OpenOTPInterface {
          */
 //        otpViewInput2.setOnKeyListener(GenericKeyEvent(otpViewInput2, otpViewInput1, context))
 
+    }
+
+    fun startCounter(){
+        startCountdown()
     }
 
     private fun setFontsArabic() {
