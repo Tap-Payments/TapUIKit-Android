@@ -54,6 +54,7 @@
         android:stateListAnimator="@null"
         android:textColor="@color/text_color"
         android:textSize="9sp"
+        android:textAllCaps="true"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
