@@ -100,6 +100,7 @@
             android:layout_marginStart="2.5dp"
             android:layout_marginEnd="2.5dp"
             android:textStyle="normal"
+            android:textAllCaps="true"
             android:text="10 ITEMS"/>
         <View
             android:id="@+id/viewSeparator"
