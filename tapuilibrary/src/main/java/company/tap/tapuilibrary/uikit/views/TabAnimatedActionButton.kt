@@ -286,7 +286,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private fun setFontArabic(textView:TextView){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.TajawalMedium
+                TapFont.TajawalLight
             )
         )
     }
