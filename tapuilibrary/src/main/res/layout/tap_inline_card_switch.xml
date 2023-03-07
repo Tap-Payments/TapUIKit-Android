@@ -32,9 +32,8 @@
             android:textColor="#4b4847"
             android:textSize="14sp"
             android:textStyle="normal"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="@dimen/margin_basic_10dp"
-            android:layout_marginRight="@dimen/margin_basic_10dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:theme="@style/SwitchPrimary"
             tools:text="Save for Later" />
 
@@ -59,6 +58,8 @@
             android:orientation="horizontal"
             android:visibility="visible"
             android:layout_marginBottom="5dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
 
             >
 
