@@ -65,7 +65,8 @@
         app:cardCornerRadius="100dp"
         android:innerRadius="0dp"
         android:shape="ring"
-        app:cardElevation="10dp"
+        app:cardElevation="2dp"
+
         android:foregroundGravity = "center"
         android:layout_centerInParent = "true"
         app:layout_constraintTop_toTopOf="parent"
@@ -75,9 +76,10 @@
 
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
             android:id="@+id/businessIcon"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
             android:layout_gravity="center"
+
 
            />
 
@@ -88,6 +90,7 @@
             android:gravity="center"
             android:textColor="#ffffff"
             android:visibility="visible"
+            android:padding="@dimen/margin_basic_4dp"
             tools:text="@android:string/autofill" />
     </company.tap.tapuilibrary.uikit.atoms.TapChip>
 

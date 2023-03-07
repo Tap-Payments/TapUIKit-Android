@@ -101,9 +101,10 @@
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
                 android:id="@+id/businessIcon"
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center" />
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:padding="@dimen/margin_basic_4dp"/>
 
             <company.tap.tapuilibrary.uikit.atoms.TapTextView
                 android:id="@+id/placeholderText"

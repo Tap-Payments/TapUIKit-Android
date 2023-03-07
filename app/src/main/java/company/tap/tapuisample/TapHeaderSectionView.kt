@@ -179,6 +179,7 @@ class TapHeaderSectionView : LinearLayout {
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             Log.d("currentTheme", ThemeManager.currentTheme)
+           // tapChipIcon.setBackgroundResource(R.drawable.border_unclick_black)
             setBorderedView(
                 tapChipIcon,
                 80f,// corner raduis
@@ -188,6 +189,7 @@ class TapHeaderSectionView : LinearLayout {
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
             )//
         }else{
+         //   tapChipIcon.setBackgroundResource(R.drawable.border_unclick_2)
             setBorderedView(
                 tapChipIcon,
                 80f,// corner raduis

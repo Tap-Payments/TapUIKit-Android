@@ -69,6 +69,7 @@ import company.tap.tapuisample.webview.WebFragment
 import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.switch_pay_demo
+import kotlinx.android.synthetic.main.item_knet.view.*
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -143,7 +144,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var contactDetailView: TapContactDetailsView? = null
     private var shippingDetailView: TapShippingDetailView? = null
     private var mobileMainLinear: LinearLayout? = null
-    lateinit var cardInputCardView: CardView
+    lateinit var cardInputCardView: LinearLayout
     lateinit var tapPaymentInput: TapPaymentInput
     lateinit var saveForLaterCheckBox: CheckBox
 
@@ -518,7 +519,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         tapPaymentInput = view.findViewById(R.id.tap_payment_input0)
 
 
-        cardInputCardView = tapPaymentInput.findViewById(R.id.inline_CardView)
+        //cardInputCardView = tapPaymentInput.findViewById(R.id.inline_CardView)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
         groupName = view.findViewById<TapTextView>(R.id.group_name)
         groupName?.text = LocalizationManager.getValue(
@@ -568,8 +569,39 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         }
 //        }
 
-    }
+       /* tapPaymentInput.cardInputChipView.setBackgroundResource(R.drawable.border_unclick)
+        setBorderedView(
+            tapPaymentInput.cardInputChipView,
+            //(ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
+            19.0f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.gatewayChip.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
+        )// shadow color
+*/
+        tapPaymentInput.paymentInputContainer.setBackgroundResource(R.drawable.border_unclick)
+        setBorderedView(
+            tapPaymentInput.paymentInputContainer,
+            //(ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
+            19.0f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.gatewayChip.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
+        )// shadow color
 
+         tapPaymentInput.tabLinear.setBackgroundResource(R.drawable.border_unclick)
+        setBorderedView(
+            tapPaymentInput.tabLinear,
+            //(ThemeManager.getValue("horizontalList.chips.radius") as Int).toFloat(),// corner raduis
+            19.0f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.selected.shadow.color")),// stroke color
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.gatewayChip.backgroundColor")),// tint color
+            Color.parseColor(ThemeManager.getValue("horizontalList.chips.goPayChip.unSelected.shadow.color"))
+        )// shadow color
+    }
     private fun stopShakingCards(chipsView: RecyclerView) {
         chipsView.adapter = CardTypeAdapter(paymentsList, this, false)
     }
