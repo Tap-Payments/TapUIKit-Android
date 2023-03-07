@@ -130,8 +130,8 @@
             android:textSize="@dimen/font_size_10sp"
             />
         <company.tap.tapuilibrary.uikit.atoms.TapImageView
-            android:layout_width="36dp"
-            android:layout_height="@dimen/margin_basic_20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="18dp"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/margin_basic_4dp"
             android:layout_marginEnd="@dimen/margin_basic_4dp"

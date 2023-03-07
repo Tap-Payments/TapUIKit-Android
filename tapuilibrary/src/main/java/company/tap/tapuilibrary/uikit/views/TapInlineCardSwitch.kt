@@ -65,10 +65,10 @@ class TapInlineCardSwitch : LinearLayout  {
     @DrawableRes
     val logoIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.powered_by_tap_darkmode
+            R.drawable.poweredby_dark_mode
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
-            R.drawable.powered_by_tap_lightmode
-        }else R.drawable.powered_by_tap_lightmode
+            R.drawable.poweredby_light_mode
+        }else R.drawable.poweredby_light_mode
 
     @DrawableRes
     val toolsTipIcon: Int =
