@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/switch_Separator"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:orientation="horizontal"
             android:visibility="visible"
             android:layout_marginBottom="5dp"
@@ -70,15 +70,15 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="4dp"
                 android:buttonTint="@color/buttoncheckBox"
-                android:scaleX="0.7"
-                android:scaleY="0.7" />
+                android:scaleX="0.8"
+                android:scaleY="0.8" />
 
             <company.tap.tapuilibrary.uikit.atoms.TapTextView
                 android:id="@+id/saveForOtherTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
                 android:gravity="center"
                 android:text="Save for other stores powered by Tap"
                 android:textSize="@dimen/font_size_12sp" />
