@@ -3,6 +3,7 @@ package company.tap.tapuilibrary.uikit.views
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.text.Html
 import android.util.AttributeSet
 import android.util.Log
@@ -18,6 +19,7 @@ import com.tomergoldst.tooltips.ToolTip
 import com.tomergoldst.tooltips.ToolTipsManager
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
@@ -110,9 +112,10 @@ class TapInlineCardSwitch : LinearLayout  {
     init {
         inflate(context, R.layout.tap_inline_card_switch, this)
         setTheme()
-        //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
         initActionButton()
         initViews()
+          if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+
 
     }
 
@@ -286,6 +289,32 @@ class TapInlineCardSwitch : LinearLayout  {
             .setBackgroundColorResource(R.color.toolsBackground)
             .build()
         toolsTipImageView.showAlignTop(balloon)
+    }
+
+    fun setFontsEnglish(){
+        saveForOtherTextView.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+        switchSaveCard.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoLight
+            )
+        )
+    }
+
+    fun setFontsArabic(){
+        saveForOtherTextView.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
+        switchSaveCard.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalLight
+            )
+        )
     }
 
 }
