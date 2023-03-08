@@ -195,7 +195,7 @@ class CardTypeAdapter(
         if (selectedPosition == position) {
 //                holder.itemView.tapCardChip3Linear.setBackgroundColor(Color.WHITE)
             if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-                holder.itemView.setBackgroundResource(R.drawable.border_shadow_black)
+                holder.itemView.setBackgroundResource(R.drawable.border_shadow_white)
             } else {
                 holder.itemView.setBackgroundResource(R.drawable.border_shadow)
             }

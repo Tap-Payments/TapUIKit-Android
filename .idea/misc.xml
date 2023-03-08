@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.37222222222222223" />
         <entry key="../../../../layout/custom_preview.xml" value="0.10595358224016145" />
+        <entry key="app/src/main/res/drawable-xhdpi/border_shadow_black.xml" value="0.222" />
         <entry key="app/src/main/res/drawable/corner_radius.xml" value="0.1715" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/custom_bottom_sheet.xml" value="0.1" />
@@ -13,8 +14,10 @@
         <entry key="app/src/main/res/layout/tap_card_switch.xml" value="0.1646403242147923" />
         <entry key="app/src/main/res/layout/tap_main_header.xml" value="0.5857519788918206" />
         <entry key="app/src/main/res/layout/tap_payment_input.xml" value="0.4224548049476689" />
+        <entry key="tapuilibrary/src/main/res/drawable-hdpi/border_shadow_black.xml" value="0.189" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
         <entry key="tapuilibrary/src/main/res/drawable/border_oval.xml" value="0.2035" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_shadow_white.xml" value="0.222" />
         <entry key="tapuilibrary/src/main/res/drawable/border_unclick.xml" value="0.19" />
         <entry key="tapuilibrary/src/main/res/drawable/border_unclick_2.xml" value="0.1805" />
         <entry key="tapuilibrary/src/main/res/layout/card_section_layout.xml" value="0.3385416666666667" />
