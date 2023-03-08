@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import android.util.DisplayMetrics
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AlertDialog
@@ -52,6 +53,7 @@ class ActionButtonActivity : AppCompatActivity() {
         println("density is" + density)
         actionButton.setDisplayMetrics(density)
         actionButton.setOnClickListener {
+
             pickStatus()
         }
 
@@ -152,6 +154,9 @@ class ActionButtonActivity : AppCompatActivity() {
                 if (position == 0) {
 //                actionButton.setButtonDataSource(getSuccessDataSource())
                     actionButton.changeButtonState(ActionButtonState.SUCCESS)
+                    Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                    actionButton.changeButtonState(ActionButtonState.RESET)
+                    }, 5000)
                 } else {
 //                actionButton.setButtonDataSource(getErrorDataSource())
                     actionButton.changeButtonState(ActionButtonState.ERROR)
