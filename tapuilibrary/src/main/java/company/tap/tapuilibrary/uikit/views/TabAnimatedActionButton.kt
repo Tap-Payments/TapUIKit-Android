@@ -188,7 +188,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     params.setMargins(60, 40,60,60)
                     params.gravity = Gravity.CENTER
                     this.layoutParams = params
-                    initReset()
+                    init()
 
 
 
@@ -201,7 +201,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     params.setMargins(50, 40,50,40)
                     params.gravity = Gravity.CENTER
                     this.layoutParams = params
-                    initReset()
+                    init()
 
 
                 } else if(displayMetrics == DisplayMetrics.DENSITY_560|| displayMetrics == DisplayMetrics.DENSITY_600)
@@ -214,7 +214,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                     params.setMargins(60, 40,60,60)
                     params.gravity = Gravity.CENTER
                     this.layoutParams = params
-                    initReset()
+                    init()
 
 
                 }
@@ -229,14 +229,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
         }
     }
-
-    private fun initReset(){
-        morphingAnimation =
-            MorphingAnimation(this)
-        morphingAnimation.setAnimationEndListener(this)
-        this@TabAnimatedActionButton.isClickable = true
-        this@TabAnimatedActionButton.isEnabled = true
-    }
+    
 
 
 
