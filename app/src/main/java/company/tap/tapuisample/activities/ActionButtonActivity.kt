@@ -153,7 +153,7 @@ class ActionButtonActivity : AppCompatActivity() {
             builder.setItems(items) { _, position ->
                 if (position == 0) {
 //                actionButton.setButtonDataSource(getSuccessDataSource())
-
+                    actionButton.setInValidBackground(false,Color.GREEN)
                     actionButton.changeButtonState(ActionButtonState.SUCCESS)
                     Handler(Looper.getMainLooper()).postDelayed(Runnable {
                         actionButton.setInValidBackground(false,Color.MAGENTA)

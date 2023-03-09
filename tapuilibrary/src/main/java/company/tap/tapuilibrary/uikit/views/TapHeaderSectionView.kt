@@ -246,6 +246,10 @@ class TapHeaderSectionView : LinearLayout {
                 Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
             )//
         }
+
+        if(ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")){
+            tapChipIcon.setPaddingRelative(4,4,4,,4)
+        }
     }
 
 
