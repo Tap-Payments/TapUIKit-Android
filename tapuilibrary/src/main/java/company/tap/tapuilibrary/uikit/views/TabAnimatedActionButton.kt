@@ -104,7 +104,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             textSize = 16f,
             textColor = _textColor,
             cornerRadius = 100f,
-            successImageResources = R.drawable.checkmark,
+            successImageResources = R.drawable.success,
+            errorImageResources = R.drawable.error_gif,
             backgroundColor = btnBackground
         )
 
@@ -134,6 +135,14 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         }
         removeAllViews()
         addView(getTextView(lang?: "en"))
+    }
+
+    fun setInValidBackground(isValid: Boolean =false,backgroundColor: Int){
+       dataSource?.backgroundColor = backgroundColor
+        backgroundDrawable.color = ColorStateList.valueOf(backgroundColor)
+
+        elevation = 0F
+
     }
 
     fun addTapLoadingView() {
@@ -229,7 +238,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
         }
     }
-    
+
 
 
 
@@ -254,6 +263,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             backgroundDrawable.cornerRadius = it
         }
         backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
+       // backgroundDrawable.color = backgroundColor?.let { ColorStateList.valueOf(it) } ?: ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
+
         background = backgroundDrawable
         elevation = 0F
     }

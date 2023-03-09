@@ -153,14 +153,20 @@ class ActionButtonActivity : AppCompatActivity() {
             builder.setItems(items) { _, position ->
                 if (position == 0) {
 //                actionButton.setButtonDataSource(getSuccessDataSource())
+
                     actionButton.changeButtonState(ActionButtonState.SUCCESS)
                     Handler(Looper.getMainLooper()).postDelayed(Runnable {
-                    actionButton.changeButtonState(ActionButtonState.RESET)
+                        actionButton.setInValidBackground(false,Color.MAGENTA)
+                        actionButton.changeButtonState(ActionButtonState.RESET)
                     }, 5000)
                 } else {
 //                actionButton.setButtonDataSource(getErrorDataSource())
+                    actionButton.setInValidBackground(false,Color.YELLOW)
                     actionButton.changeButtonState(ActionButtonState.ERROR)
-
+                    Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                        actionButton.setInValidBackground(false,Color.MAGENTA)
+                        actionButton.changeButtonState(ActionButtonState.RESET)
+                    }, 5000)
                 }
                 alert?.hide()
             }
