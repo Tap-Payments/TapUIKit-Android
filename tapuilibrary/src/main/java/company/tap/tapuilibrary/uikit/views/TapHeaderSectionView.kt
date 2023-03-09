@@ -248,7 +248,7 @@ class TapHeaderSectionView : LinearLayout {
         }
 
         if(ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")){
-            tapChipIcon.setPaddingRelative(4,4,4,,4)
+            tapChipIcon.setPaddingRelative(4,4,4,4)
         }
     }
 
