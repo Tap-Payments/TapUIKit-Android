@@ -9,7 +9,8 @@
     android:layout_marginEnd="@dimen/margin_basic_16dp"
     android:layoutDirection="locale"
     android:textDirection="locale"
-    android:layout_marginBottom="@dimen/margin_basic_13dp">
+    android:layout_marginBottom="@dimen/margin_basic_13dp"
+   >
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/item_title"
@@ -23,7 +24,7 @@
         android:lineSpacingExtra="2sp"
         android:maxLines="3"
         android:textColor="#4b4847"
-        android:textSize="14sp"
+        android:textSize="11sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/brief_description"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,28 +39,26 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
         android:textColor="#a8a8a8"
-        android:textSize="12sp"
+        android:textSize="16sp"
         android:textStyle="normal"
-
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/item_title"
+        android:layout_marginTop="@dimen/margin_basic_8dp"
         tools:text="Bange Backpack" />
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/total_amount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/pay_btn_padding_vertical"
-        android:layout_marginBottom="2dp"
         android:fontFamily="sans-serif-light"
-        android:gravity="end"
         android:textColor="#a8a8a8"
         android:textSize="12sp"
         android:textStyle="normal"
-
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/brief_description"
-       app:layout_constraintStart_toStartOf="@+id/brief_description"
-        tools:text="1000,000.000" />
+        app:layout_constraintStart_toStartOf="parent"
+
+        tools:text="KD 1000,000.000" />
 
 
     <company.tap.tapuilibrary.uikit.atoms.TapImageView
@@ -78,7 +77,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75"
-        tools:text="1000,000.000" />
+        />
 
     <company.tap.tapuilibrary.uikit.atoms.TapImageView
         android:id="@+id/sub_image"
@@ -95,7 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.75"
-        tools:text="1000,000.000" />
+      />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
