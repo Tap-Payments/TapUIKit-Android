@@ -235,6 +235,8 @@ android:layout_marginTop="-25dp"
             android:layout_gravity="start"
             android:layoutDirection="locale" />
 
+
+
         <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
             android:id="@+id/goPayLoginInput"
             android:visibility="gone"
@@ -243,6 +245,9 @@ android:layout_marginTop="-25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
+        <company.tap.tapuilibrary.uikit.views.TapItemListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
             android:visibility="gone"
             android:id="@+id/goPayPassword"
