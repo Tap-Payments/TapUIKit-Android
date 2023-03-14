@@ -71,13 +71,47 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         morphingAnimation =
             MorphingAnimation(this)
         morphingAnimation.setAnimationEndListener(this)
-        initActionButtonDataSource()
+        initActionButtonDataSourceValid()
         this@TabAnimatedActionButton.isClickable = true
         this@TabAnimatedActionButton.isEnabled = true
 
     }
 
-    private fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
+    private fun initActionButtonDataSourceValid(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
+        val btnText:String
+        val _textColor:Int
+        val btnBackground:Int
+        if(buttonText ==null){
+
+            btnText = LocalizationManager.getValue("pay", "ActionButton")
+        }else {
+            btnText =buttonText
+        }
+        if(textColor ==null){
+
+            _textColor = Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+        }else {
+            _textColor =textColor
+        }
+        if(backgroundColor ==null){
+
+            btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor"))
+        }else {
+            btnBackground =backgroundColor
+        }
+        dataSource = ActionButtonDataSource(
+            text = btnText ,
+            textSize = 16f,
+            textColor = _textColor,
+            cornerRadius = 100f,
+            successImageResources = R.drawable.success,
+            errorImageResources = R.drawable.error_gif,
+            backgroundColor = btnBackground
+        )
+
+    }
+
+    private fun initActionButtonDataSourceInValid(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
         val btnText:String
         val _textColor:Int
         val btnBackground:Int
@@ -112,7 +146,6 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     }
 
 
-
     /**
      * public setter for action button interface
      *
@@ -128,10 +161,10 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         if (isValid)
         {
             initValidBackground(backgroundColor)
-            initActionButtonDataSource(backgroundColor, textColor,buttonText)
+            initActionButtonDataSourceValid(backgroundColor, textColor,buttonText)
         } else{
             initInvalidBackground(backgroundColor)
-            initActionButtonDataSource(backgroundColor, textColor, buttonText)
+            initActionButtonDataSourceInValid(backgroundColor, textColor, buttonText)
         }
         removeAllViews()
         addView(getTextView(lang?: "en"))
