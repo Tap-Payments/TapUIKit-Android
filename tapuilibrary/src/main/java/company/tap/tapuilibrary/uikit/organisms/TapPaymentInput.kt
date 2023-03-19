@@ -85,7 +85,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
             15.0f,// corner raduis
             0.0f,
             Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.borderColor")),
-            Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.borderColor")),
+            Color.parseColor(ThemeManager.getValue(" inlineCard.commonAttributes.borderColor")),
             Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.borderColor"))
         )*/
     }

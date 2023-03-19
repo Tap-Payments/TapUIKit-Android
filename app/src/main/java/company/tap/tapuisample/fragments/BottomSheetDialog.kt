@@ -488,8 +488,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         bottomSheetDialog.behavior.state = STATE_EXPANDED
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
-        tabLayout.changeTabItemMarginLeftValue(-35)
-        tabLayout.changeTabItemMarginRightValue(-35)
+        tabLayout.changeTabItemMarginLeftValue(-30)
+        tabLayout.changeTabItemMarginBottomValue(30)
+
+        tabLayout.changeTabItemMarginRightValue(-30)
     }
 
     private fun setupFonts() {
@@ -800,24 +802,24 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         items.add(
             SectionTabItem(
-                "https://img.icons8.com/color/2x/mastercard.png",
-                "https://img.icons8.com/color/2x/mastercard.png",
-                CardBrand.masterCard
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/visa.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/visa.png",
+                CardBrand.visa
             )
         )
         items.add(
             SectionTabItem(
-                "https://img.icons8.com/color/2x/amex.png",
-                "https://img.icons8.com/color/2x/amex.png",
-                CardBrand.americanExpress
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/mastercard.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/mastercard.png",
+                CardBrand.masterCard
             )
         )
 
         items.add(
             SectionTabItem(
-                "https://img.icons8.com/color/2x/visa.png",
-                "https://img.icons8.com/color/2x/visa.png",
-                CardBrand.visa
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/american_express.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/american_express.png",
+                CardBrand.americanExpress
             )
         )
 
