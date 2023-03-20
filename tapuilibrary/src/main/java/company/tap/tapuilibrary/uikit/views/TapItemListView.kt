@@ -7,6 +7,7 @@ import android.provider.Settings.Global.getString
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.annotation.DrawableRes
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -36,6 +37,9 @@ class TapItemListView : LinearLayout {
     val quantityRelative by lazy { findViewById<RelativeLayout>(R.id.quantityRelative) }
     val descriptionText by lazy { findViewById<TapTextView>(R.id.brief_description) }
     private var itemViewDataSource: ItemViewDataSource? = null
+    @DrawableRes
+    val addIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.add_items_dark else R.drawable.add_items_light
 
     /**
      * Simple constructor to use when creating a TapItemsView from code.
@@ -104,6 +108,7 @@ class TapItemListView : LinearLayout {
             ThemeManager.getFontSize("itemsList.item.calculatedPriceLabelFont")
         totalAmountTextViewTheme.font = ThemeManager.getFontName("itemsList.item.calculatedPriceLabelFont")
         totalAmount.setTheme(totalAmountTextViewTheme)
+        expandImageView.setImageResource(addIcon)
     }
 
     /**
