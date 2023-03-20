@@ -80,7 +80,7 @@ class NFCFragment : Fragment() {
             }
         } else {
            // Toast.makeText(context,LocalizationManager.getValue("nfcUnsupported", "NFC") as String , Toast.LENGTH_SHORT).show()
-            Toast.makeText(context,"nfc not asupported", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,"nfc not a supported", Toast.LENGTH_SHORT).show()
         }
 
 
