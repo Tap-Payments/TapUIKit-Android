@@ -91,14 +91,15 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         if(textColor ==null){
             if(ThemeManager.currentTheme.isNotEmpty())
             _textColor = Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
-            else _textColor = Color.parseColor(R.color.ValidBtntitleLabelColor.toString())
+            else _textColor = R.color.ValidBtntitleLabelColor
         }else {
             _textColor =textColor
         }
         if(backgroundColor ==null){
             if(ThemeManager.currentTheme.isNotEmpty())
             btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor"))
-            else btnBackground = Color.parseColor(R.color.ValidBtnColor.toString())
+          //  else btnBackground = Color.parseColor(R.color.ValidBtnColor.toString())
+            else btnBackground = R.color.ValidBtnColor
         }else {
             btnBackground =backgroundColor
         }
@@ -128,14 +129,14 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         if(textColor ==null){
             if(ThemeManager.currentTheme.isNotEmpty())
             _textColor = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
-           else _textColor = Color.parseColor(R.color.InvalidBtntitleLabelColor.toString())
+           else _textColor = R.color.ValidBtntitleLabelColor
         }else {
             _textColor =textColor
         }
         if(backgroundColor ==null){
             if(ThemeManager.currentTheme.isNotEmpty())
             btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
-            else btnBackground = Color.parseColor(R.color.InvalidBtnColor.toString())
+            else btnBackground = R.color.InvalidBtnColor
         }else {
             btnBackground =backgroundColor
         }
