@@ -72,19 +72,16 @@ class TapNFCView : LinearLayout {
     }
 
     private fun setTextData(){
-       /* scanNfc.text = LocalizationManager.getValue(
+        scanNfc.text = LocalizationManager.getValue(
                     "scan",
                     "NFC"
                 )
         aboutNFC.text = LocalizationManager.getValue(
                     "nfcDescription",
                     "NFC"
-                )*/
+                )
 
-        //TODO Temp Hard coded
-        scanNfc.text = "Ready to scan, add the card under the device to scan it"
 
-        aboutNFC.text = "Near-field communication is a set of communication protocols for communication between two electronic devices over a distance of 4 cm or less."
     }
 
     fun setFontsEnglish(){
