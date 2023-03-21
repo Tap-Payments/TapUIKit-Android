@@ -84,7 +84,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         if(buttonText ==null){
             if(LocalizationManager.currentLocalized.length()!=0)
             btnText = LocalizationManager.getValue("pay", "ActionButton")
-            else btnText = R.string.payText.toString()
+            else btnText = context.getString(R.string.payText)
         }else {
             btnText =buttonText
         }
@@ -121,7 +121,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         if(buttonText ==null){
             if(LocalizationManager.currentLocalized.length()!=0)
             btnText = LocalizationManager.getValue("pay", "ActionButton")
-            else btnText = R.string.payText.toString()
+            else btnText = context.getString(R.string.payText)
         }else {
             btnText =buttonText
         }
