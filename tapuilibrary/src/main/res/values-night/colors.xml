@@ -32,4 +32,8 @@
     <color name="paleLilac">#211F1F</color>
     <color name="buttoncheckBox">#006ADB</color>
     <color name="switchOnColor">#17B100</color>
+    <color name="InvalidBtnColor">#2C2A29</color>
+    <color name="InvalidBtntitleLabelColor">#626262</color>
+    <color name="ValidBtnColor">#2ace00</color>
+    <color name="ValidBtntitleLabelColor">#ffffff</color>
 </resources>

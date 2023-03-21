@@ -82,20 +82,23 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         val _textColor:Int
         val btnBackground:Int
         if(buttonText ==null){
-
+            if(LocalizationManager.currentLocalized.length()!=0)
             btnText = LocalizationManager.getValue("pay", "ActionButton")
+            else btnText = R.string.payText.toString()
         }else {
             btnText =buttonText
         }
         if(textColor ==null){
-
+            if(ThemeManager.currentTheme.isNotEmpty())
             _textColor = Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+            else _textColor = Color.parseColor(R.color.ValidBtntitleLabelColor.toString())
         }else {
             _textColor =textColor
         }
         if(backgroundColor ==null){
-
+            if(ThemeManager.currentTheme.isNotEmpty())
             btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor"))
+            else btnBackground = Color.parseColor(R.color.ValidBtnColor.toString())
         }else {
             btnBackground =backgroundColor
         }
@@ -116,20 +119,23 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         val _textColor:Int
         val btnBackground:Int
         if(buttonText ==null){
-
+            if(LocalizationManager.currentLocalized.length()!=0)
             btnText = LocalizationManager.getValue("pay", "ActionButton")
+            else btnText = R.string.payText.toString()
         }else {
             btnText =buttonText
         }
         if(textColor ==null){
-
+            if(ThemeManager.currentTheme.isNotEmpty())
             _textColor = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+           else _textColor = Color.parseColor(R.color.InvalidBtntitleLabelColor.toString())
         }else {
             _textColor =textColor
         }
         if(backgroundColor ==null){
-
+            if(ThemeManager.currentTheme.isNotEmpty())
             btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
+            else btnBackground = Color.parseColor(R.color.InvalidBtnColor.toString())
         }else {
             btnBackground =backgroundColor
         }
