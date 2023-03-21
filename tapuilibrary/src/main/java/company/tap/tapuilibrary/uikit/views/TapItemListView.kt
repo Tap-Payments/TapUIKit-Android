@@ -41,6 +41,10 @@ class TapItemListView : LinearLayout {
     val addIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.add_items_dark else R.drawable.add_items_light
 
+    @DrawableRes
+    val subIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) R.drawable.sub_items_dark else R.drawable.sub_items_light
+
     /**
      * Simple constructor to use when creating a TapItemsView from code.
      *  @param context The Context the view is running in, through which it can
@@ -109,6 +113,7 @@ class TapItemListView : LinearLayout {
         totalAmountTextViewTheme.font = ThemeManager.getFontName("itemsList.item.calculatedPriceLabelFont")
         totalAmount.setTheme(totalAmountTextViewTheme)
         expandImageView.setImageResource(addIcon)
+        collapseImageView.setImageResource(subIcon)
     }
 
     /**
