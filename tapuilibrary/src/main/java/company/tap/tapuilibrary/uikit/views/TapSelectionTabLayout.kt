@@ -432,7 +432,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         val colorFilter = PorterDuffColorFilter(Color.DKGRAY, PorterDuff.Mode.SRC_ATOP)
                         paint.colorFilter = colorFilter
                       //  it1.setLayerPaint(paint)
-                        it1.setColorFilter(colorFilter)
+                      //  it1.setColorFilter(colorFilter)
                     }else if(it.unSelectedImage.contains(".svg")){
                        // GlideToVectorYou.justLoadImage(context as Activity, it.unSelectedImage.toUri(), it1)
                         GlideToVectorYou
