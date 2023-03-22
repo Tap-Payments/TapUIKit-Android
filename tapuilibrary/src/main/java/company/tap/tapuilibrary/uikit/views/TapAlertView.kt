@@ -65,7 +65,7 @@ class TapAlertView : LinearLayout {
     }
 
     private fun initTheme(){
-        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("Hints.Error.backgroundColor")))
+        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("Hints.Warning.backgroundColor")))
 
 //        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
 //            tapAlertLinear.setBackgroundResource(R.drawable.blur_background_dark)
@@ -74,16 +74,16 @@ class TapAlertView : LinearLayout {
 //        }
 
         var textTheme = TextViewTheme()
-        textTheme.textColor = Color.parseColor(ThemeManager.getValue("Hints.Error.textColor"))
-        textTheme.textSize = ThemeManager.getFontSize("Hints.Error.textFont")
+        textTheme.textColor = Color.parseColor(ThemeManager.getValue("Hints.Warning.textColor"))
+        textTheme.textSize = ThemeManager.getFontSize("Hints.Warning.textFont")
         alertMessage.setTheme(textTheme)
-        alertMessage.setTextColor(Color.parseColor(ThemeManager.getValue("Hints.Error.textColor")))
-        alertMessage.textSize = ThemeManager.getFontSize("Hints.Error.textFont").toFloat()
+        alertMessage.setTextColor(Color.parseColor(ThemeManager.getValue("Hints.Warning.textColor")))
+        alertMessage.textSize = ThemeManager.getFontSize("Hints.Warning.textFont").toFloat()
 
 
         val separatorViewTheme = SeparatorViewTheme()
         separatorViewTheme.strokeColor =
-            Color.parseColor(ThemeManager.getValue("Hints.Error.borderColor"))
+            Color.parseColor(ThemeManager.getValue("Hints.Warning.borderColor"))
       //  separatorViewTheme.strokeHeight = ThemeManager.getValue("TapAlertMessage.separatorHeight")
         topSeparator.setTheme(separatorViewTheme)
         bottomSeparator.setTheme(separatorViewTheme)
