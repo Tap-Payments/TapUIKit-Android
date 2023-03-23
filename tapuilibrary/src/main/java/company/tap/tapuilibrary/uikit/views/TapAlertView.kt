@@ -85,8 +85,12 @@ class TapAlertView : LinearLayout {
 
 
         val separatorViewTheme = SeparatorViewTheme()
+        val borderColor:String = ThemeManager.getValue<String>("Hints.Warning.borderColor").toString()
+        var borderOpacityVal: String? = null
+        //Workaround since we don't have direct method for extraction
+        borderOpacityVal = borderColor.substring(borderColor.length - 2)
         separatorViewTheme.strokeColor =
-            Color.parseColor(ThemeManager.getValue("Hints.Warning.borderColor"))
+            Color.parseColor("#"+borderOpacityVal+borderColor.substring(0, borderColor.length -2).replace("#",""))
       //  separatorViewTheme.strokeHeight = ThemeManager.getValue("TapAlertMessage.separatorHeight")
         topSeparator.setTheme(separatorViewTheme)
         bottomSeparator.setTheme(separatorViewTheme)
