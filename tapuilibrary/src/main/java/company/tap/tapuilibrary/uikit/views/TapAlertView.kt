@@ -75,6 +75,7 @@ class TapAlertView : LinearLayout {
         var textTheme = TextViewTheme()
         val warningBgColor:String = ThemeManager.getValue<String>("Hints.Warning.backgroundColor").toString()
         var opacityVal: String? = null
+        //Workaround since we don't have direct method for extraction
         opacityVal = warningBgColor.substring(warningBgColor.length - 2)
         textTheme.textColor = Color.parseColor("#"+opacityVal+warningBgColor.substring(0, warningBgColor.length -2).replace("#",""))
         textTheme.textSize = ThemeManager.getFontSize("Hints.Warning.textFont")
