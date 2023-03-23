@@ -64,7 +64,11 @@ class TapAlertView : LinearLayout {
     }
 
     private fun initTheme(){
-        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("Hints.Warning.backgroundColor")))
+        val warningBgColor:String = ThemeManager.getValue<String>("Hints.Warning.backgroundColor").toString()
+        var opacityVal: String? = null
+        //Workaround since we don't have direct method for extraction
+        opacityVal = warningBgColor.substring(warningBgColor.length - 2)
+        tapAlertLinear.setBackgroundColor(Color.parseColor("#"+opacityVal+warningBgColor.substring(0, warningBgColor.length -2).replace("#","")))
 
 //        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
 //            tapAlertLinear.setBackgroundResource(R.drawable.blur_background_dark)
@@ -73,11 +77,7 @@ class TapAlertView : LinearLayout {
 //        }
 
         var textTheme = TextViewTheme()
-        val warningBgColor:String = ThemeManager.getValue<String>("Hints.Warning.backgroundColor").toString()
-        var opacityVal: String? = null
-        //Workaround since we don't have direct method for extraction
-        opacityVal = warningBgColor.substring(warningBgColor.length - 2)
-        textTheme.textColor = Color.parseColor("#"+opacityVal+warningBgColor.substring(0, warningBgColor.length -2).replace("#",""))
+        textTheme.textColor = Color.parseColor(ThemeManager.getValue("Hints.Warning.textColor"))
         textTheme.textSize = ThemeManager.getFontSize("Hints.Warning.textFont")
         alertMessage.setTheme(textTheme)
         alertMessage.setTextColor(Color.parseColor(ThemeManager.getValue("Hints.Warning.textColor")))
