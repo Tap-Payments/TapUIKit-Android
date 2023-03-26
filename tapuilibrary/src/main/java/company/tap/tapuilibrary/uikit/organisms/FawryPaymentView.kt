@@ -40,10 +40,10 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
     @DrawableRes
     val logoIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.tap_logo_dark_horizontal
+            R.drawable.poweredby_dark_mode
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
-            R.drawable.tap_logo_light_horizontal
-        }else R.drawable.tap_logo_light_horizontal
+            R.drawable.poweredby_light_mode
+        }else R.drawable.poweredby_light_mode
 
 
     init {
