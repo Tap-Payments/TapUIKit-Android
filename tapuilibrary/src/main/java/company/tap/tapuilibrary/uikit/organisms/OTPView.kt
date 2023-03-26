@@ -259,7 +259,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
 
         val mobileNumberTextTextTheme = TextViewTheme()
         mobileNumberTextTextTheme.textColor =
-            (Color.parseColor(ThemeManager.getValue("TapOtpView.Ready.Message.subtitle")))
+            (Color.parseColor(ThemeManager.getValue("TapOtpView.Ready.Message.title")))
         mobileNumberTextTextTheme.textSize =
             ThemeManager.getFontSize("TapOtpView.Ready.Message.textFont")
         mobileNumberText.setTheme(mobileNumberTextTextTheme)
