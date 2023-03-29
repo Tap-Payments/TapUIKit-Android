@@ -79,7 +79,7 @@ object ThemeManager {
                 }
                 else {
                   //  Log.d("themeStringthemeString", themeString.toString())
-
+                      if(::themeString.isInitialized)
                     if (result.toString() in (themeString.split("}")[0])) {
                         return  valueFromJson("GlobalValues.Colors.${result}") as T
                     }
