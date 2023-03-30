@@ -146,7 +146,7 @@ class TapHeaderSectionView : LinearLayout {
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 //        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
-        setTopBorders(
+      /*  setTopBorders(
             topLinear,
             40f,// corner raduis
             0.0f,
@@ -155,7 +155,7 @@ class TapHeaderSectionView : LinearLayout {
             Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
         )//
 
-
+*/
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             setBorderedView(
                 draggerView,

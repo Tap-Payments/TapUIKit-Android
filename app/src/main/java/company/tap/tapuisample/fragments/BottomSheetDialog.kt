@@ -70,6 +70,7 @@ import company.tap.tapuisample.webview.WebViewContract
 import kotlinx.android.synthetic.main.custom_bottom_sheet.*
 import kotlinx.android.synthetic.main.custom_bottom_sheet.switch_pay_demo
 import kotlinx.android.synthetic.main.item_knet.view.*
+import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 /**
 Copyright (c) 2020    Tap Payments.
@@ -204,7 +205,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
 
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
-
+        bottomSheetLayout = bottomSheetDialog.findViewById(R.id.design_bottom_sheet)
+        bottomSheetLayout?.setBackgroundColor(Color.MAGENTA)
         /**
          * set separator background
          */
@@ -644,6 +646,22 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         selectedCurrency = view.findViewById(R.id.selectedAmountValue)
         itemCount = view.findViewById(R.id.itemCountButton)
 
+        amountSectionView.itemAmountLayout.setOnClickListener {
+          //  bottomSheetLayout?.setBackgroundResource(R.drawable.corner_radius_top)
+          //  bottomSheetLayout?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+            bottomSheetLayout?.setBackgroundColor(Color.RED)
+            bottomSheetLayout?.let { it1 ->
+                setTopBorders(
+                    it1,
+                    40f,// corner raduis
+                    0.0f,
+                    Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+                    Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+                    Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+                )
+            }//
+
+        }
         if (isFragmentAdded) {
             currentCurrency.visibility = View.VISIBLE
         } else {

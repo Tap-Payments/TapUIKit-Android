@@ -220,7 +220,7 @@ class MainActivity : BaseActivity(),
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             ThemeManager.loadTapTheme(resources, R.raw.defaultlighttheme1, "defaultlighttheme")
         }else{
-            ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme1, "defaultdarktheme")
+            ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme2, "defaultdarktheme")
         }
 
         }
