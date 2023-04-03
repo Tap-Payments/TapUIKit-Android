@@ -237,6 +237,14 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
             Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
         )//
+         setTopBorders(
+             topLinear2,
+            40f,// corner raduis
+            0.0f,
+            R.color.red_error,// stroke color
+             R.color.red_error,// stroke colorlor
+             R.color.red_error,// stroke color
+        )//
 
 
         separatorــLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))

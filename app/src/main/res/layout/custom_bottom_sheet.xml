@@ -30,6 +30,20 @@ android:layout_marginTop="-25dp"
         android:orientation="vertical">
         <!-- android:background="@color/black_27"
         android:gravity="bottom"-->
+        <LinearLayout
+            android:id="@+id/topLinear2"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="visible"
+            >
+
+
+
+
+
+        </LinearLayout>
             <LinearLayout
                 android:id="@+id/topLinear"
                 android:layout_width="match_parent"
@@ -37,6 +51,7 @@ android:layout_marginTop="-25dp"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:visibility="gone"
+                android:layout_marginTop="@dimen/margin_basic_10dp"
                 >
 
                 <company.tap.tapuilibrary.uikit.atoms.TapDragIndicator
