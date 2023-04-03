@@ -237,16 +237,20 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
             Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
             Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
         )//
+        val borderColor:String = ThemeManager.getValue<String>("poweredByTap.backgroundColor").toString()
+        var borderOpacityVal: String? = null
+        //Workaround since we don't have direct method for extraction
+        borderOpacityVal = borderColor.substring(borderColor.length - 2)
          setTopBorders(
-             topLinear2,
+             topLinear2.outerConstraint,
             40f,// corner raduis
             0.0f,
-            R.color.red_error,// stroke color
-             R.color.red_error,// stroke colorlor
-             R.color.red_error,// stroke color
+             Color.parseColor("#"+borderOpacityVal+borderColor.substring(0, borderColor.length -2).replace("#","")),
+             Color.parseColor("#"+borderOpacityVal+borderColor.substring(0, borderColor.length -2).replace("#","")),// tint color
+             Color.parseColor("#"+borderOpacityVal+borderColor.substring(0, borderColor.length -2).replace("#",""))
         )//
 
-
+        topLinear2.poweredByText.text = "POWEREDBY"
         separatorــLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
         initializeViews(view)
 
