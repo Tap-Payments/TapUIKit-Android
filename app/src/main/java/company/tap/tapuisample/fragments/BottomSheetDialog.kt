@@ -250,7 +250,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
              Color.parseColor("#"+borderOpacityVal+borderColor.substring(0, borderColor.length -2).replace("#",""))
         )//
 */
-        topLinear2.poweredByText.text = "POWERED BY"
+
 
         BlurBuilder.blur(topLinear2)
         separatorــLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))

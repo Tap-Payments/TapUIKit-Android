@@ -4,34 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:id="@+id/outerConstraint"
+    android:layoutDirection="locale"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
-        android:id="@+id/poweredByText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="26dp"
-        android:textSize="@dimen/font_size_12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/poweredByImage"
-        app:layout_constraintHorizontal_bias="0.969"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-
-        tools:text="Powered by" />
 
     <ImageView
         android:id="@+id/poweredByImage"
-        android:layout_width="45dp"
-        android:layout_height="22dp"
+        android:layout_width="112dp"
+        android:layout_height="18dp"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginBottom="26dp"
         android:layout_marginTop="@dimen/margin_basic_16dp"
-        android:src="@drawable/tap_logo_light_horizontal"
-        android:layout_marginEnd="@dimen/margin_basic_20dp"
-        android:layout_marginStart="@dimen/margin_basic_20dp"
+        android:src="@drawable/img"
+        android:layout_marginEnd="21dp"
+        android:layoutDirection="locale"
+        android:layout_marginStart="21dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

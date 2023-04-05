@@ -20,15 +20,15 @@ import company.tap.tapuilibrary.uikit.atoms.TapTextView
 class TapBrandView : LinearLayout {
 
     val poweredByImage by lazy { findViewById<AppCompatImageView>(R.id.poweredByImage) }
-    val poweredByText by lazy { findViewById<TapTextView>(R.id.poweredByText) }
+
     val outerConstraint by lazy { findViewById<ConstraintLayout>(R.id.outerConstraint) }
     @DrawableRes
     val logoIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.poweredtapdarklogo
+            R.drawable.img_1
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
-            R.drawable.poweredtaplightlogo
-        }else R.drawable.poweredtaplightlogo
+            R.drawable.img_1
+        }else R.drawable.img_1
 
 
 
@@ -64,31 +64,11 @@ class TapBrandView : LinearLayout {
 
     init {
         inflate(context, R.layout.tap_brandview, this)
-        themePoweredByText()
-        setFontsEnglish()
+        poweredByImage.setImageResource(logoIcon)
 
       //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
-    private fun themePoweredByText() {
-        val poweredByTextViewTheme = TextViewTheme()
-        poweredByTextViewTheme.textColor =
-            Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
-        poweredByTextViewTheme.textSize =
-            ThemeManager.getFontSize("poweredByTap.powerLabel.font")
-        poweredByTextViewTheme.font =
-            ThemeManager.getFontName("poweredByTap.powerLabel.font")
-        poweredByText.setTheme(poweredByTextViewTheme)
 
-        poweredByImage.setImageResource(logoIcon)
 
-    }
-
-    fun setFontsEnglish() {
-        poweredByText?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
-            )
-        )
-    }
 }
