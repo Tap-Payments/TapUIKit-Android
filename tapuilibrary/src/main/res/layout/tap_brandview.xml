@@ -1,20 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<io.alterac.blurkit.BlurLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:blurkit="http://schemas.android.com/tools"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/blurLayout"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    blurkit:blk_blurRadius="12"
-    blurkit:blk_downscaleFactor="0.12"
-    blurkit:blk_fps="60" >
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     android:id="@+id/outerConstraint"
-
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -46,4 +36,3 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-</io.alterac.blurkit.BlurLayout>
