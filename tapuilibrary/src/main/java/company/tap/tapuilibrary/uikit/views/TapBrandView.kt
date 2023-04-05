@@ -64,8 +64,8 @@ class TapBrandView : LinearLayout {
 
     init {
         inflate(context, R.layout.tap_brandview, this)
-        setFontsEnglish()
         themePoweredByText()
+        setFontsEnglish()
 
       //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }

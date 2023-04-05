@@ -241,7 +241,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         var borderOpacityVal: String? = null
         //Workaround since we don't have direct method for extraction
         borderOpacityVal = borderColor.substring(borderColor.length - 2)
-         setTopBorders(
+        /* setTopBorders(
              topLinear2.outerConstraint,
             40f,// corner raduis
             0.0f,
@@ -249,8 +249,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
              Color.parseColor("#"+borderOpacityVal+borderColor.substring(0, borderColor.length -2).replace("#","")),// tint color
              Color.parseColor("#"+borderOpacityVal+borderColor.substring(0, borderColor.length -2).replace("#",""))
         )//
+*/
+        topLinear2.poweredByText.text = "POWERED BY"
 
-        topLinear2.poweredByText.text = "POWEREDBY"
+        BlurBuilder.blur(topLinear2)
         separatorــLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapSwitchView.main.backgroundColor")))
         initializeViews(view)
 

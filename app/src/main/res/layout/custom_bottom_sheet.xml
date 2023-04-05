@@ -33,7 +33,7 @@ android:layout_marginTop="-25dp"
         <company.tap.tapuilibrary.uikit.views.TapBrandView
             android:id="@+id/topLinear2"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="80dp"
             android:layout_gravity="center"
             android:gravity="center"
             android:visibility="visible"
