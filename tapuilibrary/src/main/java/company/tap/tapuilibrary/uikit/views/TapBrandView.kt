@@ -25,10 +25,10 @@ class TapBrandView : LinearLayout {
     @DrawableRes
     val logoIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.img_1
+            R.drawable.poweredbytap2
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
-            R.drawable.img_1
-        }else R.drawable.img_1
+            R.drawable.poweredbytap2
+        }else R.drawable.poweredbytap2
 
 
 
