@@ -1,35 +1,40 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
+import android.graphics.*
+import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideOptions.bitmapTransform
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.themekit.theme.TextViewTheme
-import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.utils.BlurBuilder
+import jp.wasabeef.blurry.Blurry
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 
 class TapBrandView : LinearLayout {
 
     val poweredByImage by lazy { findViewById<AppCompatImageView>(R.id.poweredByImage) }
+    val backgroundHeader by lazy { findViewById<AppCompatImageView>(R.id.img_background) }
 
     val outerConstraint by lazy { findViewById<ConstraintLayout>(R.id.outerConstraint) }
+
     @DrawableRes
     val logoIcon: Int =
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             R.drawable.poweredbytap2
         } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
             R.drawable.poweredbytap2
-        }else R.drawable.poweredbytap2
-
+        } else R.drawable.poweredbytap2
 
 
     /**
@@ -66,9 +71,20 @@ class TapBrandView : LinearLayout {
         inflate(context, R.layout.tap_brandview, this)
         poweredByImage.setImageResource(logoIcon)
 
-      //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
-    }
+        /**
+         * original image here is image taken from view before opening
+         * the bottom sheetDialog
+         */
+        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
+        Blurry.with(context)
+            .radius(5) // make it more if you want the lue to be more
+            .sampling(2)
+            .color(Color.argb(155, 0, 0, 0))
+            .from(originalBitmap).into(backgroundHeader)
 
+
+        //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+    }
 
 
 }
