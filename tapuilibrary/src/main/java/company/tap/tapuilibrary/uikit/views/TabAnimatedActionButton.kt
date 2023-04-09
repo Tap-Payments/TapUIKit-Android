@@ -55,9 +55,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     @DrawableRes
     val loaderGif: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.loader
-        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
             R.drawable.loader_black
+        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
+            R.drawable.loader
         }else    R.drawable.loader
     constructor(context: Context) : super(context) {
         init()
