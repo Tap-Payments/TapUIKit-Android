@@ -51,6 +51,14 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private val textView by lazy {TextView(context)  }
     private var counter=0
    private lateinit var animationDataSource :AnimationDataSource
+
+    @DrawableRes
+    val loaderGif: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.loader
+        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
+            R.drawable.loader_black
+        }else    R.drawable.loader
     constructor(context: Context) : super(context) {
         init()
     }
@@ -207,7 +215,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             LOADING ->{
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.loader,3) {
+                addChildView(getImageView(loaderGif,3) {
                     morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
 
                 })
