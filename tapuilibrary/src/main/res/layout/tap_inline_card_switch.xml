@@ -46,7 +46,7 @@
             android:layout_below="@+id/switchSaveCard"
             android:layout_marginEnd="@dimen/margin_basic_16dp"
             android:layout_marginStart="@dimen/margin_basic_16dp"
-            android:visibility="visible" />
+            android:visibility="invisible" />
 
 
         <LinearLayout
@@ -56,7 +56,7 @@
             android:layout_below="@+id/switch_Separator"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
-            android:visibility="gone"
+            android:visibility="invisible"
             android:layout_marginBottom="15dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
