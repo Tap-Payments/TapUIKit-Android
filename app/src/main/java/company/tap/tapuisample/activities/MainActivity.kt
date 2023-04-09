@@ -63,6 +63,7 @@ class MainActivity : BaseActivity(),
     private val KEY_NAME = "android"
 
 
+
     @SuppressLint("ResourceAsColor", "SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
