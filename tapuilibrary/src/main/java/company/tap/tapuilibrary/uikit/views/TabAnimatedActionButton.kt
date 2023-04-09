@@ -71,24 +71,86 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         morphingAnimation =
             MorphingAnimation(this)
         morphingAnimation.setAnimationEndListener(this)
-        initActionButtonDataSource()
+        initActionButtonDataSourceValid()
         this@TabAnimatedActionButton.isClickable = true
         this@TabAnimatedActionButton.isEnabled = true
 
     }
 
-    private fun initActionButtonDataSource(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
+    private fun initActionButtonDataSourceValid(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
+        val btnText:String
+        val _textColor:Int
+        val btnBackground:Int
+        if(buttonText ==null){
+            if(LocalizationManager.currentLocalized.length()!=0)
+            btnText = LocalizationManager.getValue("pay", "ActionButton")
+            else btnText = context.getString(R.string.payText)
+        }else {
+            btnText =buttonText
+        }
+        if(textColor ==null){
+            if(ThemeManager.currentTheme.isNotEmpty())
+            _textColor = Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
+            else _textColor = R.color.ValidBtntitleLabelColor
+        }else {
+            _textColor =textColor
+        }
+        if(backgroundColor ==null){
+            if(ThemeManager.currentTheme.isNotEmpty())
+            btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor"))
+          //  else btnBackground = Color.parseColor(R.color.ValidBtnColor.toString())
+            else btnBackground = R.color.ValidBtnColor
+        }else {
+            btnBackground =backgroundColor
+        }
         dataSource = ActionButtonDataSource(
-            text = buttonText ?: LocalizationManager.getValue("pay", "ActionButton"),
-            textSize = 18f,
-            textColor = textColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor")),
+            text = btnText ,
+            textSize = 16f,
+            textColor = _textColor,
             cornerRadius = 100f,
-            successImageResources = R.drawable.checkmark,
-            backgroundColor = backgroundColor ?: Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
+            successImageResources = R.drawable.success,
+            errorImageResources = R.drawable.error_gif,
+            backgroundColor = btnBackground
         )
 
     }
 
+    private fun initActionButtonDataSourceInValid(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
+        val btnText:String
+        val _textColor:Int
+        val btnBackground:Int
+        if(buttonText ==null){
+            if(LocalizationManager.currentLocalized.length()!=0)
+            btnText = LocalizationManager.getValue("pay", "ActionButton")
+            else btnText = context.getString(R.string.payText)
+        }else {
+            btnText =buttonText
+        }
+        if(textColor ==null){
+            if(ThemeManager.currentTheme.isNotEmpty())
+            _textColor = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
+           else _textColor = R.color.ValidBtntitleLabelColor
+        }else {
+            _textColor =textColor
+        }
+        if(backgroundColor ==null){
+            if(ThemeManager.currentTheme.isNotEmpty())
+            btnBackground = Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor"))
+            else btnBackground = R.color.InvalidBtnColor
+        }else {
+            btnBackground =backgroundColor
+        }
+        dataSource = ActionButtonDataSource(
+            text = btnText ,
+            textSize = 16f,
+            textColor = _textColor,
+            cornerRadius = 100f,
+            successImageResources = R.drawable.success,
+            errorImageResources = R.drawable.error_gif,
+            backgroundColor = btnBackground
+        )
+
+    }
 
 
     /**
@@ -106,13 +168,21 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         if (isValid)
         {
             initValidBackground(backgroundColor)
-            initActionButtonDataSource(backgroundColor, textColor,buttonText)
+            initActionButtonDataSourceValid(backgroundColor, textColor,buttonText)
         } else{
             initInvalidBackground(backgroundColor)
-            initActionButtonDataSource(backgroundColor, textColor, buttonText)
+            initActionButtonDataSourceInValid(backgroundColor, textColor, buttonText)
         }
         removeAllViews()
         addView(getTextView(lang?: "en"))
+    }
+
+    fun setInValidBackground(isValid: Boolean =false,backgroundColor: Int){
+       dataSource?.backgroundColor = backgroundColor
+        backgroundDrawable.color = ColorStateList.valueOf(backgroundColor)
+
+        elevation = 0F
+
     }
 
     fun addTapLoadingView() {
@@ -137,7 +207,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             LOADING ->{
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.loader,1) {
+                addChildView(getImageView(R.drawable.loader,3) {
                     morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
 
                 })
@@ -211,6 +281,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
 
 
+
     /**
      * setup the initValidBackground background drawable color and corner radius from datasource
      */
@@ -232,6 +303,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             backgroundDrawable.cornerRadius = it
         }
         backgroundDrawable.color = ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
+       // backgroundDrawable.color = backgroundColor?.let { ColorStateList.valueOf(it) } ?: ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Invalid.backgroundColor")))
+
         background = backgroundDrawable
         elevation = 0F
     }
@@ -257,7 +330,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private fun setFontEnglish(textView:TextView ){
         textView.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
-                TapFont.RobotoLight
+                TapFont.RobotoRegular
             )
         )
     }

@@ -15,7 +15,7 @@
         android:layout_marginTop="-20dp"
         android:layout_height="70dp"
         android:id="@+id/changePhoneCardView"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="0dp"
         android:layout_gravity="center">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,8 +35,10 @@
                 android:fontFamily="sans-serif-light"
                 tools:text="OTP has been sent to"
                 android:textColor="#4b4847"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 android:textStyle="normal"
+                android:textDirection="locale"
+                android:layoutDirection="locale"
                 android:layout_marginStart="@dimen/margin_basic_10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -50,8 +52,9 @@
                 android:layout_marginEnd="@dimen/margin_basic_6dp"
                 android:fontFamily="sans-serif-light"
                 android:textColor="#1381f9"
-                android:textSize="12sp"
-                android:textDirection="ltr"
+                android:textSize="14sp"
+                android:textDirection="locale"
+                android:layoutDirection="locale"
                 tools:text="mmmmmm"
                 android:textStyle="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -66,6 +69,8 @@
                 android:layout_marginEnd="15dp"
                 android:gravity="center"
                 android:text="CHANGE"
+                android:textDirection="locale"
+                android:layoutDirection="locale"
                 android:textColor="@color/blue"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -81,7 +86,7 @@
     <LinearLayout
         android:id="@+id/otpLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="270dp"
         android:layout_marginTop="-8dp"
         android:paddingTop="-5dp"
         android:windowSoftInputMode="adjustPan"
@@ -242,6 +247,8 @@
                 android:textSize="16sp"
                 android:textStyle="normal"
                 android:gravity="start"
+                android:textDirection="locale"
+                android:layoutDirection="locale"
                 android:textAlignment="gravity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -256,6 +263,41 @@
             android:layout_height="40dp"
             android:layout_margin="@dimen/margin_basic_20dp"
             android:text="click" />
+        <LinearLayout
+            android:id="@+id/brandingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:visibility="visible"
+            android:layoutDirection="ltr"
+            android:textDirection="firstStrongLtr"
+
+
+            android:orientation="horizontal">
+
+            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                android:id="@+id/textViewPowered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Powered by"
+                android:textColor="#626262"
+                android:visibility="gone"
+                android:textSize="@dimen/font_size_10sp"
+                />
+            <company.tap.tapuilibrary.uikit.atoms.TapImageView
+                android:layout_width="92dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/margin_basic_4dp"
+                android:layout_marginEnd="@dimen/margin_basic_4dp"
+
+                android:id="@+id/tapLogoImage"
+                />
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -10,7 +10,7 @@
     <string name="codeExpireText">Code Expires on.</string>
     <string name="linkDescText">Please visit a Fawry Cash Location using the link below to complete your payment.</string>
 
-
+    <string name="payText">PAY</string>
 
     <string name="msg_dismiss">dismiss</string>
     <string name="gopay">goPay</string>

@@ -80,6 +80,8 @@ class TapNFCView : LinearLayout {
                     "nfcDescription",
                     "NFC"
                 )
+
+
     }
 
     fun setFontsEnglish(){

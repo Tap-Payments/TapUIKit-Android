@@ -89,17 +89,22 @@
             android:layout_height="45dp"
             android:layout_marginStart="@dimen/margin_basic_16dp"
             android:visibility="visible"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="@dimen/margin_basic_0dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+            app:layout_constraintStart_toStartOf="parent"
+            app:cardCornerRadius="100dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            app:cardElevation="2dp"
+            android:foregroundGravity = "center"
+            android:layout_centerInParent = "true">
 
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
                 android:id="@+id/businessIcon"
                 android:layout_width="50dp"
                 android:layout_height="match_parent"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+               />
 
             <company.tap.tapuilibrary.uikit.atoms.TapTextView
                 android:id="@+id/placeholderText"
@@ -145,7 +150,32 @@
             app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
             app:layout_constraintTop_toBottomOf="@+id/paymentFor"
             app:layout_constraintEnd_toEndOf="parent"
-            tools:text="علا منير" />
+            tools:text="ahaha" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="@dimen/margin_basic_16dp"
+            android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cardCornerRadius="30dp"
+            android:elevation="@dimen/margin_basic_0dp"
+            app:cardElevation="@dimen/margin_basic_0dp"
+            app:cardMaxElevation="@dimen/margin_basic_0dp"
+            android:id="@+id/icon">
+            <company.tap.tapuilibrary.uikit.atoms.TapImageView
+                android:id="@+id/tapCloseIcon"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginEnd="@dimen/margin_basic_16dp"
+                android:visibility="visible"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                />
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

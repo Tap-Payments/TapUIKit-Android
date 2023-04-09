@@ -6,6 +6,7 @@ import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -13,6 +14,7 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
+import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
@@ -37,7 +39,18 @@ class TapCardSwitch : LinearLayout {
     val switchesLayout by lazy { findViewById<LinearLayout>(R.id.switches_layout) }
     val switchSeparator by lazy { findViewById<TapSeparatorView>(R.id.switch_separator) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
+    val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
+    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
+    val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
+   // val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
     private var actionButtonInterface: TapActionButtonInterface? = null
+    @DrawableRes
+    val logoIcon: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.poweredby_dark_mode
+        } else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")) {
+            R.drawable.poweredby_light_mode
+        }else R.drawable.poweredby_light_mode
 
 
     lateinit var attrs: AttributeSet
@@ -100,6 +113,8 @@ class TapCardSwitch : LinearLayout {
         )
         payButton.isEnabled = true
         payButton.isClickable = true
+
+        tapLogoImage.setImageResource(logoIcon)
     }
 
     fun showOnlyPayButton(){
@@ -227,6 +242,21 @@ class TapCardSwitch : LinearLayout {
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("TapSwitchView.CurvedSeparator.BackgroundColor"))
         switchSeparator.setTheme(separatorViewTheme)
+
+        var poweredByTextViewTheme = TextViewTheme()
+        poweredByTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
+        poweredByTextViewTheme.textSize =
+            ThemeManager.getFontSize("poweredByTap.powerLabel.font")
+        poweredByTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
+        textViewPowered.setTheme(poweredByTextViewTheme)
+
+        var tapTextViewTheme = TextViewTheme()
+        tapTextViewTheme.textColor = Color.parseColor(ThemeManager.getValue("poweredByTap.powerLabel.textColor"))
+        tapTextViewTheme.textSize =
+            ThemeManager.getFontSize("poweredByTap.powerLabel.font")
+        tapTextViewTheme.font = ThemeManager.getFontName("poweredByTap.powerLabel.font")
+       // tapTextView.setTheme(tapTextViewTheme)
     }
 
 

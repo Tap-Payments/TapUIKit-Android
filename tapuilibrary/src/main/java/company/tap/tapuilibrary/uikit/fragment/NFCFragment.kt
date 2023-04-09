@@ -80,6 +80,7 @@ class NFCFragment : Fragment() {
             }
         } else {
             Toast.makeText(context,LocalizationManager.getValue("nfcUnsupported", "NFC") as String , Toast.LENGTH_SHORT).show()
+
         }
 
 
@@ -91,6 +92,8 @@ class NFCFragment : Fragment() {
         val alertDialog = AlertDialog.Builder(context)
         alertDialog.setTitle(LocalizationManager.getValue("enableNFC", "NFC") as String)
         alertDialog.setMessage(LocalizationManager.getValue("disabledNFC", "NFC") as String)
+
+
         alertDialog.setPositiveButton(
             getString(R.string.msg_ok)
         ) { dialog: DialogInterface, _: Int ->
@@ -125,8 +128,8 @@ class NFCFragment : Fragment() {
                 emvCard.toString().replace(", ", ",\n")
             )
         )
-      //  Toast.makeText(context, text, Toast.LENGTH_LONG).show()
-        Toast.makeText(context, LocalizationManager.getValue("scanSuccess", "NFC") as String, Toast.LENGTH_LONG).show()
+      // Toast.makeText(context, text, Toast.LENGTH_LONG).show()
+      Toast.makeText(context, LocalizationManager.getValue("scanSuccess", "NFC") as String, Toast.LENGTH_LONG).show()
 
         val fragmentTransaction: FragmentTransaction? = fragmentManager?.beginTransaction()
         fragmentTransaction?.remove(this)?.commit()

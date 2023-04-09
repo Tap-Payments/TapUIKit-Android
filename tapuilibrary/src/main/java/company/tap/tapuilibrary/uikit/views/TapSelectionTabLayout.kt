@@ -21,9 +21,13 @@ import com.bumptech.glide.Glide
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
+import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
@@ -55,7 +59,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var imageSaturationValue = 1f
     private var tabItemMarginLeftValue = 0
     private var tabItemMarginRightValue = 0
-
+    val acceptedCardText by lazy { findViewById<TapTextView>(R.id.acceptedCardText) }
 
     /**
      * Initiating the tablayout with default theme and behaviour
@@ -65,12 +69,45 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout = findViewById(R.id.tab_layout)
         tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)
-        tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("horizontalList.backgroundColor")))
+
+        applyThemeView()
+
         setSelectionBehaviour()
     }
 
+    private fun applyThemeView() {
 
-//    fun clearInvalidIndicatorColor(){
+        val acceptedCardTextViewTheme = TextViewTheme()
+        acceptedCardTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("cardPhoneList.weAcceptLabel.textColor"))
+        acceptedCardTextViewTheme.textSize =
+            ThemeManager.getFontSize("cardPhoneList.weAcceptLabel.textFont")
+        acceptedCardTextViewTheme.font = ThemeManager.getFontName("cardPhoneList.weAcceptLabel.textFont")
+        acceptedCardText.setTheme(acceptedCardTextViewTheme)
+
+        tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor")))
+       // acceptedCardText?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("cardPhoneList.backgroundColor")))
+        if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+    }
+
+    private fun setFontsArabic() {
+        acceptedCardText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalMedium
+            )
+        )
+    }
+
+    private fun setFontsEnglish() {
+        acceptedCardText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
+    }
+
+
+    //    fun clearInvalidIndicatorColor(){
 //        indicatorHeight= MetricsUtil.convertDpToPixel(INDICATOR_HEIGHT, context).toInt()
 //    }
     fun changeTabItemAlphaValue(tabItemAlphaValue : Float){
@@ -199,7 +236,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         var params = LayoutParams(
             getItemWidth(), 0
         )
-        params.weight = 0.6f
+        params.weight = 0.2f
         for (item in tabItems) {
             params.setMargins(
                 tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue,
@@ -221,8 +258,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             LayoutParams.MATCH_PARENT
         )
         linearLayout.layoutParams = params
-        linearLayout.setPadding(-10,0,0,0)
-        linearLayout.setPaddingRelative(-10,0,0,0)
+        linearLayout.setPadding(-5,0,0,0)
+        linearLayout.setPaddingRelative(-5,0,0,0)
         linearLayout.orientation = HORIZONTAL
         return linearLayout
     }
@@ -240,7 +277,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             getItemWidth(), 0
         )
         params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
-        params.weight = 0.6f
+        params.weight = 0.2f
         val image = TapImageView(context, null)
         Glide.with(this)
             .load(item.selectedImageURL)
@@ -259,7 +296,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         item.indicator = indicator
         tabItems.add(item)
         layout.addView(image)
-        layout.addView(indicator)
+        //Commented adding indicator as per new design 12feb23
+      //  layout.addView(indicator)
         return layout
     }
 
@@ -278,7 +316,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         linearLayout.layoutParams = params
         linearLayout.orientation = VERTICAL
-        linearLayout.weightSum = 0.6f
+        linearLayout.weightSum = 0.2f
         return linearLayout
     }
 
@@ -394,7 +432,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                         val colorFilter = PorterDuffColorFilter(Color.DKGRAY, PorterDuff.Mode.SRC_ATOP)
                         paint.colorFilter = colorFilter
                       //  it1.setLayerPaint(paint)
-                        it1.setColorFilter(colorFilter)
+                      //  it1.setColorFilter(colorFilter)
                     }else if(it.unSelectedImage.contains(".svg")){
                        // GlideToVectorYou.justLoadImage(context as Activity, it.unSelectedImage.toUri(), it1)
                         GlideToVectorYou
@@ -403,8 +441,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                             .load(it.unSelectedImage.toUri(), it1)
                         val paint = Paint()
                         val colorFilter = PorterDuffColorFilter(Color.DKGRAY, PorterDuff.Mode.SRC_ATOP)
-                        paint.colorFilter = colorFilter
-                        it1.setLayerPaint(paint)
+                      //  paint.colorFilter = colorFilter
+                       // it1.setLayerPaint(paint)
+                        it1.setColorFilter(null)
                     }
 
                    /* GlideToVectorYou

@@ -13,7 +13,6 @@ import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
-import kotlinx.android.synthetic.main.gopay_password_input.view.*
 
 /**
  * Created  on 8/10/20.
@@ -65,7 +64,11 @@ class TapAlertView : LinearLayout {
     }
 
     private fun initTheme(){
-        tapAlertLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapAlertMessage.backgroundColor")))
+        val warningBgColor:String = ThemeManager.getValue<String>("Hints.Warning.backgroundColor").toString()
+        var opacityVal: String? = null
+        //Workaround since we don't have direct method for extraction
+        opacityVal = warningBgColor.substring(warningBgColor.length - 2)
+        tapAlertLinear.setBackgroundColor(Color.parseColor("#"+opacityVal+warningBgColor.substring(0, warningBgColor.length -2).replace("#","")))
 
 //        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
 //            tapAlertLinear.setBackgroundResource(R.drawable.blur_background_dark)
@@ -74,17 +77,21 @@ class TapAlertView : LinearLayout {
 //        }
 
         var textTheme = TextViewTheme()
-        textTheme.textColor = Color.parseColor(ThemeManager.getValue("TapAlertMessage.textField.textColor"))
-        textTheme.textSize = ThemeManager.getFontSize("TapAlertMessage.textField.textFont")
+        textTheme.textColor = Color.parseColor(ThemeManager.getValue("Hints.Warning.textColor"))
+        textTheme.textSize = ThemeManager.getFontSize("Hints.Warning.textFont")
         alertMessage.setTheme(textTheme)
-        alertMessage.setTextColor(Color.parseColor(ThemeManager.getValue("TapAlertMessage.textField.textColor")))
-        alertMessage.textSize = ThemeManager.getFontSize("TapAlertMessage.textField.textFont").toFloat()
+        alertMessage.setTextColor(Color.parseColor(ThemeManager.getValue("Hints.Warning.textColor")))
+        alertMessage.textSize = ThemeManager.getFontSize("Hints.Warning.textFont").toFloat()
 
 
         val separatorViewTheme = SeparatorViewTheme()
+        val borderColor:String = ThemeManager.getValue<String>("Hints.Warning.borderColor").toString()
+        var borderOpacityVal: String? = null
+        //Workaround since we don't have direct method for extraction
+        borderOpacityVal = borderColor.substring(borderColor.length - 2)
         separatorViewTheme.strokeColor =
-            Color.parseColor(ThemeManager.getValue("TapAlertMessage.separatorColor"))
-        separatorViewTheme.strokeHeight = ThemeManager.getValue("TapAlertMessage.separatorHeight")
+            Color.parseColor("#"+borderOpacityVal+borderColor.substring(0, borderColor.length -2).replace("#",""))
+      //  separatorViewTheme.strokeHeight = ThemeManager.getValue("TapAlertMessage.separatorHeight")
         topSeparator.setTheme(separatorViewTheme)
         bottomSeparator.setTheme(separatorViewTheme)
     }

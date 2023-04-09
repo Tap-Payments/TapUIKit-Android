@@ -39,7 +39,7 @@ data class ActionButtonDataSource(
     val errorImageResources: Int? = null,
 
     @ColorInt
-    val backgroundColor: Int? = null,
+    var backgroundColor: Int? = null,
 
     @ColorRes
     val backgroundColorResources: Int? = null

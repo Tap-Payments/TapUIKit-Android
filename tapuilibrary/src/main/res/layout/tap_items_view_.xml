@@ -7,6 +7,8 @@
     android:layout_marginStart="@dimen/margin_basic_16dp"
     android:layout_marginTop="@dimen/margin_basic_14dp"
     android:layout_marginEnd="@dimen/margin_basic_16dp"
+    android:layoutDirection="locale"
+    android:textDirection="locale"
     android:layout_marginBottom="@dimen/margin_basic_13dp">
 
     <company.tap.tapuilibrary.uikit.atoms.TapTextView

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_gravity="center"
-    android:gravity="top"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
 
@@ -12,10 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/titleText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
@@ -25,9 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/descText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
@@ -37,9 +33,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/orderCodeText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
@@ -50,9 +46,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
 
@@ -62,9 +58,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/codeExpireText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
@@ -75,9 +71,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="0dp"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
 
@@ -87,10 +83,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center"
         android:lines="2"
-        android:padding="15dp"
+        android:padding="10dp"
         android:text="@string/linkDescText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
@@ -102,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
 
@@ -117,6 +113,38 @@
         android:layout_marginEnd="@dimen/margin_basic_20dp"
         android:layout_marginBottom="22dp"
         android:visibility="visible" />
+    <LinearLayout
+        android:id="@+id/brandingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layoutDirection="ltr"
+        android:textDirection="firstStrongLtr"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal">
 
+        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            android:id="@+id/textViewPowered"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Powered by"
+            android:textColor="#626262"
+            android:visibility="gone"
+            android:textSize="@dimen/font_size_10sp"
+            />
+        <company.tap.tapuilibrary.uikit.atoms.TapImageView
+            android:layout_width="92dp"
+            android:layout_height="18dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/margin_basic_4dp"
+            android:layout_marginEnd="@dimen/margin_basic_4dp"
+            android:id="@+id/tapLogoImage"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>

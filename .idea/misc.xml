@@ -3,27 +3,58 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable/background_loyalty.xml" value="0.207" />
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.37222222222222223" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.10595358224016145" />
+        <entry key="app/src/main/res/drawable-xhdpi/border_shadow_black.xml" value="0.222" />
         <entry key="app/src/main/res/drawable/corner_radius.xml" value="0.1715" />
-        <entry key="app/src/main/res/layout/activity_loyalty_view.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_action_button.xml" value="0.1373873873873874" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
-        <entry key="app/src/main/res/layout/custom_bottom_sheet.xml" value="0.29393115942028986" />
-        <entry key="app/src/main/res/layout/main_switch_layout.xml" value="0.1436936936936937" />
-        <entry key="app/src/main/res/layout/tap_card_switch.xml" value="0.1783783783783784" />
+        <entry key="app/src/main/res/layout/custom_bottom_sheet.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/item_knet.xml" value="0.1554054054054054" />
+        <entry key="app/src/main/res/layout/item_saved_card.xml" value="0.15360360360360362" />
+        <entry key="app/src/main/res/layout/tap_card_switch.xml" value="0.1646403242147923" />
+        <entry key="app/src/main/res/layout/tap_main_header.xml" value="0.3512014787430684" />
+        <entry key="app/src/main/res/layout/tap_payment_input.xml" value="0.4224548049476689" />
+        <entry key="tapuilibrary/src/main/res/drawable-hdpi/border_shadow_black.xml" value="0.189" />
         <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius.xml" value="0.1715" />
-        <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius_bottom.xml" value="0.191" />
-        <entry key="tapuilibrary/src/main/res/drawable/icon_adcb.xml" value="0.2655" />
-        <entry key="tapuilibrary/src/main/res/layout/gopay_login_input.xml" value="0.17477477477477477" />
-        <entry key="tapuilibrary/src/main/res/layout/gopay_password_input.xml" value="0.17477477477477477" />
-        <entry key="tapuilibrary/src/main/res/layout/main_switch_layout.xml" value="0.11283961437335671" />
-        <entry key="tapuilibrary/src/main/res/layout/otp_view.xml" value="0.11283961437335671" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_card_switch.xml" value="0.10270270270270271" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_chip_group.xml" value="0.22567567567567567" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_items_view_.xml" value="0.23198198198198197" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_loyalty_view.xml" value="0.375" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_main_amount.xml" value="0.165" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_main_header.xml" value="0.25" />
-        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.25" />
+        <entry key="tapuilibrary/src/main/res/drawable-mdpi/corner_radius_bottom.xml" value="0.121" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_currency.xml" value="0.121" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_currency_black.xml" value="0.121" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_gopay.xml" value="0.121" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_oval.xml" value="0.2035" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_shadow_white.xml" value="0.222" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_unclick.xml" value="0.19" />
+        <entry key="tapuilibrary/src/main/res/drawable/border_unclick_2.xml" value="0.1805" />
+        <entry key="tapuilibrary/src/main/res/drawable/corner_radius_top.xml" value="0.375" />
+        <entry key="tapuilibrary/src/main/res/drawable/ic_add.xml" value="0.1745" />
+        <entry key="tapuilibrary/src/main/res/drawable/ic_group_6.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/drawable/ic_group_card.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/drawable/items_add.xml" value="0.335" />
+        <entry key="tapuilibrary/src/main/res/drawable/rounded_circle.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/drawable/rounded_rectangle.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/drawable/rounded_rectangle_black.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/layout/card_section_layout.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/custom_card_view.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/custom_sheet_nfc.xml" value="0.10990990990990991" />
+        <entry key="tapuilibrary/src/main/res/layout/fawry_payment_view.xml" value="0.335" />
+        <entry key="tapuilibrary/src/main/res/layout/item_saved_card.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/modal_bottom_sheet.xml" value="0.11218229623137599" />
+        <entry key="tapuilibrary/src/main/res/layout/otp_view.xml" value="0.2375" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_alert_view.xml" value="0.1" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_brandview.xml" value="0.335" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_card_switch.xml" value="0.6166666666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_chip_group.xml" value="0.18153153153153154" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_contact_detail_view.xml" value="0.42130987292277616" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_inline_card_switch.xml" value="0.36702767749699156" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_items_view_.xml" value="0.20108695652173914" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_items_view_2.xml" value="1.0724637681159421" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_main_amount.xml" value="0.6167327880859376" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_main_header.xml" value="0.3035143769968051" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input.xml" value="0.3934065934065934" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_payment_input2.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_selection_tablayout.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/tap_shipping_detail_view.xml" value="0.3385416666666667" />
+        <entry key="tapuilibrary/src/main/res/layout/textview_cell.xml" value="0.3385416666666667" />
       </map>
     </option>
   </component>
@@ -76,13 +107,6 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.55" />
-      </ProjectState>
-    </option>
   </component>
   <component name="masterDetails">
     <states>

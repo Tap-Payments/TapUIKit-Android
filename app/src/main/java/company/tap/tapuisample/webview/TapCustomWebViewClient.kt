@@ -126,8 +126,8 @@ class TapCustomWebViewClient constructor(private val customWebViewClientContract
         return null
     }
 
-    private fun getCustomHeaders(): Map<String, String>? {
-        val headers: MutableMap<String, String> = HashMap()
+    private fun getCustomHeaders(): Map<String?, String?> {
+        val headers: MutableMap<String?, String?> = HashMap()
         //  headers["cid"] =  ""
         return headers
     }

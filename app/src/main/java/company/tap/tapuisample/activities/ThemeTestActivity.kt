@@ -1,16 +1,11 @@
 package company.tap.tapuisample.activities
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuisample.R
-import company.tap.tapuisample.adapters.context
-import jp.wasabeef.blurry.Blurry
 
 import kotlinx.android.synthetic.main.activity_theme_test.*
 
@@ -21,7 +16,7 @@ class ThemeTestActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_theme_test)
 //        initAppTheme(R.raw.defaultlighttheme)
-        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
+        ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme1, "defaultdarktheme")
 
 
     }
@@ -41,8 +36,8 @@ class ThemeTestActivity : AppCompatActivity() {
 
 
     fun swap(view: View?) {
-        if (currentTheme == R.raw.defaultdarktheme) {
-            ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
+        if (currentTheme == R.raw.defaultdarktheme1) {
+            ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme1, "defaultdarktheme")
             setTheme(R.style.AppTheme);
             Toast.makeText(
                 applicationContext,
@@ -50,7 +45,7 @@ class ThemeTestActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         } else {
-            ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme, "defaultdarktheme")
+            ThemeManager.loadTapTheme(resources, R.raw.defaultdarktheme1, "defaultdarktheme")
 
             setTheme(R.style.AppThemeBlack);
             Toast.makeText(

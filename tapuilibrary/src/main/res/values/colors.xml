@@ -8,10 +8,13 @@
     <color name="black_50">#80000000</color>
     <color name="brown_grey_0">#a8a8a8</color>
     <color name="white">#ffffff</color>
+    <color name="whiteTools">#ffffff</color>
+    <color name="toolsBackground">#000000</color>
     <color name="black_27">#45000000</color>
     <color name="gray">#ababab</color>
     <color name="view_color">#dfdfdf</color>
     <color name="chip_background">#f4f4f4</color>
+    <color name="chip_border">#dfdfdf</color>
 
     <color name="bg_gray">#f4f4f4</color>
     <color name="dark_gray">#ababab</color>
@@ -53,6 +56,12 @@
     <color name="errorAlertText">#e12131</color>
     <color name="errorBackground">#19e12131</color>
 
-
-
+    <color name="brown_grey_background">#4B4847</color>
+    <color name="paleLilac">#e4e4e5</color>
+    <color name="buttoncheckBox">#009AFF</color>
+    <color name="switchOnColor">#34C759</color>
+    <color name="InvalidBtnColor">#BBBABA</color>
+    <color name="InvalidBtntitleLabelColor">#FFFFFF</color>
+    <color name="ValidBtnColor">#2ace00</color>
+    <color name="ValidBtntitleLabelColor">#FFFFFF</color>
 </resources>

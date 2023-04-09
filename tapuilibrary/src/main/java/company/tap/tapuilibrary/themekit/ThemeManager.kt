@@ -49,7 +49,8 @@ object ThemeManager {
         }
     }
 
-    fun loadTapTheme(context: Context, url: String) {
+    fun loadTapTheme(context: Context, url: String,themeName : String) {
+       currentTheme = themeName
         Ion.with(context)
             .load(url)
             .asJsonObject()
@@ -78,7 +79,7 @@ object ThemeManager {
                 }
                 else {
                   //  Log.d("themeStringthemeString", themeString.toString())
-
+                      if(::themeString.isInitialized)
                     if (result.toString() in (themeString.split("}")[0])) {
                         return  valueFromJson("GlobalValues.Colors.${result}") as T
                     }
@@ -134,15 +135,16 @@ object ThemeManager {
     }
 
     private fun <T> valueFromJson(path: String): T {
+        var view: JSONObject? =null
         val pathComponent = path.split('.')
-        var view = theme.getJSONObject(pathComponent[0])
+        if(::theme.isInitialized) view = theme.getJSONObject(pathComponent[0])
         if (pathComponent.size > 2) {
             for (i in 1..pathComponent.size - 2) {
-                view = view.getJSONObject(pathComponent[i])
+                view = view?.getJSONObject(pathComponent[i])
             }
         }
         val valueKey = pathComponent[pathComponent.lastIndex]
-        return view.get(valueKey) as T
+        return view?.get(valueKey) as T
     }
 
 
