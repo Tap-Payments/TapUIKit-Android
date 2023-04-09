@@ -112,7 +112,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:visibility="visible"
+        android:visibility="gone"
         android:layoutDirection="ltr"
         android:textDirection="firstStrongLtr"
         android:layout_marginTop="@dimen/margin_basic_10dp"
