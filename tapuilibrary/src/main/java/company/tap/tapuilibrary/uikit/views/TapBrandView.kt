@@ -71,6 +71,10 @@ class TapBrandView : LinearLayout {
         inflate(context, R.layout.tap_brandview, this)
         poweredByImage.setImageResource(logoIcon)
 
+        Glide.with(this)
+            .load(R.drawable.blurviewnew)
+            .apply(bitmapTransform(BlurTransformation(35, 1)))
+            .into(backgroundHeader)
 
         //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
