@@ -10,7 +10,7 @@ package company.tap.tapuilibrary.uikit.interfaces
 /**
  * Interface which have function take argument of
  * password number to send it to api from checkout sdk and
- * this function return if otp is valid or not
+ * this function return if otp `is valid or not
  */
 interface PasswordConfirmationInterface {
     fun onOtpButtonConfirmationClick(password: String):Boolean

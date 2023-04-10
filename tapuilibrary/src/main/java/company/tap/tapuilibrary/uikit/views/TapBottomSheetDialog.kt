@@ -64,8 +64,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
             bottomSheetBehavior.isDraggable
             bottomSheetBehavior.isHideable = true
             bottomSheetDialog.behavior.peekHeight
-            backgroundColor =
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+         //   backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
 
             view?.alpha = 0.0f
             view?.animate()
@@ -135,7 +134,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
                 null, null
             )
         )
-        shape.paint.color = backgroundColor
+        shape.paint.color =
         return shape
     }
 

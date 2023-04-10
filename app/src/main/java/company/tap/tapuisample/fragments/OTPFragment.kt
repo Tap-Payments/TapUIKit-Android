@@ -1,19 +1,26 @@
 package company.tap.tapuisample.fragments
 
+import android.app.Dialog
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.uikit.views.TapOTPView
 import company.tap.tapuisample.R
+import jp.wasabeef.blurry.Blurry
+import jp.wasabeef.glide.transformations.BlurTransformation
 
 
 /**
@@ -22,11 +29,13 @@ import company.tap.tapuisample.R
 Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
-class OTPFragment: TapBottomSheetDialog() {
+class OTPFragment : TapBottomSheetDialog() {
     private lateinit var otpView: TapOTPView
     private lateinit var otpSent: TapTextView
-    private lateinit var otpMobile:TapTextView
-    private lateinit var timerText:TapTextView
+    private lateinit var otpMobile: TapTextView
+    private lateinit var timerText: TapTextView
+    private lateinit var blurryView: ImageView
+
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
 //        super.onCreate(savedInstanceState)
@@ -50,31 +59,53 @@ class OTPFragment: TapBottomSheetDialog() {
         startCountdown(view)
         otpView = view.findViewById(R.id.otp_view_input)
         backgroundColor = Color.WHITE
+        blurryView = view.findViewById(R.id.view_blurry)
 
         val rootView = (activity?.window?.decorView as ViewGroup?)
+        blurryView.post {
+            val bitmap = Blurry.with(context)
+                .radius(25)
+                .sampling(1)
+                .capture(blurryView).get()
+            (blurryView).setImageDrawable(BitmapDrawable(resources, bitmap))
+        }
 
-        view.post(Runnable {
-
-            // Configure background
+//
+//        Glide.with(requireContext())
+//            .asBitmap()
+//            .load(R.drawable.border_black) // or url
+//            .transform(BlurTransformation(25, 100))
+//            .into(blurryView)
+        // Configure background
 //            Blurry.with(context)
 //                .radius(15)
-//                .color(Color.argb(20, 255, 255, 255))
-//                .onto(otp_linearlayout)
-           // insertPoint.removeView(otp_linearlayout)
-           /* insertPoint.addView(
-                otp_linearlayout,
-                0,
-                ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.MATCH_PARENT
-                )
-            )
-            otp_linearlayout.bringToFront()*/
+//                .sampling(2)
+//                .async()
+//                .color(Color.argb(155, 0, 0, 0))
+//                .onto(blurryView.parent as ViewGroup)
 
-        })
+        // insertPoint.removeView(otp_linearlayout)
+        /* insertPoint.addView(
+             otp_linearlayout,
+             0,
+             ViewGroup.LayoutParams(
+                 ViewGroup.LayoutParams.MATCH_PARENT,
+                 ViewGroup.LayoutParams.MATCH_PARENT
+             )
+         )
+         otp_linearlayout.bringToFront()*/
+
+
+
         return view
     }
 
+
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        return BottomSheetDialog(requireContext(), R.style.MyTransparentBottomSheetDialogTheme)
+
+    }
 
 
     private fun startCountdown(view: View) {
@@ -82,10 +113,11 @@ class OTPFragment: TapBottomSheetDialog() {
             override fun onTick(millisUntilFinished: Long) {
                 val second = millisUntilFinished / 1000 % 60
                 val minutes = millisUntilFinished / (1000 * 60) % 60
-                timerText.text=("$minutes:$second")
+                timerText.text = ("$minutes:$second")
             }
+
             override fun onFinish() {
-                timerText.text=("00:00")
+                timerText.text = ("00:00")
             }
         }.start()
 
@@ -93,21 +125,11 @@ class OTPFragment: TapBottomSheetDialog() {
 
     private fun prepareTextViews(view: View) {
         otpSent = view.findViewById(R.id.otp_sent)
-        otpSent.text = LocalizationManager.getValue("Message","TapOtpView","Ready")
+        otpSent.text = LocalizationManager.getValue("Message", "TapOtpView", "Ready")
         otpMobile = view.findViewById(R.id.mobile_textview)
-        otpMobile.text= "+965 6••••111"
+        otpMobile.text = "+965 6••••111"
         timerText = view.findViewById(R.id.timer_textview)
     }
 
 
-      fun createScreenshot(view: ViewGroup): Bitmap? {
-        var w = view.width
-        var h = view.height
-        if (w <= 0) w = 800
-        if (h <= 0) h = 300
-        val bitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888)
-        val canvas = Canvas(bitmap)
-        view.draw(canvas)
-        return bitmap
-    }
 }

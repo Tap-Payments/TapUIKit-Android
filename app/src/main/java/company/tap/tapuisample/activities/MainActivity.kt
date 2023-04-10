@@ -86,7 +86,7 @@ class MainActivity : BaseActivity(),
 
         val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
         val blurredBitmap: Bitmap? = BlurBuilder.blur(this, originalBitmap)
-        linearMain.background = BitmapDrawable(resources, blurredBitmap)
+        linearMain.background = BitmapDrawable(resources, originalBitmap)
 
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE or WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)

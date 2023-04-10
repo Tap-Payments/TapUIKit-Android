@@ -71,17 +71,6 @@ class TapBrandView : LinearLayout {
         inflate(context, R.layout.tap_brandview, this)
         poweredByImage.setImageResource(logoIcon)
 
-        /**
-         * original image here is image taken from view before opening
-         * the bottom sheetDialog
-         */
-        val originalBitmap: Bitmap = BitmapFactory.decodeResource(resources, R.drawable.backgr)
-        Blurry.with(context)
-            .radius(5) // make it more if you want the lue to be more
-            .sampling(2)
-            .color(Color.argb(155, 0, 0, 0))
-            .from(originalBitmap).into(backgroundHeader)
-
 
         //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
