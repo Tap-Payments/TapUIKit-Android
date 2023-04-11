@@ -1,5 +1,6 @@
 package company.tap.tapuilibrary.uikit.ktx
 
+import android.R.attr.path
 import android.R.attr.radius
 import android.app.Activity
 import android.content.Context
@@ -21,6 +22,7 @@ import com.bumptech.glide.request.RequestListener
 import com.google.android.material.shape.CornerFamily
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.ShapeAppearanceModel
+import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 
 
@@ -31,28 +33,46 @@ Copyright (c) 2020  Tap Payments.
 All rights reserved.
  **/
 
- fun ImageView.setImage(context:Context,image: ImageView, imageRes:Int, gifLoopCount: Int, actionAfterAnimationDone: ()-> Unit): ImageView {
+fun ImageView.setImage(
+    context: Context,
+    image: ImageView,
+    imageRes: Int,
+    gifLoopCount: Int,
+    actionAfterAnimationDone: () -> Unit
+): ImageView {
     if (!(context as Activity).isDestroyed)
-    Glide.with(this).asGif().load(imageRes).useAnimationPool(true) .listener(object :
-        RequestListener<GifDrawable> {
-        override fun onResourceReady(resource: GifDrawable?, model: Any?, target: com.bumptech.glide.request.target.Target<GifDrawable>?, dataSource: DataSource?, isFirstResource: Boolean): Boolean {
-            if (resource is GifDrawable) {
-                resource.setLoopCount(gifLoopCount)
-                resource.registerAnimationCallback(object :
-                    Animatable2Compat.AnimationCallback() {
-                    override fun onAnimationEnd(drawable: Drawable) {
-                        //do whatever after specified number of loops complete
-                        actionAfterAnimationDone()
+        Glide.with(this).asGif().load(imageRes).useAnimationPool(true).listener(object :
+            RequestListener<GifDrawable> {
+            override fun onResourceReady(
+                resource: GifDrawable?,
+                model: Any?,
+                target: com.bumptech.glide.request.target.Target<GifDrawable>?,
+                dataSource: DataSource?,
+                isFirstResource: Boolean
+            ): Boolean {
+                if (resource is GifDrawable) {
+                    resource.setLoopCount(gifLoopCount)
+                    resource.registerAnimationCallback(object :
+                        Animatable2Compat.AnimationCallback() {
+                        override fun onAnimationEnd(drawable: Drawable) {
+                            //do whatever after specified number of loops complete
+                            actionAfterAnimationDone()
 
-                    }
-                })
+                        }
+                    })
+                }
+                return false
             }
-            return false
-        }
-        override fun onLoadFailed(e: GlideException?, model: Any?, target:com.bumptech.glide.request.target.Target<GifDrawable>?, isFirstResource: Boolean): Boolean {
-            return false
-        }
-    }) .into(image)
+
+            override fun onLoadFailed(
+                e: GlideException?,
+                model: Any?,
+                target: com.bumptech.glide.request.target.Target<GifDrawable>?,
+                isFirstResource: Boolean
+            ): Boolean {
+                return false
+            }
+        }).into(image)
     return image
 }
 
@@ -62,7 +82,14 @@ All rights reserved.
  * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
  */
 
-fun setBorderedView(view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int, shadowColor: Int) {
+fun setBorderedView(
+    view: View,
+    cornerRadius: Float,
+    strokeWidth: Float,
+    strokeColor: Int,
+    tintColor: Int,
+    shadowColor: Int
+) {
     val shapeAppearanceModel = ShapeAppearanceModel()
         .toBuilder()
         .setAllCorners(CornerFamily.ROUNDED, cornerRadius)
@@ -72,13 +99,19 @@ fun setBorderedView(view: View, cornerRadius:Float,strokeWidth: Float, strokeCol
     shapeDrawable.setStroke(strokeWidth, strokeColor)
     shapeDrawable.setShadowColor(shadowColor)
     shapeDrawable.setTint(tintColor)
-    shapeDrawable.shadowRadius= 10
+    shapeDrawable.shadowRadius = 10
     shapeDrawable.elevation = 20f
 }
 
 
-
-fun setTopBorders(view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int, shadowColor: Int) {
+fun setTopBorders(
+    view: View,
+    cornerRadius: Float = 40f,
+    strokeWidth: Float = 0f,
+    strokeColor: Int = view.resources.getColor(R.color.colorBackground),
+    tintColor: Int = view.resources.getColor(R.color.colorBackground),
+    shadowColor: Int = view.resources.getColor(R.color.colorBackground)
+) {
     val shapeAppearanceModel = ShapeAppearanceModel()
         .toBuilder()
         .setTopLeftCorner(CornerFamily.ROUNDED, cornerRadius)
@@ -89,10 +122,20 @@ fun setTopBorders(view: View, cornerRadius:Float,strokeWidth: Float, strokeColor
     shapeDrawable.setStroke(strokeWidth, strokeColor)
     shapeDrawable.setShadowColor(shadowColor)
     shapeDrawable.setTint(tintColor)
-    shapeDrawable.shadowRadius= 10
+    shapeDrawable.shadowRadius = 10
     shapeDrawable.elevation = 20f
 }
-fun setBottomBorders(view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int, shadowColor: Int) {
+
+fun loadAppThemManagerFromPath(pathValue: String) = Color.parseColor(pathValue)
+
+fun setBottomBorders(
+    view: View,
+    cornerRadius: Float,
+    strokeWidth: Float,
+    strokeColor: Int,
+    tintColor: Int,
+    shadowColor: Int
+) {
     val shapeAppearanceModel = ShapeAppearanceModel()
         .toBuilder()
         .setBottomLeftCorner(CornerFamily.ROUNDED, cornerRadius)
@@ -103,7 +146,7 @@ fun setBottomBorders(view: View, cornerRadius:Float,strokeWidth: Float, strokeCo
     shapeDrawable.setStroke(strokeWidth, strokeColor)
     shapeDrawable.setShadowColor(shadowColor)
     shapeDrawable.setTint(tintColor)
-    shapeDrawable.shadowRadius= 10
+    shapeDrawable.shadowRadius = 10
     shapeDrawable.elevation = 20f
 }
 
@@ -114,7 +157,8 @@ fun TextView.makeLinks(vararg links: Pair<String, View.OnClickListener>) {
         val clickableSpan = object : ClickableSpan() {
             override fun updateDrawState(textPaint: TextPaint) {
                 // use this to change the link color
-                textPaint.color = Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.subTitleTextColor"))
+                textPaint.color =
+                    Color.parseColor(ThemeManager.getValue("loyaltyView.headerView.subTitleTextColor"))
                 // toggle below value to enable/disable
                 // the underline shown below the clickable text
                 textPaint.isUnderlineText = true
@@ -127,7 +171,7 @@ fun TextView.makeLinks(vararg links: Pair<String, View.OnClickListener>) {
             }
         }
         startIndexOfLink = this.text.toString().indexOf(link.first, startIndexOfLink + 1)
-      if(startIndexOfLink == -1) continue // todo if you want to verify your texts contains links text
+        if (startIndexOfLink == -1) continue // todo if you want to verify your texts contains links text
         spannableString.setSpan(
             clickableSpan, startIndexOfLink, startIndexOfLink + link.first.length,
             Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
