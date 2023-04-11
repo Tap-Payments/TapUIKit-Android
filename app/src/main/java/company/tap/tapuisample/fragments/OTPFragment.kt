@@ -16,7 +16,9 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.ktx.setTopBorders
 import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
+import company.tap.tapuilibrary.uikit.views.TapBrandView
 import company.tap.tapuilibrary.uikit.views.TapOTPView
 import company.tap.tapuisample.R
 import jp.wasabeef.blurry.Blurry
@@ -35,6 +37,7 @@ class OTPFragment : TapBottomSheetDialog() {
     private lateinit var otpMobile: TapTextView
     private lateinit var timerText: TapTextView
     private lateinit var blurryView: ImageView
+    private lateinit var tapBrandView: TapBrandView
 
 
 //    override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +63,7 @@ class OTPFragment : TapBottomSheetDialog() {
         otpView = view.findViewById(R.id.otp_view_input)
         backgroundColor = Color.WHITE
         blurryView = view.findViewById(R.id.view_blurry)
+        tapBrandView= view.findViewById(R.id.tab_brand)
 
         val rootView = (activity?.window?.decorView as ViewGroup?)
         blurryView.post {
@@ -69,6 +73,20 @@ class OTPFragment : TapBottomSheetDialog() {
                 .capture(blurryView).get()
             (blurryView).setImageDrawable(BitmapDrawable(resources, bitmap))
         }
+
+        setTopBorders(
+            tapBrandView.outerConstraint,
+
+            strokeColor = Color.parseColor(
+                "#312D6E"
+            ),
+            tintColor = Color.parseColor(
+                "#312D6E"
+            ),// tint color
+            shadowColor = Color.parseColor(
+                "#312D6E"
+            )
+        )
 
 //
 //        Glide.with(requireContext())

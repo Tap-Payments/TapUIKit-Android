@@ -26,6 +26,7 @@
         <company.tap.tapuilibrary.uikit.views.TapBrandView
             android:layout_width="wrap_content"
             android:layout_height="150dp"
+            android:id="@+id/tab_brand"
 
             />
 
