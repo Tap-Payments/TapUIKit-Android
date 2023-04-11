@@ -25,7 +25,7 @@ class TapBrandView : LinearLayout {
 
     val poweredByImage by lazy { findViewById<AppCompatImageView>(R.id.poweredByImage) }
     val backgroundHeader by lazy { findViewById<AppCompatImageView>(R.id.img_background) }
-
+    val backgroundFrame by lazy { findViewById<AppCompatImageView>(R.id.frame) }
     val outerConstraint by lazy { findViewById<ConstraintLayout>(R.id.outerConstraint) }
 
     @DrawableRes
@@ -70,13 +70,21 @@ class TapBrandView : LinearLayout {
     init {
         inflate(context, R.layout.tap_brandview, this)
         poweredByImage.setImageResource(logoIcon)
-
-        Glide.with(this)
-            .load(R.drawable.blurviewnew)
-            .apply(bitmapTransform(BlurTransformation(35, 1)))
-            .into(backgroundHeader)
+        setBlurryFrame()
 
         //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
+    }
+
+    fun setBlurryFrame(
+        radius: Int = 35,
+        sampling: Int = 2,
+        imageToBeBlurred: Int = R.drawable.blurviewnew
+    ) {
+        Glide.with(this)
+            .load(imageToBeBlurred)
+            .apply(bitmapTransform(BlurTransformation(radius, sampling)))
+            .into(backgroundHeader)
+
     }
 
 

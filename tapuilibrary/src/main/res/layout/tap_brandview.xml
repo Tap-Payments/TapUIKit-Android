@@ -5,6 +5,7 @@
     android:id="@+id/outerConstraint"
     android:layout_width="match_parent"
     android:layout_height="48dp"
+    android:background="@drawable/rounded_rectangle"
     android:layoutDirection="locale"
     android:orientation="horizontal">
 
@@ -21,7 +22,7 @@
         <ImageView
             android:id="@+id/img_background"
             android:scaleType="centerCrop"
-            android:alpha="0.9"
+            android:alpha="1"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>
