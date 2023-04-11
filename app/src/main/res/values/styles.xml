@@ -16,6 +16,8 @@
     </style>
 
 
+
+
     <style name="BlackTheme" parent="Theme.MaterialComponents.Light.DarkActionBar.Bridge">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">#000000</item>

@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/outerConstraint"
     android:layout_width="match_parent"
     android:layout_height="48dp"
+    android:layout_margin="@dimen/font_size_10sp"
+    android:outlineProvider="none"
+    android:clipToOutline="true"
+    android:clipToPadding="true"
+    android:clipChildren="true"
+    app:cardCornerRadius="@dimen/font_size_20sp"
+    app:cardPreventCornerOverlap="false"
+    app:cardElevation="0dp"
     app:cardBackgroundColor="@android:color/transparent"
     android:orientation="horizontal">
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
-        android:layoutDirection="locale"
-        android:layout_height="wrap_content">
-
-
-    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/frame"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layoutDirection="locale"
+        android:layout_gravity="center"
+        android:layout_height="match_parent">
 
         <ImageView
             android:id="@+id/img_background"
-            android:scaleType="centerCrop"
-            android:background="@drawable/blurviewnew"
+            android:scaleType="fitCenter"
+            android:background="@drawable/blur_background_dark"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </FrameLayout>
 
 
     <ImageView
@@ -46,4 +44,4 @@
         app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.google.android.material.card.MaterialCardView>
+</androidx.cardview.widget.CardView>
