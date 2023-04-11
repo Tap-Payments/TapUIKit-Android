@@ -5,11 +5,7 @@
     android:id="@+id/outerConstraint"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:layout_margin="@dimen/font_size_10sp"
     android:outlineProvider="none"
-    android:clipToOutline="true"
-    android:clipToPadding="true"
-    android:clipChildren="true"
     app:cardCornerRadius="@dimen/font_size_20sp"
     app:cardPreventCornerOverlap="false"
     app:cardElevation="0dp"
@@ -23,7 +19,7 @@
 
         <ImageView
             android:id="@+id/img_background"
-            android:scaleType="fitCenter"
+            android:scaleType="centerCrop"
             android:background="@drawable/blur_background_dark"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />

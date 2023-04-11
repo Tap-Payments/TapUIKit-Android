@@ -73,6 +73,7 @@ dependencies {
    // api 'com.github.Tap-Payments:TapCardInputKit-Android:0.1.0.25'
     api 'com.github.Tap-Payments:LocalisationManager-Android:0.0.1.30'
 
+
     implementation 'jp.wasabeef:blurry:4.0.0'
     implementation "com.hbb20:ccp:2.2.2"
 
