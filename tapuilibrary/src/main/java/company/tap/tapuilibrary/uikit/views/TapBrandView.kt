@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.*
 import android.graphics.drawable.BitmapDrawable
 import android.util.AttributeSet
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
@@ -25,7 +26,7 @@ class TapBrandView : LinearLayout {
 
     val poweredByImage by lazy { findViewById<AppCompatImageView>(R.id.poweredByImage) }
     val backgroundHeader by lazy { findViewById<AppCompatImageView>(R.id.img_background) }
-    val backgroundFrame by lazy { findViewById<AppCompatImageView>(R.id.frame) }
+    val backgroundFrame by lazy { findViewById<FrameLayout>(R.id.frame) }
     val outerConstraint by lazy { findViewById<ConstraintLayout>(R.id.outerConstraint) }
 
     @DrawableRes
