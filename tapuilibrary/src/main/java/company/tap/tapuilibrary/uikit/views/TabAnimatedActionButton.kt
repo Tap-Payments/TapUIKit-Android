@@ -1,6 +1,5 @@
 package company.tap.tapuilibrary.uikit.views
 
-import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -8,7 +7,6 @@ import android.graphics.Typeface
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
 import android.util.DisplayMetrics
-import android.util.LayoutDirection
 import android.view.Gravity
 import android.view.View
 import android.widget.ImageView
@@ -16,7 +14,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
-import androidx.core.view.get
 import androidx.core.view.setMargins
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
@@ -59,6 +56,22 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
             R.drawable.loader
         }else    R.drawable.loader
+
+    @DrawableRes
+    val loaderSuccessGif: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.success_black
+        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
+            R.drawable.success_white
+        }else    R.drawable.success_white
+
+    @DrawableRes
+    val loaderErrorGif: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.error_gif_black
+        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
+            R.drawable.error_gif_white
+        }else    R.drawable.error_gif_white
     constructor(context: Context) : super(context) {
         init()
     }
@@ -116,8 +129,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             textSize = 16f,
             textColor = _textColor,
             cornerRadius = 100f,
-            successImageResources = R.drawable.success,
-            errorImageResources = R.drawable.error_gif,
+            successImageResources = loaderSuccessGif,
+            errorImageResources = loaderErrorGif,
             backgroundColor = btnBackground
         )
 
@@ -153,8 +166,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             textSize = 16f,
             textColor = _textColor,
             cornerRadius = 100f,
-            successImageResources = R.drawable.success,
-            errorImageResources = R.drawable.error_gif,
+            successImageResources = loaderSuccessGif,
+            errorImageResources = loaderErrorGif,
             backgroundColor = btnBackground
         )
 
@@ -205,12 +218,12 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             SUCCESS -> {
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.success,0) {})
+                addChildView(getImageView(loaderSuccessGif,0) {})
             }
             ERROR -> {
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.error_gif,0) {})
+                addChildView(getImageView(loaderErrorGif,0) {})
             }
             LOADING ->{
                 addTapLoadingView()
@@ -232,8 +245,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 init()
              }
             RESET -> {
-                removeView(getImageView(R.drawable.success,0) {})
-                removeView(getImageView(R.drawable.error_gif,0) {})
+                removeView(getImageView(loaderSuccessGif,0) {})
+                removeView(getImageView(loaderErrorGif,0) {})
                 addChildView(getTextView(LocalizationManager.getLocale(context).language))
                 if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH||displayMetrics == DisplayMetrics.DENSITY_560)
                 {
@@ -483,12 +496,12 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         }*/
         clearAnimation()
         clearFocus()
-        cleanupLayoutState( getImageView(R.drawable.error_gif,0){})
+        cleanupLayoutState( getImageView(loaderErrorGif,0){})
         cleanupLayoutState(  getTextView(LocalizationManager.getLocale(context).language))
-        cleanupLayoutState( getImageView(R.drawable.success,0) {})
+        cleanupLayoutState( getImageView(loaderSuccessGif,0) {})
 
-        getImageView(R.drawable.error_gif,0) {}.clearAnimation();//This Line Added
-        getImageView(R.drawable.success,0) {}.clearAnimation();//This Line Added
+        getImageView(loaderErrorGif,0) {}.clearAnimation();//This Line Added
+        getImageView(loaderSuccessGif,0) {}.clearAnimation();//This Line Added
         getTextView(LocalizationManager.getLocale(context).language).clearAnimation();//This Line Added
     }
 

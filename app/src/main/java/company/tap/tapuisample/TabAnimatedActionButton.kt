@@ -117,12 +117,12 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             SUCCESS -> {
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.success,0) {})
+                addChildView(getImageView(R.drawable.success_white,0) {})
             }
             ERROR -> {
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(R.drawable.error_gif,0) {})
+                addChildView(getImageView(R.drawable.error_gif_white,0) {})
             }
             LOADING ->{
                 addTapLoadingView()

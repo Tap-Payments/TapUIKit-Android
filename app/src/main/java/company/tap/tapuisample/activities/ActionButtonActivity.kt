@@ -190,7 +190,7 @@ class ActionButtonActivity : AppCompatActivity() {
                 textSize = 20f,
                 textColor = Color.WHITE,
                 cornerRadius = 100f,
-                errorImageResources = R.drawable.error_gif,
+                errorImageResources = R.drawable.error_gif_white,
                 backgroundColor = resources.getColor(R.color.button_gray),
                 errorColor = resources.getColor(R.color.button_gray)
             )
@@ -203,7 +203,7 @@ class ActionButtonActivity : AppCompatActivity() {
                 textSize = 20f,
                 textColor = Color.WHITE,
                 cornerRadius = 100f,
-                successImageResources = R.drawable.success,
+                successImageResources = R.drawable.success_white,
                 backgroundColor = R.color.button_green
             )
         }
