@@ -54,7 +54,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     ): View? = inflater.inflate(R.layout.modal_bottom_sheet, container, false)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        bottomSheetDialog =  BottomSheetDialog(requireContext(), R.style.MyTransparentBottomSheetDialogTheme)
         bottomSheetDialog.setOnShowListener {
             val dialog = it as BottomSheetDialog
             val bottomSheetLayout = dialog.findViewById<FrameLayout>(R.id.design_bottom_sheet)
@@ -64,12 +64,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
             bottomSheetBehavior.isDraggable
             bottomSheetBehavior.isHideable = true
             bottomSheetDialog.behavior.peekHeight
-         //   backgroundColor = Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
 
-            view?.alpha = 0.0f
-            view?.animate()
-                ?.alpha(1.0f)
-                ?.setListener(null)
             bottomSheetBehavior.addBottomSheetCallback(object :
                 BottomSheetBehavior.BottomSheetCallback() {
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
@@ -102,7 +97,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         bottomSheetDialog.setOnShowListener {
             bottomSheetLayout =
                 bottomSheetDialog.findViewById(R.id.design_bottom_sheet)
-            bottomSheetLayout?.background = getBackgroundDrawable()
+         //   bottomSheetLayout?.background = getBackgroundDrawable()
             tapBottomDialogInterface?.onShow()
         }
     }
@@ -134,7 +129,6 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
                 null, null
             )
         )
-        shape.paint.color =
         return shape
     }
 

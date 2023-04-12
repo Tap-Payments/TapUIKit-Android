@@ -2,25 +2,16 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.graphics.*
-import android.graphics.drawable.BitmapDrawable
+import android.os.Build
 import android.util.AttributeSet
-import android.widget.FrameLayout
-import android.widget.ImageView
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.github.twocoffeesoneteam.glidetovectoryou.GlideOptions.bitmapTransform
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.uikit.utils.BlurBuilder
-import jp.wasabeef.blurry.Blurry
-import jp.wasabeef.glide.transformations.BlurTransformation
+
 
 
 class TapBrandView : LinearLayout {
@@ -72,7 +63,6 @@ class TapBrandView : LinearLayout {
         inflate(context, R.layout.tap_brandview, this)
         poweredByImage.setImageResource(logoIcon)
 
-        //  if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
 

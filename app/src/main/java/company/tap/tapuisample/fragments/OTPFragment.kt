@@ -36,17 +36,9 @@ class OTPFragment : TapBottomSheetDialog() {
     private lateinit var otpSent: TapTextView
     private lateinit var otpMobile: TapTextView
     private lateinit var timerText: TapTextView
-    private lateinit var blurryView: ImageView
     private lateinit var tapBrandView: TapBrandView
 
 
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//        setStyle(
-//            STYLE_NO_FRAME,
-//            R.style.Theme_MaterialComponents_Light_NoActionBar_Bridge
-//        )
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,68 +54,13 @@ class OTPFragment : TapBottomSheetDialog() {
         startCountdown(view)
         otpView = view.findViewById(R.id.otp_view_input)
         backgroundColor = Color.WHITE
-        blurryView = view.findViewById(R.id.view_blurry)
         tapBrandView= view.findViewById(R.id.tab_brand)
-
         val rootView = (activity?.window?.decorView as ViewGroup?)
-        blurryView.post {
-            val bitmap = Blurry.with(context)
-                .radius(25)
-                .sampling(1)
-                .capture(blurryView).get()
-            (blurryView).setImageDrawable(BitmapDrawable(resources, bitmap))
-        }
-
-        setTopBorders(
-            tapBrandView.outerConstraint,
-
-            strokeColor = Color.parseColor(
-                "#312D6E"
-            ),
-            tintColor = Color.parseColor(
-                "#312D6E"
-            ),// tint color
-            shadowColor = Color.parseColor(
-                "#312D6E"
-            )
-        )
-
-//
-//        Glide.with(requireContext())
-//            .asBitmap()
-//            .load(R.drawable.border_black) // or url
-//            .transform(BlurTransformation(25, 100))
-//            .into(blurryView)
-        // Configure background
-//            Blurry.with(context)
-//                .radius(15)
-//                .sampling(2)
-//                .async()
-//                .color(Color.argb(155, 0, 0, 0))
-//                .onto(blurryView.parent as ViewGroup)
-
-        // insertPoint.removeView(otp_linearlayout)
-        /* insertPoint.addView(
-             otp_linearlayout,
-             0,
-             ViewGroup.LayoutParams(
-                 ViewGroup.LayoutParams.MATCH_PARENT,
-                 ViewGroup.LayoutParams.MATCH_PARENT
-             )
-         )
-         otp_linearlayout.bringToFront()*/
-
-
-
         return view
     }
 
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        return BottomSheetDialog(requireContext(), R.style.MyTransparentBottomSheetDialogTheme)
 
-    }
 
 
     private fun startCountdown(view: View) {
