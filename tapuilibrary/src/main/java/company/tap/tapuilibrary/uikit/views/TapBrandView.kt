@@ -62,7 +62,6 @@ class TapBrandView : LinearLayout {
     init {
         inflate(context, R.layout.tap_brandview, this)
         poweredByImage.setImageResource(logoIcon)
-
     }
 
 
