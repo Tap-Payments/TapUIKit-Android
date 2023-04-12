@@ -54,7 +54,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     ): View? = inflater.inflate(R.layout.modal_bottom_sheet, container, false)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        bottomSheetDialog =  BottomSheetDialog(requireContext(), R.style.MyTransparentBottomSheetDialogTheme)
+        bottomSheetDialog =  super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         bottomSheetDialog.setOnShowListener {
             val dialog = it as BottomSheetDialog
             val bottomSheetLayout = dialog.findViewById<FrameLayout>(R.id.design_bottom_sheet)
