@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="TextStyle">
         <item name="android:textSize">12sp</item>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textColor">@color/brown_grey_0</item>
     </style>
+
     <style name="CustomCardViewStyle" parent="@style/Widget.MaterialComponents.CardView">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut
+        </item>
+    </style>
+
+
+
+
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_down</item>
     </style>
 
     <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
@@ -30,14 +42,17 @@
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
-    <style name="SwitchPrimary" >
+
+    <style name="SwitchPrimary">
         <item name="colorControlActivated">@color/switchOnColor</item>
-       <!-- <item name="colorControlDeactivated">@color/switchOffColor
-        </item>-->
+        <!-- <item name="colorControlDeactivated">@color/switchOffColor
+         </item>-->
     </style>
-    <style name="SwitchSecondary" >
+
+    <style name="SwitchSecondary">
         <item name="colorControlActivated">#009aff</item>
     </style>
+
     <style name="OtpWidget" />
 
     <style name="OtpWidget.CustomOtpView" parent="Widget.AppCompat.EditText">
@@ -60,6 +75,7 @@
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">#000000</item>
     </style>
+
     <style name="AppTheme.TextFloatLabelAppearance" parent="TextAppearance.Design.Hint">
         <!-- Floating label appearance here -->
         <item name="android:textColor">@color/blue</item>
@@ -75,6 +91,7 @@
         <item name="android:lineHeight">1dp</item>
         <item name="lineHeight">1dp</item>
     </style>
+
     <style name="label_one">
         <item name="android:textSize">12sp</item>
         <item name="android:letterSpacing">-0.03</item>
@@ -82,6 +99,23 @@
     </style>
 
 
+    <style name="DialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize|adjustPan</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+
+    </style>
+
+    <style name="CustomBottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
     <style name="MyTransparentBottomSheetDialogTheme" parent="Theme.AppCompat.Light">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:colorBackground">@android:color/transparent</item>

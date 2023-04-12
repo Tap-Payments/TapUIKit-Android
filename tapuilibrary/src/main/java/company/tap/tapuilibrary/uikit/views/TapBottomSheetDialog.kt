@@ -14,17 +14,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.Nullable
+import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.uikit.interfaces.TapBottomDialogInterface
 import company.tap.tapuilibrary.uikit.models.DialogConfigurations
 import kotlinx.android.synthetic.main.modal_bottom_sheet.*
-import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
 
 
 /**
@@ -47,6 +47,12 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     lateinit var bottomSheetDialog: BottomSheetDialog
     private var tapBottomDialogInterface: TapBottomDialogInterface? = null
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
+
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -81,6 +87,10 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         return bottomSheetDialog
     }
 
+    override fun onActivityCreated(@Nullable savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        (view!!.parent as View).setBackgroundColor(Color.TRANSPARENT)
+    }
 
 
     fun setBottomSheetInterface(tapBottomDialogInterface: TapBottomDialogInterface) {
