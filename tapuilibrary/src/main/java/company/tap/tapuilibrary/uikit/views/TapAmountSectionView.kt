@@ -30,6 +30,10 @@ class TapAmountSectionView : LinearLayout {
     val amountImageView by lazy { findViewById<TapImageView>(R.id.amountImageView) }
     val itemAmountLayout by lazy { findViewById<LinearLayout>(R.id.item_amount_Layout) }
     val tapChipAmount by lazy { findViewById<TapChip>(R.id.tapChipAmount) }
+    val tapChipPopup by lazy { findViewById<TapChip>(R.id.tapChipPopup) }
+    val itemPopupLayout by lazy { findViewById<LinearLayout>(R.id.item_popup_Layout) }
+    val flagImageView by lazy { findViewById<TapImageView>(R.id.flagImageView) }
+    val popupTextView by lazy { findViewById<TapTextView>(R.id.popupTextView) }
     val viewSeparator by lazy { findViewById<View>(R.id.viewSeparator) }
 
     private var amountViewDataSource: AmountViewDataSource? = null
@@ -150,6 +154,27 @@ class TapAmountSectionView : LinearLayout {
             Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color"))
         )
         viewSeparator.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.separatorColor")))
+
+        tapChipPopup.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
+        tapChipPopup.radius = ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")
+        // tapChipAmount.ou(Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
+        setBorderedView(
+            tapChipPopup,
+            100.0f,// corner raduis
+            0.0f,
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")),
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color"))
+        )
+
+        val popupTextViewTheme = TextViewTheme()
+        popupTextViewTheme.textColor =
+            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsLabelColor"))
+        popupTextViewTheme.textSize =
+            ThemeManager.getFontSize("amountSectionView.itemsLabelFont")
+        popupTextViewTheme.font =
+            ThemeManager.getFontName("amountSectionView.itemsLabelFont")
+        popupTextView.setTheme(popupTextViewTheme)
 
     }
 
