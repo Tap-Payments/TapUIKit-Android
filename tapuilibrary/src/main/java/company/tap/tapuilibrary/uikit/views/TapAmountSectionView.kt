@@ -142,16 +142,16 @@ class TapAmountSectionView : LinearLayout {
 
         amountImageView.setImageResource(dropDownIcon)
 
-        tapChipAmount.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
+        tapChipAmount.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapCurrencyPromptView.backgroundColor")))
         tapChipAmount.radius = ThemeManager.getValue("amountSectionView.itemsNumberButtonCorner")
       // tapChipAmount.ou(Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")))
         setBorderedView(
             tapChipAmount,
              100.0f,// corner raduis
             0.0f,
-            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBackgroundColor")),
-            Color.parseColor(ThemeManager.getValue("amountSectionView.itemsNumberButtonBorder.color"))
+            Color.parseColor(ThemeManager.getValue("TapCurrencyPromptView.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("TapCurrencyPromptView.backgroundColor")),
+            Color.parseColor(ThemeManager.getValue("TapCurrencyPromptView.backgroundColor"))
         )
         viewSeparator.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.separatorColor")))
 
@@ -218,6 +218,11 @@ class TapAmountSectionView : LinearLayout {
                 TapFont.RobotoRegular
             )
         )
+        popupTextView?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.RobotoRegular
+            )
+        )
         itemAmountText?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoRegular
@@ -247,6 +252,11 @@ class TapAmountSectionView : LinearLayout {
             )
         )
         itemAmountText?.typeface = Typeface.createFromAsset(
+            context?.assets, TapFont.tapFontType(
+                TapFont.TajawalMedium
+            )
+        )
+        popupTextView?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.TajawalMedium
             )
