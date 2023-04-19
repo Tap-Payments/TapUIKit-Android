@@ -212,23 +212,23 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         addChildView(tapLoadingView!!)
     }
 
-    fun changeButtonState(state: ActionButtonState) {
+    fun changeButtonState(state: ActionButtonState,loopCount:Int=0) {
         this.state = state
         when (state) {
             SUCCESS -> {
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(loaderSuccessGif,0) {})
+                addChildView(getImageView(loaderSuccessGif,loopCount) {})
             }
             ERROR -> {
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(loaderErrorGif,0) {})
+                addChildView(getImageView(loaderErrorGif,loopCount) {})
             }
             LOADING ->{
                 addTapLoadingView()
                 startStateAnimation()
-                addChildView(getImageView(loaderGif,3) {
+                addChildView(getImageView(loaderGif,loopCount) {
                     morphingAnimation.end(animationDataSource, WIDTH, HEIGHT, CORNERS)
 
                 })
