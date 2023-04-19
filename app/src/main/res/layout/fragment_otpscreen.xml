@@ -97,12 +97,12 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--        <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton-->
-<!--            android:id="@+id/otpViewActionButton"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_margin="20dp"-->
-<!--            android:text="click" />-->
+        <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+            android:id="@+id/otpViewActionButton"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="20dp"
+            android:text="click" />
     </LinearLayout>
 
 

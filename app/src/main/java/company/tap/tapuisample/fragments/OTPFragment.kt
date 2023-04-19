@@ -55,6 +55,7 @@ class OTPFragment : TapBottomSheetDialog() {
         otpView = view.findViewById(R.id.otp_view_input)
         backgroundColor = Color.WHITE
         tapBrandView= view.findViewById(R.id.tab_brand)
+        tapBrandView.outerConstraint.background = resources.getDrawable(android.R.color.holo_red_dark)
         val rootView = (activity?.window?.decorView as ViewGroup?)
         return view
     }

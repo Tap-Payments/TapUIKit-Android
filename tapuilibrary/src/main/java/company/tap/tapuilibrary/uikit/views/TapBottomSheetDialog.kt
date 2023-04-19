@@ -5,16 +5,21 @@ import android.animation.AnimatorListenerAdapter
 import android.app.Dialog
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.BlendMode
+import android.graphics.BlendModeColorFilter
 import android.graphics.Color
+import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.ShapeDrawable
 import android.graphics.drawable.shapes.RoundRectShape
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.Nullable
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -53,6 +58,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
 
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -60,7 +66,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
     ): View? = inflater.inflate(R.layout.modal_bottom_sheet, container, false)
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        bottomSheetDialog =  super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        bottomSheetDialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
         bottomSheetDialog.setOnShowListener {
             val dialog = it as BottomSheetDialog
             val bottomSheetLayout = dialog.findViewById<FrameLayout>(R.id.design_bottom_sheet)
@@ -105,9 +111,8 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
 
     private fun changeBackground() {
         bottomSheetDialog.setOnShowListener {
-            bottomSheetLayout =
-                bottomSheetDialog.findViewById(R.id.design_bottom_sheet)
-         //   bottomSheetLayout?.background = getBackgroundDrawable()
+            bottomSheetLayout = bottomSheetDialog.findViewById(R.id.design_bottom_sheet)
+            bottomSheetLayout?.background = getBackgroundDrawable()
             tapBottomDialogInterface?.onShow()
         }
     }
@@ -116,7 +121,10 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         arguments?.let {
             dialog?.setCanceledOnTouchOutside(it.getBoolean(DialogConfigurations.Cancelable, true))
             dialog?.window?.setDimAmount(it.getFloat(DialogConfigurations.Dim, 1.5f))
-            backgroundColor = it.getInt(DialogConfigurations.Color, Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+            backgroundColor = it.getInt(
+                DialogConfigurations.Color,
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+            )
             val corners = it.getFloatArray(DialogConfigurations.Corners)
             corners?.let { array ->
                 topLeftCorner = array[0]
@@ -127,6 +135,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private fun getBackgroundDrawable(): Drawable {
         val shape = ShapeDrawable(
             RoundRectShape(
@@ -139,6 +148,7 @@ open class TapBottomSheetDialog : BottomSheetDialogFragment() {
                 null, null
             )
         )
+        shape.colorFilter = BlendModeColorFilter(Color.parseColor("#343434"), BlendMode.SRC_ATOP)
         return shape
     }
 
