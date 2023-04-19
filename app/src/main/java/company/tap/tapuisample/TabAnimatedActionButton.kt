@@ -124,6 +124,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 startStateAnimation()
                 addChildView(getImageView(R.drawable.error_gif_white,loopCount) {})
             }
+
             LOADING ->{
                 addTapLoadingView()
                 startStateAnimation()
