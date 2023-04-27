@@ -42,7 +42,8 @@ data class ActionButtonDataSource(
     var backgroundColor: Int? = null,
 
     @ColorRes
-    val backgroundColorResources: Int? = null
+    val backgroundColorResources: Int? = null,
 
-
+    @ColorRes
+   val backgroundArrayInt: IntArray? = null
 )

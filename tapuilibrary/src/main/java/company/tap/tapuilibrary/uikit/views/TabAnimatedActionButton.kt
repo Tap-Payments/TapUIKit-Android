@@ -98,7 +98,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     }
 
-    private fun initActionButtonDataSourceValid(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null ){
+    private fun initActionButtonDataSourceValid(backgroundColor: Int? = null, textColor:Int? = null, buttonText: String? = null,backgroundColorArray: IntArray?=null ){
         val btnText:String
         val _textColor:Int
         val btnBackground:Int
@@ -131,7 +131,8 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             cornerRadius = 100f,
             successImageResources = loaderSuccessGif,
             errorImageResources = loaderErrorGif,
-            backgroundColor = btnBackground
+            backgroundColor = btnBackground,
+            backgroundArrayInt = backgroundColorArray
         )
 
     }
@@ -185,11 +186,11 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun setDisplayMetrics(displayMetrics: Int) {
         this.displayMetrics = displayMetrics
     }
-    fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null, backgroundColor: Int, textColor:Int? = null) {
+    fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null, backgroundColor: Int, textColor:Int? = null , backgroundColorArray: IntArray?=null) {
         if (isValid)
         {
-            initValidBackground(backgroundColor)
-            initActionButtonDataSourceValid(backgroundColor, textColor,buttonText)
+            initValidBackground(backgroundColor,backgroundColorArray)
+            initActionButtonDataSourceValid(backgroundColor, textColor,buttonText,backgroundColorArray)
         } else{
             initInvalidBackground(backgroundColor)
             initActionButtonDataSourceInValid(backgroundColor, textColor, buttonText)
@@ -307,13 +308,21 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
      * setup the initValidBackground background drawable color and corner radius from datasource
      */
 
-    private fun initValidBackground(backgroundColor: Int) {
-        dataSource?.cornerRadius?.let {
-            backgroundDrawable.cornerRadius = it
+    private fun initValidBackground(backgroundColor: Int ,backgroundColorArray: IntArray?=null) {
+
+        if(backgroundColorArray!=null){
+            backgroundDrawable.colors = backgroundColorArray
+        }else {
+            dataSource?.cornerRadius?.let {
+                backgroundDrawable.cornerRadius = it
+            }
+            backgroundDrawable.color =
+                ColorStateList.valueOf(backgroundColor) ?: ColorStateList.valueOf(
+                    Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor"))
+                )
+            background = backgroundDrawable
+            elevation = 0F
         }
-        backgroundDrawable.color =ColorStateList.valueOf(backgroundColor)?: ColorStateList.valueOf(Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")))
-        background = backgroundDrawable
-        elevation = 0F
     }
 
     /**
