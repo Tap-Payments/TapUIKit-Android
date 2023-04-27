@@ -312,6 +312,10 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
         if(backgroundColorArray!=null){
             backgroundDrawable.colors = backgroundColorArray
+            backgroundDrawable.gradientType = GradientDrawable.LINEAR_GRADIENT
+           backgroundDrawable= GradientDrawable(
+                GradientDrawable.Orientation.RIGHT_LEFT, backgroundColorArray,
+                )
         }else {
             dataSource?.cornerRadius?.let {
                 backgroundDrawable.cornerRadius = it
