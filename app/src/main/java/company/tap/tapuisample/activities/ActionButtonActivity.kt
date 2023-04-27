@@ -155,10 +155,14 @@ class ActionButtonActivity : AppCompatActivity() {
 //                actionButton.setButtonDataSource(getSuccessDataSource())
                     actionButton.setInValidBackground(false,Color.GREEN)
                     actionButton.changeButtonState(ActionButtonState.SUCCESS)
-                    Handler(Looper.getMainLooper()).postDelayed(Runnable {
+                  /*  Handler(Looper.getMainLooper()).postDelayed(Runnable {
                         actionButton.setInValidBackground(false,Color.MAGENTA)
                         actionButton.changeButtonState(ActionButtonState.RESET)
                     }, 5000)
+*/
+                    actionButton.changeButtonState(ActionButtonState.RESET)
+                    actionButton.removeAllViews()
+                    actionButton.addChildView(actionButton.getImageViewUrl("https://tap-assets.b-cdn.net/action-button/light/en/paypal.png"))
                 } else {
 //                actionButton.setButtonDataSource(getErrorDataSource())
                     actionButton.setInValidBackground(false,Color.YELLOW)

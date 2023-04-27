@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
+import com.bumptech.glide.Glide
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -389,6 +390,21 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return image.setImage(context,image,imageRes,gifLoopCount, actionAfterAnimationDone)
     }
 
+
+    fun getImageViewUrl( imageRes: String): ImageView {
+        val image = ImageView(context)
+        val params = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.MATCH_PARENT
+        )
+        params.setMargins(20)
+        image.layoutParams = params
+
+        Glide.with(context)
+            .load(imageRes)
+            .into(image)
+        return image
+    }
     private fun startStateAnimation() {
 
         if(displayMetrics == DisplayMetrics.DENSITY_450 ||displayMetrics == DisplayMetrics.DENSITY_420 ||displayMetrics == DisplayMetrics.DENSITY_400||displayMetrics == DisplayMetrics.DENSITY_440||displayMetrics == DisplayMetrics.DENSITY_XXHIGH||displayMetrics == DisplayMetrics.DENSITY_560){
