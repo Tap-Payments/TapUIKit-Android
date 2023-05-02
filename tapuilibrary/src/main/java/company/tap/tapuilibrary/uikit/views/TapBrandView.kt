@@ -18,6 +18,7 @@ class TapBrandView : LinearLayout {
 
     val poweredByImage by lazy { findViewById<AppCompatImageView>(R.id.poweredByImage) }
     val backgroundHeader by lazy { findViewById<AppCompatImageView>(R.id.img_background) }
+    val outerConstraint by lazy { findViewById<CardView>(R.id.outerConstraint) }
 
     @DrawableRes
     val logoIcon: Int =
