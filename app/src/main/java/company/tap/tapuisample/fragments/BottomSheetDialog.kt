@@ -65,8 +65,6 @@ import company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
 import company.tap.tapuilibrary.uikit.views.*
 import company.tap.tapuisample.*
 import company.tap.tapuisample.MainSwitch
-import company.tap.tapuisample.TabAnimatedActionButton
-import company.tap.tapuisample.TapCardSwitch
 import company.tap.tapuisample.TapHeaderSectionView
 import company.tap.tapuisample.adapters.CardTypeAdapter
 import company.tap.tapuisample.interfaces.OnCardSelectedActionListener

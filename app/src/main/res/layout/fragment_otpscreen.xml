@@ -16,6 +16,12 @@
         android:orientation="vertical">
 
 
+        <company.tap.tapuisample.TapHeaderSectionView
+            android:id="@+id/headerView"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="locale" />
 
         <company.tap.tapuilibrary.uikit.views.TapBrandView
             android:layout_width="wrap_content"

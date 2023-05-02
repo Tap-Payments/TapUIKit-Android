@@ -16,11 +16,13 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.setTopBorders
 import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.uikit.views.TapBrandView
 import company.tap.tapuilibrary.uikit.views.TapOTPView
 import company.tap.tapuisample.R
+import company.tap.tapuisample.TapHeaderSectionView
 import jp.wasabeef.blurry.Blurry
 import jp.wasabeef.glide.transformations.BlurTransformation
 
@@ -37,6 +39,7 @@ class OTPFragment : TapBottomSheetDialog() {
     private lateinit var otpMobile: TapTextView
     private lateinit var timerText: TapTextView
     private lateinit var tapBrandView: TapBrandView
+    private lateinit var tapHeaderSectionView: TapHeaderSectionView
 
 
 
@@ -55,9 +58,40 @@ class OTPFragment : TapBottomSheetDialog() {
         otpView = view.findViewById(R.id.otp_view_input)
         backgroundColor = Color.WHITE
         tapBrandView= view.findViewById(R.id.tab_brand)
-        tapBrandView.outerConstraint.background = resources.getDrawable(android.R.color.holo_red_dark)
+        tapHeaderSectionView = view.findViewById(R.id.headerView)
+        tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
+
+       // ( tapBrandView.backgroundHeader.parent as View).applyBluryToView()
         val rootView = (activity?.window?.decorView as ViewGroup?)
         return view
+    }
+
+
+
+    private fun getHeaderDataSource(): HeaderDataSource {
+        return HeaderDataSource(
+            businessName = "test",
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection")
+        )
+    }
+
+
+    fun View.applyBluryToView(
+        radiusNeeded: Int = 8,
+        sampling: Int = 2,
+        animationDuration: Int = 1000,
+        showOriginalView: Boolean = false
+    ) {
+        Blurry.with(context).radius(radiusNeeded).sampling(sampling).animate(animationDuration)
+            .onto(this as ViewGroup).apply {
+                when (showOriginalView) {
+                    true -> this@applyBluryToView.getChildAt(0).visibility = View.VISIBLE
+                    false -> this@applyBluryToView.getChildAt(0).visibility = View.GONE
+                }
+
+            }
+
+
     }
 
 
