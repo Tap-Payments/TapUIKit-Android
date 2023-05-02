@@ -7,6 +7,7 @@ import android.net.Uri
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -36,18 +37,14 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
  **/
 class TapHeaderSectionView : LinearLayout {
 
-    val businessIcon by lazy { findViewById<TapImageView>(R.id.businessIcon) }
+    val businessIcon by lazy { findViewById<ImageView>(R.id.businessIcon) }
     val businessName by lazy { findViewById<TapTextView>(R.id.businessName) }
     val paymentFor by lazy { findViewById<TapTextView>(R.id.paymentFor) }
-    val businessPlaceholder by lazy { findViewById<TapTextView>(R.id.placeholderText) }
-    val tapChipIcon by lazy { findViewById<TapChip>(R.id.tapChipIcon) }
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
     val topLinear by lazy { findViewById<LinearLayout>(R.id.topLinear) }
     val constraint by lazy { findViewById<ConstraintLayout>(R.id.constraint) }
     val tapCloseIcon by lazy { findViewById<TapImageView>(R.id.tapCloseIcon) }
 
-    val loadingLinear by lazy { findViewById<LinearLayout>(R.id.loadingLinear) }
-    val loadingView by lazy { findViewById<TapLoadingView>(R.id.loadingView) }
 
 
     @DrawableRes
@@ -98,18 +95,7 @@ class TapHeaderSectionView : LinearLayout {
         if (context?.let { LocalizationManager.getLocale(it).language } == "en") setFontsEnglish() else setFontsArabic()
     }
 
-    fun showHideLoading( showLoading : Boolean){
-        if(showLoading) {
-            loadingLinear.visibility = View.VISIBLE
-            loadingView.visibility = View.VISIBLE
-            constraint.visibility = View.GONE
-            loadingView.start()
-        }else{
-            loadingLinear.visibility = View.GONE
-            loadingView.visibility = View.GONE
-            constraint.visibility = View.VISIBLE
-        }
-    }
+
 
     fun showOnlyTopLinear(){
         topLinear.visibility = View.VISIBLE
@@ -128,10 +114,8 @@ class TapHeaderSectionView : LinearLayout {
     fun setHeaderDataSource(headerDataSource: HeaderDataSource) {
         this.headerDataSource = headerDataSource
         businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-        businessPlaceholder.setTextColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderLabelColor")))
         if (headerDataSource.businessImageResources == null) {
             businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-            businessPlaceholder.text = headerDataSource.businessName?.get(0).toString()
         } else {
             businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
@@ -153,9 +137,7 @@ class TapHeaderSectionView : LinearLayout {
         headerDataSource.businessFor?.let {
             paymentFor.text = it
         }
-        headerDataSource.businessPlaceHolder?.let {
-            businessPlaceholder.text = it
-        }
+
         headerDataSource.businessName?.let {
             businessName.text = it
         }
@@ -188,7 +170,7 @@ class TapHeaderSectionView : LinearLayout {
             ThemeManager.getFontSize("merchantHeaderView.merchantLogoPlaceHolderFont")
         businessPlaceholderTextViewTheme.font =
             ThemeManager.getFontName("merchantHeaderView.merchantLogoPlaceHolderFont")
-        businessPlaceholder.setTheme(businessPlaceholderTextViewTheme)
+//        businessPlaceholder.setTheme(businessPlaceholderTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 //        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
@@ -228,28 +210,26 @@ class TapHeaderSectionView : LinearLayout {
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             Log.d("currentTheme", ThemeManager.currentTheme)
-            setBorderedView(
-                tapChipIcon,
-                80f,// corner raduis
-                0.0f,
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
-            )//
+//            setBorderedView(
+//                tapChipIcon,
+//                80f,// corner raduis
+//                0.0f,
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
+//            )//
         }else{
-            setBorderedView(
-                tapChipIcon,
-                80f,// corner raduis
-                0.0f,
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
-            )//
+//            setBorderedView(
+//                tapChipIcon,
+//                80f,// corner raduis
+//                0.0f,
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
+//            )//
         }
 
-        if(ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")){
-            tapChipIcon.setPaddingRelative(4,4,4,4)
-        }
+
     }
 
 
@@ -266,11 +246,7 @@ class TapHeaderSectionView : LinearLayout {
             )
         )
 
-        businessPlaceholder?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
-            )
-        )
+
 
     }
 
@@ -287,11 +263,6 @@ class TapHeaderSectionView : LinearLayout {
             )
         )
 
-        businessPlaceholder?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.TajawalMedium
-            )
-        )
 
     }
 
@@ -302,23 +273,11 @@ class TapHeaderSectionView : LinearLayout {
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
-        indicatorSeparator.setTheme(separatorViewTheme)
+       // indicatorSeparator.setTheme(separatorViewTheme)
     }
 
 }
 
-
-/*
-fun Any.into(businessIcon: TapImageView): Any {
-    return businessIcon
-
-}
-
-private fun Any.placeholder(businessPlaceholder: TapTextView): Any {
-    return businessPlaceholder
-
-}
-*/
 
 
 

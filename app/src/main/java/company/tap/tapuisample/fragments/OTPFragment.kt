@@ -22,7 +22,6 @@ import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
 import company.tap.tapuilibrary.uikit.views.TapBrandView
 import company.tap.tapuilibrary.uikit.views.TapOTPView
 import company.tap.tapuisample.R
-import company.tap.tapuisample.TapHeaderSectionView
 import jp.wasabeef.blurry.Blurry
 import jp.wasabeef.glide.transformations.BlurTransformation
 
@@ -39,7 +38,7 @@ class OTPFragment : TapBottomSheetDialog() {
     private lateinit var otpMobile: TapTextView
     private lateinit var timerText: TapTextView
     private lateinit var tapBrandView: TapBrandView
-    private lateinit var tapHeaderSectionView: TapHeaderSectionView
+    private lateinit var tapHeaderSectionView: company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
 
 
 
@@ -58,7 +57,7 @@ class OTPFragment : TapBottomSheetDialog() {
         otpView = view.findViewById(R.id.otp_view_input)
         backgroundColor = Color.WHITE
         tapBrandView= view.findViewById(R.id.tab_brand)
-        tapHeaderSectionView = view.findViewById(R.id.headerView)
+        tapHeaderSectionView = view.findViewById(R.id.tapHeaderSectionView)
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
 
        // ( tapBrandView.backgroundHeader.parent as View).applyBluryToView()
@@ -70,7 +69,7 @@ class OTPFragment : TapBottomSheetDialog() {
 
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
-            businessName = "test",
+            businessName = "welcome",
             businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection")
         )
     }

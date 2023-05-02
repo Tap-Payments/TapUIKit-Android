@@ -7,70 +7,114 @@
     android:layout_height="wrap_content"
     android:layout_gravity="start">
 
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraint"
+    <LinearLayout
+        android:id="@+id/topLinear"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:visibility="visible"
+        android:paddingTop="@dimen/margin_basic_10dp">
+
+        <View
+            android:id="@+id/draggerView"
+            android:layout_width="75dp"
+            android:layout_height="4dp"
+            android:layout_gravity="center" />
+        <company.tap.tapuilibrary.uikit.atoms.TapDragIndicator
+            android:layout_width="75dp"
+            android:layout_height="4dp"
+            android:visibility="gone"
+            android:layout_marginStart="150dp"
+            android:layout_marginEnd="150dp"
+            android:background="@drawable/corner_radius"
+            app:cardElevation="@dimen/margin_basic_0dp">
+
+            <company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
+                android:id="@+id/indicatorSeparator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:background="@color/gray" />
+
+        </company.tap.tapuilibrary.uikit.atoms.TapDragIndicator>
+
+    </LinearLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/constraint"
         android:paddingTop="@dimen/margin_basic_6dp"
         android:paddingBottom="@dimen/margin_basic_10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLinear">
 
-        <LinearLayout
-            android:id="@+id/topLinear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:paddingTop="@dimen/margin_basic_10dp"
+        <company.tap.tapuilibrary.uikit.atoms.TapChip
+            android:id="@+id/tapChipIcon"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="@dimen/margin_basic_16dp"
+            android:layoutDirection="locale"
             android:visibility="visible"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:cardCornerRadius="100dp"
+            android:innerRadius="0dp"
+            android:shape="ring"
+            app:cardElevation="2dp"
 
-            <View
-                android:id="@+id/draggerView"
-                android:layout_width="73dp"
-                android:layout_height="4dp"
+            android:foregroundGravity = "center"
+            android:layout_centerInParent = "true"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/businessName"
+            app:layout_constraintStart_toStartOf="parent">
 
-                android:layout_gravity="center" />
+            <company.tap.tapuilibrary.uikit.atoms.TapImageView
+                android:id="@+id/businessIcon"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
 
 
-        </LinearLayout>
-        <ImageView
-            android:id="@+id/businessIcon"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginTop="12dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/topLinear"
-            android:src="@drawable/merchant_logo"
-            />
-=
+                />
+
+            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                android:id="@+id/placeholderText"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:visibility="visible"
+                android:padding="@dimen/margin_basic_4dp"
+                tools:text="@android:string/autofill" />
+        </company.tap.tapuilibrary.uikit.atoms.TapChip>
+
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/paymentFor"
             style="@style/TextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="@dimen/action_bar_back_button_width"
+            android:layout_marginTop="@dimen/margin_basic_3dp"
             android:gravity="center_vertical"
             android:shadowColor="#00a8a8a8"
             android:textAllCaps="true"
             android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/businessName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/businessIcon"
-            app:layout_constraintTop_toTopOf="@id/businessIcon"
+            app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
             tools:text="Payment for " />
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/businessName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/action_bar_back_button_width"
             android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif"
             android:gravity="top"
@@ -79,34 +123,33 @@
             android:textStyle="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/businessIcon"
+            app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
             app:layout_constraintTop_toBottomOf="@+id/paymentFor"
             tools:text="Business Name" />
-
         <androidx.cardview.widget.CardView
-            android:id="@+id/icon"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_marginEnd="@dimen/margin_basic_16dp"
-            android:elevation="@dimen/margin_basic_0dp"
             android:visibility="visible"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:cardCornerRadius="30dp"
+            android:elevation="@dimen/margin_basic_0dp"
             app:cardElevation="@dimen/margin_basic_0dp"
             app:cardMaxElevation="@dimen/margin_basic_0dp"
-            app:layout_constraintBottom_toBottomOf="@id/paymentFor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/paymentFor">
-
+            android:id="@+id/icon">
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
                 android:id="@+id/tapCloseIcon"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_marginEnd="@dimen/margin_basic_16dp"
-                android:src="@drawable/ic_close"
                 android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@id/paymentFor"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/paymentFor" />
+                android:src="@drawable/ic_close"
+                />
         </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
