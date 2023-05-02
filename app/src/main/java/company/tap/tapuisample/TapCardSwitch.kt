@@ -30,7 +30,7 @@ All rights reserved.
  * TapCardSwitch is a molecule element for setting saveMobile ,saveMerchantCheckout and
  *  saveGoPayCheckout for Merchant
  **/
-class TapCardSwitch : LinearLayout {
+class TapCardSwitchs : LinearLayout {
     val saveGoPay by lazy { findViewById<TapTextView>(R.id.save_goPay) }
     val alertGoPaySignUp by lazy { findViewById<TapTextView>(R.id.alert_gopay_signup) }
     val switchSaveMerchant by lazy { findViewById<TapSwitch>(R.id.switch_merchant_checkout) }

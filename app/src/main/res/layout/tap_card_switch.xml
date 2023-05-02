@@ -95,7 +95,7 @@
     </LinearLayout>
 
 
-    <company.tap.tapuisample.TabAnimatedActionButton
+    <company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
         android:id="@+id/payButton"
         android:layout_width="match_parent"
         android:layout_height="40dp"

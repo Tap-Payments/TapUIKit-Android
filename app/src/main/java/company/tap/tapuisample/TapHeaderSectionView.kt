@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.graphics.drawable.DrawableCompat
 import com.bumptech.glide.Glide
@@ -31,12 +32,13 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
  **/
 class TapHeaderSectionView : LinearLayout {
 
-    val businessIcon by lazy { findViewById<TapImageView>(R.id.businessIcon) }
+    val businessIcon by lazy { findViewById<ImageView>(R.id.businessIcon) }
     val businessName by lazy { findViewById<TapTextView>(R.id.businessName) }
     val paymentFor by lazy { findViewById<TapTextView>(R.id.paymentFor) }
-    val businessPlaceholder by lazy { findViewById<TapTextView>(R.id.placeholderText) }
-    val tapChipIcon by lazy { findViewById<TapChip>(R.id.tapChipIcon) }
+  //  val tapChipIcon by lazy { findViewById<TapChip>(R.id.tapChipIcon) }
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
+    val topLinear by lazy { findViewById<View>(R.id.topLinear) }
+
     private var headerDataSource: HeaderDataSource? = null
 
     /**
@@ -83,23 +85,17 @@ class TapHeaderSectionView : LinearLayout {
     fun setHeaderDataSource(headerDataSource: HeaderDataSource) {
         this.headerDataSource = headerDataSource
         businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-        businessPlaceholder.setTextColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderLabelColor")))
+       // businessPlaceholder.setTextColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderLabelColor")))
         if (headerDataSource.businessImageResources == null) {
             businessIcon.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoPlaceHolderColor")))
-            businessPlaceholder.text = headerDataSource.businessName?.get(0).toString()
+//            Glide.with(this)
+//                .load(R.drawable.merchant_icon)
+//                .centerCrop()
+//                .into(businessIcon)
         } else {
             Glide.with(this)
                 .load(headerDataSource.businessImageResources)
-                .placeholder(
-                    TextDrawable(
-                        headerDataSource.businessName?.get(0).toString()
-                    )
-                )
-                .error(
-                    TextDrawable(
-                        headerDataSource.businessName?.get(0).toString()
-                    )
-                )
+                .centerCrop()
                 .into(businessIcon)
         }
 
@@ -107,7 +103,7 @@ class TapHeaderSectionView : LinearLayout {
             paymentFor.text = it
         }
         headerDataSource.businessPlaceHolder?.let {
-            businessPlaceholder.text = it
+            //businessPlaceholder.text = it
         }
         headerDataSource.businessName?.let {
             businessName.text = it
@@ -141,10 +137,10 @@ class TapHeaderSectionView : LinearLayout {
             ThemeManager.getFontSize("merchantHeaderView.merchantLogoPlaceHolderFont")
         businessPlaceholderTextViewTheme.font =
             ThemeManager.getFontName("merchantHeaderView.merchantLogoPlaceHolderFont")
-        businessPlaceholder.setTheme(businessPlaceholderTextViewTheme)
+      //  businessPlaceholder.setTheme(businessPlaceholderTextViewTheme)
 
         constraint.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
-//        topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
+      //  topLinear.setBackgroundColor(Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")))
 
       /*  setTopBorders(
             topLinear,
@@ -159,45 +155,45 @@ class TapHeaderSectionView : LinearLayout {
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             setBorderedView(
                 draggerView,
-                40f,// corner raduis
+                60f,// corner raduis
                 0.0f,
-                Color.parseColor("#3b3b3c"),// stroke color
-                Color.parseColor("#3b3b3c"),// tint color
-                Color.parseColor("#3b3b3c")
-            )//
+                Color.parseColor("#404042"),// stroke color
+                Color.parseColor("#404042"),// tint color
+                Color.parseColor("#404042")
+            )
         }else{
             setBorderedView(
                 draggerView,
-                40f,// corner raduis
+                60f,// corner raduis
                 0.0f,
-                Color.parseColor("#e0e0e0"),// stroke color
-                Color.parseColor("#e0e0e0"),// tint color
-                Color.parseColor("#e0e0e0")
-            )//
+                Color.parseColor("#D8D6D9"),// stroke color
+                Color.parseColor("#D8D6D9"),// tint color
+                Color.parseColor("#D8D6D9")
+            )
         }
 
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             Log.d("currentTheme", ThemeManager.currentTheme)
            // tapChipIcon.setBackgroundResource(R.drawable.border_unclick_black)
-            setBorderedView(
-                tapChipIcon,
-                80f,// corner raduis
-                0.0f,
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
-            )//
+//            setBorderedView(
+//                tapChipIcon,
+//                80f,// corner raduis
+//                0.0f,
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+//            )//
         }else{
          //   tapChipIcon.setBackgroundResource(R.drawable.border_unclick_2)
-            setBorderedView(
-                tapChipIcon,
-                80f,// corner raduis
-                0.0f,
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
-                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
-            )//
+//            setBorderedView(
+//                tapChipIcon,
+//                80f,// corner raduis
+//                0.0f,
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor"))
+//            )//
         }
     }
 
@@ -215,11 +211,11 @@ class TapHeaderSectionView : LinearLayout {
             )
         )
 
-        businessPlaceholder?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.RobotoRegular
-            )
-        )
+//        businessPlaceholder?.typeface = Typeface.createFromAsset(
+//            context?.assets, TapFont.tapFontType(
+//                TapFont.RobotoRegular
+//            )
+//        )
 
     }
 
@@ -236,11 +232,11 @@ class TapHeaderSectionView : LinearLayout {
             )
         )
 
-        businessPlaceholder?.typeface = Typeface.createFromAsset(
-            context?.assets, TapFont.tapFontType(
-                TapFont.TajawalRegular
-            )
-        )
+//        businessPlaceholder?.typeface = Typeface.createFromAsset(
+//            context?.assets, TapFont.tapFontType(
+//                TapFont.TajawalRegular
+//            )
+//        )
 
     }
 
@@ -251,7 +247,7 @@ class TapHeaderSectionView : LinearLayout {
         separatorViewTheme.strokeColor =
             Color.parseColor(ThemeManager.getValue("tapSeparationLine.backgroundColor"))
         separatorViewTheme.strokeHeight = ThemeManager.getValue("tapSeparationLine.height")
-        indicatorSeparator.setTheme(separatorViewTheme)
+        //indicatorSeparator.setTheme(separatorViewTheme)
     }
 
 }
