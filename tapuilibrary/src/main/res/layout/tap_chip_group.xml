@@ -54,8 +54,8 @@
         android:paddingEnd="@dimen/margin_basic_10dp"
         android:nestedScrollingEnabled="true"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/margin_basic_6dp"
-        android:paddingTop="@dimen/margin_basic_6dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:layout_gravity="center"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
