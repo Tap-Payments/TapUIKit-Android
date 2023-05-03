@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.themekit.theme.ImageViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapTextView
 import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.setTopBorders
@@ -56,10 +57,15 @@ class OTPFragment : TapBottomSheetDialog() {
         startCountdown(view)
         otpView = view.findViewById(R.id.otp_view_input)
         backgroundColor = Color.WHITE
-        tapBrandView= view.findViewById(R.id.tab_brand)
+      //  tapBrandView= view.findViewById(R.id.tab_brand)
+        val imagetheme = ImageViewTheme()
+        imagetheme.imageResource = (R.drawable.merchant_logo)
+
         tapHeaderSectionView = view.findViewById(R.id.tapHeaderSectionView)
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
-
+        tapHeaderSectionView.businessIcon.setTheme(imagetheme)
+        tapHeaderSectionView.businessIcon.scaleType = ImageView.ScaleType.CENTER_CROP
+        tapHeaderSectionView.tapChipIcon.cardElevation =0f
        // ( tapBrandView.backgroundHeader.parent as View).applyBluryToView()
         val rootView = (activity?.window?.decorView as ViewGroup?)
         return view

@@ -7,6 +7,7 @@ import android.net.Uri
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
@@ -38,7 +39,7 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
 class TapHeaderSectionView : LinearLayout {
 
     val businessIcon by lazy { findViewById<TapImageView>(R.id.businessIcon) }
-    val tapChipIcon by lazy { findViewById<TapChip>(R.id.tapChipIcon) }
+    val tapChipIcon by lazy { findViewById<FrameLayout>(R.id.tapChipIcon) }
 
     val businessName by lazy { findViewById<TapTextView>(R.id.businessName) }
     val paymentFor by lazy { findViewById<TapTextView>(R.id.paymentFor) }
@@ -52,7 +53,7 @@ class TapHeaderSectionView : LinearLayout {
     @DrawableRes
     val closeIcon: Int =
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
-            R.drawable.icon_dark_header_close
+            R.drawable.close_new_icon
         }  else if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
             R.drawable.icon_light_header_close
         }else    R.drawable.icon_light_header_close
