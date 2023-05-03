@@ -32,7 +32,6 @@ open class TapTextView(context: Context, attributeSet: AttributeSet?) :
     override fun setTheme(theme: TextViewTheme) {
         theme.textColor?.let { setTextColor(it) }
         theme.textSize?.let { textSize = it.toFloat() }
-        theme.letterSpacing?.let { letterSpacing = it.toFloat() }
         theme.backgroundColor?.let { setBackgroundColor(it) }
         invalidate()
     }
