@@ -37,7 +37,7 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
  **/
 class TapHeaderSectionView : LinearLayout {
 
-    val businessIcon by lazy { findViewById<ImageView>(R.id.businessIcon) }
+    val businessIcon by lazy { findViewById<TapImageView>(R.id.businessIcon) }
     val businessName by lazy { findViewById<TapTextView>(R.id.businessName) }
     val paymentFor by lazy { findViewById<TapTextView>(R.id.paymentFor) }
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
@@ -210,26 +210,28 @@ class TapHeaderSectionView : LinearLayout {
 
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             Log.d("currentTheme", ThemeManager.currentTheme)
-//            setBorderedView(
-//                tapChipIcon,
-//                80f,// corner raduis
-//                0.0f,
-//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
-//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
-//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
-//            )//
+            setBorderedView(
+                tapChipIcon,
+                80f,// corner raduis
+                0.0f,
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
+            )//
         }else{
-//            setBorderedView(
-//                tapChipIcon,
-//                80f,// corner raduis
-//                0.0f,
-//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
-//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
-//                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
-//            )//
+            setBorderedView(
+                tapChipIcon,
+                80f,// corner raduis
+                0.0f,
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// stroke color
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.backgroundColor")),// tint color
+                Color.parseColor(ThemeManager.getValue("merchantHeaderView.merchantLogoShadowColor"))
+            )//
         }
 
-
+        if(ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("light")){
+            tapChipIcon.setPaddingRelative(4,4,4,4)
+        }
     }
 
 
