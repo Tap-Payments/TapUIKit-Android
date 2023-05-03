@@ -38,6 +38,8 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
 class TapHeaderSectionView : LinearLayout {
 
     val businessIcon by lazy { findViewById<TapImageView>(R.id.businessIcon) }
+    val tapChipIcon by lazy { findViewById<TapChip>(R.id.tapChipIcon) }
+
     val businessName by lazy { findViewById<TapTextView>(R.id.businessName) }
     val paymentFor by lazy { findViewById<TapTextView>(R.id.paymentFor) }
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
