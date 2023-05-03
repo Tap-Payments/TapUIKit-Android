@@ -13,8 +13,8 @@
         android:layout_height="30dp"
         android:orientation="horizontal"
         android:paddingTop="6dp"
-        android:paddingStart="@dimen/default_padding"
-        android:paddingEnd="@dimen/default_padding">
+        android:paddingStart="@dimen/margin_basic_15dp"
+        android:paddingEnd="@dimen/margin_basic_15dp">
 
         <company.tap.tapuilibrary.uikit.atoms.TapTextView
             android:id="@+id/group_name"
