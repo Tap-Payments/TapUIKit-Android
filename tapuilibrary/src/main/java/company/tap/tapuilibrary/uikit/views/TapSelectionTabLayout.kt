@@ -287,10 +287,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             .init()
             .with(context)
             .load(item.selectedImageURL.toUri(), image)*/
-     /*   GlideToVectorYou
-            .init()
-            .with(context)
-            .load(item.selectedImageURL.toUri(), image)*/
+
         image.layoutParams = params
         item.imageView = image
         item.indicator = indicator
@@ -580,6 +577,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val INVALID_INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
         val UNSELECTED_ALPHA = (ThemeManager.getValue("cardPhoneList.icon.otherSegmentSelected.alpha") as Double).toFloat()
         val MAX_ITEM_WIDTH = (ThemeManager.getValue("cardPhoneList.maxWidth") as Int).toFloat()
+
     }
     private fun ImageView.loadSvg(url: String) {
 
