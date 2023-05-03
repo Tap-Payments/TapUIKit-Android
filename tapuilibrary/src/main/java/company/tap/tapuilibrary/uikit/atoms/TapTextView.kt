@@ -30,6 +30,7 @@ open class TapTextView(context: Context, attributeSet: AttributeSet?) :
      * @param theme Theme to consume in the wrapper, a value of null resets the theme to the default
      **/
     override fun setTheme(theme: TextViewTheme) {
+        this.includeFontPadding = false
         theme.textColor?.let { setTextColor(it) }
         theme.textSize?.let { textSize = it.toFloat() }
         theme.backgroundColor?.let { setBackgroundColor(it) }
