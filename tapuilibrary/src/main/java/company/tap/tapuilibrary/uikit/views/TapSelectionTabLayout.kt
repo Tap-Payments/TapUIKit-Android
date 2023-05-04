@@ -233,12 +233,17 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      * private function to modify the items size based on the screen width after adding new section
      */
     private fun editExistItemsSize() {
-        var params = LayoutParams(
+      /*  var params = LayoutParams(
            60, 60
+        )*/
+        val  height = MetricsUtil.convertDpToPixel(26f, context).toInt()
+        val  width = MetricsUtil.convertDpToPixel(26f, context).toInt()
+        val params = LayoutParams(
+            width, height
         )
       //  val parms = LayoutParams(width, height)
 
-       params.weight = 0.9f
+       params.weight = 0.5f
         for (item in tabItems) {
            /* params.setMargins(
                 tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue,
@@ -260,6 +265,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             LayoutParams.WRAP_CONTENT,
             LayoutParams.MATCH_PARENT
         )
+
+
         linearLayout.layoutParams = params
        // linearLayout.setPadding(-5,0,0,0)
        // linearLayout.setPaddingRelative(-5,0,0,0)
@@ -276,18 +283,20 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun getSectionItem(item: SectionTabItem): LinearLayout {
         val layout = getSectionItemLayout()
         val indicator = getTabSelectionIndicator()
+      val  height = MetricsUtil.convertDpToPixel(26f, context).toInt()
+      val  width = MetricsUtil.convertDpToPixel(26f, context).toInt()
         val params = LayoutParams(
-           60, 60
+            width, height
         )
         params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
-       params.weight = 0.9f
+       params.weight = 0.5f
 
         val image = TapImageView(context, null)
         image.layoutParams = params
 
         Glide.with(this)
             .load(item.selectedImageURL)
-            .override(60 , 60)
+            .override(width , height)
             .into(image)
       /*  GlideToVectorYou
             .init()
