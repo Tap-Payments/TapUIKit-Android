@@ -16,7 +16,8 @@
         android:layout_gravity="center"
         android:foregroundGravity="center"
         android:textSize="@dimen/font_size_11sp"
-
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:textColor="#9F9F9F"
         android:textAllCaps="true"
         android:gravity="center" />
@@ -28,7 +29,6 @@
         app:tabMode="scrollable"
         android:layout_gravity="fill"
         app:tabIndicatorGravity="bottom"
-
         android:fitsSystemWindows="true"
         app:tabIndicatorFullWidth="true" />
 
