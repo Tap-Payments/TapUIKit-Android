@@ -516,10 +516,10 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         bottomSheetDialog.behavior.state = STATE_EXPANDED
         tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tabLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
-        tabLayout.changeTabItemMarginLeftValue(-30)
-        tabLayout.changeTabItemMarginBottomValue(30)
+       // tabLayout.changeTabItemMarginLeftValue(-20)
+      //  tabLayout.changeTabItemMarginBottomValue(30)
 
-        tabLayout.changeTabItemMarginRightValue(-30)
+      //  tabLayout.changeTabItemMarginRightValue(-20)
     }
 
     private fun setupFonts() {
