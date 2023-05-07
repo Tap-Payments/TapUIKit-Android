@@ -27,6 +27,7 @@
 
 
 
+
     <company.tap.tapuilibrary.uikit.atoms.TapTextView
         android:id="@+id/mainKDAmountValue"
         android:layout_width="wrap_content"
@@ -68,7 +69,7 @@
 
 
 
-    <FrameLayout
+    <company.tap.tapuilibrary.uikit.atoms.TapChip
         android:id="@+id/tapChipAmount"
         android:layout_width="100dp"
         android:layout_height="@dimen/margin_basic_24dp"
@@ -134,9 +135,9 @@
             />
 
     </LinearLayout>
-    </FrameLayout>
+    </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
-    <FrameLayout
+    <company.tap.tapuilibrary.uikit.atoms.TapChip
         android:id="@+id/tapChipPopup"
         android:layout_width="100dp"
         android:layout_height="@dimen/margin_basic_24dp"
@@ -184,6 +185,6 @@
 
 
         </LinearLayout>
-    </FrameLayout>
+    </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
