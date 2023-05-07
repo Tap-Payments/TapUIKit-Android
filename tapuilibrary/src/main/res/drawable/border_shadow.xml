@@ -3,37 +3,37 @@
 
     <item>
         <shape>
-            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#e2f1e2" />
-            <corners android:radius="8dp" />
+            <padding android:top="0.6dp" android:right="0.6dp" android:bottom="0.6dp" android:left="0.6dp" />
+            <solid android:color="#95e796"/>
+            <corners android:radius="7dp" />
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#d1efd0" />
-            <corners android:radius="8dp" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
-            <solid android:color="#bcecbd" />
-            <corners android:radius="8dp" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <padding android:top="1dp" android:right="1dp" android:bottom="1dp" android:left="1dp" />
+            <padding android:top="0.6dp" android:right="0.6dp" android:bottom="0.6dp" android:left="0.6dp" />
             <solid android:color="#95e796" />
-            <corners android:radius="8dp" />
+            <corners android:radius="7dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding android:top="0.6dp" android:right="0.6dp" android:bottom="0.6dp" android:left="0.6dp" />
+            <solid android:color="#95e796" />
+            <corners android:radius="7dp" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <padding android:top="0.6dp" android:right="0.6dp" android:bottom="0.6dp" android:left="0.6dp" />
+            <solid android:color="#95e796" />
+            <corners android:radius="7dp" />
         </shape>
     </item>
 
     <item>
         <shape>
             <solid android:color="#FFFFFF" />
-            <corners android:radius="8dp" />
+            <corners android:radius="7dp" />
         </shape>
     </item>
 

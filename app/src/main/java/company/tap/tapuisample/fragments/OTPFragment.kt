@@ -65,7 +65,7 @@ class OTPFragment : TapBottomSheetDialog() {
         tapHeaderSectionView.setHeaderDataSource(getHeaderDataSource())
         tapHeaderSectionView.businessIcon.setTheme(imagetheme)
         tapHeaderSectionView.businessIcon.scaleType = ImageView.ScaleType.CENTER_CROP
-        tapHeaderSectionView.tapChipIcon.cardElevation =0f
+     //todo check aslm   tapHeaderSectionView.tapChipIcon.cardElevation =0f
        // ( tapBrandView.backgroundHeader.parent as View).applyBluryToView()
         val rootView = (activity?.window?.decorView as ViewGroup?)
         return view

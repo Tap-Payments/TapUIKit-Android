@@ -54,11 +54,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var touchableList = ArrayList<View>()
     private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null
     private var tabItemAlphaValue = 0.9f
-    private var tabItemMarginTopValue = 30
+    private var tabItemMarginTopValue = 20
     private var tabItemMarginBottomValue = 20
     private var imageSaturationValue = 1f
-    private var tabItemMarginLeftValue = 0
-    private var tabItemMarginRightValue = 0
+    private var tabItemMarginLeftValue = 10
+    private var tabItemMarginRightValue = 10
     val acceptedCardText by lazy { findViewById<TapTextView>(R.id.acceptedCardText) }
 
     /**
@@ -233,15 +233,23 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      * private function to modify the items size based on the screen width after adding new section
      */
     private fun editExistItemsSize() {
-        var params = LayoutParams(
-            getItemWidth(), 0
+      /*  var params = LayoutParams(
+           60, 60
+        )*/
+        val  height = MetricsUtil.convertDpToPixel(26f, context).toInt()
+        val  width = MetricsUtil.convertDpToPixel(26f, context).toInt()
+        val params = LayoutParams(
+            width, height
         )
-        params.weight = 0.2f
+      //  val parms = LayoutParams(width, height)
+
+       params.weight = 0.5f
         for (item in tabItems) {
-            params.setMargins(
+           /* params.setMargins(
                 tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue,
                 tabItemMarginBottomValue
-            )
+            )*/
+            params.marginStart=tabItemMarginLeftValue
             item.imageView?.layoutParams = params
         }
     }
@@ -257,9 +265,11 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             LayoutParams.WRAP_CONTENT,
             LayoutParams.MATCH_PARENT
         )
+
+
         linearLayout.layoutParams = params
-        linearLayout.setPadding(-5,0,0,0)
-        linearLayout.setPaddingRelative(-5,0,0,0)
+       // linearLayout.setPadding(-5,0,0,0)
+       // linearLayout.setPaddingRelative(-5,0,0,0)
         linearLayout.orientation = HORIZONTAL
         return linearLayout
     }
@@ -273,24 +283,26 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private fun getSectionItem(item: SectionTabItem): LinearLayout {
         val layout = getSectionItemLayout()
         val indicator = getTabSelectionIndicator()
+      val  height = MetricsUtil.convertDpToPixel(26f, context).toInt()
+      val  width = MetricsUtil.convertDpToPixel(26f, context).toInt()
         val params = LayoutParams(
-            getItemWidth(), 0
+            width, height
         )
         params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
-        params.weight = 0.2f
+       params.weight = 0.5f
+
         val image = TapImageView(context, null)
+        image.layoutParams = params
+
         Glide.with(this)
             .load(item.selectedImageURL)
-            .override(2 , 2)
+            .override(width , height)
             .into(image)
       /*  GlideToVectorYou
             .init()
             .with(context)
             .load(item.selectedImageURL.toUri(), image)*/
-     /*   GlideToVectorYou
-            .init()
-            .with(context)
-            .load(item.selectedImageURL.toUri(), image)*/
+
         image.layoutParams = params
         item.imageView = image
         item.indicator = indicator
@@ -316,7 +328,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
         linearLayout.layoutParams = params
         linearLayout.orientation = VERTICAL
-        linearLayout.weightSum = 0.2f
+      //  linearLayout.weightSum = 0.5f
         return linearLayout
     }
 
@@ -580,6 +592,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val INVALID_INDICATOR_COLOR = Color.parseColor(ThemeManager.getValue("cardPhoneList.underline.unselected.backgroundColor"))
         val UNSELECTED_ALPHA = (ThemeManager.getValue("cardPhoneList.icon.otherSegmentSelected.alpha") as Double).toFloat()
         val MAX_ITEM_WIDTH = (ThemeManager.getValue("cardPhoneList.maxWidth") as Int).toFloat()
+
     }
     private fun ImageView.loadSvg(url: String) {
 
