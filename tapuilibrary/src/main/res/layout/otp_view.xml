@@ -92,7 +92,7 @@
         android:windowSoftInputMode="adjustPan"
         android:layout_gravity="center"
         android:gravity="center"
-        android:background="@drawable/blur_background"
+       
         android:orientation="vertical">
 
         <androidx.constraintlayout.widget.ConstraintLayout

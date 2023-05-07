@@ -289,11 +289,15 @@ class OTPView : LinearLayout, OpenOTPInterface {
     }
 
     private fun setBackground() {
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
+      /*  if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
             otpLinearLayout.setBackgroundResource(R.drawable.blur_background_dark)
         } else {
             otpLinearLayout.setBackgroundResource(R.drawable.blurbackground)
-        }
+        }*/
+
+
+            otpLinearLayout.setBackgroundColor(Color.parseColor(ThemeManager.getValue("TapOtpView.backgroundColor")))
+
     }
 
     private fun setFonts() {
