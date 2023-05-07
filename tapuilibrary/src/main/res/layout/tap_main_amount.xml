@@ -19,6 +19,7 @@
         android:textSize="20sp"
         android:includeFontPadding="false"
         android:textStyle="normal"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/mainKDAmountValue"
         app:layout_constraintTop_toTopOf="@id/tapChipPopup"
