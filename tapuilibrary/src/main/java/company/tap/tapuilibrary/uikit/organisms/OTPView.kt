@@ -418,7 +418,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
                             "confirm",
                             "ActionButton"
                         ),
-                        Color.parseColor(ThemeManager.getValue("actionButton.Invalid.goLoginBackgroundColor")),
+                        Color.parseColor(ThemeManager.getValue("actionButton.Invalid.paymentBackgroundColor")),
                         Color.parseColor(ThemeManager.getValue("actionButton.Invalid.titleLabelColor"))
                     )
                 } else if (charSequence.length == otpViewInput1.itemCount) {
@@ -431,7 +431,7 @@ class OTPView : LinearLayout, OpenOTPInterface {
                             "confirm",
                             "ActionButton"
                         ),
-                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.goLoginBackgroundColor")),
+                        Color.parseColor(ThemeManager.getValue("actionButton.Valid.paymentBackgroundColor")),
                         Color.parseColor(ThemeManager.getValue("actionButton.Valid.titleLabelColor"))
                     )
 
