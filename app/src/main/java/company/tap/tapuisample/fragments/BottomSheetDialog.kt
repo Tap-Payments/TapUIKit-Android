@@ -845,23 +845,23 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         items.add(
             SectionTabItem(
-                "https://tap-assets.b-cdn.net/payment-options/v2/dark/visa.png",
-                "https://tap-assets.b-cdn.net/payment-options/v2/dark/visa.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/visa.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/visa.png",
                 CardBrand.visa
             )
         )
         items.add(
             SectionTabItem(
-                "https://tap-assets.b-cdn.net/payment-options/v2/dark/mastercard.png",
-                "https://tap-assets.b-cdn.net/payment-options/v2/dark/mastercard.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/mastercard.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/mastercard.png",
                 CardBrand.masterCard
             )
         )
 
         items.add(
             SectionTabItem(
-                "https://tap-assets.b-cdn.net/payment-options/v2/dark/american_express.png",
-                "https://tap-assets.b-cdn.net/payment-options/v2/dark/american_express.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/american_express.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/american_express.png",
                 CardBrand.americanExpress
             )
         )

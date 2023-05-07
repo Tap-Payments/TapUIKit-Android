@@ -14,6 +14,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
+import androidx.core.view.marginStart
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
@@ -57,8 +58,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var tabItemMarginTopValue = 20
     private var tabItemMarginBottomValue = 20
     private var imageSaturationValue = 1f
-    private var tabItemMarginLeftValue = 10
-    private var tabItemMarginRightValue = 10
+    private var tabItemMarginLeftValue = 5
+    private var tabItemMarginRightValue = 5
     val acceptedCardText by lazy { findViewById<TapTextView>(R.id.acceptedCardText) }
 
     /**
@@ -69,6 +70,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         tabLayout = findViewById(R.id.tab_layout)
         tabLayout.setSelectedTabIndicatorColor(invalidIndicatorColor)
         tabLayout.setSelectedTabIndicatorHeight(indicatorHeight)
+
 
         applyThemeView()
 
@@ -208,7 +210,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             sectionLayout.addView(getSectionItem(item))
             editExistItemsSize()
         }
-
+        acceptedCardText.setPadding(8,0,0,0)
+        sectionLayout.setPadding(-7,0,0,0)
         if (tabsView.size != 0)
             sectionLayout.alpha = unselectedAlphaLevel
         tabsView.add(sectionLayout)
@@ -233,9 +236,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
      * private function to modify the items size based on the screen width after adding new section
      */
     private fun editExistItemsSize() {
-      /*  var params = LayoutParams(
-           60, 60
-        )*/
+
         val  height = MetricsUtil.convertDpToPixel(26f, context).toInt()
         val  width = MetricsUtil.convertDpToPixel(26f, context).toInt()
         val params = LayoutParams(
@@ -250,6 +251,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
                 tabItemMarginBottomValue
             )*/
             params.marginStart=tabItemMarginLeftValue
+            params.marginEnd=tabItemMarginRightValue
+
             item.imageView?.layoutParams = params
         }
     }
@@ -288,7 +291,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         val params = LayoutParams(
             width, height
         )
-        params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
+     //   params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
        params.weight = 0.5f
 
         val image = TapImageView(context, null)
