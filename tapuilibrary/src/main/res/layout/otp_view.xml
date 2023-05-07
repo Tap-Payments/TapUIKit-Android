@@ -16,6 +16,7 @@
         android:layout_height="70dp"
         android:id="@+id/changePhoneCardView"
         app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
         android:layout_gravity="center">
 
         <androidx.constraintlayout.widget.ConstraintLayout
