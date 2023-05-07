@@ -17,11 +17,10 @@
         android:fontFamily="sans-serif"
         android:textColor="#4b4847"
         android:textSize="20sp"
-
         android:includeFontPadding="false"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/tapChipPopup"
+        app:layout_constraintBottom_toTopOf="@id/mainKDAmountValue"
         app:layout_constraintTop_toTopOf="@id/tapChipPopup"
         tools:text="100.00" />
 
@@ -36,6 +35,7 @@
         android:includeFontPadding="false"
         android:textSize="14sp"
         android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="@id/tapChipPopup"
         android:visibility="visible"
         app:layout_constraintTop_toBottomOf="@+id/selectedAmountValue"
         app:layout_constraintStart_toStartOf="@id/selectedAmountValue"
