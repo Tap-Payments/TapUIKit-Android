@@ -210,7 +210,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             sectionLayout.addView(getSectionItem(item))
             editExistItemsSize()
         }
-        acceptedCardText.setPadding(8,0,0,0)
+        acceptedCardText.setPadding(15,0,0,0)
         sectionLayout.setPadding(-7,0,0,0)
         if (tabsView.size != 0)
             sectionLayout.alpha = unselectedAlphaLevel
