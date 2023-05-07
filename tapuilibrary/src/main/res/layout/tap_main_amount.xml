@@ -16,10 +16,10 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif"
         android:textColor="#4b4847"
-        android:textSize="20sp"
+        android:textSize="24sp"
+        android:layout_marginBottom="5dp"
         android:includeFontPadding="false"
         android:textStyle="normal"
-
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@id/mainKDAmountValue"
         app:layout_constraintTop_toTopOf="@id/tapChipPopup"
@@ -34,7 +34,7 @@
         android:fontFamily="sans-serif-light"
         android:textColor="#a8a8a8"
         android:includeFontPadding="false"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="@id/tapChipPopup"
         android:visibility="visible"
@@ -68,7 +68,7 @@
 
 
 
-    <company.tap.tapuilibrary.uikit.atoms.TapChip
+    <FrameLayout
         android:id="@+id/tapChipAmount"
         android:layout_width="100dp"
         android:layout_height="@dimen/margin_basic_24dp"
@@ -134,9 +134,9 @@
             />
 
     </LinearLayout>
-    </company.tap.tapuilibrary.uikit.atoms.TapChip>
+    </FrameLayout>
 
-    <company.tap.tapuilibrary.uikit.atoms.TapChip
+    <FrameLayout
         android:id="@+id/tapChipPopup"
         android:layout_width="100dp"
         android:layout_height="@dimen/margin_basic_24dp"
@@ -184,6 +184,6 @@
 
 
         </LinearLayout>
-    </company.tap.tapuilibrary.uikit.atoms.TapChip>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
