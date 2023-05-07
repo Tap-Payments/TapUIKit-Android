@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraint"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="wrap_content"
     android:paddingEnd="18dp"
     android:paddingStart="18dp"
     android:paddingTop="@dimen/margin_basic_8dp"
@@ -21,7 +21,8 @@
         android:includeFontPadding="false"
         android:textStyle="normal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/tapChipPopup"
+        app:layout_constraintTop_toTopOf="@id/tapChipPopup"
         tools:text="100.00" />
 
 
