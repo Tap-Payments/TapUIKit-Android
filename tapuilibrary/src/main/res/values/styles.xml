@@ -108,7 +108,7 @@
         <item name="android:backgroundDimAmount">0.3</item>
         <item name="android:windowFrame">@null</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>
+      <!--  <item name="bottomSheetStyle">@style/CustomBottomSheetStyle</item>-->
 
     </style>
 
