@@ -45,6 +45,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     private var backgroundDrawable: GradientDrawable = GradientDrawable()
     private var actionButtonInterface: TapActionButtonInterface? = null
     private var displayMetrics: Int? = null
+    private var currentSelectedTheme: String? = null
     private var tapLoadingView: TapLoadingView? = null
     private val textView by lazy {TextView(context)  }
     private var counter=0
@@ -52,27 +53,26 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     @DrawableRes
     val loaderGif: Int =
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+        if (currentSelectedTheme?.isNotEmpty() == true && currentSelectedTheme?.contains("dark")== true){
             R.drawable.loader_black
-        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
+        }  else {
             R.drawable.loader
-        }else    R.drawable.loader
+        }
 
     @DrawableRes
     val loaderSuccessGif: Int =
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+        if (currentSelectedTheme?.isNotEmpty() == true && currentSelectedTheme?.contains("dark")== true){
             R.drawable.success_black
-        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
+        } else {
             R.drawable.success_white
-        }else    R.drawable.success_white
+        }
 
     @DrawableRes
     val loaderErrorGif: Int =
-        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+        if (currentSelectedTheme?.isNotEmpty() == true && currentSelectedTheme?.contains("dark")==true){
             R.drawable.error_gif_black
-        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
-            R.drawable.error_gif_white
-        }else    R.drawable.error_gif_white
+        }  else  {  R.drawable.error_gif_white
+        }
     constructor(context: Context) : super(context) {
         init()
     }
@@ -184,8 +184,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun setButtonInterface(actionButtonInterface: TapActionButtonInterface) {
         this.actionButtonInterface = actionButtonInterface
     }
-    fun setDisplayMetrics(displayMetrics: Int) {
+    fun setDisplayMetricsTheme(displayMetrics: Int, themeString: String) {
         this.displayMetrics = displayMetrics
+        this.currentSelectedTheme = themeString
     }
     fun setButtonDataSource(isValid: Boolean = false,lang : String? = null, buttonText: String?= null, backgroundColor: Int, textColor:Int? = null , backgroundColorArray: IntArray?=null) {
         if (isValid)

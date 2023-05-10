@@ -51,7 +51,7 @@ class ActionButtonActivity : AppCompatActivity() {
         this.windowManager.defaultDisplay.getMetrics(metrics)
         val density = metrics.densityDpi
         println("density is" + density)
-        actionButton.setDisplayMetrics(density)
+        actionButton.setDisplayMetricsTheme(density,"dark")
         actionButton.setOnClickListener {
 
             pickStatus()
