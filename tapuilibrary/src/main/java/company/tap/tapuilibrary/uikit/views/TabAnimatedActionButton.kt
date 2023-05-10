@@ -53,26 +53,27 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     @DrawableRes
     val loaderGif: Int =
-        if (currentSelectedTheme?.isNotEmpty() == true && currentSelectedTheme?.contains("dark")== true){
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
             R.drawable.loader_black
-        }  else {
+        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
             R.drawable.loader
-        }
+        }else    R.drawable.loader
 
     @DrawableRes
     val loaderSuccessGif: Int =
-        if (currentSelectedTheme?.isNotEmpty() == true && currentSelectedTheme?.contains("dark")== true){
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
             R.drawable.success_black
-        } else {
+        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
             R.drawable.success_white
-        }
+        }else    R.drawable.success_white
 
     @DrawableRes
     val loaderErrorGif: Int =
-        if (currentSelectedTheme?.isNotEmpty() == true && currentSelectedTheme?.contains("dark")==true){
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
             R.drawable.error_gif_black
-        }  else  {  R.drawable.error_gif_white
-        }
+        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
+            R.drawable.error_gif_white
+        }else    R.drawable.error_gif_white
     constructor(context: Context) : super(context) {
         init()
     }
@@ -184,7 +185,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     fun setButtonInterface(actionButtonInterface: TapActionButtonInterface) {
         this.actionButtonInterface = actionButtonInterface
     }
-    fun setDisplayMetricsTheme(displayMetrics: Int, themeString: String) {
+    fun setDisplayMetricsTheme(displayMetrics: Int, themeString :String ) {
         this.displayMetrics = displayMetrics
         this.currentSelectedTheme = themeString
     }

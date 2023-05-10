@@ -4,7 +4,9 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.TapProgressIndicatorInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
 
@@ -20,12 +22,18 @@ class TapLoadingView(context: Context?, attrs: AttributeSet?) :
 
     var tapLoadingImage: ImageView
     var onProgressCompletedListener: OnProgressCompletedListener? = null
-
+    @DrawableRes
+    val loaderGif: Int =
+        if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")){
+            R.drawable.loader_black
+        }  else if (ThemeManager.currentTheme.isNotEmpty() && !ThemeManager.currentTheme.contains("dark")){
+            R.drawable.loader
+        }else    R.drawable.loader
     init {
         inflate(context, R.layout.tap_loading_view, this)
         tapLoadingImage = findViewById(R.id.tapLoadingImage)
         if (context != null) {
-            tapLoadingImage.setImage(context,tapLoadingImage,R.drawable.loader,1) {onProgressEnd()}
+            tapLoadingImage.setImage(context,tapLoadingImage,loaderGif,1) {onProgressEnd()}
         }
     }
 
@@ -35,7 +43,7 @@ class TapLoadingView(context: Context?, attrs: AttributeSet?) :
 
     fun completeProgress() {
      //   onProgressEnd()
-        tapLoadingImage.setImage(context,tapLoadingImage,R.drawable.loader,1) {
+        tapLoadingImage.setImage(context,tapLoadingImage,loaderGif,1) {
             onProgressEnd()
         }
     }
