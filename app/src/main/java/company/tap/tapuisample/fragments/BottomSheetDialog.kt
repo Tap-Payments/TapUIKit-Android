@@ -843,6 +843,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         items.add(
             SectionTabItem(
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/mada.png",
+                "https://tap-assets.b-cdn.net/payment-options/v2/light/mada.png",
+                CardBrand.visa
+            )
+        )
+        items.add(
+            SectionTabItem(
                 "https://tap-assets.b-cdn.net/payment-options/v2/light/visa.png",
                 "https://tap-assets.b-cdn.net/payment-options/v2/light/visa.png",
                 CardBrand.visa
@@ -863,6 +870,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
                 CardBrand.americanExpress
             )
         )
+
 
         tabLayout.addSection(items)
     }

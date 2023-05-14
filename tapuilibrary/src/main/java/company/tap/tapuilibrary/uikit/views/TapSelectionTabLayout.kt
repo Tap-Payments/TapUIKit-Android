@@ -55,8 +55,8 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var touchableList = ArrayList<View>()
     private var tabLayoutInterface: TapSelectionTabLayoutInterface? = null
     private var tabItemAlphaValue = 0.9f
-    private var tabItemMarginTopValue = 20
-    private var tabItemMarginBottomValue = 20
+    private var tabItemMarginTopValue = 15
+    private var tabItemMarginBottomValue = 15
     private var imageSaturationValue = 1f
     private var tabItemMarginLeftValue = 5
     private var tabItemMarginRightValue = 5
