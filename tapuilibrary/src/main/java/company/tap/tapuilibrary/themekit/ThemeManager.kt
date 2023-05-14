@@ -61,7 +61,7 @@ object ThemeManager {
                     themeString = result.toString()
                     theme = JSONObject(result.toString())
                     currentTheme = url
-                    Toast.makeText(context, "Theme switched", Toast.LENGTH_SHORT).show()
+                  //  Toast.makeText(context, "Theme switched", Toast.LENGTH_SHORT).show()
                 }
             }
     }
