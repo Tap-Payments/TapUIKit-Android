@@ -5,28 +5,28 @@
     <!-- Drop Shadow Stack -->
     <item>
         <shape>
-            <padding android:top="0.6dp" android:right="0.6dp" android:bottom="0.6dp" android:left="0.6dp" />
+            <padding android:top="0.4dp" android:right="0.4dp" android:bottom="0.4dp" android:left="0.4dp" />
             <!-- <solid android:color="#02d9d9da"/>-->
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:top="0.6dp" android:right="0.6dp" android:bottom="0.6dp" android:left="0.6dp" />
+            <padding android:top="0.4dp" android:right="0.4dp" android:bottom="0.4dp" android:left="0.4dp" />
             <!-- <solid android:color="#05d9d9da" />-->
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:top="0.6dp" android:right="0.6dp" android:bottom="0.6dp" android:left="0.6dp" />
+            <padding android:top="0.4dp" android:right="0.4dp" android:bottom="0.4dp" android:left="0.4dp" />
             <!--  <solid android:color="#10d9d9da" />-->
             <corners android:radius="8dp" />
         </shape>
     </item>
     <item>
         <shape>
-            <padding android:top="0.6dp" android:right="0.6dp" android:bottom="0.6dp" android:left="0.6dp" />
+            <padding android:top="0.4dp" android:right="0.4dp" android:bottom="0.4dp" android:left="0.4dp" />
            <!-- <solid android:color="#2b2c2f" />-->
             <corners android:radius="8dp" />
         </shape>
