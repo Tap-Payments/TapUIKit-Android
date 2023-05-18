@@ -94,7 +94,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var businessName: String? = null
     private var paymentFor: String? = null
     private var businessInitial: String? = null
-    private lateinit var tapHeaderSectionView: TapHeaderSectionView
+    private lateinit var tapHeaderSectionView: company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
     private lateinit var amountSectionView: TapAmountSectionView
     private lateinit var businessIcon: TapImageView
     private lateinit var tapCloseIcon: TapImageView
@@ -656,7 +656,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private fun getHeaderDataSource(): HeaderDataSource {
         return HeaderDataSource(
             businessName = businessName,
-            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection")
+            businessFor = LocalizationManager.getValue("paymentFor", "TapMerchantSection"),
+            businessImageResources ="https://www.gotapnow.com/web/tmvndim/VND1124340.png"
         )
     }
 

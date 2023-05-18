@@ -74,7 +74,7 @@ android:layout_marginTop="-25dp"
             </LinearLayout>
 
 
-            <company.tap.tapuisample.TapHeaderSectionView
+            <company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
                 android:id="@+id/headerView"
                 android:layout_marginTop="50dp"
                 android:layout_width="match_parent"
