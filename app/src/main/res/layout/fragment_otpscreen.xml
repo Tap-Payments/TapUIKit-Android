@@ -22,6 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_basic_9dp" />
 
+
         <company.tap.tapuilibrary.uikit.views.TapBrandView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
