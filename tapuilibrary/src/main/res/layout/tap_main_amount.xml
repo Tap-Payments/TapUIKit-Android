@@ -5,8 +5,8 @@
     android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingEnd="18dp"
-    android:paddingStart="18dp"
+    android:paddingEnd="16dp"
+    android:paddingStart="16dp"
     android:paddingTop="@dimen/margin_basic_8dp"
     android:paddingBottom="@dimen/margin_basic_8dp">
 
