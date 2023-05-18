@@ -17,8 +17,8 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 class TapBrandView : LinearLayout {
 
     val poweredByImage by lazy { findViewById<AppCompatImageView>(R.id.poweredByImage) }
-    val backgroundHeader by lazy { findViewById<AppCompatImageView>(R.id.img_background) }
     val outerConstraint by lazy { findViewById<CardView>(R.id.outerConstraint) }
+    val constraint by lazy { findViewById<CardView>(R.id.outerConstraint_header) }
 
     @DrawableRes
     val logoIcon: Int =
