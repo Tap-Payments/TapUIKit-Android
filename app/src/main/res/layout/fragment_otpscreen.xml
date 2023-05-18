@@ -30,6 +30,7 @@
             android:layout_marginBottom="@dimen/margin_basic_10dp"
             android:id="@+id/tab_brand"
 
+
             />
 
         <company.tap.tapuilibrary.uikit.views.TapOTPView
