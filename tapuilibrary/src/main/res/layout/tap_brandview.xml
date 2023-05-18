@@ -21,6 +21,7 @@
         android:layout_height="match_parent">
 
 
+
         <ImageView
             android:id="@+id/poweredByImage"
             android:layout_width="112dp"
