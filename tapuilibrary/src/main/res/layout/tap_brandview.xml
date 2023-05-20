@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/outerConstraint"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
+    android:layout_height="70dp"
     android:outlineProvider="none"
     app:cardCornerRadius="@dimen/font_size_20sp"
     app:cardPreventCornerOverlap="false"
@@ -21,17 +21,16 @@
         android:layout_height="match_parent">
 
 
+
         <ImageView
             android:id="@+id/poweredByImage"
             android:layout_width="112dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_basic_15dp"
-            android:layout_marginTop="9dp"
             android:layout_marginEnd="15dp"
-            android:layout_marginBottom="9dp"
             android:layoutDirection="locale"
+            android:layout_marginTop="10dp"
             android:src="@drawable/powered_by_tap_dark"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
