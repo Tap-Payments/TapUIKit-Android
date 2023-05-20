@@ -7,6 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
+import androidx.constraintlayout.widget.ConstraintLayout
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.tap_main_amount.view.constraint
 
 class TapAmountSectionView : LinearLayout {
     val selectedAmountValue by lazy { findViewById<TapTextView>(R.id.selectedAmountValue) }
+    val constraint by lazy { findViewById<ConstraintLayout>(R.id.constraint) }
     val mainKDAmountValue by lazy { findViewById<TapTextView>(R.id.mainKDAmountValue) }
     val itemCountButton by lazy { findViewById<TapButton>(R.id.itemCountButton) }
     val itemCountText by lazy { findViewById<TapTextView>(R.id.itemCountText) }
