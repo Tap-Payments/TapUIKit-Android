@@ -15,10 +15,9 @@ import company.tap.tapuilibrary.themekit.theme.SwitchTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
-import company.tap.tapuilibrary.uikit.ktx.setBottomBorders
 
 class MainSwitch :LinearLayout {
 
@@ -28,7 +27,7 @@ class MainSwitch :LinearLayout {
     val tapMainSwitchLinear by lazy { findViewById<CardView>(R.id.tapMainSwitchLinear) }
     val mainSwitchChip by lazy { findViewById<TapChip>(R.id.mainSwitchChip) }
     val mainSwitchLinear by lazy { findViewById<LinearLayout>(R.id.mainSwitchLinear) }
-    val mainTextSave by lazy { findViewById<TapTextView>(R.id.mainTextSave) }
+    val mainTextSave by lazy { findViewById<TapTextViewNew>(R.id.mainTextSave) }
     val switchSaveMobile by lazy { findViewById<TapSwitch>(R.id.switchSaveMobile) }
     val card by lazy { findViewById<CardView>(R.id.card) }
 

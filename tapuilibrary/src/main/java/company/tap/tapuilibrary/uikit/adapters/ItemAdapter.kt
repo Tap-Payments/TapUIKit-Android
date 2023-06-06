@@ -1,6 +1,7 @@
 package company.tap.tapuilibrary.uikit.adapters
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.Typeface
@@ -18,7 +19,7 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.ItemViewDataSource
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.views.TapListItemView
@@ -33,7 +34,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     private var previousExpandedPosition = -1
     private var mExpandedPosition = -1
     private lateinit var itemViewAdapter: TapListItemView
-
+    private lateinit var context:Context
 
     override fun onCreateViewHolder(@NonNull parent: ViewGroup, viewType: Int): ItemHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_view_adapter, parent, false)
@@ -53,16 +54,16 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     }
 
     private fun initView(holder: ItemHolder, position: Int) {
-        val descriptionTextView = holder.itemView.findViewById<TapTextView>(R.id.description_textView)
-        val descText = holder.itemView.findViewById<TapTextView>(R.id.show_description)
+        val descriptionTextView = holder.itemView.findViewById<TapTextViewNew>(R.id.description_textView)
+        val descText = holder.itemView.findViewById<TapTextViewNew>(R.id.show_description)
         val itemSeparator = holder.itemView.findViewById<TapSeparatorView>(R.id.itemseparator)
-        val totalQuantity = holder.itemView.findViewById<TapTextView>(R.id.total_quantity)
-        val discount = holder.itemView.findViewById<TapTextView>(R.id.discount_text)
+        val totalQuantity = holder.itemView.findViewById<TapTextViewNew>(R.id.total_quantity)
+        val discount = holder.itemView.findViewById<TapTextViewNew>(R.id.discount_text)
         val quantityRelative = holder.itemView.findViewById<RelativeLayout>(R.id.quantityRelative)
-        val totalAmount = holder.itemView.findViewById<TapTextView>(R.id.total_amount)
+        val totalAmount = holder.itemView.findViewById<TapTextViewNew>(R.id.total_amount)
         val mainViewLinear = holder.itemView.findViewById<LinearLayout>(R.id.mainViewLinear)
-        val itemName = holder.itemView.findViewById<TapTextView>(R.id.item_title)
-        val itemAmount = holder.itemView.findViewById<TapTextView>(R.id.item_amount)
+        val itemName = holder.itemView.findViewById<TapTextViewNew>(R.id.item_title)
+        val itemAmount = holder.itemView.findViewById<TapTextViewNew>(R.id.item_amount)
         val isExpanded = position == mExpandedPosition
 
         descriptionTextView.text = "Lorem ipsum dolor sit amet, ex exercitation ullamco laboris."
@@ -77,7 +78,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
         checkItemListPosition(position,discount, totalAmount, itemName)
     }
 
-    private fun showHideDescText(isExpanded: Boolean, position: Int, descText:TapTextView?) {
+    private fun showHideDescText(isExpanded: Boolean, position: Int, descText:TapTextViewNew?) {
         if (isExpanded) {
             previousExpandedPosition = position
             descText?.text = LocalizationManager.getValue("hideDesc", "ItemList")
@@ -96,7 +97,7 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     }
 
 
-    private fun checkItemListPosition(position: Int, discount:TapTextView? , totalAmount:TapTextView? ,itemName: TapTextView? ) {
+    private fun checkItemListPosition(position: Int, discount:TapTextViewNew?, totalAmount:TapTextViewNew?, itemName: TapTextViewNew? ) {
         if (itemList[position] % 2 == 0) {
             discount?.visibility = View.VISIBLE
             discount?.text = LocalizationManager.getValue("Discount", "ItemList")
@@ -111,8 +112,8 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     }
 
 
-    fun setTheme(descriptionTextView:TapTextView?,discount:TapTextView?,descText:TapTextView?,totalQuantity:TapTextView?,
-                 totalAmount:TapTextView?,itemName:TapTextView?, itemSeparator: TapSeparatorView?,mainViewLinear :LinearLayout?, quantityRelative:RelativeLayout?,itemAmount:TapTextView?) {
+    fun setTheme(descriptionTextView:TapTextViewNew?, discount:TapTextViewNew?, descText:TapTextViewNew?, totalQuantity:TapTextViewNew?,
+                 totalAmount:TapTextViewNew?, itemName:TapTextViewNew?, itemSeparator: TapSeparatorView?, mainViewLinear :LinearLayout?, quantityRelative:RelativeLayout?, itemAmount:TapTextViewNew?) {
 
         itemViewAdapter.setBackgroundColor(Color.parseColor(ThemeManager.getValue("itemsList.item.backgroundColor")))
         val descriptionTextViewTheme = TextViewTheme()
@@ -173,9 +174,9 @@ class ItemAdapter(private val itemList: ArrayList<Int>) :
     }
 
 
-    private fun setFonts(itemName:TapTextView?,totalAmount:TapTextView?,
-                         discount:TapTextView?,descText:TapTextView?,
-                         descriptionTextView:TapTextView?,totalQuantity:TapTextView?,item_amount:TapTextView?) {
+    private fun setFonts(itemName:TapTextViewNew?, totalAmount:TapTextViewNew?,
+                         discount:TapTextViewNew?, descText:TapTextViewNew?,
+                         descriptionTextView:TapTextViewNew?, totalQuantity:TapTextViewNew?, item_amount:TapTextViewNew?) {
         itemName?.typeface = Typeface.createFromAsset(
             context?.assets, TapFont.tapFontType(
                 TapFont.RobotoRegular

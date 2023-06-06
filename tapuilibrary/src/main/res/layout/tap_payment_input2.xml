@@ -129,7 +129,7 @@
                 android:theme="@style/SwitchSecondary"
                 tools:text="Save for goPay Checkouts" />
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/save_goPay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -148,7 +148,7 @@
 
 
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/alert_gopay_signup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

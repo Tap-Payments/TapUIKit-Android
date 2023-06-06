@@ -5,7 +5,7 @@ import android.graphics.BitmapFactory
 import android.os.AsyncTask
 import android.view.View
 import android.widget.ImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import java.io.InputStream
 import java.net.URL
 
@@ -17,10 +17,10 @@ Copyright (c) 2020    Tap Payments.
 All rights reserved.
  **/
 class TapAsyncUtil {
-    open class DownLoadImageTask(imageView: ImageView, textView: TapTextView) :
+    open class DownLoadImageTask(imageView: ImageView, textView: TapTextViewNew) :
         AsyncTask<String, Void, Bitmap>() {
         private var imageView: ImageView
-        private var textView: TapTextView
+        private var textView: TapTextViewNew
 
 
         override fun onPreExecute() {

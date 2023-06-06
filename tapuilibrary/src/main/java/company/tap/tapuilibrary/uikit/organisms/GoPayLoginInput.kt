@@ -20,14 +20,13 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.hbb20.CountryCodePicker
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod.EMAIL
@@ -37,6 +36,7 @@ import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.utils.FakeThemeManager
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
+import company.tap.tapuilibrary.R
 import kotlin.math.abs
 
 /**
@@ -54,7 +54,7 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
     val loginMethodImage by lazy { findViewById<ImageView>(R.id.login_method_icon) }
     val actionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.gopay_button) }
-    val goPayHint by lazy { findViewById<TapTextView>(R.id.gopay_hint) }
+    val goPayHint by lazy { findViewById<TapTextViewNew>(R.id.gopay_hint) }
     val countryCodePicker by lazy { findViewById<CountryCodePicker>(R.id.countryCodePicker) }
     val goPayLinear by lazy { findViewById<LinearLayout>(R.id.goPayLinear) }
     val goPayTabSeparator by lazy { findViewById<TapSeparatorView>(R.id.goPayTabSeparator) }
@@ -304,12 +304,12 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun setOnTabUnselected(tab: TabLayout.Tab?) {
-        val tabText = tab?.customView as TapTextView
+        val tabText = tab?.customView as TapTextViewNew
         setTabUnSelectedTextFont(tabText)
         tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.otherSegmentSelected.textColor")))
     }
 
-    private fun setTabUnSelectedTextFont(tabText :TapTextView){
+    private fun setTabUnSelectedTextFont(tabText :TapTextViewNew){
         if (LocalizationManager.getLocale(context).language == "en") {
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
@@ -326,14 +326,14 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
     private fun setOnTabSelected(tab: TabLayout.Tab?) {
-        val tabText = tab?.customView as TapTextView
+        val tabText = tab?.customView as TapTextViewNew
         setTabSelectedTextFont(tabText)
         tabText.setTextColor(Color.parseColor(ThemeManager.getValue("goPay.loginBar.title.selected.textColor")))
         inputType = if (tab.position == 0) EMAIL else PHONE
         changeInputType()
     }
 
-    private  fun setTabSelectedTextFont(tabText :TapTextView){
+    private  fun setTabSelectedTextFont(tabText :TapTextViewNew){
         if (LocalizationManager.getLocale(context).language == "en") {
             tabText.typeface = Typeface.createFromAsset(
                 context?.assets, TapFont.tapFontType(
@@ -401,8 +401,8 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
         }
     }
 
-    private fun getThemedTabText(text: String, isSelected: Boolean): TapTextView {
-        val tabText = TapTextView(context, null)
+    private fun getThemedTabText(text: String, isSelected: Boolean): TapTextViewNew {
+        val tabText = TapTextViewNew(context, null)
         tabText.setTheme(FakeThemeManager.getGoPayTabLayoutTextTheme(isSelected))
         tabText.text = text
         if (LocalizationManager.getLocale(context).language == "en") {

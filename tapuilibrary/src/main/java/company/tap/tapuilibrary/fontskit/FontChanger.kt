@@ -1,5 +1,4 @@
 package company.tap.tapuilibrary.fontskit;
-
 import android.content.res.AssetManager
 import android.graphics.Typeface
 import android.view.View

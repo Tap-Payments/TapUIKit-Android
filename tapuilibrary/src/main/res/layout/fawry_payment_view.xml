@@ -5,18 +5,19 @@
     android:orientation="vertical">
 
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/titleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
+        android:layoutDirection="ltr"
         android:padding="10dp"
         android:text="@string/titleText"
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/descText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -28,7 +29,7 @@
         android:textColor="@color/dark_gray"
         android:textSize="10sp" />
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/orderCodeText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,7 +42,7 @@
         android:textSize="10sp" />
 
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/orderCodeValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,7 +54,7 @@
         android:textSize="10sp" />
 
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/codeExpireText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,7 +67,7 @@
         android:textSize="10sp" />
 
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/codeExpireValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -78,7 +79,7 @@
         android:textSize="10sp" />
 
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/linkDescText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -92,7 +93,7 @@
         android:textSize="10sp" />
 
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/linkValue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -126,7 +127,7 @@
         android:layout_marginBottom="30dp"
         android:orientation="horizontal">
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
             android:id="@+id/textViewPowered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

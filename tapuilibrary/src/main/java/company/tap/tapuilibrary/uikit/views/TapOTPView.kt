@@ -1,16 +1,11 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.animation.ValueAnimator
-import android.animation.ValueAnimator.AnimatorUpdateListener
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
-import android.content.res.Resources
 import android.graphics.*
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.text.InputFilter
-import android.text.InputFilter.LengthFilter
 import android.text.TextPaint
 import android.text.TextUtils
 import android.text.method.MovementMethod
@@ -20,17 +15,13 @@ import android.view.*
 import android.view.animation.DecelerateInterpolator
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.LinearLayout
 import androidx.annotation.ColorInt
-import androidx.annotation.DrawableRes
-import androidx.annotation.Nullable
 import androidx.annotation.Px
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.ViewCompat
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
+import company.tap.tapuilibrary.R
 
 /**
  * Created  on 7/12/20.

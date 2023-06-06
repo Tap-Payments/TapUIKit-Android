@@ -8,14 +8,12 @@ import android.os.CountDownTimer
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.util.Half.trunc
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -24,9 +22,8 @@ import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
-import company.tap.tapuilibrary.uikit.adapters.context
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.interfaces.OpenOTPInterface
 import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
@@ -51,15 +48,15 @@ class OTPView : LinearLayout, OpenOTPInterface {
     val otpViewInput1 by lazy { findViewById<TapOTPView>(R.id.otpViewInput1) }
 
     //    val otpViewInput2 by lazy { findViewById<TapOTPView>(R.id.otpViewInput2) }
-    val otpSentText by lazy { findViewById<TapTextView>(R.id.otpSentText) }
-    val mobileNumberText by lazy { findViewById<TapTextView>(R.id.mobileNumberText) }
-    val otpHintText by lazy { findViewById<TapTextView>(R.id.otpHintText) }
-    val timerText by lazy { findViewById<TapTextView>(R.id.timerText) }
-    val changePhone by lazy { findViewById<TapTextView>(R.id.changePhone) }
+    val otpSentText by lazy { findViewById<TapTextViewNew>(R.id.otpSentText) }
+    val mobileNumberText by lazy { findViewById<TapTextViewNew>(R.id.mobileNumberText) }
+    val otpHintText by lazy { findViewById<TapTextViewNew>(R.id.otpHintText) }
+    val timerText by lazy { findViewById<TapTextViewNew>(R.id.timerText) }
+    val changePhone by lazy { findViewById<TapTextViewNew>(R.id.changePhone) }
     val otpViewActionButton by lazy { findViewById<TabAnimatedActionButton>(R.id.otpViewActionButton) }
     val changePhoneCardView by lazy { findViewById<CardView>(R.id.changePhoneCardView) }
     val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
-    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
+    val textViewPowered by lazy { findViewById<TapTextViewNew>(R.id.textViewPowered) }
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
 
     @DrawableRes
@@ -77,8 +74,8 @@ class OTPView : LinearLayout, OpenOTPInterface {
      *
      */
     val otpSentConstraintGoPay by lazy { findViewById<ConstraintLayout>(R.id.otpSentConstraintNormalPay) }
-    val otpSentTextNormalPay by lazy { findViewById<TapTextView>(R.id.otpSentTextNormalPay) }
-    val mobileNumberTextNormalPay by lazy { findViewById<TapTextView>(R.id.mobileNumberTextNormalPay) }
+    val otpSentTextNormalPay by lazy { findViewById<TapTextViewNew>(R.id.otpSentTextNormalPay) }
+    val mobileNumberTextNormalPay by lazy { findViewById<TapTextViewNew>(R.id.mobileNumberTextNormalPay) }
 
     //    private var goPayLoginInput: GoPayLoginInput? = null
     private var openOTPInterface: OpenOTPInterface? = null

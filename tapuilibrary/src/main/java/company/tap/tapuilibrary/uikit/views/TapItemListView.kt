@@ -3,7 +3,6 @@ package company.tap.tapuilibrary.uikit.views
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
-import android.provider.Settings.Global.getString
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
@@ -14,7 +13,7 @@ import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.ItemViewDataSource
 
 /**
@@ -28,14 +27,14 @@ All rights reserved.
  * TapItemsView  is a molecule for setting Amount, Description and Quantity.
  */
 class TapItemListView : LinearLayout {
-    val itemTitle by lazy { findViewById<TapTextView>(R.id.item_title) }
-    val totalAmount by lazy { findViewById<TapTextView>(R.id.total_amount) }
+    val itemTitle by lazy { findViewById<TapTextViewNew>(R.id.item_title) }
+    val totalAmount by lazy { findViewById<TapTextViewNew>(R.id.total_amount) }
    // val totalQuantity by lazy { findViewById<TapTextView>(R.id.total_quantity) }
    // val itemAmount by lazy { findViewById<TapTextView>(R.id.item_amount) }
     val expandImageView by lazy { findViewById<TapImageView>(R.id.add_image) }
     val collapseImageView by lazy { findViewById<TapImageView>(R.id.sub_image) }
     val quantityRelative by lazy { findViewById<RelativeLayout>(R.id.quantityRelative) }
-    val descriptionText by lazy { findViewById<TapTextView>(R.id.brief_description) }
+    val descriptionText by lazy { findViewById<TapTextViewNew>(R.id.brief_description) }
     private var itemViewDataSource: ItemViewDataSource? = null
     @DrawableRes
     val addIcon: Int =

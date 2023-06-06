@@ -2,16 +2,13 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
 import android.graphics.*
-import android.os.Build
 import android.util.AttributeSet
-import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
-
+import company.tap.tapuilibrary.R
 
 
 class TapBrandView : LinearLayout {

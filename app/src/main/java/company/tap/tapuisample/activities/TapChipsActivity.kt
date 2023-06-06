@@ -14,10 +14,9 @@ import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.uikit.model.CurrencyModel
 import company.tap.tapuisample.R
 import company.tap.tapuisample.adapters.CardTypeAdapter
-import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
-import company.tap.tapuilibrary.uikit.adapters.context
+
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
@@ -113,10 +112,10 @@ class TapChipsActivity : BaseActivity(),
     private fun setupCardChip() {
         val mainLayout = findViewById<TapChipGroup>(R.id.mainLayout)
         mainLayout.orientation = LinearLayout.HORIZONTAL
-        val groupName = findViewById<TapTextView>(R.id.group_name)
+        val groupName = findViewById<TapTextViewNew>(R.id.group_name)
         groupName.text = LocalizationManager.getValue("GatewayHeader","HorizontalHeaders","leftTitle")
 
-        val groupAction = findViewById<TapTextView>(R.id.group_action)
+        val groupAction = findViewById<TapTextViewNew>(R.id.group_action)
         groupAction.text = LocalizationManager.getValue("edit","Common")
         chipRecycler = findViewById(R.id.chip_recycler)
         chipRecycler.layoutManager = LinearLayoutManager(this, RecyclerView.HORIZONTAL, false)

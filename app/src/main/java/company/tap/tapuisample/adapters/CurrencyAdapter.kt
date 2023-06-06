@@ -80,7 +80,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onBindViewHolder(holder: CurrencyHolder, position: Int) {
         holder.bindPhoto(photos[position])
-        if (company.tap.tapuilibrary.uikit.adapters.selectedPosition == position) {
+        if (selectedPosition == position) {
             /**
              * Method to draw bordered view
              * setBorderedView ( view: View, cornerRadius:Float,strokeWidth: Float, strokeColor: Int,tintColor: Int )
@@ -120,7 +120,7 @@ class CurrencyAdapter(private val photos: ArrayList<CurrencyModel>) :
         }
 
         holder.itemView.setOnClickListener {
-            company.tap.tapuilibrary.uikit.adapters.selectedPosition = position
+           selectedPosition = position
 
 
             Toast.makeText(

@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.View
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.fontskit.enums.TapFont
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.ItemViewDataSource
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.utils.BaseActivity
@@ -20,10 +20,10 @@ import kotlinx.android.synthetic.main.activity_amount_item.*
  * **/
 class AmountItemActivity : BaseActivity() {
 
-    private lateinit var descrTxt: TapTextView
-    private lateinit var totalAmount: TapTextView
-    private lateinit var totalQuantity: TapTextView
-    private lateinit var discount: TapTextView
+    private lateinit var descrTxt: TapTextViewNew
+    private lateinit var totalAmount: TapTextViewNew
+    private lateinit var totalQuantity: TapTextViewNew
+    private lateinit var discount: TapTextViewNew
     private lateinit var amountListItem: TapListItemView
     private lateinit var cardswitch: TapCardSwitch
 

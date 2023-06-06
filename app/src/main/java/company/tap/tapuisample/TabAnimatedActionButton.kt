@@ -248,6 +248,10 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
     }
 
+    override fun onMorphAnimationStarted() {
+
+    }
+
     override fun onProgressCompleted() {
         when (state) {
             ERROR -> {

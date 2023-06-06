@@ -20,7 +20,7 @@ import company.tap.tapuilibrary.uikit.interfaces.TapView
  * @param context The Context that will determine this widget's theming.
  * @param attributeSet Specification of attributes that should deviate from default styling.
  **/
-open class TapTextView(context: Context, attributeSet: AttributeSet?) :
+open class TapTextViewNew(context: Context, attributeSet: AttributeSet?) :
     AppCompatTextView(context, attributeSet),
     TapView<TextViewTheme> {
 

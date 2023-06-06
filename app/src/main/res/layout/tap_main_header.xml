@@ -82,7 +82,7 @@
 
                 />
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/placeholderText"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
@@ -93,7 +93,7 @@
                 tools:text="@android:string/autofill" />
         </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
             android:id="@+id/paymentFor"
             style="@style/TextStyle"
             android:layout_width="0dp"
@@ -110,7 +110,7 @@
             app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
             tools:text="Payment for " />
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
             android:id="@+id/businessName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

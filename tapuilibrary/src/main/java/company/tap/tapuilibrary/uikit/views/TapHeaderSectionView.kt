@@ -3,32 +3,25 @@ package company.tap.tapuilibrary.uikit.views
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
-import android.net.Uri
 import android.util.AttributeSet
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.themekit.theme.ButtonTheme
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
-import company.tap.tapuilibrary.uikit.adapters.context
-import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.ktx.setTopBorders
-import company.tap.tapuilibrary.uikit.views.TextDrawable
-import gotap.com.tapglkitandroid.gl.Views.TapLoadingView
+import company.tap.tapuilibrary.R
 import kotlinx.android.synthetic.main.tap_main_header.view.*
 
 
@@ -41,8 +34,8 @@ class TapHeaderSectionView : LinearLayout {
     val businessIcon by lazy { findViewById<TapImageView>(R.id.businessIcon) }
     val tapChipIcon by lazy { findViewById<FrameLayout>(R.id.tapChipIcon) }
 
-    val businessName by lazy { findViewById<TapTextView>(R.id.businessName) }
-    val paymentFor by lazy { findViewById<TapTextView>(R.id.paymentFor) }
+    val businessName by lazy { findViewById<TapTextViewNew>(R.id.businessName) }
+    val paymentFor by lazy { findViewById<TapTextViewNew>(R.id.paymentFor) }
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
     val topLinear by lazy { findViewById<LinearLayout>(R.id.topLinear) }
     val constraint by lazy { findViewById<ConstraintLayout>(R.id.constraint) }

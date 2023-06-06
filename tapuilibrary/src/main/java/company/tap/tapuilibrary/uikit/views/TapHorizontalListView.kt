@@ -2,22 +2,18 @@ package company.tap.tapuilibrary.uikit.views
 
 import android.app.Activity
 import android.content.Context
-import android.content.res.ColorStateList
 import android.content.res.Resources
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.annotation.ColorInt
-import androidx.annotation.ColorRes
 import androidx.core.net.toUri
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
 import com.bumptech.glide.Glide
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
-import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager

@@ -14,7 +14,6 @@ import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.RequiresApi
 import androidx.core.net.toUri
-import androidx.core.view.marginStart
 import coil.ImageLoader
 import coil.decode.SvgDecoder
 import coil.request.ImageRequest
@@ -23,15 +22,15 @@ import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
 import com.google.android.material.tabs.TabLayout
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
+import company.tap.tapuilibrary.R
 
 /**
  *
@@ -58,9 +57,9 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
     private var tabItemMarginTopValue = 15
     private var tabItemMarginBottomValue = 15
     private var imageSaturationValue = 1f
-    private var tabItemMarginLeftValue = 5
-    private var tabItemMarginRightValue = 5
-    val acceptedCardText by lazy { findViewById<TapTextView>(R.id.acceptedCardText) }
+    private var tabItemMarginLeftValue = MetricsUtil.convertDpToPixel(8f, context).toInt()
+    private var tabItemMarginRightValue = MetricsUtil.convertPixelsToDp(8f, context).toInt()
+    val acceptedCardText by lazy { findViewById<TapTextViewNew>(R.id.acceptedCardText) }
 
     /**
      * Initiating the tablayout with default theme and behaviour
@@ -74,7 +73,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
 
         applyThemeView()
 
-        setSelectionBehaviour()
+      //  setSelectionBehaviour()
     }
 
     private fun applyThemeView() {
@@ -245,14 +244,15 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
         )
       //  val parms = LayoutParams(width, height)
 
-       params.weight = 0.5f
+       params.weight = MetricsUtil.convertDpToPixel(0.5f,context)
         for (item in tabItems) {
            /* params.setMargins(
                 tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue,
                 tabItemMarginBottomValue
             )*/
-            params.marginStart=tabItemMarginLeftValue
-            params.marginEnd=tabItemMarginRightValue
+
+               // params.marginEnd=tabItemMarginRightValue
+               params.marginStart=tabItemMarginLeftValue
 
             item.imageView?.layoutParams = params
         }
@@ -293,7 +293,7 @@ class TapSelectionTabLayout(context: Context?, attrs: AttributeSet?) :
             width, height
         )
      //   params.setMargins(tabItemMarginLeftValue, tabItemMarginTopValue, tabItemMarginRightValue, tabItemMarginBottomValue)
-       params.weight = 0.5f
+       params.weight = MetricsUtil.convertDpToPixel(0.5f, context).toInt().toFloat()
 
         val image = TapImageView(context, null)
         image.layoutParams = params

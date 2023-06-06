@@ -43,7 +43,7 @@ public class Morphing2Animation {
         private int toStrokeColor;
 
         private TapMorphingButton button;
-        private Morphing2Animation.Listener animationListener;
+        private Listener animationListener;
 
         private Params(@NonNull TapMorphingButton button) {
             this.button = button;
@@ -58,7 +58,7 @@ public class Morphing2Animation {
             return this;
         }
 
-        public Params listener(@NonNull Morphing2Animation.Listener animationListener) {
+        public Params listener(@NonNull Listener animationListener) {
             this.animationListener = animationListener;
             return this;
         }

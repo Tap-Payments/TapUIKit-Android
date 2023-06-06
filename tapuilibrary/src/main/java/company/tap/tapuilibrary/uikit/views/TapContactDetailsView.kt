@@ -14,11 +14,12 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.*
+import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 
 
 class TapContactDetailsView : LinearLayout {
 
-    val cardDetailTitle by lazy { findViewById<TapTextView>(R.id.cardDetails_Title) }
+    val cardDetailTitle by lazy { findViewById<TapTextViewNew>(R.id.cardDetails_Title) }
     val contactEmailET by lazy { findViewById<TapEditText>(R.id.emailId_EditText) }
     val mobileMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
     val contactCountryPicker by lazy { findViewById<CountryCodePicker>(R.id.contact_countryCodePicker) }

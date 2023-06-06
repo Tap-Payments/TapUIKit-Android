@@ -8,7 +8,7 @@
     android:layout_gravity="start"
     android:orientation="vertical">
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/contactDetails_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/shipping_textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -17,25 +17,24 @@ import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapButton
 import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
-import kotlinx.android.synthetic.main.tap_main_amount.view.constraint
 
 class TapAmountSectionView : LinearLayout {
-    val selectedAmountValue by lazy { findViewById<TapTextView>(R.id.selectedAmountValue) }
+    val selectedAmountValue by lazy { findViewById<TapTextViewNew>(R.id.selectedAmountValue) }
     val constraint by lazy { findViewById<ConstraintLayout>(R.id.constraint) }
-    val mainKDAmountValue by lazy { findViewById<TapTextView>(R.id.mainKDAmountValue) }
+    val mainKDAmountValue by lazy { findViewById<TapTextViewNew>(R.id.mainKDAmountValue) }
     val itemCountButton by lazy { findViewById<TapButton>(R.id.itemCountButton) }
-    val itemCountText by lazy { findViewById<TapTextView>(R.id.itemCountText) }
-    val itemAmountText by lazy { findViewById<TapTextView>(R.id.itemAmountText) }
+    val itemCountText by lazy { findViewById<TapTextViewNew>(R.id.itemCountText) }
+    val itemAmountText by lazy { findViewById<TapTextViewNew>(R.id.itemAmountText) }
     val amountImageView by lazy { findViewById<TapImageView>(R.id.amountImageView) }
     val itemAmountLayout by lazy { findViewById<LinearLayout>(R.id.item_amount_Layout) }
-    val tapChipAmount by lazy { findViewById<TapChip>(R.id.tapChipAmount) } //todo framelayout changed to chip was giving error
-    val tapChipPopup by lazy { findViewById<TapChip>(R.id.tapChipPopup) }  //todo framelayout changed to chip was giving error
+    val tapChipAmount by lazy { findViewById<TapChip>(R.id.tapChipAmount) }
+    val tapChipPopup by lazy { findViewById<TapChip>(R.id.tapChipPopup) }
     val itemPopupLayout by lazy { findViewById<LinearLayout>(R.id.item_popup_Layout) }
     val flagImageView by lazy { findViewById<TapImageView>(R.id.flagImageView) }
-    val popupTextView by lazy { findViewById<TapTextView>(R.id.popupTextView) }
+    val popupTextView by lazy { findViewById<TapTextViewNew>(R.id.popupTextView) }
     val viewSeparator by lazy { findViewById<View>(R.id.viewSeparator) }
 
     private var amountViewDataSource: AmountViewDataSource? = null

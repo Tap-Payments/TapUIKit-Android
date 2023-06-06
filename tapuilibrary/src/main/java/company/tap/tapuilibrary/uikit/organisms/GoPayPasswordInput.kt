@@ -4,12 +4,9 @@ import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
-import android.view.View
 import android.widget.LinearLayout
 import androidx.cardview.widget.CardView
-import androidx.core.graphics.drawable.DrawableCompat
 import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.textfield.TextInputLayout
 import company.tap.taplocalizationkit.LocalizationManager
@@ -18,11 +15,10 @@ import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.EditTextTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.atoms.TextInputEditText
 import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
-import company.tap.tapuilibrary.uikit.interfaces.OtpButtonConfirmationInterface
 import company.tap.tapuilibrary.uikit.interfaces.PasswordConfirmationInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
@@ -40,10 +36,10 @@ class GoPayPasswordInput(context: Context?, attrs: AttributeSet?) :
     TapView<EditTextTheme> {
 
     val passwordTextInput by lazy { findViewById<TextInputEditText>(R.id.gopay_password_input_text) }
-    val changeEmail by lazy { findViewById<TapTextView>(R.id.change_email) }
+    val changeEmail by lazy { findViewById<TapTextViewNew>(R.id.change_email) }
     val textInputLayout by lazy { findViewById<TextInputLayout>(R.id.text_input_layout) }
     val signInButton by lazy { findViewById<TabAnimatedActionButton>(R.id.sigin_button) }
-    val passwordEmailText by lazy { findViewById<TapTextView>(R.id.passwordEmailText) }
+    val passwordEmailText by lazy { findViewById<TapTextViewNew>(R.id.passwordEmailText) }
     val rootView by lazy { findViewById<LinearLayout>(R.id.root_view) }
     val changeEmailCardView by lazy { findViewById<CardView>(R.id.changeEmailCardView) }
     private var passwordConfirmationInterface: PasswordConfirmationInterface? = null

@@ -59,7 +59,7 @@
             app:layout_constraintRight_toLeftOf="@+id/textViewCardDetails"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
             android:id="@+id/textViewCardDetails"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

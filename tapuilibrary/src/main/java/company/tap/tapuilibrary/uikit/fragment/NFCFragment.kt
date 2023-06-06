@@ -22,8 +22,7 @@ import company.tap.nfcreader.open.utils.TapCardUtils
 import company.tap.nfcreader.open.utils.TapNfcUtils
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.views.TapNFCView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -39,8 +38,8 @@ All rights reserved.
  **/
 class NFCFragment : Fragment() {
     private lateinit var customNFC: TapNFCView
-    private lateinit var scanNFC: TapTextView
-    private lateinit var aboutNFC: TapTextView
+    private lateinit var scanNFC: TapTextViewNew
+    private lateinit var aboutNFC: TapTextViewNew
     private var tapNfcCardReader: TapNfcCardReader? = null
     private var cardReadDisposable: Disposable = Disposables.empty()
 

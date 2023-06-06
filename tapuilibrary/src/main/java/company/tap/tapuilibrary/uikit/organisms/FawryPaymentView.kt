@@ -12,7 +12,7 @@ import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 
 
@@ -21,16 +21,16 @@ class FawryPaymentView  (context: Context?, attrs: AttributeSet?) :
 
 
         lateinit var attrs: AttributeSet
-        val titleText by lazy { findViewById<TapTextView>(R.id.titleText) }
-        val descText by lazy { findViewById<TapTextView>(R.id.descText) }
-        val orderCodeText by lazy { findViewById<TapTextView>(R.id.orderCodeText) }
-        val orderCodeValue by lazy { findViewById<TapTextView>(R.id.orderCodeValue) }
-        val codeExpireText by lazy { findViewById<TapTextView>(R.id.codeExpireText) }
-        val codeExpireValue by lazy { findViewById<TapTextView>(R.id.codeExpireValue) }
-        val linkDescText by lazy { findViewById<TapTextView>(R.id.linkDescText) }
-        val linkValue by lazy { findViewById<TapTextView>(R.id.linkValue) }
+        val titleText by lazy { findViewById<TapTextViewNew>(R.id.titleText) }
+        val descText by lazy { findViewById<TapTextViewNew>(R.id.descText) }
+        val orderCodeText by lazy { findViewById<TapTextViewNew>(R.id.orderCodeText) }
+        val orderCodeValue by lazy { findViewById<TapTextViewNew>(R.id.orderCodeValue) }
+        val codeExpireText by lazy { findViewById<TapTextViewNew>(R.id.codeExpireText) }
+        val codeExpireValue by lazy { findViewById<TapTextViewNew>(R.id.codeExpireValue) }
+        val linkDescText by lazy { findViewById<TapTextViewNew>(R.id.linkDescText) }
+        val linkValue by lazy { findViewById<TapTextViewNew>(R.id.linkValue) }
         val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
-    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
+    val textViewPowered by lazy { findViewById<TapTextViewNew>(R.id.textViewPowered) }
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
 //    val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
     val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }

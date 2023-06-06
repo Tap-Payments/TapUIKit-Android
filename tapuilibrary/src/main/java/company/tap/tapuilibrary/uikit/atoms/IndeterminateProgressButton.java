@@ -19,7 +19,7 @@ import company.tap.tapuilibrary.R;
 import company.tap.tapuilibrary.uikit.animation.Morphing2Animation;
 import company.tap.tapuilibrary.uikit.views.TapMorphingButton;
 
-public class IndeterminateProgressButton extends TapMorphingButton{
+public class IndeterminateProgressButton extends TapMorphingButton {
 
     private int mColor1;
     private int mColor2;

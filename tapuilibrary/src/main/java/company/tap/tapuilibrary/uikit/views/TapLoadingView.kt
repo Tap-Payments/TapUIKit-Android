@@ -5,10 +5,10 @@ import android.util.AttributeSet
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.annotation.DrawableRes
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.interfaces.TapProgressIndicatorInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
+import company.tap.tapuilibrary.R
 
 
 /**

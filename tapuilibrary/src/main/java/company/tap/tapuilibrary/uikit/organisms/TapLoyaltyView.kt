@@ -2,29 +2,20 @@ package company.tap.tapuilibrary.uikit.organisms
 
 import android.content.Context
 import android.graphics.Color
-import android.text.*
 import android.text.method.LinkMovementMethod
-import android.text.style.ClickableSpan
 import android.util.AttributeSet
-import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
-import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.*
-import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.datasource.LoyaltyHeaderDataSource
-import company.tap.tapuilibrary.uikit.ktx.makeLinks
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.views.TapAlertView
-import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TextDrawable
+import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.uikit.atoms.TapImageView
 
 class TapLoyaltyView (context: Context?, attrs: AttributeSet?) :
 LinearLayout(context, attrs){
@@ -35,16 +26,16 @@ LinearLayout(context, attrs){
     val cardViewOut by lazy { findViewById<CardView>(R.id.cardViewOut) }
     val mainChip by lazy { findViewById<TapChip>(R.id.mainChip) }
     val iconBank by lazy { findViewById<TapImageView>(R.id.iconBank) }
-    val textViewTitle by lazy { findViewById<TapTextView>(R.id.textViewTitle) }
-    val textViewClickable by lazy { findViewById<TapTextView>(R.id.textViewClickable) }
+    val textViewTitle by lazy { findViewById<TapTextViewNew>(R.id.textViewTitle) }
+    val textViewClickable by lazy { findViewById<TapTextViewNew>(R.id.textViewClickable) }
     val switchLoyalty by lazy { findViewById<TapSwitch>(R.id.switchLoyalty) }
-    val textViewSubTitle by lazy { findViewById<TapTextView>(R.id.textViewSubTitle) }
+    val textViewSubTitle by lazy { findViewById<TapTextViewNew>(R.id.textViewSubTitle) }
     val editTextAmount by lazy { findViewById<TextInputEditText>(R.id.editTextAmount) }
-    val textViewTouchPoints by lazy { findViewById<TapTextView>(R.id.textViewTouchPoints) }
-    val textViewCurrency by lazy { findViewById<TapTextView>(R.id.textViewCurrency) }
+    val textViewTouchPoints by lazy { findViewById<TapTextViewNew>(R.id.textViewTouchPoints) }
+    val textViewCurrency by lazy { findViewById<TapTextViewNew>(R.id.textViewCurrency) }
     val loyaltyAlertView by lazy { findViewById<TapAlertView>(R.id.loyalty_alertView) }
-    val textViewRemainPoints by lazy { findViewById<TapTextView>(R.id.textViewRemainPoints) }
-    val textViewRemainAmount by lazy { findViewById<TapTextView>(R.id.textViewRemainAmount) }
+    val textViewRemainPoints by lazy { findViewById<TapTextViewNew>(R.id.textViewRemainPoints) }
+    val textViewRemainAmount by lazy { findViewById<TapTextViewNew>(R.id.textViewRemainAmount) }
 
 
     private var loyaltyHeaderDataSource: LoyaltyHeaderDataSource? = null

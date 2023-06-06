@@ -34,7 +34,7 @@
                 android:paddingBottom="@dimen/margin_basic_20dp"
                 android:weightSum="0.5">
 
-                <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                     android:id="@+id/mainTextSave"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.doOnTextChanged
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.LoyaltyHeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.makeLinks
 import company.tap.tapuilibrary.uikit.organisms.TapLoyaltyView
@@ -19,7 +19,7 @@ import company.tap.tapuisample.R
 class LoyaltyViewActivity : AppCompatActivity() {
     var loyaltyView: TapLoyaltyView? = null
     var constraintt: ConstraintLayout? = null
-    var textViewClickable: TapTextView? = null
+    var textViewClickable: TapTextViewNew? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loyalty_view)

@@ -17,7 +17,7 @@ import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.ktx.setTopBorders
@@ -32,9 +32,9 @@ import kotlinx.android.synthetic.main.tap_main_header.view.*
 class TapHeaderSectionView : LinearLayout {
 
     val businessIcon by lazy { findViewById<TapImageView>(R.id.businessIcon) }
-    val businessName by lazy { findViewById<TapTextView>(R.id.businessName) }
-    val paymentFor by lazy { findViewById<TapTextView>(R.id.paymentFor) }
-    val businessPlaceholder by lazy { findViewById<TapTextView>(R.id.placeholderText) }
+    val businessName by lazy { findViewById<TapTextViewNew>(R.id.businessName) }
+    val paymentFor by lazy { findViewById<TapTextViewNew>(R.id.paymentFor) }
+    val businessPlaceholder by lazy { findViewById<TapTextViewNew>(R.id.placeholderText) }
     val tapChipIcon by lazy { findViewById<TapChip>(R.id.tapChipIcon) }
     val draggerView by lazy { findViewById<View>(R.id.draggerView) }
     private var headerDataSource: HeaderDataSource? = null

@@ -41,7 +41,7 @@ class TapActionButton @JvmOverloads constructor(
             requestLayout()
         }
 
-    var fromBgColor: Int = getColorX(R.color.gray)
+    var fromBgColor: Int = getColorX(company.tap.tapuilibrary.R.color.gray)
     var toBgColor: Int = getColorX(R.color.colorAccent)
     var fromTextColor: Int = Color.BLACK
     var toTextColor: Int = getColorX(R.color.red_error)

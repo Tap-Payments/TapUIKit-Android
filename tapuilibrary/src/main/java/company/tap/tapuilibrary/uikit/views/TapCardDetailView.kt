@@ -1,20 +1,10 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
-import android.graphics.Color
-import android.graphics.Typeface
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
-import company.tap.tapuilibrary.fontskit.enums.TapFont
-import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.themekit.theme.TextViewTheme
-import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-import company.tap.tapuilibrary.uikit.atoms.TapSwitch
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
-import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
-import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 
 class TapCardDetailView : LinearLayout {
 

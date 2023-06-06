@@ -16,7 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.themekit.theme.ImageViewTheme
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.HeaderDataSource
 import company.tap.tapuilibrary.uikit.ktx.setTopBorders
 import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
@@ -35,9 +35,9 @@ All rights reserved.
  **/
 class OTPFragment : TapBottomSheetDialog() {
     private lateinit var otpView: TapOTPView
-    private lateinit var otpSent: TapTextView
-    private lateinit var otpMobile: TapTextView
-    private lateinit var timerText: TapTextView
+    private lateinit var otpSent: TapTextViewNew
+    private lateinit var otpMobile: TapTextViewNew
+    private lateinit var timerText: TapTextViewNew
     private lateinit var tapBrandView: TapBrandView
     private lateinit var tapHeaderSectionView: company.tap.tapuilibrary.uikit.views.TapHeaderSectionView
 

@@ -13,7 +13,7 @@ import androidx.transition.TransitionManager
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.interfaces.TapSwitchInterface
 import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
@@ -29,15 +29,15 @@ All rights reserved.
  **/
 open class SwitchFragment : TapBottomSheetDialog() {
     private lateinit var switchDemo: TapCardSwitch
-    private lateinit var demoText: TapTextView
+    private lateinit var demoText: TapTextViewNew
     private var tapSwitchInterface: TapSwitchInterface? = null
 //    private var switchSaveDemo: TapSwitch? = null
     private var switchLayout: LinearLayout? = null
     private var switchMerchantCheckout: TapSwitch? = null
     private var switchgoPayCheckout: TapSwitch? = null
-    private var savegoPay: TapTextView? = null
-    private var alertgoPay: TapTextView? = null
-//    private var saveCardorMobile: TapTextView? = null
+    private var savegoPay: TapTextViewNew? = null
+    private var alertgoPay: TapTextViewNew? = null
+//    private var saveCardorMobile: TapTextViewNew? = null
     private var separatorView: TapSeparatorView? = null
     private var radioGroup: RadioGroup? = null
     private lateinit var radio: RadioButton

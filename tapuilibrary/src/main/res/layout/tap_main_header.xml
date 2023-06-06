@@ -72,16 +72,16 @@
                />
         </company.tap.tapuilibrary.uikit.atoms.TapChip>
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
             android:id="@+id/paymentFor"
             style="@style/TextStyle"
             android:layout_width="0dp"
+            android:layout_marginStart="8dp"
             android:includeFontPadding="false"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/tapChipIcon"
             android:gravity="center_vertical"
             android:shadowColor="#00a8a8a8"
-
             android:textAllCaps="true"
             android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/businessName"
@@ -89,7 +89,7 @@
             app:layout_constraintStart_toEndOf="@+id/tapChipIcon"
             tools:text="Payment for " />
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
             android:id="@+id/businessName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

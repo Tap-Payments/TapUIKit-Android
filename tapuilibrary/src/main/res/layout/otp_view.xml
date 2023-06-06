@@ -28,7 +28,7 @@
             android:paddingStart="10dp"
             android:paddingEnd="10dp">
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/otpSentText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/mobileNumberText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/changePhone"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -190,7 +190,7 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp">
 
-                <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                     android:id="@+id/otpSentTextNormalPay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -205,7 +205,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                     android:id="@+id/mobileNumberTextNormalPay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -223,7 +223,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/otpHintText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -239,7 +239,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/timerText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -277,7 +277,7 @@
 
             android:orientation="horizontal">
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/textViewPowered"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

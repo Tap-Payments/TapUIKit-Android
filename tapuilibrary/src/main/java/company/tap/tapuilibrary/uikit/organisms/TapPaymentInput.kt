@@ -6,27 +6,21 @@ import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
-import android.view.View
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import androidx.annotation.DrawableRes
 import androidx.annotation.RequiresApi
-import androidx.cardview.widget.CardView
-import company.tap.tapuilibrary.R
+
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TabSelectTheme
-import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
-import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 import company.tap.tapuilibrary.uikit.models.TabSection
 import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
-import kotlinx.android.synthetic.main.item_knet.view.*
+import company.tap.tapuilibrary.R
 
 /**
  *
@@ -39,13 +33,10 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
 
     val tabLayout by lazy { findViewById<TapSelectionTabLayout>(R.id.sections_tablayout) }
     val paymentInputContainer by lazy { findViewById<LinearLayout>(R.id.payment_input_layout) }
+    val mainLinear by lazy { findViewById<LinearLayout>(R.id.mainLinear) }
+
     val tabLinear by lazy { findViewById<RelativeLayout>(R.id.tabLinear) }
-   // val clearView by lazy { findViewById<ImageView>(R.id.clear_text) }
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
-    val separator4 by lazy { findViewById<TapSeparatorView>(R.id.separator4) }
-    val inlineProgressBar by lazy { findViewById<ProgressBar>(R.id.inlineProgressbar) }
-  //  val cardInputCardView by lazy { findViewById<CardView>(R.id.cardInput_cardView) }
-    val cardInputChipView by lazy { findViewById<CardView>(R.id.inline_CardView) }
     //var cardScannerButton :ImageView
    // var nfcButton :ImageView
     private  var tapMobileInputView: TapMobilePaymentView

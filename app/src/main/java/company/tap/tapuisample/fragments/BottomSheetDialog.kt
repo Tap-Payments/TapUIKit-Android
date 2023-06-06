@@ -51,7 +51,6 @@ import company.tap.tapuilibrary.uikit.atoms.*
 import company.tap.tapuilibrary.uikit.datasource.*
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
 import company.tap.tapuilibrary.uikit.enums.GoPayLoginMethod
-import company.tap.tapuilibrary.uikit.fragment.CardScannerFragment
 import company.tap.tapuilibrary.uikit.fragment.NFCFragment
 import company.tap.tapuilibrary.uikit.interfaces.*
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
@@ -84,8 +83,8 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     OnCardSelectedActionListener, TapActionButtonInterface, TapPaymentShowHideClearImage,
     WebViewContract, OtpButtonConfirmationInterface {
 
-    private lateinit var selectedCurrency: TapTextView
-    private lateinit var currentCurrency: TapTextView
+    private lateinit var selectedCurrency: TapTextViewNew
+    private lateinit var currentCurrency: TapTextViewNew
     private lateinit var itemCount: TapButton
     private var tapAmountSectionInterface: TapAmountSectionInterface? = null
     private lateinit var chipRecycler: RecyclerView
@@ -98,7 +97,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private lateinit var amountSectionView: TapAmountSectionView
     private lateinit var businessIcon: TapImageView
     private lateinit var tapCloseIcon: TapImageView
-    private lateinit var businessPlaceholder: TapTextView
+    private lateinit var businessPlaceholder: TapTextViewNew
     var fontChanger: FontChanger? = null
     private var selectedTab = 0
 
@@ -116,22 +115,22 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var switchLayout: LinearLayout? = null
     private var switchMerchantCheckout: TapSwitch? = null
     private var switchgoPayCheckout: TapSwitch? = null
-    private var savegoPay: TapTextView? = null
-    private var alertgoPay: TapTextView? = null
-    private var saveCardorMobile: TapTextView? = null
+    private var savegoPay: TapTextViewNew? = null
+    private var alertgoPay: TapTextViewNew? = null
+    private var saveCardorMobile: TapTextViewNew? = null
     private var separatorView: TapSeparatorView? = null
     private var checkboxString: String? = null
     private var mainChipGroup: TapChipGroup? = null
-    private var groupName: TapTextView? = null
-    private var groupAction: TapTextView? = null
+    private var groupName: TapTextViewNew? = null
+    private var groupAction: TapTextViewNew? = null
     private var cardScannerBtn: ImageView? = null
     private var nfcButton: ImageView? = null
     private var mobileNumberEditText: EditText? = null
-    private var alertMessage: TapTextView? = null
+    private var alertMessage: TapTextViewNew? = null
     private var clearView: ImageView? = null
     private var linearLayoutPay: RelativeLayout? = null
     private var tapSeparatorViewLinear: LinearLayout? = null
-    private val cardFragment = CardScannerFragment()
+    private val cardFragment = CardScannerSampleFragment()
     private val nfcFragment = NFCFragment()
     private var cardFragmentadded: Boolean = false
     private var delImageView1: ImageView? = null
@@ -143,7 +142,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
     private var goPayLoginInput: GoPayLoginInput? = null
     private var otpButtonConfirmationInterface: OtpButtonConfirmationInterface? = null
     private var otpView: OTPView? = null
-    private var acceptedCardText: TapTextView? = null
+    private var acceptedCardText: TapTextViewNew? = null
     private var mainLinear: LinearLayout? = null
     private var contactDetailView: TapContactDetailsView? = null
     private var shippingDetailView: TapShippingDetailView? = null
@@ -441,7 +440,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
         cardScannerBtn?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("inlineCard.commonAttributes.backgroundColor")))
         cardScannerBtn?.setOnClickListener {
             bottomSheetDialog.behavior.isFitToContents = false
-            val cardFragment = CardScannerFragment()
+            val cardFragment =  CardScannerSampleFragment()
             tabLayout?.visibility = View.GONE
             paymentLayout.visibility = View.GONE
             currentCurrency.visibility = View.GONE
@@ -458,7 +457,7 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 //            outer_layout.visibility = View.GONE
             itemCount.text = "CLOSE"
 
-            childFragmentManager
+           childFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_container_nfc, cardFragment)
                 .commit()
@@ -547,13 +546,13 @@ open class BottomSheetDialog : TapBottomSheetDialog(),
 
         //cardInputCardView = tapPaymentInput.findViewById(R.id.inline_CardView)
         mainChipgroup.orientation = LinearLayout.HORIZONTAL
-        groupName = view.findViewById<TapTextView>(R.id.group_name)
+        groupName = view.findViewById<TapTextViewNew>(R.id.group_name)
         groupName?.text = LocalizationManager.getValue(
             "GatewayHeader",
             "HorizontalHeaders",
             "leftTitle"
         )
-        groupAction = view.findViewById<TapTextView>(R.id.group_action)
+        groupAction = view.findViewById<TapTextViewNew>(R.id.group_action)
         groupAction?.text = LocalizationManager.getValue(
             "GatewayHeader",
             "HorizontalHeaders",

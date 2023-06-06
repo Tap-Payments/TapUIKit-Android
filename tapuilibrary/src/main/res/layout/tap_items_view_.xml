@@ -11,7 +11,7 @@
     android:textDirection="locale"
     android:layout_marginBottom="@dimen/margin_basic_13dp">
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/item_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Item TItle Item TItle Item TItle Item TItle Item TItle IItle Item TItle Item TItle IItle Item TItle Item TItle IItle Item TItle Item TItle Item TItle Item TItle" />
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/show_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         tools:text="Show Description" />
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/item_amount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1000,000" />
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/discount_text"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toStartOf="@+id/total_amount"
         tools:text="Discount" />
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/total_amount"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <company.tap.tapuilibrary.uikit.atoms.TapTextView
+        <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
             android:id="@+id/total_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

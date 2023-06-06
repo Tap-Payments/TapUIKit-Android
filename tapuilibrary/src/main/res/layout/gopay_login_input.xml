@@ -157,7 +157,7 @@
                 android:background="#dfdfdf"
                 android:id="@+id/goPayTabSeparator_"/>
 
-            <company.tap.tapuilibrary.uikit.atoms.TapTextView
+            <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                 android:id="@+id/gopay_hint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

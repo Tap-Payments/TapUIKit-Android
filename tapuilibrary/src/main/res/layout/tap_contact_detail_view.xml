@@ -9,7 +9,7 @@
     android:layoutDirection="locale"
     android:id="@+id/cardDet_mainLL">
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/cardDetails_Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

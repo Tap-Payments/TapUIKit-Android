@@ -12,7 +12,7 @@ import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 
 /**
  * Created  on 8/10/20.
@@ -22,7 +22,7 @@ All rights reserved.
  **/
 class TapAlertView : LinearLayout {
 
-    val alertMessage by lazy { findViewById<TapTextView>(R.id.textViewAlertMessage) }
+    val alertMessage by lazy { findViewById<TapTextViewNew>(R.id.textViewAlertMessage) }
     val tapAlertLinear by lazy { findViewById<LinearLayout>(R.id.tapAlertLinear) }
     val topSeparator by lazy { findViewById<TapSeparatorView>(R.id.topSeparator) }
     val bottomSeparator by lazy { findViewById<TapSeparatorView>(R.id.bottomSeparator) }

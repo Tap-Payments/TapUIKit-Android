@@ -17,7 +17,7 @@ import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 
@@ -31,8 +31,8 @@ All rights reserved.
  *  saveGoPayCheckout for Merchant
  **/
 class TapCardSwitch : LinearLayout {
-    val saveGoPay by lazy { findViewById<TapTextView>(R.id.save_goPay) }
-    val alertGoPaySignUp by lazy { findViewById<TapTextView>(R.id.alert_gopay_signup) }
+    val saveGoPay by lazy { findViewById<TapTextViewNew>(R.id.save_goPay) }
+    val alertGoPaySignUp by lazy { findViewById<TapTextViewNew>(R.id.alert_gopay_signup) }
     val switchSaveMerchant by lazy { findViewById<TapSwitch>(R.id.switch_merchant_checkout) }
     val switchGoPayCheckout by lazy { findViewById<TapSwitch>(R.id.switch_gopay_checkout) }
     val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
@@ -40,7 +40,7 @@ class TapCardSwitch : LinearLayout {
     val switchSeparator by lazy { findViewById<TapSeparatorView>(R.id.switch_separator) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
     val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
-    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
+    val textViewPowered by lazy { findViewById<TapTextViewNew>(R.id.textViewPowered) }
     val tapLogoImage by lazy { findViewById<TapImageView>(R.id.tapLogoImage) }
    // val tapTextView by lazy { findViewById<TapTextView>(R.id.textTap_label) }
     private var actionButtonInterface: TapActionButtonInterface? = null

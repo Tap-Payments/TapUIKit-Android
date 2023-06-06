@@ -6,17 +6,12 @@ import android.graphics.Color
 import android.graphics.Typeface
 import android.text.Html
 import android.util.AttributeSet
-import android.util.Log
 import android.view.View
-import android.view.View.OnClickListener
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.annotation.DrawableRes
 import com.skydoves.balloon.*
-import com.tomergoldst.tooltips.ToolTip
-import com.tomergoldst.tooltips.ToolTipsManager
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -27,7 +22,7 @@ import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.atoms.TapSwitch
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.TapSwitchDataSource
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 
@@ -50,11 +45,11 @@ class TapInlineCardSwitch : LinearLayout  {
     val tapCardSwitchLinear by lazy { findViewById<LinearLayout>(R.id.tapCardSwitchLinear) }
     val payButton by lazy { findViewById<TabAnimatedActionButton>(R.id.payButton) }
     val brandingLayout by lazy { findViewById<LinearLayout>(R.id.brandingLayout) }
-    val textViewPowered by lazy { findViewById<TapTextView>(R.id.textViewPowered) }
+    val textViewPowered by lazy { findViewById<TapTextViewNew>(R.id.textViewPowered) }
     val toolsTipImageView by lazy { findViewById<TapImageView>(R.id.toolsTipImageView) }
     val secondaryLayout by lazy { findViewById<LinearLayout>(R.id.secondary_Layout) }
     val saveForOtherCheckBox by lazy { findViewById<CheckBox>(R.id.saveForOtherCheckBox) }
-    val saveForOtherTextView by lazy { findViewById<TapTextView>(R.id.saveForOtherTextView) }
+    val saveForOtherTextView by lazy { findViewById<TapTextViewNew>(R.id.saveForOtherTextView) }
     val switchSeparator by lazy { findViewById<TapSeparatorView>(R.id.switch_Separator) }
 
     private var actionButtonInterface: TapActionButtonInterface? = null

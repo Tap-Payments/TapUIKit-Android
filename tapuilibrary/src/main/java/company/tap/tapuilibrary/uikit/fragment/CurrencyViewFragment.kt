@@ -16,10 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.themekit.ThemeManager
-import company.tap.tapuilibrary.uikit.adapters.CurrencyAdapter
 import company.tap.tapuilibrary.uikit.adapters.ItemAdapter
 import company.tap.tapuilibrary.uikit.atoms.TapChipGroup
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.model.CurrencyModel
 import kotlinx.android.synthetic.main.item_frame_currency.*
 
@@ -34,7 +33,9 @@ open class CurrencyViewFragment : Fragment() {
     lateinit var currencyList: ArrayList<CurrencyModel>
 
     private lateinit var itemsRecycler: RecyclerView
-    private val itemList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6,7,8,9,10,11,12,13,14,15,16,17,18,20,21,22)
+    private val itemList: ArrayList<Int> =
+        arrayListOf(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 21, 22)
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,19 +45,18 @@ open class CurrencyViewFragment : Fragment() {
         fillData()
 
         val currencyGroup = view.findViewById<TapChipGroup>(R.id.currencyLayout1)
+
         val headerView = view.findViewById<ConstraintLayout>(R.id.header_view)
 //        headerView.visibility=View.GONE
         currencyGroup.orientation = LinearLayout.HORIZONTAL
-        val groupName = currencyGroup.findViewById<TapTextView>(R.id.group_name)
-        groupName.visibility=View.GONE
-        val groupAction = currencyGroup.findViewById<TapTextView>(R.id.group_action)
-        groupAction.visibility=View.GONE
+        val groupName = currencyGroup.findViewById<TapTextViewNew>(R.id.group_name)
+        groupName.visibility = View.GONE
+        val groupAction = currencyGroup.findViewById<TapTextViewNew>(R.id.group_action)
+        groupAction.visibility = View.GONE
         chipRecycler = currencyGroup.findViewById<View>(R.id.chip_recycler) as RecyclerView
         chipRecycler.setHasFixedSize(true)
         chipRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-        chipRecycler.adapter = CurrencyAdapter(currencyList)
         itemsRecycler = view.findViewById<View>(R.id.items_recylerview) as RecyclerView
-//        itemsRecycler.setHasFixedSize(false)
         headerView.visibility = View.GONE
 
         itemsRecycler.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
@@ -137,7 +137,6 @@ open class CurrencyViewFragment : Fragment() {
         )
 
     }
-
 
 
     fun setTheme() {

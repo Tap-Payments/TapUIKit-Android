@@ -7,11 +7,11 @@ import android.util.AttributeSet
 import android.widget.LinearLayout
 import com.bumptech.glide.Glide
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
+import company.tap.tapuilibrary.R
 
 /**
  * Created by AhlaamK on 7/1/20.
@@ -27,9 +27,9 @@ All rights reserved.
 class TapNFCView : LinearLayout {
     private var gifNFC: TapImageView
     val topLinearNFC by lazy { findViewById<LinearLayout>(R.id.topLinearNFC) }
-    val scanNfc by lazy { findViewById<TapTextView>(R.id.scan_nfc) }
+    val scanNfc by lazy { findViewById<TapTextViewNew>(R.id.scan_nfc) }
     val mainLinearNFC by lazy { findViewById<LinearLayout>(R.id.mainLinearNFC) }
-    val aboutNFC by lazy { findViewById<TapTextView>(R.id.aboutNFC) }
+    val aboutNFC by lazy { findViewById<TapTextViewNew>(R.id.aboutNFC) }
 
 
     /**

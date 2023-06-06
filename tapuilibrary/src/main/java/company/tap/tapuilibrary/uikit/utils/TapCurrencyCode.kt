@@ -1,7 +1,5 @@
 package company.tap.tapuilibrary.uikit.utils
 
-import company.tap.tapuilibrary.fontskit.enums.TapFont
-
 enum class TapCurrencyCode {
 
     undefined,

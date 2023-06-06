@@ -8,18 +8,18 @@ import android.view.View
 import android.widget.LinearLayout
 import com.hbb20.CountryCodePicker
 import company.tap.taplocalizationkit.LocalizationManager
-import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.themekit.theme.SeparatorViewTheme
 import company.tap.tapuilibrary.themekit.theme.TextViewTheme
 import company.tap.tapuilibrary.uikit.atoms.TapEditText
 import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
-import company.tap.tapuilibrary.uikit.atoms.TapTextView
+import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
+import company.tap.tapuilibrary.R
 
 class TapShippingDetailView : LinearLayout {
 
-    val shippingDetailTitle by lazy { findViewById<TapTextView>(R.id.cardShipping_Title) }
+    val shippingDetailTitle by lazy { findViewById<TapTextViewNew>(R.id.cardShipping_Title) }
     val flatEditText by lazy { findViewById<TapEditText>(R.id.flat_EditText) }
     val additionalLineEditText by lazy { findViewById<TapEditText>(R.id.additionalLine_EditText) }
     val cityEditText by lazy { findViewById<TapEditText>(R.id.cityName_EditText) }
