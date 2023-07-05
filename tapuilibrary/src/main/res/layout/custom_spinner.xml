@@ -10,16 +10,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:id="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_margin="@dimen/_10sdp">
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:layout_marginStart="@dimen/_8sdp"
+        >
 
     <ImageView
         android:layout_width="@dimen/_15sdp"
         android:layout_height="@dimen/_11sdp"
-        android:src="@drawable/usa_flag"
+        tools:src="@drawable/usa_flag"
+        android:layout_gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/iv_flag"
@@ -28,10 +32,11 @@
 
     <TextView
         android:id="@+id/tv_spinnervalue"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/black_color"
-        android:gravity="center"
+        android:gravity="start"
+        android:textDirection="locale"
         android:layout_marginStart="@dimen/_4sdp"
         tools:text="test"
         android:textSize="13sp"

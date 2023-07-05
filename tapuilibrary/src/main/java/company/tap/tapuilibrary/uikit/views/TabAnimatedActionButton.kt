@@ -1,5 +1,6 @@
 package company.tap.tapuilibrary.uikit.views
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -12,7 +13,6 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.cardview.widget.CardView
 import androidx.core.view.setMargins
@@ -31,6 +31,7 @@ import company.tap.tapuilibrary.uikit.interfaces.TabAnimatedButtonListener
 import company.tap.tapuilibrary.uikit.interfaces.TapActionButtonInterface
 import company.tap.tapuilibrary.uikit.ktx.setImage
 import company.tap.tapuilibrary.uikit.utils.MetricsUtil
+import kotlin.math.roundToInt
 
 
 /**
@@ -290,11 +291,13 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
                 removeView(getImageView(loaderSuccessGif, 0) {})
                 removeView(getImageView(loaderErrorGif, 0) {})
                 addChildView(getTextView(LocalizationManager.getLocale(context).language))
+                val dimens = resources.getDimension(R.dimen._36sdp).roundToInt()
+
                 if (displayMetrics == DisplayMetrics.DENSITY_450 || displayMetrics == DisplayMetrics.DENSITY_420 || displayMetrics == DisplayMetrics.DENSITY_400 || displayMetrics == DisplayMetrics.DENSITY_440 || displayMetrics == DisplayMetrics.DENSITY_XXHIGH ) {
 
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
-                        100
+                        dimens
                     )
                     params.setMargins(60, 40, 60, 60)
                     params.gravity = Gravity.CENTER
@@ -306,7 +309,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
-                        80
+                        dimens
                     )
                     params.setMargins(50, 40, 50, 40)
                     params.gravity = Gravity.CENTER
@@ -318,7 +321,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
                     val params = LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
-                        130
+                        dimens
                     )
                     params.setMargins(40, 40, 40, 60)
                     params.gravity = Gravity.CENTER
@@ -328,6 +331,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
 
                 }
                 morphingAnimation.setAnimationEndListener(this)
+                init()
                 this.isClickable = true
                 this.isEnabled = true
             }
@@ -445,15 +449,17 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
         return image
     }
 
+    @SuppressLint("ResourceType")
     private fun startStateAnimation() {
+        val dimens = resources.getDimension(R.dimen._36sdp).roundToInt()
 
         if (displayMetrics == DisplayMetrics.DENSITY_450 || displayMetrics == DisplayMetrics.DENSITY_420 || displayMetrics == DisplayMetrics.DENSITY_400 || displayMetrics == DisplayMetrics.DENSITY_440 || displayMetrics == DisplayMetrics.DENSITY_XXHIGH ) {
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,
-                    toHeight = 70,
+                    toHeight = dimens,
                     fromWidth = width,
-                    toWidth = 70 + 40,
+                    toWidth = dimens,
                     fromCorners = dataSource?.cornerRadius,
                     toCorners = maxCorners,
                     fromColor = dataSource?.backgroundColor,
@@ -465,9 +471,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,
-                    toHeight = 40,
+                    toHeight = dimens.toInt(),
                     fromWidth = width,
-                    toWidth = 40 + 40,
+                    toWidth = dimens.toInt(),
                     fromCorners = dataSource?.cornerRadius,
                     toCorners = maxCorners,
                     fromColor = dataSource?.backgroundColor,
@@ -479,9 +485,9 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
             animationDataSource =
                 AnimationDataSource(
                     fromHeight = height,
-                    toHeight = 100,
+                    toHeight = dimens,
                     fromWidth = width,
-                    toWidth = 100 + 40,
+                    toWidth = dimens ,
                     fromCorners = dataSource?.cornerRadius,
                     toCorners = maxCorners,
                     fromColor = dataSource?.backgroundColor,
@@ -604,7 +610,7 @@ class TabAnimatedActionButton : CardView, MorphingAnimation.OnAnimationEndListen
     companion object {
         const val MAX_CORNERS = 100f
         const val MAX_RADIUS = 40
-        const val MAX_DURATION = 2000
+        const val MAX_DURATION = 1500
     }
 
 }

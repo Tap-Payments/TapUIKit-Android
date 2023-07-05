@@ -1,5 +1,6 @@
 package company.tap.tapuilibrary.uikit.views
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
@@ -19,6 +20,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapChip
 import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.datasource.AmountViewDataSource
+import company.tap.tapuilibrary.uikit.formatTo2DecimalPoints
 import company.tap.tapuilibrary.uikit.ktx.setBorderedView
 
 class TapAmountSectionView : LinearLayout {
@@ -183,18 +185,15 @@ class TapAmountSectionView : LinearLayout {
      * @param amountViewDataSource is set via the consumer app for selectedCurrency,
      * currentCurrency and itemCount.
      **/
+    @SuppressLint("SetTextI18n")
     fun setAmountViewDataSource(amountViewDataSource: AmountViewDataSource) {
         this.amountViewDataSource = amountViewDataSource
-        selectedAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.selectedCurrText , amountViewDataSource.selectedCurr)
-        mainKDAmountValue.text = String.format(context.getString(R.string.item_price),amountViewDataSource.currentCurrText , amountViewDataSource.currentCurr)
-       // itemCountButton.text =  amountViewDataSource.itemCount
+        selectedAmountValue.text = amountViewDataSource.selectedCurrText + " " +  amountViewDataSource.selectedCurr?.formatTo2DecimalPoints()
+        mainKDAmountValue.text =amountViewDataSource.currentCurrText + " " +  amountViewDataSource.currentCurr?.formatTo2DecimalPoints()
         itemCountButton.tag =  amountViewDataSource.itemCount
         itemCountText.text =  amountViewDataSource.itemCount
         itemAmountText.text =  amountViewDataSource.selectedCurrText
         itemCountButton.tag =  amountViewDataSource.itemCount
-
-
-//        amountViewDataSource.itemCount?.let { itemCountButton.text = it }
         itemCountButton.elevation = 0F
     }
 

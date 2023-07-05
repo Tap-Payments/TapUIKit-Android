@@ -1,7 +1,5 @@
 package company.tap.tapuilibrary.uikit.ktx
 
-import android.R.attr.path
-import android.R.attr.radius
 import android.app.Activity
 import android.content.Context
 import android.graphics.Color
@@ -126,7 +124,7 @@ fun setTopBorders(
     shapeDrawable.elevation = 20f
 }
 
-fun loadAppThemManagerFromPath(pathValue: String) =  Color.parseColor(ThemeManager.getValue(pathValue))
+fun loadAppThemManagerFromPath(pathValue: String) =  Color.parseColor((ThemeManager.getValue(pathValue) as String))
 
 fun setBottomBorders(
     view: View,

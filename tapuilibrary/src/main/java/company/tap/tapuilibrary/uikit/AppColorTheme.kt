@@ -12,6 +12,8 @@ object AppColorTheme {
 
 
     const val ControlCurrencyWidgetBackground="CurrencyWidget.background.color"
+    const val ControlCurrencyWidgetColorTintOfStroke="CurrencyWidget.currencyDropDown.arrowDownTint"
+
     const val ControlCurrencyWidgetBackgroundRadius="CurrencyWidget.background.cornerRadius"
     const val ControlCurrencyWidgetConfirmButtonBackgroundColor="CurrencyWidget.confirmButton.backgroundColor"
     const val ControlCurrencyWidgetConfirmButtonCornerRadius="CurrencyWidget.confirmButton.cornerRadius"
@@ -20,6 +22,7 @@ object AppColorTheme {
     const val ControlCurrencyWidgetAmountLabelColor="CurrencyWidget.amountLabel.color"
     const val ControlCurrencyWidgetAmountLabelFont="CurrencyWidget.amountLabel.font"
     const val ControlCurrencyWidgetCurrencyDropDownLabelColor="CurrencyWidget.currencyDropDown.labelColor"
+    const val ControlCurrencyWidgetCurrencyDropDownTintColorOfIcon="CurrencyWidget.currencyDropDown.arrowDownTint"
 
     const val ControlCurrencyWidgetMessageColor="CurrencyWidget.messageLabel.color"
 
