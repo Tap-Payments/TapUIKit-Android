@@ -29,6 +29,8 @@
         app:tabGravity="start"
         android:focusable="false"
         android:clickable="false"
+        app:tabPaddingStart="0dp"
+        app:tabPaddingEnd="0dp"
         app:tabRippleColor="@null"
         android:overScrollMode="never"
         app:tabMode="fixed"
