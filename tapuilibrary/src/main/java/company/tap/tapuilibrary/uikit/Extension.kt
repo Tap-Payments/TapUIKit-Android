@@ -3,6 +3,7 @@ package company.tap.tapuilibrary.uikit
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
+import android.graphics.Typeface
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.MotionEvent
@@ -10,6 +11,8 @@ import android.widget.TextView
 import androidx.core.text.TextUtilsCompat
 import androidx.core.text.isDigitsOnly
 import androidx.core.view.ViewCompat
+import company.tap.taplocalizationkit.LocalizationManager
+import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import java.math.RoundingMode
 import java.text.DecimalFormat
@@ -38,8 +41,18 @@ fun isLayoutRTL() =
 
 fun String.getColorWithoutOpacity(): String {
     val ifLastColorDigits = this.takeLast(2).isDigitsOnly()
-    if (ifLastColorDigits) return this.dropLast(2).toString()
+    val ifLastColorDigit = this.takeLast(1).isDigitsOnly()
+
+    if (ifLastColorDigits || ifLastColorDigit) return this.dropLast(2).toString()
+
     else return this
+}
+fun Context.doOnLanguageChange(doOnArabic:()->Unit,doOnEnGlish:()->Unit){
+    if (LocalizationManager.getLocale(this).language == "ar") {
+       doOnArabic.invoke()
+    } else {
+        doOnEnGlish.invoke()
+    }
 }
 
 fun String.formatTo2DecimalPoints(): String {

@@ -2,10 +2,14 @@ package company.tap.tapuilibrary.uikit.animation
 
 import android.animation.*
 import android.graphics.drawable.GradientDrawable
+import android.os.Handler
 import android.view.View
 import androidx.annotation.ColorInt
+import androidx.core.animation.doOnEnd
+import androidx.core.animation.doOnRepeat
 import company.tap.tapuilibrary.uikit.animation.MorphingAnimation.AnimationTarget.*
 import company.tap.tapuilibrary.uikit.datasource.AnimationDataSource
+import kotlinx.coroutines.delay
 
 /**
  * Copyright © 2020 Tap Payments. All rights reserved.

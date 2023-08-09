@@ -29,7 +29,7 @@ import company.tap.tapuilibrary.uikit.interfaces.TapView
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
  */
-open class TapTextInput @JvmOverloads constructor(
+open class TapTextInput  @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = androidx.appcompat.R.attr.editTextStyle
@@ -59,7 +59,7 @@ open class TapTextInput @JvmOverloads constructor(
                 if (shouldShowError) {
                     setTextColor(errorColor ?: defaultErrorColor)
                 } else {
-                    setTextColor(Color.parseColor(ThemeManager.getValue("inlineCard.textFields.textColor")))
+                    setTextColor(Color.parseColor(ThemeManager.getValue("emailCard.textFields.textColor")))
                 }
                 refreshDrawableState()
             }
@@ -76,7 +76,6 @@ open class TapTextInput @JvmOverloads constructor(
 
     @ColorInt
     private var defaultErrorColor: Int = 0
-
     @ColorInt
     private var errorColor: Int? = null
 
@@ -100,7 +99,7 @@ open class TapTextInput @JvmOverloads constructor(
         listenForTextChanges()
         listenForDeleteEmpty()
         determineDefaultErrorColor()
-        // cachedColorStateList = textColors
+       // cachedColorStateList = textColors
     }
 
     protected open val accessibilityText: String? = null

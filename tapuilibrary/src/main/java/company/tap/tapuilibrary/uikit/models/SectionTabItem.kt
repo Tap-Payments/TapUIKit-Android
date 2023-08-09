@@ -1,5 +1,6 @@
 package company.tap.tapuilibrary.uikit.models
 
+import android.graphics.drawable.Drawable
 import android.view.View
 import android.widget.ImageView
 import company.tap.tapcardvalidator_android.CardBrand

@@ -71,7 +71,7 @@ class MainActivity : BaseActivity(),
         setContentView(R.layout.activity_main)
         context = this
       //setLocale(this, LocalizationManager.getLocale(context).language)
-        setLocale(this, "ar")
+      //  setLocale(this, "ar")
 
         LocalizationManager.loadTapLocale(resources, R.raw.lang)
 

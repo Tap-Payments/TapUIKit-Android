@@ -15,6 +15,11 @@
     <string name="msg_dismiss">dismiss</string>
     <string name="gopay">goPay</string>
     <string name="item_price">%s %s</string>
+    <string name="back">Back</string>
+    <string name="points">Points</string>
+    <string name="points_abrv">Pts</string>
+    <string name="aed">AED </string>
+    <string name="error_text_message">A Maximum of AED 100.00 (1000 Pts) is required</string>
 
 
     <string-array name="countries_list">

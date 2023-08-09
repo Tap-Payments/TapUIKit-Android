@@ -27,6 +27,7 @@ import company.tap.tapuilibrary.uikit.views.TapNFCView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.Disposables
+import kotlinx.android.synthetic.main.gopay_password_input.view.*
 
 
 /**
