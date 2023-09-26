@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.R
@@ -21,7 +22,7 @@ import company.tap.tapuilibrary.uikit.ktx.loadAppThemManagerFromPath
 class TapBrandView : LinearLayout {
 
     val poweredByImage by lazy { findViewById<AppCompatImageView>(R.id.poweredByImage) }
-    val outerConstraint by lazy { findViewById<CardView>(R.id.outerConstraint) }
+    val outerConstraint by lazy { findViewById<ConstraintLayout>(R.id.outerConstraint) }
     val constraint by lazy { findViewById<CardView>(R.id.outerConstraint_header) }
     val backButtonLinearLayout by lazy { findViewById<LinearLayout>(R.id.back_btn_linear) }
     val imageBack by lazy { findViewById<ImageView>(R.id.image_back) }
