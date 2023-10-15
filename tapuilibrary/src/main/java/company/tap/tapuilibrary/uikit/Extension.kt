@@ -8,6 +8,7 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.MotionEvent
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.TextUtilsCompat
 import androidx.core.text.isDigitsOnly
 import androidx.core.view.ViewCompat
@@ -73,7 +74,7 @@ fun Context.doOnChangeOfResolutionDensities(
     onMediumDensity: () -> Unit,
     onHighDensity: () -> Unit
 ) {
-    val displayMetrics = getDeviceDisplayMetrics(this as Activity)
+    val displayMetrics = getDeviceDisplayMetrics(this as Activity )
 
 
     if (displayMetrics == DisplayMetrics.DENSITY_260 || displayMetrics == DisplayMetrics.DENSITY_280 || displayMetrics == DisplayMetrics.DENSITY_300 || displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340 || displayMetrics == DisplayMetrics.DENSITY_360) {

@@ -45,7 +45,7 @@ class TapCurrencyControlWidget : FrameLayout {
         initView()
     }
 
-    constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs) {
+    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
         initView()
     }
 
