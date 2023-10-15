@@ -70,11 +70,13 @@ class TapBrandView : LinearLayout {
     init {
         inflate(context, R.layout.tap_brandview, this)
         poweredByImage.setImageResource(logoIcon)
-        backTitle.text = LocalizationManager.getValue("back", "Common")
 
-        backTitle.setTextColor(loadAppThemManagerFromPath(AppColorTheme.PoweredByTapBackButtonLabelColor))
-        imageBack.backgroundTintList =
-            ColorStateList.valueOf(loadAppThemManagerFromPath(AppColorTheme.PoweredByTapBackButtonIconColor))
+      //comnted temp NPE  backTitle.text = LocalizationManager.getValue("back", "Common")
+        backTitle.text = "BACK"
+
+      //  backTitle.setTextColor(loadAppThemManagerFromPath(AppColorTheme.PoweredByTapBackButtonLabelColor))
+       // imageBack.backgroundTintList =
+      //      ColorStateList.valueOf(loadAppThemManagerFromPath(AppColorTheme.PoweredByTapBackButtonIconColor))
 
 
 
