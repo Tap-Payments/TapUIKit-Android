@@ -122,9 +122,9 @@ class TapNFCView : LinearLayout {
     private fun setNFCGif(){
         println("ThemeManager.currentTheme are"+ThemeManager.currentTheme)
         if (ThemeManager.currentTheme.isNotEmpty() && ThemeManager.currentTheme.contains("dark")) {
-            Glide.with(context).load(R.drawable.nfcgif_dark).into(gifNFC)
+            Glide.with(context).load("https://tap-assets.b-cdn.net/card-sdk/nfc/nfcgif_dark.gif").into(gifNFC)
         } else {
-            Glide.with(context).load(R.drawable.nfcgif_light).into(gifNFC)
+            Glide.with(context).load("https://tap-assets.b-cdn.net/card-sdk/nfc/nfcgif_light.gif").into(gifNFC)
         }
     }
 

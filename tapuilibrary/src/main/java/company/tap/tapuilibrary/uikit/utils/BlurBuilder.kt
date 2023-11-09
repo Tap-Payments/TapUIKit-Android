@@ -8,6 +8,7 @@ import android.renderscript.Element
 import android.renderscript.RenderScript
 import android.renderscript.ScriptIntrinsicBlur
 import android.view.View
+import android.widget.LinearLayout
 import kotlin.math.roundToInt
 
 

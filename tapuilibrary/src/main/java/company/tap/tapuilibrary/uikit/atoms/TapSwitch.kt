@@ -3,6 +3,7 @@ package company.tap.tapuilibrary.uikit.atoms
 import android.content.Context
 import android.content.res.ColorStateList
 import android.util.AttributeSet
+import android.util.Log
 import androidx.appcompat.widget.SwitchCompat
 import company.tap.tapuilibrary.themekit.theme.SwitchTheme
 import company.tap.tapuilibrary.uikit.interfaces.TapView

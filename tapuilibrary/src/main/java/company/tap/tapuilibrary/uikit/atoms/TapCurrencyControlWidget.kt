@@ -2,11 +2,13 @@ package company.tap.tapuilibrary.uikit.atoms
 
 import SupportedCurrencies
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Typeface
 import android.util.AttributeSet
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import android.widget.*
@@ -19,6 +21,9 @@ import company.tap.tapuilibrary.uikit.AppColorTheme
 import company.tap.tapuilibrary.uikit.doOnChangeOfResolutionDensities
 import company.tap.tapuilibrary.uikit.isLayoutRTL
 import company.tap.tapuilibrary.uikit.ktx.loadAppThemManagerFromPath
+import company.tap.tapuilibrary.uikit.utils.MetricsUtil
+import java.util.*
+import kotlin.math.roundToInt
 
 
 class TapCurrencyControlWidget : FrameLayout {
@@ -31,7 +36,7 @@ class TapCurrencyControlWidget : FrameLayout {
     val currencyWidgetDescription by lazy { findViewById<TapTextViewNew>(R.id.currency_widget_description) }
     val spinner: Spinner by lazy { findViewById<Spinner>(R.id.currency_widget_spinner) }
     lateinit var selectedCurrency: SupportedCurrencies
-    private var displayMetrics: Int? = null
+
     constructor(context: Context, attrs: AttributeSet?, defStyle: Int) : super(
         context,
         attrs,
@@ -88,10 +93,7 @@ class TapCurrencyControlWidget : FrameLayout {
         }
 
     }
-    fun setDisplayMetricsTheme(displayMetrics: Int) {
-        this.displayMetrics = displayMetrics
 
-    }
     fun setSpinnerBackground(isTriangleUp: Boolean = true) {
         val shapeDrawable =
             MaterialShapeDrawable(createSpinnerBackgroundShapeWithTrianleAtTopEdge(isTriangleUp))
@@ -105,27 +107,14 @@ class TapCurrencyControlWidget : FrameLayout {
 
         spinner.setPopupBackgroundDrawable(shapeDrawable)
         var dropOffsetAccordingToScreenSize = 0f
-        /***
-         * Commented as it crashes the UI kit itself not correct please try other way**/
-       /* context.doOnChangeOfResolutionDensities(onLowDensity = {
+        context.doOnChangeOfResolutionDensities(onLowDensity = {
             dropOffsetAccordingToScreenSize = resources.getDimension(R.dimen._14sdp)
         }, onMediumDensity = {
             dropOffsetAccordingToScreenSize = resources.getDimension(R.dimen._18sdp)
         }, onHighDensity = {
             dropOffsetAccordingToScreenSize = resources.getDimension(R.dimen._20sdp)
 
-        })*/
-
-        if (displayMetrics == DisplayMetrics.DENSITY_260 || displayMetrics == DisplayMetrics.DENSITY_280 || displayMetrics == DisplayMetrics.DENSITY_300 || displayMetrics == DisplayMetrics.DENSITY_XHIGH || displayMetrics == DisplayMetrics.DENSITY_340 || displayMetrics == DisplayMetrics.DENSITY_360) {
-            dropOffsetAccordingToScreenSize = resources.getDimension(R.dimen._14sdp)
-        } else if (displayMetrics == DisplayMetrics.DENSITY_400 ||
-            displayMetrics == DisplayMetrics.DENSITY_420 ||
-            displayMetrics == DisplayMetrics.DENSITY_440 ||
-            displayMetrics == DisplayMetrics.DENSITY_XXHIGH) {
-            dropOffsetAccordingToScreenSize = resources.getDimension(R.dimen._18sdp)
-        } else {
-            dropOffsetAccordingToScreenSize = resources.getDimension(R.dimen._20sdp)
-        }
+        })
 
         spinner.dropDownHorizontalOffset = dropOffsetAccordingToScreenSize.toInt()
 

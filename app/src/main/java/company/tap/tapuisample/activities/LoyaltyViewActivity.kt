@@ -26,25 +26,25 @@ class LoyaltyViewActivity : AppCompatActivity() {
         loyaltyView = findViewById(R.id.loyaltyView)
         textViewClickable = loyaltyView?.findViewById(R.id.textViewClickable)!!
         textViewClickable?.linksClickable
-        loyaltyView?.linearLayout2?.visibility = View.GONE
-        loyaltyView?.linearLayout3?.visibility = View.GONE
-        loyaltyView?.textViewSubTitle?.text = "Amount to Redeem "
-        loyaltyView?.textViewTouchPoints?.text = "= TouchPoints "
+//        loyaltyView?.linearLayout2?.visibility = View.GONE
+//        loyaltyView?.linearLayout3?.visibility = View.GONE
+//        loyaltyView?.textViewSubTitle?.text = "Amount to Redeem "
+//        loyaltyView?.textViewTouchPoints?.text = "= TouchPoints "
 
         constraintt = findViewById(R.id.constraintt)
         loyaltyView?.switchLoyalty?.setOnCheckedChangeListener { buttonView, isChecked ->
-            loyaltyView?.switchTheme()
-
-            if (isChecked) {
-                loyaltyView?.linearLayout2?.visibility = View.VISIBLE
-                loyaltyView?.linearLayout3?.visibility = View.VISIBLE
-
-            } else {
-
-                loyaltyView?.linearLayout2?.visibility = View.GONE
-                loyaltyView?.linearLayout3?.visibility = View.GONE
-
-            }
+//            loyaltyView?.switchTheme()
+//
+//            if (isChecked) {
+//                loyaltyView?.linearLayout2?.visibility = View.VISIBLE
+//                loyaltyView?.linearLayout3?.visibility = View.VISIBLE
+//
+//            } else {
+//
+//                loyaltyView?.linearLayout2?.visibility = View.GONE
+//                loyaltyView?.linearLayout3?.visibility = View.GONE
+//
+//            }
         }
         constraintt?.setBackgroundColor(Color.parseColor(ThemeManager.getValue("amountSectionView.backgroundColor")))
         loyaltyView?.setLoyaltyHeaderDataSource(
@@ -54,29 +54,29 @@ class LoyaltyViewActivity : AppCompatActivity() {
             )
         )
 
-        loyaltyView?.textViewClickable?.makeLinks(
-            Pair("(T&C)", View.OnClickListener {
-                val url = "https://www.adcb.com/en/tools-resources/adcb-privacy-policy/"
-                val intent = Intent(Intent.ACTION_VIEW)
-                intent.data = Uri.parse(url)
-                startActivity(intent)
-                Toast.makeText(this, "Terms of Service Clicked", Toast.LENGTH_SHORT).show()
-            })
-        )
+//        loyaltyView?.textViewClickable?.makeLinks(
+//            Pair("(T&C)", View.OnClickListener {
+//                val url = "https://www.adcb.com/en/tools-resources/adcb-privacy-policy/"
+//                val intent = Intent(Intent.ACTION_VIEW)
+//                intent.data = Uri.parse(url)
+//                startActivity(intent)
+//                Toast.makeText(this, "Terms of Service Clicked", Toast.LENGTH_SHORT).show()
+//            })
+//        )
 
-        loyaltyView?.editTextAmount?.doOnTextChanged { text, start, count, after ->
-            // action which will be invoked when the text is changing
-            if (text.toString() == "340") {
-                loyaltyView?.loyaltyAlertView?.alertMessage?.text =
-                    "Minimum redemption is AED 20.00 "
-                loyaltyView?.loyaltyAlertView?.visibility = View.VISIBLE
-            } else {
-                loyaltyView?.loyaltyAlertView?.visibility = View.GONE
-            }
-        }
-
-        loyaltyView?.textViewRemainAmount?.text = "Remain amount "
-        loyaltyView?.textViewRemainPoints?.text = "Remain points "
+//        loyaltyView?.editTextAmount?.doOnTextChanged { text, start, count, after ->
+//            // action which will be invoked when the text is changing
+//            if (text.toString() == "340") {
+//                loyaltyView?.loyaltyAlertView?.alertMessage?.text =
+//                    "Minimum redemption is AED 20.00 "
+//                loyaltyView?.loyaltyAlertView?.visibility = View.VISIBLE
+//            } else {
+//                loyaltyView?.loyaltyAlertView?.visibility = View.GONE
+//            }
+//        }
+//
+//        loyaltyView?.textViewRemainAmount?.text = "Remain amount "
+//        loyaltyView?.textViewRemainPoints?.text = "Remain points "
 
     }
 

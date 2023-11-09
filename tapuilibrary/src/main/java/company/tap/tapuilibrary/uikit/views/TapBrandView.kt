@@ -1,21 +1,32 @@
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.graphics.*
 import android.util.AttributeSet
+import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
+import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.themekit.ThemeManager
 import company.tap.tapuilibrary.R
+import company.tap.tapuilibrary.fontskit.enums.TapFont
+import company.tap.tapuilibrary.uikit.AppColorTheme
+import company.tap.tapuilibrary.uikit.ktx.loadAppThemManagerFromPath
 
 
 class TapBrandView : LinearLayout {
 
     val poweredByImage by lazy { findViewById<AppCompatImageView>(R.id.poweredByImage) }
-    val outerConstraint by lazy { findViewById<CardView>(R.id.outerConstraint) }
+    val outerConstraint by lazy { findViewById<ConstraintLayout>(R.id.outerConstraint) }
     val constraint by lazy { findViewById<CardView>(R.id.outerConstraint_header) }
+    val backButtonLinearLayout by lazy { findViewById<LinearLayout>(R.id.back_btn_linear) }
+    val imageBack by lazy { findViewById<ImageView>(R.id.image_back) }
+    val backTitle by lazy { findViewById<TextView>(R.id.back_title) }
 
     @DrawableRes
     val logoIcon: Int =
@@ -59,6 +70,28 @@ class TapBrandView : LinearLayout {
     init {
         inflate(context, R.layout.tap_brandview, this)
         poweredByImage.setImageResource(logoIcon)
+        backTitle.text = LocalizationManager.getValue("back", "Common")
+
+        backTitle.setTextColor(loadAppThemManagerFromPath(AppColorTheme.PoweredByTapBackButtonLabelColor))
+        imageBack.backgroundTintList =
+            ColorStateList.valueOf(loadAppThemManagerFromPath(AppColorTheme.PoweredByTapBackButtonIconColor))
+
+
+
+        if (LocalizationManager.getLocale(context).language == "ar") {
+            imageBack.rotation = 180f
+            backTitle?.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.TajawalMedium
+                )
+            )
+        }else{
+            backTitle?.typeface = Typeface.createFromAsset(
+                context?.assets, TapFont.tapFontType(
+                    TapFont.RobotoRegular
+                )
+            )
+        }
     }
 
 

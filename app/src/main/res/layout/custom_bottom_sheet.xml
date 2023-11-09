@@ -162,7 +162,7 @@ android:layout_marginTop="-25dp"
                     android:visibility="gone"
                    />
 
-                <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/default_padding"
