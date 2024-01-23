@@ -8,7 +8,7 @@
     tools:context=".activities.ThemeTestActivity">
 
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

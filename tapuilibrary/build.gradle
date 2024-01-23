@@ -72,14 +72,13 @@ dependencies {
 
 
     implementation 'jp.wasabeef:blurry:4.0.0'
-    implementation "com.hbb20:ccp:2.2.2"
+    implementation "com.hbb20:ccp:2.4.6"
 
     implementation 'com.google.android.gms:play-services-auth:19.2.0'
 
     implementation("io.coil-kt:coil:1.2.0")
     implementation("io.coil-kt:coil-svg:1.2.0")
     implementation 'com.github.2coffees1team:GlideToVectorYou:v2.0.0'
-    implementation 'com.tomergoldst.android:tooltips:1.0.10'
     implementation("com.github.skydoves:balloon:1.4.7") {
         exclude group: "androidx.appcompat"
         exclude group: "androidx.fragment"

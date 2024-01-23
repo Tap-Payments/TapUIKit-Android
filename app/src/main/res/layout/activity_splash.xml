@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.SplashActivity">
 
-    <company.tap.tapuilibrary.uikit.atoms.TapTextView
+    <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"

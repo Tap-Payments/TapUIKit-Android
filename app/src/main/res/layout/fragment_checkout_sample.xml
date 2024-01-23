@@ -97,7 +97,7 @@
                 <!--Kept webframelayout outside so that it takes full screen-->
 
 
-                <company.tap.tapuilibrary.uikit.atoms.TapTextView
+                <company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
                     android:id="@+id/closeText2"
                     android:layout_width="48dp"
                     android:layout_height="40dp"
