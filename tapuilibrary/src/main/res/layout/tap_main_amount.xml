@@ -163,7 +163,7 @@
                 android:id="@+id/flagImageView"
                 android:layout_width="16dp"
                 android:layout_height="12dp"
-                android:src="@drawable/flag_uae"
+                android:src="@drawable/usa_flag"
 
 
 

@@ -91,7 +91,7 @@
             android:paddingStart="@dimen/margin_basic_16dp">
 
 
-            <com.hbb20.CountryCodePicker
+          <!--  <com.hbb20.CountryCodePicker
                 android:id="@+id/shipping_countryCodePicker"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -117,7 +117,7 @@
                 app:ccpDialog_textColor="@color/gray"
                 app:ccp_hintExampleNumber="false"
                 app:ccp_showFlag="true"
-                app:ccp_showNameCode="true"/>
+                app:ccp_showNameCode="true"/>-->
             <company.tap.tapuilibrary.uikit.atoms.TapImageView
                 android:id="@+id/mobileImage"
                 android:layout_width="wrap_content"
