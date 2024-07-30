@@ -63,10 +63,10 @@
         android:layout_width="match_parent"
         android:layout_height="45dp" />
 
-    <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
+<!--    <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
         android:id="@+id/gopay_login_input"
         android:layout_width="match_parent"
-        android:layout_height="80dp" />
+        android:layout_height="80dp" />-->
 
     <company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
         android:id="@+id/goPay_password"

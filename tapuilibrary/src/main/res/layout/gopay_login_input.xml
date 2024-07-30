@@ -68,7 +68,7 @@
                     android:layout_marginEnd="@dimen/margin_basic_16dp"
                     android:src="@drawable/ic_mail" />
 
-                <com.hbb20.CountryCodePicker
+               <!-- <com.hbb20.CountryCodePicker
                     android:id="@+id/countryCodePicker"
                     android:layout_width="40dp"
                     android:layout_height="match_parent"
@@ -99,7 +99,7 @@
                     app:ccp_hintExampleNumber="true"
                     app:ccp_showFlag="false"
                     app:ccp_showNameCode="false"/>
-
+-->
 
 
                 <com.google.android.material.textfield.TextInputLayout
