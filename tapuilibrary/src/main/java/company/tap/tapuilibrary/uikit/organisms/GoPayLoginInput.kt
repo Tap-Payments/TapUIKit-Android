@@ -1,3 +1,4 @@
+/*
 package company.tap.tapuilibrary.uikit.organisms
 
 import android.content.Context
@@ -18,7 +19,6 @@ import androidx.core.widget.doAfterTextChanged
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import com.hbb20.CountryCodePicker
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -39,12 +39,14 @@ import company.tap.tapuilibrary.uikit.views.TabAnimatedActionButton
 import company.tap.tapuilibrary.R
 import kotlin.math.abs
 
+*/
 /**
  *
  * Created on 7/14/20
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
- */
+ *//*
+
 class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs), CountryCodePicker.OnCountryChangeListener,
     TapView<EditTextTheme> {
@@ -483,4 +485,4 @@ class GoPayLoginInput(context: Context?, attrs: AttributeSet?) :
     }
 
 
-}
+}*/

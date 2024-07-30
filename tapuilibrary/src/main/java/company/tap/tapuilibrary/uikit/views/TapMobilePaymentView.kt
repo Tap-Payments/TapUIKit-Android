@@ -1,3 +1,4 @@
+/*
 package company.tap.tapuilibrary.uikit.views
 
 import android.content.Context
@@ -18,11 +19,13 @@ import company.tap.tapuilibrary.uikit.atoms.TapImageView
 import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 
+*/
 /**
  *
  * Copyright © 2020 Tap Payments. All rights reserved.
  *
- */
+ *//*
+
 class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
     LinearLayout(context, attrs), CountryCodePicker.OnCountryChangeListener,
     TapView<EditTextTheme> {
@@ -122,3 +125,4 @@ class TapMobilePaymentView(context: Context?, attrs: AttributeSet?) :
 
 
 
+*/

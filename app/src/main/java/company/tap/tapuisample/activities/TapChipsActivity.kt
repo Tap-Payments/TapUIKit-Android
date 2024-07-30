@@ -21,10 +21,10 @@ import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.SectionTabItem
-import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
+//import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.utils.BaseActivity
-import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
+//import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
 import kotlinx.android.synthetic.main.activity_cardview.*
 
@@ -39,9 +39,9 @@ class TapChipsActivity : BaseActivity(),
     private val paymentsList: ArrayList<Int> = arrayListOf(1, 2, 3, 4, 5, 6)
     private lateinit var currencyList: ArrayList<CurrencyModel>
     private lateinit var gopaySelectTab: TapSelectionTabLayout
-    private lateinit var tapMobileInputView: TapMobilePaymentView
+   // private lateinit var tapMobileInputView: TapMobilePaymentView
     private lateinit var ll: LinearLayout
-    private lateinit var  goPayLoginInput: GoPayLoginInput
+    //private lateinit var  goPayLoginInput: GoPayLoginInput
     private lateinit var goPayPasswordInput: GoPayPasswordInput
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,14 +57,14 @@ class TapChipsActivity : BaseActivity(),
     private fun setupTabLayout() {
         gopaySelectTab = findViewById(R.id.tab_select_gopay)
         gopaySelectTab.setTabLayoutInterface(this)
-        goPayLoginInput = findViewById(R.id.gopay_login_input)
+        //goPayLoginInput = findViewById(R.id.gopay_login_input)
         goPayPasswordInput = findViewById(R.id.goPay_password)
 //        tapMobileInputView = TapMobilePaymentView(context, null)
 //        ll.addView(tapMobileInputView)
 //        addCard()
 //        addMobile()
-        goPayLoginInput.changeDataSource(GoPayLoginDataSource())
-        goPayLoginInput.setLoginInterface(this)
+       // goPayLoginInput.changeDataSource(GoPayLoginDataSource())
+       // goPayLoginInput.setLoginInterface(this)
 
     }
 
@@ -199,13 +199,13 @@ class TapChipsActivity : BaseActivity(),
 
     override fun onChangeClicked() {
       //  AnimationEngine.applyTransition(bottomSheet, SLIDE)
-        goPayLoginInput.visibility = View.VISIBLE
+        //goPayLoginInput.visibility = View.VISIBLE
         goPayPasswordInput.visibility = View.VISIBLE
     }
 
     override fun onEmailValidated() {
         //AnimationEngine.applyTransition(bottomSheet, SLIDE)
-        goPayLoginInput.visibility = View.GONE
+      ///  goPayLoginInput.visibility = View.GONE
         goPayPasswordInput.visibility = View.VISIBLE
     }
 

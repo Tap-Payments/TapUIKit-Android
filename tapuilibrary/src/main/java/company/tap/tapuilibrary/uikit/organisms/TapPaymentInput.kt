@@ -20,7 +20,7 @@ import company.tap.tapuilibrary.uikit.atoms.TapSeparatorView
 import company.tap.tapuilibrary.uikit.interfaces.TapPaymentShowHideClearImage
 import company.tap.tapuilibrary.uikit.interfaces.TapView
 import company.tap.tapuilibrary.uikit.models.TabSection
-import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
+//import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
 
 /**
@@ -40,7 +40,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
     val separator by lazy { findViewById<TapSeparatorView>(R.id.separator) }
     //var cardScannerButton :ImageView
    // var nfcButton :ImageView
-    private  var tapMobileInputView: TapMobilePaymentView
+  //  private  var tapMobileInputView: TapMobilePaymentView
     private var displayMetrics: Int? = null
     @DrawableRes
     val scannerIcon: Int =
@@ -59,9 +59,9 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
        /* clearView.setOnClickListener {
             rootView.invalidate()
         }*/
-        tapMobileInputView = TapMobilePaymentView(context, null)
+      //  tapMobileInputView = TapMobilePaymentView(context, null)
         tapMobileInputViewTextWatcher()
-        tapMobileInputView.setTapPaymentShowHideClearImage(this)
+        //////tapMobileInputView.setTapPaymentShowHideClearImage(this) commnetd
       // cardScannerButton = findViewById(R.id.card_scanner_button)
        // nfcButton = findViewById(R.id.nfc_button)
       //  cardScannerButton.setImageResource(scannerIcon)
@@ -85,7 +85,8 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
         this.displayMetrics = displayMetrics
     }
     private fun tapMobileInputViewTextWatcher(){
-        tapMobileInputView.mobileNumber?.addTextChangedListener(object : TextWatcher {
+       /// commented on 30jul24
+    /*    tapMobileInputView.mobileNumber?.addTextChangedListener(object : TextWatcher {
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 showHideClearImage(true)
             }
@@ -98,7 +99,7 @@ class TapPaymentInput(context: Context?, attrs: AttributeSet?) :
             }
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
             }
-        })
+        })*/
     }
 
     @RequiresApi(Build.VERSION_CODES.N)

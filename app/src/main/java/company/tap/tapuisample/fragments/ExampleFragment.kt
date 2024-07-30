@@ -12,7 +12,7 @@ import company.tap.tapuilibrary.uikit.datasource.ActionButtonDataSource
 import company.tap.tapuilibrary.uikit.datasource.GoPayLoginDataSource
 import company.tap.tapuilibrary.uikit.enums.ActionButtonState
 import company.tap.tapuilibrary.uikit.interfaces.GoPayLoginInterface
-import company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
+
 import company.tap.tapuilibrary.uikit.organisms.GoPayPasswordInput
 import company.tap.tapuilibrary.uikit.views.TapBottomSheetDialog
 import company.tap.tapuisample.R
@@ -24,7 +24,7 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
 
     var clickAction = 0
 
-    var goPayLoginInput: GoPayLoginInput?= null
+   // var goPayLoginInput: GoPayLoginInput?= null
      var goPayPasswordInput: GoPayPasswordInput? = null
     companion object {
         const val TAG = "ModalBottomSheet"
@@ -40,14 +40,14 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
         super.onViewCreated(view, savedInstanceState)
         bottomSheetDialog.behavior.state = BottomSheetBehavior.STATE_EXPANDED
         bottomSheetDialog.behavior.skipCollapsed = true
-        goPayLoginInput = view.findViewById(R.id.gopay_login_input)
+       // goPayLoginInput = view.findViewById(R.id.gopay_login_input)
         goPayPasswordInput = view.findViewById(R.id.goPay_password)
 //        backgroundColor = Color.parseColor(ThemeManager.getValue("GlobalValues.Colors.whiteTwo"))
 
 
-        goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
-        goPayLoginInput?.setLoginInterface(this)
-        goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
+       // goPayLoginInput?.changeDataSource(GoPayLoginDataSource())
+     //   goPayLoginInput?.setLoginInterface(this)
+    //    goPayPasswordInput?.setLoginInterface(this, goPayLoginInput?.textInput?.text.toString())
 //        goPayPasswordInput?.rootView?.setBackgroundColor(Color.parseColor("#c7f9f9f9"))
 
 
@@ -123,15 +123,15 @@ class ExampleFragment : TapBottomSheetDialog() , WebViewContract, GoPayLoginInte
 
     override fun onChangeClicked() {
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
-        goPayLoginInput?.visibility = View.VISIBLE
+      //  goPayLoginInput?.visibility = View.VISIBLE
         goPayPasswordInput?.visibility = View.GONE
     }
 
     override fun onEmailValidated() {
 //        AnimationEngine.applyTransition(bottomSheet, SLIDE)
-        goPayLoginInput?.visibility = View.GONE
+     //   goPayLoginInput?.visibility = View.GONE
         goPayPasswordInput?.visibility = View.VISIBLE
-        goPayPasswordInput?.setLoginInterface(this,goPayLoginInput?.textInput?.text.toString())
+      //  goPayPasswordInput?.setLoginInterface(this,goPayLoginInput?.textInput?.text.toString())
     }
 
     override fun onPhoneValidated() {

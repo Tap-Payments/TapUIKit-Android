@@ -6,7 +6,7 @@ import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
-import com.hbb20.CountryCodePicker
+//import com.hbb20.CountryCodePicker
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.fontskit.enums.TapFont
 import company.tap.tapuilibrary.themekit.ThemeManager
@@ -23,7 +23,7 @@ class TapShippingDetailView : LinearLayout {
     val flatEditText by lazy { findViewById<TapEditText>(R.id.flat_EditText) }
     val additionalLineEditText by lazy { findViewById<TapEditText>(R.id.additionalLine_EditText) }
     val cityEditText by lazy { findViewById<TapEditText>(R.id.cityName_EditText) }
-    val shippingCountryPicker by lazy { findViewById<CountryCodePicker>(R.id.shipping_countryCodePicker) }
+   // val shippingCountryPicker by lazy { findViewById<CountryCodePicker>(R.id.shipping_countryCodePicker) }
     val shippingSeparator0 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator0) }
     val shippingSeparator1 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator1) }
     val shippingSeparator2 by lazy { findViewById<TapSeparatorView>(R.id.shippingSeparator2) }
@@ -109,7 +109,7 @@ class TapShippingDetailView : LinearLayout {
 
     }
     private fun initCountryCodePicker() {
-        shippingCountryPicker.visibility = View.VISIBLE
+      /*  shippingCountryPicker.visibility = View.VISIBLE
         shippingCountryPicker.setDefaultCountryUsingNameCode("KW")
        // countryCode = shippingCountryPicker.defaultCountryCodeAsInt.toString()
         shippingCountryPicker.ccpDialogShowFlag = true
@@ -117,5 +117,6 @@ class TapShippingDetailView : LinearLayout {
         shippingCountryPicker.contentColor =
             Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryCell.titleLabelColor"))
         shippingCountryPicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryTable.backgroundColor")))
+   */
     }
 }

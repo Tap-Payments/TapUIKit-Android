@@ -18,7 +18,7 @@ import company.tap.tapuilibrary.uikit.models.SectionTabItem
 import company.tap.tapuilibrary.uikit.interfaces.TapSelectionTabLayoutInterface
 import company.tap.tapuilibrary.uikit.models.TabSection
 import company.tap.tapuilibrary.uikit.organisms.TapPaymentInput
-import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
+//import company.tap.tapuilibrary.uikit.views.TapMobilePaymentView
 import company.tap.tapuilibrary.uikit.views.TapSelectionTabLayout
 import company.tap.tapuisample.R
 import kotlinx.android.synthetic.main.activity_sections_tab_layout.*
@@ -37,7 +37,7 @@ class SectionsTabLayout : AppCompatActivity(),
 
     private var selectedTab = 0
     private lateinit var tapCardInputView: InlineCardInput
-    private lateinit var tapMobileInputView: TapMobilePaymentView
+   // private lateinit var tapMobileInputView: TapMobilePaymentView
     private val tab1Items = arrayOf("VISA", "MASTERCARD", "AMEX")
     private val tab2Items = arrayOf("Zain PAY", "Ooredoo PAY")
 
@@ -47,8 +47,8 @@ class SectionsTabLayout : AppCompatActivity(),
         paymentInput = findViewById(R.id.tap_payment_input)
         tabLayout = findViewById(R.id.sections_tablayout)
         tabLayout.setTabLayoutInterface(this)
-        tapMobileInputView = TapMobilePaymentView(this, null)
-        tapMobileInputView.setTapPaymentShowHideClearImage(this)
+       // tapMobileInputView = TapMobilePaymentView(this, null)
+       // tapMobileInputView.setTapPaymentShowHideClearImage(this)
         tapCardInputView = InlineCardInput(this)
         tapCardInputView.holderNameEnabled = false
         tabLayout.addSection(getCardList())
@@ -156,8 +156,8 @@ class SectionsTabLayout : AppCompatActivity(),
             payment_input_layout.removeAllViews()
             if (position == 0)
                 payment_input_layout.addView(tapCardInputView)
-            else
-                payment_input_layout.addView(tapMobileInputView)
+           // else
+               // payment_input_layout.addView(tapMobileInputView)
         }
     }
 

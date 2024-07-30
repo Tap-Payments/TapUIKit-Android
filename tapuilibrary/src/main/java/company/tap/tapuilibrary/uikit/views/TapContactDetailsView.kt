@@ -6,7 +6,7 @@ import android.graphics.Typeface
 import android.util.AttributeSet
 import android.view.View
 import android.widget.LinearLayout
-import com.hbb20.CountryCodePicker
+//import com.hbb20.CountryCodePicker
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -22,7 +22,7 @@ class TapContactDetailsView : LinearLayout {
     val cardDetailTitle by lazy { findViewById<TapTextViewNew>(R.id.cardDetails_Title) }
     val contactEmailET by lazy { findViewById<TapEditText>(R.id.emailId_EditText) }
     val mobileMainLinear by lazy { findViewById<LinearLayout>(R.id.mobilePaymentMainLinear) }
-    val contactCountryPicker by lazy { findViewById<CountryCodePicker>(R.id.contact_countryCodePicker) }
+   // val contactCountryPicker by lazy { findViewById<CountryCodePicker>(R.id.contact_countryCodePicker) }
     val contactMobileNumber by lazy { findViewById<TapEditText>(R.id.contact_mobileNumber) }
     val contactSeparator by lazy { findViewById<TapSeparatorView>(R.id.contactSeparator) }
     val cardDetailMainLL by lazy { findViewById<LinearLayout>(R.id.cardDet_mainLL) }
@@ -105,7 +105,7 @@ class TapContactDetailsView : LinearLayout {
     }
 
     private fun initCountryCodePicker() {
-        contactCountryPicker.visibility = View.VISIBLE
+      /*  contactCountryPicker.visibility = View.VISIBLE
         contactCountryPicker.setDefaultCountryUsingNameCode("KW")
         countryCode = contactCountryPicker.defaultCountryCodeAsInt.toString()
         contactCountryPicker.ccpDialogShowFlag = false
@@ -113,5 +113,6 @@ class TapContactDetailsView : LinearLayout {
         contactCountryPicker?.contentColor =
             Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryCell.titleLabelColor"))
         contactCountryPicker.setDialogBackgroundColor(Color.parseColor(ThemeManager.getValue("customerDataCollection.countryPicker.countryTable.backgroundColor")))
+   */
     }
 }
