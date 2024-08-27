@@ -2,6 +2,7 @@ package company.tap.tapuilibrary.uikit.animation
 
 import android.animation.*
 import android.graphics.drawable.GradientDrawable
+import android.os.Build
 import android.os.Handler
 import android.view.View
 import androidx.annotation.ColorInt
@@ -59,6 +60,10 @@ class MorphingAnimation(private val animatedView: View) {
                             )
                         )
                 }
+
+                HEIGHT -> {
+
+                }
             }
         }
 
@@ -72,14 +77,17 @@ class MorphingAnimation(private val animatedView: View) {
                 animationEndListener?.onMorphAnimationEnd()
             }
 
-            override fun onAnimationStart(animation: Animator?) {
+            override fun onAnimationStart(animation: Animator) {
                 super.onAnimationStart(animation)
                 animationEndListener?.onMorphAnimationStarted()
             }
 
-            override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
+            override fun onAnimationEnd(animation: Animator, isReverse: Boolean) {
+                super.onAnimationEnd(animation, isReverse)
                 super.onAnimationEnd(animation, isReverse)
             }
+
+
         })
 
       /*  animatorSet.doOnEnd {
@@ -125,6 +133,10 @@ class MorphingAnimation(private val animatedView: View) {
                             )
                         )
                 }
+
+                HEIGHT -> {
+                }
+
             }
         }
 
@@ -134,18 +146,22 @@ class MorphingAnimation(private val animatedView: View) {
         }
         animatorSet.playSequentially(animators)
         animatorSet.addListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator?, isReverse: Boolean) {
+
+
+            override fun onAnimationEnd(animation: Animator, isReverse: Boolean) {
                 super.onAnimationEnd(animation, isReverse)
                 if(isReverse) {
                     animationEndListener?.onMorphAnimationReverted()
 
                 }
-
             }
+
 
         })
 
-        animatorSet.reverse()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            animatorSet.reverse()
+        }
     }
     private fun getCornerAnimation(background: GradientDrawable, from: Float, to: Float): Animator {
         return ObjectAnimator.ofFloat(background, "cornerRadius", from, to)

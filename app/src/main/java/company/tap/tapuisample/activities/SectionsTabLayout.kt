@@ -1,5 +1,6 @@
 package company.tap.tapuisample.activities
 
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -7,7 +8,7 @@ import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import company.tap.cardinputwidget.widget.inline.InlineCardInput
+
 import company.tap.tapcardvalidator_android.CardBrand
 import company.tap.tapcardvalidator_android.CardValidationState
 import company.tap.tapcardvalidator_android.CardValidator
@@ -36,7 +37,7 @@ class SectionsTabLayout : AppCompatActivity(),
     private var mobileNumberEditText: EditText? = null
 
     private var selectedTab = 0
-    private lateinit var tapCardInputView: InlineCardInput
+   // private lateinit var tapCardInputView: InlineCardInput
    // private lateinit var tapMobileInputView: TapMobilePaymentView
     private val tab1Items = arrayOf("VISA", "MASTERCARD", "AMEX")
     private val tab2Items = arrayOf("Zain PAY", "Ooredoo PAY")
@@ -46,13 +47,16 @@ class SectionsTabLayout : AppCompatActivity(),
         setContentView(R.layout.activity_sections_tab_layout)
         paymentInput = findViewById(R.id.tap_payment_input)
         tabLayout = findViewById(R.id.sections_tablayout)
-        tabLayout.setTabLayoutInterface(this)
-       // tapMobileInputView = TapMobilePaymentView(this, null)
-       // tapMobileInputView.setTapPaymentShowHideClearImage(this)
-        tapCardInputView = InlineCardInput(this)
-        tapCardInputView.holderNameEnabled = false
-        tabLayout.addSection(getCardList())
-        tabLayout.addSection(getMobileList())
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            tabLayout.setTabLayoutInterface(this)
+
+            // tapMobileInputView = TapMobilePaymentView(this, null)
+            // tapMobileInputView.setTapPaymentShowHideClearImage(this)
+            //  tapCardInputView = InlineCardInput(this)
+            //  tapCardInputView.holderNameEnabled = false
+            tabLayout.addSection(getCardList())
+            tabLayout.addSection(getMobileList())
+        }
         setupBrandDetection()
 
 
@@ -69,7 +73,7 @@ class SectionsTabLayout : AppCompatActivity(),
     }
 
     private fun setupBrandDetection() {
-        tapCardInputView.setCardNumberTextWatcher(object : TextWatcher {
+      /*  tapCardInputView.setCardNumberTextWatcher(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 if (s.isNullOrEmpty()) {
                     tabLayout.resetBehaviour()
@@ -80,7 +84,7 @@ class SectionsTabLayout : AppCompatActivity(),
             }
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-        })
+        })*/
     }
 
     private fun getCardList(): ArrayList<SectionTabItem>{
@@ -154,8 +158,8 @@ class SectionsTabLayout : AppCompatActivity(),
             selectedTab = it
 //            AnimationEngine.applyTransition(payment_input_layout)
             payment_input_layout.removeAllViews()
-            if (position == 0)
-                payment_input_layout.addView(tapCardInputView)
+            //if (position == 0)
+               // payment_input_layout.addView(tapCardInputView)
            // else
                // payment_input_layout.addView(tapMobileInputView)
         }

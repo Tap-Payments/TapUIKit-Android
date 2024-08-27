@@ -26,9 +26,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import cards.pay.paycardsrecognizer.sdk.Card
-import cards.pay.paycardsrecognizer.sdk.FrameManager
-import cards.pay.paycardsrecognizer.sdk.ui.InlineViewCallback
+
 import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.fontskit.FontChanger
 import company.tap.tapuilibrary.fontskit.enums.TapFont
@@ -52,7 +50,7 @@ import javax.crypto.SecretKey
 
 class MainActivity : BaseActivity(),
     TapAmountSectionInterface,
-    TapSwitchInterface, InlineViewCallback {
+    TapSwitchInterface{
     private lateinit var fontChanger: FontChanger
     private lateinit var context: Context
     private val modalNFCBottomSheet = NFCSampleFragment()
@@ -176,7 +174,7 @@ class MainActivity : BaseActivity(),
 
     }
 
-    override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
+/*    override fun onScanCardFinished(card: Card?, cardImage: ByteArray?) {
       //  Toast.makeText(context,card.toString(), Toast.LENGTH_LONG).show()
         if (card != null) {
             showCardDialog(card)
@@ -190,8 +188,8 @@ class MainActivity : BaseActivity(),
         }, 8000)
 
 
-    }
-    private fun showCardDialog(card: Card) {
+    }*/
+   /* private fun showCardDialog(card: Card) {
         FrameManager.getInstance().frameColor = Color.GREEN
         val cardData = """
                 Card number: ${card.cardNumberRedacted}
@@ -204,13 +202,13 @@ class MainActivity : BaseActivity(),
             .setPositiveButton(android.R.string.yes, null)
             .setIcon(android.R.drawable.ic_dialog_info)
             .show()
-    }
+    }*/
 
 
-    override fun onScanCardFailed(e: Exception?) {
+  /*  override fun onScanCardFailed(e: Exception?) {
         println("card scan failed $e")
     }
-
+*/
     fun openFragment(view: View) {
         ExampleFragment()
             .show(supportFragmentManager, null)

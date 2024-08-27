@@ -252,13 +252,13 @@ android:layout_marginTop="-25dp"
 
 
 
-        <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
+      <!--  <company.tap.tapuilibrary.uikit.organisms.GoPayLoginInput
             android:id="@+id/goPayLoginInput"
             android:visibility="gone"
             android:windowSoftInputMode="adjustResize|adjustPan"
             android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"/>-->
 
         <company.tap.tapuilibrary.uikit.views.TapItemListView
             android:layout_width="match_parent"

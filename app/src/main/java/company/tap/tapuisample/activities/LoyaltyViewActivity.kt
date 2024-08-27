@@ -24,8 +24,8 @@ class LoyaltyViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loyalty_view)
         loyaltyView = findViewById(R.id.loyaltyView)
-        textViewClickable = loyaltyView?.findViewById(R.id.textViewClickable)!!
-        textViewClickable?.linksClickable
+       // textViewClickable = loyaltyView?.findViewById(R.id.textViewClickable)!!
+      //  textViewClickable?.linksClickable
 //        loyaltyView?.linearLayout2?.visibility = View.GONE
 //        loyaltyView?.linearLayout3?.visibility = View.GONE
 //        loyaltyView?.textViewSubTitle?.text = "Amount to Redeem "

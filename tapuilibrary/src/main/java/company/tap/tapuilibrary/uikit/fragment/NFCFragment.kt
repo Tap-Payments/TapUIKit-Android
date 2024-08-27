@@ -24,9 +24,9 @@ import company.tap.taplocalizationkit.LocalizationManager
 import company.tap.tapuilibrary.R
 import company.tap.tapuilibrary.uikit.atoms.TapTextViewNew
 import company.tap.tapuilibrary.uikit.views.TapNFCView
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.disposables.Disposables
+
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.Disposable
 import kotlinx.android.synthetic.main.gopay_password_input.view.*
 
 
@@ -41,7 +41,7 @@ class NFCFragment : Fragment() {
     private lateinit var scanNFC: TapTextViewNew
     private lateinit var aboutNFC: TapTextViewNew
     private var tapNfcCardReader: TapNfcCardReader? = null
-    private var cardReadDisposable: Disposable = Disposables.empty()
+    private var cardReadDisposable: Disposable = Disposable.empty()
 
     override fun onCreateView(
         inflater: LayoutInflater,
