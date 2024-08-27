@@ -60,16 +60,18 @@ class SectionsTabLayout : AppCompatActivity(),
         setupBrandDetection()
 
 
-        paymentInput.addTabLayoutSection(
-            TabSection(
-                TabSectionType.CARD,
-                getCardList()
-            ),
-            TabSection(
-                TabSectionType.MOBILE,
-                getMobileList()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            paymentInput.addTabLayoutSection(
+                TabSection(
+                    TabSectionType.CARD,
+                    getCardList()
+                ),
+                TabSection(
+                    TabSectionType.MOBILE,
+                    getMobileList()
+                )
             )
-        )
+        }
     }
 
     private fun setupBrandDetection() {
